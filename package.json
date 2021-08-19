@@ -36,14 +36,19 @@
     "typeface-montserrat": "0.0.75"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^8.0.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
+    "axe-core": "^4.3.2",
     "babel-jest": "^27.0.6",
     "babel-preset-gatsby": "^1.12.0",
+    "cypress": "^8.3.0",
+    "cypress-axe": "^0.13.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.6",
     "jest-styled-components": "^7.0.5",
-    "prettier": "2.3.2"
+    "prettier": "2.3.2",
+    "start-server-and-test": "^1.13.1"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
@@ -62,6 +67,9 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open"
   }
 }
