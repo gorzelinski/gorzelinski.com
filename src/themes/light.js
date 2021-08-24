@@ -1,0 +1,87 @@
+export const light = {
+  id: "T001",
+  name: "light",
+  color: {
+    primary: {
+      base: "#0466C8",
+      lightness80: "#0353A4",
+      lightness60: "#023E7D",
+      lightness40: "#002855",
+      lightness20: "#002855",
+    },
+    text: {
+      base: "#000000",
+      lightness15: "#212529",
+      lightness25: "#343A40",
+      lightness30: "#495057",
+      lightness45: "#6C757D",
+      lightness100: "#FFFFFF",
+    },
+    surface: {
+      base: "#F8F9FA",
+      lightness95: "#E9ECEF",
+      lightness90: "#DEE2E6",
+      lightness85: "#CED4DA",
+      lightness70: "#ADB5BD",
+    },
+    background: "#FFFFFF",
+    success: "#157F1F",
+    error: "#CE2D4F",
+  },
+  font: {
+    family: {
+      heading: "Montserrat, sans-serif",
+      paragraph: "Lora, serif",
+      code: "Fira Code, monospace",
+    },
+    size: {
+      small: "14px",
+      base: "16px",
+      xs: "20px",
+      s: "24px",
+      m: "32px",
+      l: "40px",
+      xl: "48px",
+      xxl: "64px",
+    },
+    height: {
+      small: "16px",
+      base: "24px",
+      xs: "28px",
+      s: "32px",
+      m: "40px",
+      l: "56px",
+      xl: "64px",
+      xxl: "80px",
+    },
+    spacing: {
+      packed: "-1.5px",
+      narrow: "-0.5px",
+      wide: "1.5px",
+    },
+    weight: {
+      regular: "400",
+      medium: "500",
+    },
+  },
+  screen: {
+    desktop: "1280px",
+    tablet: "768px",
+    mobile: "480px",
+  },
+  shadow: {
+    neumporphism:
+      "8px 8px 16px rgba(0, 24, 69, 0.15), -8px -8px 16px #FFFFFF, inset 0px 0px 4px rgba(255, 255, 255, 0.2)",
+    outline: "0px 0px 4px 8px #023E7D",
+  },
+  space: {
+    xxs: "2px",
+    xs: "8px",
+    s: "16px",
+    m: "32px",
+    l: "64px",
+    xl: "104px",
+    xxl: "168px",
+    xxxl: "272px",
+  },
+}

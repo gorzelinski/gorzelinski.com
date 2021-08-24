@@ -1,0 +1,87 @@
+export const dark = {
+  id: "T002",
+  name: "dark",
+  color: {
+    primary: {
+      base: "#168BFF",
+      lightness20: "#47A3FF",
+      lightenss35: "#70B8FF",
+      lightness50: "#99CCFF",
+      lightness65: "#C2E0FF",
+    },
+    text: {
+      base: "#FFFFFF",
+      lightness95: "#E9ECEF",
+      lightness90: "#DEE2E6",
+      lightness85: "#CED4DA",
+      lightness70: "#ADB5BD",
+      lightness10: "#111315",
+    },
+    surface: {
+      base: "#212529",
+      lightness25: "#343A40",
+      lightenss30: "#495057",
+      lightenss40: "#5F666D",
+      lightenss45: "#6C757D",
+    },
+    background: "#111315",
+    success: "#157F1F",
+    error: "#CE2D4F",
+  },
+  font: {
+    family: {
+      heading: "Montserrat, sans-serif",
+      paragraph: "Lora, serif",
+      code: "Fira Code, monospace",
+    },
+    size: {
+      small: "14px",
+      base: "16px",
+      xs: "20px",
+      s: "24px",
+      m: "32px",
+      l: "40px",
+      xl: "48px",
+      xxl: "64px",
+    },
+    height: {
+      small: "16px",
+      base: "24px",
+      xs: "28px",
+      s: "32px",
+      m: "40px",
+      l: "56px",
+      xl: "64px",
+      xxl: "80px",
+    },
+    spacing: {
+      packed: "-1.5px",
+      narrow: "-0.5px",
+      wide: "1.5px",
+    },
+    weight: {
+      regular: "400",
+      medium: "500",
+    },
+  },
+  screen: {
+    desktop: "1280px",
+    tablet: "768px",
+    mobile: "480px",
+  },
+  shadow: {
+    neumporphism:
+      "8px 8px 16px rgba(0, 24, 69, 0.15), -8px -8px 16px #FFFFFF, inset 0px 0px 4px rgba(255, 255, 255, 0.2)",
+    outline: "0px 0px 4px 8px #023E7D",
+  },
+  space: {
+    xxs: "2px",
+    xs: "8px",
+    s: "16px",
+    m: "32px",
+    l: "64px",
+    xl: "104px",
+    xxl: "168px",
+    xxxl: "272px",
+  },
+}
