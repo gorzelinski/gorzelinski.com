@@ -12,6 +12,7 @@ import {
 import { useTheme } from "../hooks"
 import {
   A,
+  Background,
   Blockquote,
   Button,
   H1,
@@ -28,6 +29,7 @@ import {
   Table,
   UIText,
   Ul,
+  Wrapper,
 } from "../elements"
 
 const Layout = ({ location, title, children }) => {
@@ -60,35 +62,35 @@ const Layout = ({ location, title, children }) => {
     <>
       {themeLoaded && (
         <ThemeProvider theme={selectedTheme}>
-          <div style={{ backgroundColor: selectedTheme.color.background }}>
-            {Object.keys(themes).length > 0 &&
-              Object.values(themes).map(theme => (
-                <Button
-                  nav
-                  theme={selectedTheme}
-                  key={theme.id}
-                  onClick={() => setPreferredTheme(theme)}
-                >
-                  {theme.name}
-                </Button>
-              ))}
-            <Button nav>Twitter</Button>
-            <Button nav>Facebook</Button>
-            <Button nav>Github</Button>
-            <Button nav>Dribbble</Button>
-            <Icon primary>
-              <LogoTwitter></LogoTwitter>
-            </Icon>
-            <Icon primary>
-              <LogoFacebook></LogoFacebook>
-            </Icon>
-            <Icon text>
-              <LogoGithub></LogoGithub>
-            </Icon>
-            <Icon text>
-              <LogoDribbble></LogoDribbble>
-            </Icon>
-            <div className="global-wrapper" data-is-root-path={isRootPath}>
+          <Background>
+            <Wrapper global>
+              {Object.keys(themes).length > 0 &&
+                Object.values(themes).map(theme => (
+                  <Button
+                    nav
+                    theme={selectedTheme}
+                    key={theme.id}
+                    onClick={() => setPreferredTheme(theme)}
+                  >
+                    {theme.name}
+                  </Button>
+                ))}
+              <Button nav>Twitter</Button>
+              <Button nav>Facebook</Button>
+              <Button nav>Github</Button>
+              <Button nav>Dribbble</Button>
+              <Icon primary>
+                <LogoTwitter></LogoTwitter>
+              </Icon>
+              <Icon primary>
+                <LogoFacebook></LogoFacebook>
+              </Icon>
+              <Icon text>
+                <LogoGithub></LogoGithub>
+              </Icon>
+              <Icon text>
+                <LogoDribbble></LogoDribbble>
+              </Icon>
               <Small>This is small text for meta information</Small>
               <H1>This is heading 1. This is longer text.</H1>
               <P>
@@ -203,15 +205,17 @@ const Layout = ({ location, title, children }) => {
                   </tr>
                 </tbody>
               </Table>
-              <header className="global-header">{header}</header>
-              <main>{children}</main>
-              <footer>
-                © {new Date().getFullYear()}, Built with
-                {` `}
-                <a href="https://www.gatsbyjs.com">Gatsby</a>
-              </footer>
-            </div>
-          </div>
+              <div className="global-wrapper" data-is-root-path={isRootPath}>
+                <header className="global-header">{header}</header>
+                <main>{children}</main>
+                <footer>
+                  © {new Date().getFullYear()}, Built with
+                  {` `}
+                  <a href="https://www.gatsbyjs.com">Gatsby</a>
+                </footer>
+              </div>
+            </Wrapper>
+          </Background>
         </ThemeProvider>
       )}
     </>

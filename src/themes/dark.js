@@ -65,6 +65,7 @@ export const dark = {
     },
   },
   screen: {
+    large: "1920px",
     desktop: "1280px",
     tablet: "768px",
     mobile: "480px",
