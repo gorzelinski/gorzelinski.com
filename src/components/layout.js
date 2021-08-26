@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
-import styled, { ThemeProvider } from "styled-components"
+import { ThemeProvider } from "styled-components"
 import { useTheme } from "../hooks"
 import {
   A,
   Blockquote,
+  Button,
   H1,
   H2,
   H3,
@@ -19,13 +20,6 @@ import {
   UIText,
   Ul,
 } from "../elements"
-
-const StyledButton = styled.button`
-  background-color: ${props => props.theme.color.primary.base};
-  color: ${props => props.theme.color.text.lightness100};
-  padding: ${props => props.theme.space.xs};
-  border-radius: ${props => props.theme.space.xs};
-`
 
 const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
@@ -57,18 +51,18 @@ const Layout = ({ location, title, children }) => {
     <>
       {themeLoaded && (
         <ThemeProvider theme={selectedTheme}>
-          {Object.keys(themes).length > 0 &&
-            Object.values(themes).map(theme => (
-              <StyledButton
-                theme={theme}
-                key={theme.id}
-                onClick={() => setPreferredTheme(theme)}
-              >
-                {theme.name}
-              </StyledButton>
-            ))}
-
           <div style={{ backgroundColor: selectedTheme.color.background }}>
+            {Object.keys(themes).length > 0 &&
+              Object.values(themes).map(theme => (
+                <Button
+                  nav
+                  theme={selectedTheme}
+                  key={theme.id}
+                  onClick={() => setPreferredTheme(theme)}
+                >
+                  {theme.name}
+                </Button>
+              ))}
             <div className="global-wrapper" data-is-root-path={isRootPath}>
               <Small>This is small text for meta information</Small>
               <H1>This is heading 1. This is longer text.</H1>
@@ -94,6 +88,9 @@ const Layout = ({ location, title, children }) => {
                 pages with meaningless filler text can be very useful when the
                 focus is meant to be on design, not content.
               </P>
+              <Button nav>O mnie</Button>
+              <Button text>Czytaj więcej</Button>
+              <Button primary>Kontakt</Button>
               <H3>This is heading 3. This is longer text.</H3>
               <P>
                 The purpose of lorem ipsum is to create a natural looking block

@@ -70,7 +70,7 @@ export const dark = {
     mobile: "480px",
   },
   shadow: {
-    neumporphism:
+    neumorphism:
       "8px 8px 16px rgba(0, 24, 69, 0.15), -8px -8px 16px #FFFFFF, inset 0px 0px 4px rgba(255, 255, 255, 0.2)",
     outline: "0px 0px 4px 8px #023E7D",
   },

@@ -143,8 +143,13 @@ export const UIText = styled.p`
 export const A = styled.a`
   ${Body}
   ${Link}
-  &:hover, :focus {
-    text-decoration: underline;
+  text-decoration: underline;
+  &:visited {
+    color: ${props => props.theme.color.primary.shade500};
+  }
+  &:hover,
+  :focus {
+    text-decoration: none;
   }
 `
 
