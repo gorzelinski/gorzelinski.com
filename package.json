@@ -11,6 +11,7 @@
     "@fontsource/fira-code": "^4.5.0",
     "@fontsource/lora": "^4.5.0",
     "@fontsource/montserrat": "^4.5.1",
+    "@styled-icons/ionicons-solid": "^10.34.0",
     "babel-plugin-styled-components": "^1.13.2",
     "gatsby": "^3.11.1",
     "gatsby-plugin-feed": "^3.11.0",

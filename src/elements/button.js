@@ -70,7 +70,23 @@ export const Rainbow = css`
   }
 `
 
-export const Nav = css`
+export const PrimaryColorStates = css`
+  color: ${props => props.theme.color.primary.base};
+
+  &:hover {
+    color: ${props => props.theme.color.primary.shade200};
+  }
+  &:focus {
+    color: ${props => props.theme.color.primary.shade300};
+  }
+  &:active {
+    color: ${props => props.theme.color.primary.shade500};
+  }
+`
+
+export const TextColorStates = css`
+  color: ${props => props.theme.color.text.shade500};
+
   &:hover {
     color: ${props => props.theme.color.text.shade400};
   }
@@ -79,6 +95,12 @@ export const Nav = css`
   }
   &:active {
     color: ${props => props.theme.color.text.base};
+  }
+`
+
+export const Nav = css`
+  ${TextColorStates}
+  &:active {
     /* transfer to active class */
     border-bottom: ${props => props.theme.space.xxs} solid
       ${props => props.theme.color.text.base};
@@ -91,25 +113,13 @@ export const Nav = css`
 `
 
 export const Text = css`
-  display: block;
-  color: ${props => props.theme.color.primary.base};
+  ${PrimaryColorStates}
   margin-left: ${props => "-" + props.theme.space.xs};
-
-  &:hover {
-    color: ${props => props.theme.color.primary.shade200};
-  }
-  &:focus {
-    color: ${props => props.theme.color.primary.shade300};
-  }
-  &:active {
-    color: ${props => props.theme.color.primary.shade500};
-  }
 `
 export const Primary = css`
   ${Rainbow}
   z-index: 0;
   position: relative;
-  display: block;
   color: ${props => props.theme.color.text.shade600};
   background-color: ${props => props.theme.color.primary.base};
   border-radius: ${props => props.theme.space.xs};
@@ -132,8 +142,20 @@ export const Button = styled.button`
   border: 0;
   background-color: transparent;
   cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: ${props => props.theme.space.xs};
   /* delete */
   margin-bottom: 16px;
+
+  ${props =>
+    props.grow &&
+    css`
+      justify-content: center;
+      width: 100%;
+    `}
 
   ${props =>
     props.nav &&

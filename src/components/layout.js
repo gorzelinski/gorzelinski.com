@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import { ThemeProvider } from "styled-components"
+import {
+  ChevronForward,
+  Heart,
+  LogoDribbble,
+  LogoFacebook,
+  LogoGithub,
+  LogoTwitter,
+} from "@styled-icons/ionicons-solid"
 import { useTheme } from "../hooks"
 import {
   A,
@@ -12,6 +20,7 @@ import {
   H4,
   H5,
   H6,
+  Icon,
   Li,
   Ol,
   P,
@@ -63,6 +72,22 @@ const Layout = ({ location, title, children }) => {
                   {theme.name}
                 </Button>
               ))}
+            <Button nav>Twitter</Button>
+            <Button nav>Facebook</Button>
+            <Button nav>Github</Button>
+            <Button nav>Dribbble</Button>
+            <Icon primary>
+              <LogoTwitter></LogoTwitter>
+            </Icon>
+            <Icon primary>
+              <LogoFacebook></LogoFacebook>
+            </Icon>
+            <Icon text>
+              <LogoGithub></LogoGithub>
+            </Icon>
+            <Icon text>
+              <LogoDribbble></LogoDribbble>
+            </Icon>
             <div className="global-wrapper" data-is-root-path={isRootPath}>
               <Small>This is small text for meta information</Small>
               <H1>This is heading 1. This is longer text.</H1>
@@ -89,8 +114,19 @@ const Layout = ({ location, title, children }) => {
                 focus is meant to be on design, not content.
               </P>
               <Button nav>O mnie</Button>
-              <Button text>Czytaj więcej</Button>
+              <Button text>
+                Czytaj więcej
+                <Icon>
+                  <ChevronForward></ChevronForward>
+                </Icon>
+              </Button>
               <Button primary>Kontakt</Button>
+              <Button primary grow>
+                Dodaj do ulubionych
+                <Icon>
+                  <Heart></Heart>
+                </Icon>
+              </Button>
               <H3>This is heading 3. This is longer text.</H3>
               <P>
                 The purpose of lorem ipsum is to create a natural looking block
