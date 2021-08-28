@@ -1,3 +1,4 @@
+import { Link } from "gatsby"
 import styled, { css, keyframes } from "styled-components"
 import { UI } from "./typography"
 
@@ -135,9 +136,10 @@ export const Primary = css`
   }
 `
 
-export const Button = styled.button`
+export const Button = styled(Link)`
   ${UI}
   ${Outline}
+  text-decoration: none;
   padding: ${props => props.theme.space.xs};
   border: 0;
   background-color: transparent;
@@ -158,7 +160,7 @@ export const Button = styled.button`
     `}
 
   ${props =>
-    props.nav &&
+    props.$nav &&
     css`
       ${Nav}
     `}

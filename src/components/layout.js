@@ -31,6 +31,7 @@ import {
   Ul,
   Wrapper,
 } from "../elements"
+import Logo from "./logo"
 
 const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
@@ -67,7 +68,8 @@ const Layout = ({ location, title, children }) => {
               {Object.keys(themes).length > 0 &&
                 Object.values(themes).map(theme => (
                   <Button
-                    nav
+                    $nav
+                    as="button"
                     theme={selectedTheme}
                     key={theme.id}
                     onClick={() => setPreferredTheme(theme)}
@@ -75,10 +77,19 @@ const Layout = ({ location, title, children }) => {
                     {theme.name}
                   </Button>
                 ))}
-              <Button nav>Twitter</Button>
-              <Button nav>Facebook</Button>
-              <Button nav>Github</Button>
-              <Button nav>Dribbble</Button>
+              <Logo></Logo>
+              <Button as="button" $nav>
+                Twitter
+              </Button>
+              <Button as="button" $nav>
+                Facebook
+              </Button>
+              <Button as="button" $nav>
+                Github
+              </Button>
+              <Button as="button" $nav>
+                Dribbble
+              </Button>
               <Icon primary>
                 <LogoTwitter></LogoTwitter>
               </Icon>
@@ -115,15 +126,19 @@ const Layout = ({ location, title, children }) => {
                 pages with meaningless filler text can be very useful when the
                 focus is meant to be on design, not content.
               </P>
-              <Button nav>O mnie</Button>
-              <Button text>
+              <Button as="button" $nav>
+                O mnie
+              </Button>
+              <Button as="button" text>
                 Czytaj więcej
                 <Icon>
                   <ChevronForward></ChevronForward>
                 </Icon>
               </Button>
-              <Button primary>Kontakt</Button>
-              <Button primary grow>
+              <Button as="button" primary>
+                Kontakt
+              </Button>
+              <Button as="button" primary grow>
                 Dodaj do ulubionych
                 <Icon>
                   <Heart></Heart>
