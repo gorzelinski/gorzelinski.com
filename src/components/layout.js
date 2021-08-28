@@ -129,16 +129,16 @@ const Layout = ({ location, title, children }) => {
               <Button as="button" $nav>
                 O mnie
               </Button>
-              <Button as="button" text>
+              <Button as="button" $text>
                 Czytaj więcej
                 <Icon>
                   <ChevronForward></ChevronForward>
                 </Icon>
               </Button>
-              <Button as="button" primary>
+              <Button as="button" $primary>
                 Kontakt
               </Button>
-              <Button as="button" primary grow>
+              <Button as="button" $primary $grow>
                 Dodaj do ulubionych
                 <Icon>
                   <Heart></Heart>

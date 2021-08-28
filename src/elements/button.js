@@ -153,7 +153,7 @@ export const Button = styled(Link)`
   margin-bottom: 16px;
 
   ${props =>
-    props.grow &&
+    props.$grow &&
     css`
       justify-content: center;
       width: 100%;
@@ -166,13 +166,13 @@ export const Button = styled(Link)`
     `}
 
   ${props =>
-    props.text &&
+    props.$text &&
     css`
       ${Text}
     `}
 
   ${props =>
-    props.primary &&
+    props.$primary &&
     css`
       ${Primary}
     `}
