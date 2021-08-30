@@ -21,10 +21,13 @@ import {
   H4,
   H5,
   H6,
+  Header,
   Icon,
   Li,
+  Navigation,
   Ol,
   P,
+  Section,
   Small,
   Table,
   UIText,
@@ -77,31 +80,23 @@ const Layout = ({ location, title, children }) => {
                     {theme.name}
                   </Button>
                 ))}
-              <Logo></Logo>
-              <Button as="button" $nav>
-                Twitter
-              </Button>
-              <Button as="button" $nav>
-                Facebook
-              </Button>
-              <Button as="button" $nav>
-                Github
-              </Button>
-              <Button as="button" $nav>
-                Dribbble
-              </Button>
-              <Icon primary>
-                <LogoTwitter></LogoTwitter>
-              </Icon>
-              <Icon primary>
-                <LogoFacebook></LogoFacebook>
-              </Icon>
-              <Icon text>
-                <LogoGithub></LogoGithub>
-              </Icon>
-              <Icon text>
-                <LogoDribbble></LogoDribbble>
-              </Icon>
+              <Header>
+                <Logo></Logo>
+                <Navigation $main>
+                  <Button $nav to="/portfolio">
+                    Portfolio
+                  </Button>
+                  <Button $nav to="/o-mnie">
+                    O mnie
+                  </Button>
+                  <Button $nav to="/blog">
+                    Blog
+                  </Button>
+                  <Button $primary to="/#kontakt">
+                    Kontakt
+                  </Button>
+                </Navigation>
+              </Header>
               <Small>This is small text for meta information</Small>
               <H1>This is heading 1. This is longer text.</H1>
               <P>
@@ -126,22 +121,10 @@ const Layout = ({ location, title, children }) => {
                 pages with meaningless filler text can be very useful when the
                 focus is meant to be on design, not content.
               </P>
-              <Button as="button" $nav>
-                O mnie
-              </Button>
-              <Button as="button" $text>
+              <Button as="button" $text $first>
                 Czytaj więcej
                 <Icon>
                   <ChevronForward></ChevronForward>
-                </Icon>
-              </Button>
-              <Button as="button" $primary>
-                Kontakt
-              </Button>
-              <Button as="button" $primary $grow>
-                Dodaj do ulubionych
-                <Icon>
-                  <Heart></Heart>
                 </Icon>
               </Button>
               <H3>This is heading 3. This is longer text.</H3>

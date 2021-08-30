@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
       padding: ${props => props.theme.space.xl} ${props => props.theme.space.m};
       max-width: 100%;
 
-      ${media.mobile`
+      ${media.tablet`
         margin: 0;
         padding: ${props => props.theme.space.xxl} ${props =>
         props.theme.space.xl};
@@ -34,4 +34,76 @@ export const Wrapper = styled.div`
           "rem"};
       `}
     `}
+`
+
+export const Navigation = styled.nav`
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: ${props => props.theme.space.xs};
+
+  ${media.tablet`
+      gap: ${props => props.theme.space.s};
+  `}
+
+  ${media.desktop`
+      gap: ${props => props.theme.space.m};
+  `}
+
+  ${media.large`
+      gap: ${props => props.theme.space.l};
+  `}
+
+  ${props =>
+    props.$main &&
+    css`
+      height: ${props =>
+        Number.parseFloat(props.theme.font.height.base.replace("rem", "")) +
+        Number.parseFloat(props.theme.space.xs.replace("rem", "")) * 2 +
+        "rem"};
+      overflow-y: hidden;
+
+      & > a:not(:first-child, :last-child) {
+        display: none;
+      }
+
+      ${media.tiny`
+        & > a:not(:first-child, :last-child) {
+          display: inline-flex;
+        }
+        & > a:nth-child(2) {
+          display: none;
+        }
+      `}
+
+      ${media.mobile`
+        overflow-y: visible;
+        & > a:nth-child(2) {
+            display: inline-flex;
+          }
+      `}
+    `}
+`
+
+export const Header = styled.header`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: ${props => props.theme.space.xs};
+  justify-content: space-between;
+
+  ${media.tablet`
+    flex-direction: row;
+  `}
+`
+
+export const Grid = css`
+  display: grid;
+  gap: ${props => props.theme.space.m};
+`
+
+export const Section = styled.section`
+  ${Grid}
+  margin-top: ${props => props.theme.space.xxl};
 `

@@ -115,7 +115,6 @@ export const Nav = css`
 
 export const Text = css`
   ${PrimaryColorStates}
-  margin-left: ${props => "-" + props.theme.space.xs};
 `
 export const Primary = css`
   ${Rainbow}
@@ -149,8 +148,18 @@ export const Button = styled(Link)`
   justify-content: space-between;
   align-items: center;
   gap: ${props => props.theme.space.xs};
-  /* delete */
-  margin-bottom: 16px;
+
+  ${props =>
+    props.$first &&
+    css`
+      margin-left: ${props => "-" + props.theme.space.xs};
+    `}
+
+  ${props =>
+    props.$last &&
+    css`
+      margin-right: ${props => "-" + props.theme.space.xs};
+    `}
 
   ${props =>
     props.$grow &&
