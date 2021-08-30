@@ -39,25 +39,25 @@ export const Wrapper = styled.div`
 export const Navigation = styled.nav`
   display: inline-flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
   align-items: center;
   gap: ${props => props.theme.space.xs};
 
   ${media.tablet`
-      gap: ${props => props.theme.space.s};
+  gap: ${props => props.theme.space.s};
   `}
 
   ${media.desktop`
-      gap: ${props => props.theme.space.m};
+  gap: ${props => props.theme.space.m};
   `}
-
+  
   ${media.large`
-      gap: ${props => props.theme.space.l};
+  gap: ${props => props.theme.space.l};
   `}
-
+  
   ${props =>
     props.$main &&
     css`
+      justify-content: flex-end;
       height: ${props =>
         Number.parseFloat(props.theme.font.height.base.replace("rem", "")) +
         Number.parseFloat(props.theme.space.xs.replace("rem", "")) * 2 +
@@ -100,10 +100,8 @@ export const Header = styled.header`
 
 export const Grid = css`
   display: grid;
-  gap: ${props => props.theme.space.m};
 `
 
 export const Section = styled.section`
-  ${Grid}
-  margin-top: ${props => props.theme.space.xxl};
+  margin-top: ${props => props.theme.space.xl};
 `

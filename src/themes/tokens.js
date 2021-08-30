@@ -6,6 +6,7 @@ export const tokens = {
       code: "Fira Code, monospace",
     },
     size: {
+      tiny: "0.75rem",
       small: "0.875rem",
       base: "1rem",
       xs: "1.25rem",
@@ -16,6 +17,7 @@ export const tokens = {
       xxl: "4rem",
     },
     height: {
+      tiny: "1rem",
       small: "1.25rem",
       base: "1.5rem",
       xs: "1.75rem",

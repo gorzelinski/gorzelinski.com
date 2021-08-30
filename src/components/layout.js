@@ -68,20 +68,22 @@ const Layout = ({ location, title, children }) => {
         <ThemeProvider theme={selectedTheme}>
           <Background>
             <Wrapper global>
-              {Object.keys(themes).length > 0 &&
-                Object.values(themes).map(theme => (
-                  <Button
-                    $nav
-                    as="button"
-                    theme={selectedTheme}
-                    key={theme.id}
-                    onClick={() => setPreferredTheme(theme)}
-                  >
-                    {theme.name}
-                  </Button>
-                ))}
               <Header>
-                <Logo></Logo>
+                <Navigation>
+                  <Logo></Logo>
+                  {Object.keys(themes).length > 0 &&
+                    Object.values(themes).map(theme => (
+                      <Button
+                        $nav
+                        as="button"
+                        theme={selectedTheme}
+                        key={theme.id}
+                        onClick={() => setPreferredTheme(theme)}
+                      >
+                        {theme.name}
+                      </Button>
+                    ))}
+                </Navigation>
                 <Navigation $main>
                   <Button $nav to="/portfolio">
                     Portfolio
@@ -97,22 +99,25 @@ const Layout = ({ location, title, children }) => {
                   </Button>
                 </Navigation>
               </Header>
-              <Small>This is small text for meta information</Small>
-              <H1>This is heading 1. This is longer text.</H1>
-              <P>
-                The purpose of lorem ipsum is to create a natural looking block
-                of text (sentence, paragraph, page, etc.) that doesn't distract
-                from the layout. A practice not without controversy, laying out
-                pages with meaningless filler text can be very useful when the
-                focus is meant to be on design, not content.
-              </P>
-              <P>
-                The purpose of lorem ipsum is to create a natural looking block
-                of text (sentence, paragraph, page, etc.) that doesn't distract
-                from the layout. A practice not without controversy, laying out
-                pages with meaningless filler text can be very useful when the
-                focus is meant to be on design, not content.
-              </P>
+              <Section>
+                <H1>
+                  Tworzę <br />
+                  rzeczy w internecie
+                </H1>
+                <P>
+                  The purpose of lorem ipsum is to create a natural looking
+                  block of text (sentence, paragraph, page, etc.) that doesn't
+                  distract from the layout. A practice not without controversy,
+                  laying out pages with meaningless filler text can be very
+                  useful when the focus is meant to be on design, not content.
+                </P>
+                <Button $text $first to="/#kontakt">
+                  Stwórzmy coś razem
+                  <Icon>
+                    <ChevronForward></ChevronForward>
+                  </Icon>
+                </Button>
+              </Section>
               <H2>This is heading 2. This is longer text.</H2>
               <P>
                 The purpose of lorem ipsum is to create a natural looking block

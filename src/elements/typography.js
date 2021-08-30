@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components"
+import { media } from "../utils"
 
 export const Headings = css`
   font-family: ${props => props.theme.font.family.heading};
@@ -8,11 +9,60 @@ export const Headings = css`
   color: ${props => props.theme.color.text.base};
 `
 
+export const HeadingXXL = css`
+  font-size: ${props => props.theme.font.size.xxl};
+  line-height: ${props => props.theme.font.height.xxl};
+  letter-spacing: ${props => props.theme.font.spacing.packed};
+`
+
+export const HeadingXL = css`
+  font-size: ${props => props.theme.font.size.xl};
+  line-height: ${props => props.theme.font.height.xl};
+  letter-spacing: ${props => props.theme.font.spacing.packed};
+`
+
+export const HeadingL = css`
+  font-size: ${props => props.theme.font.size.l};
+  line-height: ${props => props.theme.font.height.l};
+  letter-spacing: ${props => props.theme.font.spacing.packed};
+`
+
+export const HeadingM = css`
+  font-size: ${props => props.theme.font.size.m};
+  line-height: ${props => props.theme.font.height.m};
+  letter-spacing: ${props => props.theme.font.spacing.narrow};
+`
+
+export const HeadingS = css`
+  font-size: ${props => props.theme.font.size.s};
+  line-height: ${props => props.theme.font.height.s};
+  letter-spacing: ${props => props.theme.font.spacing.narrow};
+`
+
+export const HeadingXS = css`
+  font-size: ${props => props.theme.font.size.xs};
+  line-height: ${props => props.theme.font.height.xs};
+  letter-spacing: ${props => props.theme.font.spacing.narrow};
+`
+
+export const BaseSize = css`
+  font-size: ${props => props.theme.font.size.base};
+  line-height: ${props => props.theme.font.height.base};
+`
+
+export const SmallSize = css`
+  font-size: ${props => props.theme.font.size.small};
+  line-height: ${props => props.theme.font.height.small};
+`
+
+export const TinySize = css`
+  font-size: ${props => props.theme.font.size.tiny};
+  line-height: ${props => props.theme.font.height.tiny};
+`
+
 export const Body = css`
   font-family: ${props => props.theme.font.family.body};
   font-weight: ${props => props.theme.font.weight.regular};
-  font-size: ${props => props.theme.font.size.base};
-  line-height: ${props => props.theme.font.height.base};
   color: ${props => props.theme.color.text.shade300};
 `
 
@@ -70,50 +120,91 @@ export const ListItem = css`
 
 export const H1 = styled.h1`
   ${Headings}
-  font-size: ${props => props.theme.font.size.xxl};
-  line-height: ${props => props.theme.font.height.xxl};
-  letter-spacing: ${props => props.theme.font.spacing.packed};
+  ${HeadingL}
+
+  ${media.tablet`
+    ${HeadingXL}
+  `}
+
+  ${media.desktop`
+    ${HeadingXXL}
+  `}
 `
 
 export const H2 = styled.h2`
   ${Headings}
-  font-size: ${props => props.theme.font.size.xl};
-  line-height: ${props => props.theme.font.height.xl};
-  letter-spacing: ${props => props.theme.font.spacing.packed};
+  ${HeadingM}
+
+  ${media.tablet`
+    ${HeadingL}
+  `}
+
+  ${media.desktop`
+    ${HeadingXL}
+  `}
 `
 
 export const H3 = styled.h3`
   ${Headings}
-  font-size: ${props => props.theme.font.size.l};
-  line-height: ${props => props.theme.font.height.l};
-  letter-spacing: ${props => props.theme.font.spacing.packed};
+  ${HeadingS}
+
+  ${media.tablet`
+    ${HeadingM}
+  `}
+
+  ${media.desktop`
+    ${HeadingL}
+  `}
 `
 
 export const H4 = styled.h4`
   ${Headings}
-  font-size: ${props => props.theme.font.size.m};
-  line-height: ${props => props.theme.font.height.m};
-  letter-spacing: ${props => props.theme.font.spacing.narrow};
+  ${HeadingXS}
+
+  ${media.tablet`
+    ${HeadingS}
+  `}
+
+  ${media.desktop`
+    ${HeadingM}
+  `}
 `
 
 export const H5 = styled.h5`
   ${Headings}
-  font-size: ${props => props.theme.font.size.s};
-  line-height: ${props => props.theme.font.height.s};
-  letter-spacing: ${props => props.theme.font.spacing.narrow};
+  ${BaseSize}
+
+  ${media.tablet`
+    ${HeadingXS}
+  `}
+
+  ${media.desktop`
+    ${HeadingS}
+  `}
 `
 
 export const H6 = styled.h6`
   ${Headings}
-  font-size: ${props => props.theme.font.size.xs};
-  line-height: ${props => props.theme.font.height.xs};
-  letter-spacing: ${props => props.theme.font.spacing.narrow};
+  ${SmallSize}
+
+  ${media.tablet`
+    ${BaseSize}
+  `}
+
+  ${media.desktop`
+    ${HeadingXS}
+  `}
 `
 
 export const P = styled.p`
   ${Body}
+  ${SmallSize}
   padding: 0;
   margin: 0 0 ${props => props.theme.space.m} 0;
+
+  ${media.mobile`
+    ${BaseSize}
+  `}
 `
 
 export const Ul = styled.ul`
@@ -130,10 +221,13 @@ export const Li = styled.li`
 
 export const Small = styled.small`
   ${Meta}
+  ${TinySize}
   display: block;
-  font-size: ${props => props.theme.font.size.small};
-  line-height: ${props => props.theme.font.height.small};
   margin-bottom: ${props => "-" + props.theme.space.l};
+
+  ${media.mobile`
+    ${SmallSize}
+  `}
 `
 
 export const UIText = styled.p`
