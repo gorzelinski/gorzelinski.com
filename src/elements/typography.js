@@ -98,8 +98,12 @@ export const List = css`
   margin-right: 0;
   padding: 0;
   margin-bottom: ${props => props.theme.space.m};
-  list-style-position: outside;
+  list-style-position: inside;
   list-style-image: none;
+
+  ${media.tablet`
+    list-style-position: outside;
+  `}
 `
 
 export const ListItem = css`
@@ -248,25 +252,33 @@ export const A = styled.a`
 `
 
 export const Blockquote = styled.blockquote`
+  padding: 0 0 0 ${props => props.theme.space.s};
+  margin-left: 0;
+  border-left: ${props => props.theme.space.xxs} solid
+    ${props => props.theme.color.primary.base};
+
   & > p {
     font-style: italic;
     font-size: ${props => props.theme.font.size.xs};
     line-height: ${props => props.theme.font.height.s};
     color: ${props => props.theme.color.text.shade400};
   }
+
   & > :last-child {
     margin-bottom: 0;
   }
+
   & > ul,
   li {
     list-style-position: inside;
   }
-  padding-left: ${props => props.theme.space.m};
-  margin-left: ${props => "-" + props.theme.space.m};
-  margin-right: ${props => props.theme.space.m};
-  margin-bottom: ${props => props.theme.space.m};
-  border-left: ${props => props.theme.space.xxs} solid
-    ${props => props.theme.color.primary.base};
+
+  ${media.tablet`
+    padding-left: ${props => props.theme.space.m};
+    margin-right: ${props => props.theme.space.m};
+    margin-bottom: ${props => props.theme.space.m};
+    margin-left: ${props => "-" + props.theme.space.m};
+  `}
 `
 
 export const Table = styled.table`
