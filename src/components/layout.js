@@ -15,6 +15,8 @@ import {
   Background,
   Blockquote,
   Button,
+  Figcaption,
+  Figure,
   H1,
   H2,
   H3,
@@ -36,6 +38,7 @@ import {
   Wrapper,
 } from "../elements"
 import Logo from "./logo"
+import anlam from "../images/an-lam-thumbnail.png"
 
 const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
@@ -122,6 +125,12 @@ const Layout = ({ location, title, children }) => {
                   </Button>
                 </div>
               </Hero>
+              <Section>
+                <Figure $golden $half></Figure>
+                <Figure $golden $half></Figure>
+                <Figure $golden $half></Figure>
+                <Figure $golden $half></Figure>
+              </Section>
               <div className="global-wrapper" data-is-root-path={isRootPath}>
                 <header className="global-header">{header}</header>
                 <main>{children}</main>
