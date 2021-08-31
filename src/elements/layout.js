@@ -43,15 +43,15 @@ export const Navigation = styled.nav`
   gap: ${props => props.theme.space.xs};
 
   ${media.tablet`
-  gap: ${props => props.theme.space.s};
+    gap: ${props => props.theme.space.s};
   `}
 
   ${media.desktop`
-  gap: ${props => props.theme.space.m};
+    gap: ${props => props.theme.space.m};
   `}
   
   ${media.large`
-  gap: ${props => props.theme.space.l};
+    gap: ${props => props.theme.space.l};
   `}
   
   ${props =>
@@ -100,8 +100,45 @@ export const Header = styled.header`
 
 export const Grid = css`
   display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: ${props => props.theme.space.s};
+
+  ${media.tablet`
+    gap: ${props => props.theme.space.m};
+  `}
+
+  ${media.desktop`
+    gap: ${props => props.theme.space.l};
+  `}
 `
 
 export const Section = styled.section`
   margin-top: ${props => props.theme.space.xl};
+  ${Grid}
+
+  ${media.tablet`
+    margin-top: ${props => props.theme.space.xxl};
+  `}
+
+  ${props =>
+    props.$lower &&
+    css`
+      margin-top: ${props => props.theme.space.xxl};
+
+      ${media.tablet`
+        margin-top: ${props => props.theme.space.xxxl};
+      `}
+    `}
+`
+
+export const Hero = styled(Section)`
+  & > div {
+    grid-column: 1 / 9;
+  }
+
+  ${media.tablet`
+    & > div {
+      grid-column: 1 / 7;
+    }
+  `}
 `

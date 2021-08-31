@@ -22,6 +22,7 @@ import {
   H5,
   H6,
   Header,
+  Hero,
   Icon,
   Li,
   Navigation,
@@ -99,115 +100,28 @@ const Layout = ({ location, title, children }) => {
                   </Button>
                 </Navigation>
               </Header>
-              <Section>
-                <H1>
-                  Tworzę <br />
-                  rzeczy w internecie
-                </H1>
-                <P>
-                  The purpose of lorem ipsum is to create a natural looking
-                  block of text (sentence, paragraph, page, etc.) that doesn't
-                  distract from the layout. A practice not without controversy,
-                  laying out pages with meaningless filler text can be very
-                  useful when the focus is meant to be on design, not content.
-                </P>
-                <Button $text $first to="/#kontakt">
-                  Stwórzmy coś razem
-                  <Icon>
-                    <ChevronForward></ChevronForward>
-                  </Icon>
-                </Button>
-              </Section>
-              <H2>This is heading 2. This is longer text.</H2>
-              <P>
-                The purpose of lorem ipsum is to create a natural looking block
-                of text (sentence, paragraph, page, etc.) that doesn't distract
-                from the layout. A practice not without controversy, laying out
-                pages with meaningless filler text can be very useful when the
-                focus is meant to be on design, not content.
-              </P>
-              <Button as="button" $text $first>
-                Czytaj więcej
-                <Icon>
-                  <ChevronForward></ChevronForward>
-                </Icon>
-              </Button>
-              <H3>This is heading 3. This is longer text.</H3>
-              <P>
-                The purpose of lorem ipsum is to create a natural looking block
-                of text (sentence, paragraph, page, etc.) that doesn't distract
-                from the layout. A practice not without controversy, laying out
-                pages with meaningless filler text can be very useful when the
-                focus is meant to be on design, not content.
-              </P>
-              <H4>This is heading 4. This is longer text.</H4>
-              <P>
-                The purpose of lorem ipsum is to create a natural looking block
-                of text (sentence, paragraph, page, etc.) that doesn't distract
-                from the layout. A practice not without controversy, laying out
-                pages with meaningless filler text can be very useful when the
-                focus is meant to be on design, not content.
-              </P>
-              <H5>This is heading 5. This is longer text.</H5>
-              <P>
-                The purpose of lorem ipsum is to create a natural looking block
-                of text (sentence, paragraph, page, etc.) that doesn't distract
-                from the layout. A practice not without controversy, laying out
-                pages with meaningless filler text can be very useful when the
-                focus is meant to be on design, not content.
-              </P>
-              <H6>This is heading 6. This is longer text.</H6>
-              <P>
-                The purpose of lorem ipsum is to create a natural looking block
-                of text (sentence, paragraph, page, etc.) that doesn't distract
-                from the layout. A practice not without controversy, laying out
-                pages with meaningless filler text can be very useful when the
-                focus is meant to be on design, not content.
-              </P>
-              <UIText>This is ui text</UIText>
-              <A href="">This is link</A>
-              <Blockquote>
-                <P>
-                  The purpose of lorem ipsum is to create a natural looking
-                  block of text (sentence, paragraph, page, etc.) that doesn't
-                  distract from the layout. A practice not without controversy,
-                  laying out pages with meaningless filler text can be very
-                  useful when the focus is meant to be on design, not content.
-                </P>
-              </Blockquote>
-              <Ul>
-                <Li>This is unordered list item</Li>
-                <Li>This is unordered list item</Li>
-                <Li>
-                  <P>This is p inside li</P>
-                </Li>
-                <Li>
-                  This is unordered list item
-                  <Ul>
-                    <Li>This is list inside a list</Li>
-                  </Ul>
-                </Li>
-              </Ul>
-              <Ol>
-                <Li>This is ordered list item</Li>
-                <Li>This is ordered list item</Li>
-              </Ol>
-              <Table>
-                <thead>
-                  <tr>
-                    <th align="left">Number</th>
-                    <th align="left">Title</th>
-                    <th align="right">Year</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Harry Potter and the Philosopher’s Stone</td>
-                    <td align="right">2001</td>
-                  </tr>
-                </tbody>
-              </Table>
+              <Hero>
+                <div>
+                  <H1>
+                    Tworzę <br />
+                    rzeczy w internecie
+                  </H1>
+                  <P>
+                    The purpose of lorem ipsum is to create a natural looking
+                    block of text (sentence, paragraph, page, etc.) that doesn't
+                    distract from the layout. A practice not without
+                    controversy, laying out pages with meaningless filler text
+                    can be very useful when the focus is meant to be on design,
+                    not content.
+                  </P>
+                  <Button $text $first to="/#kontakt">
+                    Stwórzmy coś razem
+                    <Icon>
+                      <ChevronForward></ChevronForward>
+                    </Icon>
+                  </Button>
+                </div>
+              </Hero>
               <div className="global-wrapper" data-is-root-path={isRootPath}>
                 <header className="global-header">{header}</header>
                 <main>{children}</main>
