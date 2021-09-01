@@ -227,7 +227,12 @@ export const Small = styled.small`
   ${Meta}
   ${TinySize}
   display: block;
-  margin-bottom: ${props => "-" + props.theme.space.l};
+  margin-top: ${props => props.theme.space.s};
+  margin-bottom: ${props =>
+    "-" +
+    (Number.parseFloat(props.theme.space.l.replace("rem", "")) -
+      Number.parseFloat(props.theme.space.xs.replace("rem", ""))) +
+    "rem"};
 
   ${media.mobile`
     ${SmallSize}
