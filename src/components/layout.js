@@ -10,6 +10,7 @@ import {
   Card,
   Figure,
   H1,
+  H2,
   H4,
   Header,
   Hero,
@@ -110,6 +111,15 @@ const Layout = ({ location, title, children }) => {
                 </div>
               </Hero>
               <Section>
+                <Header>
+                  <H2>Ostatnie projekty</H2>
+                  <Button $text $last>
+                    Wszystkie projekty{" "}
+                    <Icon>
+                      <ChevronForward></ChevronForward>
+                    </Icon>
+                  </Button>
+                </Header>
                 {projects.allMarkdownRemark.nodes.map(project => {
                   const image = project.frontmatter.featuredImage
                   const data = getImage(image.src)

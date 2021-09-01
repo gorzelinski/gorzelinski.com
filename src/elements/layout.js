@@ -88,10 +88,12 @@ export const Navigation = styled.nav`
 
 export const Header = styled.header`
   width: 100%;
+  grid-column: span 8;
   display: flex;
   flex-direction: column;
   gap: ${props => props.theme.space.xs};
   justify-content: space-between;
+  align-items: baseline;
 
   ${media.tablet`
     flex-direction: row;
