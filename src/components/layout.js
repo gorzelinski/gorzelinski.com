@@ -1,48 +1,31 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import { ThemeProvider } from "styled-components"
+import { ChevronForward } from "@styled-icons/ionicons-solid"
+import { useTheme, usePortfolioProjects } from "../hooks"
 import {
-  ChevronForward,
-  Heart,
-  LogoDribbble,
-  LogoFacebook,
-  LogoGithub,
-  LogoTwitter,
-} from "@styled-icons/ionicons-solid"
-import { useTheme } from "../hooks"
-import {
-  A,
   Background,
-  Blockquote,
   Button,
-  Figcaption,
   Figure,
   H1,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
   Header,
   Hero,
   Icon,
-  Li,
   Navigation,
-  Ol,
   P,
   Section,
-  Small,
-  Table,
-  UIText,
-  Ul,
   Wrapper,
 } from "../elements"
 import Logo from "./logo"
-import anlam from "../images/an-lam-thumbnail.png"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
   const [selectedTheme, setSelectedTheme] = useState(theme)
+  const { projects } = usePortfolioProjects()
+  const images = projects.allMarkdownRemark.nodes.map(
+    node => node.frontmatter.featuredImage
+  )
 
   useEffect(() => {
     setSelectedTheme(theme)
@@ -126,10 +109,14 @@ const Layout = ({ location, title, children }) => {
                 </div>
               </Hero>
               <Section>
-                <Figure $golden $half></Figure>
-                <Figure $golden $half></Figure>
-                <Figure $golden $half></Figure>
-                <Figure $golden $half></Figure>
+                {images.map(image => {
+                  const data = getImage(image.src)
+                  return (
+                    <Figure $half $golden>
+                      <GatsbyImage image={data} alt={image.alt}></GatsbyImage>
+                    </Figure>
+                  )
+                })}
               </Section>
               <div className="global-wrapper" data-is-root-path={isRootPath}>
                 <header className="global-header">{header}</header>

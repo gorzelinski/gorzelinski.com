@@ -5,6 +5,10 @@ export const Figure = styled.figure`
   margin: 0;
   background-color: ${props => props.theme.color.surface.base};
   grid-column: 1 / 9;
+  /* check if that is the best solution */
+  display: flex;
+  justify-content: center;
+  align-content: center;
 
   ${props =>
     props.$half &&
