@@ -27,7 +27,6 @@ const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
   const [selectedTheme, setSelectedTheme] = useState(theme)
   const { projects } = usePortfolioProjects()
-  console.log(projects.allMarkdownRemark.nodes)
 
   useEffect(() => {
     setSelectedTheme(theme)
@@ -112,7 +111,6 @@ const Layout = ({ location, title, children }) => {
               </Hero>
               <Section>
                 {projects.allMarkdownRemark.nodes.map(project => {
-                  console.log(project)
                   const image = project.frontmatter.featuredImage
                   const data = getImage(image.src)
                   const myRole = project.frontmatter.myRole

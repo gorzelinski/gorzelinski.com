@@ -133,12 +133,12 @@ export const Section = styled.section`
 
 export const Hero = styled(Section)`
   & > div {
-    grid-column: 1 / 9;
+    grid-column: span 8;
   }
 
   ${media.tablet`
     & > div {
-      grid-column: 1 / 7;
+      grid-column: span 6;
     }
   `}
 `
