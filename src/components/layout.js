@@ -4,16 +4,20 @@ import { ThemeProvider } from "styled-components"
 import { ChevronForward } from "@styled-icons/ionicons-solid"
 import { useTheme, usePortfolioProjects } from "../hooks"
 import {
+  A,
   Background,
   Button,
+  Card,
   Figure,
   H1,
+  H4,
   Header,
   Hero,
   Icon,
   Navigation,
   P,
   Section,
+  Small,
   Wrapper,
 } from "../elements"
 import Logo from "./logo"
@@ -23,9 +27,7 @@ const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
   const [selectedTheme, setSelectedTheme] = useState(theme)
   const { projects } = usePortfolioProjects()
-  const images = projects.allMarkdownRemark.nodes.map(
-    node => node.frontmatter.featuredImage
-  )
+  console.log(projects.allMarkdownRemark.nodes)
 
   useEffect(() => {
     setSelectedTheme(theme)
@@ -109,12 +111,32 @@ const Layout = ({ location, title, children }) => {
                 </div>
               </Hero>
               <Section>
-                {images.map(image => {
+                {projects.allMarkdownRemark.nodes.map(project => {
+                  console.log(project)
+                  const image = project.frontmatter.featuredImage
                   const data = getImage(image.src)
+                  const myRole = project.frontmatter.myRole
+                  const title = project.frontmatter.title
+                  const description = project.frontmatter.description
+                  const slug = project.fields.slug
+
                   return (
-                    <Figure $half $golden>
-                      <GatsbyImage image={data} alt={image.alt}></GatsbyImage>
-                    </Figure>
+                    <Card $half>
+                      <Figure $golden>
+                        <GatsbyImage image={data} alt={image.alt}></GatsbyImage>
+                      </Figure>
+                      <Small as="p">{myRole}</Small>
+                      <H4 as="h3">
+                        <Link to={slug}>{title}</Link>
+                      </H4>
+                      <P>{description}</P>
+                      <Button $text $first to={slug}>
+                        Czytaj więcej
+                        <Icon>
+                          <ChevronForward></ChevronForward>
+                        </Icon>
+                      </Button>
+                    </Card>
                   )
                 })}
               </Section>
