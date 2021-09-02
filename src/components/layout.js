@@ -23,6 +23,7 @@ import {
 } from "../elements"
 import Logo from "./logo"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Project from "./project"
 
 const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
@@ -120,33 +121,9 @@ const Layout = ({ location, title, children }) => {
                     </Icon>
                   </Button>
                 </Header>
-                {projects.allMarkdownRemark.nodes.map(project => {
-                  const image = project.frontmatter.featuredImage
-                  const data = getImage(image.src)
-                  const myRole = project.frontmatter.myRole
-                  const title = project.frontmatter.title
-                  const description = project.frontmatter.description
-                  const slug = project.fields.slug
-
-                  return (
-                    <Card $half>
-                      <Figure $golden>
-                        <GatsbyImage image={data} alt={image.alt}></GatsbyImage>
-                      </Figure>
-                      <Small as="p">{myRole}</Small>
-                      <H4 as="h3">
-                        <Link to={slug}>{title}</Link>
-                      </H4>
-                      <P>{description}</P>
-                      <Button $text $first to={slug}>
-                        Czytaj więcej
-                        <Icon>
-                          <ChevronForward></ChevronForward>
-                        </Icon>
-                      </Button>
-                    </Card>
-                  )
-                })}
+                {projects.allMarkdownRemark.nodes.map(project => (
+                  <Project data={project}></Project>
+                ))}
               </Section>
               <div className="global-wrapper" data-is-root-path={isRootPath}>
                 <header className="global-header">{header}</header>
