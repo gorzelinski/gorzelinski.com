@@ -1,5 +1,5 @@
 import React from "react"
-import { render } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import { ThemeProvider } from "styled-components"
 
 import { light } from "../../themes"
@@ -7,11 +7,13 @@ import Logo from "../logo"
 
 describe("Logo component", () => {
   it("has link to home page", () => {
-    const { getByRole } = render(
+    render(
       <ThemeProvider theme={light}>
         <Logo></Logo>
       </ThemeProvider>
     )
-    expect(getByRole("link").getAttribute("href")).toBe("/")
+
+    const logo = screen.getByRole("link")
+    expect(logo.getAttribute("href")).toBe("/")
   })
 })
