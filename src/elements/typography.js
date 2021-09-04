@@ -234,6 +234,12 @@ export const Small = styled.small`
       Number.parseFloat(props.theme.space.xs.replace("rem", ""))) +
     "rem"};
 
+  ${props =>
+    props.$top &&
+    css`
+      margin-top: 0;
+    `}
+
   ${media.mobile`
     ${SmallSize}
   `}

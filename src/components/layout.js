@@ -8,6 +8,7 @@ import {
   Background,
   Button,
   Card,
+  Figcaption,
   Figure,
   H1,
   H2,
@@ -24,11 +25,14 @@ import {
 import Logo from "./logo"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Project from "./project"
+import { useBio } from "../hooks/useBio"
 
 const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
   const [selectedTheme, setSelectedTheme] = useState(theme)
   const { projects } = usePortfolioProjects()
+  const { bio } = useBio()
+  const profilePicture = getImage(bio.image)
 
   useEffect(() => {
     setSelectedTheme(theme)
@@ -124,6 +128,31 @@ const Layout = ({ location, title, children }) => {
                 {projects.allMarkdownRemark.nodes.map(project => (
                   <Project data={project}></Project>
                 ))}
+              </Section>
+              <Section>
+                <Figure $half $portrait>
+                  <GatsbyImage
+                    image={profilePicture}
+                    alt={`${bio.site.siteMetadata?.author.name} - zdjęcie profilowe`}
+                  ></GatsbyImage>
+                  <Figcaption>
+                    W rzeczywistości jestem przyjemniejszy niż wyglądam na tym
+                    zdjęciu. Przyrzekam!
+                  </Figcaption>
+                </Figure>
+                <Card $half>
+                  <Small as="p" $top>
+                    Cześć, nazywam się
+                  </Small>
+                  <H2>{bio.site.siteMetadata?.author.name}</H2>
+                  <P>{bio.site.siteMetadata?.author.summary}</P>
+                  <Button $text $first to="/o-mnie">
+                    Więcej o mnie
+                    <Icon>
+                      <ChevronForward></ChevronForward>
+                    </Icon>
+                  </Button>
+                </Card>
               </Section>
               <div className="global-wrapper" data-is-root-path={isRootPath}>
                 <header className="global-header">{header}</header>

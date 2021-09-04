@@ -2,13 +2,17 @@ module.exports = {
   siteMetadata: {
     title: `Gatsby Starter Blog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Mateusz Gorzeliński`,
+      summary: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
+      itaque eos dignissimos nemo rem, rerum, nisi obcaecati
+      fugiat sint harum perferendis pariatur voluptates cumque
+      eveniet. Cumque fugit aspernatur, aut ullam eius debitis qui
+      numquam architecto quod in sapiente illo incidunt!`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `gorzelinski`,
     },
   },
   plugins: [

@@ -1,14 +1,15 @@
 import styled, { css } from "styled-components"
+import { Small } from "./typography"
 import { Half } from "./card"
 
 export const Figure = styled.figure`
   ${Half}
   margin: 0;
-  background-color: ${props => props.theme.color.surface.base};
-  /* check if that is the best solution */
-  display: flex;
-  justify-content: center;
-  align-content: center;
+
+  /* check if it's the best solution */
+  & > div {
+    height: 100%;
+  }
 
   ${props =>
     props.$golden &&
@@ -33,4 +34,8 @@ export const Figure = styled.figure`
     css`
       aspect-ratio: 21 / 9;
     `}
+`
+
+export const Figcaption = styled(Small)`
+  margin-bottom: 0;
 `
