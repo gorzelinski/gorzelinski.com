@@ -13,6 +13,19 @@ export const Half = css`
     `}
 `
 
+export const SixEights = css`
+  grid-column: span 8;
+
+  ${props =>
+    props.$sixeights &&
+    css`
+      ${media.tablet`
+        grid-column: span 6;
+      `}
+    `}
+`
+
 export const Card = styled.article`
   ${Half}
+  ${SixEights}
 `

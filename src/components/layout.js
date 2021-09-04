@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import { ThemeProvider } from "styled-components"
 import { ChevronForward } from "@styled-icons/ionicons-solid"
-import { useTheme, usePortfolioProjects } from "../hooks"
+import { useTheme, usePortfolioProjects, useBlogPosts, useBio } from "../hooks"
 import {
   A,
   Background,
@@ -12,6 +12,7 @@ import {
   Figure,
   H1,
   H2,
+  H3,
   H4,
   Header,
   Hero,
@@ -25,12 +26,13 @@ import {
 import Logo from "./logo"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Project from "./project"
-import { useBio } from "../hooks/useBio"
+import Post from "./post"
 
 const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
   const [selectedTheme, setSelectedTheme] = useState(theme)
   const { projects } = usePortfolioProjects()
+  const { posts } = useBlogPosts()
   const { bio } = useBio()
   const profilePicture = getImage(bio.image)
 
@@ -153,6 +155,20 @@ const Layout = ({ location, title, children }) => {
                     </Icon>
                   </Button>
                 </Card>
+              </Section>
+              <Section>
+                <Header>
+                  <H2>Ostatnie wpisy</H2>
+                  <Button $text $last>
+                    Wszystkie wpisy{" "}
+                    <Icon>
+                      <ChevronForward></ChevronForward>
+                    </Icon>
+                  </Button>
+                </Header>
+                {posts.allMarkdownRemark.nodes.map(post => (
+                  <Post data={post}></Post>
+                ))}
               </Section>
               <div className="global-wrapper" data-is-root-path={isRootPath}>
                 <header className="global-header">{header}</header>
