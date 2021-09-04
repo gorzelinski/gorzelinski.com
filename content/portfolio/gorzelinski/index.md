@@ -1,6 +1,6 @@
 ---
 title: Gorzeliński - moja strona
-date: "2021-05-01T22:12:03.284Z"
+date: "2021-09-01T22:12:03.284Z"
 description: "W tym case study przedstawiam kulisy powstawania mojej strony."
 featuredImage:
   src: "./gorzelinski-thumbnail.png"

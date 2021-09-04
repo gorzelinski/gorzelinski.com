@@ -5,6 +5,8 @@ export const usePortfolioProjects = () => {
     query PortfolioProjects {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/(portfolio)/" } }
+        limit: 4
+        sort: { fields: frontmatter___date, order: DESC }
       ) {
         nodes {
           excerpt
