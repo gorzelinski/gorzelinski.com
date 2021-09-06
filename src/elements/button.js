@@ -150,6 +150,12 @@ export const Button = styled(Link)`
   gap: ${props => props.theme.space.xs};
 
   ${props =>
+    props.$flex &&
+    css`
+      display: flex;
+    `}
+
+  ${props =>
     props.$first &&
     css`
       margin-left: ${props => "-" + props.theme.space.xs};

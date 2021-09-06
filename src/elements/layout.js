@@ -53,6 +53,12 @@ export const Navigation = styled.nav`
   ${media.large`
     gap: ${props => props.theme.space.l};
   `}
+
+  ${props =>
+    props.$flex &&
+    css`
+      display: flex;
+    `}
   
   ${props =>
     props.$main &&
@@ -144,3 +150,5 @@ export const Hero = styled(Section)`
     }
   `}
 `
+
+export const Footer = styled.footer``

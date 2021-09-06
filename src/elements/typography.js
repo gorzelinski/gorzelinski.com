@@ -240,6 +240,12 @@ export const Small = styled.small`
       margin-top: 0;
     `}
 
+  ${props =>
+    props.$bottom &&
+    css`
+      margin-bottom: 0;
+    `}
+
   ${media.mobile`
     ${SmallSize}
   `}
@@ -302,4 +308,13 @@ export const Table = styled.table`
   & thead tr th {
     border-bottom: 1px solid ${props => props.theme.color.surface.shade500};
   }
+`
+// think about making it more abstract
+export const Address = styled.address`
+  font-style: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${props => props.theme.space.s};
+  margin-bottom: ${props => props.theme.space.l};
 `

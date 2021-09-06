@@ -21,6 +21,12 @@ export const SixEights = css`
     css`
       ${media.tablet`
         grid-column: span 6;
+        ${props =>
+          props.$centered &&
+          css`
+            grid-column-start: 2;
+            grid-column-end: span 6;
+          `}
       `}
     `}
 `
@@ -28,4 +34,10 @@ export const SixEights = css`
 export const Card = styled.article`
   ${Half}
   ${SixEights}
+
+  ${props =>
+    props.$textCentered &&
+    css`
+      text-align: center;
+    `}
 `
