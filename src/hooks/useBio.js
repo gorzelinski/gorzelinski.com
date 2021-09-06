@@ -10,7 +10,11 @@ export const useBio = () => {
             summary
           }
           social {
+            email
+            github
+            dribbble
             twitter
+            facebook
           }
         }
       }

@@ -12,7 +12,11 @@ module.exports = {
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
     social: {
+      email: `mateusz@gorzelinski.com`,
+      github: `gorzelinski`,
+      dribbble: `gorzelinski`,
       twitter: `gorzelinski`,
+      facebook: `gorzelinski`,
     },
   },
   plugins: [

@@ -1,27 +1,15 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
 import { ThemeProvider } from "styled-components"
-import {
-  ChevronForward,
-  LogoDribbble,
-  LogoFacebook,
-  LogoGithub,
-  LogoTwitter,
-} from "@styled-icons/ionicons-solid"
+import { ChevronForward } from "@styled-icons/ionicons-solid"
 import { useTheme, usePortfolioProjects, useBlogPosts, useBio } from "../hooks"
 import {
-  A,
-  Address,
   Background,
   Button,
   Card,
   Figcaption,
   Figure,
-  Footer,
   H1,
   H2,
-  H3,
-  H4,
   Header,
   Hero,
   Icon,
@@ -35,6 +23,7 @@ import Logo from "./logo"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Project from "./project"
 import Post from "./post"
+import Contact from "./contact"
 
 const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
@@ -48,23 +37,23 @@ const Layout = ({ location, title, children }) => {
     setSelectedTheme(theme)
   }, [themeLoaded, theme])
 
-  const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
-  let header
+  // const rootPath = `${__PATH_PREFIX__}/`
+  // const isRootPath = location.pathname === rootPath
+  // let header
 
-  if (isRootPath) {
-    header = (
-      <h1 className="main-heading">
-        <Link to="/">{title}</Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
-    )
-  }
+  // if (isRootPath) {
+  //   header = (
+  //     <h1 className="main-heading">
+  //       <Link to="/">{title}</Link>
+  //     </h1>
+  //   )
+  // } else {
+  //   header = (
+  //     <Link className="header-link-home" to="/">
+  //       {title}
+  //     </Link>
+  //   )
+  // }
 
   return (
     <>
@@ -178,40 +167,7 @@ const Layout = ({ location, title, children }) => {
                   <Post data={post}></Post>
                 ))}
               </Section>
-              <Section as="footer">
-                <Card as="div" $sixeights $centered $textCentered>
-                  <H2>Przywitaj się!</H2>
-                  <P>
-                    Jeżeli chcesz porozmawiać o wpółpracy lub na inny,
-                    interesujacy temat napisz mi wiadomość prywatną lub email.
-                    Nie kępuj się. Serio.
-                  </P>
-                  <Address>
-                    <Button $text $first $last>
-                      mateusz@gorzelinski.com
-                    </Button>
-                    <Navigation $flex>
-                      <Icon $text as="a">
-                        <LogoGithub></LogoGithub>
-                      </Icon>
-                      <Icon $text>
-                        <LogoDribbble></LogoDribbble>
-                      </Icon>
-                      <Icon $text>
-                        <LogoTwitter></LogoTwitter>
-                      </Icon>
-                      <Icon $text>
-                        <LogoFacebook></LogoFacebook>
-                      </Icon>
-                    </Navigation>
-                  </Address>
-                  <Small $top $bottom>
-                    © {new Date().getFullYear()} |{" "}
-                    {bio.site.siteMetadata?.author.name} stworzył z miłością tę
-                    stronę
-                  </Small>
-                </Card>
-              </Section>
+              <Contact></Contact>
               {/* <div className="global-wrapper" data-is-root-path={isRootPath}>
                 <header className="global-header">{header}</header>
                 <main>{children}</main>
