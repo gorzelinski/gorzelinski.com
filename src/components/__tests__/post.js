@@ -27,65 +27,82 @@ const partialData = {
 }
 
 describe("Post component", () => {
-  it("doesn't render when there is no data", () => {
-    render(
-      <ThemeProvider theme={light}>
-        <Post></Post>
-      </ThemeProvider>
-    )
-    const title = screen.queryByRole("heading", { name: /default title/i })
-    expect(title).not.toBeInTheDocument()
+  describe("doesn't render when", () => {
+    it("there is no data", () => {
+      render(
+        <ThemeProvider theme={light}>
+          <Post></Post>
+        </ThemeProvider>
+      )
+      const title = screen.queryByRole("heading", { name: /default title/i })
+      expect(title).not.toBeInTheDocument()
+    })
+
+    it("data is empty", () => {
+      render(
+        <ThemeProvider theme={light}>
+          <Post data={{}}></Post>
+        </ThemeProvider>
+      )
+      const description = screen.queryByText(/default description/i)
+      expect(description).not.toBeInTheDocument()
+    })
+
+    it("data is wrong", () => {
+      render(
+        <ThemeProvider theme={light}>
+          <Post data="wrong data"></Post>
+        </ThemeProvider>
+      )
+      const roles = screen.queryByText(/default roles/i)
+      expect(roles).not.toBeInTheDocument()
+    })
+
+    it("partial data is provided", () => {
+      render(
+        <ThemeProvider theme={light}>
+          <Post data={partialData}></Post>
+        </ThemeProvider>
+      )
+      const title = screen.queryByRole("heading", { name: /default title/i })
+      const description = screen.queryByText(/default description/i)
+      expect(title).not.toBeInTheDocument()
+      expect(description).not.toBeInTheDocument()
+    })
   })
 
-  it("doesn't render when data is empty", () => {
-    render(
-      <ThemeProvider theme={light}>
-        <Post data={{}}></Post>
-      </ThemeProvider>
-    )
-    const description = screen.queryByText(/default description/i)
-    expect(description).not.toBeInTheDocument()
-  })
+  describe("renders", () => {
+    beforeEach(() => {
+      render(
+        <ThemeProvider theme={light}>
+          <Post data={defaultData}></Post>
+        </ThemeProvider>
+      )
+    })
 
-  it("doesn't render when data is wrong", () => {
-    render(
-      <ThemeProvider theme={light}>
-        <Post data="wrong data"></Post>
-      </ThemeProvider>
-    )
-    const roles = screen.queryByText(/default roles/i)
-    expect(roles).not.toBeInTheDocument()
-  })
+    it("wrapper", () => {
+      const wrapper = screen.getByRole("article")
+      expect(wrapper).toBeInTheDocument()
+    })
 
-  it("doesn't render when partial data is provided", () => {
-    render(
-      <ThemeProvider theme={light}>
-        <Post data={partialData}></Post>
-      </ThemeProvider>
-    )
-    const title = screen.queryByRole("heading", { name: /default title/i })
-    const description = screen.queryByText(/default description/i)
-    expect(title).not.toBeInTheDocument()
-    expect(description).not.toBeInTheDocument()
-  })
+    it("time to read", () => {
+      const timeToRead = screen.getByText(/min./i)
+      expect(timeToRead).toBeInTheDocument()
+    })
 
-  it("renders correctly when data is provided", () => {
-    render(
-      <ThemeProvider theme={light}>
-        <Post data={defaultData}></Post>
-      </ThemeProvider>
-    )
+    it("title", () => {
+      const title = screen.getByRole("heading", { name: /default title/i })
+      expect(title).toBeInTheDocument()
+    })
 
-    const wrapper = screen.getByRole("article")
-    const timeToRead = screen.getByText(/min./i)
-    const title = screen.getByRole("heading", { name: /default title/i })
-    const description = screen.getByText(/default description/i)
-    const link = screen.getByRole("link").getAttribute("href")
+    it("description", () => {
+      const description = screen.getByText(/default description/i)
+      expect(description).toBeInTheDocument()
+    })
 
-    expect(wrapper).toBeInTheDocument()
-    expect(timeToRead).toBeInTheDocument()
-    expect(title).toBeInTheDocument()
-    expect(description).toBeInTheDocument()
-    expect(link).toBe(defaultData.fields.slug)
+    it("link", () => {
+      const link = screen.getByRole("link").getAttribute("href")
+      expect(link).toBe(defaultData.fields.slug)
+    })
   })
 })
