@@ -38,7 +38,6 @@ describe("Contact component", () => {
 
     it("email button", () => {
       const email = screen.getByRole("link", { name: /authorsemail/i })
-
       expect(email.getAttribute("href")).toEqual(
         expect.stringMatching(/mailto:authorsemail/i)
       )
@@ -46,13 +45,11 @@ describe("Contact component", () => {
 
     it("social media links", () => {
       const social = screen.getAllByRole("link", { name: "" })
-
       expect(social.length).toBe(4)
     })
 
     it("copyright info", () => {
       const copyright = screen.getByText(/©/i)
-
       expect(copyright.innerHTML).toEqual(expect.stringMatching(/authorsname/i))
     })
   })
