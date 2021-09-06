@@ -59,8 +59,8 @@ const partialData = {
 }
 
 describe("Project component", () => {
-  describe("doesn't render", () => {
-    it("when there is no data", () => {
+  describe("doesn't render when", () => {
+    it("there is no data", () => {
       render(
         <ThemeProvider theme={light}>
           <Project></Project>
@@ -70,7 +70,7 @@ describe("Project component", () => {
       expect(title).not.toBeInTheDocument()
     })
 
-    it("when data is empty", () => {
+    it("data is empty", () => {
       render(
         <ThemeProvider theme={light}>
           <Project data={{}}></Project>
@@ -80,7 +80,7 @@ describe("Project component", () => {
       expect(description).not.toBeInTheDocument()
     })
 
-    it("when data is wrong", () => {
+    it("data is wrong", () => {
       render(
         <ThemeProvider theme={light}>
           <Project data="wrong data"></Project>
@@ -90,7 +90,7 @@ describe("Project component", () => {
       expect(roles).not.toBeInTheDocument()
     })
 
-    it("when partial data is provided", () => {
+    it("partial data is provided", () => {
       render(
         <ThemeProvider theme={light}>
           <Project data={partialData}></Project>
