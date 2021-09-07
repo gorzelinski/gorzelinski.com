@@ -21,7 +21,7 @@ import {
 } from "../elements"
 import Logo from "./logo"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Contact from "./contact"
+import Footer from "./footer"
 import Posts from "./posts"
 import Featured from "./featured"
 import Projects from "./projects"
@@ -158,7 +158,7 @@ const Layout = ({ location, title, children }) => {
               >
                 <Posts data={posts}></Posts>
               </Featured>
-              <Contact></Contact>
+              <Footer></Footer>
               {/* <div className="global-wrapper" data-is-root-path={isRootPath}>
                 <header className="global-header">{header}</header>
                 <main>{children}</main>

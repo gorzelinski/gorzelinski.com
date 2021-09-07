@@ -19,7 +19,7 @@ import {
   Small,
 } from "../elements"
 
-const Contact = () => {
+const Footer = () => {
   const { bio } = useBio()
   const { name } = bio.site.siteMetadata?.author
   const { email, github, dribbble, twitter, facebook } =
@@ -84,4 +84,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default Footer
