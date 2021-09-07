@@ -22,8 +22,8 @@ import {
 import Logo from "./logo"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Project from "./project"
-import Post from "./post"
 import Contact from "./contact"
+import Posts from "./posts"
 
 const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
@@ -163,9 +163,7 @@ const Layout = ({ location, title, children }) => {
                     </Icon>
                   </Button>
                 </Header>
-                {posts.allMarkdownRemark.nodes.map(post => (
-                  <Post data={post}></Post>
-                ))}
+                <Posts data={posts}></Posts>
               </Section>
               <Contact></Contact>
               {/* <div className="global-wrapper" data-is-root-path={isRootPath}>
