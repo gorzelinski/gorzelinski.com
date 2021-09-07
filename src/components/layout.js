@@ -21,10 +21,10 @@ import {
 } from "../elements"
 import Logo from "./logo"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Project from "./project"
 import Contact from "./contact"
 import Posts from "./posts"
 import Featured from "./featured"
+import Projects from "./projects"
 
 const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
@@ -115,20 +115,15 @@ const Layout = ({ location, title, children }) => {
                   </Button>
                 </div>
               </Hero>
-              <Section>
-                <Header>
-                  <H2>Ostatnie projekty</H2>
-                  <Button $text $last>
-                    Wszystkie projekty{" "}
-                    <Icon>
-                      <ChevronForward></ChevronForward>
-                    </Icon>
-                  </Button>
-                </Header>
-                {projects.allMarkdownRemark.nodes.map(project => (
-                  <Project data={project}></Project>
-                ))}
-              </Section>
+              <Featured
+                data={{
+                  title: "Ostatnie projekty",
+                  slug: "/portfolio",
+                  buttonText: "Wszystkie projekty",
+                }}
+              >
+                <Projects data={projects}></Projects>
+              </Featured>
               <Section>
                 <Figure $half $portrait>
                   <GatsbyImage
