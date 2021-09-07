@@ -24,6 +24,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Project from "./project"
 import Contact from "./contact"
 import Posts from "./posts"
+import Featured from "./featured"
 
 const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
@@ -153,18 +154,15 @@ const Layout = ({ location, title, children }) => {
                   </Button>
                 </Card>
               </Section>
-              <Section>
-                <Header>
-                  <H2>Ostatnie wpisy</H2>
-                  <Button $text $last>
-                    Wszystkie wpisy{" "}
-                    <Icon>
-                      <ChevronForward></ChevronForward>
-                    </Icon>
-                  </Button>
-                </Header>
+              <Featured
+                data={{
+                  title: "Ostatnie wpisy",
+                  slug: "/blog",
+                  buttonText: "Wszystkie wpisy",
+                }}
+              >
                 <Posts data={posts}></Posts>
-              </Section>
+              </Featured>
               <Contact></Contact>
               {/* <div className="global-wrapper" data-is-root-path={isRootPath}>
                 <header className="global-header">{header}</header>
