@@ -5,26 +5,20 @@ import { useTheme, usePortfolioProjects, useBlogPosts, useBio } from "../hooks"
 import {
   Background,
   Button,
-  Card,
-  Figcaption,
-  Figure,
   H1,
-  H2,
   Header,
   Hero,
   Icon,
   Navigation,
   P,
-  Section,
-  Small,
   Wrapper,
 } from "../elements"
 import Logo from "./logo"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Footer from "./footer"
 import Posts from "./posts"
 import Featured from "./featured"
 import Projects from "./projects"
+import About from "./about"
 
 const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
@@ -32,7 +26,6 @@ const Layout = ({ location, title, children }) => {
   const { projects } = usePortfolioProjects()
   const { posts } = useBlogPosts()
   const { bio } = useBio()
-  const profilePicture = getImage(bio.image)
 
   useEffect(() => {
     setSelectedTheme(theme)
@@ -124,31 +117,16 @@ const Layout = ({ location, title, children }) => {
               >
                 <Projects data={projects}></Projects>
               </Featured>
-              <Section>
-                <Figure $half $portrait>
-                  <GatsbyImage
-                    image={profilePicture}
-                    alt={`${bio.site.siteMetadata?.author.name} - zdjęcie profilowe`}
-                  ></GatsbyImage>
-                  <Figcaption>
-                    W rzeczywistości jestem przyjemniejszy niż wyglądam na tym
-                    zdjęciu. Przyrzekam!
-                  </Figcaption>
-                </Figure>
-                <Card $half>
-                  <Small as="p" $top>
-                    Cześć, nazywam się
-                  </Small>
-                  <H2>{bio.site.siteMetadata?.author.name}</H2>
-                  <P>{bio.site.siteMetadata?.author.summary}</P>
-                  <Button $text $first to="/o-mnie">
-                    Więcej o mnie
-                    <Icon>
-                      <ChevronForward></ChevronForward>
-                    </Icon>
-                  </Button>
-                </Card>
-              </Section>
+              <About
+                data={{
+                  ...bio,
+                  meta: "Cześć, nazywam się",
+                  figcaption:
+                    "W rzeczywistości jestem przyjemniejszy niż wyglądam na tym zdjęciu. Przyrzekam!",
+                  slug: "/o-mnie",
+                  buttonText: "Więcej o mnie",
+                }}
+              ></About>
               <Featured
                 data={{
                   title: "Ostatnie wpisy",

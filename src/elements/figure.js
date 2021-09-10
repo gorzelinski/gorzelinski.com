@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components"
-import { Small } from "./typography"
+
+import { media } from "../utils"
+import { Meta, TinySize, SmallSize } from "./typography"
 import { Half } from "./card"
 
 export const Figure = styled.figure`
@@ -36,6 +38,13 @@ export const Figure = styled.figure`
     `}
 `
 
-export const Figcaption = styled(Small)`
-  margin-bottom: 0;
+export const Figcaption = styled.figcaption`
+  ${Meta}
+  ${TinySize}
+  display: block;
+  margin-top: ${props => props.theme.space.s};
+
+  ${media.mobile`
+    ${SmallSize}
+  `}
 `
