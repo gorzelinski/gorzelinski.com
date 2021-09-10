@@ -2,23 +2,14 @@ import React, { useState, useEffect } from "react"
 import { ThemeProvider } from "styled-components"
 import { ChevronForward } from "@styled-icons/ionicons-solid"
 import { useTheme, usePortfolioProjects, useBlogPosts, useBio } from "../hooks"
-import {
-  Background,
-  Button,
-  H1,
-  Header,
-  Hero,
-  Icon,
-  Navigation,
-  P,
-  Wrapper,
-} from "../elements"
+import { Background, Button, Header, Navigation, Wrapper } from "../elements"
 import Logo from "./logo"
 import Footer from "./footer"
 import Posts from "./posts"
 import Featured from "./featured"
 import Projects from "./projects"
 import About from "./about"
+import Landing from "./landing"
 
 const Layout = ({ location, title, children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
@@ -86,28 +77,7 @@ const Layout = ({ location, title, children }) => {
                   </Button>
                 </Navigation>
               </Header>
-              <Hero>
-                <div>
-                  <H1>
-                    Tworzę <br />
-                    rzeczy w internecie
-                  </H1>
-                  <P>
-                    The purpose of lorem ipsum is to create a natural looking
-                    block of text (sentence, paragraph, page, etc.) that doesn't
-                    distract from the layout. A practice not without
-                    controversy, laying out pages with meaningless filler text
-                    can be very useful when the focus is meant to be on design,
-                    not content.
-                  </P>
-                  <Button $text $first to="/#kontakt">
-                    Stwórzmy coś razem
-                    <Icon>
-                      <ChevronForward></ChevronForward>
-                    </Icon>
-                  </Button>
-                </div>
-              </Hero>
+              <Landing></Landing>
               <Featured
                 data={{
                   title: "Ostatnie projekty",
