@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react"
 import { ThemeProvider } from "styled-components"
 
-import { Background, Button, Header, Navigation, Wrapper } from "../elements"
+import { Background, Wrapper } from "../elements"
 import { useTheme } from "../hooks"
-import Logo from "./logo"
+import Navbar from "./navbar"
 import Footer from "./footer"
-
-import ThemeSwitcher from "./theme-switcher"
 
 const Layout = ({ children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
@@ -35,41 +33,21 @@ const Layout = ({ children }) => {
   // }
 
   return (
-    <>
-      {themeLoaded && (
-        <ThemeProvider theme={selectedTheme}>
-          <Background>
-            <Wrapper global>
-              <Header>
-                <Navigation>
-                  <Logo></Logo>
-                  <ThemeSwitcher
-                    data={{
-                      themes,
-                      setPreferredTheme,
-                      selectedTheme,
-                      themeLoaded,
-                    }}
-                  ></ThemeSwitcher>
-                </Navigation>
-                <Navigation $main>
-                  <Button $nav to="/portfolio">
-                    Portfolio
-                  </Button>
-                  <Button $nav to="/o-mnie">
-                    O mnie
-                  </Button>
-                  <Button $nav to="/blog">
-                    Blog
-                  </Button>
-                  <Button $primary to="/#kontakt">
-                    Kontakt
-                  </Button>
-                </Navigation>
-              </Header>
-              <main>{children}</main>
-              <Footer></Footer>
-              {/* <div className="global-wrapper" data-is-root-path={isRootPath}>
+    themeLoaded && (
+      <ThemeProvider theme={selectedTheme}>
+        <Background>
+          <Wrapper global>
+            <Navbar
+              data={{
+                themes,
+                setPreferredTheme,
+                selectedTheme,
+                themeLoaded,
+              }}
+            ></Navbar>
+            <main>{children}</main>
+            <Footer></Footer>
+            {/* <div className="global-wrapper" data-is-root-path={isRootPath}>
                 <header className="global-header">{header}</header>
                 <main>{children}</main>
                 <footer>
@@ -78,11 +56,10 @@ const Layout = ({ children }) => {
                   <a href="https://www.gatsbyjs.com">Gatsby</a>
                 </footer>
               </div> */}
-            </Wrapper>
-          </Background>
-        </ThemeProvider>
-      )}
-    </>
+          </Wrapper>
+        </Background>
+      </ThemeProvider>
+    )
   )
 }
 
