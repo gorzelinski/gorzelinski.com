@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from "react"
 import { ThemeProvider } from "styled-components"
-import { ChevronForward } from "@styled-icons/ionicons-solid"
-import { useTheme, usePortfolioProjects, useBlogPosts, useBio } from "../hooks"
+
 import { Background, Button, Header, Navigation, Wrapper } from "../elements"
+import { useTheme } from "../hooks"
 import Logo from "./logo"
 import Footer from "./footer"
-import Posts from "./posts"
-import Featured from "./featured"
-import Projects from "./projects"
-import About from "./about"
-import Landing from "./landing"
 
-const Layout = ({ location, title, children }) => {
+import ThemeSwitcher from "./theme-switcher"
+
+const Layout = ({ children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
   const [selectedTheme, setSelectedTheme] = useState(theme)
-  const { projects } = usePortfolioProjects()
-  const { posts } = useBlogPosts()
-  const { bio } = useBio()
 
   useEffect(() => {
     setSelectedTheme(theme)
@@ -49,18 +43,14 @@ const Layout = ({ location, title, children }) => {
               <Header>
                 <Navigation>
                   <Logo></Logo>
-                  {Object.keys(themes).length > 0 &&
-                    Object.values(themes).map(theme => (
-                      <Button
-                        $nav
-                        as="button"
-                        theme={selectedTheme}
-                        key={theme.id}
-                        onClick={() => setPreferredTheme(theme)}
-                      >
-                        {theme.name}
-                      </Button>
-                    ))}
+                  <ThemeSwitcher
+                    data={{
+                      themes,
+                      setPreferredTheme,
+                      selectedTheme,
+                      themeLoaded,
+                    }}
+                  ></ThemeSwitcher>
                 </Navigation>
                 <Navigation $main>
                   <Button $nav to="/portfolio">
@@ -77,35 +67,7 @@ const Layout = ({ location, title, children }) => {
                   </Button>
                 </Navigation>
               </Header>
-              <Landing></Landing>
-              <Featured
-                data={{
-                  title: "Ostatnie projekty",
-                  slug: "/portfolio",
-                  buttonText: "Wszystkie projekty",
-                }}
-              >
-                <Projects data={projects}></Projects>
-              </Featured>
-              <About
-                data={{
-                  ...bio,
-                  meta: "Cześć, nazywam się",
-                  figcaption:
-                    "W rzeczywistości jestem przyjemniejszy niż wyglądam na tym zdjęciu. Przyrzekam!",
-                  slug: "/o-mnie",
-                  buttonText: "Więcej o mnie",
-                }}
-              ></About>
-              <Featured
-                data={{
-                  title: "Ostatnie wpisy",
-                  slug: "/blog",
-                  buttonText: "Wszystkie wpisy",
-                }}
-              >
-                <Posts data={posts}></Posts>
-              </Featured>
+              <main>{children}</main>
               <Footer></Footer>
               {/* <div className="global-wrapper" data-is-root-path={isRootPath}>
                 <header className="global-header">{header}</header>

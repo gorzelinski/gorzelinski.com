@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Gorzeliński - tworzę rzeczy w internecie`,
     author: {
       name: `Mateusz Gorzeliński`,
       summary: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
