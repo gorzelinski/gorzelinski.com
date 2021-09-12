@@ -3,7 +3,7 @@ import { Moon, Sunny } from "@styled-icons/ionicons-solid"
 
 import { Button, Icon } from "../elements"
 
-const ThemeSwitcher = ({ data }) => {
+const ThemeSwitcher = ({ data = {} }) => {
   const {
     themes = {},
     selectedTheme = {},
