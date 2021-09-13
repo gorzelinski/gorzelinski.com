@@ -43,7 +43,7 @@ export const Navigation = styled.nav`
   gap: ${props => props.theme.space.xs};
 
   ${media.tablet`
-    gap: ${props => props.theme.space.s};
+    gap: ${props => props.theme.space.xs};
   `}
 
   ${media.desktop`
