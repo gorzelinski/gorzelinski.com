@@ -26,7 +26,7 @@ const Footer = () => {
     bio.site.siteMetadata?.social
 
   return (
-    <Section as="footer">
+    <Section as="footer" id="kontakt">
       <Card as="div" $sixeights $centered $textCentered>
         <H2>Przywitaj się!</H2>
         <P>
