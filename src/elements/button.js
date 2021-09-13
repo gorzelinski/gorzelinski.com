@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
 import styled, { css, keyframes } from "styled-components"
 import { UI } from "./typography"
+import { remToFloat } from "../utils"
 
 export const Outline = css`
   &:focus {
@@ -106,10 +107,9 @@ export const Nav = css`
     border-bottom: ${props => props.theme.space.xxs} solid
       ${props => props.theme.color.text.base};
     padding-bottom: ${props =>
-      Number.parseFloat(
-        props.theme.space.xs.replace("rem", "") -
-          Number.parseFloat(props.theme.space.xxs.replace("rem", ""))
-      ) + "rem"};
+      remToFloat(props.theme.space.xs) -
+      remToFloat(props.theme.space.xxs) +
+      "rem"};
   }
 `
 

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { media } from "../utils"
+import { media, remToFloat } from "../utils"
 
 export const Background = styled.div`
   background-color: ${props => props.theme.color.background};
@@ -21,17 +21,13 @@ export const Wrapper = styled.div`
       ${media.desktop`
         margin: 0 auto;
         padding: ${props => props.theme.space.xxl} 0;
-        max-width: ${props =>
-          Number.parseFloat(props.theme.space.s.replace("rem", "")) * 75 +
-          "rem"};
+        max-width:  ${75 + "rem"};
       `}
       
       ${media.large`
         margin: 0 auto;
         padding: ${props => props.theme.space.xxl} 0;
-        max-width: ${props =>
-          Number.parseFloat(props.theme.space.s.replace("rem", "")) * 100 +
-          "rem"};
+        max-width:  ${100 + "rem"};
       `}
     `}
 `
@@ -65,8 +61,8 @@ export const Navigation = styled.nav`
     css`
       justify-content: flex-end;
       height: ${props =>
-        Number.parseFloat(props.theme.font.height.base.replace("rem", "")) +
-        Number.parseFloat(props.theme.space.xs.replace("rem", "")) * 2 +
+        remToFloat(props.theme.font.height.base) +
+        remToFloat(props.theme.space.xs) * 2 +
         "rem"};
       overflow-y: hidden;
 

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { media } from "../utils"
+import { media, remToFloat } from "../utils"
 
 export const Headings = css`
   font-family: ${props => props.theme.font.family.heading};
@@ -230,8 +230,7 @@ export const Small = styled.small`
   margin-top: ${props => props.theme.space.s};
   margin-bottom: ${props =>
     "-" +
-    (Number.parseFloat(props.theme.space.l.replace("rem", "")) -
-      Number.parseFloat(props.theme.space.xs.replace("rem", ""))) +
+    (remToFloat(props.theme.space.l) - remToFloat(props.theme.space.xs)) +
     "rem"};
 
   ${props =>
