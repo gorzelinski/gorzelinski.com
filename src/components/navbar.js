@@ -7,11 +7,11 @@ import ThemeSwitcher from "./theme-switcher"
 const Navbar = ({ data }) => {
   return (
     <Header>
-      <Navigation>
+      <Navigation aria-label="Pomocnicza">
         <Logo></Logo>
         <ThemeSwitcher data={data}></ThemeSwitcher>
       </Navigation>
-      <Navigation $main>
+      <Navigation $main aria-label="Główna">
         <Button $nav to="/portfolio">
           Portfolio
         </Button>
