@@ -98,11 +98,27 @@ export const Header = styled.header`
   display: flex;
   flex-direction: column;
   gap: ${props => props.theme.space.xs};
-  justify-content: space-between;
-  align-items: baseline;
+
+  & > *:nth-child(n) {
+    align-self: flex-start;
+  }
+
+  & > *:nth-child(2n) {
+    align-self: flex-end;
+  }
 
   ${media.tablet`
+    align-items: baseline;
     flex-direction: row;
+    justify-content: space-between;
+
+    & > *:nth-child(n) {
+      align-self: auto;
+    }
+
+    & > *:nth-child(2n) {
+      align-self: auto;
+    }
   `}
 `
 
