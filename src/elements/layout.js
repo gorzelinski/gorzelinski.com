@@ -3,6 +3,7 @@ import { media, remToFloat } from "../utils"
 
 export const Background = styled.div`
   background-color: ${props => props.theme.color.background};
+  min-height: 100vh;
 `
 
 export const Wrapper = styled.div`
