@@ -21,7 +21,7 @@ const Navbar = ({ data }) => {
         <Button $nav to="/blog">
           Blog
         </Button>
-        <Button $primary to="/#kontakt">
+        <Button $primary to="#kontakt">
           Kontakt
         </Button>
       </Navigation>

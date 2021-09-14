@@ -37,7 +37,7 @@ describe("Navbar component", () => {
 
     it("link to contact section", () => {
       const contact = screen.getByRole("link", { name: /kontakt/i })
-      expect(contact.getAttribute("href")).toBe("/#kontakt")
+      expect(contact.getAttribute("href")).toBe("#kontakt")
     })
   })
 
