@@ -3,8 +3,8 @@ import { graphql } from "gatsby"
 
 import { H1, Header, Section } from "../elements"
 import Layout from "../components/layout"
-import Projects from "../components/projects"
 import Seo from "../components/seo"
+import Projects from "../components/projects"
 
 const Portfolio = ({ data }) => {
   return (
