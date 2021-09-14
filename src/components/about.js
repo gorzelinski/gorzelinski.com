@@ -14,7 +14,8 @@ import {
   Icon,
 } from "../elements"
 
-const About = ({ data }) => {
+// TODO: alt tag, title
+const About = ({ data, children }) => {
   const { figcaption, meta, buttonText, slug, title } = data
   const image = getImage(data?.image)
   const name = data.site?.siteMetadata?.author?.name
@@ -35,7 +36,8 @@ const About = ({ data }) => {
             {meta}
           </Small>
         )}
-        <H2>{name || title}</H2>
+        <H2>{title || name}</H2>
+        {children}
         {summary && <P>{summary}</P>}
         {slug && buttonText && (
           <Button $text $first to={slug}>
