@@ -17,7 +17,7 @@ const Post = ({ data = {} }) => {
       <Small $top>{`${date} | ${timeToRead} min. czytania`}</Small>
       <H3>{title}</H3>
       <P>{description}</P>
-      <Button $text $first to={slug}>
+      <Button $text $first to={`/blog${slug}`}>
         Czytaj więcej
         <Icon>
           <ChevronForward></ChevronForward>

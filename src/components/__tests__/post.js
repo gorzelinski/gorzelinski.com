@@ -102,7 +102,7 @@ describe("Post component", () => {
 
     it("link", () => {
       const link = screen.getByRole("link").getAttribute("href")
-      expect(link).toBe(defaultData.fields.slug)
+      expect(link).toBe(`/blog${defaultData.fields.slug}`)
     })
   })
 })
