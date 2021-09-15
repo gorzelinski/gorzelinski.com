@@ -6,9 +6,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const portfolioProject = path.resolve(`./src/templates/blog-post.js`)
 
   // Get all markdown blog posts sorted by date
-  const result = await graphql(
+  const resultPosts = await graphql(
     `
       {
         allMarkdownRemark(
@@ -27,15 +28,43 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
   )
 
-  if (result.errors) {
+  const resultProjects = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: ASC }
+          filter: { fileAbsolutePath: { regex: "/(portfolio)/" } }
+          limit: 1000
+        ) {
+          nodes {
+            id
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    `
+  )
+
+  if (resultPosts.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
-      result.errors
+      resultPosts.errors
     )
     return
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  if (resultProjects.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your portfolio projects`,
+      resultProjects.errors
+    )
+    return
+  }
+
+  const posts = resultPosts.data.allMarkdownRemark.nodes
+  const projects = resultProjects.data.allMarkdownRemark.nodes
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -53,6 +82,24 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           id: post.id,
           previousPostId,
           nextPostId,
+        },
+      })
+    })
+  }
+
+  if (projects.length > 0) {
+    projects.forEach((project, index) => {
+      const previousProjectId = index === 0 ? null : projects[index - 1].id
+      const nextProjectId =
+        index === projects.length - 1 ? null : projects[index + 1].id
+
+      createPage({
+        path: `portfolio${project.fields.slug}`,
+        component: portfolioProject,
+        context: {
+          id: project.id,
+          previousProjectId,
+          nextProjectId,
         },
       })
     })

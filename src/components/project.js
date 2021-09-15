@@ -23,7 +23,7 @@ const Project = ({ data = {} }) => {
       <Small as="p">{myRole}</Small>
       <H4 as="h3">{title}</H4>
       <P>{description}</P>
-      <Button $text $first to={slug}>
+      <Button $text $first to={`/portfolio${slug}`}>
         Sprawdź case study
         <Icon>
           <ChevronForward></ChevronForward>

@@ -139,7 +139,7 @@ describe("Project component", () => {
 
     it("link", () => {
       const link = screen.getByRole("link").getAttribute("href")
-      expect(link).toBe(defaultData.fields.slug)
+      expect(link).toBe(`/portfolio${defaultData.fields.slug}`)
     })
   })
 })
