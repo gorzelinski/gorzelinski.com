@@ -4,9 +4,21 @@ import { media, remToFloat } from "../utils"
 export const Headings = css`
   font-family: ${props => props.theme.font.family.heading};
   font-weight: ${props => props.theme.font.weight.medium};
-  margin-top: ${props => props.theme.space.l};
-  margin-bottom: ${props => props.theme.space.m};
+  margin-top: ${props => remToFloat(props.theme.font.height.base) * 2 + "rem"};
+  margin-bottom: ${props => props.theme.font.height.base};
   color: ${props => props.theme.color.text.base};
+
+  ${props =>
+    props.$top &&
+    css`
+      margin-top: 0;
+    `}
+
+  ${props =>
+    props.$bottom &&
+    css`
+      margin-bottom: 0;
+    `}
 `
 
 export const HeadingXXL = css`
@@ -204,11 +216,17 @@ export const P = styled.p`
   ${Body}
   ${SmallSize}
   padding: 0;
-  margin: 0 0 ${props => props.theme.space.m} 0;
+  margin: 0 0 ${props => props.theme.font.height.base} 0;
 
   ${media.mobile`
     ${BaseSize}
   `}
+
+  ${props =>
+    props.$ui &&
+    css`
+      ${UI}
+    `}
 `
 
 export const Ul = styled.ul`
@@ -230,7 +248,8 @@ export const Small = styled.small`
   margin-top: ${props => props.theme.space.s};
   margin-bottom: ${props =>
     "-" +
-    (remToFloat(props.theme.space.l) - remToFloat(props.theme.space.xs)) +
+    (remToFloat(props.theme.font.height.base) * 2 -
+      remToFloat(props.theme.space.xs)) +
     "rem"};
 
   ${props =>
@@ -250,12 +269,7 @@ export const Small = styled.small`
   `}
 `
 
-export const UIText = styled.p`
-  ${UI}
-`
-
 export const A = styled.a`
-  ${Body}
   ${Link}
   text-decoration: underline;
   &:visited {

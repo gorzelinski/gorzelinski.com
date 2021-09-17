@@ -8,7 +8,11 @@ const Featured = ({ data, children }) => {
   return (
     <Section>
       <Header>
-        {title && <H2>{title}</H2>}
+        {title && (
+          <H2 $top $bottom>
+            {title}
+          </H2>
+        )}
         {slug && buttonText && (
           <Button $text $last to={slug}>
             {buttonText}

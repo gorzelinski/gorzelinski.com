@@ -7,7 +7,7 @@ const Landing = () => {
   return (
     <Hero>
       <div>
-        <H1>
+        <H1 $top>
           Tworzę
           <br />
           rzeczy w internecie
