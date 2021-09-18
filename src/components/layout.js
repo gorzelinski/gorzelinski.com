@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { ThemeProvider } from "styled-components"
+import { MDXProvider } from "@mdx-js/react"
 
+import components from "../templates/mapping"
 import { Background, Wrapper } from "../elements"
 import { useTheme } from "../hooks"
 import Navbar from "./navbar"
@@ -35,19 +37,20 @@ const Layout = ({ children }) => {
   return (
     themeLoaded && (
       <ThemeProvider theme={selectedTheme}>
-        <Background>
-          <Wrapper global>
-            <Navbar
-              data={{
-                themes,
-                setPreferredTheme,
-                selectedTheme,
-                themeLoaded,
-              }}
-            ></Navbar>
-            <main>{children}</main>
-            <Footer></Footer>
-            {/* <div className="global-wrapper" data-is-root-path={isRootPath}>
+        <MDXProvider components={components}>
+          <Background>
+            <Wrapper global>
+              <Navbar
+                data={{
+                  themes,
+                  setPreferredTheme,
+                  selectedTheme,
+                  themeLoaded,
+                }}
+              ></Navbar>
+              <main>{children}</main>
+              <Footer></Footer>
+              {/* <div className="global-wrapper" data-is-root-path={isRootPath}>
                 <header className="global-header">{header}</header>
                 <main>{children}</main>
                 <footer>
@@ -56,8 +59,9 @@ const Layout = ({ children }) => {
                   <a href="https://www.gatsbyjs.com">Gatsby</a>
                 </footer>
               </div> */}
-          </Wrapper>
-        </Background>
+            </Wrapper>
+          </Background>
+        </MDXProvider>
       </ThemeProvider>
     )
   )

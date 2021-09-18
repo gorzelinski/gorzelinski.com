@@ -1,9 +1,7 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { MDXProvider } from "@mdx-js/react"
 
-import components from "./mapping"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -28,9 +26,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
-        <MDXProvider components={components}>
-          <MDXRenderer>{post.body}</MDXRenderer>
-        </MDXProvider>
+        <MDXRenderer>{post.body}</MDXRenderer>
         <hr />
         <footer>
           <Bio />
