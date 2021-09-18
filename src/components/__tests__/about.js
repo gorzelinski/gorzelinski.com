@@ -137,7 +137,12 @@ describe("About component", () => {
     beforeEach(() => {
       render(
         <ThemeProvider theme={light}>
-          <About data={defaultData}></About>
+          <About
+            data={{
+              ...defaultData,
+              title: "",
+            }}
+          ></About>
         </ThemeProvider>
       )
     })

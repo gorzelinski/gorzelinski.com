@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react"
 import { ThemeProvider } from "styled-components"
 
 import { light } from "../../themes"
-import Contact from "../contact"
+import Footer from "../footer"
 
 jest.mock("../../hooks", () => ({
   useBio: () => ({
@@ -31,7 +31,7 @@ describe("Contact component", () => {
     beforeEach(() => {
       render(
         <ThemeProvider theme={light}>
-          <Contact></Contact>
+          <Footer></Footer>
         </ThemeProvider>
       )
     })
