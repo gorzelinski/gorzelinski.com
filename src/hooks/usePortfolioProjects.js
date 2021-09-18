@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 export const usePortfolioProjects = () => {
   const projects = useStaticQuery(graphql`
     query PortfolioProjects {
-      allMarkdownRemark(
+      allMdx(
         filter: { fileAbsolutePath: { regex: "/(portfolio)/" } }
         limit: 4
         sort: { fields: frontmatter___date, order: DESC }

@@ -6,7 +6,7 @@ import { light } from "../../themes"
 import Projects from "../projects"
 
 const defaultData = {
-  allMarkdownRemark: {
+  allMdx: {
     nodes: [
       {
         excerpt: "Default excerpt",
@@ -101,7 +101,7 @@ const defaultData = {
 }
 
 const emptyData = {
-  allMarkdownRemark: {
+  allMdx: {
     nodes: [],
   },
 }

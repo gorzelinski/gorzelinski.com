@@ -24,7 +24,7 @@ export default Portfolio
 
 export const pageQuery = graphql`
   query AllPortfolioProjects {
-    allMarkdownRemark(
+    allMdx(
       filter: { fileAbsolutePath: { regex: "/(portfolio)/" } }
       sort: { fields: frontmatter___date, order: DESC }
     ) {

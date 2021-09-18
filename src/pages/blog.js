@@ -24,7 +24,7 @@ export default Blog
 
 export const pageQuery = graphql`
   query AllBlogPosts {
-    allMarkdownRemark(
+    allMdx(
       filter: { fileAbsolutePath: { regex: "/(blog)/" } }
       sort: { fields: frontmatter___date, order: DESC }
     ) {

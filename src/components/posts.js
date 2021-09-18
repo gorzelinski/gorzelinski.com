@@ -3,8 +3,8 @@ import React from "react"
 import { Card, Small } from "../elements"
 import Post from "./post"
 
-const Posts = ({ data = { allMarkdownRemark: { nodes: [] } } }) => {
-  const posts = data.allMarkdownRemark.nodes
+const Posts = ({ data = { allMdx: { nodes: [] } } }) => {
+  const posts = data.allMdx.nodes
 
   return posts.length === 0 ? (
     <Card $half as="div">
