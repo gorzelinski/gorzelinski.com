@@ -4,6 +4,7 @@ import "@fontsource/montserrat/500.css"
 import "@fontsource/lora/400.css"
 import "@fontsource/lora/700.css"
 import "@fontsource/fira-code/400.css"
+import "@fontsource/fira-code/700.css"
 
 // normalize CSS across browsers
 import "./src/normalize.css"

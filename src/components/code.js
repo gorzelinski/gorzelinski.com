@@ -2,14 +2,11 @@ import React from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import palenight from "prism-react-renderer/themes/palenight"
 
-import { tokens } from "../themes/tokens"
+import { BlockCode } from "../elements"
 
 const CodeBlock = ({ children, className }) => {
   // delete optional chaining
   const language = className?.replace(/language-/, "")
-  const padding = tokens.font.height.base
-  const font = tokens.font.family.code
-  const radius = tokens.space.xs
 
   return (
     <Highlight
@@ -19,13 +16,10 @@ const CodeBlock = ({ children, className }) => {
       theme={palenight}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre
+        <BlockCode
           className={className}
           style={{
             ...style,
-            padding: padding,
-            borderRadius: radius,
-            fontFamily: font,
           }}
         >
           {tokens.map((line, i) => (
@@ -35,7 +29,7 @@ const CodeBlock = ({ children, className }) => {
               ))}
             </div>
           ))}
-        </pre>
+        </BlockCode>
       )}
     </Highlight>
   )

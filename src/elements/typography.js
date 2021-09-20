@@ -331,3 +331,27 @@ export const Address = styled.address`
   gap: ${props => props.theme.space.s};
   margin-bottom: ${props => props.theme.space.l};
 `
+
+export const Hr = styled.hr`
+  background-color: ${props => props.theme.color.surface.shade200};
+  border: 0;
+  height: ${props => props.theme.space.xxs};
+`
+
+export const Code = css`
+  ${BaseSize}
+  font-family: ${props => props.theme.font.family.code};
+`
+
+export const InlineCode = styled.code`
+  ${Code}
+  color: ${props => props.theme.color.text.shade200};
+  background-color: ${props => props.theme.color.surface.shade200};
+  border-radius: ${props => props.theme.space.xs};
+  padding: ${props => props.theme.space.xxs};
+`
+export const BlockCode = styled.pre`
+  ${Code}
+  padding: ${props => props.theme.font.height.base};
+  border-radius: ${props => props.theme.space.xs};
+`
