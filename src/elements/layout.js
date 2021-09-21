@@ -87,6 +87,38 @@ export const Navigation = styled.nav`
           }
       `}
     `}
+
+    ${props =>
+    props.$social &&
+    css`
+      grid-column: span 8;
+      top: ${props => props.theme.font.height.base};
+      order: 2;
+
+      ${media.mobile`
+        order: 0;
+        grid-column: span 1;
+        top: ${props => props.theme.font.height.base};
+        flex-direction: column;
+        position: sticky;
+        align-self: start;
+        justify-self: start;
+        margin-bottom: ${props => props.theme.font.height.base};
+
+
+        & > p {
+          writing-mode: vertical-lr;
+        }
+      `}
+
+      ${media.desktop`
+        top: ${props => props.theme.space.m};
+      `}
+  
+      ${media.large`
+        top: ${props => props.theme.space.l};
+      `}
+    `}
 `
 
 export const Header = styled.header`
@@ -108,6 +140,12 @@ export const Header = styled.header`
     align-items: baseline;
     flex-direction: row;
     justify-content: space-between;
+
+    ${props =>
+      props.$center &&
+      css`
+        align-items: center;
+      `}
 
     & > *:nth-child(n) {
       align-self: auto;
@@ -164,4 +202,12 @@ export const Hero = styled(Section)`
   `}
 `
 
-export const Footer = styled.footer``
+export const Footer = styled.footer`
+  /* delete padding */
+  padding: 0;
+  margin-top: ${props => props.theme.space.l};
+
+  ${media.tablet`
+  margin-top: ${props => props.theme.space.xl};
+`}
+`

@@ -8,10 +8,11 @@ export const Icon = styled.span`
   vertical-align: top;
   line-height: 0;
   display: inline-block;
-  width: ${props => props.theme.font.height.base};
-  height: ${props => props.theme.font.height.base};
+
   ${StyledIconBase} {
     cursor: pointer;
+    width: ${props => props.theme.font.height.base};
+    height: ${props => props.theme.font.height.base};
   }
 
   ${props =>

@@ -1,8 +1,26 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import {
+  ChevronBack,
+  ChevronForward,
+  Link,
+  LogoFacebook,
+  LogoTwitter,
+} from "@styled-icons/ionicons-solid"
 
-import Bio from "../components/bio"
+import {
+  Button,
+  Card,
+  Footer,
+  H1,
+  Header,
+  Icon,
+  Navigation,
+  P,
+  Section,
+  Small,
+} from "../elements"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -17,47 +35,57 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-        </header>
-        <MDXRenderer>{post.body}</MDXRenderer>
-        <hr />
-        <footer>
-          <Bio />
-        </footer>
-      </article>
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={`/blog${previous.fields.slug}`} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={`/blog${next.fields.slug}`} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
+      <Section as="div">
+        <Navigation as="div" $social>
+          <P $ui>Udostępnij:</P>
+          <Button as="a">
+            <Icon $text>
+              <Link></Link>
+            </Icon>
+          </Button>
+          <Button as="a">
+            <Icon $text>
+              <LogoFacebook></LogoFacebook>
+            </Icon>
+          </Button>
+          <Button as="a">
+            <Icon $text>
+              <LogoTwitter></LogoTwitter>
+            </Icon>
+          </Button>
+        </Navigation>
+        <Card $read>
+          <header>
+            <Small $top>
+              {post.frontmatter.date} | {post.timeToRead} min. czytania
+            </Small>
+            <H1>{post.frontmatter.title}</H1>
+            <P $lead>{post.frontmatter.description}</P>
+          </header>
+          <MDXRenderer>{post.body}</MDXRenderer>
+        </Card>
+      </Section>
+      <Footer as="aside">
+        <Header $center as="nav">
+          {previous && (
+            <Button $text $first to={`/blog${previous.fields.slug}`} rel="prev">
+              <Icon>
+                <ChevronBack></ChevronBack>
+              </Icon>
+              {previous.frontmatter.title}
+            </Button>
+          )}
+          {next && (
+            <Button $text $last to={`/blog${next.fields.slug}`} rel="next">
+              {next.frontmatter.title}
+              <Icon>
+                <ChevronForward></ChevronForward>
+              </Icon>
+            </Button>
+          )}
+        </Header>
+      </Footer>
+      <hr />
     </Layout>
   )
 }
@@ -81,9 +109,10 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "DD MMMM, YYYY", locale: "pl")
         description
       }
+      timeToRead
     }
     previous: mdx(id: { eq: $previousPostId }) {
       fields {

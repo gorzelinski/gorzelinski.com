@@ -227,6 +227,18 @@ export const P = styled.p`
     css`
       ${UI}
     `}
+
+    ${props =>
+    props.$lead &&
+    css`
+      color: ${props => props.theme.color.text.shade200};
+      font-family: ${props => props.theme.font.family.heading};
+      ${BaseSize}
+
+      ${media.mobile`
+        ${HeadingXS}
+      `}
+    `}
 `
 
 export const Ul = styled.ul`
@@ -354,4 +366,5 @@ export const BlockCode = styled.pre`
   ${Code}
   padding: ${props => props.theme.font.height.base};
   border-radius: ${props => props.theme.space.xs};
+  overflow-x: auto;
 `
