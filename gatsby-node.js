@@ -6,7 +6,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const portfolioProject = path.resolve(`./src/templates/blog-post.js`)
+  const portfolioProject = path.resolve(`./src/templates/portfolio-project.js`)
 
   // Get all markdown blog posts sorted by date
   const resultPosts = await graphql(
@@ -129,6 +129,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   // Also explicitly define the Markdown frontmatter
   // This way the "MarkdownRemark" queries will return `null` even when no
   // blog posts are stored inside "content/blog" instead of returning an error
+  //TODO: Define project frontmatter fields
   createTypes(`
     type SiteSiteMetadata {
       author: Author

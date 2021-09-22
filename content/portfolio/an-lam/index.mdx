@@ -21,20 +21,25 @@ Zanim zacząłem pracę, spotkałem się z właścicielem firmy, aby zrozumieć 
 
 Przed przystąpieniem do projektowania zrobiłem gruntowny research. Przejrzałem mnóstwo stron konkurencji - od lokalnych szkutników po czartery jachtów. Podesłałem kilka linków właścicielowi, aby zorientować się w jego guście estetycznym.
 Przydatne także okazały się projekty marynistyczne na _dribble_ i _behance_. Z ich pomocą stworzyłem obszerny moodboard, do którego wracałem podczas projektowania.
+
 ![An-lam - moodboard](./an-lam-moodboard.jpg)
 
 ## Sitemap
 
 Witryna z założenia miała być prosta, dlatego mapa strony nie jest złożona. Cała witryna składa się ze strony głównej podzielonej na 5 sekcji i podstrony realizacje, gdzie zostały przedstawione wybrane renowacje i naprawy.
+
 ![An-lam - mapa strony](./an-lam-sitemap.png)
 
 ## Wireframes
 
 Projektowanie zacząłem od przygotowania kilku, zgrubnych szkiców każdej sekcji i podstrony realizacje. Projekt miał być minimalistyczny, dlatego stwierdziłem, że kartka i długopis są wystarczające.
+
 ![An-lam - szkic sekcji realizacje](./an-lam-realizacje-sekcja-szkic.jpg)
+
 ![An-lam - szkic podstrony realizacje](./an-lam-realizacje-podstrona-szkic.jpg)
 
 Na podstawie szkiców przygotowałem kilka próbnych układów, które podesłałem właścicielowi. Jego decyzje wpłynęły na dalsze prace.
+
 ![An-lam - przykładowe układy](./an-lam-uklady.jpg)
 
 ## Treści
@@ -47,7 +52,9 @@ Na potrzeby projektu stworzyłem prosty, ale formalny design system. Podzieliłe
 Podstawą każdego, takiego systemu są fonty i kolory.
 Zarówno mi jak i właścicielowi spodobał się klasyczny font - [Old Standard TT](https://fonts.google.com/specimen/Old+Standard+TT). Sparowałem go z prostym, geometrycznym fontem [Questrial](https://fonts.google.com/specimen/Questrial), dla uzyskania kontrastu. Myślę, że to połączenie dobrze podkreśla zamiłowanie właściciela do klasycznych rzeczy, jego wieloletnie doświadczenie i lokalny charakter firmy.
 Paleta kolorów składa się z odcieni granatu, bieli i szarości. Nawiązuje do morza, jachtów i minimalizmu. Dostępność strony była dla mnie również istotna, dlatego przetestowałem kontrast kolorów.
+
 ![An-lam - typografia](./an-lam-design-system-typografia.jpg)
+
 ![An-lam - kolory](./an-lam-design-system-kolory.jpg)
 
 ## Architektura Systemu
@@ -73,10 +80,12 @@ Gatsby nie wspiera testów jednostkowych w domyśle. Dodanie ich wymaga odpowied
 
 W projekcie wykorzystałem framework `Jest` wraz z biblioteką `React Testing Library`. Moim zdaniem, wymusza ona dobre praktyki, takie jak wyszukiwanie elementów po rolach ARIA.
 Tworzona strona nie posiadała zbyt wiele logiki, którą zazwyczaj obejmują takie testy. Mimo to, były one całkiem przydatne - wykorzystałem je do sprawdzenia niezbędnej treści na stronie.
+
 ![An-lam - test jednostkowy](./an-lam-unit-test.png)
 
 Poza testami jednostkowymi stworzyłem także kilka testów E2E. W tym celu, dodałem do projektu framework `Cypress` wraz z biblioteką `Cypress Testing Library`. Ujednoliciłem w ten sposób składnię wyszukiwania elementów DOM. Testy E2E wykorzystałem do symulacji zachowań użytkownika: przeglądania sekcji i podstron, klikania w poszczególne linki itp.
 Bardzo przydatna okazała się także biblioteka `cypress-axe`. Wykryła kilka problemów związanych z dostępnością strony i pomogła mi w ich usunięciu.
+
 ![An-lam - test e2e](./an-lam-e2e-test.gif)
 
 ## Github

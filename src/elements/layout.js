@@ -171,6 +171,11 @@ export const Grid = css`
   `}
 `
 
+export const Subgrid = css`
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+`
+
 export const Section = styled.section`
   margin-top: ${props => props.theme.space.xl};
   ${Grid}
@@ -188,6 +193,10 @@ export const Section = styled.section`
         margin-top: ${props => props.theme.space.xxxl};
       `}
     `}
+`
+
+export const Subsection = styled.section`
+  ${Subgrid}
 `
 
 export const Hero = styled(Section)`
