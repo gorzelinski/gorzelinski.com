@@ -231,8 +231,8 @@ export const P = styled.p`
     ${props =>
     props.$lead &&
     css`
-      color: ${props => props.theme.color.text.shade200};
-      font-family: ${props => props.theme.font.family.heading};
+      color: ${props => props.theme.color.text.shade500};
+      font-family: ${props => props.theme.font.family.body};
       ${BaseSize}
 
       ${media.mobile`

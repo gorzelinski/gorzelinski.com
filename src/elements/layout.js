@@ -200,12 +200,18 @@ export const Subsection = styled.section`
 `
 
 export const Hero = styled(Section)`
-  & > div {
+  & > * {
     grid-column: span 8;
   }
 
   ${media.tablet`
-    & > div {
+    & > * {
+      grid-column: span 7;
+    }
+  `}
+
+  ${media.desktop`
+    & > * {
       grid-column: span 6;
     }
   `}

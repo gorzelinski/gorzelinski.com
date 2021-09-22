@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import styled, { css, keyframes } from "styled-components"
 import { UI } from "./typography"
-import { remToFloat } from "../utils"
+import { remToFloat, media } from "../utils"
 
 export const Outline = css`
   &:focus {
@@ -172,6 +172,11 @@ export const Button = styled(Link)`
     css`
       justify-content: center;
       width: 100%;
+
+      ${media.mobile`
+        justify-content: space-between;
+        width: auto;
+      `}
     `}
 
   ${props =>
