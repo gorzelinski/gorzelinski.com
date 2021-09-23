@@ -1,24 +1,60 @@
 import styled, { css } from "styled-components"
 import { media } from "../utils"
 
-export const Half = css`
-  grid-column: span 8;
+export const TwoEights = css`
+  ${props =>
+    props.$twoeights &&
+    css`
+      grid-column: span 8;
 
+      ${media.tablet`
+      grid-column: span 2;
+    `}
+    `}
+`
+
+export const ThreeEights = css`
+  ${props =>
+    props.$threeeights &&
+    css`
+      grid-column: span 8;
+
+      ${media.tablet`
+        grid-column: span 3;
+      `}
+    `}
+`
+
+export const Half = css`
   ${props =>
     props.$half &&
     css`
+      grid-column: span 8;
+
       ${media.tablet`
         grid-column: span 4;
       `}
     `}
 `
 
-export const SixEights = css`
-  grid-column: span 8;
+export const FiveEights = css`
+  ${props =>
+    props.$fiveeights &&
+    css`
+      grid-column: span 8;
 
+      ${media.tablet`
+        grid-column: span 5;
+      `}
+    `}
+`
+
+export const SixEights = css`
   ${props =>
     props.$sixeights &&
     css`
+      grid-column: span 8;
+
       ${media.tablet`
         grid-column: span 6;
         ${props =>
@@ -32,11 +68,11 @@ export const SixEights = css`
 `
 
 export const SevenEights = css`
-  grid-column: span 8;
-
   ${props =>
     props.$seveneights &&
     css`
+      grid-column: span 8;
+
       ${media.tablet`
         grid-column-start: 2;
         grid-column-end: span 7;
@@ -53,7 +89,9 @@ export const Full = css`
 `
 
 export const Card = styled.article`
+  ${TwoEights}
   ${Half}
+  ${FiveEights}
   ${SixEights}
   ${SevenEights}
   ${Full}
@@ -64,7 +102,7 @@ export const Card = styled.article`
       text-align: center;
     `}
 
-    ${props =>
+  ${props =>
     props.$read &&
     css`
       grid-column: span 8;

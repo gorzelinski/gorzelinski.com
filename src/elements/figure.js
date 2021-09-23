@@ -2,10 +2,13 @@ import styled, { css } from "styled-components"
 
 import { media } from "../utils"
 import { Meta, TinySize, SmallSize } from "./typography"
-import { Half } from "./card"
+import { Half, TwoEights, ThreeEights, Full } from "./card"
 
 export const Figure = styled.figure`
+  ${TwoEights}
+  ${ThreeEights}
   ${Half}
+  ${Full}
   margin: 0;
 
   /* check if it's the best solution */

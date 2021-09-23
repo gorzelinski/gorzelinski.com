@@ -35,7 +35,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         description={project.frontmatter.description || project.excerpt}
       />
       <Section as="div">
-        <Figure as="div" $wide>
+        <Figure as="div" $wide $full>
           <GatsbyImage
             image={getImage(image.src)}
             alt={image.alt}
