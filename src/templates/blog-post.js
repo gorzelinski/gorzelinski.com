@@ -85,7 +85,6 @@ const BlogPostTemplate = ({ data, location }) => {
           )}
         </Header>
       </Footer>
-      <hr />
     </Layout>
   )
 }

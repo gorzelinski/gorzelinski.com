@@ -100,7 +100,6 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           )}
         </Header>
       </Footer>
-      <hr />
     </Layout>
   )
 }

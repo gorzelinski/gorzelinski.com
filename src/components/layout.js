@@ -6,7 +6,7 @@ import components from "../templates/mapping"
 import { Background, Wrapper } from "../elements"
 import { useTheme } from "../hooks"
 import Navbar from "./navbar"
-import Footer from "./footer"
+import Contact from "./contact"
 
 const Layout = ({ children }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
@@ -31,7 +31,7 @@ const Layout = ({ children }) => {
                 }}
               ></Navbar>
               <main>{children}</main>
-              <Footer></Footer>
+              <Contact></Contact>
             </Wrapper>
           </Background>
         </MDXProvider>

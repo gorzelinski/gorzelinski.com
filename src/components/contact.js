@@ -8,7 +8,7 @@ import {
 
 import { useBio } from "../hooks"
 import {
-  Section,
+  Footer,
   Card,
   H2,
   P,
@@ -19,16 +19,16 @@ import {
   Small,
 } from "../elements"
 
-const Footer = () => {
+const Contact = () => {
   const { bio } = useBio()
   const { name } = bio.site.siteMetadata?.author
   const { email, github, dribbble, twitter, facebook } =
     bio.site.siteMetadata?.social
 
   return (
-    <Section as="footer" id="kontakt" $lower>
+    <Footer $lower id="kontakt">
       <Card as="div" $sixeights $centered $textCentered>
-        <H2 $top>Przywitaj się!</H2>
+        <H2>Przywitaj się!</H2>
         <P>
           Jeżeli chcesz porozmawiać o wpółpracy lub na inny, interesujacy temat
           napisz mi wiadomość prywatną lub email. Nie kępuj się. Serio.
@@ -38,50 +38,54 @@ const Footer = () => {
             {email}
           </Button>
           <Navigation $flex>
-            <Icon
-              $text
+            <Button
               as="a"
               href={`https://github.com/${github}`}
               target="_blank"
               rel="noopener"
             >
-              <LogoGithub></LogoGithub>
-            </Icon>
-            <Icon
-              $text
+              <Icon $text>
+                <LogoGithub></LogoGithub>
+              </Icon>
+            </Button>
+            <Button
               as="a"
               href={`https://dribbble.com/${dribbble}`}
               target="_blank"
               rel="noopener"
             >
-              <LogoDribbble></LogoDribbble>
-            </Icon>
-            <Icon
-              $text
+              <Icon $text>
+                <LogoDribbble></LogoDribbble>
+              </Icon>
+            </Button>
+            <Button
               as="a"
               href={`https://twitter.com/${twitter}`}
               target="_blank"
               rel="noopener"
             >
-              <LogoTwitter></LogoTwitter>
-            </Icon>
-            <Icon
-              $text
+              <Icon $text>
+                <LogoTwitter></LogoTwitter>
+              </Icon>
+            </Button>
+            <Button
               as="a"
               href={`https://www.facebook.com/${facebook}`}
               target="_blank"
               rel="noopener"
             >
-              <LogoFacebook></LogoFacebook>
-            </Icon>
+              <Icon $text>
+                <LogoFacebook></LogoFacebook>
+              </Icon>
+            </Button>
           </Navigation>
         </Address>
         <Small $top $bottom>
           © {new Date().getFullYear()} | {name} stworzył z miłością tę stronę
         </Small>
       </Card>
-    </Section>
+    </Footer>
   )
 }
 
-export default Footer
+export default Contact
