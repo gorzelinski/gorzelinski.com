@@ -78,7 +78,8 @@ export const PrimaryColorStates = css`
   &:hover {
     color: ${props => props.theme.color.primary.shade200};
   }
-  &:focus {
+  &:focus,
+  :focus-visible {
     color: ${props => props.theme.color.primary.shade300};
   }
   &:active {
@@ -92,7 +93,8 @@ export const TextColorStates = css`
   &:hover {
     color: ${props => props.theme.color.text.shade400};
   }
-  &:focus {
+  &:focus,
+  :focus-visible {
     color: ${props => props.theme.color.text.shade300};
   }
   &:active {
@@ -102,14 +104,17 @@ export const TextColorStates = css`
 
 export const Nav = css`
   ${TextColorStates}
-  &:active {
-    /* transfer to active class */
+  &.active {
+    color: ${props => props.theme.color.text.base};
     border-bottom: ${props => props.theme.space.xxs} solid
       ${props => props.theme.color.text.base};
     padding-bottom: ${props =>
       remToFloat(props.theme.space.xs) -
       remToFloat(props.theme.space.xxs) +
       "rem"};
+  }
+  &.active-logo {
+    color: ${props => props.theme.color.text.base};
   }
 `
 

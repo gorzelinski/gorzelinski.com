@@ -12,16 +12,31 @@ const Navbar = ({ data }) => {
         <ThemeSwitcher data={data}></ThemeSwitcher>
       </Navigation>
       <Navigation $main aria-label="Główna">
-        <Button $nav to="/portfolio">
+        <Button
+          $nav
+          to="/portfolio"
+          activeClassName="active"
+          partiallyActive={true}
+        >
           Portfolio
         </Button>
-        <Button $nav to="/o-mnie">
+        <Button
+          $nav
+          to="/o-mnie"
+          activeClassName="active"
+          partiallyActive={true}
+        >
           O mnie
         </Button>
-        <Button $nav to="/blog">
+        <Button $nav to="/blog" activeClassName="active" partiallyActive={true}>
           Blog
         </Button>
-        <Button $primary to="#kontakt">
+        <Button
+          $primary
+          to="#kontakt"
+          activeClassName="active"
+          partiallyActive={true}
+        >
           Kontakt
         </Button>
       </Navigation>
