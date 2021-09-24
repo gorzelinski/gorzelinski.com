@@ -1,13 +1,8 @@
 import styled, { css } from "styled-components"
+
 import { media, remToFloat } from "../utils"
 
-export const Headings = css`
-  font-family: ${props => props.theme.font.family.heading};
-  font-weight: ${props => props.theme.font.weight.medium};
-  margin-top: ${props => remToFloat(props.theme.font.height.base) * 2 + "rem"};
-  margin-bottom: ${props => props.theme.font.height.base};
-  color: ${props => props.theme.color.text.base};
-
+export const MarginReset = css`
   ${props =>
     props.$top &&
     css`
@@ -19,6 +14,15 @@ export const Headings = css`
     css`
       margin-bottom: 0;
     `}
+`
+
+export const Headings = css`
+  font-family: ${props => props.theme.font.family.heading};
+  font-weight: ${props => props.theme.font.weight.medium};
+  margin-top: ${props => remToFloat(props.theme.font.height.base) * 2 + "rem"};
+  margin-bottom: ${props => props.theme.font.height.base};
+  color: ${props => props.theme.color.text.base};
+  ${MarginReset}
 `
 
 export const HeadingXXL = css`
@@ -85,11 +89,10 @@ export const Meta = css`
 `
 
 export const UI = css`
+  ${BaseSize}
   font-family: ${props => props.theme.font.family.heading};
   font-weight: ${props => props.theme.font.weight.medium};
-  font-size: ${props => props.theme.font.size.base};
   letter-spacing: ${props => props.theme.font.spacing.wide};
-  line-height: ${props => props.theme.font.height.base};
   color: ${props => props.theme.color.text.shade500};
   padding: 0;
   margin: 0;
@@ -120,6 +123,7 @@ export const List = css`
 
 export const ListItem = css`
   ${Body}
+  ${BaseSize}
   padding-left: 0;
   margin-bottom: ${props => props.theme.space.s};
   & > p {
@@ -232,7 +236,6 @@ export const P = styled.p`
     props.$lead &&
     css`
       color: ${props => props.theme.color.text.shade500};
-      font-family: ${props => props.theme.font.family.body};
       ${BaseSize}
 
       ${media.mobile`
@@ -264,17 +267,7 @@ export const Small = styled.small`
       remToFloat(props.theme.space.xs)) +
     "rem"};
 
-  ${props =>
-    props.$top &&
-    css`
-      margin-top: 0;
-    `}
-
-  ${props =>
-    props.$bottom &&
-    css`
-      margin-bottom: 0;
-    `}
+  ${MarginReset}
 
   ${media.mobile`
     ${SmallSize}
@@ -295,7 +288,8 @@ export const A = styled.a`
 
 export const Blockquote = styled.blockquote`
   padding: 0 0 0 ${props => props.theme.space.s};
-  margin-left: 0;
+  margin: ${props => props.theme.font.height.base}
+    ${props => props.theme.space.m} ${props => props.theme.font.height.base} 0;
   border-left: ${props => props.theme.space.xxs} solid
     ${props => props.theme.color.primary.base};
 
@@ -316,17 +310,18 @@ export const Blockquote = styled.blockquote`
   }
 
   ${media.tablet`
-    padding-left: ${props => props.theme.space.m};
-    margin-right: ${props => props.theme.space.m};
-    margin-bottom: ${props => props.theme.space.m};
-    margin-left: ${props => "-" + props.theme.space.m};
+    padding-left: ${props => props.theme.font.height.base};
+    margin: ${props => props.theme.font.height.base} ${props =>
+    props.theme.font.height.base} ${props =>
+    props.theme.font.height.base} ${props =>
+    "-" + props.theme.font.height.base};
   `}
 `
 
 export const Table = styled.table`
   ${Body}
   width: 100%;
-  margin-bottom: ${props => props.theme.space.m};
+  margin-bottom: ${props => props.theme.font.height.base};
   border-collapse: collapse;
   border-spacing: ${props => props.theme.space.xs};
 
