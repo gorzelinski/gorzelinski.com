@@ -1,9 +1,9 @@
 import { Link } from "gatsby"
 import styled, { css } from "styled-components"
 
-import { remToFloat, media } from "../utils"
-import { Rainbow } from "./animations"
+import { remToFloat, media } from "./utils"
 import { Outline, PrimaryColorStates, TextColorStates } from "./effects"
+import { Rainbow } from "./animations"
 import { Ui } from "./typography"
 
 export const Nav = css`

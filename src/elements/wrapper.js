@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { media } from "../utils"
+import { media } from "./utils"
 
 export const Background = styled.div`
   background-color: ${props => props.theme.color.background};

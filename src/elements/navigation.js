@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { media, remToFloat } from "../utils"
+import { media, remToFloat } from "./utils"
 
 export const Navigation = styled.nav`
   display: inline-flex;

@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { media } from "../utils"
+import { media } from "./utils"
 import { Meta, TinySize, SmallSize } from "./typography"
 import { Half, TwoEights, ThreeEights, Full } from "./card"
 

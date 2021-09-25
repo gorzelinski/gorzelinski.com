@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { media } from "../utils"
+import { media } from "./utils"
 import { Grid } from "./section"
 
 export const Footer = styled.footer`

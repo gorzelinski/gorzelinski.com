@@ -1,5 +1,5 @@
 import { css } from "styled-components"
-import { tokens } from "../themes/tokens"
+import { tokens } from "../../themes/tokens"
 
 const { screen } = tokens
 

@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
+import { media, remToFloat } from "./utils"
 import { Outline } from "./effects"
-import { media, remToFloat } from "../utils"
 
 export const MarginReset = css`
   ${props =>

@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components"
-import { media } from "../utils"
+
+import { media } from "./utils"
 
 export const Grid = css`
   display: grid;
