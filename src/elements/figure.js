@@ -1,7 +1,5 @@
 import styled, { css } from "styled-components"
 
-import { media } from "./utils"
-import { Meta, TinySize, SmallSize } from "./typography"
 import { half, twoEights, threeEights, full } from "./grid"
 
 export const Figure = styled.figure`
@@ -39,15 +37,4 @@ export const Figure = styled.figure`
     css`
       aspect-ratio: 21 / 9;
     `}
-`
-
-export const Figcaption = styled.figcaption`
-  ${Meta}
-  ${TinySize}
-  display: block;
-  margin-top: ${props => props.theme.space.s};
-
-  ${media.mobile`
-    ${SmallSize}
-  `}
 `

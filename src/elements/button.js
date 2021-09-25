@@ -4,7 +4,7 @@ import styled, { css } from "styled-components"
 import { remToFloat, media } from "./utils"
 import { outline, primaryColorStates, textColorStates } from "./effects"
 import { rainbow } from "./animations"
-import { Ui } from "./typography"
+import { ui } from "./typography"
 
 export const nav = css`
   ${textColorStates}
@@ -45,7 +45,7 @@ export const primary = css`
 `
 
 export const Button = styled(Link)`
-  ${Ui}
+  ${ui}
   ${outline}
   text-decoration: none;
   padding: ${props => props.theme.space.xs};
