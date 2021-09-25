@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components"
 import { StyledIconBase } from "@styled-icons/styled-icon"
-import { PrimaryColorStates, TextColorStates, Outline } from "./button"
+
+import { PrimaryColorStates, TextColorStates, Outline } from "./effects"
 
 export const Icon = styled.span`
   ${Outline}

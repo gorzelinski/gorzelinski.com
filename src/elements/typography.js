@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components"
 
+import { Outline } from "./effects"
 import { media, remToFloat } from "../utils"
 
 export const MarginReset = css`
@@ -88,7 +89,7 @@ export const Meta = css`
   color: ${props => props.theme.color.text.shade500};
 `
 
-export const UI = css`
+export const Ui = css`
   ${BaseSize}
   font-family: ${props => props.theme.font.family.heading};
   font-weight: ${props => props.theme.font.weight.medium};
@@ -229,7 +230,7 @@ export const P = styled.p`
   ${props =>
     props.$ui &&
     css`
-      ${UI}
+      ${Ui}
     `}
 
     ${props =>
@@ -275,6 +276,7 @@ export const Small = styled.small`
 `
 
 export const A = styled.a`
+  ${Outline}
   ${Link}
   text-decoration: underline;
   &:visited {
