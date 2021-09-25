@@ -1,21 +1,7 @@
 import styled, { css } from "styled-components"
 
-import { media, remToFloat } from "./utils"
+import { media, remToFloat, marginReset } from "./utils"
 import { Outline } from "./effects"
-
-export const MarginReset = css`
-  ${props =>
-    props.$top &&
-    css`
-      margin-top: 0;
-    `}
-
-  ${props =>
-    props.$bottom &&
-    css`
-      margin-bottom: 0;
-    `}
-`
 
 export const Headings = css`
   font-family: ${props => props.theme.font.family.heading};
@@ -23,7 +9,7 @@ export const Headings = css`
   margin-top: ${props => remToFloat(props.theme.font.height.base) * 2 + "rem"};
   margin-bottom: ${props => props.theme.font.height.base};
   color: ${props => props.theme.color.text.base};
-  ${MarginReset}
+  ${marginReset}
 `
 
 export const HeadingXXL = css`
@@ -268,7 +254,7 @@ export const Small = styled.small`
       remToFloat(props.theme.space.xs)) +
     "rem"};
 
-  ${MarginReset}
+  ${marginReset}
 
   ${media.mobile`
     ${SmallSize}
