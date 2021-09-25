@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 
 import { media } from "./utils"
 
-export const TwoEights = css`
+export const twoEights = css`
   ${props =>
     props.$twoeights &&
     css`
@@ -14,7 +14,7 @@ export const TwoEights = css`
     `}
 `
 
-export const ThreeEights = css`
+export const threeEights = css`
   ${props =>
     props.$threeeights &&
     css`
@@ -26,7 +26,7 @@ export const ThreeEights = css`
     `}
 `
 
-export const Half = css`
+export const half = css`
   ${props =>
     props.$half &&
     css`
@@ -38,7 +38,7 @@ export const Half = css`
     `}
 `
 
-export const FiveEights = css`
+export const fiveEights = css`
   ${props =>
     props.$fiveeights &&
     css`
@@ -50,7 +50,7 @@ export const FiveEights = css`
     `}
 `
 
-export const SixEights = css`
+export const sixEights = css`
   ${props =>
     props.$sixeights &&
     css`
@@ -68,7 +68,7 @@ export const SixEights = css`
     `}
 `
 
-export const SevenEights = css`
+export const sevenEights = css`
   ${props =>
     props.$seveneights &&
     css`
@@ -81,7 +81,7 @@ export const SevenEights = css`
     `}
 `
 
-export const Full = css`
+export const full = css`
   ${props =>
     props.$full &&
     css`
@@ -90,12 +90,12 @@ export const Full = css`
 `
 
 export const Card = styled.article`
-  ${TwoEights}
-  ${Half}
-  ${FiveEights}
-  ${SixEights}
-  ${SevenEights}
-  ${Full}
+  ${twoEights}
+  ${half}
+  ${fiveEights}
+  ${sixEights}
+  ${sevenEights}
+  ${full}
 
   ${props =>
     props.$textCentered &&
