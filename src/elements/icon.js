@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components"
 import { StyledIconBase } from "@styled-icons/styled-icon"
 
-import { PrimaryColorStates, TextColorStates, Outline } from "./effects"
+import { primaryColorStates, textColorStates, outline } from "./effects"
 
 export const Icon = styled.span`
-  ${Outline}
+  ${outline}
 
   vertical-align: top;
   line-height: 0;
@@ -19,12 +19,12 @@ export const Icon = styled.span`
   ${props =>
     props.$primary &&
     css`
-      ${PrimaryColorStates}
+      ${primaryColorStates}
     `}
 
   ${props =>
     props.$text &&
     css`
-      ${TextColorStates}
+      ${textColorStates}
     `}
 `

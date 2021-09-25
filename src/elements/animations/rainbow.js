@@ -1,12 +1,12 @@
 import { keyframes, css } from "styled-components"
 
-export const Glowing = keyframes`
+export const glowing = keyframes`
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 `
 
-export const Rainbow = css`
+export const rainbow = css`
   &:before {
     content: "";
     background: linear-gradient(
@@ -29,7 +29,7 @@ export const Rainbow = css`
     filter: blur(5px);
     width: calc(100% + 2px);
     height: calc(100% + 2px);
-    animation: ${Glowing} 20s linear infinite;
+    animation: ${glowing} 20s linear infinite;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     border-radius: ${props => props.theme.space.xs};

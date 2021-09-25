@@ -1,6 +1,6 @@
 import { css } from "styled-components"
 
-export const Outline = css`
+export const outline = css`
   &:focus {
     outline: ${props => props.theme.space.xxs} solid
       ${props => props.theme.color.primary.base};

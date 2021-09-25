@@ -2,12 +2,12 @@ import { Link } from "gatsby"
 import styled, { css } from "styled-components"
 
 import { remToFloat, media } from "./utils"
-import { Outline, PrimaryColorStates, TextColorStates } from "./effects"
-import { Rainbow } from "./animations"
+import { outline, primaryColorStates, textColorStates } from "./effects"
+import { rainbow } from "./animations"
 import { Ui } from "./typography"
 
-export const Nav = css`
-  ${TextColorStates}
+export const nav = css`
+  ${textColorStates}
   &.active {
     color: ${props => props.theme.color.text.base};
     border-bottom: ${props => props.theme.space.xxs} solid
@@ -22,11 +22,11 @@ export const Nav = css`
   }
 `
 
-export const Text = css`
-  ${PrimaryColorStates}
+export const text = css`
+  ${primaryColorStates}
 `
-export const Primary = css`
-  ${Rainbow}
+export const primary = css`
+  ${rainbow}
   z-index: 0;
   position: relative;
   color: ${props => props.theme.color.text.shade600};
@@ -46,7 +46,7 @@ export const Primary = css`
 
 export const Button = styled(Link)`
   ${Ui}
-  ${Outline}
+  ${outline}
   text-decoration: none;
   padding: ${props => props.theme.space.xs};
   border: 0;
@@ -91,18 +91,18 @@ export const Button = styled(Link)`
   ${props =>
     props.$nav &&
     css`
-      ${Nav}
+      ${nav}
     `}
 
   ${props =>
     props.$text &&
     css`
-      ${Text}
+      ${text}
     `}
 
   ${props =>
     props.$primary &&
     css`
-      ${Primary}
+      ${primary}
     `}
 `

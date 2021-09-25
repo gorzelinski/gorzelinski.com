@@ -1,6 +1,6 @@
 import { css } from "styled-components"
 
-export const PrimaryColorStates = css`
+export const primaryColorStates = css`
   color: ${props => props.theme.color.primary.base};
 
   &:hover {
@@ -15,7 +15,7 @@ export const PrimaryColorStates = css`
   }
 `
 
-export const TextColorStates = css`
+export const textColorStates = css`
   color: ${props => props.theme.color.text.shade500};
 
   &:hover {

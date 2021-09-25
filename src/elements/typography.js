@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
 import { media, remToFloat, marginReset } from "./utils"
-import { Outline } from "./effects"
+import { outline } from "./effects"
 
 export const Headings = css`
   font-family: ${props => props.theme.font.family.heading};
@@ -262,7 +262,7 @@ export const Small = styled.small`
 `
 
 export const A = styled.a`
-  ${Outline}
+  ${outline}
   ${Link}
   text-decoration: underline;
   &:visited {
