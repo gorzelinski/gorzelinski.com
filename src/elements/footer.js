@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components"
 
 import { media } from "./utils"
-import { Grid } from "./section"
+import { grid } from "./grid"
 
 export const Footer = styled.footer`
   /* delete padding */
-  ${Grid}
+  ${grid}
   padding: 0;
   margin-top: ${props => props.theme.space.l};
   border-top: ${props => props.theme.space.xxs} solid

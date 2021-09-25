@@ -1,29 +1,11 @@
 import styled, { css } from "styled-components"
 
 import { media } from "./utils"
-
-export const Grid = css`
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: ${props => props.theme.space.l} ${props => props.theme.space.s};
-
-  ${media.tablet`
-    gap: ${props => props.theme.space.l} ${props => props.theme.space.m};
-  `}
-
-  ${media.desktop`
-    gap: ${props => props.theme.space.l} ${props => props.theme.space.l};
-  `}
-`
-
-export const Subgrid = css`
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-`
+import { grid, subGrid } from "./grid"
 
 export const Section = styled.section`
   margin-top: ${props => props.theme.space.xl};
-  ${Grid}
+  ${grid}
 
   ${media.tablet`
     margin-top: ${props => props.theme.space.xxl};
@@ -41,7 +23,7 @@ export const Section = styled.section`
 `
 
 export const Subsection = styled.section`
-  ${Subgrid}
+  ${subGrid}
 `
 
 export const Hero = styled(Section)`

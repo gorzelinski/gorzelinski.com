@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 
 import { media } from "./utils"
 import { Meta, TinySize, SmallSize } from "./typography"
-import { half, twoEights, threeEights, full } from "./card"
+import { half, twoEights, threeEights, full } from "./grid"
 
 export const Figure = styled.figure`
   ${twoEights}
