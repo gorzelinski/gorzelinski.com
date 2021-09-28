@@ -11,13 +11,13 @@ export const Wrapper = styled.div`
   ${props =>
     props.global &&
     css`
-      padding: ${props => props.theme.space.xl} ${props => props.theme.space.m};
+      padding: ${props => props.theme.space.l} ${props => props.theme.space.m};
       max-width: 100%;
 
       ${media.tablet`
         margin: 0;
-        padding: ${props => props.theme.space.xxl} ${props =>
-        props.theme.space.xl};
+        padding: ${props => props.theme.space.xl} ${props =>
+        props.theme.space.l};
       `}
 
       ${media.desktop`
