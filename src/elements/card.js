@@ -41,12 +41,12 @@ export const Card = styled.article`
 
       ${media.desktop`
         grid-column-start: 2;
-        grid-column-end: span 4;
+        grid-column-end: span 5;
       `}
 
       ${media.large`
         grid-column-start: 2;
-        grid-column-end: span 3;
+        grid-column-end: span 4;
       `}
     `}
 `
