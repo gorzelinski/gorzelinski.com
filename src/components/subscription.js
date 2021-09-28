@@ -4,7 +4,7 @@ import { Button, Card, Form, H3, Input, P, Section } from "../elements"
 const Subscription = () => {
   return (
     <Section $border $higher>
-      <Card $sixeights $centered $textCentered>
+      <Card $sixEights $centered $textCentered>
         <H3 $top>Chcesz być na bierząco?</H3>
         <P>
           Subskrybuj, aby otrzymywać powiadomienia o moich najnowszych

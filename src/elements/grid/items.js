@@ -4,7 +4,7 @@ import { media } from "../utils"
 
 export const twoEights = css`
   ${props =>
-    props.$twoeights &&
+    props.$twoEights &&
     css`
       grid-column: span 8;
 
@@ -16,7 +16,7 @@ export const twoEights = css`
 
 export const threeEights = css`
   ${props =>
-    props.$threeeights &&
+    props.$threeEights &&
     css`
       grid-column: span 8;
 
@@ -40,7 +40,7 @@ export const half = css`
 
 export const fiveEights = css`
   ${props =>
-    props.$fiveeights &&
+    props.$fiveEights &&
     css`
       grid-column: span 8;
 
@@ -52,7 +52,7 @@ export const fiveEights = css`
 
 export const sixEights = css`
   ${props =>
-    props.$sixeights &&
+    props.$sixEights &&
     css`
       grid-column: span 8;
 
@@ -70,7 +70,7 @@ export const sixEights = css`
 
 export const sevenEights = css`
   ${props =>
-    props.$seveneights &&
+    props.$sevenEights &&
     css`
       grid-column: span 8;
 

@@ -13,13 +13,13 @@ const NotFoundPage = ({ data = {} }) => {
     <Layout>
       <Seo title="404: Nie znaleziono" />
       <Section>
-        <Figure $threeeights as="div">
+        <Figure $threeEights as="div">
           <GatsbyImage
             image={image}
             alt="Marcin najman w niebieskiej kurtce"
           ></GatsbyImage>
         </Figure>
-        <Card $fiveeights as="div">
+        <Card $fiveEights as="div">
           <H2 as="h1" $top>
             Błąd 404: <br /> Ludzie, tu nic nie ma!
           </H2>
