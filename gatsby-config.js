@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gorzeliński - tworzę rzeczy w internecie`,
+    title: `Gorzeliński`,
     author: {
       name: `Mateusz Gorzeliński`,
       summary: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Et

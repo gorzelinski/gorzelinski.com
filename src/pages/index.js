@@ -16,7 +16,7 @@ const Index = () => {
 
   return (
     <Layout>
-      <Seo title="Strona główna"></Seo>
+      <Seo title="Tworzę rzeczy w internecie"></Seo>
       <Landing></Landing>
       <Featured
         data={{
