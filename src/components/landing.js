@@ -12,11 +12,9 @@ const Landing = () => {
           rzeczy w internecie
         </H1>
         <P $lead>
-          The purpose of lorem ipsum is to create a natural looking block of
-          text (sentence, paragraph, page, etc.) that doesn't distract from the
-          layout. A practice not without controversy, laying out pages with
-          meaningless filler text can be very useful when the focus is meant to
-          be on design, not content.
+          Pomagam małym firmom i jednostkom wkroczyć w XXI wiek. Tworzę dla nich
+          wydajne i spersonalizowane strony internetowe, które dbają o
+          profesjonalny wizerunek online.
         </P>
         <Button $primary $grow to="#kontakt">
           Stwórzmy coś razem
