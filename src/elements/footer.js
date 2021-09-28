@@ -8,8 +8,6 @@ export const Footer = styled.footer`
   ${grid}
   padding: 0;
   margin-top: ${props => props.theme.space.l};
-  border-top: ${props => props.theme.space.xxs} solid
-    ${props => props.theme.color.surface.shade300};
 
   ${media.tablet`
     margin-top: ${props => props.theme.space.xl};

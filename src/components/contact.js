@@ -28,7 +28,7 @@ const Contact = () => {
   return (
     <Footer $lower id="kontakt">
       <Card as="div" $sixeights $centered $textCentered>
-        <H2>Przywitaj się!</H2>
+        <H2 $top>Przywitaj się!</H2>
         <P>
           Jeżeli chcesz porozmawiać o wpółpracy lub na inny, interesujacy temat
           napisz mi wiadomość prywatną lub email. Nie kępuj się. Serio.

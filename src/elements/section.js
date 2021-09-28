@@ -12,6 +12,16 @@ export const Section = styled.section`
   `}
 
   ${props =>
+    props.$higher &&
+    css`
+      margin-top: ${props => props.theme.space.l};
+
+      ${media.tablet`
+        margin-top: ${props => props.theme.space.xl};
+      `}
+    `}
+
+  ${props =>
     props.$lower &&
     css`
       margin-top: ${props => props.theme.space.xxl};
@@ -19,6 +29,16 @@ export const Section = styled.section`
       ${media.tablet`
         margin-top: ${props => props.theme.space.xxxl};
       `}
+    `}
+
+    ${props =>
+    props.$border &&
+    css`
+      padding: ${props => props.theme.space.l} 0;
+      border-top: ${props => props.theme.space.xxs} solid
+        ${props => props.theme.color.surface.shade200};
+      border-bottom: ${props => props.theme.space.xxs} solid
+        ${props => props.theme.color.surface.shade200};
     `}
 `
 

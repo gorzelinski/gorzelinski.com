@@ -6,6 +6,7 @@ import components from "../templates/mapping"
 import { Background, Wrapper } from "../elements"
 import { useTheme } from "../hooks"
 import Navbar from "./navbar"
+import Subscription from "./subscription"
 import Contact from "./contact"
 
 const Layout = ({ children }) => {
@@ -31,6 +32,7 @@ const Layout = ({ children }) => {
                 }}
               ></Navbar>
               <main>{children}</main>
+              <Subscription></Subscription>
               <Contact></Contact>
             </Wrapper>
           </Background>
