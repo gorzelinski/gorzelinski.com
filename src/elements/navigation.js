@@ -15,10 +15,6 @@ export const Navigation = styled.nav`
   ${media.desktop`
     gap: ${props => props.theme.space.m};
   `}
-  
-  ${media.large`
-    gap: ${props => props.theme.space.l};
-  `}
 
   ${props =>
     props.$flex &&
@@ -82,10 +78,6 @@ export const Navigation = styled.nav`
 
       ${media.desktop`
         top: ${props => props.theme.space.m};
-      `}
-  
-      ${media.large`
-        top: ${props => props.theme.space.l};
       `}
     `}
 `
