@@ -20,3 +20,9 @@ export const subGrid = css`
   display: grid;
   grid-template-columns: repeat(8, 1fr);
 `
+
+export const article = css`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(1ch, 75ch) minmax(0, 1fr);
+  column-gap: 0;
+`

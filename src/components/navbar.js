@@ -13,6 +13,7 @@ const Navbar = ({ data }) => {
       </Navigation>
       <Navigation $main aria-label="Główna">
         <Button
+          $mobile
           $nav
           to="/portfolio"
           activeClassName="active"
@@ -21,6 +22,7 @@ const Navbar = ({ data }) => {
           Portfolio
         </Button>
         <Button
+          $mobile
           $nav
           to="/o-mnie"
           activeClassName="active"
@@ -28,10 +30,17 @@ const Navbar = ({ data }) => {
         >
           O mnie
         </Button>
-        <Button $nav to="/blog" activeClassName="active" partiallyActive={true}>
+        <Button
+          $mobile
+          $nav
+          to="/blog"
+          activeClassName="active"
+          partiallyActive={true}
+        >
           Blog
         </Button>
         <Button
+          $mobile
           $primary
           to="#kontakt"
           activeClassName="active"

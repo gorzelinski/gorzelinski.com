@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { media, remToFloat } from "./utils"
+import { media } from "./utils"
 
 export const Navigation = styled.nav`
   display: inline-flex;
@@ -9,7 +9,7 @@ export const Navigation = styled.nav`
   gap: ${props => props.theme.space.xs};
 
   ${media.tablet`
-    gap: ${props => props.theme.space.xs};
+    gap: ${props => props.theme.space.s};
   `}
 
   ${media.desktop`
@@ -21,63 +21,34 @@ export const Navigation = styled.nav`
     css`
       display: flex;
     `}
+
+  ${props =>
+    props.$full &&
+    css`
+      grid-column: span 8;
+    `}
   
   ${props =>
     props.$main &&
     css`
-      justify-content: flex-end;
-      height: ${props =>
-        remToFloat(props.theme.font.height.base) +
-        remToFloat(props.theme.space.xs) * 2 +
-        "rem"};
-      overflow-y: hidden;
-
-      & > a:not(:first-child, :last-child) {
-        display: none;
-      }
-
-      ${media.tiny`
-        & > a:not(:first-child, :last-child) {
-          display: inline-flex;
-        }
-        & > a:nth-child(2) {
-          display: none;
-        }
-      `}
+      background-color: ${props => props.theme.color.background};
+      border-top: 1px solid ${props => props.theme.color.surface.shade200};
+      padding: ${props => props.theme.space.xs};
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      justify-content: space-evenly;
 
       ${media.mobile`
-        overflow-y: visible;
-        & > a:nth-child(2) {
-            display: inline-flex;
-          }
-      `}
-    `}
-
-    ${props =>
-    props.$social &&
-    css`
-      grid-column: span 8;
-      top: ${props => props.theme.font.height.base};
-      order: 2;
-
-      ${media.mobile`
-        order: 0;
-        grid-column: span 1;
-        top: ${props => props.theme.font.height.base};
-        flex-direction: column;
-        position: sticky;
-        align-self: start;
-        justify-self: start;
-        margin-bottom: ${props => props.theme.font.height.base};
-
-
-        & > p {
-          writing-mode: vertical-lr;
-        }
-      `}
-
-      ${media.desktop`
-        top: ${props => props.theme.space.m};
+        background-color: transparent;
+        border-top: 0;
+        opacity: 1;
+        padding: 0;
+        position: static;
+        z-index: 0;
+        justify-content: flex-end;
       `}
     `}
 `

@@ -5,6 +5,7 @@ import { remToFloat, media } from "./utils"
 import { outline, primaryColorStates, textColorStates } from "./effects"
 import { rainbow } from "./animations"
 import { ui } from "./typography"
+import { tinySize, baseSize } from "./typography/sizes"
 
 export const nav = css`
   ${textColorStates}
@@ -85,6 +86,16 @@ export const Button = styled(Link)`
       ${media.mobile`
         justify-content: space-between;
         width: auto;
+      `}
+    `}
+
+    ${props =>
+    props.$mobile &&
+    css`
+      ${tinySize}
+
+      ${media.mobile`
+        ${baseSize}
       `}
     `}
 
