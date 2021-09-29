@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
 import { media } from "./utils"
-import { grid, subGrid } from "./grid"
+import { article, grid, subGrid } from "./grid"
 
 export const Section = styled.section`
   margin-top: ${props => props.theme.space.xl};
@@ -62,4 +62,12 @@ export const Hero = styled(Section)`
       grid-column: span 6;
     }
   `}
+`
+
+export const Article = styled(Section)`
+  ${article}
+
+  & > * {
+    grid-column: 2;
+  }
 `

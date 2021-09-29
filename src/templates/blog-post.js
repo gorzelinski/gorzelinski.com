@@ -10,15 +10,17 @@ import {
 } from "@styled-icons/ionicons-solid"
 
 import {
+  Article,
   Button,
   Card,
   Footer,
   H1,
+  H3,
   Header,
+  Hr,
   Icon,
   Navigation,
   P,
-  Section,
   Small,
 } from "../elements"
 import Layout from "../components/layout"
@@ -35,26 +37,8 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <Section as="div">
-        <Navigation as="div" $social>
-          <P $ui>Udostępnij:</P>
-          <Button as="a">
-            <Icon $text>
-              <Link></Link>
-            </Icon>
-          </Button>
-          <Button as="a">
-            <Icon $text>
-              <LogoFacebook></LogoFacebook>
-            </Icon>
-          </Button>
-          <Button as="a">
-            <Icon $text>
-              <LogoTwitter></LogoTwitter>
-            </Icon>
-          </Button>
-        </Navigation>
-        <Card $read>
+      <Article>
+        <Card>
           <header>
             <Small $top>
               {post.frontmatter.date} | {post.timeToRead} min. czytania
@@ -63,28 +47,57 @@ const BlogPostTemplate = ({ data, location }) => {
             <P $lead>{post.frontmatter.description}</P>
           </header>
           <MDXRenderer>{post.body}</MDXRenderer>
+          <Footer>
+            <Navigation $full>
+              <P $ui>Udostępnij:</P>
+              <Button as="a">
+                <Icon $text>
+                  <Link></Link>
+                </Icon>
+              </Button>
+              <Button as="a">
+                <Icon $text>
+                  <LogoFacebook></LogoFacebook>
+                </Icon>
+              </Button>
+              <Button as="a">
+                <Icon $text>
+                  <LogoTwitter></LogoTwitter>
+                </Icon>
+              </Button>
+            </Navigation>
+          </Footer>
+          <Hr />
         </Card>
-      </Section>
-      <Footer as="aside">
-        <Header $center as="nav">
-          {previous && (
-            <Button $text $first to={`/blog${previous.fields.slug}`} rel="prev">
-              <Icon>
-                <ChevronBack></ChevronBack>
-              </Icon>
-              {previous.frontmatter.title}
-            </Button>
-          )}
-          {next && (
-            <Button $text $last to={`/blog${next.fields.slug}`} rel="next">
-              {next.frontmatter.title}
-              <Icon>
-                <ChevronForward></ChevronForward>
-              </Icon>
-            </Button>
-          )}
-        </Header>
-      </Footer>
+        <Card>
+          <Header>
+            <H3 $top>Przeczytaj także:</H3>
+          </Header>
+          <Header $center as="nav">
+            {previous && (
+              <Button
+                $text
+                $first
+                to={`/blog${previous.fields.slug}`}
+                rel="prev"
+              >
+                <Icon>
+                  <ChevronBack></ChevronBack>
+                </Icon>
+                {previous.frontmatter.title}
+              </Button>
+            )}
+            {next && (
+              <Button $text $last to={`/blog${next.fields.slug}`} rel="next">
+                {next.frontmatter.title}
+                <Icon>
+                  <ChevronForward></ChevronForward>
+                </Icon>
+              </Button>
+            )}
+          </Header>
+        </Card>
+      </Article>
     </Layout>
   )
 }
