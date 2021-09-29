@@ -42,7 +42,7 @@ export const tokens = {
     desktop: "1280px",
     tablet: "768px",
     mobile: "480px",
-    tiny: "320px",
+    tiny: "321px",
   },
   shadow: {
     neumorphism:
