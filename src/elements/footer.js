@@ -7,11 +7,6 @@ export const Footer = styled.footer`
   /* delete padding */
   ${grid}
   padding: 0;
-  margin-top: ${props => props.theme.space.l};
-
-  ${media.tablet`
-    margin-top: ${props => props.theme.space.xl};
-  `}
 
   ${props =>
     props.$lower &&

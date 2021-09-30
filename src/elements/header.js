@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 
 import { media } from "./utils"
 
@@ -21,12 +21,6 @@ export const Header = styled.header`
     align-items: baseline;
     flex-direction: row;
     justify-content: space-between;
-
-    ${props =>
-      props.$center &&
-      css`
-        align-items: center;
-      `}
 
     & > *:nth-child(n) {
       align-self: auto;

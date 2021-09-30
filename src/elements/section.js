@@ -3,9 +3,8 @@ import styled, { css } from "styled-components"
 import { media } from "./utils"
 import { article, grid, subGrid } from "./grid"
 
-export const Section = styled.section`
+export const marginTop = css`
   margin-top: ${props => props.theme.space.xl};
-  ${grid}
 
   ${media.tablet`
     margin-top: ${props => props.theme.space.xxl};
@@ -30,8 +29,13 @@ export const Section = styled.section`
         margin-top: ${props => props.theme.space.xxxl};
       `}
     `}
+`
 
-    ${props =>
+export const Section = styled.section`
+  ${grid}
+  ${marginTop}
+
+  ${props =>
     props.$border &&
     css`
       padding: ${props => props.theme.space.l} 0;
@@ -64,10 +68,29 @@ export const Hero = styled(Section)`
   `}
 `
 
-export const Article = styled(Section)`
+export const Article = styled.article`
   ${article}
+  ${marginTop}
 
   & > * {
     grid-column: 2;
   }
+`
+
+export const Aside = styled.aside`
+  ${props =>
+    props.$article &&
+    css`
+      ${article}
+
+      margin-top: ${props => props.theme.space.l};
+
+      ${media.tablet`
+        margin-top: ${props => props.theme.space.xl};
+      `}
+
+      & > * {
+        grid-column: 2;
+      }
+    `}
 `

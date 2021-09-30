@@ -27,13 +27,20 @@ export const Navigation = styled.nav`
     css`
       grid-column: span 8;
     `}
+
+  ${props =>
+    props.$spaceBetween &&
+    css`
+      justify-content: space-between;
+    `}
   
   ${props =>
     props.$main &&
     css`
       background-color: ${props => props.theme.color.background};
       border-top: 1px solid ${props => props.theme.color.surface.shade200};
-      padding: ${props => props.theme.space.xs};
+      padding: calc(${props => props.theme.space.xs} - 1px)
+        ${props => props.theme.space.xs} ${props => props.theme.space.xs};
       position: fixed;
       bottom: 0;
       left: 0;
