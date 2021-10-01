@@ -80,7 +80,8 @@ const Contact = () => {
           </Navigation>
         </Address>
         <Small $top $bottom>
-          © {new Date().getFullYear()} | Sam z miłością stworzyłem tę stronę
+          © {new Date().getFullYear()} Gorzeliński | Sam z miłością stworzyłem
+          tę stronę
         </Small>
       </Card>
     </Footer>
