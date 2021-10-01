@@ -16,6 +16,7 @@ import {
   Footer,
   H1,
   H3,
+  Hr,
   Icon,
   Navigation,
   P,
@@ -45,8 +46,9 @@ const BlogPostTemplate = ({ data, location }) => {
         </header>
         <div>
           <MDXRenderer>{post.body}</MDXRenderer>
+          <Hr />
         </div>
-        <Footer>
+        <Footer $top>
           <Navigation $full as="div">
             <P $ui>Udostępnij:</P>
             <Button as="a">
@@ -67,7 +69,7 @@ const BlogPostTemplate = ({ data, location }) => {
           </Navigation>
         </Footer>
       </Article>
-      <Aside $article>
+      <Aside $higher $article>
         <H3 $top>Przeczytaj także:</H3>
         <Navigation $spaceBetween>
           {previous && (

@@ -1,9 +1,9 @@
 import React from "react"
-import { Button, Card, Form, H3, Input, P, Section } from "../elements"
+import { Aside, Button, Card, Form, H3, Input, P } from "../elements"
 
 const Subscription = () => {
   return (
-    <Section as="aside" $border $higher>
+    <Aside $border $higher>
       <Card as="div" $sixEights $centered $textCentered>
         <H3 as="h2" $top>
           Chcesz być na bierząco?
@@ -29,7 +29,7 @@ const Subscription = () => {
           </Button>
         </Form>
       </Card>
-    </Section>
+    </Aside>
   )
 }
 
