@@ -6,16 +6,17 @@ import { ChevronBack, ChevronForward } from "@styled-icons/ionicons-solid"
 
 import {
   A,
+  Article,
+  Aside,
   Button,
   Card,
   Figure,
-  Footer,
   H1,
+  H3,
   H6,
-  Header,
   Icon,
+  Navigation,
   P,
-  Section,
   Small,
   Subsection,
 } from "../elements"
@@ -34,49 +35,50 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         title={project.frontmatter.title}
         description={project.frontmatter.description || project.excerpt}
       />
-      <Section as="div">
-        <Figure as="div" $wide $full>
+      <Article>
+        <Figure $wide>
           <GatsbyImage
             image={getImage(image.src)}
             alt={image.alt}
           ></GatsbyImage>
         </Figure>
-        <Card $read>
-          <header>
-            <H1 $top>{project.frontmatter.title}</H1>
-            <P $lead>{project.frontmatter.description}</P>
-            <Subsection as="div">
-              <Card $half as="div">
-                <Small $top>Data:</Small>
-                <H6 as="h3">{project.frontmatter.date}</H6>
-              </Card>
-              <Card $half as="div">
-                <Small $top>Klient:</Small>
-                <H6 as="h3">{project.frontmatter.client}</H6>
-              </Card>
-              <Card $half as="div">
-                <Small $top>Moja rola:</Small>
-                <H6 as="h3">{project.frontmatter.myRole}</H6>
-              </Card>
-              <Card $half as="div">
-                <Small $top>Narzędzia:</Small>
-                <H6 as="h3">{project.frontmatter.tools}</H6>
-              </Card>
-              <Card $half as="div">
-                <Small $top>Live: </Small>
-                <H6 as="h3">
-                  <A href={project.frontmatter.live}>
-                    {project.frontmatter.live}
-                  </A>
-                </H6>
-              </Card>
-            </Subsection>
-          </header>
+        <header>
+          <H1>{project.frontmatter.title}</H1>
+          <P $lead>{project.frontmatter.description}</P>
+          <Subsection as="div">
+            <Card $half as="div">
+              <Small $top>Data:</Small>
+              <H6 as="h3">{project.frontmatter.date}</H6>
+            </Card>
+            <Card $half as="div">
+              <Small $top>Klient:</Small>
+              <H6 as="h3">{project.frontmatter.client}</H6>
+            </Card>
+            <Card $half as="div">
+              <Small $top>Moja rola:</Small>
+              <H6 as="h3">{project.frontmatter.myRole}</H6>
+            </Card>
+            <Card $half as="div">
+              <Small $top>Narzędzia:</Small>
+              <H6 as="h3">{project.frontmatter.tools}</H6>
+            </Card>
+            <Card $full as="div">
+              <Small $top>Live: </Small>
+              <H6 as="h3">
+                <A href={project.frontmatter.live}>
+                  {project.frontmatter.live}
+                </A>
+              </H6>
+            </Card>
+          </Subsection>
+        </header>
+        <div>
           <MDXRenderer>{project.body}</MDXRenderer>
-        </Card>
-      </Section>
-      <Footer as="aside">
-        <Header $center as="nav">
+        </div>
+      </Article>
+      <Aside $higher $article>
+        <H3 $top>Sprawdź także:</H3>
+        <Navigation $spaceBetween>
           {previous && (
             <Button
               $text
@@ -98,8 +100,8 @@ const PortfolioProjectTemplate = ({ data, location }) => {
               </Icon>
             </Button>
           )}
-        </Header>
-      </Footer>
+        </Navigation>
+      </Aside>
     </Layout>
   )
 }

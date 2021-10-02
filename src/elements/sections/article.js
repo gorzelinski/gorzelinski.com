@@ -10,4 +10,9 @@ export const Article = styled.article`
   & > * {
     grid-column: 2;
   }
+
+  & > figure {
+    grid-column-start: 1;
+    grid-column-end: span 3;
+  }
 `
