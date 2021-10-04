@@ -14,6 +14,7 @@ import {
   H1,
   H3,
   H6,
+  Hr,
   Icon,
   Navigation,
   P,
@@ -46,24 +47,24 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <H1>{project.frontmatter.title}</H1>
           <P $lead>{project.frontmatter.description}</P>
           <Subsection as="div">
-            <Card $half as="div">
+            <Card as="div" $half>
               <Small $top>Data:</Small>
               <H6 as="h3">{project.frontmatter.date}</H6>
             </Card>
-            <Card $half as="div">
+            <Card as="div" $half>
               <Small $top>Klient:</Small>
               <H6 as="h3">{project.frontmatter.client}</H6>
             </Card>
-            <Card $half as="div">
+            <Card as="div" $half>
               <Small $top>Moja rola:</Small>
               <H6 as="h3">{project.frontmatter.myRole}</H6>
             </Card>
-            <Card $half as="div">
+            <Card as="div" $half>
               <Small $top>Narzędzia:</Small>
               <H6 as="h3">{project.frontmatter.tools}</H6>
             </Card>
-            <Card $full as="div">
-              <Small $top>Live: </Small>
+            <Card as="div" $full>
+              <Small $top>Live:</Small>
               <H6 as="h3">
                 <A href={project.frontmatter.live}>
                   {project.frontmatter.live}
@@ -74,6 +75,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         </header>
         <div>
           <MDXRenderer>{project.body}</MDXRenderer>
+          <Hr />
         </div>
       </Article>
       <Aside $higher $article>
