@@ -89,7 +89,7 @@ export const Button = styled(Link)`
       `}
     `}
 
-    ${props =>
+  ${props =>
     props.$mobile &&
     css`
       ${tinySize}
