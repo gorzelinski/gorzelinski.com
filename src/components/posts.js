@@ -7,8 +7,8 @@ const Posts = ({ data = { allMdx: { nodes: [] } } }) => {
   const posts = data.allMdx.nodes
 
   return posts.length === 0 ? (
-    <Card $half as="div">
-      <Small $top $bottom as="p">
+    <Card as="div" $half>
+      <Small as="p" $top $bottom>
         Brak wpisów do wyświetlenia
       </Small>
     </Card>

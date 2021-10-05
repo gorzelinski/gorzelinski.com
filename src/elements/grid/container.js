@@ -23,5 +23,5 @@ export const subGrid = css`
 
 export const article = css`
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(1ch, 70ch) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(1ch, 65ch) minmax(0, 1fr);
 `

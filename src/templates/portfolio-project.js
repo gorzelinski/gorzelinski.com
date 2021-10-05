@@ -49,23 +49,31 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <Subsection as="div">
             <Card as="div" $half>
               <Small $top>Data:</Small>
-              <H6 as="h3">{project.frontmatter.date}</H6>
+              <H6 as="h3" $top>
+                {project.frontmatter.date}
+              </H6>
             </Card>
             <Card as="div" $half>
               <Small $top>Klient:</Small>
-              <H6 as="h3">{project.frontmatter.client}</H6>
+              <H6 as="h3" $top>
+                {project.frontmatter.client}
+              </H6>
             </Card>
             <Card as="div" $half>
               <Small $top>Moja rola:</Small>
-              <H6 as="h3">{project.frontmatter.myRole}</H6>
+              <H6 as="h3" $top>
+                {project.frontmatter.myRole}
+              </H6>
             </Card>
             <Card as="div" $half>
               <Small $top>Narzędzia:</Small>
-              <H6 as="h3">{project.frontmatter.tools}</H6>
+              <H6 as="h3" $top>
+                {project.frontmatter.tools}
+              </H6>
             </Card>
             <Card as="div" $full>
               <Small $top>Live:</Small>
-              <H6 as="h3">
+              <H6 as="h3" $top>
                 <A href={project.frontmatter.live}>
                   {project.frontmatter.live}
                 </A>

@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { media } from "../utils"
-import { baseSize, smallSize, headingXS } from "./sizes"
+import { baseSize, headingXXS } from "./sizes"
 
 export const body = css`
   font-family: ${props => props.theme.font.family.body};
@@ -21,13 +20,9 @@ export const ui = css`
 
 export const P = styled.p`
   ${body}
-  ${smallSize}
+  ${baseSize}
   padding: 0;
   margin: 0 0 ${props => props.theme.font.height.base} 0;
-
-  ${media.mobile`
-    ${baseSize}
-  `}
 
   ${props =>
     props.$ui &&
@@ -35,14 +30,10 @@ export const P = styled.p`
       ${ui}
     `}
 
-    ${props =>
+  ${props =>
     props.$lead &&
     css`
       color: ${props => props.theme.color.text.shade500};
-      ${baseSize}
-
-      ${media.mobile`
-        ${headingXS}
-      `}
+      ${headingXXS}
     `}
 `

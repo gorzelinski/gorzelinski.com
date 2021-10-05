@@ -10,10 +10,9 @@ const Subscription = () => {
         </H3>
         <P>
           Subskrybuj, aby otrzymywać powiadomienia o moich najnowszych
-          treściach.
+          treściach. Anuluj subskrybcję w dowolnym momencie.
           <br />
-          Anuluj subskrybcję w dowolnym momencie.
-          <br /> Nie wysyłam spamu. Słowo.
+          Nie wysyłam spamu. Słowo.
         </P>
         <Form>
           <Input

@@ -36,6 +36,11 @@ export const headingXS = css`
   letter-spacing: ${props => props.theme.font.spacing.narrow};
 `
 
+export const headingXXS = css`
+  font-size: ${props => props.theme.font.size.xxs};
+  line-height: ${props => props.theme.font.height.xxs};
+`
+
 export const baseSize = css`
   font-size: ${props => props.theme.font.size.base};
   line-height: ${props => props.theme.font.height.base};

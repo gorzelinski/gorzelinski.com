@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { marginReset, media, remToFloat } from "../utils"
+import { marginReset, media } from "../utils"
 import { smallSize, tinySize } from "./sizes"
 
 export const meta = css`
@@ -12,19 +12,15 @@ export const meta = css`
 export const Small = styled.small`
   ${meta}
   ${tinySize}
-  display: block;
-  margin-top: ${props => props.theme.space.s};
-  margin-bottom: ${props =>
-    "-" +
-    (remToFloat(props.theme.font.height.base) * 2 -
-      remToFloat(props.theme.space.xs)) +
-    "rem"};
-
   ${marginReset}
 
   ${media.mobile`
     ${smallSize}
   `}
+  
+  display: block;
+  margin-top: ${props => props.theme.space.s};
+  margin-bottom: ${props => props.theme.space.xs};
 `
 
 export const Figcaption = styled(Small)`

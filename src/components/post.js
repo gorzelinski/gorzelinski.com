@@ -15,7 +15,7 @@ const Post = ({ data = {} }) => {
   return isDataComplete ? (
     <Card $sixEights>
       <Small $top>{`${date} | ${timeToRead} min. czytania`}</Small>
-      <H3>{title}</H3>
+      <H3 $top>{title}</H3>
       <P>{description}</P>
       <Button $text $first to={`/blog${slug}`}>
         Czytaj więcej

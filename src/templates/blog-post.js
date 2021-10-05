@@ -41,7 +41,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <Small $top>
             {post.frontmatter.date} | {post.timeToRead} min. czytania
           </Small>
-          <H1>{post.frontmatter.title}</H1>
+          <H1 $top>{post.frontmatter.title}</H1>
           <P $lead>{post.frontmatter.description}</P>
         </header>
         <div>

@@ -21,7 +21,9 @@ const Project = ({ data = {} }) => {
         <GatsbyImage image={src} alt={alt}></GatsbyImage>
       </Figure>
       <Small as="p">{myRole}</Small>
-      <H4 as="h3">{title}</H4>
+      <H4 as="h3" $top>
+        {title}
+      </H4>
       <P>{description}</P>
       <Button $text $first to={`/portfolio${slug}`}>
         Sprawdź case study

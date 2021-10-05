@@ -36,7 +36,7 @@ const About = ({ data, children }) => {
             {meta}
           </Small>
         )}
-        <H2>{title || name}</H2>
+        <H2 $top>{title || name}</H2>
         {children}
         {summary && <P>{summary}</P>}
         {slug && buttonText && (

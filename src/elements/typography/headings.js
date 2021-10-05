@@ -9,7 +9,7 @@ import {
   headingXL,
   headingXS,
   headingXXL,
-  smallSize,
+  headingXXS,
 } from "./sizes"
 
 export const headings = css`
@@ -75,7 +75,7 @@ export const H4 = styled.h4`
 
 export const H5 = styled.h5`
   ${headings}
-  ${baseSize}
+  ${headingXXS}
 
   ${media.tablet`
     ${headingXS}
@@ -88,10 +88,10 @@ export const H5 = styled.h5`
 
 export const H6 = styled.h6`
   ${headings}
-  ${smallSize}
+  ${baseSize}
 
   ${media.tablet`
-    ${baseSize}
+    ${headingXXS}
   `}
 
   ${media.desktop`

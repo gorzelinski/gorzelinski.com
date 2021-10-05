@@ -22,6 +22,7 @@ export const listItem = css`
   ${baseSize}
   padding-left: 0;
   margin-bottom: ${props => props.theme.space.s};
+
   & > p {
     margin-bottom: ${props => props.theme.space.s};
   }
