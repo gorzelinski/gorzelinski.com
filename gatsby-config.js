@@ -43,8 +43,25 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`, `avif`],
+          placeholder: `dominantColor`,
+          quality: 50,
+          breakpoints: [320, 480, 768, 1280, 1600],
+          backgroundColor: `transparent`,
+          webpOptions: {
+            quality: 80,
+          },
+          avifOptions: {
+            quality: 80,
+          },
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
@@ -54,7 +71,12 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1200,
+              maxWidth: 640,
+              backgroundColor: `transparent`,
+              quality: 50,
+              withWebp: { quality: 80 },
+              withAvif: { quality: 80 },
+              srcSetBreakpoints: [640, 480, 320],
             },
           },
           {
