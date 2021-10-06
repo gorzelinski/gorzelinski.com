@@ -6,7 +6,7 @@ import ThemeSwitcher from "./theme-switcher"
 
 const Navbar = ({ data }) => {
   return (
-    <Header>
+    <Header $section>
       <Navigation aria-label="Pomocnicza">
         <Logo></Logo>
         <ThemeSwitcher data={data}></ThemeSwitcher>

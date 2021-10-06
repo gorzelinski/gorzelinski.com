@@ -11,7 +11,7 @@ const Blog = ({ data }) => {
     <Layout>
       <Seo title="Blog"></Seo>
       <Section>
-        <Header>
+        <Header $section>
           <H1>Wszystkie wpisy</H1>
         </Header>
         <Posts data={data}></Posts>

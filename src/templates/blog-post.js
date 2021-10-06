@@ -16,6 +16,7 @@ import {
   Footer,
   H1,
   H3,
+  Header,
   Hr,
   Icon,
   Navigation,
@@ -37,13 +38,13 @@ const BlogPostTemplate = ({ data, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <Article>
-        <header>
+        <Header $article>
           <Small $top>
             {post.frontmatter.date} | {post.timeToRead} min. czytania
           </Small>
           <H1 $top>{post.frontmatter.title}</H1>
           <P $lead>{post.frontmatter.description}</P>
-        </header>
+        </Header>
         <div>
           <MDXRenderer>{post.body}</MDXRenderer>
           <Hr />

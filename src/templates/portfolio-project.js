@@ -14,6 +14,7 @@ import {
   H1,
   H3,
   H6,
+  Header,
   Hr,
   Icon,
   Navigation,
@@ -43,7 +44,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
             alt={image.alt}
           ></GatsbyImage>
         </Figure>
-        <header>
+        <Header $article>
           <H1>{project.frontmatter.title}</H1>
           <P $lead>{project.frontmatter.description}</P>
           <Subsection as="div">
@@ -80,7 +81,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
               </H6>
             </Card>
           </Subsection>
-        </header>
+        </Header>
         <div>
           <MDXRenderer>{project.body}</MDXRenderer>
           <Hr />

@@ -11,7 +11,7 @@ const Portfolio = ({ data }) => {
     <Layout>
       <Seo title="Portfolio"></Seo>
       <Section>
-        <Header>
+        <Header $section>
           <H1>Wszystkie projekty</H1>
         </Header>
         <Projects data={data}></Projects>

@@ -7,7 +7,7 @@ const Featured = ({ data, children }) => {
   const { title = "", slug = "", buttonText = "" } = data
   return (
     <Section>
-      <Header>
+      <Header $section>
         {title && (
           <H2 $top $bottom>
             {title}
