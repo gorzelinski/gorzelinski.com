@@ -10,6 +10,7 @@ jest.mock("../../hooks", () => ({
     bio: {
       site: {
         siteMetadata: {
+          title: "siteTitle",
           author: {
             name: "authorsName",
           },
@@ -50,7 +51,7 @@ describe("Contact component", () => {
 
     it("copyright info", () => {
       const copyright = screen.getByText(/©/i)
-      expect(copyright.innerHTML).toEqual(expect.stringMatching(/Gorzeliński/i))
+      expect(copyright.innerHTML).toEqual(expect.stringMatching(/siteTitle/i))
     })
   })
 })

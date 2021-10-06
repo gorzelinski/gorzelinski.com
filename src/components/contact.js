@@ -21,6 +21,7 @@ import {
 
 const Contact = () => {
   const { bio } = useBio()
+  const { title } = bio.site.siteMetadata
   const { email, github, dribbble, twitter, facebook } =
     bio.site.siteMetadata?.social
 
@@ -80,8 +81,8 @@ const Contact = () => {
           </Navigation>
         </Address>
         <Small $top $bottom>
-          © {new Date().getFullYear()} Gorzeliński | Sam z miłością stworzyłem
-          tę stronę
+          © {new Date().getFullYear()} {title} | Sam z miłością stworzyłem tę
+          stronę
         </Small>
       </Card>
     </Footer>
