@@ -33,7 +33,7 @@ const Contact = () => {
           napisz mi wiadomość prywatną lub email. Nie kępuj się. Serio.
         </P>
         <Address>
-          <Button $text $first $last as="a" href={`mailto:${email}`}>
+          <Button $text as="a" href={`mailto:${email}`}>
             {email}
           </Button>
           <Navigation $flex>
