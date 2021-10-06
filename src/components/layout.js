@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
       <ThemeProvider theme={selectedTheme}>
         <MDXProvider components={components}>
           <Background>
-            <Wrapper global>
+            <Wrapper $global>
               <Navbar
                 data={{
                   themes,

@@ -9,7 +9,7 @@ export const Background = styled.div`
 
 export const Wrapper = styled.div`
   ${props =>
-    props.global &&
+    props.$global &&
     css`
       padding: ${props => props.theme.space.l} ${props => props.theme.space.s};
       max-width: 100%;
