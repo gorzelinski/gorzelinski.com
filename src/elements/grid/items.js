@@ -9,8 +9,8 @@ export const twoEights = css`
       grid-column: span 8;
 
       ${media.tablet`
-      grid-column: span 2;
-    `}
+        grid-column: span 2;
+      `}
     `}
 `
 
@@ -58,6 +58,7 @@ export const sixEights = css`
 
       ${media.tablet`
         grid-column: span 6;
+        
         ${props =>
           props.$centered &&
           css`
