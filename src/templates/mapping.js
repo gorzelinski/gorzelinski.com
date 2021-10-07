@@ -1,5 +1,4 @@
 import {
-  A,
   Blockquote,
   H1,
   H2,
@@ -16,6 +15,7 @@ import {
   Ul,
 } from "../elements"
 import CodeBlock from "../components/code"
+import Link from "../components/link"
 
 const components = {
   p: P,
@@ -31,7 +31,7 @@ const components = {
   ol: Ol,
   li: Li,
   table: Table,
-  a: A,
+  a: Link,
   inlineCode: InlineCode,
   code: CodeBlock,
 }

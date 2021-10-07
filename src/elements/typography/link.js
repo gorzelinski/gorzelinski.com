@@ -1,3 +1,4 @@
+import { Link as GatsbyLink } from "gatsby"
 import styled, { css } from "styled-components"
 
 import { outline } from "../effects"
@@ -17,7 +18,20 @@ export const A = styled.a`
   ${link}
   text-decoration: underline;
   &:visited {
-    color: ${props => props.theme.color.primary.shade500};
+    color: ${props => props.theme.color.primary.base};
+  }
+  &:hover,
+  :focus {
+    text-decoration: none;
+  }
+`
+
+export const Link = styled(GatsbyLink)`
+  ${outline}
+  ${link}
+  text-decoration: underline;
+  &:visited {
+    color: ${props => props.theme.color.primary.base};
   }
   &:hover,
   :focus {
