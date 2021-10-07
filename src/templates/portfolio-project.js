@@ -75,7 +75,11 @@ const PortfolioProjectTemplate = ({ data, location }) => {
             <Card as="div" $full>
               <Small $top>Live:</Small>
               <H6 as="h3" $top>
-                <A href={project.frontmatter.live}>
+                <A
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={project.frontmatter.live}
+                >
                   {project.frontmatter.live}
                 </A>
               </H6>
