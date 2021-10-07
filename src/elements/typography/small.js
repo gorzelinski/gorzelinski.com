@@ -23,6 +23,15 @@ export const Small = styled.small`
   margin-bottom: ${props => props.theme.space.xs};
 `
 
-export const Figcaption = styled(Small)`
-  margin-bottom: 0;
+export const Figcaption = styled.figcaption`
+  ${meta}
+  ${tinySize}
+  ${marginReset}
+
+  ${media.mobile`
+    ${smallSize}
+  `}
+  
+  display: block;
+  margin-top: ${props => props.theme.space.s};
 `
