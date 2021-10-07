@@ -27,16 +27,7 @@ const Index = () => {
       >
         <Projects data={projects}></Projects>
       </Featured>
-      <About
-        data={{
-          ...bio,
-          meta: "Cześć, nazywam się",
-          figcaption:
-            "W rzeczywistości jestem przyjemniejszy niż wyglądam na tym zdjęciu. Przyrzekam!",
-          slug: "/o-mnie",
-          buttonText: "Więcej o mnie",
-        }}
-      ></About>
+      <About data={bio}></About>
       <Featured
         data={{
           title: "Ostatnie wpisy",

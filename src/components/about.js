@@ -12,44 +12,61 @@ import {
   P,
   Button,
   Icon,
+  Link,
 } from "../elements"
 
-// TODO: alt tag, title
-const About = ({ data, children }) => {
-  const { figcaption, meta, buttonText, slug, title } = data
+const About = ({ data = {} }) => {
   const image = getImage(data?.image)
   const name = data.site?.siteMetadata?.author?.name
-  const summary = data.site?.siteMetadata?.author?.summary
+  const isDataComplete = image && name && true
 
-  return (
+  return isDataComplete ? (
     <Section>
       <Figure $half $portrait>
         <GatsbyImage
           image={image}
           alt={`${name} - zdjęcie profilowe`}
         ></GatsbyImage>
-        {figcaption && <Figcaption>{figcaption}</Figcaption>}
+        <Figcaption>
+          W rzeczywistości jestem przyjemniejszy niż wyglądam na tym zdjęciu.
+          Przyrzekam!
+        </Figcaption>
       </Figure>
       <Card $half>
-        {meta && (
-          <Small as="p" $top>
-            {meta}
-          </Small>
-        )}
-        <H2 $top>{title || name}</H2>
-        {children}
-        {summary && <P>{summary}</P>}
-        {slug && buttonText && (
-          <Button $text $first to={slug}>
-            {buttonText}
-            <Icon>
-              <ChevronForward></ChevronForward>
-            </Icon>
-          </Button>
-        )}
+        <Small as="p" $top>
+          Cześć, nazywam się
+        </Small>
+        <H2 $top>{name}</H2>
+        <P>Jestem inżynierem i humanistą. W jednym? Czy to jest legalne?!</P>
+        <P>
+          Swoje techniczne umiejętności i humanistyczne zainteresowania staram
+          się rozwijać projektując, kodując i pisząc treści dla stron
+          internetowych, które tworzę. Do tego celu wykorzystuję głównie Figmę,
+          JAMStack, długopis i kartę papieru. Efekty tego rozwoju możesz znaleźć
+          w moim{" "}
+          <Link $text to="/portfolio">
+            portfolio
+          </Link>
+          .
+        </P>
+        <P>
+          Nieustanie uczę się nowych rzeczy, eksploruję różne dziedziny wiedzy,
+          szperam w internecie i nadmiernie teoretyzuję. Swoimi znaleziskami i
+          przemyśleniami dzielę się na moim{" "}
+          <Link $text to="/blog">
+            blogu
+          </Link>
+          .
+        </P>
+        <Button $text $first to="/o-mnie">
+          Więcej o mnie
+          <Icon>
+            <ChevronForward></ChevronForward>
+          </Icon>
+        </Button>
       </Card>
     </Section>
-  )
+  ) : null
 }
 
 export default About

@@ -6,11 +6,6 @@ import { light } from "../../themes"
 import About from "../about"
 
 const defaultData = {
-  figcaption: "Default figcaption",
-  meta: "Default meta",
-  buttonText: "Default text",
-  slug: "/default-slug",
-  title: "Default Title",
   image: {
     childImageSharp: {
       gatsbyImageData: {
@@ -60,29 +55,7 @@ describe("About component", () => {
       expect(image).not.toBeInTheDocument()
     })
 
-    it("image caption", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <About data={{ ...defaultData, figcaption: "" }}></About>
-        </ThemeProvider>
-      )
-
-      const figcaption = screen.queryByText(/default figcaption/i)
-      expect(figcaption).not.toBeInTheDocument()
-    })
-
-    it("meta info", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <About data={{ ...defaultData, meta: "" }}></About>
-        </ThemeProvider>
-      )
-
-      const meta = screen.queryByText(/default meta/i)
-      expect(meta).not.toBeInTheDocument()
-    })
-
-    it("name (renders title instead)", () => {
+    it("name", () => {
       render(
         <ThemeProvider theme={light}>
           <About
@@ -95,41 +68,7 @@ describe("About component", () => {
       )
 
       const name = screen.queryByRole("heading", { name: /default name/i })
-      const title = screen.queryByRole("heading", { name: /default title/i })
       expect(name).not.toBeInTheDocument()
-      expect(title).toBeInTheDocument()
-    })
-
-    it("summary", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <About
-            data={{
-              ...defaultData,
-              site: { siteMetadata: { author: { summary: "" } } },
-            }}
-          ></About>
-        </ThemeProvider>
-      )
-
-      const summary = screen.queryByText(/default summary/i)
-      expect(summary).not.toBeInTheDocument()
-    })
-
-    it("link to more", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <About
-            data={{
-              ...defaultData,
-              slug: "",
-            }}
-          ></About>
-        </ThemeProvider>
-      )
-
-      const link = screen.queryByRole("link", { name: /default text/i })
-      expect(link).not.toBeInTheDocument()
     })
   })
 
@@ -137,14 +76,14 @@ describe("About component", () => {
     beforeEach(() => {
       render(
         <ThemeProvider theme={light}>
-          <About
-            data={{
-              ...defaultData,
-              title: "",
-            }}
-          ></About>
+          <About data={defaultData}></About>
         </ThemeProvider>
       )
+    })
+
+    it("figure", () => {
+      const figure = screen.getByRole("figure")
+      expect(figure).toBeInTheDocument()
     })
 
     it("image", () => {
@@ -152,29 +91,14 @@ describe("About component", () => {
       expect(image).toBeInTheDocument()
     })
 
-    it("image caption", () => {
-      const figcaption = screen.getByText(/default figcaption/i)
-      expect(figcaption).toBeInTheDocument()
-    })
-
-    it("meta info", () => {
-      const meta = screen.getByText(/default meta/i)
-      expect(meta).toBeInTheDocument()
-    })
-
     it("name", () => {
       const name = screen.getByRole("heading", { name: /default name/i })
       expect(name).toBeInTheDocument()
     })
 
-    it("summary", () => {
-      const name = screen.getByText(/default summary/i)
-      expect(name).toBeInTheDocument()
-    })
-
     it("link to more", () => {
-      const link = screen.getByRole("link", { name: /default text/i })
-      expect(link.getAttribute("href")).toBe("/default-slug")
+      const link = screen.getByRole("link", { name: /o mnie/i })
+      expect(link.getAttribute("href")).toBe("/o-mnie")
     })
   })
 })
