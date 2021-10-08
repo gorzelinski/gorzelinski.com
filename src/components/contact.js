@@ -42,7 +42,7 @@ const Contact = () => {
               as="a"
               href={`https://github.com/${github}`}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               <Icon $text>
                 <LogoGithub></LogoGithub>
@@ -52,7 +52,7 @@ const Contact = () => {
               as="a"
               href={`https://dribbble.com/${dribbble}`}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               <Icon $text>
                 <LogoDribbble></LogoDribbble>
@@ -62,7 +62,7 @@ const Contact = () => {
               as="a"
               href={`https://twitter.com/${twitter}`}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               <Icon $text>
                 <LogoTwitter></LogoTwitter>
@@ -72,7 +72,7 @@ const Contact = () => {
               as="a"
               href={`https://www.facebook.com/${facebook}`}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               <Icon $text>
                 <LogoFacebook></LogoFacebook>
