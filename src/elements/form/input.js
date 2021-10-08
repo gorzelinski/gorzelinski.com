@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components"
 
-import { remToFloat } from "../utils"
 import { ui } from "../typography"
 
 export const border = css`
@@ -27,10 +26,9 @@ export const Input = styled.input`
   ${border}
   color: ${props => props.theme.color.text.base};
   background-color: transparent;
-  padding: ${props =>
-    remToFloat(props.theme.space.xs) -
-    remToFloat(props.theme.space.xxs) +
-    "rem"};
+  padding: calc(
+    ${props => props.theme.space.xs} - ${props => props.theme.space.xxs}
+  );
 
   &::placeholder {
     color: ${props => props.theme.color.text.shade500};

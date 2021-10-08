@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import styled, { css } from "styled-components"
 
-import { remToFloat, media } from "./utils"
+import { media } from "./utils"
 import { outline, primaryColorStates, textColorStates } from "./effects"
 import { rainbow } from "./animations"
 import { ui } from "./typography"
@@ -13,10 +13,9 @@ export const nav = css`
     color: ${props => props.theme.color.text.base};
     border-bottom: ${props => props.theme.space.xxs} solid
       ${props => props.theme.color.text.base};
-    padding-bottom: ${props =>
-      remToFloat(props.theme.space.xs) -
-      remToFloat(props.theme.space.xxs) +
-      "rem"};
+    padding-bottom: calc(
+      ${props => props.theme.space.xs} - ${props => props.theme.space.xxs}
+    );
   }
   &.active-logo {
     color: ${props => props.theme.color.text.base};

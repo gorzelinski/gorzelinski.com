@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { marginReset, media, remToFloat } from "../utils"
+import { marginReset, media } from "../utils"
 import {
   baseSize,
   headingL,
@@ -16,7 +16,7 @@ export const headings = css`
   font-family: ${props => props.theme.font.family.heading};
   font-weight: ${props => props.theme.font.weight.medium};
   color: ${props => props.theme.color.text.base};
-  margin-top: ${props => remToFloat(props.theme.font.height.base) * 2 + "rem"};
+  margin-top: calc(${props => props.theme.font.height.base} * 2);
   margin-bottom: ${props => props.theme.font.height.base};
   ${marginReset}
 `
