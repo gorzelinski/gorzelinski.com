@@ -1,6 +1,18 @@
 import styled from "styled-components"
 
-import { Small } from "../typography"
+import { marginReset, media } from "../utils"
+import { smallSize, tinySize } from "../typography/sizes"
+import { meta } from "../typography"
 
-// think how to style it differently
-export const Label = styled(Small)``
+export const Label = styled.label`
+  ${meta}
+  ${tinySize}
+  ${marginReset}
+
+  ${media.mobile`
+    ${smallSize}
+  `}
+  
+  display: block;
+  margin-bottom: ${props => props.theme.space.xs};
+`
