@@ -25,14 +25,13 @@ import {
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const PortfolioProjectTemplate = ({ data, location }) => {
+const PortfolioProjectTemplate = ({ data }) => {
   const project = data.mdx
   const image = project.frontmatter.featuredImage
-  const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <Seo
         title={project.frontmatter.title}
         description={project.frontmatter.description || project.excerpt}
