@@ -6,6 +6,7 @@ import {
   ChevronForward,
   Link,
   LogoFacebook,
+  LogoLinkedin,
   LogoTwitter,
 } from "@styled-icons/ionicons-solid"
 
@@ -28,11 +29,20 @@ import Seo from "../components/seo"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx
-  const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
+  // TODO: check if you can use location href in production
+  const shareOnTwitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+    location.href
+  )}&text=${encodeURIComponent(post.frontmatter.title)}`
+  const shareOnFacebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+    location.href
+  )}&quote=${encodeURIComponent(post.frontmatter.title)}`
+  const shareOnLinkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+    location.href
+  )}`
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -57,14 +67,34 @@ const BlogPostTemplate = ({ data, location }) => {
                 <Link></Link>
               </Icon>
             </Button>
-            <Button as="a">
+            <Button
+              as="a"
+              rel="noopener noreferrer"
+              target="blank"
+              href={shareOnTwitterUrl}
+            >
+              <Icon $text>
+                <LogoTwitter></LogoTwitter>
+              </Icon>
+            </Button>
+            <Button
+              as="a"
+              rel="noopener noreferrer"
+              target="blank"
+              href={shareOnFacebookUrl}
+            >
               <Icon $text>
                 <LogoFacebook></LogoFacebook>
               </Icon>
             </Button>
-            <Button as="a">
+            <Button
+              as="a"
+              rel="noopener noreferrer"
+              target="blank"
+              href={shareOnLinkedInUrl}
+            >
               <Icon $text>
-                <LogoTwitter></LogoTwitter>
+                <LogoLinkedin></LogoLinkedin>
               </Icon>
             </Button>
           </Navigation>
