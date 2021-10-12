@@ -1,0 +1,132 @@
+﻿---
+title: JAMstack. Co? Dlaczego? Jak?
+description: "JAMstack to stosunkowo nowe i efektywne podejście do tworzenia stron internetowych. Aplikacje stworzone w oparciu o tę architekturę odznaczają się wydajnością, bezpieczeństwem i łatwością skalowania."
+date: 2021-05-16T15:00:00+02:00
+---
+
+## Co to jest ten JAMstack?
+
+JAMstack jest alternatywnym podejściem do tworzenia stron i aplikacji internetowych. Zasadniczo różni się od tradycyjnej, monolitycznej architektury.
+//dodaj schemat porównujący
+Jednocześnie nie jest to zbiór przypadkowych liter. Branża IT lubi akronimy. JAMstack jest kolejnym w branżowym żargonie. Kolejne litery oznaczają:
+
+### JavaScript
+
+Język skryptowy rozpoznawalny przez przeglądarki. Odpowiada za dynamiczną funkcjonalność stron. JAMstack nie narzuca używania „czystego” języka. Możesz używać jednego z wielu frameworków. Dowcip mówi, że co pół roku powstaje nowy.
+
+### APIs
+
+Interfejsy, które definiują interakcje pomiędzy fragmentami software'u. Operacje po stronie serwera - w tej architekturze - są wyabstrahowane do API wielokrotnego użytku. Są dostępne poprzez protokół HTTPS z pomocą języka JavaScript.
+
+### Markup
+
+Dokument w konkretnym formacie. Strony - w tym podejściu - są serwowane jako statyczne pliki HTML. Te natomiast mogą być wygenerowane z pomocą języka Markdown lub przez Statyczny Generator Stron.
+
+### Czym JAMstack nie jest
+
+JAMstack to nie jest żadna konkretna technologia. Nie jest kontrolowany, ani definiowany przez jakąś korporację. JAMstack jest raczej ruchem i społecznością. Zestawem dobrych praktyk i systemem pracy. Systemem przyjaznym dla programistów, którego efektem są strony internetowe przyjazne dla użytkowników.
+
+## Dlaczego (nie) używać tego stosu?
+
+JAMstack jest odpowiedzią na wiele popularnych problemów związanych z tworzeniem stron internetowych. Kilka jego głównych zalet to:
+
+### Lepsza wydajność
+
+Wydajność stron ma znaczenie. Zarówno dla web crawlerów indeksujących strony internetowe, jak i dla użytkowników. Generalnie jestem cierpliwym człowiekiem (hej, siedzę kolejną godzinę stukając w klawiaturę), jednak moja cierpliwość się kończy, gdy mam czekać, aż ta cholerna strona internetowa się w końcu załaduje. Czasem sam się sobie dziwię. Ale nie jestem w tym odosobniony - dla większości użytkowników [znośny czas oczekiwania](https://www.tandfonline.com/doi/abs/10.1080/01449290410001669914) na stronę to zaledwie 2 sekundy. Dostęp do Internetu - o różnej przepustowości - ma mnóstwo urządzeń o zróżnicowanych mocach obliczeniowych. Dlatego w ostatnich latach statystyki związane z wydajnością stron stały się niezwykle istotne.
+
+W JAMstack strony są prekompilowane. Użytkownik po żądaniu, dostaje gotową stronę. Oszczędza to sporo zapytań do różnych serwerów. Strona wraz z assetami jest wysyłana do użytkownika poprzez CDN. Rozproszona natura CDN sprawia, że pliki wysyłane są z węzła, znajdującego się najbliżej użytkownika. Skraca to drogę jaką muszą przebyć pliki - jednocześnie czas.
+
+### Skalowalność
+
+Korzystanie z CDN poprawia również skalowalność. Nie musisz się martwić o nagły wzrost w liczbie odwiedzających twojej strony. Jeżeli twoja strona nagle stanie się popularna (bo np. umieściłeś na niej przepis na pyszne naleśniki), CDN bezproblemowo obsłuży dodatkowy ruch. Twoje pliki wysyłane są z wielu serwerów (węzłów), a nie jednego.
+
+### Mniejsze koszty
+
+Jak wspominałem wcześniej, projekty JAMstack stworzone są głównie ze statycznych plików i assetów. Hosting takich plików jest tani lub nawet darmowy. [Netlify](https://www.netlify.com/) jest platformą, która ma plan, pozwalający na darmowy hosting plików.
+
+Oprócz kosztów hostingowych, JAMstack obniża także koszty związane z zatrudnianiem zespołu. Prostsza architektura z mniejszą liczbą serwerów, oznacza mniejszą liczbę osób niezbędnych do tworzenia i utrzymania projektu. Skomplikowane zadania DevOps również zostają uproszczone. Taki projekt nie wymaga wielu osób o wąskiej specjalizacji.
+
+### Poprawione bezpieczeństwo
+
+Prosta architektura przynosi jeszcze jedną korzyść - większe bezpieczeństwo. Mniej elementów oznacza, że istnieje mniej słabych punktów. Nie musisz się martwić o luki w bazie danych czy serwerze. Hakerzy mają mniejszą [powierzchnię ataku](https://en.wikipedia.org/wiki/Attack_surface) do spenetrowania.
+
+//tapping guy meme
+
+### Komfort pracy programisty
+
+Uproszczenie pewnych zadań pozytywnie wpływa na komfort pracy programisty. Deweloper nie musi skupiać się na skomplikowanych konfiguracjach - może się skupić na pisaniu kodu. Lepszy komfort pracy programistów może przyczynić się do większej produktywności i w efekcie do lepszego projektu.
+
+### Nie ma srebrnej kuli
+
+W inżynierii oprogramowania [nie ma srebrnej kuli](https://www.cgl.ucsf.edu/Outreach/pc204/NoSilverBullet.html) - magicznego rozwiązania, które załatwiłoby wszelkie problemy z tworzeniem oprogramowania. JAMstack nie jest wyjątkiem i ma swoje wady:
+
+### Konieczność budowania aplikacji
+
+Wcześniejsze generowanie plików ma swoje zalety. Wiążą się z tym jednak pewne koszty. Każda zmiana na stronie musi zostać poprzedzona fazą buildu. Oznacza to, że zmiany w danych nie są odzwierciedlone na stronie natychmiastowo. Może to być problematyczne dla ogromnych i często zmieniających się stron. Proces budowy w ich przypadku może się nadmiernie wydłużyć. Wymieniona wcześniej platforma Netlify udostępnia nam ograniczony czas budowania aplikacji. Dlatego stawianie kolejnego Faceboka w oparciu o tę architekturę może być problematyczne.
+
+### Korzystanie z dynamicznych danych
+
+Marzenie o byciu kolejnym Zuckerbergiem stosując to podejście może być problematyczne z jeszcze jednego powodu - dynamiczne dane. Dane użytkowników lub inne - czasu rzeczywistego - nie mogą po prostu zostać wygenerowane wcześniej. W niektórych aplikacjach nie da się z tego zrezygnować.
+
+Jednocześnie, to nie tak, że nie możesz zrobić nic dynamicznego. Programiści z sukcesem tworzą strony JAMstack, które regularnie są aktualizowane. Mój blog jest stworzony z wykorzystaniem tej architektury, pomimo, że posty pojawiają się regularnie (powiedzmy). Dynamiczny e-commerce również może zostać stworzony. Problem może się zacząć przy ogromnej skali - masie stron i bardzo częstych aktualizacjach.
+
+### Poleganie na zewnętrznych serwisach
+
+Mikroserwisy są nieodłącznym elementem tego rozwiązania. Większość dostępnych API i innych serwisów jest naprawdę solidna. Niemniej, jeżeli któryś z takich serwisów będzie miał problemy - dotkną one także części funkcjonalności twojej aplikacji. Nie różni się to od sytuacji, gdy jeden z twoich serwerów zawodzi. Jednakże, nad własnym serwerem masz większą kontrolę.
+
+## Pozostaje istotne pytanie - jak?
+
+Tworząc projekt JAMstack musisz rozważyć i podjąć wybór w kilku ważnych kwestiach:
+
+### Tworzenie treści
+
+#### Lokalne
+
+Treści w projektach JAMstack to często zwykłe pliki tekstowe. Znajdują się w tej samej strukturze folderów, co pluginy, szablony i inne assety. Na podstawie treści w postaci pliku Markdown, można wygenerować stronę HTML, która będzie korzystała z różnych komponentów i szablonów. Tworzenie treści w ten sposób, może być trudne dla przeciętnego użytkownika, ponieważ wymaga specjalnej składni. Dlatego, dla mniej technicznych użytkowników istnieją wygodniejsze rozwiązania.
+
+#### Zewnętrzne
+
+**Headless CMS** jest alternatywną metodą tworzenia treści. Jest to serwis, który oferuje bogaty interfejs użytkownika dostępny za pomocą przeglądarki. Wykorzystując go, możesz w prosty sposób tworzyć i edytować zawartość. Headless oznacza, że edycji podlegają wyłącznie treści. Udostępnione przez serwis API umożliwia pobranie aktualnej zawartości w fazie budowania aplikacji. Kilka przykładowych usług to:
+
+- Sanity
+- Contentful
+- Strapi
+- GraphCMS
+- Ghost
+- Headless WordPress
+
+Innym ciekawym rozwiązaniem jest **Git-based CMS**. Pozwala on na zarządzenie treściami bezpośrednio w plikach monitorowanych przez Gita. Może być szczególnie interesujący dla deweloperów. Baza danych jest w tym przypadku zbędna. Takie rozwiązania również oferują bogaty interfejs użytkownika, który zapewnia komfort przy tworzeniu treści. Jest to stosunkowo nowe rozwiązanie, dlatego alternatyw jest mniej:
+
+- Netlify CMS
+- Crafter CMS
+- Forestry
+
+### Generator Stron Statycznych
+
+Na podstawie treści, chcemy stworzyć gotowe strony, w postaci plików HTML. Możesz kodować je ręcznie, co jest rozsądne dla niewielkich stron. W większości przypadków warto jednak wykorzystać Generator Stron Statycznych. Robi on dokładnie to co sugeruje jego nazwa - generuje statyczne strony na podstawie stworzonych treści. No prawie. Nazwa ta może sugerować, że ostateczne strony są zupełnie statyczne. Tak nie jest! Wygenerowane pliki co prawda są statyczne, ale ostateczna strona może zawierać dynamiczne funkcjonalności. Zwykle zajmuje się tym zewnętrzne API.
+
+### Zewnętrzne API
+
+Korzystając z takich interfejsów, możesz dodać dodatkowe funkcje. Aktualnie na rynku jest mnóstwo serwisów oferujących najróżniejsze funkcjonalności - od komentarzy, przez formularze i wyszukiwanie, po obsługiwanie płatności i inne rozwiązania e-commerce. Możesz także stworzyć własne api, abstrahując logikę do własnych, spersonalizowanych funkcji.
+
+### Platforma wdrożeniowa
+
+Mając gotową aplikację potrzebujesz platformy hostingowej. Na rynku istnieje kilka solidnych, tanich i funkcjonalnych rozwiązań. Wiele z nich jak np. Netlify, poza hostingiem oferuje sporo dodatkowych funkcji: obsługę formularzy, dane analityczne, a co najważniejsze - uproszczenie wdrożenia i konfiguracji CI/CD. Na rynku jest wiele innych platform:
+
+- Vercel
+- Github Pages
+- Firebase
+- Heroku
+- Cloudflare Pages
+
+## Czy mogę już wsiąść na JAMstack hype train?
+
+Przed stworzeniem strony w oparciu o tę architekturę rozważ powyższe zalety i ograniczenia. Nie jest to rozwiązanie zupełnie uniwersalne i idealne dla każdej aplikacji. Jeżeli jesteś zdecydowany i potrzebujesz takiej wydajnej strony internetowej lub masz pytania - [napisz do mnie](/blog/jamstack-co-dlaczego-jak/#kontakt).
+
+Aby dowiedzieć się więcej na temat tego rozwiązania, sprawdź także poniższe linki:
+
+- [jamstack.wtf](https://jamstack.wtf/)
+- [jamstack.org](https://jamstack.org/)
+- [Netlify JAMStack](https://www.netlify.com/jamstack/)
+- [Książka o JAMStack](https://www.netlify.com/oreilly-jamstack/)
+- [JAMStack Radio](https://www.heavybit.com/library/podcasts/jamstack-radio/)
