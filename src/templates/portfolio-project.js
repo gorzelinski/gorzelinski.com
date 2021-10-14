@@ -1,6 +1,6 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { ChevronBack, ChevronForward } from "@styled-icons/ionicons-solid"
 
@@ -25,16 +25,32 @@ import {
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const PortfolioProjectTemplate = ({ data }) => {
+const PortfolioProjectTemplate = ({ data, location }) => {
   const project = data.mdx
-  const image = project.frontmatter.featuredImage
+  const image = project.frontmatter?.image
+  const metaImage = {
+    alt: image.alt,
+    src: getSrc(image.src),
+    width: getImage(image.src).width,
+    height: getImage(image.src).height,
+  }
+  console.log(metaImage)
   const { previous, next } = data
 
   return (
     <Layout>
       <Seo
+        type="article"
         title={project.frontmatter.title}
         description={project.frontmatter.description || project.excerpt}
+        slug={location.pathname}
+        image={metaImage}
+        meta={[
+          {
+            property: "article:published_date",
+            content: project.frontmatter.date,
+          },
+        ]}
       />
       <Article>
         <Figure $wide>
@@ -145,7 +161,7 @@ export const pageQuery = graphql`
         myRole
         tools
         live
-        featuredImage {
+        image {
           alt
           src {
             childImageSharp {

@@ -6,10 +6,10 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Posts from "../components/posts"
 
-const Blog = ({ data }) => {
+const Blog = ({ data, location }) => {
   return (
     <Layout>
-      <Seo title="Blog"></Seo>
+      <Seo title="Blog" slug={location.pathname}></Seo>
       <Section>
         <Header $section>
           <H1>Wszystkie wpisy</H1>

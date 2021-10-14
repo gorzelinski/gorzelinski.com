@@ -6,10 +6,10 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Projects from "../components/projects"
 
-const Portfolio = ({ data }) => {
+const Portfolio = ({ data, location }) => {
   return (
     <Layout>
-      <Seo title="Portfolio"></Seo>
+      <Seo title="Portfolio" slug={location.pathname}></Seo>
       <Section>
         <Header $section>
           <H1>Wszystkie projekty</H1>
@@ -41,7 +41,7 @@ export const pageQuery = graphql`
           title
           tools
           live
-          featuredImage {
+          image {
             alt
             src {
               childImageSharp {

@@ -1,6 +1,7 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { getImage, getSrc } from "gatsby-plugin-image"
 import {
   ChevronBack,
   ChevronForward,
@@ -28,24 +29,42 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const BlogPostTemplate = ({ data, location }) => {
+  const { siteUrl } = data.site.siteMetadata
   const post = data.mdx
+  const image = post.frontmatter?.image
+  const metaImage = {
+    alt: image.alt,
+    src: getSrc(image.src),
+    width: getImage(image.src).width,
+    height: getImage(image.src).height,
+  }
+  console.log(image)
   const { previous, next } = data
-  // TODO: check if you can use location href in production
+  // TODO: check if you can use those hrefs in production
   const shareOnTwitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-    location.href
+    `${siteUrl}${location.pathname}`
   )}&text=${encodeURIComponent(post.frontmatter.title)}`
   const shareOnFacebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-    location.href
+    `${siteUrl}${location.pathname}`
   )}&quote=${encodeURIComponent(post.frontmatter.title)}`
   const shareOnLinkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-    location.href
+    `${siteUrl}${location.pathname}`
   )}`
 
   return (
     <Layout>
       <Seo
+        type="article"
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        slug={location.pathname}
+        image={metaImage}
+        meta={[
+          {
+            property: "article:published_date",
+            content: post.frontmatter.date,
+          },
+        ]}
       />
       <Article>
         <Header $article>
@@ -135,6 +154,7 @@ export const pageQuery = graphql`
   ) {
     site {
       siteMetadata {
+        siteUrl
         title
       }
     }
@@ -146,6 +166,20 @@ export const pageQuery = graphql`
         title
         date(formatString: "DD MMMM, YYYY", locale: "pl")
         description
+        image {
+          alt
+          src {
+            childImageSharp {
+              gatsbyImageData(
+                formats: AUTO
+                layout: FIXED
+                placeholder: NONE
+                width: 1200
+                aspectRatio: 1.91
+              )
+            }
+          }
+        }
       }
       timeToRead
     }

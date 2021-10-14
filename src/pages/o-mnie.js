@@ -6,13 +6,13 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { A, Card, Figcaption, Figure, H1, P, Section } from "../elements"
 
-const AboutMe = ({ data }) => {
+const AboutMe = ({ data, location }) => {
   const name = data.site?.siteMetadata?.author?.name
   const image = getImage(data?.image)
 
   return (
     <Layout>
-      <Seo title="O mnie"></Seo>
+      <Seo title="O mnie" slug={location.pathname}></Seo>
       <Section>
         <Figure $half $portrait>
           <GatsbyImage

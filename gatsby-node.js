@@ -155,10 +155,16 @@ exports.createSchemaCustomization = ({ actions }) => {
       fields: Fields
     }
 
+    type MetaImage {
+      alt: String
+      src: ImageSharp
+    }
+
     type Frontmatter {
       title: String
       description: String
       date: Date @dateformat
+      image: MetaImage
     }
 
     type Fields {

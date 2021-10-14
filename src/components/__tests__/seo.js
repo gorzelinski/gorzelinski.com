@@ -23,14 +23,14 @@ describe("SEO component", () => {
   it("renders the tests correctly", () => {
     const mockTitle = "All posts | Gatsby Starter Blog"
     const mockDescription = "A starter blog demonstrating what Gatsby can do."
-    const mockTwitterHandler = "kylemathews"
-
+    const mockTwitterHandler = "@kylemathews"
+    // TODO: add more test cases
     render(<SEO title="All posts" />)
     const { title, metaTags } = Helmet.peek()
 
     expect(title).toBe(mockTitle)
     expect(metaTags[0].content).toBe(mockDescription)
-    expect(metaTags[5].content).toBe(mockTwitterHandler)
-    expect(metaTags.length).toBe(8)
+    expect(metaTags[8].content).toBe(mockTwitterHandler)
+    expect(metaTags.length).toBe(12)
   })
 })
