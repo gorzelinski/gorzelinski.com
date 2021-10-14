@@ -10,7 +10,7 @@ module.exports = {
       numquam architecto quod in sapiente illo incidunt!`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    siteUrl: `https://gorzelinski.com/`,
     social: {
       email: `mateusz@gorzelinski.com`,
       github: `gorzelinski`,
