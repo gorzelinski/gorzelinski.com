@@ -21,7 +21,7 @@ const defaultData = {
           title: "Default title",
           tools: "Default tools",
           live: "https://default-live.com/",
-          featuredImage: {
+          image: {
             alt: "Default alt text",
             src: {
               childImageSharp: {
@@ -65,7 +65,7 @@ const defaultData = {
           title: "Default title 2",
           tools: "Default tools 2",
           live: "https://default-live-2.com/",
-          featuredImage: {
+          image: {
             alt: "Default alt",
             src: {
               childImageSharp: {

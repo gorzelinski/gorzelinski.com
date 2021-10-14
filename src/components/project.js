@@ -5,8 +5,8 @@ import { ChevronForward } from "@styled-icons/ionicons-solid"
 import { Button, Card, Figure, H4, Icon, P, Small } from "../elements"
 
 const Project = ({ data = {} }) => {
-  const image = data.frontmatter?.featuredImage
-  const alt = data.frontmatter?.featuredImage?.alt
+  const image = data.frontmatter?.image
+  const alt = image?.alt
   const src = getImage(image?.src)
   const myRole = data.frontmatter?.myRole
   const title = data.frontmatter?.title

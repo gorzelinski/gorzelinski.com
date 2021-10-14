@@ -21,7 +21,7 @@ export const usePortfolioProjects = () => {
             title
             tools
             live
-            featuredImage {
+            image {
               alt
               src {
                 childImageSharp {

@@ -18,7 +18,7 @@ const defaultData = {
     title: "Default title",
     tools: "Default tools",
     live: "https://default.com/",
-    featuredImage: {
+    image: {
       alt: "Default alt text",
       src: {
         childImageSharp: {
