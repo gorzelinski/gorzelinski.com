@@ -61,7 +61,7 @@ const BlogPostTemplate = ({ data, location }) => {
         image={metaImage}
         meta={[
           {
-            property: "article:published_date",
+            property: "article:published_time",
             content: post.frontmatter.date,
           },
         ]}
