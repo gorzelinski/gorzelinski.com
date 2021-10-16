@@ -38,7 +38,6 @@ const BlogPostTemplate = ({ data, location }) => {
     width: getImage(image.src).width,
     height: getImage(image.src).height,
   }
-  console.log(image)
   const { previous, next } = data
   // TODO: check if you can use those hrefs in production
   const shareOnTwitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
@@ -176,6 +175,7 @@ export const pageQuery = graphql`
                 placeholder: NONE
                 width: 1200
                 aspectRatio: 1.91
+                outputPixelDensities: 1
               )
             }
           }
