@@ -33,13 +33,10 @@ export const primary = css`
   background-color: ${props => props.theme.color.primary.base};
   border-radius: ${props => props.theme.space.xs};
 
-  &:hover {
-    background-color: ${props => props.theme.color.primary.shade200};
-  }
-  &:focus {
+  &:focus:after {
     background-color: ${props => props.theme.color.primary.shade300};
   }
-  &:active {
+  &:active:after {
     background-color: ${props => props.theme.color.primary.shade500};
   }
 `

@@ -1,4 +1,10 @@
 export const tokens = {
+  duration: {
+    immediate: "100ms",
+    natural: "250ms",
+    slow: "500ms",
+    deliberate: "750ms",
+  },
   font: {
     family: {
       heading: "Montserrat, sans-serif",
@@ -46,10 +52,19 @@ export const tokens = {
     mobile: "480px",
     tiny: "321px",
   },
-  shadow: {
-    neumorphism:
-      "8px 8px 16px rgba(0, 24, 69, 0.15), -8px -8px 16px #FFFFFF, inset 0px 0px 4px rgba(255, 255, 255, 0.2)",
-    outline: "0px 0px 4px 4px #0466C8",
+  gradient: {
+    rainbow: `linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    )`,
   },
   space: {
     xxs: "0.125rem",

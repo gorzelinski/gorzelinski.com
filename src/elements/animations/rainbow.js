@@ -9,18 +9,7 @@ export const glowing = keyframes`
 export const rainbow = css`
   &:before {
     content: "";
-    background: linear-gradient(
-      45deg,
-      #ff0000,
-      #ff7300,
-      #fffb00,
-      #48ff00,
-      #00ffd5,
-      #002bff,
-      #7a00ff,
-      #ff00c8,
-      #ff0000
-    );
+    background: ${props => props.theme.gradient.rainbow};
     position: absolute;
     top: -2px;
     left: -2px;
@@ -31,7 +20,7 @@ export const rainbow = css`
     height: calc(100% + 2px);
     animation: ${glowing} 20s linear infinite;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity ${props => props.theme.duration.natural} ease-in;
     border-radius: ${props => props.theme.space.xs};
   }
   &:after {
@@ -44,9 +33,6 @@ export const rainbow = css`
     left: 0;
     top: 0;
     border-radius: ${props => props.theme.space.xs};
-  }
-  &:active:after {
-    background: ${props => props.theme.color.primary.shade500};
   }
   &:hover:before {
     opacity: 1;
