@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -9,10 +9,21 @@ import { A, Card, Figcaption, Figure, H1, P, Section } from "../elements"
 const AboutMe = ({ data, location }) => {
   const name = data.site?.siteMetadata?.author?.name
   const image = getImage(data?.image)
+  const metaImage = {
+    alt: `Wycentrowany napis "O mnie" na białym tle`,
+    src: getSrc(data?.metaImage),
+    width: getImage(data?.metaImage).width,
+    height: getImage(data?.metaImage).height,
+  }
 
   return (
     <Layout>
-      <Seo title="O mnie" slug={location.pathname}></Seo>
+      <Seo
+        title="O mnie"
+        description="Tu będzie opis o mnie"
+        image={metaImage}
+        slug={location.pathname}
+      ></Seo>
       <Section>
         <Figure $half $portrait>
           <GatsbyImage
@@ -157,6 +168,18 @@ export const pageQuery = graphql`
     image: file(relativePath: { eq: "gorzelinski.jpg" }) {
       childImageSharp {
         gatsbyImageData
+      }
+    }
+    metaImage: file(relativePath: { eq: "about-me.png" }) {
+      childImageSharp {
+        gatsbyImageData(
+          formats: AUTO
+          layout: FIXED
+          placeholder: NONE
+          width: 1200
+          aspectRatio: 1.91
+          outputPixelDensities: 1
+        )
       }
     }
   }
