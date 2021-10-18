@@ -2,13 +2,10 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { ChevronBack, ChevronForward } from "@styled-icons/ionicons-solid"
 
 import {
   A,
   Article,
-  Aside,
-  Button,
   Card,
   Figure,
   Footer,
@@ -17,8 +14,6 @@ import {
   H6,
   Header,
   Hr,
-  Icon,
-  Navigation,
   P,
   Small,
   Subsection,
@@ -26,10 +21,10 @@ import {
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Share from "../components/share"
+import Pagination from "../components/pagination"
 
 const PortfolioProjectTemplate = ({ data, location }) => {
   const { siteUrl } = data.site.siteMetadata
-  const { previous, next } = data
   const project = data.mdx
   const image = project.frontmatter?.image
   const metaImage = {
@@ -47,6 +42,17 @@ const PortfolioProjectTemplate = ({ data, location }) => {
   const linkedin = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
     `${siteUrl}${location.pathname}`
   )}`
+  const { previous, next } = data
+  const pagination = {
+    prev: previous && {
+      text: previous.frontmatter.title,
+      slug: `/portfolio${previous.fields.slug}`,
+    },
+    next: next && {
+      text: next.frontmatter.title,
+      slug: `/portfolio${next.fields.slug}`,
+    },
+  }
 
   return (
     <Layout>
@@ -126,32 +132,9 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           ></Share>
         </Footer>
       </Article>
-      <Aside $higher $article>
+      <Pagination data={pagination}>
         <H3 $top>Sprawdź także:</H3>
-        <Navigation $spaceBetween>
-          {previous && (
-            <Button
-              $text
-              $first
-              to={`/portfolio${previous.fields.slug}`}
-              rel="prev"
-            >
-              <Icon>
-                <ChevronBack></ChevronBack>
-              </Icon>
-              {previous.frontmatter.title}
-            </Button>
-          )}
-          {next && (
-            <Button $text $last to={`/portfolio${next.fields.slug}`} rel="next">
-              {next.frontmatter.title}
-              <Icon>
-                <ChevronForward></ChevronForward>
-              </Icon>
-            </Button>
-          )}
-        </Navigation>
-      </Aside>
+      </Pagination>
     </Layout>
   )
 }

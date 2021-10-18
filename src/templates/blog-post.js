@@ -2,29 +2,15 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { getImage, getSrc } from "gatsby-plugin-image"
-import { ChevronBack, ChevronForward } from "@styled-icons/ionicons-solid"
 
-import {
-  Article,
-  Aside,
-  Button,
-  Footer,
-  H1,
-  H3,
-  Header,
-  Hr,
-  Icon,
-  Navigation,
-  P,
-  Small,
-} from "../elements"
+import { Article, Footer, H1, H3, Header, Hr, P, Small } from "../elements"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Share from "../components/share"
+import Pagination from "../components/pagination"
 
 const BlogPostTemplate = ({ data, location }) => {
   const { siteUrl } = data.site.siteMetadata
-  const { previous, next } = data
   const post = data.mdx
   const image = post.frontmatter?.image
   const metaImage = {
@@ -42,6 +28,17 @@ const BlogPostTemplate = ({ data, location }) => {
   const linkedin = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
     `${siteUrl}${location.pathname}`
   )}`
+  const { previous, next } = data
+  const pagination = {
+    prev: previous && {
+      text: previous.frontmatter.title,
+      slug: `/blog${previous.fields.slug}`,
+    },
+    next: next && {
+      text: next.frontmatter.title,
+      slug: `/blog${next.fields.slug}`,
+    },
+  }
 
   return (
     <Layout>
@@ -80,27 +77,9 @@ const BlogPostTemplate = ({ data, location }) => {
           ></Share>
         </Footer>
       </Article>
-      <Aside $higher $article>
+      <Pagination data={pagination}>
         <H3 $top>Przeczytaj także:</H3>
-        <Navigation $spaceBetween>
-          {previous && (
-            <Button $text $first to={`/blog${previous.fields.slug}`} rel="prev">
-              <Icon>
-                <ChevronBack></ChevronBack>
-              </Icon>
-              {previous.frontmatter.title}
-            </Button>
-          )}
-          {next && (
-            <Button $text $last to={`/blog${next.fields.slug}`} rel="next">
-              {next.frontmatter.title}
-              <Icon>
-                <ChevronForward></ChevronForward>
-              </Icon>
-            </Button>
-          )}
-        </Navigation>
-      </Aside>
+      </Pagination>
     </Layout>
   )
 }
