@@ -2,14 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { getImage, getSrc } from "gatsby-plugin-image"
-import {
-  ChevronBack,
-  ChevronForward,
-  Link,
-  LogoFacebook,
-  LogoLinkedin,
-  LogoTwitter,
-} from "@styled-icons/ionicons-solid"
+import { ChevronBack, ChevronForward } from "@styled-icons/ionicons-solid"
 
 import {
   Article,
@@ -27,9 +20,11 @@ import {
 } from "../elements"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Share from "../components/share"
 
 const BlogPostTemplate = ({ data, location }) => {
   const { siteUrl } = data.site.siteMetadata
+  const { previous, next } = data
   const post = data.mdx
   const image = post.frontmatter?.image
   const metaImage = {
@@ -38,15 +33,13 @@ const BlogPostTemplate = ({ data, location }) => {
     width: getImage(image.src).width,
     height: getImage(image.src).height,
   }
-  const { previous, next } = data
-  // TODO: check if you can use those hrefs in production
-  const shareOnTwitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+  const twitter = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
     `${siteUrl}${location.pathname}`
   )}&text=${encodeURIComponent(post.frontmatter.title)}`
-  const shareOnFacebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+  const facebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
     `${siteUrl}${location.pathname}`
   )}&quote=${encodeURIComponent(post.frontmatter.title)}`
-  const shareOnLinkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+  const linkedin = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
     `${siteUrl}${location.pathname}`
   )}`
 
@@ -78,44 +71,13 @@ const BlogPostTemplate = ({ data, location }) => {
           <Hr />
         </div>
         <Footer $top>
-          <Navigation $full as="div">
-            <P $ui>Udostępnij:</P>
-            <Button as="a">
-              <Icon $text>
-                <Link></Link>
-              </Icon>
-            </Button>
-            <Button
-              as="a"
-              rel="noopener noreferrer"
-              target="blank"
-              href={shareOnTwitterUrl}
-            >
-              <Icon $text>
-                <LogoTwitter></LogoTwitter>
-              </Icon>
-            </Button>
-            <Button
-              as="a"
-              rel="noopener noreferrer"
-              target="blank"
-              href={shareOnFacebookUrl}
-            >
-              <Icon $text>
-                <LogoFacebook></LogoFacebook>
-              </Icon>
-            </Button>
-            <Button
-              as="a"
-              rel="noopener noreferrer"
-              target="blank"
-              href={shareOnLinkedInUrl}
-            >
-              <Icon $text>
-                <LogoLinkedin></LogoLinkedin>
-              </Icon>
-            </Button>
-          </Navigation>
+          <Share
+            data={{
+              twitter,
+              facebook,
+              linkedin,
+            }}
+          ></Share>
         </Footer>
       </Article>
       <Aside $higher $article>

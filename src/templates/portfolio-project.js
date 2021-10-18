@@ -11,6 +11,7 @@ import {
   Button,
   Card,
   Figure,
+  Footer,
   H1,
   H3,
   H6,
@@ -24,8 +25,11 @@ import {
 } from "../elements"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Share from "../components/share"
 
 const PortfolioProjectTemplate = ({ data, location }) => {
+  const { siteUrl } = data.site.siteMetadata
+  const { previous, next } = data
   const project = data.mdx
   const image = project.frontmatter?.image
   const metaImage = {
@@ -34,8 +38,15 @@ const PortfolioProjectTemplate = ({ data, location }) => {
     width: getImage(image.src).width,
     height: getImage(image.src).height,
   }
-  console.log(metaImage)
-  const { previous, next } = data
+  const twitter = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+    `${siteUrl}${location.pathname}`
+  )}&text=${encodeURIComponent(project.frontmatter.title)}`
+  const facebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+    `${siteUrl}${location.pathname}`
+  )}&quote=${encodeURIComponent(project.frontmatter.title)}`
+  const linkedin = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+    `${siteUrl}${location.pathname}`
+  )}`
 
   return (
     <Layout>
@@ -105,6 +116,15 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <MDXRenderer>{project.body}</MDXRenderer>
           <Hr />
         </div>
+        <Footer $top>
+          <Share
+            data={{
+              twitter,
+              facebook,
+              linkedin,
+            }}
+          ></Share>
+        </Footer>
       </Article>
       <Aside $higher $article>
         <H3 $top>Sprawdź także:</H3>
@@ -146,6 +166,7 @@ export const pageQuery = graphql`
   ) {
     site {
       siteMetadata {
+        siteUrl
         title
       }
     }
