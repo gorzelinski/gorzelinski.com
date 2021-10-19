@@ -33,15 +33,17 @@ const PortfolioProjectTemplate = ({ data, location }) => {
     width: getImage(image.src).width,
     height: getImage(image.src).height,
   }
-  const twitter = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-    `${siteUrl}${location.pathname}`
-  )}&text=${encodeURIComponent(project.frontmatter.title)}`
-  const facebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-    `${siteUrl}${location.pathname}`
-  )}&quote=${encodeURIComponent(project.frontmatter.title)}`
-  const linkedin = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-    `${siteUrl}${location.pathname}`
-  )}`
+  const links = {
+    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+      `${siteUrl}${location.pathname}`
+    )}&text=${encodeURIComponent(project.frontmatter.title)}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      `${siteUrl}${location.pathname}`
+    )}&quote=${encodeURIComponent(project.frontmatter.title)}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+      `${siteUrl}${location.pathname}`
+    )}`,
+  }
   const { previous, next } = data
   const pagination = {
     prev: previous && {
@@ -123,13 +125,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <Hr />
         </div>
         <Footer $top>
-          <Share
-            data={{
-              twitter,
-              facebook,
-              linkedin,
-            }}
-          ></Share>
+          <Share data={links}></Share>
         </Footer>
       </Article>
       <Pagination data={pagination}>
