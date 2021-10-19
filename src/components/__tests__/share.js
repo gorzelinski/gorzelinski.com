@@ -6,6 +6,8 @@ import { light } from "../../themes"
 import Share from "../share"
 
 const defaultData = {
+  github: "https://github.com/link-to-share",
+  dribbble: "https://dribbble.com/link-to-share",
   twitter: "https://twitter.com/intent/tweet?url=link-to-share",
   facebook: "https://www.facebook.com/sharer/sharer.php?u=link-to-share",
   linkedin: "https://www.linkedin.com/sharing/share-offsite/?url=link-to-share",
@@ -13,7 +15,31 @@ const defaultData = {
 
 describe("Subscirption component", () => {
   describe("renders", () => {
-    it("twitter share link", () => {
+    it("github link", () => {
+      render(
+        <ThemeProvider theme={light}>
+          <Share data={defaultData}></Share>
+        </ThemeProvider>
+      )
+      const links = screen
+        .getAllByRole("link")
+        .filter(link => link.href.includes("github"))
+      expect(links[0].href).toContain("github")
+    })
+
+    it("dribbble link", () => {
+      render(
+        <ThemeProvider theme={light}>
+          <Share data={defaultData}></Share>
+        </ThemeProvider>
+      )
+      const links = screen
+        .getAllByRole("link")
+        .filter(link => link.href.includes("dribbble"))
+      expect(links[0].href).toContain("dribbble")
+    })
+
+    it("twitter link", () => {
       render(
         <ThemeProvider theme={light}>
           <Share data={defaultData}></Share>
@@ -25,7 +51,7 @@ describe("Subscirption component", () => {
       expect(links[0].href).toContain("twitter")
     })
 
-    it("facebook share link", () => {
+    it("facebook link", () => {
       render(
         <ThemeProvider theme={light}>
           <Share data={defaultData}></Share>
@@ -37,7 +63,7 @@ describe("Subscirption component", () => {
       expect(links[0].href).toContain("facebook")
     })
 
-    it("linkedin share link", () => {
+    it("linkedin link", () => {
       render(
         <ThemeProvider theme={light}>
           <Share data={defaultData}></Share>
@@ -61,7 +87,31 @@ describe("Subscirption component", () => {
   })
 
   describe("doesn't render (due to partial data)", () => {
-    it("twitter share link", () => {
+    it("github link", () => {
+      render(
+        <ThemeProvider theme={light}>
+          <Share data={{ ...defaultData, github: "" }}></Share>
+        </ThemeProvider>
+      )
+      const links = screen
+        .getAllByRole("link")
+        .filter(link => link.href.includes("github"))
+      expect(links.length).toEqual(0)
+    })
+
+    it("dribbble link", () => {
+      render(
+        <ThemeProvider theme={light}>
+          <Share data={{ ...defaultData, dribbble: "" }}></Share>
+        </ThemeProvider>
+      )
+      const links = screen
+        .getAllByRole("link")
+        .filter(link => link.href.includes("dribbble"))
+      expect(links.length).toEqual(0)
+    })
+
+    it("twitter link", () => {
       render(
         <ThemeProvider theme={light}>
           <Share data={{ ...defaultData, twitter: "" }}></Share>
@@ -73,7 +123,7 @@ describe("Subscirption component", () => {
       expect(links.length).toEqual(0)
     })
 
-    it("facebook share link", () => {
+    it("facebooklink", () => {
       render(
         <ThemeProvider theme={light}>
           <Share data={{ ...defaultData, facebook: "" }}></Share>
@@ -85,7 +135,7 @@ describe("Subscirption component", () => {
       expect(links.length).toEqual(0)
     })
 
-    it("linkedin share link", () => {
+    it("linkedin link", () => {
       render(
         <ThemeProvider theme={light}>
           <Share data={{ ...defaultData, linkedin: "" }}></Share>

@@ -1,29 +1,20 @@
 import React from "react"
-import {
-  LogoGithub,
-  LogoDribbble,
-  LogoTwitter,
-  LogoFacebook,
-} from "@styled-icons/ionicons-solid"
 
 import { useBio } from "../hooks"
-import {
-  Footer,
-  Card,
-  H2,
-  P,
-  Address,
-  Button,
-  Navigation,
-  Icon,
-  Small,
-} from "../elements"
+import { Footer, Card, H2, P, Address, Button, Small } from "../elements"
+import Share from "./share"
 
 const Contact = () => {
   const { bio } = useBio()
   const { title } = bio.site.siteMetadata
   const { email, github, dribbble, twitter, facebook } =
     bio.site.siteMetadata?.social
+  const links = {
+    github: `https://github.com/${github}`,
+    dribbble: `https://dribbble.com/${dribbble}`,
+    twitter: `https://twitter.com/${twitter}`,
+    facebook: `https://www.facebook.com/${facebook}`,
+  }
 
   return (
     <Footer $lower id="kontakt">
@@ -37,48 +28,7 @@ const Contact = () => {
           <Button $text as="a" href={`mailto:${email}`}>
             {email}
           </Button>
-          <Navigation $flex>
-            <Button
-              as="a"
-              href={`https://github.com/${github}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icon $text>
-                <LogoGithub></LogoGithub>
-              </Icon>
-            </Button>
-            <Button
-              as="a"
-              href={`https://dribbble.com/${dribbble}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icon $text>
-                <LogoDribbble></LogoDribbble>
-              </Icon>
-            </Button>
-            <Button
-              as="a"
-              href={`https://twitter.com/${twitter}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icon $text>
-                <LogoTwitter></LogoTwitter>
-              </Icon>
-            </Button>
-            <Button
-              as="a"
-              href={`https://www.facebook.com/${facebook}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icon $text>
-                <LogoFacebook></LogoFacebook>
-              </Icon>
-            </Button>
-          </Navigation>
+          <Share data={links}></Share>
         </Address>
         <Small $top $bottom>
           © {new Date().getFullYear()} {title} | Sam z miłością stworzyłem tę

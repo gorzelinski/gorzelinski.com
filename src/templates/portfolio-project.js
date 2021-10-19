@@ -125,7 +125,9 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <Hr />
         </div>
         <Footer $top>
-          <Share data={links}></Share>
+          <Share data={links}>
+            <P $ui>Udostępnij:</P>
+          </Share>
         </Footer>
       </Article>
       <Pagination data={pagination}>
