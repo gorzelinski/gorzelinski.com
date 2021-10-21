@@ -7,6 +7,7 @@ export const Background = styled.div`
   min-height: 100vh;
 `
 
+// TODO: make layout better on large screens. Change max width after
 export const Wrapper = styled.div`
   ${props =>
     props.$global &&
@@ -29,13 +30,13 @@ export const Wrapper = styled.div`
       ${media.desktop`
         margin: 0 auto;
         padding: ${props => props.theme.space.xxl} 0;
-        max-width:  ${75 + "rem"};
+        max-width:  ${72 + "rem"};
       `}
       
       ${media.large`
         margin: 0 auto;
         padding: ${props => props.theme.space.xxl} 0;
-        max-width:  ${100 + "rem"};
+        max-width:  ${72 + "rem"};
       `}
     `}
 `

@@ -16,7 +16,7 @@ const Project = ({ data = {} }) => {
     myRole && title && description && src && alt && slug && true
 
   return isDataComplete ? (
-    <Card $half>
+    <Card>
       <Figure $golden>
         <GatsbyImage image={src} alt={alt}></GatsbyImage>
       </Figure>

@@ -4,7 +4,10 @@ import { media } from "../utils"
 
 export const grid = css`
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(max(40%, ${props => props.theme.space.xxxl}), 1fr)
+  );
   gap: ${props => props.theme.space.l} ${props => props.theme.space.s};
 
   ${media.tablet`

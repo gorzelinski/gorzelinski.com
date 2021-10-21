@@ -13,7 +13,7 @@ const Post = ({ data = {} }) => {
     date && timeToRead && title && description && slug && true
 
   return isDataComplete ? (
-    <Card $sixEights>
+    <Card $span2>
       <Small $top>{`${date} | ${timeToRead} min. czytania`}</Small>
       <H3 $top>{title}</H3>
       <P>{description}</P>

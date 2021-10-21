@@ -7,7 +7,7 @@ export const Header = styled.header`
     props.$section &&
     css`
       width: 100%;
-      grid-column: span 8;
+      grid-column: 1 / -1;
       display: flex;
       flex-direction: column;
       gap: ${props => props.theme.space.xs};
@@ -34,6 +34,4 @@ export const Header = styled.header`
         }
       `}
     `}
-
-  ${props => props.$article && css``}
 `

@@ -27,7 +27,7 @@ const AboutMe = ({ data, location }) => {
         slug={location.pathname}
       ></Seo>
       <Section>
-        <Figure $half $portrait>
+        <Figure $portrait>
           <GatsbyImage
             image={image}
             alt={`${name} - zdjęcie profilowe`}
@@ -37,7 +37,7 @@ const AboutMe = ({ data, location }) => {
             Przyrzekam!
           </Figcaption>
         </Figure>
-        <Card $half>
+        <Card>
           <MDXRenderer>{text.body}</MDXRenderer>
         </Card>
       </Section>

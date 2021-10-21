@@ -1,22 +1,10 @@
 import styled from "styled-components"
 
-import { media } from "../utils"
 import { Section } from "./section"
 
 export const Hero = styled(Section)`
+  /* change to relative */
   & > * {
-    grid-column: span 8;
+    max-width: 768px;
   }
-
-  ${media.tablet`
-    & > * {
-      grid-column: span 7;
-    }
-  `}
-
-  ${media.desktop`
-    & > * {
-      grid-column: span 6;
-    }
-  `}
 `

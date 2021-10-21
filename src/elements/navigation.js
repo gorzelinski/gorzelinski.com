@@ -1,8 +1,10 @@
 import styled, { css } from "styled-components"
 
 import { media } from "./utils"
+import { full } from "./grid"
 
 export const Navigation = styled.nav`
+  ${full}
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
@@ -20,12 +22,6 @@ export const Navigation = styled.nav`
     props.$flex &&
     css`
       display: flex;
-    `}
-
-  ${props =>
-    props.$full &&
-    css`
-      grid-column: span 8;
     `}
 
   ${props =>

@@ -1,24 +1,24 @@
 import styled, { css } from "styled-components"
 
-import {
-  twoEights,
-  half,
-  fiveEights,
-  sixEights,
-  sevenEights,
-  full,
-} from "./grid"
+import { full, span2, span3, span4 } from "./grid"
 
 export const Card = styled.article`
-  ${twoEights}
-  ${half}
-  ${fiveEights}
-  ${sixEights}
-  ${sevenEights}
+  ${span2}
+  ${span3}
+  ${span4}
   ${full}
 
+  /* change to relative */
+  max-width: 768px;
+
   ${props =>
-    props.$textCentered &&
+    props.$center &&
+    css`
+      justify-self: center;
+    `}
+
+  ${props =>
+    props.$textCenter &&
     css`
       text-align: center;
     `}

@@ -1,11 +1,9 @@
 import styled, { css } from "styled-components"
 
-import { half, twoEights, threeEights, full } from "./grid"
+import { full, span2 } from "./grid"
 
 export const Figure = styled.figure`
-  ${twoEights}
-  ${threeEights}
-  ${half}
+  ${span2}
   ${full}
   margin: 0;
 

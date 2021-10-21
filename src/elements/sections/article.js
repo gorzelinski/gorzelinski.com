@@ -11,6 +11,7 @@ export const Article = styled.article`
     grid-column: 2;
   }
 
+  /* maybe change to whole header */
   & > figure {
     grid-column-start: 1;
     grid-column-end: span 3;

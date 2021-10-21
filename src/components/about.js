@@ -22,7 +22,7 @@ const About = ({ data = {} }) => {
 
   return isDataComplete ? (
     <Section>
-      <Figure $half $portrait>
+      <Figure $portrait>
         <GatsbyImage
           image={image}
           alt={`${name} - zdjęcie profilowe`}
@@ -32,7 +32,7 @@ const About = ({ data = {} }) => {
           Przyrzekam!
         </Figcaption>
       </Figure>
-      <Card $half>
+      <Card>
         <Small as="p" $top>
           Cześć, nazywam się
         </Small>
