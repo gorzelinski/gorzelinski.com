@@ -1,12 +1,11 @@
 import styled, { css } from "styled-components"
 
 import { marginTop } from "../utils"
-import { article, grid } from "../grid"
+import { article } from "../grid"
 
 export const Aside = styled.aside`
   ${marginTop}
-  /* don't know if the grid is necessary */
-  ${grid}
+  display: grid;
 
   ${props =>
     props.$article &&
