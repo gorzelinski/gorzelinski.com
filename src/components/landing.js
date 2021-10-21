@@ -6,7 +6,7 @@ import { Hero, H1, P, Button } from "../elements"
 const Landing = () => {
   return (
     <Hero>
-      <div>
+      <header>
         <H1 $top>
           <TypewriterComponent
             onInit={typewriter => {
@@ -39,7 +39,7 @@ const Landing = () => {
         <Button $primary $grow to="#kontakt">
           Stwórzmy coś razem
         </Button>
-      </div>
+      </header>
     </Hero>
   )
 }
