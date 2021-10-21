@@ -8,8 +8,7 @@ export const Card = styled.article`
   ${span4}
   ${full}
 
-  /* change to relative */
-  max-width: 768px;
+  max-width: calc(${props => props.theme.space.xxxl} * 1.618 * 1.618);
 
   ${props =>
     props.$center &&
