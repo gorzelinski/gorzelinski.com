@@ -78,7 +78,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
             alt={image.alt}
           ></GatsbyImage>
         </Figure>
-        <Header $article>
+        <Header>
           <H1>{project.frontmatter.title}</H1>
           <P $lead>{project.frontmatter.description}</P>
           <Subsection as="div">
