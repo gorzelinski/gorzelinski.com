@@ -22,6 +22,7 @@ export const grid = css`
 export const subGrid = css`
   display: grid;
   grid-template-columns: repeat(8, 1fr);
+  gap: 0 ${props => props.theme.space.s};
 `
 
 export const article = css`

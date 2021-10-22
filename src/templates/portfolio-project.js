@@ -13,7 +13,6 @@ import {
   H3,
   H6,
   Header,
-  Hr,
   P,
   Small,
   Subsection,
@@ -82,31 +81,31 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <H1>{project.frontmatter.title}</H1>
           <P $lead>{project.frontmatter.description}</P>
           <Subsection as="div">
-            <Card as="div" $half>
+            <Card as="div" $span4>
               <Small $top>Data:</Small>
               <H6 as="h3" $top>
                 {project.frontmatter.date}
               </H6>
             </Card>
-            <Card as="div" $half>
+            <Card as="div" $span4>
               <Small $top>Klient:</Small>
               <H6 as="h3" $top>
                 {project.frontmatter.client}
               </H6>
             </Card>
-            <Card as="div" $half>
+            <Card as="div" $span4>
               <Small $top>Moja rola:</Small>
               <H6 as="h3" $top>
                 {project.frontmatter.myRole}
               </H6>
             </Card>
-            <Card as="div" $half>
+            <Card as="div" $span4>
               <Small $top>Narzędzia:</Small>
               <H6 as="h3" $top>
                 {project.frontmatter.tools}
               </H6>
             </Card>
-            <Card as="div" $full>
+            <Card as="div" $span4>
               <Small $top>Live:</Small>
               <H6 as="h3" $top>
                 <A
@@ -122,7 +121,6 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         </Header>
         <div>
           <MDXRenderer>{project.body}</MDXRenderer>
-          <Hr />
         </div>
         <Footer $top>
           <Share data={links}>
