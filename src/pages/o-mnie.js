@@ -4,7 +4,7 @@ import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { Card, Figcaption, Figure, Section } from "../elements"
+import { Card, Figcaption, Figure, H1, Section } from "../elements"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 const AboutMe = ({ data, location }) => {
@@ -38,6 +38,7 @@ const AboutMe = ({ data, location }) => {
           </Figcaption>
         </Figure>
         <Card>
+          <H1 $top>A oto moja krótka historia</H1>
           <MDXRenderer>{text.body}</MDXRenderer>
         </Card>
       </Section>
