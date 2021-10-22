@@ -11,7 +11,6 @@ export const Icon = styled.span`
   display: inline-block;
 
   ${StyledIconBase} {
-    cursor: pointer;
     width: ${props => props.theme.font.height.base};
     height: ${props => props.theme.font.height.base};
   }
