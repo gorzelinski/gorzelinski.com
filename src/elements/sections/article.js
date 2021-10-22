@@ -13,7 +13,23 @@ export const Article = styled.article`
 
   /* maybe change to whole header */
   & > figure {
-    grid-column-start: 1;
-    grid-column-end: span 3;
+    grid-column: 1 / span 3;
+  }
+
+  & > header {
+    margin-bottom: ${props => props.theme.space.l};
+    padding-bottom: ${props => props.theme.space.xs};
+    border-bottom: ${props => props.theme.space.xxs} solid
+      ${props => props.theme.color.surface.shade200};
+  }
+
+  & > footer {
+    padding-top: ${props => props.theme.space.xs};
+    border-top: ${props => props.theme.space.xxs} solid
+      ${props => props.theme.color.surface.shade200};
+  }
+
+  & > div > *:first-child {
+    margin-top: 0;
   }
 `

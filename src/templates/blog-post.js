@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { getImage, getSrc } from "gatsby-plugin-image"
 
-import { Article, Footer, H1, H3, Header, Hr, P, Small } from "../elements"
+import { Article, Footer, H1, H3, Header, P, Small } from "../elements"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Share from "../components/share"
@@ -59,15 +59,17 @@ const BlogPostTemplate = ({ data, location }) => {
       />
       <Article>
         <Header>
-          <Small $top>
+          <Small>
             {post.frontmatter.date} | {post.timeToRead} min. czytania
           </Small>
           <H1 $top>{post.frontmatter.title}</H1>
           <P $lead>{post.frontmatter.description}</P>
+          <Share data={links}>
+            <P $ui>Udostępnij:</P>
+          </Share>
         </Header>
         <div>
           <MDXRenderer>{post.body}</MDXRenderer>
-          <Hr />
         </div>
         <Footer $top>
           <Share data={links}>
