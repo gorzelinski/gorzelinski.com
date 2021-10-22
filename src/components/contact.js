@@ -17,7 +17,7 @@ const Contact = () => {
   }
 
   return (
-    <Footer $lower id="kontakt">
+    <Footer id="kontakt">
       <Card as="div" $center $textCenter>
         <H2 $top>Przywitaj się!</H2>
         <P>
