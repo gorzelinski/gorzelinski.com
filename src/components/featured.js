@@ -22,7 +22,9 @@ const Featured = ({ data, children }) => {
           </Button>
         )}
       </Header>
-      {children}
+      <Section as="div" $top>
+        {children}
+      </Section>
     </Section>
   )
 }

@@ -2,6 +2,7 @@ import styled, { css } from "styled-components"
 
 import { full, span2, span3, span4 } from "./grid"
 
+// think about alignment - content/itself
 export const Card = styled.article`
   ${span2}
   ${span3}

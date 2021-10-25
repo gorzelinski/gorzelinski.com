@@ -23,11 +23,13 @@ const Portfolio = ({ data, location }) => {
         slug={location.pathname}
         image={metaImage}
       ></Seo>
-      <Section>
+      <Section $lower>
         <Header $section>
-          <H1>Wszystkie projekty</H1>
+          <H1 $top>Wszystkie projekty</H1>
         </Header>
-        <Projects data={data}></Projects>
+        <Section as="div" $top>
+          <Projects data={data}></Projects>
+        </Section>
       </Section>
     </Layout>
   )

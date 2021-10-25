@@ -6,7 +6,7 @@ export const grid = css`
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(max(40%, ${props => props.theme.space.xxxl}), 1fr)
+    minmax(min(${props => props.theme.space.xxxl}, 100%), 1fr)
   );
   gap: ${props => props.theme.space.l} ${props => props.theme.space.s};
 

@@ -23,11 +23,13 @@ const Blog = ({ data, location }) => {
         slug={location.pathname}
         image={metaImage}
       ></Seo>
-      <Section>
+      <Section $lower>
         <Header $section>
-          <H1>Wszystkie wpisy</H1>
+          <H1 $top>Wszystkie wpisy</H1>
         </Header>
-        <Posts data={data}></Posts>
+        <Section as="div" $top>
+          <Posts data={data}></Posts>
+        </Section>
       </Section>
     </Layout>
   )
