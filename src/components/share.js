@@ -9,68 +9,44 @@ import {
 
 import { Button, Icon, Navigation } from "../elements"
 
-const Share = ({ data, children }) => {
-  const {
-    github = "",
-    dribbble = "",
-    twitter = "",
-    facebook = "",
-    linkedin = "",
-  } = data
+const Share = ({ data = {}, children }) => {
+  const selectIcon = name => {
+    switch (name) {
+      case "github":
+        return <LogoGithub></LogoGithub>
+      case "dribbble":
+        return <LogoDribbble></LogoDribbble>
+      case "twitter":
+        return <LogoTwitter></LogoTwitter>
+      case "facebook":
+        return <LogoFacebook></LogoFacebook>
+      case "linkedin":
+        return <LogoLinkedin></LogoLinkedin>
+      default:
+        return null
+    }
+  }
 
   return (
     <Navigation $full as="div">
       {children}
-      {github && (
-        <Button as="a" rel="noopener noreferrer" target="_blank" href={github}>
-          <Icon $text>
-            <LogoGithub></LogoGithub>
-          </Icon>
-        </Button>
-      )}
-      {dribbble && (
-        <Button
-          as="a"
-          rel="noopener noreferrer"
-          target="_blank"
-          href={dribbble}
-        >
-          <Icon $text>
-            <LogoDribbble></LogoDribbble>
-          </Icon>
-        </Button>
-      )}
-      {twitter && (
-        <Button as="a" rel="noopener noreferrer" target="_blank" href={twitter}>
-          <Icon $text>
-            <LogoTwitter></LogoTwitter>
-          </Icon>
-        </Button>
-      )}
-      {facebook && (
-        <Button
-          as="a"
-          rel="noopener noreferrer"
-          target="_blank"
-          href={facebook}
-        >
-          <Icon $text>
-            <LogoFacebook></LogoFacebook>
-          </Icon>
-        </Button>
-      )}
-      {linkedin && (
-        <Button
-          as="a"
-          rel="noopener noreferrer"
-          target="_blank"
-          href={linkedin}
-        >
-          <Icon $text>
-            <LogoLinkedin></LogoLinkedin>
-          </Icon>
-        </Button>
-      )}
+      {Object.entries(data).map(array => {
+        const name = array[0]
+        const link = array[1]
+
+        return (
+          <Button
+            as="a"
+            key={name}
+            aria-label={name}
+            rel="noopener noreferrer"
+            target="_blank"
+            href={link}
+          >
+            <Icon $text>{selectIcon(name)}</Icon>
+          </Button>
+        )
+      })}
     </Navigation>
   )
 }
