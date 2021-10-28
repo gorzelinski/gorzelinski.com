@@ -21,10 +21,8 @@ describe("Subscirption component", () => {
           <Share data={defaultData}></Share>
         </ThemeProvider>
       )
-      const links = screen
-        .getAllByRole("link")
-        .filter(link => link.href.includes("github"))
-      expect(links[0].href).toContain("github")
+      const link = screen.getByRole("link", { name: "github", exact: false })
+      expect(link).toBeInTheDocument()
     })
 
     it("dribbble link", () => {
@@ -33,10 +31,8 @@ describe("Subscirption component", () => {
           <Share data={defaultData}></Share>
         </ThemeProvider>
       )
-      const links = screen
-        .getAllByRole("link")
-        .filter(link => link.href.includes("dribbble"))
-      expect(links[0].href).toContain("dribbble")
+      const link = screen.getByRole("link", { name: "dribbble", exact: false })
+      expect(link).toBeInTheDocument()
     })
 
     it("twitter link", () => {
@@ -45,10 +41,8 @@ describe("Subscirption component", () => {
           <Share data={defaultData}></Share>
         </ThemeProvider>
       )
-      const links = screen
-        .getAllByRole("link")
-        .filter(link => link.href.includes("twitter"))
-      expect(links[0].href).toContain("twitter")
+      const link = screen.getByRole("link", { name: "twitter", exact: false })
+      expect(link).toBeInTheDocument()
     })
 
     it("facebook link", () => {
@@ -57,10 +51,8 @@ describe("Subscirption component", () => {
           <Share data={defaultData}></Share>
         </ThemeProvider>
       )
-      const links = screen
-        .getAllByRole("link")
-        .filter(link => link.href.includes("facebook"))
-      expect(links[0].href).toContain("facebook")
+      const link = screen.getByRole("link", { name: "facebook", exact: false })
+      expect(link).toBeInTheDocument()
     })
 
     it("linkedin link", () => {
@@ -69,10 +61,8 @@ describe("Subscirption component", () => {
           <Share data={defaultData}></Share>
         </ThemeProvider>
       )
-      const links = screen
-        .getAllByRole("link")
-        .filter(link => link.href.includes("linkedin"))
-      expect(links[0].href).toContain("linkedin")
+      const link = screen.getByRole("link", { name: "linkedin", exact: false })
+      expect(link).toBeInTheDocument()
     })
 
     it("all links", () => {
@@ -87,66 +77,6 @@ describe("Subscirption component", () => {
   })
 
   describe("doesn't render (due to partial data)", () => {
-    it("github link", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Share data={{ ...defaultData, github: "" }}></Share>
-        </ThemeProvider>
-      )
-      const links = screen
-        .getAllByRole("link")
-        .filter(link => link.href.includes("github"))
-      expect(links.length).toEqual(0)
-    })
-
-    it("dribbble link", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Share data={{ ...defaultData, dribbble: "" }}></Share>
-        </ThemeProvider>
-      )
-      const links = screen
-        .getAllByRole("link")
-        .filter(link => link.href.includes("dribbble"))
-      expect(links.length).toEqual(0)
-    })
-
-    it("twitter link", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Share data={{ ...defaultData, twitter: "" }}></Share>
-        </ThemeProvider>
-      )
-      const links = screen
-        .getAllByRole("link")
-        .filter(link => link.href.includes("twitter"))
-      expect(links.length).toEqual(0)
-    })
-
-    it("facebooklink", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Share data={{ ...defaultData, facebook: "" }}></Share>
-        </ThemeProvider>
-      )
-      const links = screen
-        .getAllByRole("link")
-        .filter(link => link.href.includes("facebook"))
-      expect(links.length).toEqual(0)
-    })
-
-    it("linkedin link", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Share data={{ ...defaultData, linkedin: "" }}></Share>
-        </ThemeProvider>
-      )
-      const links = screen
-        .getAllByRole("link")
-        .filter(link => link.href.includes("linkedin"))
-      expect(links.length).toEqual(0)
-    })
-
     it("any link", () => {
       render(
         <ThemeProvider theme={light}>
