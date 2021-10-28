@@ -9,9 +9,9 @@ export const useBio = () => {
           author {
             name
             summary
+            email
           }
           social {
-            email
             github
             dribbble
             twitter

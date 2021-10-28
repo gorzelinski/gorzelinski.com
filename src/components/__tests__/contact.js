@@ -13,9 +13,9 @@ jest.mock("../../hooks", () => ({
           title: "siteTitle",
           author: {
             name: "authorsName",
+            email: "authorsEmail",
           },
           social: {
-            email: "authorsEmail",
             github: "authorsGithub",
             dribbble: "authorsDribbble",
             twitter: "authorsTwitter",

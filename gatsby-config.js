@@ -8,11 +8,11 @@ module.exports = {
       fugiat sint harum perferendis pariatur voluptates cumque
       eveniet. Cumque fugit aspernatur, aut ullam eius debitis qui
       numquam architecto quod in sapiente illo incidunt!`,
+      email: `mateusz@gorzelinski.com`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gorzelinski.com/`,
     social: {
-      email: `mateusz@gorzelinski.com`,
       github: `gorzelinski`,
       dribbble: `gorzelinski`,
       twitter: `gorzelinski`,
