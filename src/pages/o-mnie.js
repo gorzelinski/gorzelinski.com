@@ -56,13 +56,6 @@ export const pageQuery = graphql`
           name
           summary
         }
-        social {
-          email
-          github
-          dribbble
-          twitter
-          facebook
-        }
       }
     }
     text: mdx(fileAbsolutePath: { regex: "/(about-me)/" }) {
