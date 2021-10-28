@@ -12,10 +12,17 @@ const ThemeSwitcher = ({ data = {} }) => {
   } = data
 
   const switchTheme = () => {
-    JSON.stringify(selectedTheme) === JSON.stringify(themes.light)
+    selectedTheme.name === "light"
       ? setPreferredTheme(themes.dark)
       : setPreferredTheme(themes.light)
   }
+
+  const selectIcon = name =>
+    name === "light" ? (
+      <Moon data-testid="moon"></Moon>
+    ) : (
+      <Sunny data-testid="sunny"></Sunny>
+    )
 
   return themeLoaded && Object.keys(themes).length > 1 ? (
     <Button
@@ -24,13 +31,7 @@ const ThemeSwitcher = ({ data = {} }) => {
       aria-label="Zmień motyw"
       onClick={() => switchTheme()}
     >
-      <Icon $text>
-        {JSON.stringify(selectedTheme) === JSON.stringify(themes.light) ? (
-          <Moon data-testid="moon"></Moon>
-        ) : (
-          <Sunny data-testid="sunny"></Sunny>
-        )}
-      </Icon>
+      <Icon $text>{selectIcon(selectedTheme.name)}</Icon>
     </Button>
   ) : null
 }
