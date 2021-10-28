@@ -45,7 +45,9 @@ describe("Contact component", () => {
     })
 
     it("social media links", () => {
-      const socials = screen.getAllByRole("link", { name: "" })
+      const socials = screen
+        .getAllByRole("link")
+        .filter(link => link.hasAttribute("aria-label"))
       expect(socials.length).toBe(4)
     })
 
