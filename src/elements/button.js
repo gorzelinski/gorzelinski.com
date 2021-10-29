@@ -45,6 +45,7 @@ export const Button = styled(Link)`
   ${ui}
   ${outline}
   text-decoration: none;
+  justify-self: start;
   padding: ${props => props.theme.space.xs};
   border: 0;
   background-color: transparent;
@@ -76,10 +77,12 @@ export const Button = styled(Link)`
   ${props =>
     props.$grow &&
     css`
+      justify-self: stretch;
       justify-content: center;
       width: 100%;
 
       ${media.mobile`
+        justify-self: start;
         justify-content: space-between;
         width: auto;
       `}
