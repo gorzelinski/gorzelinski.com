@@ -14,6 +14,7 @@ import {
   H3,
   H6,
   Header,
+  Navigation,
   P,
   Small,
   Subsection,
@@ -124,9 +125,10 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <MDXRenderer>{project.body}</MDXRenderer>
         </div>
         <Footer $top>
-          <P $ui>
-            Udostępnij: <Socials data={links}></Socials>
-          </P>
+          <Navigation as="div">
+            <P $ui>Udostępnij:</P>
+            <Socials data={links}></Socials>
+          </Navigation>
         </Footer>
       </Article>
       <Aside $higher $article>
