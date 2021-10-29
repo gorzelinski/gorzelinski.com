@@ -9,7 +9,7 @@ const Pagination = ({ data }) => {
   return (
     <Navigation $spaceBetween>
       {prev && (
-        <Button $text to={prev.slug} rel="prev">
+        <Button $first $text to={prev.slug} rel="prev">
           <Icon>
             <ChevronBack></ChevronBack>
           </Icon>
@@ -17,7 +17,12 @@ const Pagination = ({ data }) => {
         </Button>
       )}
       {next && (
-        <Button $text to={next.slug} rel="next">
+        <Button
+          {...(!prev ? { $first: true } : { $last: true })}
+          $text
+          to={next.slug}
+          rel="next"
+        >
           {next.text}
           <Icon>
             <ChevronForward></ChevronForward>
