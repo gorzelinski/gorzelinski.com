@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { getImage, getSrc } from "gatsby-plugin-image"
 
-import { Article, Footer, H1, H3, Header, P, Small } from "../elements"
+import { Article, Aside, Footer, H1, H3, Header, P, Small } from "../elements"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Share from "../components/share"
@@ -77,9 +77,10 @@ const BlogPostTemplate = ({ data, location }) => {
           </Share>
         </Footer>
       </Article>
-      <Pagination data={pagination}>
+      <Aside $higher $article>
         <H3 $top>Przeczytaj także:</H3>
-      </Pagination>
+        <Pagination data={pagination}></Pagination>
+      </Aside>
     </Layout>
   )
 }
