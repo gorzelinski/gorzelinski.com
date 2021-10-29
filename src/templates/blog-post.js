@@ -6,7 +6,7 @@ import { getImage, getSrc } from "gatsby-plugin-image"
 import { Article, Aside, Footer, H1, H3, Header, P, Small } from "../elements"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Share from "../components/share"
+import Socials from "../components/socials"
 import Pagination from "../components/pagination"
 
 const BlogPostTemplate = ({ data, location }) => {
@@ -64,17 +64,17 @@ const BlogPostTemplate = ({ data, location }) => {
           </Small>
           <H1 $top>{post.frontmatter.title}</H1>
           <P $lead>{post.frontmatter.description}</P>
-          <Share data={links}>
-            <P $ui>Udostępnij:</P>
-          </Share>
+          <P $ui>
+            Udostępnij: <Socials data={links}></Socials>
+          </P>
         </Header>
         <div>
           <MDXRenderer>{post.body}</MDXRenderer>
         </div>
         <Footer $top>
-          <Share data={links}>
-            <P $ui>Udostępnij:</P>
-          </Share>
+          <P $ui>
+            Udostępnij: <Socials data={links}></Socials>
+          </P>
         </Footer>
       </Article>
       <Aside $higher $article>

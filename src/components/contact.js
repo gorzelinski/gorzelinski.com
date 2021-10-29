@@ -2,7 +2,7 @@ import React from "react"
 
 import { useBio } from "../hooks"
 import { Footer, Card, H2, P, Address, Button, Small } from "../elements"
-import Share from "./share"
+import Socials from "./socials"
 
 const Contact = () => {
   const { bio } = useBio()
@@ -27,7 +27,7 @@ const Contact = () => {
           <Button $text as="a" href={`mailto:${email}`}>
             {email}
           </Button>
-          <Share data={links}></Share>
+          <Socials data={links}></Socials>
         </Address>
         <Small $top $bottom>
           © {new Date().getFullYear()} {title} | Z miłością stworzyłem tę stronę

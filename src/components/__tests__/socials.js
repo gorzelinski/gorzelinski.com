@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react"
 import { ThemeProvider } from "styled-components"
 
 import { light } from "../../themes"
-import Share from "../share"
+import Socials from "../socials"
 
 const defaultData = {
   github: "https://github.com/link-to-share",
@@ -18,7 +18,7 @@ describe("Subscirption component", () => {
     it("github link", () => {
       render(
         <ThemeProvider theme={light}>
-          <Share data={defaultData}></Share>
+          <Socials data={defaultData}></Socials>
         </ThemeProvider>
       )
       const link = screen.getByRole("link", { name: "github", exact: false })
@@ -28,7 +28,7 @@ describe("Subscirption component", () => {
     it("dribbble link", () => {
       render(
         <ThemeProvider theme={light}>
-          <Share data={defaultData}></Share>
+          <Socials data={defaultData}></Socials>
         </ThemeProvider>
       )
       const link = screen.getByRole("link", { name: "dribbble", exact: false })
@@ -38,7 +38,7 @@ describe("Subscirption component", () => {
     it("twitter link", () => {
       render(
         <ThemeProvider theme={light}>
-          <Share data={defaultData}></Share>
+          <Socials data={defaultData}></Socials>
         </ThemeProvider>
       )
       const link = screen.getByRole("link", { name: "twitter", exact: false })
@@ -48,7 +48,7 @@ describe("Subscirption component", () => {
     it("facebook link", () => {
       render(
         <ThemeProvider theme={light}>
-          <Share data={defaultData}></Share>
+          <Socials data={defaultData}></Socials>
         </ThemeProvider>
       )
       const link = screen.getByRole("link", { name: "facebook", exact: false })
@@ -58,7 +58,7 @@ describe("Subscirption component", () => {
     it("linkedin link", () => {
       render(
         <ThemeProvider theme={light}>
-          <Share data={defaultData}></Share>
+          <Socials data={defaultData}></Socials>
         </ThemeProvider>
       )
       const link = screen.getByRole("link", { name: "linkedin", exact: false })
@@ -68,7 +68,7 @@ describe("Subscirption component", () => {
     it("all links", () => {
       render(
         <ThemeProvider theme={light}>
-          <Share data={defaultData}></Share>
+          <Socials data={defaultData}></Socials>
         </ThemeProvider>
       )
       const links = screen.getAllByRole("link")
@@ -80,7 +80,7 @@ describe("Subscirption component", () => {
     it("any link", () => {
       render(
         <ThemeProvider theme={light}>
-          <Share data={{}}></Share>
+          <Socials data={{}}></Socials>
         </ThemeProvider>
       )
       const links = screen.queryAllByRole("link")

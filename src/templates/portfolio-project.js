@@ -20,7 +20,7 @@ import {
 } from "../elements"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Share from "../components/share"
+import Socials from "../components/socials"
 import Pagination from "../components/pagination"
 
 const PortfolioProjectTemplate = ({ data, location }) => {
@@ -124,9 +124,9 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <MDXRenderer>{project.body}</MDXRenderer>
         </div>
         <Footer $top>
-          <Share data={links}>
-            <P $ui>Udostępnij:</P>
-          </Share>
+          <P $ui>
+            Udostępnij: <Socials data={links}></Socials>
+          </P>
         </Footer>
       </Article>
       <Aside $higher $article>

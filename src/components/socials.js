@@ -9,7 +9,7 @@ import {
 
 import { Button, Icon, Navigation } from "../elements"
 
-const Share = ({ data = {}, children }) => {
+const Socials = ({ data = {} }) => {
   const selectIcon = name => {
     switch (name) {
       case "github":
@@ -29,7 +29,6 @@ const Share = ({ data = {}, children }) => {
 
   return (
     <Navigation $full as="div">
-      {children}
       {Object.entries(data).map(array => {
         const name = array[0]
         const link = array[1]
@@ -51,4 +50,4 @@ const Share = ({ data = {}, children }) => {
   )
 }
 
-export default Share
+export default Socials
