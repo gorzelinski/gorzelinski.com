@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 import { marginReset, media } from "../utils"
 import { smallSize, tinySize } from "../typography/sizes"
@@ -14,5 +14,16 @@ export const Label = styled.label`
   `}
   
   display: block;
+  ${props =>
+    props.$hidden &&
+    css`
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    `}
   margin-bottom: ${props => props.theme.space.xs};
 `
