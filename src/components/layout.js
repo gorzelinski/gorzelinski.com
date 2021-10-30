@@ -31,8 +31,10 @@ const Layout = ({ children }) => {
                   themeLoaded,
                 }}
               ></Navbar>
-              <main>{children}</main>
-              <Subscription></Subscription>
+              <main>
+                {children}
+                <Subscription></Subscription>
+              </main>
               <Contact></Contact>
             </Wrapper>
           </Background>

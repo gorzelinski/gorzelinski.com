@@ -1,35 +1,52 @@
 import React from "react"
-import { Aside, Button, Card, Form, H3, Input, P } from "../elements"
+import { Send } from "@styled-icons/ionicons-solid"
+
+import { Button, Form, H3, Icon, Input, Label, P, Section } from "../elements"
 
 const Subscription = () => {
   return (
-    <Aside $border $higher>
-      <Card as="div" $center $textCenter>
+    <Section $featured $higher>
+      <div>
         <H3 as="h2" $top>
           Chcesz być na bierząco?
         </H3>
-        <P>
-          Subskrybuj, aby otrzymywać powiadomienia o najnowszych treściach.
-          <br />
-          Anuluj w dowolnym momencie.
-          <br />
-          Nie wysyłam spamu. Słowo.
+        <P $lead>
+          Subskrybuj, aby otrzymywać powiadomienia o wpisach, case studies i
+          innych treściach. Nie wysyłam spamu. Jeżeli dostaniesz email od
+          nigeryjskiego księcia z tej domeny, to nie ja - anuluj jak
+          najszybciej.
         </P>
         <Form>
+          <Label $hidden htmlFor="name">
+            Imię
+          </Label>
+          <Input
+            required
+            name="name"
+            id="name"
+            type="text"
+            placeholder="Twoje imię"
+            autoComplete="off"
+          ></Input>
+          <Label $hidden htmlFor="email">
+            Email
+          </Label>
           <Input
             required
             name="email"
             id="email"
             type="email"
             placeholder="Twój email"
-            autoComplete="off"
           ></Input>
           <Button as="button" $grow $primary>
             Subskrybuj
+            <Icon>
+              <Send></Send>
+            </Icon>
           </Button>
         </Form>
-      </Card>
-    </Aside>
+      </div>
+    </Section>
   )
 }
 

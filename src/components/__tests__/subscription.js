@@ -21,10 +21,23 @@ describe("Subscirption component", () => {
     })
 
     it("email input field", () => {
-      const input = screen.getByRole("textbox")
+      const input = screen.getByRole("textbox", {
+        name: /email/i,
+        exact: false,
+      })
       expect(input).toBeInTheDocument()
       expect(input).toBeRequired()
       expect(input.getAttribute("type")).toBe("email")
+    })
+
+    it("name input field", () => {
+      const input = screen.getByRole("textbox", {
+        name: /imię/i,
+        exact: false,
+      })
+      expect(input).toBeInTheDocument()
+      expect(input).toBeRequired()
+      expect(input.getAttribute("type")).toBe("text")
     })
 
     it("subscribe button", () => {

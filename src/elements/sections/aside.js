@@ -16,14 +16,4 @@ export const Aside = styled.aside`
         grid-column: 2;
       }
     `}
-
-  ${props =>
-    props.$border &&
-    css`
-      padding: ${props => props.theme.space.l} 0;
-      border-top: ${props => props.theme.space.xxs} solid
-        ${props => props.theme.color.surface.shade200};
-      border-bottom: ${props => props.theme.space.xxs} solid
-        ${props => props.theme.color.surface.shade200};
-    `}
 `

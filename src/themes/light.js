@@ -30,5 +30,8 @@ export const light = {
     success: "#157F1F",
     error: "#CE2D4F",
   },
+  shadow: {
+    neumorphism: "8px 8px 16px #d6d6d6, -8px -8px 16px #ffffff",
+  },
   ...tokens,
 }
