@@ -2,10 +2,11 @@ import React from "react"
 import { graphql } from "gatsby"
 import { getImage, getSrc } from "gatsby-plugin-image"
 
-import { H1, Header, Section } from "../elements"
+import { H1, Header, P, Section } from "../elements"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Projects from "../components/projects"
+import Subscription from "../components/subscription"
 
 const Portfolio = ({ data, location }) => {
   const metaImage = {
@@ -24,13 +25,17 @@ const Portfolio = ({ data, location }) => {
         image={metaImage}
       ></Seo>
       <Section $lower>
-        <Header $section>
-          <H1 $top>Wszystkie projekty</H1>
+        <Header>
+          <H1 $top>Portfolio</H1>
+          <P as="h2" $ui>
+            Wszystkie projekty
+          </P>
         </Header>
         <Section as="div" $top>
           <Projects data={data}></Projects>
         </Section>
       </Section>
+      <Subscription></Subscription>
     </Layout>
   )
 }

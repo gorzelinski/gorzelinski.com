@@ -10,6 +10,8 @@ import Featured from "../components/featured"
 import Projects from "../components/projects"
 import About from "../components/about"
 import Posts from "../components/posts"
+import Contact from "../components/contact"
+import Subscription from "../components/subscription"
 
 const Index = ({ data }) => {
   const { projects } = usePortfolioProjects()
@@ -45,6 +47,8 @@ const Index = ({ data }) => {
       >
         <Posts data={posts}></Posts>
       </Featured>
+      <Subscription></Subscription>
+      <Contact></Contact>
     </Layout>
   )
 }
