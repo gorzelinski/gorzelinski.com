@@ -8,7 +8,7 @@ const Subscription = () => {
     <Section $featured $higher>
       <div>
         <H3 as="h2" $top>
-          Chcesz być na bierząco?
+          Chcesz być na bieżąco?
         </H3>
         <P $lead>
           Subskrybuj, aby otrzymywać powiadomienia o wpisach, case studies i
