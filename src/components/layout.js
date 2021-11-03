@@ -8,7 +8,7 @@ import { useTheme } from "../hooks"
 import Navbar from "./navbar"
 import Footer from "./footer"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
   const { themes, theme, themeLoaded, setPreferredTheme } = useTheme()
   const [selectedTheme, setSelectedTheme] = useState(theme)
 
@@ -29,6 +29,7 @@ const Layout = ({ children }) => {
                   selectedTheme,
                   themeLoaded,
                 }}
+                location={location}
               ></Navbar>
               <main>{children}</main>
               <Footer></Footer>

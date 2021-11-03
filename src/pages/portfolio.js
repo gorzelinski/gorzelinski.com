@@ -17,7 +17,7 @@ const Portfolio = ({ data, location }) => {
   }
 
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo
         title="Portfolio"
         description="Tu będzie opis portfolio"

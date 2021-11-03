@@ -4,7 +4,9 @@ import { Button, Header, Navigation } from "../elements"
 import Logo from "./logo"
 import ThemeSwitcher from "./theme-switcher"
 
-const Navbar = ({ data }) => {
+const Navbar = ({ data, location }) => {
+  const selectActiveClass = pathname =>
+    location?.pathname === pathname ? "active" : "active-subtle"
   return (
     <Header $section>
       <Navigation aria-label="Pomocnicza">
@@ -16,7 +18,7 @@ const Navbar = ({ data }) => {
           $mobile
           $nav
           to="/portfolio"
-          activeClassName="active"
+          activeClassName={selectActiveClass("/portfolio")}
           partiallyActive={true}
         >
           Portfolio
@@ -34,18 +36,12 @@ const Navbar = ({ data }) => {
           $mobile
           $nav
           to="/blog"
-          activeClassName="active"
+          activeClassName={selectActiveClass("/blog")}
           partiallyActive={true}
         >
           Blog
         </Button>
-        <Button
-          $mobile
-          $primary
-          to="#kontakt"
-          activeClassName="active"
-          partiallyActive={true}
-        >
+        <Button $mobile $primary to="#kontakt">
           Kontakt
         </Button>
       </Navigation>

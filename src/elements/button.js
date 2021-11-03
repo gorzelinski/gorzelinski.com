@@ -17,7 +17,7 @@ export const nav = css`
       ${props => props.theme.space.xs} - ${props => props.theme.space.xxs}
     );
   }
-  &.active-logo {
+  &.active-subtle {
     color: ${props => props.theme.color.text.base};
   }
 `

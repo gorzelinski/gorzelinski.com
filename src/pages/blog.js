@@ -17,7 +17,7 @@ const Blog = ({ data, location }) => {
   }
 
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo
         title="Blog"
         description="Tu będzie opis bloga"
