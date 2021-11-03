@@ -13,7 +13,7 @@ describe("Accessibility tests", () => {
     cy.findByRole("button", { name: /motyw/i, exact: false }).click()
     cy.checkA11y()
   })
-  it("Visits one portfolio project and checks for accessibility violations", () => {
+  it("Visits portfolio project page and checks for accessibility violations", () => {
     cy.visit("/portfolio/an-lam").get("main").injectAxe()
     cy.checkA11y()
     cy.findByRole("button", { name: /motyw/i, exact: false }).click()
@@ -31,7 +31,7 @@ describe("Accessibility tests", () => {
     cy.findByRole("button", { name: /motyw/i, exact: false }).click()
     cy.checkA11y()
   })
-  it("Visits one blog post and checks for accessibility violations", () => {
+  it("Visits blog post page and checks for accessibility violations", () => {
     cy.visit("/blog/hello-world").get("main").injectAxe()
     cy.checkA11y()
     cy.findByRole("button", { name: /motyw/i, exact: false }).click()
