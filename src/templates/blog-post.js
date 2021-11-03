@@ -18,6 +18,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Socials from "../components/socials"
 import Pagination from "../components/pagination"
+import Subscription from "../components/subscription"
 
 const BlogPostTemplate = ({ data, location }) => {
   const { siteUrl } = data.site.siteMetadata
@@ -82,7 +83,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <div>
           <MDXRenderer>{post.body}</MDXRenderer>
         </div>
-        <Footer $top>
+        <Footer>
           <Navigation as="div">
             <P $ui>Udostępnij:</P>
             <Socials data={links}></Socials>
@@ -93,6 +94,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <H3 $top>Przeczytaj także:</H3>
         <Pagination data={pagination}></Pagination>
       </Aside>
+      <Subscription></Subscription>
     </Layout>
   )
 }

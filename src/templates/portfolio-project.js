@@ -23,6 +23,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Socials from "../components/socials"
 import Pagination from "../components/pagination"
+import Subscription from "../components/subscription"
 
 const PortfolioProjectTemplate = ({ data, location }) => {
   const { siteUrl } = data.site.siteMetadata
@@ -84,32 +85,42 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <P $lead>{project.frontmatter.description}</P>
           <Subsection as="div">
             <Card as="div" $span4>
-              <Small $top>Data:</Small>
-              <H6 as="h3" $top>
+              <Small as="p" $top>
+                Data:
+              </Small>
+              <H6 as="h2" $top>
                 {project.frontmatter.date}
               </H6>
             </Card>
             <Card as="div" $span4>
-              <Small $top>Klient:</Small>
-              <H6 as="h3" $top>
+              <Small as="p" $top>
+                Klient:
+              </Small>
+              <H6 as="h2" $top>
                 {project.frontmatter.client}
               </H6>
             </Card>
             <Card as="div" $span4>
-              <Small $top>Moja rola:</Small>
-              <H6 as="h3" $top>
+              <Small as="p" $top>
+                Moja rola:
+              </Small>
+              <H6 as="h2" $top>
                 {project.frontmatter.myRole}
               </H6>
             </Card>
             <Card as="div" $span4>
-              <Small $top>Narzędzia:</Small>
-              <H6 as="h3" $top>
+              <Small as="p" $top>
+                Narzędzia:
+              </Small>
+              <H6 as="h2" $top>
                 {project.frontmatter.tools}
               </H6>
             </Card>
             <Card as="div" $span4>
-              <Small $top>Live:</Small>
-              <H6 as="h3" $top>
+              <Small as="p" $top>
+                Live:
+              </Small>
+              <H6 as="h2" $top>
                 <A
                   target="_blank"
                   rel="noopener noreferrer"
@@ -135,6 +146,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         <H3 $top>Sprawdź także:</H3>
         <Pagination data={pagination}></Pagination>
       </Aside>
+      <Subscription></Subscription>
     </Layout>
   )
 }
