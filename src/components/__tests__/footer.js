@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react"
 import { ThemeProvider } from "styled-components"
 
 import { light } from "../../themes"
-import Contact from "../contact"
+import Footer from "../footer"
 
 jest.mock("../../hooks", () => ({
   useBio: () => ({
@@ -27,24 +27,33 @@ jest.mock("../../hooks", () => ({
   }),
 }))
 
-describe("Contact component", () => {
+describe("Footer component", () => {
   describe("renders", () => {
     beforeEach(() => {
       render(
         <ThemeProvider theme={light}>
-          <Contact></Contact>
+          <Footer></Footer>
         </ThemeProvider>
       )
     })
 
-    it("CTA button", () => {
-      const cta = screen.getByRole("link", {
-        name: /skontaktuj/i,
-        exact: false,
-      })
-      expect(cta.getAttribute("href")).toEqual(
+    it("email button", () => {
+      const email = screen.getByRole("link", { name: /authorsemail/i })
+      expect(email.getAttribute("href")).toEqual(
         expect.stringMatching(/mailto:authorsemail/i)
       )
+    })
+
+    it("social media links", () => {
+      const socials = screen
+        .getAllByRole("link")
+        .filter(link => link.hasAttribute("aria-label"))
+      expect(socials.length).toBe(4)
+    })
+
+    it("copyright info", () => {
+      const copyright = screen.getByText(/©/i)
+      expect(copyright.innerHTML).toEqual(expect.stringMatching(/siteTitle/i))
     })
   })
 })

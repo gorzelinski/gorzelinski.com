@@ -1,39 +1,25 @@
 import React from "react"
 
 import { useBio } from "../hooks"
-import { Footer, Card, H2, P, Address, Button, Small } from "../elements"
-import Socials from "./socials"
+import { Button, Card, H2, P, Section } from "../elements"
 
 const Contact = () => {
   const { bio } = useBio()
-  const { title } = bio.site.siteMetadata
   const { email } = bio.site.siteMetadata?.author
-  const links = Object.fromEntries(
-    Object.entries(bio.site.siteMetadata?.social).map(array => [
-      array[0],
-      `https://${array[0]}.com/${array[1]}`,
-    ])
-  )
 
   return (
-    <Footer id="kontakt">
+    <Section $lower>
       <Card as="div" $center $textCenter>
         <H2 $top>Przywitaj się!</H2>
         <P $lead>
           Jeżeli chcesz porozmawiać o wpółpracy lub na inny, interesujacy temat
-          napisz mi wiadomość prywatną lub email. Nie kępuj się. Serio.
+          napisz do mnie. Nie kępuj się. Serio.
         </P>
-        <Address>
-          <Button $text as="a" href={`mailto:${email}`}>
-            {email}
-          </Button>
-          <Socials data={links}></Socials>
-        </Address>
-        <Small $top $bottom>
-          © {new Date().getFullYear()} {title} | Z miłością stworzyłem tę stronę
-        </Small>
+        <Button $text as="a" href={`mailto:${email}`}>
+          Skontaktuj się ze mną
+        </Button>
       </Card>
-    </Footer>
+    </Section>
   )
 }
 
