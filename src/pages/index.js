@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { getImage, getSrc } from "gatsby-plugin-image"
 
 import { useBio, useBlogPosts, usePortfolioProjects } from "../hooks"
+import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Landing from "../components/landing"
@@ -17,12 +17,10 @@ const Index = ({ data }) => {
   const { projects } = usePortfolioProjects()
   const { posts } = useBlogPosts()
   const { bio } = useBio()
-  const metaImage = {
+  const metaImage = createMetaImage({
     alt: `Wycentrowany napis "Tworzę rzeczy w internecie" na białym tle`,
-    src: getSrc(data?.metaImage),
-    width: getImage(data?.metaImage).width,
-    height: getImage(data?.metaImage).height,
-  }
+    src: data?.metaImage,
+  })
 
   return (
     <Layout>

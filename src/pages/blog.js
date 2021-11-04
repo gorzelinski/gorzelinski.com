@@ -1,20 +1,18 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { getImage, getSrc } from "gatsby-plugin-image"
 
 import { H1, Header, P, Section } from "../elements"
+import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Posts from "../components/posts"
 import Subscription from "../components/subscription"
 
 const Blog = ({ data, location }) => {
-  const metaImage = {
+  const metaImage = createMetaImage({
     alt: `Wycentrowany napis "Blog" na białym tle`,
-    src: getSrc(data?.metaImage),
-    width: getImage(data?.metaImage).width,
-    height: getImage(data?.metaImage).height,
-  }
+    src: data?.metaImage,
+  })
 
   return (
     <Layout location={location}>

@@ -1,22 +1,21 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
+import { Card, Figcaption, Figure, H1, Section } from "../elements"
+import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { Card, Figcaption, Figure, H1, Section } from "../elements"
-import { MDXRenderer } from "gatsby-plugin-mdx"
 
 const AboutMe = ({ data, location }) => {
   const name = data.site?.siteMetadata?.author?.name
   const text = data.text
   const image = getImage(data?.image)
-  const metaImage = {
+  const metaImage = createMetaImage({
     alt: `Wycentrowany napis "O mnie" na białym tle`,
-    src: getSrc(data?.metaImage),
-    width: getImage(data?.metaImage).width,
-    height: getImage(data?.metaImage).height,
-  }
+    src: data?.metaImage,
+  })
 
   return (
     <Layout>
