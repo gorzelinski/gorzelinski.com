@@ -1,6 +1,6 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import {
@@ -19,6 +19,11 @@ import {
   Small,
   Subsection,
 } from "../elements"
+import {
+  createMetaImage,
+  createPaginationLinks,
+  createShareLinks,
+} from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Socials from "../components/socials"
@@ -29,34 +34,13 @@ const PortfolioProjectTemplate = ({ data, location }) => {
   const { siteUrl } = data.site.siteMetadata
   const project = data.mdx
   const image = project.frontmatter?.image
-  const metaImage = {
-    alt: image.alt,
-    src: getSrc(image.src),
-    width: getImage(image.src).width,
-    height: getImage(image.src).height,
-  }
-  const links = {
-    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-      `${siteUrl}${location.pathname}`
-    )}&text=${encodeURIComponent(project.frontmatter.title)}`,
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-      `${siteUrl}${location.pathname}`
-    )}&quote=${encodeURIComponent(project.frontmatter.title)}`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-      `${siteUrl}${location.pathname}`
-    )}`,
-  }
+  const metaImage = createMetaImage(image)
+  const links = createShareLinks(
+    `${siteUrl}${location.pathname}`,
+    project.frontmatter.title
+  )
   const { previous, next } = data
-  const pagination = {
-    prev: previous && {
-      text: previous.frontmatter.title,
-      slug: `/portfolio${previous.fields.slug}`,
-    },
-    next: next && {
-      text: next.frontmatter.title,
-      slug: `/portfolio${next.fields.slug}`,
-    },
-  }
+  const pagination = createPaginationLinks("/portfolio", previous, next)
 
   return (
     <Layout>

@@ -1,7 +1,6 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { getImage, getSrc } from "gatsby-plugin-image"
 
 import {
   Article,
@@ -14,6 +13,11 @@ import {
   P,
   Small,
 } from "../elements"
+import {
+  createMetaImage,
+  createPaginationLinks,
+  createShareLinks,
+} from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Socials from "../components/socials"
@@ -24,34 +28,13 @@ const BlogPostTemplate = ({ data, location }) => {
   const { siteUrl } = data.site.siteMetadata
   const post = data.mdx
   const image = post.frontmatter?.image
-  const metaImage = {
-    alt: image.alt,
-    src: getSrc(image.src),
-    width: getImage(image.src).width,
-    height: getImage(image.src).height,
-  }
-  const links = {
-    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-      `${siteUrl}${location.pathname}`
-    )}&text=${encodeURIComponent(post.frontmatter.title)}`,
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-      `${siteUrl}${location.pathname}`
-    )}&quote=${encodeURIComponent(post.frontmatter.title)}`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-      `${siteUrl}${location.pathname}`
-    )}`,
-  }
+  const metaImage = createMetaImage(image)
+  const links = createShareLinks(
+    `${siteUrl}${location.pathname}`,
+    post.frontmatter.title
+  )
   const { previous, next } = data
-  const pagination = {
-    prev: previous && {
-      text: previous.frontmatter.title,
-      slug: `/blog${previous.fields.slug}`,
-    },
-    next: next && {
-      text: next.frontmatter.title,
-      slug: `/blog${next.fields.slug}`,
-    },
-  }
+  const pagination = createPaginationLinks("/blog", previous, next)
 
   return (
     <Layout>
@@ -75,10 +58,6 @@ const BlogPostTemplate = ({ data, location }) => {
           </Small>
           <H1 $top>{post.frontmatter.title}</H1>
           <P $lead>{post.frontmatter.description}</P>
-          <Navigation as="div">
-            <P $ui>Udostępnij:</P>
-            <Socials data={links}></Socials>
-          </Navigation>
         </Header>
         <div>
           <MDXRenderer>{post.body}</MDXRenderer>
