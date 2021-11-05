@@ -66,7 +66,7 @@ const Seo = ({ description, image, lang, meta, slug, title, type }) => {
           content: metaDescription,
         },
         {
-          property: "twitter:url",
+          name: "twitter:url",
           content: url,
         },
         {
@@ -90,10 +90,6 @@ const Seo = ({ description, image, lang, meta, slug, title, type }) => {
           metaImage
             ? [
                 {
-                  name: `twitter:card`,
-                  content: `summary_large_image`,
-                },
-                {
                   property: "og:image",
                   content: metaImage,
                 },
@@ -107,11 +103,15 @@ const Seo = ({ description, image, lang, meta, slug, title, type }) => {
                   content: image.height,
                 },
                 {
-                  property: "twitter:image",
+                  name: `twitter:card`,
+                  content: `summary_large_image`,
+                },
+                {
+                  name: "twitter:image",
                   content: metaImage,
                 },
                 {
-                  property: "twitter:image:alt",
+                  name: "twitter:image:alt",
                   content: image.alt,
                 },
               ]
