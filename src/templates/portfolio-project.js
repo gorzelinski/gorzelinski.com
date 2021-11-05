@@ -9,36 +9,24 @@ import {
   Aside,
   Card,
   Figure,
-  Footer,
   H1,
   H3,
   H6,
   Header,
-  Navigation,
   P,
   Small,
   Subsection,
 } from "../elements"
-import {
-  createMetaImage,
-  createPaginationLinks,
-  createShareLinks,
-} from "../utils"
+import { createMetaImage, createPaginationLinks } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Socials from "../components/socials"
 import Pagination from "../components/pagination"
 import Subscription from "../components/subscription"
 
 const PortfolioProjectTemplate = ({ data, location }) => {
-  const { siteUrl } = data.site.siteMetadata
   const project = data.mdx
   const image = project.frontmatter?.image
   const metaImage = createMetaImage(image)
-  const links = createShareLinks(
-    `${siteUrl}${location.pathname}`,
-    project.frontmatter.title
-  )
   const { previous, next } = data
   const pagination = createPaginationLinks("/portfolio", previous, next)
 
@@ -119,12 +107,6 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         <div>
           <MDXRenderer>{project.body}</MDXRenderer>
         </div>
-        <Footer $top>
-          <Navigation as="div">
-            <P $ui>Udostępnij:</P>
-            <Socials data={links}></Socials>
-          </Navigation>
-        </Footer>
       </Article>
       <Aside $higher $article>
         <H3 $top>Sprawdź także:</H3>
