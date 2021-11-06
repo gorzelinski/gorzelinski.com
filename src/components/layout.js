@@ -20,7 +20,7 @@ const Layout = ({ children, location }) => {
     themeLoaded && (
       <ThemeProvider theme={selectedTheme}>
         <MDXProvider components={components}>
-          <Background>
+          <Background data-testid="background">
             <Wrapper $global>
               <Navbar
                 data={{
