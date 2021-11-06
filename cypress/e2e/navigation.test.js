@@ -7,7 +7,7 @@ describe("Navigation tests", () => {
     cy.visit("/")
   })
   it("Navigates around the pages", () => {
-    cy.findByRole("link", { name: "Portfolio" }).should("be.visible").click()
+    cy.findByRole("link", { name: "Portfolio" }).click()
     cy.url().should("contain", "/portfolio")
     cy.findByRole("heading", { level: 1 }).should("contain", "Portfolio")
 
@@ -64,7 +64,7 @@ describe("Navigation tests", () => {
 
     cy.findByRole("link", { name: "facebook" })
       .should("have.prop", "href")
-      .and("contain", "https://facebook.com")
+      .and("contain", "https://www.facebook.com")
   })
   it("Navigates to blog post and checks its links", () => {
     cy.findByRole("link", { name: /wszystkie wpisy/i }).click()

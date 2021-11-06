@@ -48,7 +48,7 @@ describe("Footer component", () => {
       const socials = screen
         .getAllByRole("link")
         .filter(link => link.hasAttribute("aria-label"))
-      expect(socials.length).toBe(4)
+      expect(socials.length).toBeGreaterThan(4)
     })
 
     it("copyright info", () => {
