@@ -10,6 +10,20 @@ export const createShareLinks = (url, title) => ({
   )}`,
 })
 
+export const createSocialLinks = ({
+  github,
+  dribbble,
+  twitter,
+  facebook,
+  linkedin,
+}) => ({
+  github: `https://github.com/${github}`,
+  dribbble: `https://dribbble.com/${dribbble}`,
+  twitter: `https://twitter.com/${twitter}`,
+  facebook: `https://www.facebook.com/${facebook}`,
+  linkedin: `https://www.linkedin.com/in/${linkedin}`,
+})
+
 export const createPaginationLinks = (pageSlug, previous, next) => ({
   prev: previous && {
     text: previous.frontmatter.title,

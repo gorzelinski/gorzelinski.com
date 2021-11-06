@@ -16,6 +16,7 @@ export const useBio = () => {
             dribbble
             twitter
             facebook
+            linkedin
           }
         }
       }

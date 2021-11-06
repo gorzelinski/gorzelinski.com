@@ -1,6 +1,5 @@
 import React from "react"
 
-import { useBio } from "../hooks"
 import {
   Address,
   Button,
@@ -8,19 +7,16 @@ import {
   Footer as StyledFooter,
   Small,
 } from "../elements"
+import { useBio } from "../hooks"
+import { createSocialLinks } from "../utils"
 import Socials from "../components/socials"
 
 const Footer = () => {
   const { bio } = useBio()
   const { title, social } = bio.site.siteMetadata
   const { email } = bio.site.siteMetadata?.author
+  const links = createSocialLinks(social)
 
-  const links = Object.fromEntries(
-    Object.entries(social).map(array => [
-      array[0],
-      `https://${array[0]}.com/${array[1]}`,
-    ])
-  )
   return (
     <StyledFooter $border $lower id="kontakt">
       <Card as="div">
