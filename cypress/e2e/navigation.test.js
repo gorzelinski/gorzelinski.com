@@ -7,7 +7,7 @@ describe("Navigation tests", () => {
     cy.visit("/")
   })
   it("Navigates around the pages", () => {
-    cy.findByRole("link", { name: "Portfolio" }).click()
+    cy.findByRole("link", { name: "Portfolio" }).should("be.visible").click()
     cy.url().should("contain", "/portfolio")
     cy.findByRole("heading", { level: 1 }).should("contain", "Portfolio")
 
