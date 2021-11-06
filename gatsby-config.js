@@ -17,6 +17,7 @@ module.exports = {
       dribbble: `gorzelinski`,
       twitter: `gorzelinski`,
       facebook: `gorzelinski`,
+      linkedin: `mateusz-gorzelinski`,
     },
   },
   plugins: [
