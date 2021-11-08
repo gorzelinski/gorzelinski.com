@@ -21,6 +21,7 @@ describe("SEO component", () => {
     })
   })
 
+  const defaultLang = "pl"
   const mockDefaultDescription = "Default meta description"
   const mockCustomDescription = "Custom meta description"
   const mockDefaultTitle = "Gorzeliński"
@@ -39,6 +40,14 @@ describe("SEO component", () => {
   }
 
   describe("base tags", () => {
+    it("default lang", () => {
+      render(<SEO title="Custom title" />)
+      const {
+        htmlAttributes: { lang },
+      } = Helmet.peek()
+      expect(lang).toBe(defaultLang)
+    })
+
     it("title", () => {
       render(<SEO title="Custom title" />)
       const { title } = Helmet.peek()
@@ -48,13 +57,15 @@ describe("SEO component", () => {
     it("default description", () => {
       render(<SEO title="Custom title" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[0].content).toBe(mockDefaultDescription)
+      const description = metaTags.find(tag => tag.name === "description")
+      expect(description.content).toBe(mockDefaultDescription)
     })
 
     it("custom description", () => {
       render(<SEO title="Custom title" description="Custom meta description" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[0].content).toBe(mockCustomDescription)
+      const description = metaTags.find(tag => tag.name === "description")
+      expect(description.content).toBe(mockCustomDescription)
     })
   })
 
@@ -62,43 +73,52 @@ describe("SEO component", () => {
     it("og:site_name", () => {
       render(<SEO title="Custom title" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[1].content).toBe(mockDefaultTitle)
+      const ogSiteName = metaTags.find(tag => tag.property === "og:site_name")
+      expect(ogSiteName.content).toBe(mockDefaultTitle)
     })
 
     it("og:url (base)", () => {
       render(<SEO title="Custom title" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[2].content).toBe(mockDefaultUrl)
+      const ogUrl = metaTags.find(tag => tag.property === "og:url")
+      expect(ogUrl.content).toBe(mockDefaultUrl)
     })
 
     it("og:url (custom)", () => {
       render(<SEO title="Custom title" slug="/custom" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[2].content).toBe(mockCustomUrl)
+      const ogUrl = metaTags.find(tag => tag.property === "og:url")
+      expect(ogUrl.content).toBe(mockCustomUrl)
     })
 
     it("og:type (default)", () => {
       render(<SEO title="Custom title" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[3].content).toBe(mockDefaultType)
+      const ogType = metaTags.find(tag => tag.property === "og:type")
+      expect(ogType.content).toBe(mockDefaultType)
     })
 
     it("og:type (custom)", () => {
       render(<SEO title="Custom title" type="article" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[3].content).toBe(mockCustomType)
+      const ogType = metaTags.find(tag => tag.property === "og:type")
+      expect(ogType.content).toBe(mockCustomType)
     })
 
     it("og:title", () => {
       render(<SEO title="Custom title" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[4].content).toBe(mockTitle)
+      const ogTitle = metaTags.find(tag => tag.property === "og:title")
+      expect(ogTitle.content).toBe(mockTitle)
     })
 
     it("og:description", () => {
       render(<SEO title="Custom title" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[5].content).toBe(mockDefaultDescription)
+      const ogDescription = metaTags.find(
+        tag => tag.property === "og:description"
+      )
+      expect(ogDescription.content).toBe(mockDefaultDescription)
     })
 
     it("og:image", () => {
@@ -114,7 +134,8 @@ describe("SEO component", () => {
         />
       )
       const { metaTags } = Helmet.peek()
-      expect(metaTags[12].content).toBe(mockImage.src)
+      const ogImage = metaTags.find(tag => tag.property === "og:image")
+      expect(ogImage.content).toBe(mockImage.src)
     })
 
     it("og:image:alt", () => {
@@ -130,7 +151,8 @@ describe("SEO component", () => {
         />
       )
       const { metaTags } = Helmet.peek()
-      expect(metaTags[13].content).toBe(mockImage.alt)
+      const ogImageAlt = metaTags.find(tag => tag.property === "og:image:alt")
+      expect(ogImageAlt.content).toBe(mockImage.alt)
     })
 
     it("og:image:wdith", () => {
@@ -146,7 +168,10 @@ describe("SEO component", () => {
         />
       )
       const { metaTags } = Helmet.peek()
-      expect(metaTags[14].content).toBe(mockImage.width)
+      const ogImageWidth = metaTags.find(
+        tag => tag.property === "og:image:width"
+      )
+      expect(ogImageWidth.content).toBe(mockImage.width)
     })
 
     it("og:image:height", () => {
@@ -162,7 +187,10 @@ describe("SEO component", () => {
         />
       )
       const { metaTags } = Helmet.peek()
-      expect(metaTags[15].content).toBe(mockImage.height)
+      const ogImageHeight = metaTags.find(
+        tag => tag.property === "og:image:height"
+      )
+      expect(ogImageHeight.content).toBe(mockImage.height)
     })
   })
 
@@ -170,43 +198,54 @@ describe("SEO component", () => {
     it("twitter:url (base)", () => {
       render(<SEO title="Custom title" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[6].content).toBe(mockDefaultUrl)
+      const twitterUrl = metaTags.find(tag => tag.name === "twitter:url")
+      expect(twitterUrl.content).toBe(mockDefaultUrl)
     })
 
     it("twitter:url (custom)", () => {
       render(<SEO title="Custom title" slug="/custom" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[6].content).toBe(mockCustomUrl)
+      const twitterUrl = metaTags.find(tag => tag.name === "twitter:url")
+      expect(twitterUrl.content).toBe(mockCustomUrl)
     })
 
     it("twitter:site", () => {
       render(<SEO title="Custom title" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[7].content).toBe(mockTwitterHandler)
+      const twitterSite = metaTags.find(tag => tag.name === "twitter:site")
+      expect(twitterSite.content).toBe(mockTwitterHandler)
     })
 
     it("twitter:creator", () => {
       render(<SEO title="Custom title" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[8].content).toBe(mockTwitterHandler)
+      const twitterCreator = metaTags.find(
+        tag => tag.name === "twitter:creator"
+      )
+      expect(twitterCreator.content).toBe(mockTwitterHandler)
     })
 
     it("twitter:title", () => {
       render(<SEO title="Custom title" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[9].content).toBe(mockTitle)
+      const twitterTitle = metaTags.find(tag => tag.name === "twitter:title")
+      expect(twitterTitle.content).toBe(mockTitle)
     })
 
     it("twitter:description", () => {
       render(<SEO title="Custom title" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[10].content).toBe(mockDefaultDescription)
+      const twitterDescription = metaTags.find(
+        tag => tag.name === "twitter:description"
+      )
+      expect(twitterDescription.content).toBe(mockDefaultDescription)
     })
 
     it("twitter:card (default)", () => {
       render(<SEO title="Custom title" />)
       const { metaTags } = Helmet.peek()
-      expect(metaTags[11].content).toBe("summary")
+      const twitterCard = metaTags.find(tag => tag.name === "twitter:card")
+      expect(twitterCard.content).toBe("summary")
     })
 
     it("twitter:card (image)", () => {
@@ -222,7 +261,8 @@ describe("SEO component", () => {
         />
       )
       const { metaTags } = Helmet.peek()
-      expect(metaTags[11].content).toBe("summary_large_image")
+      const twitterCard = metaTags.find(tag => tag.name === "twitter:card")
+      expect(twitterCard.content).toBe("summary_large_image")
     })
 
     it("twitter:image", () => {
@@ -238,7 +278,8 @@ describe("SEO component", () => {
         />
       )
       const { metaTags } = Helmet.peek()
-      expect(metaTags[16].content).toBe(mockImage.src)
+      const twitterImage = metaTags.find(tag => tag.name === "twitter:image")
+      expect(twitterImage.content).toBe(mockImage.src)
     })
 
     it("twitter:image:alt", () => {
@@ -254,7 +295,10 @@ describe("SEO component", () => {
         />
       )
       const { metaTags } = Helmet.peek()
-      expect(metaTags[17].content).toBe(mockImage.alt)
+      const twitterImageAlt = metaTags.find(
+        tag => tag.name === "twitter:image:alt"
+      )
+      expect(twitterImageAlt.content).toBe(mockImage.alt)
     })
   })
 })
