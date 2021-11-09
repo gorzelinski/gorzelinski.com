@@ -10,6 +10,7 @@ describe("Seo tests", () => {
       exact: false,
     }).should("be.visible")
 
+    cy.get("html").should("have.prop", "lang", "pl")
     cy.title().should("contain", title).and("contain", siteTitle)
     cy.get('meta[name="description"]')
       .should("have.prop", "content")
