@@ -13,7 +13,20 @@ export const useTheme = () => {
 
   useEffect(() => {
     const localTheme = getFromLS("preferred-theme")
-    localTheme ? setTheme(localTheme) : setTheme(themes.light)
+    const isLocalThemeUpToDate =
+      localTheme &&
+      Object.values(themes).some(
+        theme => JSON.stringify(theme) === JSON.stringify(localTheme)
+      )
+    const upToDateLocalTheme =
+      localTheme &&
+      Object.values(themes).find(theme => theme.name === localTheme.name)
+
+    if (isLocalThemeUpToDate) {
+      setTheme(localTheme)
+    } else if (upToDateLocalTheme) {
+      setPreferredTheme(upToDateLocalTheme)
+    } else setPreferredTheme(themes.light)
     setThemeLoaded(true)
   }, [])
 
