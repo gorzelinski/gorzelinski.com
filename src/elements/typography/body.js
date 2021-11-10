@@ -21,7 +21,6 @@ export const ui = css`
 export const P = styled.p`
   ${body}
   ${baseSize}
-  max-width: 80ex;
   padding: 0;
   margin: 0 0 ${props => props.theme.font.height.base} 0;
 
