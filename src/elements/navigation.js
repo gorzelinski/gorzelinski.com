@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components"
 
 import { media } from "./utils"
-import { full } from "./grid"
+import { spanAll } from "./grid"
 
 export const Navigation = styled.nav`
-  ${full}
+  ${spanAll}
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;

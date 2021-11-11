@@ -6,13 +6,13 @@ import {
   Section,
   Figure,
   Figcaption,
-  Card,
   Small,
   H2,
   P,
   Button,
   Icon,
   Link,
+  Tile,
 } from "../elements"
 
 const About = ({ data = {} }) => {
@@ -32,7 +32,7 @@ const About = ({ data = {} }) => {
           Przyrzekam!
         </Figcaption>
       </Figure>
-      <Card>
+      <Tile>
         <Small as="p" $top>
           Cześć, nazywam się
         </Small>
@@ -64,7 +64,7 @@ const About = ({ data = {} }) => {
             <ChevronForward></ChevronForward>
           </Icon>
         </Button>
-      </Card>
+      </Tile>
     </Section>
   ) : null
 }

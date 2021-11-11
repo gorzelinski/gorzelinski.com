@@ -2,7 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
-import { Card, H2, P, Button, Section, Figure } from "../elements"
+import { H2, P, Button, Section, Figure, Tile } from "../elements"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -19,7 +19,7 @@ const NotFoundPage = ({ data = {} }) => {
             alt="Marcin Najman w niebieskiej kurtce"
           ></GatsbyImage>
         </Figure>
-        <Card as="div">
+        <Tile $span2>
           <H2 as="h1" $top>
             Błąd 404: <br /> Ludzie, tu nic nie ma!
           </H2>
@@ -27,7 +27,7 @@ const NotFoundPage = ({ data = {} }) => {
           <Button $primary $grow to="/">
             Wróć do strony głównej
           </Button>
-        </Card>
+        </Tile>
       </Section>
     </Layout>
   )

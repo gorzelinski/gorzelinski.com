@@ -1,12 +1,22 @@
 import React from "react"
 import { Send } from "@styled-icons/ionicons-solid"
 
-import { Button, Form, H3, Icon, Input, Label, P, Section } from "../elements"
+import {
+  Button,
+  Form,
+  H3,
+  Icon,
+  Input,
+  Label,
+  P,
+  Section,
+  Tile,
+} from "../elements"
 
 const Subscription = () => {
   return (
     <Section $featured $higher>
-      <div>
+      <Tile>
         <H3 as="h2" $top>
           Chcesz być na bieżąco?
         </H3>
@@ -45,7 +55,7 @@ const Subscription = () => {
             </Icon>
           </Button>
         </Form>
-      </div>
+      </Tile>
     </Section>
   )
 }

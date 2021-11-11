@@ -7,7 +7,7 @@ const Landing = () => {
   return (
     <Hero>
       <header>
-        <H1 $top>
+        <H1 $top $decorative>
           <TypewriterComponent
             onInit={typewriter => {
               typewriter
@@ -36,7 +36,7 @@ const Landing = () => {
           nich spersonalizowane strony internetowe, które dbają o profesjonalny
           wizerunek online.
         </P>
-        <Button $primary $grow to="#kontakt">
+        <Button $primary $grow to="#przywitaj-sie">
           Stwórzmy coś razem
         </Button>
       </header>

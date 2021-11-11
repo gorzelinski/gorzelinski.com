@@ -3,9 +3,9 @@ import React from "react"
 import {
   Address,
   Button,
-  Card,
   Footer as StyledFooter,
   Small,
+  Tile,
 } from "../elements"
 import { useBio } from "../hooks"
 import { createSocialLinks } from "../utils"
@@ -18,24 +18,24 @@ const Footer = () => {
   const links = createSocialLinks(social)
 
   return (
-    <StyledFooter $border $lower id="kontakt">
-      <Card as="div">
+    <StyledFooter $border id="kontakt">
+      <Tile>
         <Small $top>Napisz mi maila</Small>
         <Address>
           <Button $text $first as="a" href={`mailto:${email}`}>
             {email}
           </Button>
         </Address>
-      </Card>
-      <Card as="div">
+      </Tile>
+      <Tile>
         <Small $top>Znajdź mnie także na</Small>
         <Socials data={links}></Socials>
-      </Card>
-      <Card as="div">
+      </Tile>
+      <Tile>
         <Small $top $bottom>
-          © {new Date().getFullYear()} {title} | Stworzyłem tę stronę z miłością
+          © {new Date().getFullYear()} {title} • Stworzyłem tę stronę z miłością
         </Small>
-      </Card>
+      </Tile>
     </StyledFooter>
   )
 }

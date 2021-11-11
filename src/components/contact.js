@@ -1,15 +1,15 @@
 import React from "react"
 
+import { Button, H2, Hero, P, Tile } from "../elements"
 import { useBio } from "../hooks"
-import { Button, Card, H2, P, Section } from "../elements"
 
 const Contact = () => {
   const { bio } = useBio()
   const { email } = bio.site.siteMetadata?.author
 
   return (
-    <Section $lower>
-      <Card as="div" $center $textCenter>
+    <Hero id="przywitaj-sie">
+      <Tile $center $textCenter>
         <H2 $top>Przywitaj się!</H2>
         <P $lead>
           Jeżeli chcesz porozmawiać o wpółpracy lub na inny, interesujacy temat
@@ -18,8 +18,8 @@ const Contact = () => {
         <Button $text as="a" href={`mailto:${email}`}>
           Skontaktuj się ze mną
         </Button>
-      </Card>
-    </Section>
+      </Tile>
+    </Hero>
   )
 }
 

@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-import { Card, Figcaption, Figure, H1, Section } from "../elements"
+import { Figcaption, Figure, H1, Section, Tile } from "../elements"
 import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -36,10 +36,10 @@ const AboutMe = ({ data, location }) => {
             Przyrzekam!
           </Figcaption>
         </Figure>
-        <Card>
+        <Tile as="article">
           <H1 $top>A oto moja krótka historia</H1>
           <MDXRenderer>{text.body}</MDXRenderer>
-        </Card>
+        </Tile>
       </Section>
     </Layout>
   )

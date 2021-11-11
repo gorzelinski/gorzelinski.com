@@ -7,7 +7,6 @@ import {
   A,
   Article,
   Aside,
-  Card,
   Figure,
   H1,
   H3,
@@ -16,6 +15,7 @@ import {
   P,
   Small,
   Subsection,
+  Tile,
 } from "../elements"
 import { createMetaImage, createPaginationLinks } from "../utils"
 import Layout from "../components/layout"
@@ -56,39 +56,39 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <H1>{project.frontmatter.title}</H1>
           <P $lead>{project.frontmatter.description}</P>
           <Subsection as="div">
-            <Card as="div" $span4>
+            <Tile $span4>
               <Small as="p" $top>
                 Data:
               </Small>
               <H6 as="h2" $top>
                 {project.frontmatter.date}
               </H6>
-            </Card>
-            <Card as="div" $span4>
+            </Tile>
+            <Tile $span4>
               <Small as="p" $top>
                 Klient:
               </Small>
               <H6 as="h2" $top>
                 {project.frontmatter.client}
               </H6>
-            </Card>
-            <Card as="div" $span4>
+            </Tile>
+            <Tile $span4>
               <Small as="p" $top>
                 Moja rola:
               </Small>
               <H6 as="h2" $top>
                 {project.frontmatter.myRole}
               </H6>
-            </Card>
-            <Card as="div" $span4>
+            </Tile>
+            <Tile $span4>
               <Small as="p" $top>
                 Narzędzia:
               </Small>
               <H6 as="h2" $top>
                 {project.frontmatter.tools}
               </H6>
-            </Card>
-            <Card as="div" $span4>
+            </Tile>
+            <Tile $spanAll>
               <Small as="p" $top>
                 Live:
               </Small>
@@ -101,7 +101,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
                   {project.frontmatter.live}
                 </A>
               </H6>
-            </Card>
+            </Tile>
           </Subsection>
         </Header>
         <div>
