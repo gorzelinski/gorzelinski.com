@@ -3,6 +3,7 @@ import styled, { css } from "styled-components"
 import { marginReset, media } from "../utils"
 import {
   baseSize,
+  headingDecorative,
   headingL,
   headingM,
   headingS,
@@ -32,6 +33,20 @@ export const H1 = styled.h1`
   ${media.desktop`
     ${headingXXL}
   `}
+
+  ${props =>
+    props.$decorative &&
+    css`
+      ${headingXL}
+
+      ${media.tablet`
+        ${headingXXL}
+      `}
+
+      ${media.desktop`
+        ${headingDecorative}
+      `}
+    `}
 `
 
 export const H2 = styled.h2`

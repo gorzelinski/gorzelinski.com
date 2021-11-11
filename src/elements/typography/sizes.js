@@ -1,5 +1,11 @@
 import { css } from "styled-components"
 
+export const headingDecorative = css`
+  font-size: ${props => props.theme.font.size.decorative};
+  line-height: ${props => props.theme.font.height.decorative};
+  letter-spacing: ${props => props.theme.font.spacing.packed};
+`
+
 export const headingXXL = css`
   font-size: ${props => props.theme.font.size.xxl};
   line-height: ${props => props.theme.font.height.xxl};
