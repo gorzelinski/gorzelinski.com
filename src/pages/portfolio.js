@@ -24,7 +24,9 @@ const Portfolio = ({ data, location }) => {
       ></Seo>
       <Section $lower>
         <Header>
-          <H1 $top>Portfolio</H1>
+          <H1 $top $decorative>
+            Portfolio
+          </H1>
           <P as="h2" $ui>
             Wszystkie projekty
           </P>

@@ -24,7 +24,9 @@ const Blog = ({ data, location }) => {
       ></Seo>
       <Section $lower>
         <Header>
-          <H1 $top>Blog</H1>
+          <H1 $top $decorative>
+            Blog
+          </H1>
           <P as="h2" $ui>
             Wszystkie wpisy
           </P>
@@ -55,6 +57,14 @@ export const pageQuery = graphql`
           date(formatString: "DD MMMM, YYYY", locale: "pl")
           title
           description
+          image {
+            alt
+            src {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
         }
         timeToRead
       }
