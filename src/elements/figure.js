@@ -1,16 +1,22 @@
 import styled, { css } from "styled-components"
 
-import { full, span2 } from "./grid"
+import { spanAll, span2 } from "./grid"
 
 export const Figure = styled.figure`
   ${span2}
-  ${full}
+  ${spanAll}
   margin: 0;
 
   /* check if it's the best solution */
   & > div {
     height: 100%;
   }
+
+  ${props =>
+    props.$square &&
+    css`
+      aspect-ratio: 1;
+    `}
 
   ${props =>
     props.$golden &&
@@ -34,5 +40,11 @@ export const Figure = styled.figure`
     props.$wide &&
     css`
       aspect-ratio: 21 / 9;
+    `}
+
+  ${props =>
+    props.$meta &&
+    css`
+      aspect-ratio: 1.91;
     `}
 `
