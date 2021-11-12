@@ -17,20 +17,24 @@ const Project = ({ data = {} }) => {
 
   return isDataComplete ? (
     <Card>
-      <Figure $golden>
+      <Figure as="div" $golden>
         <GatsbyImage image={src} alt={alt}></GatsbyImage>
       </Figure>
-      <Small as="p">{myRole}</Small>
-      <H4 as="h3" $top>
-        {title}
-      </H4>
-      <P>{description}</P>
-      <Button $text $first to={`/portfolio${slug}`}>
-        Sprawdź case study
-        <Icon>
-          <ChevronForward></ChevronForward>
-        </Icon>
-      </Button>
+      <div>
+        <Small as="p" $top>
+          {myRole}
+        </Small>
+        <H4 as="h3" $top>
+          {title}
+        </H4>
+        <P>{description}</P>
+        <Button $text $first to={`/portfolio${slug}`}>
+          Sprawdź case study
+          <Icon>
+            <ChevronForward></ChevronForward>
+          </Icon>
+        </Button>
+      </div>
     </Card>
   ) : null
 }
