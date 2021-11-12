@@ -17,6 +17,14 @@ export const useBlogPosts = () => {
             date(formatString: "DD MMMM, YYYY", locale: "pl")
             title
             description
+            image {
+              alt
+              src {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
           }
           timeToRead
         }
