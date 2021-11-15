@@ -11,7 +11,10 @@ export const Footer = styled.footer`
   ${props =>
     props.$border &&
     css`
-      border-top: 1px solid ${props => props.theme.color.surface.shade200};
-      padding-top: calc(${props => props.theme.space.m} - 1px);
+      border-top: ${props => props.theme.space.xxxs} solid
+        ${props => props.theme.color.surface.shade200};
+      padding-top: calc(
+        ${props => props.theme.space.m} - ${props => props.theme.space.xxxs}
+      );
     `}
 `

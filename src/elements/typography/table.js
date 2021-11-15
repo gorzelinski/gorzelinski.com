@@ -10,6 +10,7 @@ export const Table = styled.table`
   border-spacing: ${props => props.theme.space.xs};
 
   & thead tr th {
-    border-bottom: 1px solid ${props => props.theme.color.surface.shade500};
+    border-bottom: ${props => props.theme.space.xxxs} solid
+      ${props => props.theme.color.surface.shade500};
   }
 `

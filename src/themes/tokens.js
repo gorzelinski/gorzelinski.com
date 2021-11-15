@@ -69,6 +69,7 @@ export const tokens = {
     )`,
   },
   space: {
+    xxxs: "1px",
     xxs: "0.125rem",
     xs: "0.5rem",
     s: "1rem",

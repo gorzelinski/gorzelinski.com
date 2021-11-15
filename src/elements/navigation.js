@@ -34,8 +34,11 @@ export const Navigation = styled.nav`
     props.$main &&
     css`
       background-color: ${props => props.theme.color.background};
-      border-top: 1px solid ${props => props.theme.color.surface.shade200};
-      padding: calc(${props => props.theme.space.xs} - 1px)
+      border-top: ${props => props.theme.space.xxxs} solid
+        ${props => props.theme.color.surface.shade200};
+      padding: calc(
+          ${props => props.theme.space.xs} - ${props => props.theme.space.xxxs}
+        )
         ${props => props.theme.space.xs} ${props => props.theme.space.xs};
       position: fixed;
       bottom: 0;

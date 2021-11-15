@@ -12,9 +12,12 @@ export const Section = styled.section`
     css`
       border-radius: ${props => props.theme.space.s};
       background: ${props => props.theme.color.background};
-      padding: calc(${props => props.theme.space.s} - 1px);
+      padding: calc(
+        ${props => props.theme.space.s} - ${props => props.theme.space.xxxs}
+      );
       box-shadow: ${props => props.theme.shadow.neumorphism};
-      border: 1px solid ${props => props.theme.color.surface.base};
+      border: ${props => props.theme.space.xxxs} solid
+        ${props => props.theme.color.surface.base};
 
       ${media.tablet`
         padding: ${props => props.theme.space.m};

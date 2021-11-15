@@ -12,11 +12,14 @@ export const Card = styled.article`
   display: grid;
   align-content: start;
   gap: ${props => props.theme.space.s};
-  border: 1px solid ${props => props.theme.color.surface.shade300};
+  border: ${props => props.theme.space.xxxs} solid
+    ${props => props.theme.color.surface.shade300};
   border-radius: ${props => props.theme.space.s};
 
   & > div:nth-child(2) {
-    padding: calc(${props => props.theme.space.s} - 1px);
+    padding: calc(
+      ${props => props.theme.space.s} - ${props => props.theme.space.xxxs}
+    );
   }
 
   ${props =>
