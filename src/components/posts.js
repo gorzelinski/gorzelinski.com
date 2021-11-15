@@ -1,15 +1,15 @@
 import React from "react"
 
-import { Card, P } from "../elements"
+import { P, Tile } from "../elements"
 import Post from "./post"
 
 const Posts = ({ data = { allMdx: { nodes: [] } } }) => {
   const posts = data.allMdx.nodes
 
   return posts.length === 0 ? (
-    <Card as="div">
+    <Tile>
       <P $ui>Brak wpisów do wyświetlenia</P>
-    </Card>
+    </Tile>
   ) : (
     posts.map(post => <Post data={post} key={post.fields.slug}></Post>)
   )

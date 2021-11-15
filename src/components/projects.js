@@ -1,15 +1,15 @@
 import React from "react"
 
-import { Card, P } from "../elements"
+import { P, Tile } from "../elements"
 import Project from "./project"
 
 const Projects = ({ data = { allMdx: { nodes: [] } } }) => {
   const projects = data.allMdx.nodes
 
   return projects.length === 0 ? (
-    <Card as="div">
+    <Tile>
       <P $ui>Brak projektów do wyświetlenia</P>
-    </Card>
+    </Tile>
   ) : (
     projects.map(project => (
       <Project data={project} key={project.fields.slug}></Project>
