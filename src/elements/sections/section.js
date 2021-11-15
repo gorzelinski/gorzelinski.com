@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { marginReset, marginTop, media } from "../utils"
+import { border, marginReset, marginTop, media } from "../utils"
 import { grid, subGrid } from "../grid"
 
 export const Section = styled.section`
@@ -10,14 +10,12 @@ export const Section = styled.section`
   ${props =>
     props.$featured &&
     css`
-      border-radius: ${props => props.theme.space.s};
+      ${border}
       background: ${props => props.theme.color.background};
       padding: calc(
         ${props => props.theme.space.s} - ${props => props.theme.space.xxxs}
       );
       box-shadow: ${props => props.theme.shadow.neumorphism};
-      border: ${props => props.theme.space.xxxs} solid
-        ${props => props.theme.color.surface.base};
 
       ${media.tablet`
         padding: ${props => props.theme.space.m};

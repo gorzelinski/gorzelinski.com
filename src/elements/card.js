@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { media } from "./utils"
+import { border, media } from "./utils"
 import { spanAll, span2, span3, span4 } from "./grid"
 
 export const Card = styled.article`
@@ -8,13 +8,11 @@ export const Card = styled.article`
   ${span3}
   ${span4}
   ${spanAll}
+  ${border}
   overflow: hidden;
   display: grid;
   align-content: start;
   gap: ${props => props.theme.space.s};
-  border: ${props => props.theme.space.xxxs} solid
-    ${props => props.theme.color.surface.shade300};
-  border-radius: ${props => props.theme.space.s};
 
   & > div:nth-child(2) {
     padding: calc(

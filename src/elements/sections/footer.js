@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { marginReset, marginTop } from "../utils"
+import { borderTop, marginReset, marginTop } from "../utils"
 import { grid } from "../grid"
 
 export const Footer = styled.footer`
@@ -11,10 +11,6 @@ export const Footer = styled.footer`
   ${props =>
     props.$border &&
     css`
-      border-top: ${props => props.theme.space.xxxs} solid
-        ${props => props.theme.color.surface.shade200};
-      padding-top: calc(
-        ${props => props.theme.space.m} - ${props => props.theme.space.xxxs}
-      );
+      ${borderTop}
     `}
 `

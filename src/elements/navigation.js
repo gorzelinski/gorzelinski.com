@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { media } from "./utils"
+import { borderTop, media } from "./utils"
 import { spanAll } from "./grid"
 
 export const Navigation = styled.nav`
@@ -33,9 +33,8 @@ export const Navigation = styled.nav`
   ${props =>
     props.$main &&
     css`
+      ${borderTop}
       background-color: ${props => props.theme.color.background};
-      border-top: ${props => props.theme.space.xxxs} solid
-        ${props => props.theme.color.surface.shade200};
       padding: calc(
           ${props => props.theme.space.xs} - ${props => props.theme.space.xxxs}
         )
