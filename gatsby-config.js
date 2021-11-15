@@ -79,12 +79,12 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 640,
+              maxWidth: 720,
               backgroundColor: `transparent`,
               quality: 50,
               withWebp: { quality: 80 },
               withAvif: { quality: 80 },
-              srcSetBreakpoints: [640, 480, 320],
+              srcSetBreakpoints: [720, 480, 320],
             },
           },
           {
