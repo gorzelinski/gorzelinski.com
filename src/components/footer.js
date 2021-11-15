@@ -22,7 +22,7 @@ const Footer = () => {
       <Tile>
         <Small $top>Napisz mi maila</Small>
         <Address>
-          <Button $text $first as="a" href={`mailto:${email}`}>
+          <Button as="a" $text $first href={`mailto:${email}`}>
             {email}
           </Button>
         </Address>

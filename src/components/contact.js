@@ -15,7 +15,7 @@ const Contact = () => {
           Jeżeli chcesz porozmawiać o wpółpracy lub na inny, interesujacy temat
           napisz do mnie. Nie kępuj się. Serio.
         </P>
-        <Button $text as="a" href={`mailto:${email}`}>
+        <Button as="a" $text href={`mailto:${email}`}>
           Skontaktuj się ze mną
         </Button>
       </Tile>
