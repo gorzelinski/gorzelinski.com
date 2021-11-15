@@ -32,13 +32,10 @@ export const Card = styled.article`
       & > *:first-child {
         max-width: 100%;
         align-self: start;
-        /* height: 100%; */
+        height: 100%;
       }
 
       ${media.desktop`
-        & > *:first-child {
-          height: 100%;
-        }
         & > div:nth-child(2) {
           grid-column: span 2;
         }
