@@ -9,15 +9,15 @@ export const border = css`
   border-color: ${props => props.theme.color.surface.shade200};
 
   &:hover {
-    border-color: ${props => props.theme.color.surface.shade300};
-  }
-
-  &:focus {
     border-color: ${props => props.theme.color.surface.shade400};
   }
 
-  &:active {
+  &:focus {
     border-color: ${props => props.theme.color.surface.shade500};
+  }
+
+  &:active {
+    border-color: ${props => props.theme.color.text.shade500};
   }
 `
 
