@@ -2,23 +2,51 @@ import { Link } from "gatsby"
 import styled, { css } from "styled-components"
 
 import { media } from "./utils"
-import { outline, primaryColorStates, textColorStates } from "./effects"
+import { outline, primaryColorStates } from "./effects"
 import { rainbow } from "./animations"
 import { ui } from "./typography"
 import { tinySize, baseSize } from "./typography/sizes"
 
+const underline = css`
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: ${props => props.theme.space.xxs};
+  bottom: 0;
+  left: 0;
+  background-color: ${props => props.theme.color.text.base};
+`
+
 export const nav = css`
-  ${textColorStates}
+  position: relative;
   &.active {
     color: ${props => props.theme.color.text.base};
-    border-bottom: ${props => props.theme.space.xxs} solid
-      ${props => props.theme.color.text.base};
-    padding-bottom: calc(
-      ${props => props.theme.space.xs} - ${props => props.theme.space.xxs}
-    );
+    &:after {
+      ${underline}
+      transform: scaleX(1);
+    }
   }
   &.active-subtle {
     color: ${props => props.theme.color.text.base};
+  }
+  &:hover,
+  :focus {
+    color: ${props => props.theme.color.text.base};
+    transition: color ${props => props.theme.duration.natural} ease-out;
+  }
+  &:after {
+    ${underline}
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform ${props => props.theme.duration.natural} ease-out;
+  }
+  &:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  &:focus:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
   }
 `
 
