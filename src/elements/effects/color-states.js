@@ -1,6 +1,7 @@
 import { css } from "styled-components"
 
 export const primaryColorStates = css`
+  transition: color ${props => props.theme.duration.immediate} ease-in;
   color: ${props => props.theme.color.primary.base};
 
   &:hover {
@@ -16,6 +17,7 @@ export const primaryColorStates = css`
 `
 
 export const textColorStates = css`
+  transition: color ${props => props.theme.duration.immediate} ease-in;
   color: ${props => props.theme.color.text.shade500};
 
   &:hover {
