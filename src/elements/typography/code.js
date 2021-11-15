@@ -18,6 +18,7 @@ export const InlineCode = styled.code`
 export const BlockCode = styled.pre`
   ${code}
   padding: ${props => props.theme.font.height.base};
-  border-radius: ${props => props.theme.space.xs};
+  border-radius: ${props => props.theme.space.s};
+  box-shadow: ${props => props.theme.shadow.neumorphism};
   overflow-x: auto;
 `
