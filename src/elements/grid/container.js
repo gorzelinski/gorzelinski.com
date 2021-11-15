@@ -21,8 +21,11 @@ export const grid = css`
 
 export const subGrid = css`
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 0 ${props => props.theme.space.s};
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(${props => props.theme.space.xxxl}, 100%), 1fr)
+  );
+  gap: ${props => props.theme.font.height.base};
 `
 
 export const article = css`

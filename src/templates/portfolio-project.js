@@ -55,36 +55,36 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         <Header>
           <H1>{project.frontmatter.title}</H1>
           <P $lead>{project.frontmatter.description}</P>
-          <Subsection as="div">
-            <Tile $span4>
+          <Subsection>
+            <Tile>
               <Small as="p" $top>
                 Data:
               </Small>
-              <H6 as="h2" $top>
+              <H6 as="h2" $top $bottom>
                 {project.frontmatter.date}
               </H6>
             </Tile>
-            <Tile $span4>
+            <Tile>
               <Small as="p" $top>
                 Klient:
               </Small>
-              <H6 as="h2" $top>
+              <H6 as="h2" $top $bottom>
                 {project.frontmatter.client}
               </H6>
             </Tile>
-            <Tile $span4>
+            <Tile>
               <Small as="p" $top>
                 Moja rola:
               </Small>
-              <H6 as="h2" $top>
+              <H6 as="h2" $top $bottom>
                 {project.frontmatter.myRole}
               </H6>
             </Tile>
-            <Tile $span4>
+            <Tile>
               <Small as="p" $top>
                 Narzędzia:
               </Small>
-              <H6 as="h2" $top>
+              <H6 as="h2" $top $bottom>
                 {project.frontmatter.tools}
               </H6>
             </Tile>
@@ -92,7 +92,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
               <Small as="p" $top>
                 Live:
               </Small>
-              <H6 as="h2" $top>
+              <H6 as="h2" $top $bottom>
                 <A
                   target="_blank"
                   rel="noopener noreferrer"

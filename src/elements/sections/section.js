@@ -27,6 +27,6 @@ export const Section = styled.section`
   grid-column: 1 / -1;
 `
 
-export const Subsection = styled.section`
+export const Subsection = styled.div`
   ${subGrid}
 `
