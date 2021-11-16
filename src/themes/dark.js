@@ -17,7 +17,7 @@ export const dark = {
       shade300: "#DEE2E6",
       shade400: "#CED4DA",
       shade500: "#ADB5BD",
-      shade600: "#111315",
+      shade600: "#000000",
     },
     surface: {
       base: "#212529",
