@@ -13,7 +13,7 @@ export const Header = styled.header`
       gap: ${props => props.theme.space.xs};
 
       & > *:nth-child(n) {
-        align-self: flex-start;
+        align-self: stretch;
       }
 
       & > *:nth-child(2n) {
