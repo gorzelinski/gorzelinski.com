@@ -1,7 +1,7 @@
 import React from "react"
 import { Moon, Sunny } from "@styled-icons/ionicons-solid"
 
-import { Button, Icon } from "../elements"
+import { Icon, Navigation, Switch } from "../elements"
 
 const ThemeSwitcher = ({ data = {} }) => {
   const {
@@ -17,22 +17,33 @@ const ThemeSwitcher = ({ data = {} }) => {
       : setPreferredTheme(themes.light)
   }
 
-  const selectIcon = name =>
-    name === "light" ? (
-      <Moon data-testid="moon"></Moon>
-    ) : (
-      <Sunny data-testid="sunny"></Sunny>
-    )
-
   return themeLoaded && Object.keys(themes).length > 1 ? (
-    <Button
-      as="button"
-      title="Zmień motyw"
-      aria-label="Zmień motyw"
-      onClick={() => switchTheme()}
-    >
-      <Icon $text>{selectIcon(selectedTheme.name)}</Icon>
-    </Button>
+    <Navigation as="div">
+      <Icon
+        $text
+        style={{
+          visibility: `${
+            selectedTheme.name === "light" ? "hidden" : "visible"
+          }`,
+        }}
+      >
+        <Sunny data-testid="sunny"></Sunny>
+      </Icon>
+      <Switch
+        title="Zmień motyw"
+        aria-label="Zmień motyw"
+        onChange={() => switchTheme()}
+        checked={selectedTheme.name === "dark" ? true : false}
+      ></Switch>
+      <Icon
+        $text
+        style={{
+          visibility: `${selectedTheme.name === "dark" ? "hidden" : "visible"}`,
+        }}
+      >
+        <Moon data-testid="moon"></Moon>
+      </Icon>
+    </Navigation>
   ) : null
 }
 
