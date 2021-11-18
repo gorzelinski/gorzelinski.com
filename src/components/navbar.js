@@ -9,7 +9,7 @@ const Navbar = ({ data, location }) => {
     location?.pathname === pathname ? "active" : "active-subtle"
   return (
     <Header $section>
-      <Navigation aria-label="Pomocnicza">
+      <Navigation $spaceBetween aria-label="Pomocnicza">
         <Logo></Logo>
         <ThemeSwitcher data={data}></ThemeSwitcher>
       </Navigation>
