@@ -49,7 +49,6 @@ export const Navigation = styled.nav`
       ${media.mobile`
         background-color: transparent;
         border-top: 0;
-        opacity: 1;
         padding: 0;
         position: static;
         z-index: 0;
