@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { Moon, Sunny } from "@styled-icons/ionicons-solid"
 
 import { Icon, Navigation, Switch } from "../elements"
-import { ThemeContext } from "./layout"
+import { ThemeContext } from "./theme-provider"
 
 const ThemeSwitcher = () => {
   const { theme, saveTheme } = useContext(ThemeContext)
