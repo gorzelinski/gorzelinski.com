@@ -10,7 +10,7 @@ export const Header = styled.header`
       grid-column: 1 / -1;
       display: flex;
       flex-direction: column;
-      gap: ${props => props.theme.space.xs};
+      gap: var(--space-xs);
 
       & > *:nth-child(n) {
         align-self: stretch;

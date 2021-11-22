@@ -11,8 +11,8 @@ export const Icon = styled.span`
   display: inline-block;
 
   ${StyledIconBase} {
-    width: ${props => props.theme.font.height.base};
-    height: ${props => props.theme.font.height.base};
+    width: var(--font-height-base);
+    height: var(--font-height-base);
   }
 
   ${props =>

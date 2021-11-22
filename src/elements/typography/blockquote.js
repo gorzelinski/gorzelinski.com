@@ -3,17 +3,15 @@ import styled from "styled-components"
 import { media } from "../utils"
 
 export const Blockquote = styled.blockquote`
-  padding: 0 0 0 ${props => props.theme.space.s};
-  margin: ${props => props.theme.font.height.base}
-    ${props => props.theme.space.m} ${props => props.theme.font.height.base} 0;
-  border-left: ${props => props.theme.space.xxs} solid
-    ${props => props.theme.color.primary.base};
+  padding: 0 0 0 var(--space-s);
+  margin: var(--font-height-base) var(--space-m) var(--font-height-base) 0;
+  border-left: var(--space-xxs) solid var(--color-primary-base);
 
   & > p {
     font-style: italic;
-    font-size: ${props => props.theme.font.size.xs};
-    line-height: ${props => props.theme.font.height.s};
-    color: ${props => props.theme.color.text.shade400};
+    font-size: var(--font-size-xs);
+    line-height: var(--font-height-s);
+    color: var(--color-text-shade400);
   }
 
   & > :last-child {
@@ -26,10 +24,7 @@ export const Blockquote = styled.blockquote`
   }
 
   ${media.tablet`
-    padding-left: ${props => props.theme.font.height.base};
-    margin: ${props => props.theme.font.height.base} ${props =>
-    props.theme.font.height.base} ${props =>
-    props.theme.font.height.base} ${props =>
-    "-" + props.theme.font.height.base};
+    padding-left: var(--font-height-base);
+    margin: var(--font-height-base) var(--font-height-base) var(--font-height-base) calc(var(--font-height-base) * -1);
   `}
 `

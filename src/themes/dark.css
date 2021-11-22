@@ -1,0 +1,26 @@
+.dark {
+  --color-primary-base: #168bff;
+  --color-primary-shade200: #47a3ff;
+  --color-primary-shade300: #70b8ff;
+  --color-primary-shade400: #99ccff;
+  --color-primary-shade500: #c2e0ff;
+
+  --color-text-base: #ffffff;
+  --color-text-shade200: #e9ecef;
+  --color-text-shade300: #dee2e6;
+  --color-text-shade400: #ced4da;
+  --color-text-shade500: #adb5bd;
+  --color-text-shade600: #000000;
+
+  --color-surface-base: #212529;
+  --color-surface-shade200: #343a40;
+  --color-surface-shade300: #495057;
+  --color-surface-shade400: #5f666d;
+  --color-surface-shade500: #6c757d;
+
+  --color-background: #111315;
+  --color-success: #157f1f;
+  --color-error: #ce2d4f;
+
+  --shadow-neumorphism: 8px 8px 16px #0a0b0d, -8px -8px 16px #181b1d;
+}

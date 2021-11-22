@@ -1,50 +1,38 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Moon, Sunny } from "@styled-icons/ionicons-solid"
 
 import { Icon, Navigation, Switch } from "../elements"
+import { ThemeContext } from "./layout"
 
-const ThemeSwitcher = ({ data = {} }) => {
-  const {
-    themes = {},
-    selectedTheme = {},
-    setPreferredTheme,
-    themeLoaded = false,
-  } = data
+const ThemeSwitcher = () => {
+  const { theme, saveTheme } = useContext(ThemeContext)
 
-  const switchTheme = () => {
-    selectedTheme.name === "light"
-      ? setPreferredTheme(themes.dark)
-      : setPreferredTheme(themes.light)
+  const toggle = () => {
+    theme === "light" ? saveTheme("dark") : saveTheme("light")
   }
 
-  return themeLoaded && Object.keys(themes).length > 1 ? (
+  const selectIcon = () =>
+    theme === "light" ? (
+      <Sunny data-testid="sunny"></Sunny>
+    ) : (
+      <Moon data-testid="moon"></Moon>
+    )
+
+  return (
     <Navigation as="div">
-      <Icon
-        $text
-        style={{
-          visibility: `${
-            selectedTheme.name === "light" ? "hidden" : "visible"
-          }`,
-        }}
-      >
-        <Sunny data-testid="sunny"></Sunny>
-      </Icon>
-      <Switch
-        title="Zmień motyw"
-        aria-label="Zmień motyw"
-        onChange={() => switchTheme()}
-        checked={selectedTheme.name === "dark" ? true : false}
-      ></Switch>
-      <Icon
-        $text
-        style={{
-          visibility: `${selectedTheme.name === "dark" ? "hidden" : "visible"}`,
-        }}
-      >
-        <Moon data-testid="moon"></Moon>
-      </Icon>
+      {theme ? (
+        <>
+          <Switch
+            title="Zmień motyw"
+            aria-label="Zmień motyw"
+            defaultChecked={theme === "dark" ? true : false}
+            onChange={() => toggle()}
+          ></Switch>
+          <Icon $text>{selectIcon()}</Icon>
+        </>
+      ) : null}
     </Navigation>
-  ) : null
+  )
 }
 
 export default ThemeSwitcher

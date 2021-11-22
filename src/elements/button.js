@@ -11,25 +11,25 @@ export const nav = css`
   ${underline};
   position: relative;
   &.active {
-    color: ${props => props.theme.color.text.base};
+    color: var(--color-text-base);
     &:after {
       content: "";
       position: absolute;
       width: 100%;
-      height: ${props => props.theme.space.xxs};
+      height: var(--space-xxs);
       bottom: 0;
       left: 0;
-      background-color: ${props => props.theme.color.text.base};
+      background-color: var(--color-text-base);
       transform: scaleX(1);
     }
   }
   &.active-subtle {
-    color: ${props => props.theme.color.text.base};
+    color: var(--color-text-base);
   }
   &:hover,
   :focus {
-    color: ${props => props.theme.color.text.base};
-    transition: color ${props => props.theme.duration.natural} ease-out;
+    color: var(--color-text-base);
+    transition: color var(--duration-natural) ease-out;
   }
 `
 
@@ -40,15 +40,15 @@ export const primary = css`
   ${rainbow}
   z-index: 0;
   position: relative;
-  color: ${props => props.theme.color.text.shade600};
-  background-color: ${props => props.theme.color.primary.base};
-  border-radius: ${props => props.theme.space.xs};
+  color: var(--color-text-shade600);
+  background-color: var(--color-primary-base);
+  border-radius: var(--space-xs);
 
   &:focus:after {
-    background-color: ${props => props.theme.color.primary.shade300};
+    background-color: var(--color-primary-shade300);
   }
   &:active:after {
-    background-color: ${props => props.theme.color.primary.shade500};
+    background-color: var(--color-primary-shade500);
   }
 `
 
@@ -57,7 +57,7 @@ export const Button = styled(Link)`
   ${outline}
   text-decoration: none;
   justify-self: start;
-  padding: ${props => props.theme.space.xs};
+  padding: var(--space-xs);
   border: 0;
   background-color: transparent;
   cursor: pointer;
@@ -65,7 +65,7 @@ export const Button = styled(Link)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: ${props => props.theme.space.xs};
+  gap: var(--space-xs);
 
   ${props =>
     props.$flex &&
@@ -76,13 +76,13 @@ export const Button = styled(Link)`
   ${props =>
     props.$first &&
     css`
-      margin-left: ${props => "-" + props.theme.space.xs};
+      margin-left: calc(var(--space-xs) * -1);
     `}
 
   ${props =>
     props.$last &&
     css`
-      margin-right: ${props => "-" + props.theme.space.xs};
+      margin-right: calc(var(--space-xs) * -1);
     `}
 
   ${props =>

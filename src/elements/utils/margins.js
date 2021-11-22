@@ -17,29 +17,29 @@ export const marginReset = css`
 `
 
 export const marginTop = css`
-  margin-top: ${props => props.theme.space.xl};
+  margin-top: var(--space-xl);
 
   ${media.tablet`
-    margin-top: ${props => props.theme.space.xxl};
+    margin-top: var(--space-xxl);
   `}
 
   ${props =>
     props.$higher &&
     css`
-      margin-top: ${props => props.theme.space.l};
+      margin-top: var(--space-l);
 
       ${media.tablet`
-        margin-top: ${props => props.theme.space.xl};
+        margin-top: var(--space-xl);
       `}
     `}
 
   ${props =>
     props.$lower &&
     css`
-      margin-top: ${props => props.theme.space.xxl};
+      margin-top: var(--space-xxl);
 
       ${media.tablet`
-        margin-top: ${props => props.theme.space.xxxl};
+        margin-top: var(--space-xxxl);
       `}
     `}
 `

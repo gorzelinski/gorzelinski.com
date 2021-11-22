@@ -16,11 +16,11 @@ export const Article = styled.article`
   }
 
   & > header {
-    margin-bottom: ${props => props.theme.space.l};
+    margin-bottom: var(--space-l);
   }
 
   & > footer {
-    margin-top: ${props => props.theme.font.height.base};
+    margin-top: var(--font-height-base);
   }
 
   & > div > *:first-child {

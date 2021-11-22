@@ -12,12 +12,10 @@ export const Card = styled.article`
   overflow: hidden;
   display: grid;
   align-content: start;
-  gap: ${props => props.theme.space.s};
+  gap: var(--space-s);
 
   & > div:nth-child(2) {
-    padding: calc(
-      ${props => props.theme.space.s} - ${props => props.theme.space.xxxs}
-    );
+    padding: calc(var(--space-s) - var(--space-xxxs));
   }
 
   ${props =>
@@ -25,9 +23,9 @@ export const Card = styled.article`
     css`
       grid-template-columns: repeat(
         auto-fit,
-        minmax(min(${props => props.theme.space.xxxl}, 100%), 1fr)
+        minmax(min(var(--space-xxxl), 100%), 1fr)
       );
-      min-height: ${props => props.theme.space.xxxl};
+      min-height: var(--space-xxxl);
       align-content: stretch;
 
       & > *:first-child {
@@ -44,7 +42,7 @@ export const Card = styled.article`
     `}
 
   &:hover {
-    box-shadow: ${props => props.theme.shadow.neumorphism};
-    transition: box-shadow ${props => props.theme.duration.immediate} ease-in;
+    box-shadow: var(--shadow-neumorphism);
+    transition: box-shadow var(--duration-immediate) ease-in;
   }
 `

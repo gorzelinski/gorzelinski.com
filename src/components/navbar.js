@@ -4,14 +4,14 @@ import { Button, Header, Navigation } from "../elements"
 import Logo from "./logo"
 import ThemeSwitcher from "./theme-switcher"
 
-const Navbar = ({ data, location }) => {
+const Navbar = ({ location }) => {
   const selectActiveClass = pathname =>
     location?.pathname === pathname ? "active" : "active-subtle"
   return (
     <Header $section>
       <Navigation $spaceBetween aria-label="Pomocnicza">
         <Logo></Logo>
-        <ThemeSwitcher data={data}></ThemeSwitcher>
+        <ThemeSwitcher></ThemeSwitcher>
       </Navigation>
       <Navigation $main aria-label="Główna">
         <Button

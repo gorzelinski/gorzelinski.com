@@ -4,9 +4,9 @@ import { marginReset, media } from "../utils"
 import { smallSize, tinySize } from "./sizes"
 
 export const meta = css`
-  font-family: ${props => props.theme.font.family.heading};
-  font-weight: ${props => props.theme.font.weight.regular};
-  color: ${props => props.theme.color.text.shade500};
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-shade500);
 `
 
 export const Small = styled.small`
@@ -19,8 +19,8 @@ export const Small = styled.small`
   `}
   
   display: block;
-  margin-top: ${props => props.theme.space.s};
-  margin-bottom: ${props => props.theme.space.xs};
+  margin-top: var(--space-s);
+  margin-bottom: var(--space-xs);
 `
 
 export const Figcaption = styled.figcaption`
@@ -33,5 +33,5 @@ export const Figcaption = styled.figcaption`
   `}
   
   display: block;
-  margin-top: ${props => props.theme.space.s};
+  margin-top: var(--space-s);
 `

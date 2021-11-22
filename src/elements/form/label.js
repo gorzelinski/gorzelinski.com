@@ -25,5 +25,5 @@ export const Label = styled.label`
       white-space: nowrap;
       width: 1px;
     `}
-  margin-bottom: ${props => props.theme.space.xs};
+  margin-bottom: var(--space-xs);
 `

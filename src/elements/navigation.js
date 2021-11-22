@@ -8,14 +8,14 @@ export const Navigation = styled.nav`
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: ${props => props.theme.space.xs};
+  gap: var(--space-xs);
 
   ${media.tablet`
-    gap: ${props => props.theme.space.s};
+    gap: var(--space-s);
   `}
 
   ${media.desktop`
-    gap: ${props => props.theme.space.m};
+    gap: var(--space-m);
   `}
 
   ${props =>
@@ -34,11 +34,9 @@ export const Navigation = styled.nav`
     props.$main &&
     css`
       ${borderTop}
-      background-color: ${props => props.theme.color.background};
-      padding: calc(
-          ${props => props.theme.space.xs} - ${props => props.theme.space.xxxs}
-        )
-        ${props => props.theme.space.xs} ${props => props.theme.space.xs};
+      background-color: var(--color-background);
+      padding: calc(var(--space-xs) - var(--space-xxxs)) var(--space-xs)
+        var(--space-xs);
       position: fixed;
       bottom: 0;
       left: 0;

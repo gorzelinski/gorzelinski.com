@@ -11,17 +11,15 @@ export const Section = styled.section`
     props.$featured &&
     css`
       ${border}
-      background: ${props => props.theme.color.background};
-      padding: calc(
-        ${props => props.theme.space.s} - ${props => props.theme.space.xxxs}
-      );
-      box-shadow: ${props => props.theme.shadow.neumorphism};
+      background: var(--color-surface-background);
+      padding: calc(var(--space-s) - var(--space-xxxs));
+      box-shadow: var(--shadow-neumorphism);
 
       ${media.tablet`
-        padding: ${props => props.theme.space.m};
+        padding: var(--space-m);
       `}
       ${media.desktop`
-        padding: ${props => props.theme.space.l};
+        padding: var(--space-l);
       `}
     `}
   

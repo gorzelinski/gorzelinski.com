@@ -8,7 +8,7 @@ export const list = css`
   margin-left: 0;
   margin-right: 0;
   padding: 0;
-  margin-bottom: ${props => props.theme.space.m};
+  margin-bottom: var(--space-m);
   list-style-position: inside;
   list-style-image: none;
 
@@ -21,17 +21,17 @@ export const listItem = css`
   ${body}
   ${baseSize}
   padding-left: 0;
-  margin-bottom: ${props => props.theme.space.s};
+  margin-bottom: var(--space-s);
 
   & > p {
-    margin-bottom: ${props => props.theme.space.s};
+    margin-bottom: var(--space-s);
   }
   & *:last-child {
     margin-bottom: 0;
   }
   & > ul {
-    margin-left: ${props => props.theme.space.m};
-    margin-top: ${props => props.theme.space.s};
+    margin-left: var(--space-m);
+    margin-top: var(--space-s);
   }
 `
 

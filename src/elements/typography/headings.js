@@ -14,11 +14,11 @@ import {
 } from "./sizes"
 
 export const headings = css`
-  font-family: ${props => props.theme.font.family.heading};
-  font-weight: ${props => props.theme.font.weight.medium};
-  color: ${props => props.theme.color.text.base};
-  margin-top: calc(${props => props.theme.font.height.base} * 2);
-  margin-bottom: ${props => props.theme.font.height.base};
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-base);
+  margin-top: calc(var(--font-height-base) * 2);
+  margin-bottom: var(--font-height-base);
   ${marginReset}
 `
 

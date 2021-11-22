@@ -6,16 +6,16 @@ export const grid = css`
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(min(${props => props.theme.space.xxxl}, 100%), 1fr)
+    minmax(min(var(--space-xxxl), 100%), 1fr)
   );
-  gap: ${props => props.theme.space.l} ${props => props.theme.space.s};
+  gap: var(--space-l) var(--space-s);
 
   ${media.tablet`
-    gap: ${props => props.theme.space.l} ${props => props.theme.space.m};
+    gap: var(--space-l) var(--space-m);
   `}
 
   ${media.desktop`
-    gap: ${props => props.theme.space.l} ${props => props.theme.space.l};
+    gap: var(--space-l) var(--space-l);
   `}
 `
 
@@ -23,9 +23,9 @@ export const subGrid = css`
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(min(${props => props.theme.space.xxxl}, 100%), 1fr)
+    minmax(min(var(--space-xxxl), 100%), 1fr)
   );
-  gap: ${props => props.theme.font.height.base};
+  gap: var(--font-height-base);
 `
 
 export const article = css`

@@ -1,7 +1,12 @@
 import { css } from "styled-components"
-import { tokens } from "../../themes/tokens"
 
-const { screen } = tokens
+const screen = {
+  large: "1920px",
+  desktop: "1280px",
+  tablet: "768px",
+  mobile: "480px",
+  tiny: "321px",
+}
 
 export const media = Object.keys(screen).reduce((acc, label) => {
   acc[label] = (...args) => css`
