@@ -1,8 +1,6 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import { ThemeProvider } from "styled-components"
 
-import { light } from "../../themes"
 import About from "../about"
 
 const defaultData = {
@@ -45,11 +43,7 @@ const defaultData = {
 describe("About component", () => {
   describe("doesn't render (due to partial data)", () => {
     it("image", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <About data={{ ...defaultData, image: {} }}></About>
-        </ThemeProvider>
-      )
+      render(<About data={{ ...defaultData, image: {} }}></About>)
 
       const image = screen.queryByRole("img")
       expect(image).not.toBeInTheDocument()
@@ -57,14 +51,12 @@ describe("About component", () => {
 
     it("name", () => {
       render(
-        <ThemeProvider theme={light}>
-          <About
-            data={{
-              ...defaultData,
-              site: { siteMetadata: { author: { name: "" } } },
-            }}
-          ></About>
-        </ThemeProvider>
+        <About
+          data={{
+            ...defaultData,
+            site: { siteMetadata: { author: { name: "" } } },
+          }}
+        ></About>
       )
 
       const name = screen.queryByRole("heading", { name: /default name/i })
@@ -74,11 +66,7 @@ describe("About component", () => {
 
   describe("renders", () => {
     beforeEach(() => {
-      render(
-        <ThemeProvider theme={light}>
-          <About data={defaultData}></About>
-        </ThemeProvider>
-      )
+      render(<About data={defaultData}></About>)
     })
 
     it("figure", () => {

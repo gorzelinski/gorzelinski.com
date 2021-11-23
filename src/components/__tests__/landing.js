@@ -1,18 +1,12 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import { ThemeProvider } from "styled-components"
 
-import { light } from "../../themes"
 import Landing from "../landing"
 
 describe("Landing component", () => {
   describe("renders", () => {
     beforeEach(() => {
-      render(
-        <ThemeProvider theme={light}>
-          <Landing></Landing>
-        </ThemeProvider>
-      )
+      render(<Landing></Landing>)
     })
 
     it("title", () => {

@@ -1,8 +1,6 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import { ThemeProvider } from "styled-components"
 
-import { light } from "../../themes"
 import Projects from "../projects"
 
 const defaultData = {
@@ -109,11 +107,7 @@ const emptyData = {
 describe("Projects component", () => {
   describe("renders message when", () => {
     it("there is no data", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Projects></Projects>
-        </ThemeProvider>
-      )
+      render(<Projects></Projects>)
       const message = screen.getByText(/brak projektów/i)
       const project = screen.queryByRole("article")
       expect(project).not.toBeInTheDocument()
@@ -121,11 +115,7 @@ describe("Projects component", () => {
     })
 
     it("data is empty", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Projects data={emptyData}></Projects>
-        </ThemeProvider>
-      )
+      render(<Projects data={emptyData}></Projects>)
       const message = screen.getByText(/brak projektów/i)
       const project = screen.queryByRole("article")
       expect(project).not.toBeInTheDocument()
@@ -135,11 +125,7 @@ describe("Projects component", () => {
 
   describe("renders projects when", () => {
     it("there is data", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Projects data={defaultData}></Projects>
-        </ThemeProvider>
-      )
+      render(<Projects data={defaultData}></Projects>)
       const projects = screen.getAllByRole("article")
       const message = screen.queryByText(/brak projektów/i)
       expect(message).not.toBeInTheDocument()

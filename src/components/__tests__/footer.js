@@ -1,8 +1,6 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import { ThemeProvider } from "styled-components"
 
-import { light } from "../../themes"
 import Footer from "../footer"
 
 jest.mock("../../hooks", () => ({
@@ -30,11 +28,7 @@ jest.mock("../../hooks", () => ({
 describe("Footer component", () => {
   describe("renders", () => {
     beforeEach(() => {
-      render(
-        <ThemeProvider theme={light}>
-          <Footer></Footer>
-        </ThemeProvider>
-      )
+      render(<Footer></Footer>)
     })
 
     it("email button", () => {

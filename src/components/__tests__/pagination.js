@@ -1,8 +1,6 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import { ThemeProvider } from "styled-components"
 
-import { light } from "../../themes"
 import Pagination from "../pagination"
 
 const defaultData = {
@@ -19,11 +17,7 @@ const defaultData = {
 describe("Pagination component", () => {
   describe("renders", () => {
     it("link to next item", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Pagination data={defaultData}></Pagination>
-        </ThemeProvider>
-      )
+      render(<Pagination data={defaultData}></Pagination>)
       const next = screen.getByRole("link", {
         name: "Title of next item",
       })
@@ -31,11 +25,7 @@ describe("Pagination component", () => {
     })
 
     it("link to previous item", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Pagination data={defaultData}></Pagination>
-        </ThemeProvider>
-      )
+      render(<Pagination data={defaultData}></Pagination>)
       const next = screen.getByRole("link", {
         name: "Title of previous item",
       })
@@ -45,11 +35,7 @@ describe("Pagination component", () => {
 
   describe("doesn't render (due to partial data)", () => {
     it("link to next item", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Pagination data={{ ...defaultData, next: null }}></Pagination>
-        </ThemeProvider>
-      )
+      render(<Pagination data={{ ...defaultData, next: null }}></Pagination>)
       const next = screen.queryByRole("link", {
         name: "Title of next item",
       })
@@ -57,11 +43,7 @@ describe("Pagination component", () => {
     })
 
     it("link to previous item", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Pagination data={{ ...defaultData, prev: null }}></Pagination>
-        </ThemeProvider>
-      )
+      render(<Pagination data={{ ...defaultData, prev: null }}></Pagination>)
       const prev = screen.queryByRole("link", {
         name: "Title of previous item",
       })

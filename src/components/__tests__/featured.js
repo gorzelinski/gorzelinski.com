@@ -1,8 +1,6 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import { ThemeProvider } from "styled-components"
 
-import { light } from "../../themes"
 import Featured from "../featured"
 
 const defaultData = {
@@ -14,33 +12,23 @@ const defaultData = {
 describe("Featured component", () => {
   describe("doesn't render (due to partial data)", () => {
     it("title", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Featured data={{ slug: "/default-slug" }}></Featured>
-        </ThemeProvider>
-      )
+      render(<Featured data={{ slug: "/default-slug" }}></Featured>)
       const title = screen.queryByRole("heading")
       expect(title).not.toBeInTheDocument()
     })
 
     it("link to more", () => {
       render(
-        <ThemeProvider theme={light}>
-          <Featured
-            data={{ title: "Default title", buttonText: "Default text" }}
-          ></Featured>
-        </ThemeProvider>
+        <Featured
+          data={{ title: "Default title", buttonText: "Default text" }}
+        ></Featured>
       )
       const button = screen.queryByRole("link")
       expect(button).not.toBeInTheDocument()
     })
 
     it("children", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Featured data={defaultData}></Featured>
-        </ThemeProvider>
-      )
+      render(<Featured data={defaultData}></Featured>)
 
       const children = screen.queryAllByRole("article")
       expect(children.length).toBe(0)
@@ -49,12 +37,10 @@ describe("Featured component", () => {
   describe("renders", () => {
     beforeEach(() => {
       render(
-        <ThemeProvider theme={light}>
-          <Featured data={defaultData}>
-            <article></article>
-            <article></article>
-          </Featured>
-        </ThemeProvider>
+        <Featured data={defaultData}>
+          <article></article>
+          <article></article>
+        </Featured>
       )
     })
 

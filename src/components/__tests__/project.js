@@ -1,8 +1,6 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import { ThemeProvider } from "styled-components"
 
-import { light } from "../../themes"
 import Project from "../project"
 
 const defaultData = {
@@ -61,41 +59,25 @@ const partialData = {
 describe("Project component", () => {
   describe("doesn't render when", () => {
     it("there is no data", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Project></Project>
-        </ThemeProvider>
-      )
+      render(<Project></Project>)
       const title = screen.queryByRole("heading", { name: /default title/i })
       expect(title).not.toBeInTheDocument()
     })
 
     it("data is empty", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Project data={{}}></Project>
-        </ThemeProvider>
-      )
+      render(<Project data={{}}></Project>)
       const description = screen.queryByText(/default description/i)
       expect(description).not.toBeInTheDocument()
     })
 
     it("data is wrong", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Project data="wrong data"></Project>
-        </ThemeProvider>
-      )
+      render(<Project data="wrong data"></Project>)
       const roles = screen.queryByText(/default roles/i)
       expect(roles).not.toBeInTheDocument()
     })
 
     it("partial data is provided", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Project data={partialData}></Project>
-        </ThemeProvider>
-      )
+      render(<Project data={partialData}></Project>)
       const title = screen.queryByRole("heading", { name: /default title/i })
       const description = screen.queryByText(/default description/i)
       expect(title).not.toBeInTheDocument()
@@ -105,11 +87,7 @@ describe("Project component", () => {
 
   describe("renders", () => {
     beforeEach(() => {
-      render(
-        <ThemeProvider theme={light}>
-          <Project data={defaultData}></Project>
-        </ThemeProvider>
-      )
+      render(<Project data={defaultData}></Project>)
     })
 
     it("wrapper", () => {

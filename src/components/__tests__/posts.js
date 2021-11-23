@@ -1,8 +1,6 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import { ThemeProvider } from "styled-components"
 
-import { light } from "../../themes"
 import Posts from "../posts"
 
 const defaultData = {
@@ -185,11 +183,7 @@ const emptyData = {
 describe("Posts component", () => {
   describe("renders message when", () => {
     it("there is no data", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Posts></Posts>
-        </ThemeProvider>
-      )
+      render(<Posts></Posts>)
       const message = screen.getByText(/brak wpisów/i)
       const post = screen.queryByRole("article")
       expect(post).not.toBeInTheDocument()
@@ -197,11 +191,7 @@ describe("Posts component", () => {
     })
 
     it("data is empty", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Posts data={emptyData}></Posts>
-        </ThemeProvider>
-      )
+      render(<Posts data={emptyData}></Posts>)
       const message = screen.getByText(/brak wpisów/i)
       const post = screen.queryByRole("article")
       expect(post).not.toBeInTheDocument()
@@ -211,11 +201,7 @@ describe("Posts component", () => {
 
   describe("renders posts when", () => {
     it("there is data", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Posts data={defaultData}></Posts>
-        </ThemeProvider>
-      )
+      render(<Posts data={defaultData}></Posts>)
       const posts = screen.getAllByRole("article")
       const message = screen.queryByText(/brak wpisów/i)
       expect(message).not.toBeInTheDocument()

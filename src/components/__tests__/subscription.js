@@ -1,18 +1,12 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import { ThemeProvider } from "styled-components"
 
-import { light } from "../../themes"
 import Subscription from "../subscription"
 
 describe("Subscirption component", () => {
   describe("renders", () => {
     beforeEach(() => {
-      render(
-        <ThemeProvider theme={light}>
-          <Subscription></Subscription>
-        </ThemeProvider>
-      )
+      render(<Subscription></Subscription>)
     })
 
     it("title", () => {

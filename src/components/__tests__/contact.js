@@ -1,8 +1,6 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import { ThemeProvider } from "styled-components"
 
-import { light } from "../../themes"
 import Contact from "../contact"
 
 jest.mock("../../hooks", () => ({
@@ -30,11 +28,7 @@ jest.mock("../../hooks", () => ({
 describe("Contact component", () => {
   describe("renders", () => {
     beforeEach(() => {
-      render(
-        <ThemeProvider theme={light}>
-          <Contact></Contact>
-        </ThemeProvider>
-      )
+      render(<Contact></Contact>)
     })
 
     it("CTA button", () => {

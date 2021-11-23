@@ -1,15 +1,14 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import { ThemeProvider } from "styled-components"
 
-import { light } from "../../themes"
 import Navbar from "../navbar"
+import ThemeProvider from "../theme-provider"
 
 describe("Navbar component", () => {
   describe("renders", () => {
     beforeEach(() => {
       render(
-        <ThemeProvider theme={light}>
+        <ThemeProvider>
           <Navbar></Navbar>
         </ThemeProvider>
       )

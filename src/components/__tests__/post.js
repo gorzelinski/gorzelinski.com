@@ -1,8 +1,6 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
-import { ThemeProvider } from "styled-components"
 
-import { light } from "../../themes"
 import Post from "../post"
 
 const defaultData = {
@@ -58,41 +56,25 @@ const partialData = {
 describe("Post component", () => {
   describe("doesn't render when", () => {
     it("there is no data", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Post></Post>
-        </ThemeProvider>
-      )
+      render(<Post></Post>)
       const title = screen.queryByRole("heading", { name: /default title/i })
       expect(title).not.toBeInTheDocument()
     })
 
     it("data is empty", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Post data={{}}></Post>
-        </ThemeProvider>
-      )
+      render(<Post data={{}}></Post>)
       const description = screen.queryByText(/default description/i)
       expect(description).not.toBeInTheDocument()
     })
 
     it("data is wrong", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Post data="wrong data"></Post>
-        </ThemeProvider>
-      )
+      render(<Post data="wrong data"></Post>)
       const roles = screen.queryByText(/default roles/i)
       expect(roles).not.toBeInTheDocument()
     })
 
     it("partial data is provided", () => {
-      render(
-        <ThemeProvider theme={light}>
-          <Post data={partialData}></Post>
-        </ThemeProvider>
-      )
+      render(<Post data={partialData}></Post>)
       const title = screen.queryByRole("heading", { name: /default title/i })
       const description = screen.queryByText(/default description/i)
       expect(title).not.toBeInTheDocument()
@@ -102,11 +84,7 @@ describe("Post component", () => {
 
   describe("renders", () => {
     beforeEach(() => {
-      render(
-        <ThemeProvider theme={light}>
-          <Post data={defaultData}></Post>
-        </ThemeProvider>
-      )
+      render(<Post data={defaultData}></Post>)
     })
 
     it("wrapper", () => {
