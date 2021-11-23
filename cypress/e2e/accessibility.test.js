@@ -3,7 +3,7 @@
 describe("Accessibility tests", () => {
   afterEach(() => {
     cy.checkA11y()
-    cy.findByRole("button", { name: /motyw/i, exact: false }).click()
+    cy.findByLabelText(/zmień motyw/i).click()
     cy.checkA11y()
   })
   it("Has no detectable accessibility violations on load", () => {
