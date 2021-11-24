@@ -31,6 +31,12 @@ export const Figcaption = styled.figcaption`
   ${media.mobile`
     ${smallSize}
   `}
+
+  ${props =>
+    props.$center &&
+    css`
+      text-align: center;
+    `}
   
   display: block;
   margin-top: var(--space-s);
