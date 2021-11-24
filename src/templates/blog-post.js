@@ -1,10 +1,13 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import {
   Article,
   Aside,
+  Figcaption,
+  Figure,
   Footer,
   H1,
   H3,
@@ -59,6 +62,13 @@ const BlogPostTemplate = ({ data, location }) => {
           <H1 $top>{post.frontmatter.title}</H1>
           <P $lead>{post.frontmatter.description}</P>
         </Header>
+        <Figure $meta>
+          <GatsbyImage
+            image={getImage(image.src)}
+            alt={image.alt}
+          ></GatsbyImage>
+          <Figcaption $center>{image.alt}</Figcaption>
+        </Figure>
         <div>
           <MDXRenderer>{post.body}</MDXRenderer>
         </div>
@@ -105,12 +115,9 @@ export const pageQuery = graphql`
           src {
             childImageSharp {
               gatsbyImageData(
-                formats: AUTO
-                layout: FIXED
-                placeholder: NONE
+                layout: CONSTRAINED
                 width: 1200
                 aspectRatio: 1.91
-                outputPixelDensities: 1
               )
             }
           }

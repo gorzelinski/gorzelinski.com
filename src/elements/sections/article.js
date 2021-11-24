@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { marginTop } from "../utils"
+import { marginTop, media } from "../utils"
 import { article } from "../grid"
 
 export const Article = styled.article`
@@ -13,10 +13,20 @@ export const Article = styled.article`
 
   & > figure {
     grid-column: 1 / span 3;
+    height: auto;
+    margin: 0 calc(-1 * var(--space-s)) calc(2 * var(--font-height-base));
+
+    ${media.tiny`
+      margin: 0 calc(-1 * var(--space-m)) calc(2 * var(--font-height-base));
+    `}
+
+    ${media.tablet`
+      margin: 0 0 calc(2 * var(--font-height-base));
+    `}
   }
 
   & > header {
-    margin-bottom: var(--space-l);
+    margin-bottom: calc(2 * var(--font-height-base));
   }
 
   & > footer {
