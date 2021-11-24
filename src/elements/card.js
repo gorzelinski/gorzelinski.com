@@ -14,7 +14,7 @@ export const Card = styled.article`
   align-content: start;
   gap: var(--space-s);
 
-  & > div:nth-child(2) {
+  & > *:nth-child(2) {
     padding: calc(var(--space-s) - var(--space-xxxs));
   }
 
@@ -31,11 +31,14 @@ export const Card = styled.article`
       & > *:first-child {
         max-width: 100%;
         align-self: start;
-        height: 100%;
+        height: auto;
       }
 
       ${media.desktop`
-        & > div:nth-child(2) {
+        & > *:first-child {
+          height: 100%;
+        }
+        & > *:nth-child(2) {
           grid-column: span 2;
         }
       `}
