@@ -58,7 +58,7 @@ module.exports = {
           formats: [`auto`, `webp`, `avif`],
           placeholder: `dominantColor`,
           quality: 50,
-          breakpoints: [320, 480, 768, 1280, 1600],
+          breakpoints: [320, 480, 768, 1200],
           backgroundColor: `transparent`,
           webpOptions: {
             quality: 80,
