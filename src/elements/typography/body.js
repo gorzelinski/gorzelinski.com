@@ -37,3 +37,12 @@ export const P = styled.p`
       ${headingXXS}
     `}
 `
+
+export const Strong = styled.strong`
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-shade200);
+`
+
+export const Em = styled.em`
+  font-style: italic;
+`

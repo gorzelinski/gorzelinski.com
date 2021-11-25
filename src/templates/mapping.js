@@ -1,5 +1,6 @@
 import {
   Blockquote,
+  Em,
   H1,
   H2,
   H3,
@@ -11,6 +12,7 @@ import {
   Li,
   Ol,
   P,
+  Strong,
   Table,
   Ul,
 } from "../elements"
@@ -18,7 +20,9 @@ import CodeBlock from "../components/code"
 import Link from "../components/link"
 
 const components = {
-  p: P,
+  a: Link,
+  blockquote: Blockquote,
+  em: Em,
   h1: H1,
   h2: H2,
   h3: H3,
@@ -26,14 +30,14 @@ const components = {
   h5: H5,
   h6: H6,
   hr: Hr,
-  blockquote: Blockquote,
-  ul: Ul,
-  ol: Ol,
-  li: Li,
-  table: Table,
-  a: Link,
   inlineCode: InlineCode,
+  li: Li,
+  ol: Ol,
+  p: P,
   pre: CodeBlock,
+  strong: Strong,
+  table: Table,
+  ul: Ul,
 }
 
 export default components
