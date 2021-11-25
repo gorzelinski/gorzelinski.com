@@ -16,6 +16,10 @@ const GlobalStyles = createGlobalStyle`
   :before {
     box-sizing: border-box;
   }
+  ::selection {
+    background-color: var(--color-surface-shade200);
+    color: var(--color-primary-shade200);
+  }
 `
 
 export default GlobalStyles
