@@ -33,7 +33,7 @@ const components = {
   table: Table,
   a: Link,
   inlineCode: InlineCode,
-  code: CodeBlock,
+  pre: CodeBlock,
 }
 
 export default components
