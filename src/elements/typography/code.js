@@ -4,10 +4,12 @@ import { border, media } from "../utils"
 export const code = css`
   font-size: var(--font-size-small);
   font-family: var(--font-family-code);
+  font-weight: var(--font-weight-regular);
 `
 
 export const InlineCode = styled.code`
   ${code}
+  font-weight: inherit;
   display: inline-block;
   line-height: var(--font-height-small);
   color: var(--color-text-shade300);

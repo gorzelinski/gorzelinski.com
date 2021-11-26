@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components"
+import { media } from "../utils"
 
-import { baseSize, headingXXS } from "./sizes"
+import { baseSize, headingXS, headingXXS } from "./sizes"
 
 export const body = css`
   font-family: var(--font-family-body);
@@ -24,10 +25,20 @@ export const P = styled.p`
   padding: 0;
   margin: 0 0 var(--font-height-base) 0;
 
+  ${media.tablet`
+    ${headingXXS}
+    margin: 0 0 var(--font-height-xxs) 0;
+  `}
+
   ${props =>
     props.$ui &&
     css`
       ${ui}
+
+      ${media.tablet`
+        ${headingXXS}
+          margin: 0;
+      `}
     `}
 
   ${props =>
@@ -35,6 +46,10 @@ export const P = styled.p`
     css`
       color: var(--color-text-shade500);
       ${headingXXS}
+
+      ${media.tablet`
+        ${headingXS}
+      `}
     `}
 `
 

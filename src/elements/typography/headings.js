@@ -19,6 +19,12 @@ export const headings = css`
   color: var(--color-text-base);
   margin-top: calc(var(--font-height-base) * 2);
   margin-bottom: var(--font-height-base);
+
+  ${media.tablet`
+    margin-top: calc(var(--font-height-xxs) * 2);
+    margin-bottom: var(--font-height-xxs);
+  `}
+
   ${marginReset}
 `
 

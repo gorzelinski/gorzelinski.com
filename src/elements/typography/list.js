@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
 import { media } from "../utils"
-import { baseSize } from "./sizes"
+import { baseSize, headingXXS } from "./sizes"
 import { body } from "./body"
 
 export const list = css`
@@ -22,6 +22,10 @@ export const listItem = css`
   ${baseSize}
   padding-left: 0;
   margin-bottom: var(--space-s);
+
+  ${media.tablet`
+    ${headingXXS}
+  `}
 
   & > p {
     margin-bottom: var(--space-s);
