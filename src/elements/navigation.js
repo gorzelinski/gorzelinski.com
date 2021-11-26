@@ -14,10 +14,6 @@ export const Navigation = styled.nav`
     gap: var(--space-s);
   `}
 
-  ${media.desktop`
-    gap: var(--space-m);
-  `}
-
   ${props =>
     props.$flex &&
     css`
