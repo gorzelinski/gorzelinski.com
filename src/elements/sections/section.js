@@ -16,10 +16,10 @@ export const Section = styled.section`
       box-shadow: var(--shadow-neumorphism);
 
       ${media.tablet`
-        padding: var(--space-m);
+        padding: calc(var(--space-m) - var(--space-xxxs));
       `}
       ${media.desktop`
-        padding: var(--space-l);
+        padding: calc(var(--space-l) - var(--space-xxxs));
       `}
     `}
   

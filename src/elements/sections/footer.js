@@ -11,7 +11,7 @@ export const Footer = styled.footer`
   ${props =>
     props.$border &&
     css`
-      padding-top: var(--space-m);
+      padding-top: calc(var(--space-m) - var(--space-xxxs));
       ${borderTop}
     `}
 `

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { marginTop, media } from "../utils"
+import { borderTop, marginTop, media } from "../utils"
 import { article } from "../grid"
 
 export const Article = styled.article`
@@ -31,6 +31,8 @@ export const Article = styled.article`
 
   & > footer {
     margin-top: var(--font-height-base);
+    padding-top: var(--space-s);
+    ${borderTop}
   }
 
   & > div > *:first-child {
