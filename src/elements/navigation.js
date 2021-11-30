@@ -15,6 +15,18 @@ export const Navigation = styled.nav`
   `}
 
   ${props =>
+    props.$first &&
+    css`
+      margin-left: calc(-1 * var(--space-xs));
+    `}
+
+  ${props =>
+    props.$last &&
+    css`
+      margin-right: calc(-1 * var(--space-xs));
+    `}
+
+  ${props =>
     props.$flex &&
     css`
       display: flex;
@@ -49,4 +61,8 @@ export const Navigation = styled.nav`
         justify-content: flex-end;
       `}
     `}
+
+  & > p {
+    margin-right: var(--space-xs);
+  }
 `

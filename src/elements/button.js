@@ -76,13 +76,13 @@ export const Button = styled(Link)`
   ${props =>
     props.$first &&
     css`
-      margin-left: calc(var(--space-xs) * -1);
+      margin-left: calc(-1 * var(--space-xs));
     `}
 
   ${props =>
     props.$last &&
     css`
-      margin-right: calc(var(--space-xs) * -1);
+      margin-right: calc(-1 * var(--space-xs));
     `}
 
   ${props =>

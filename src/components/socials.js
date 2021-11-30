@@ -28,7 +28,7 @@ const Socials = ({ data = {} }) => {
   }
 
   return (
-    <Navigation as="div" $spanAll>
+    <Navigation $first as="div" $spanAll>
       {Object.entries(data).map(array => {
         const name = array[0]
         const link = array[1]
