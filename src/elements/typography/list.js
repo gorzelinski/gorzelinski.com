@@ -10,11 +10,6 @@ export const list = css`
   padding: 0;
   margin-bottom: var(--space-m);
   list-style-position: inside;
-  list-style-image: none;
-
-  ${media.tablet`
-    list-style-position: outside;
-  `}
 `
 
 export const listItem = css`
@@ -36,6 +31,9 @@ export const listItem = css`
   & > ul {
     margin-left: var(--space-m);
     margin-top: var(--space-s);
+  }
+  &::marker {
+    color: var(--color-primary-base);
   }
 `
 
