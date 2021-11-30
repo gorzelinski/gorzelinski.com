@@ -3,12 +3,11 @@ import styled from "styled-components"
 export const Switch = styled.input.attrs(props => ({
   type: "checkbox",
 }))`
-  -webkit-appearance: none;
-  --moz-appearance: none;
+  appearance: none;
   --active: var(--color-primary-base);
   --active-inner: var(--color-background);
   --border: var(--color-text-shade500);
-  --background: var(--color-surface-background);
+  --background: var(--color-background);
   width: var(--space-l);
   height: var(--font-height-base);
   border-radius: var(--space-s);
