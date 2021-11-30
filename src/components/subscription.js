@@ -15,7 +15,7 @@ import {
 
 const Subscription = () => {
   return (
-    <Section $featured $higher>
+    <Section $featured>
       <Tile>
         <H3 as="h2" $top>
           Chcesz być na bieżąco?

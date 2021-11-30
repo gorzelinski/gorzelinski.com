@@ -79,7 +79,7 @@ const BlogPostTemplate = ({ data, location }) => {
           </Navigation>
         </Footer>
       </Article>
-      <Aside $higher $article>
+      <Aside $article>
         <H3 $top>Przeczytaj także:</H3>
         <Pagination data={pagination}></Pagination>
       </Aside>
