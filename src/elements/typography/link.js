@@ -7,9 +7,15 @@ export const link = css`
   color: var(--color-primary-base);
   cursor: pointer;
   text-decoration: none;
+  text-decoration-color: var(--color-primary-base);
+  transition: text-decoration-color var(--duration-immediate) ease-out;
   &:hover,
   :focus {
+    text-decoration-color: transparent;
     color: var(--color-primary-shade200);
+  }
+  &:visited {
+    color: var(--color-primary-base);
   }
 `
 
@@ -17,24 +23,10 @@ export const A = styled.a`
   ${outline}
   ${link}
   text-decoration: underline;
-  &:visited {
-    color: var(--color-primary-base);
-  }
-  &:hover,
-  :focus {
-    text-decoration: none;
-  }
 `
 
 export const Link = styled(GatsbyLink)`
   ${outline}
   ${link}
   text-decoration: underline;
-  &:visited {
-    color: var(--color-primary-base);
-  }
-  &:hover,
-  :focus {
-    text-decoration: none;
-  }
 `
