@@ -8,11 +8,19 @@ export const Hero = styled.section`
   padding-top: var(--space-xxl);
 
   @media (orientation: portrait) {
-    --mobileNavHeight: calc(4 * var(--space-xs) + var(--font-height-tiny));
-    --marginTop: var(--space-xl);
+    --mobile-nav-height: calc(
+      var(--space-xxxs) + var(--space-xs) - var(--space-xxxs) +
+        var(--font-height-tiny) + 3 * var(--space-xs)
+    );
+    --top-nav-height: calc(var(--font-height-base) + 2 * var(--space-xs));
+    --margin-top: var(--space-m);
+
+    min-height: calc(
+      100vh - var(--mobile-nav-height) - var(--margin-top) -
+        var(--top-nav-height)
+    );
 
     padding-top: var(--space-m);
-    min-height: calc(100vh - var(--mobileNavHeight) - var(--marginTop));
     align-items: center;
   }
 

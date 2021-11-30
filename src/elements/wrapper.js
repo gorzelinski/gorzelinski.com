@@ -12,12 +12,17 @@ export const Wrapper = styled.div`
   ${props =>
     props.$global &&
     css`
-      padding: var(--space-l) var(--space-s);
+      --mobile-nav-height: calc(
+        var(--space-xxxs) + var(--space-xs) - var(--space-xxxs) +
+          var(--font-height-tiny) + 3 * var(--space-xs)
+      );
+      padding: var(--space-s) var(--space-s)
+        calc(var(--mobile-nav-height) + var(--space-s)) var(--space-s);
       max-width: 100%;
 
       ${media.tiny`
         margin: 0;
-        padding: var(--space-l) var(--space-m);
+        padding: var(--space-m) var(--space-m) calc(var(--mobile-nav-height) + var(--space-m)) var(--space-m);
       `}
 
       ${media.tablet`
