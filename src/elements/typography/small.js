@@ -6,7 +6,7 @@ import { smallSize, tinySize } from "./sizes"
 export const meta = css`
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-regular);
-  color: var(--color-text-shade500);
+  color: var(--color-gray-base);
 `
 
 export const Small = styled.small`

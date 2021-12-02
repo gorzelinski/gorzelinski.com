@@ -25,7 +25,7 @@ export const listItem = css`
   & > p {
     margin-bottom: var(--space-s);
   }
-  & *:last-child {
+  &:last-child {
     margin-bottom: 0;
   }
   & > ul {

@@ -6,7 +6,7 @@ import { baseSize, headingXS, headingXXS } from "./sizes"
 export const body = css`
   font-family: var(--font-family-body);
   font-weight: var(--font-weight-regular);
-  color: var(--color-text-shade300);
+  color: var(--color-gray-20);
 `
 
 export const ui = css`
@@ -14,7 +14,7 @@ export const ui = css`
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--font-spacing-wide);
-  color: var(--color-text-shade500);
+  color: var(--color-gray-base);
   padding: 0;
   margin: 0;
 `
@@ -44,7 +44,7 @@ export const P = styled.p`
   ${props =>
     props.$lead &&
     css`
-      color: var(--color-text-shade500);
+      color: var(--color-gray-base);
       ${headingXXS}
 
       ${media.tablet`
@@ -55,7 +55,7 @@ export const P = styled.p`
 
 export const Strong = styled.strong`
   font-weight: var(--font-weight-bold);
-  color: var(--color-text-shade200);
+  color: var(--color-gray-10);
 `
 
 export const Em = styled.em`

@@ -8,7 +8,7 @@ export const underline = css`
     height: var(--space-xxs);
     bottom: 0;
     left: 0;
-    background-color: var(--color-text-base);
+    background-color: var(--color-gray-00);
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform var(--duration-natural) ease-out;

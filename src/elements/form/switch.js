@@ -6,7 +6,7 @@ export const Switch = styled.input.attrs(props => ({
   appearance: none;
   --active: var(--color-primary-base);
   --active-inner: var(--color-background);
-  --border: var(--color-text-shade500);
+  --border: var(--color-gray-base);
   --background: var(--color-background);
   width: var(--space-l);
   height: var(--font-height-base);

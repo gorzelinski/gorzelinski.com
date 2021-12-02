@@ -2,9 +2,9 @@ import { css } from "styled-components"
 
 export const border = css`
   border-radius: var(--space-s);
-  border: var(--space-xxxs) solid var(--color-surface-shade200);
+  border: var(--space-xxxs) solid var(--color-gray-80);
 `
 
 export const borderTop = css`
-  border-top: var(--space-xxxs) solid var(--color-surface-shade200);
+  border-top: var(--space-xxxs) solid var(--color-gray-80);
 `

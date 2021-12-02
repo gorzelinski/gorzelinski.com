@@ -12,10 +12,10 @@ export const InlineCode = styled.code`
   font-weight: inherit;
   display: inline-block;
   line-height: var(--font-height-small);
-  color: var(--color-text-shade300);
-  background-color: var(--color-surface-shade200);
+  color: var(--color-primary-base);
+  background-color: var(--color-primary-100);
   border-radius: var(--space-xs);
-  padding: var(--space-xxs) calc(2 * var(--space-xxs));
+  padding: var(--space-xxs) var(--space-xs);
 `
 
 export const BlockCode = styled.pre`

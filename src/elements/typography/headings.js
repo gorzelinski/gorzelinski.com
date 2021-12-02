@@ -14,9 +14,10 @@ import {
 } from "./sizes"
 
 export const headings = css`
+  ${marginReset}
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-medium);
-  color: var(--color-text-base);
+  color: var(--color-gray-00);
   margin-top: calc(var(--font-height-base) * 2);
   margin-bottom: var(--font-height-base);
 
@@ -24,8 +25,6 @@ export const headings = css`
     margin-top: calc(var(--font-height-xxs) * 2);
     margin-bottom: var(--font-height-xxs);
   `}
-
-  ${marginReset}
 `
 
 export const H1 = styled.h1`

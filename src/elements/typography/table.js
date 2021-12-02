@@ -10,6 +10,6 @@ export const Table = styled.table`
   border-spacing: var(--space-xs);
 
   & thead tr th {
-    border-bottom: var(--space-xxxs) solid var(--color-surface-shade500);
+    border-bottom: var(--space-xxxs) solid var(--color-gray-60);
   }
 `

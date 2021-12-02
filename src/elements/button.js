@@ -11,7 +11,7 @@ export const nav = css`
   ${underline};
   position: relative;
   &.active {
-    color: var(--color-text-base);
+    color: var(--color-gray-00);
     &:after {
       content: "";
       position: absolute;
@@ -19,16 +19,16 @@ export const nav = css`
       height: var(--space-xxs);
       bottom: 0;
       left: 0;
-      background-color: var(--color-text-base);
+      background-color: var(--color-gray-00);
       transform: scaleX(1);
     }
   }
   &.active-subtle {
-    color: var(--color-text-base);
+    color: var(--color-gray-00);
   }
   &:hover,
   :focus {
-    color: var(--color-text-base);
+    color: var(--color-gray-00);
     transition: color var(--duration-natural) ease-out;
   }
 `
@@ -40,15 +40,15 @@ export const primary = css`
   ${rainbow}
   z-index: 0;
   position: relative;
-  color: var(--color-text-shade600);
+  color: var(--color-gray-100);
   background-color: var(--color-primary-base);
   border-radius: var(--space-xs);
 
   &:focus:after {
-    background-color: var(--color-primary-shade300);
+    background-color: var(--color-primary-30);
   }
   &:active:after {
-    background-color: var(--color-primary-shade500);
+    background-color: var(--color-primary-10);
   }
 `
 

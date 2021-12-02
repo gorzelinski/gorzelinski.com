@@ -16,7 +16,7 @@ export const Blockquote = styled.blockquote`
     font-style: italic;
     font-size: var(--font-size-xs);
     line-height: var(--font-height-s);
-    color: var(--color-text-shade400);
+    color: var(--color-gray-40);
 
     ${media.tablet`
       font-size: var(--font-size-s);
