@@ -22,13 +22,13 @@ const ThemeSwitcher = () => {
     <Navigation as="div">
       {theme ? (
         <>
+          <Icon $text>{selectIcon()}</Icon>
           <Switch
             title="Zmień motyw"
             aria-label="Zmień motyw"
             defaultChecked={theme === "dark" ? true : false}
             onChange={() => toggle()}
           ></Switch>
-          <Icon $text>{selectIcon()}</Icon>
         </>
       ) : null}
     </Navigation>
