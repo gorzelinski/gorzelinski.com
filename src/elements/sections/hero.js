@@ -8,10 +8,6 @@ export const Hero = styled.section`
   padding-top: var(--space-xxl);
 
   @media (orientation: portrait) {
-    --mobile-nav-height: calc(
-      var(--space-xxxs) + var(--space-xs) - var(--space-xxxs) +
-        var(--font-height-tiny) + 3 * var(--space-xs)
-    );
     --top-nav-height: calc(var(--font-height-base) + 2 * var(--space-xs));
     --margin-top: var(--space-m);
 
@@ -19,7 +15,6 @@ export const Hero = styled.section`
       100vh - var(--mobile-nav-height) - var(--margin-top) -
         var(--top-nav-height)
     );
-
     padding-top: var(--space-m);
     align-items: center;
   }
@@ -28,7 +23,7 @@ export const Hero = styled.section`
     @media (orientation: portrait) {
       padding-top: var(--space-xxl);
       min-height: auto;
-      align-items: auto;
+      align-items: start;
     }
     min-height: auto;
     align-items: start;
