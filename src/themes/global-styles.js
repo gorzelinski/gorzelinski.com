@@ -17,8 +17,8 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
   ::selection {
-    background-color: var(--color-surface-shade200);
-    color: var(--color-primary-shade200);
+    background-color: var(--color-primary-90);
+    color: var(--color-primary-40);
   }
 `
 
