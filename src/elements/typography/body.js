@@ -6,7 +6,7 @@ import { baseSize, headingXS, headingXXS } from "./sizes"
 export const body = css`
   font-family: var(--font-family-body);
   font-weight: var(--font-weight-regular);
-  color: var(--color-gray-20);
+  color: var(--color-gray-30);
 `
 
 export const ui = css`
