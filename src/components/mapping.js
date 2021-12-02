@@ -16,8 +16,9 @@ import {
   Table,
   Ul,
 } from "../elements"
-import CodeBlock from "../components/code"
-import Link from "../components/link"
+import CodeBlock from "./code"
+import Link from "./link"
+import Message from "./message"
 
 const components = {
   a: Link,
@@ -38,6 +39,7 @@ const components = {
   strong: Strong,
   table: Table,
   ul: Ul,
+  Message,
 }
 
 export default components

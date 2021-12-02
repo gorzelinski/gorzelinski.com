@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from "react"
 import { MDXProvider } from "@mdx-js/react"
 
 import { setToLS } from "../utils"
-import components from "../templates/mapping"
+import components from "./mapping"
 import GlobalStyles from "../themes/global-styles"
 
 export const ThemeContext = createContext()
