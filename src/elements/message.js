@@ -1,10 +1,16 @@
 import styled, { css } from "styled-components"
 
+import { media } from "./utils"
+
 export const Message = styled.aside`
   position: relative;
   border-radius: var(--space-s);
   padding: var(--space-s);
   margin-bottom: var(--font-height-base);
+
+  ${media.tablet`
+    margin-bottom: var(--font-height-xxs);
+  `}
 
   ${props =>
     props.$info &&
