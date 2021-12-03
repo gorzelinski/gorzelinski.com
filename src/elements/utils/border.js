@@ -8,3 +8,7 @@ export const border = css`
 export const borderTop = css`
   border-top: var(--space-xxxs) solid var(--color-gray-80);
 `
+
+export const borderBottom = css`
+  border-bottom: var(--space-xxxs) solid var(--color-gray-80);
+`

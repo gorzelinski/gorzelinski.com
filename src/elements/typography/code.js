@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components"
-import { border, media } from "../utils"
+
+import { border, borderBottom, borderTop, media } from "../utils"
 
 export const code = css`
   font-size: var(--font-size-small);
@@ -19,6 +20,8 @@ export const InlineCode = styled.code`
 `
 
 export const BlockCode = styled.pre`
+  ${borderBottom}
+  ${borderTop}
   display: block;
   position: relative;
   padding: var(--space-s);
