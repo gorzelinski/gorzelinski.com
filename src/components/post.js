@@ -27,7 +27,7 @@ const Post = ({ data = {} }) => {
           {title}
         </H4>
         <P>{description}</P>
-        <Button $text $first to={`/blog${slug}`}>
+        <Button $text $first $iconForward to={`/blog${slug}`}>
           Czytaj więcej
           <Icon>
             <ChevronForward></ChevronForward>

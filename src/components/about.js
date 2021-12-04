@@ -58,7 +58,7 @@ const About = ({ data = {} }) => {
           </Link>
           .
         </P>
-        <Button $text $first to="/o-mnie">
+        <Button $text $first $iconForward to="/o-mnie">
           Więcej o mnie
           <Icon>
             <ChevronForward></ChevronForward>

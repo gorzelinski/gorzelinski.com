@@ -28,7 +28,7 @@ const Project = ({ data = {} }) => {
           {title}
         </H4>
         <P>{description}</P>
-        <Button $text $first to={`/portfolio${slug}`}>
+        <Button $text $first $iconForward to={`/portfolio${slug}`}>
           Sprawdź case study
           <Icon>
             <ChevronForward></ChevronForward>

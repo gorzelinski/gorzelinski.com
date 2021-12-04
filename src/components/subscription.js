@@ -48,7 +48,7 @@ const Subscription = () => {
             type="email"
             placeholder="Twój email"
           ></Input>
-          <Button as="button" $grow $primary>
+          <Button as="button" $grow $primary $iconWobble>
             Subskrybuj
             <Icon>
               <Send></Send>
