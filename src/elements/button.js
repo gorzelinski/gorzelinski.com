@@ -2,10 +2,18 @@ import { Link } from "gatsby"
 import styled, { css } from "styled-components"
 
 import { media } from "./utils"
-import { outline, primaryColorStates, underline } from "./effects"
-import { rainbow } from "./animations"
+import {
+  iconBack,
+  iconForward,
+  outline,
+  primaryBackgroundColorStates,
+  primaryColorStates,
+  underline,
+} from "./effects"
+import { iconWobble } from "./animations"
 import { ui } from "./typography"
 import { tinySize, baseSize } from "./typography/sizes"
+import { elementBuzzOut } from "./animations/buzz-out"
 
 export const nav = css`
   ${underline};
@@ -37,7 +45,7 @@ export const text = css`
   ${primaryColorStates}
 `
 export const primary = css`
-  ${rainbow}
+  ${primaryBackgroundColorStates}
   z-index: 0;
   position: relative;
   color: var(--color-gray-100);
@@ -125,5 +133,29 @@ export const Button = styled(Link)`
     props.$primary &&
     css`
       ${primary}
+    `}
+
+  ${props =>
+    props.$iconForward &&
+    css`
+      ${iconForward}
+    `}
+
+  ${props =>
+    props.$iconBack &&
+    css`
+      ${iconBack}
+    `}
+
+  ${props =>
+    props.$iconWobble &&
+    css`
+      ${iconWobble}
+    `}
+    
+  ${props =>
+    props.$elementBuzzOut &&
+    css`
+      ${elementBuzzOut}
     `}
 `
