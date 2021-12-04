@@ -13,6 +13,7 @@ export const Card = styled.article`
   display: grid;
   align-content: start;
   gap: var(--space-s);
+  transition: box-shadow var(--duration-natural) ease-in;
 
   & > *:nth-child(2) {
     padding: calc(var(--space-s) - var(--space-xxxs));
@@ -46,6 +47,5 @@ export const Card = styled.article`
 
   &:hover {
     box-shadow: var(--shadow-neumorphism);
-    transition: box-shadow var(--duration-immediate) ease-in;
   }
 `
