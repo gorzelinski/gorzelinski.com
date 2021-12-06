@@ -17,7 +17,7 @@
   --color-gray-saturation: 7%;
   --color-gray: var(--color-gray-hue), var(--color-gray-saturation);
   --color-gray-100: hsl(var(--color-gray), 6%);
-  --color-gray-90: hsl(var(--color-gray), 16%);
+  --color-gray-90: hsl(var(--color-gray), 13%);
   --color-gray-80: hsl(var(--color-gray), 26%);
   --color-gray-70: hsl(var(--color-gray), 36%);
   --color-gray-60: hsl(var(--color-gray), 46%);
