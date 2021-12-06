@@ -41,7 +41,7 @@
   --color-warning: var(--color-warning-hue), var(--color-warning-saturation);
   --color-background: var(--color-gray-100);
   --color-warning-100: hsl(var(--color-warning), 96%);
-  --color-warning-base: hsl(var(--color-warning), 52%);
+  --color-warning-base: hsl(var(--color-warning), 27%);
 
   --color-success-hue: 126;
   --color-success-saturation: 72%;
