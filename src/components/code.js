@@ -1,15 +1,11 @@
-import React, { useContext } from "react"
+import React from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
-import github from "prism-react-renderer/themes/github"
-import palenight from "prism-react-renderer/themes/palenight"
+
+import codeTheme from "../themes/code"
 
 import { BlockCode } from "../elements"
-import { ThemeContext } from "./theme-provider"
-
 const CodeBlock = ({ children }) => {
-  const { theme } = useContext(ThemeContext)
   const language = children.props.className.replace(/language-/, "") || ""
-  const codeTheme = theme === "light" ? github : palenight
 
   return (
     <Highlight

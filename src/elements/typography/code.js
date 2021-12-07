@@ -43,8 +43,14 @@ export const BlockCode = styled.pre`
     max-width: 100%;
     overflow-x: auto;
     line-height: var(--font-height-base);
+    & > div:last-child {
+      margin-bottom: var(--space-s);
+    }
     & > div {
       & > span:first-child {
+        display: inline-block;
+        width: 2rem;
+        text-align: right;
         user-select: none;
         padding: 0 var(--space-s) 0 0;
       }
@@ -54,7 +60,7 @@ export const BlockCode = styled.pre`
   & > small {
     position: absolute;
     right: var(--space-s);
-    bottom: var(--space-s);
+    top: var(--space-s);
     user-select: none;
   }
 `
