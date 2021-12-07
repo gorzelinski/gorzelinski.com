@@ -17,7 +17,7 @@ describe("Theme tests", () => {
     cy.findByTestId("background").should(
       "have.css",
       "background-color",
-      "rgb(17, 19, 21)"
+      "rgb(14, 15, 16)"
     )
     cy.findAllByRole("heading")
       .first()
