@@ -159,13 +159,18 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `gorzelinski.com`,
+        short_name: `Gorzelinski`,
+        description: `Here will be description of the app.`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
+        background_color: `#0466c8`,
+        theme_color: `#ffffff`,
+        theme_color_in_head: false,
+        display: `standalone`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon_options: {
+          purpose: `any`,
+        },
       },
     },
     `gatsby-plugin-react-helmet`,
