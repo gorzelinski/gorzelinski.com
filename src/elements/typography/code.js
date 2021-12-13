@@ -24,7 +24,7 @@ export const BlockCode = styled.pre`
   ${borderTop}
   display: block;
   position: relative;
-  padding: var(--space-s);
+  padding: calc(var(--space-s) - var(--space-xxxs));
   margin: 0 calc(-1 * var(--space-s)) var(--font-height-base);
 
   ${media.tiny`
@@ -33,7 +33,7 @@ export const BlockCode = styled.pre`
 
   ${media.tablet`
     ${border}
-    margin: 0 0 var(--font-height-base);
+    margin: 0 0 var(--font-height-xxs);
     box-shadow: var(--shadow-neumorphism);
   `}
 
