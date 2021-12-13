@@ -11,9 +11,8 @@ export const Card = styled.article`
   ${border}
   overflow: hidden;
   display: grid;
-  align-content: start;
   gap: var(--space-s);
-  transition: box-shadow var(--duration-natural) ease-in;
+  align-content: start;
 
   & > *:nth-child(2) {
     padding: calc(var(--space-s) - var(--space-xxxs));
@@ -22,30 +21,26 @@ export const Card = styled.article`
   ${props =>
     props.$horizontal &&
     css`
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(min(var(--space-xxxl), 100%), 1fr)
-      );
-      min-height: var(--space-xxxl);
-      align-content: stretch;
+      grid-template-columns: 1fr;
 
       & > *:first-child {
-        max-width: 100%;
-        align-self: start;
-        height: auto;
+        aspect-ratio: 1.618;
       }
 
-      ${media.desktop`
+      ${media.mobile`
         & > *:first-child {
-          height: 100%;
+          aspect-ratio: 21 / 9;
         }
-        & > *:nth-child(2) {
-          grid-column: span 2;
+      `}
+
+      ${media.tablet`
+        grid-template-columns: 1fr 2fr;
+
+        & > *:first-child {
+          aspect-ratio: auto;
+          height: 100%;
+          max-width: 100%;
         }
       `}
     `}
-
-  &:hover {
-    box-shadow: var(--shadow-neumorphism);
-  }
 `

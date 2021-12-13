@@ -18,7 +18,7 @@ const Post = ({ data = {} }) => {
 
   return isDataComplete ? (
     <Card $span2 $horizontal>
-      <Figure as="div" $golden>
+      <Figure as="div">
         <GatsbyImage image={src} alt={alt}></GatsbyImage>
       </Figure>
       <div>
@@ -28,7 +28,7 @@ const Post = ({ data = {} }) => {
         </H4>
         <P>{description}</P>
         <Button $text $first $iconForward to={`/blog${slug}`}>
-          Czytaj więcej
+          Czytaj wpis
           <Icon>
             <ChevronForward></ChevronForward>
           </Icon>
