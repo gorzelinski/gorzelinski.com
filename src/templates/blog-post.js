@@ -56,7 +56,7 @@ const BlogPostTemplate = ({ data, location }) => {
       />
       <Article>
         <Header>
-          <Small>
+          <Small $top>
             {post.frontmatter.date} • {post.timeToRead} min. czytania
           </Small>
           <H1 $top>{post.frontmatter.title}</H1>
@@ -67,7 +67,7 @@ const BlogPostTemplate = ({ data, location }) => {
             image={getImage(image.src)}
             alt={image.alt}
           ></GatsbyImage>
-          <Figcaption $center>{image.alt}</Figcaption>
+          <Figcaption $center>{image.caption}</Figcaption>
         </Figure>
         <div>
           <MDXRenderer>{post.body}</MDXRenderer>
@@ -112,6 +112,7 @@ export const pageQuery = graphql`
         description
         image {
           alt
+          caption
           src {
             childImageSharp {
               gatsbyImageData(
