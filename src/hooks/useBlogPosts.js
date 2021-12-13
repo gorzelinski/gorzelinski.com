@@ -21,7 +21,7 @@ export const useBlogPosts = () => {
               alt
               src {
                 childImageSharp {
-                  gatsbyImageData
+                  gatsbyImageData(breakpoints: [320, 480, 768], width: 768)
                 }
               }
             }

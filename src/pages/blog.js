@@ -61,7 +61,7 @@ export const pageQuery = graphql`
             alt
             src {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(breakpoints: [320, 480, 768], width: 768)
               }
             }
           }
