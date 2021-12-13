@@ -148,6 +148,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       dribbble: String
       twitter: String
       facebook: String
+      linkedin: String
     }
 
     type MarkdownRemark implements Node {
@@ -157,6 +158,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 
     type MetaImage {
       alt: String
+      caption: String
       src: ImageSharp
     }
 
