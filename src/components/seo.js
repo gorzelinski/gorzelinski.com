@@ -10,8 +10,6 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-import { ThemeContext } from "./theme-provider"
-
 const Seo = ({ description, image, lang, meta, slug, title, type }) => {
   const { site } = useStaticQuery(
     graphql`
@@ -34,7 +32,6 @@ const Seo = ({ description, image, lang, meta, slug, title, type }) => {
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
   const metaImage = image ? `${site.siteMetadata.siteUrl}${image.src}` : null
-  const { theme } = useContext(ThemeContext)
 
   return (
     <Helmet
@@ -125,18 +122,7 @@ const Seo = ({ description, image, lang, meta, slug, title, type }) => {
                 },
               ]
         )
-        .concat(meta)
-        .concat(
-          theme === "light"
-            ? {
-                name: "theme-color",
-                content: "#ffffff",
-              }
-            : {
-                name: "theme-color",
-                content: "#0e0f10",
-              }
-        )}
+        .concat(meta)}
     />
   )
 }
