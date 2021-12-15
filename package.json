@@ -54,7 +54,8 @@
     "jest": "^27.0.6",
     "jest-styled-components": "^7.0.5",
     "prettier": "2.3.2",
-    "start-server-and-test": "^1.13.1"
+    "start-server-and-test": "^1.13.1",
+    "husky": "^7.0.0"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
@@ -73,9 +74,11 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "jest --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open"
+    "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open",
+    "prepare": "husky install"
   }
 }
