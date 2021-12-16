@@ -81,7 +81,48 @@ Gatsby nie wspiera testów jednostkowych w domyśle. Dodanie ich wymaga odpowied
 W projekcie wykorzystałem framework `Jest` wraz z biblioteką `React Testing Library`. Moim zdaniem, wymusza ona dobre praktyki, takie jak wyszukiwanie elementów po rolach ARIA.
 Tworzona strona nie posiadała zbyt wiele logiki, którą zazwyczaj obejmują takie testy. Mimo to, były one całkiem przydatne - wykorzystałem je do sprawdzenia niezbędnej treści na stronie.
 
-![An-lam - test jednostkowy](./an-lam-unit-test.png)
+```jsx
+import React from "react"
+import { render } from "@testing-library/react"
+import { ThemeProvider } from "styled-components"
+
+import Light from "../../themes/light"
+import { Services } from "../Services"
+
+describe("Services", () => {
+  it("has caption", () => {
+    const { getByText } = render(
+      <ThemeProvider theme={Light}>
+        <Services></Services>
+      </ThemeProvider>
+    )
+    expect(getByText(/oferta/i)).toBeDefined()
+  })
+  it("has title", () => {
+    const { getByRole } = render(
+      <ThemeProvider theme={Light}>
+        <Services></Services>
+      </ThemeProvider>
+    )
+    expect(getByRole("heading", { level: 2 })).toBeDefined()
+  })
+  it("has categories and corresponding lists of services", () => {
+    const { getAllByRole } = render(
+      <ThemeProvider theme={Light}>
+        <Services></Services>
+      </ThemeProvider>
+    )
+    const categories = getAllByRole("heading", { level: 3 })
+    const services = getAllByRole("list")
+    services.forEach(service => {
+      expect(service.children.length).toBeGreaterThan(1)
+    })
+    expect(categories.length).toBeGreaterThan(1)
+    expect(services.length).toBeGreaterThan(1)
+    expect(categories.length).toBe(services.length)
+  })
+})
+```
 
 Poza testami jednostkowymi stworzyłem także kilka testów E2E. W tym celu, dodałem do projektu framework `Cypress` wraz z biblioteką `Cypress Testing Library`. Ujednoliciłem w ten sposób składnię wyszukiwania elementów DOM. Testy E2E wykorzystałem do symulacji zachowań użytkownika: przeglądania sekcji i podstron, klikania w poszczególne linki itp.
 Bardzo przydatna okazała się także biblioteka `cypress-axe`. Wykryła kilka problemów związanych z dostępnością strony i pomogła mi w ich usunięciu.
