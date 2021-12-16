@@ -4,6 +4,7 @@ import {
   Warning,
   AlertCircle,
   CheckmarkCircle,
+  Bulb,
 } from "@styled-icons/ionicons-solid"
 
 import { Icon, Message as StyledMessage } from "../elements"
@@ -19,6 +20,8 @@ const Message = ({ children, type }) => {
         return <Warning></Warning>
       case "success":
         return <CheckmarkCircle></CheckmarkCircle>
+      case "idea":
+        return <Bulb></Bulb>
       default:
         return null
     }

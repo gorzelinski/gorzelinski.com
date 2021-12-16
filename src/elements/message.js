@@ -40,6 +40,13 @@ export const Message = styled.aside`
       background-color: var(--color-success-100);
     `}
 
+    ${props =>
+    props.$idea &&
+    css`
+      color: var(--color-warning-base);
+      background-color: var(--color-warning-100);
+    `}
+
   & > *:nth-child(2) {
     margin-top: 0;
   }
