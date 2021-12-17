@@ -22,6 +22,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Pagination from "../components/pagination"
 import Subscription from "../components/subscription"
+import ProgressScroll from "../components/progress-scroll"
 
 const PortfolioProjectTemplate = ({ data, location }) => {
   const project = data.mdx
@@ -46,6 +47,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         ]}
       />
       <Article>
+        <ProgressScroll></ProgressScroll>
         <Figure $wide>
           <GatsbyImage
             image={getImage(image.src)}

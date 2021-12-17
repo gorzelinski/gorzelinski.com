@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -26,6 +26,7 @@ import Seo from "../components/seo"
 import Socials from "../components/socials"
 import Pagination from "../components/pagination"
 import Subscription from "../components/subscription"
+import ProgressScroll from "../components/progress-scroll"
 
 const BlogPostTemplate = ({ data, location }) => {
   const { siteUrl } = data.site.siteMetadata
@@ -55,6 +56,7 @@ const BlogPostTemplate = ({ data, location }) => {
         ]}
       />
       <Article>
+        <ProgressScroll></ProgressScroll>
         <Header>
           <Small $top>
             {post.frontmatter.date} • {post.timeToRead} min. czytania
