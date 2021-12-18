@@ -152,6 +152,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
+            title: "Gorzeliński RSS Feed",
           },
         ],
       },
