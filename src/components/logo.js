@@ -3,7 +3,7 @@ import { Button } from "../elements"
 
 const Logo = () => (
   <Button $first $nav to="/" activeClassName="active-subtle">
-    Gorzeliński
+    MG
   </Button>
 )
 
