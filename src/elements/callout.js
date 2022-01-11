@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 
 import { media } from "./utils"
 
-export const Message = styled.aside`
+export const Callout = styled.div`
   position: relative;
   border-radius: var(--space-s);
   padding: var(--space-s);
@@ -40,11 +40,11 @@ export const Message = styled.aside`
       background-color: var(--color-success-100);
     `}
 
-    ${props =>
+  ${props =>
     props.$idea &&
     css`
       color: var(--color-warning-base);
-      background-color: var(--color-warning-100);
+      background-color: var(--color-gray-90);
     `}
 
   & > *:nth-child(2) {

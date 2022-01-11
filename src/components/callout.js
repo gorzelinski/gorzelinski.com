@@ -7,9 +7,9 @@ import {
   Bulb,
 } from "@styled-icons/ionicons-solid"
 
-import { Icon, Message as StyledMessage } from "../elements"
+import { Icon, Callout as StyledCallout } from "../elements"
 
-const Message = ({ children, type }) => {
+const Callout = ({ children, type }) => {
   const selectIcon = type => {
     switch (type) {
       case "info":
@@ -27,11 +27,11 @@ const Message = ({ children, type }) => {
     }
   }
   return (
-    <StyledMessage {...{ [`$${type}`]: true }}>
+    <StyledCallout {...{ [`$${type}`]: true }}>
       <Icon>{selectIcon(type)}</Icon>
       {children}
-    </StyledMessage>
+    </StyledCallout>
   )
 }
 
-export default Message
+export default Callout
