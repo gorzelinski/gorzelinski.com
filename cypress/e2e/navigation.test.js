@@ -107,6 +107,16 @@ describe("Navigation tests", () => {
 
     cy.get('a[rel="next"]').should("be.visible").and("have.prop", "href")
   })
+  it("Navigates to blog post and checks progress bar on scroll", () => {
+    cy.findByRole("link", { name: /wszystkie wpisy/i }).click()
+    cy.findByRole("heading", { level: 1 }).should("contain", "Blog")
+    cy.get('a[href*="hello"]').should("be.visible").click()
+    cy.findByTestId("progress").should("not.be.visible")
+    cy.findByTestId("progress-thumb").should("not.be.visible")
+    cy.scrollTo(0, 2000)
+    cy.findByTestId("progress").should("be.visible")
+    cy.findByTestId("progress-thumb").should("be.visible")
+  })
   it("Navigates to portfolio project and checks its links", () => {
     cy.findByRole("link", { name: /wszystkie projekty/i })
       .should("be.visible")
