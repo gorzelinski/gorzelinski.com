@@ -31,7 +31,7 @@ export const Article = styled.article`
 
   & > footer {
     margin-top: var(--font-height-base);
-    padding-top: var(--space-s);
+    padding-top: var(--font-height-base);
     ${borderTop}
   }
 

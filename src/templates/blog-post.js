@@ -27,6 +27,7 @@ import Socials from "../components/socials"
 import Pagination from "../components/pagination"
 import Subscription from "../components/subscription"
 import ProgressScroll from "../components/progress-scroll"
+import Avatar from "../components/avatar"
 
 const BlogPostTemplate = ({ data, location }) => {
   const { siteUrl } = data.site.siteMetadata
@@ -73,12 +74,13 @@ const BlogPostTemplate = ({ data, location }) => {
         </Figure>
         <div>
           <MDXRenderer>{post.body}</MDXRenderer>
-        </div>
-        <Footer>
           <Navigation as="div">
-            <P $ui>Udostępnij:</P>
+            <P $ui>Udostępnij</P>
             <Socials data={links}></Socials>
           </Navigation>
+        </div>
+        <Footer>
+          <Avatar></Avatar>
         </Footer>
       </Article>
       <Aside $article>

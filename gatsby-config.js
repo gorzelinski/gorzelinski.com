@@ -3,11 +3,7 @@ module.exports = {
     title: `Gorzeliński`,
     author: {
       name: `Mateusz Gorzeliński`,
-      summary: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
-      itaque eos dignissimos nemo rem, rerum, nisi obcaecati
-      fugiat sint harum perferendis pariatur voluptates cumque
-      eveniet. Cumque fugit aspernatur, aut ullam eius debitis qui
-      numquam architecto quod in sapiente illo incidunt!`,
+      summary: `Inżynier o erudycyjnych aspiracjach.`,
       email: `mateusz@gorzelinski.com`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,

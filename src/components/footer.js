@@ -20,7 +20,9 @@ const Footer = () => {
   return (
     <StyledFooter $border id="kontakt">
       <Tile>
-        <Small $top>Napisz mi maila</Small>
+        <Small as="p" $top>
+          Napisz mi maila
+        </Small>
         <Address>
           <Button as="a" $text $first href={`mailto:${email}`}>
             {email}
@@ -28,7 +30,9 @@ const Footer = () => {
         </Address>
       </Tile>
       <Tile>
-        <Small $top>Znajdź mnie także na</Small>
+        <Small as="p" $top>
+          Znajdź mnie także na
+        </Small>
         <Socials data={links}></Socials>
       </Tile>
       <Tile>

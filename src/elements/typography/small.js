@@ -19,7 +19,7 @@ export const Small = styled.small`
   `}
   
   display: block;
-  margin-top: var(--space-s);
+  margin-top: var(--space-xs);
   margin-bottom: var(--space-xs);
 `
 
