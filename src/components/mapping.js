@@ -1,6 +1,8 @@
 import {
   Blockquote,
   Em,
+  Figcaption,
+  Figure,
   H1,
   H2,
   H3,
@@ -24,6 +26,8 @@ const components = {
   a: Link,
   blockquote: Blockquote,
   em: Em,
+  figcaption: Figcaption,
+  figure: Figure,
   h1: H1,
   h2: H2,
   h3: H3,
