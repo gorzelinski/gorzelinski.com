@@ -27,12 +27,9 @@ describe("Navigation tests", () => {
     cy.url().should("contain", "/blog/hello-world")
     cy.findByRole("heading", { level: 1 }).should("contain", "Hello")
 
-    cy.findByRole("link", { name: "Gorzeliński" }).should("be.visible").click()
+    cy.findByRole("link", { name: "MG" }).should("be.visible").click()
     cy.url().should("not.include", "/blog/hello-world")
-    cy.findByRole("heading", { level: 1 }).should(
-      "contain",
-      "rzeczy w internecie"
-    )
+    cy.findByRole("heading", { level: 1 }).should("be.visible")
   })
   it("Navigates around contact methods", () => {
     cy.findByRole("link", { name: "Kontakt" }).click()
