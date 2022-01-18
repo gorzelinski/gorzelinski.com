@@ -11,28 +11,20 @@ image:
 ## Co to jest ten JAMstack?
 
 JAMstack jest alternatywnym podejściem do tworzenia stron i aplikacji internetowych. Zasadniczo różni się od tradycyjnej, monolitycznej architektury.
-//dodaj schemat porównujący
+
+![traditional-vs-jamstack-architecture.png](./traditional-vs-jamstack-architecture.png)
+
 Jednocześnie nie jest to zbiór przypadkowych liter. Branża IT lubi akronimy. JAMstack jest kolejnym w branżowym żargonie. Kolejne litery oznaczają:
 
-### JavaScript
+- **JavaScript -** język skryptowy rozpoznawalny przez przeglądarki. Odpowiada za dynamiczną funkcjonalność stron. JAMstack nie narzuca używania „czystego” języka. Możesz używać jednego z wielu frameworków. Dowcip mówi, że co pół roku powstaje nowy.
+- **APIs -** interfejsy, które definiują interakcje pomiędzy fragmentami software'u. Operacje po stronie serwera - w tej architekturze - są wyabstrahowane do API wielokrotnego użytku. Są dostępne poprzez protokół HTTPS z pomocą języka JavaScript.
+- **Markup -** dokument w konkretnym formacie. Strony - w tym podejściu - są serwowane jako statyczne pliki HTML. Te natomiast mogą być wygenerowane z pomocą języka Markdown lub przez Statyczny Generator Stron.
 
-Język skryptowy rozpoznawalny przez przeglądarki. Odpowiada za dynamiczną funkcjonalność stron. JAMstack nie narzuca używania „czystego” języka. Możesz używać jednego z wielu frameworków. Dowcip mówi, że co pół roku powstaje nowy.
-
-### APIs
-
-Interfejsy, które definiują interakcje pomiędzy fragmentami software'u. Operacje po stronie serwera - w tej architekturze - są wyabstrahowane do API wielokrotnego użytku. Są dostępne poprzez protokół HTTPS z pomocą języka JavaScript.
-
-### Markup
-
-Dokument w konkretnym formacie. Strony - w tym podejściu - są serwowane jako statyczne pliki HTML. Te natomiast mogą być wygenerowane z pomocą języka Markdown lub przez Statyczny Generator Stron.
-
-### Czym JAMstack nie jest
-
-JAMstack to nie jest żadna konkretna technologia. Nie jest kontrolowany, ani definiowany przez jakąś korporację. JAMstack jest raczej ruchem i społecznością. Zestawem dobrych praktyk i systemem pracy. Systemem przyjaznym dla programistów, którego efektem są strony internetowe przyjazne dla użytkowników.
+Jednocześnie warto zaznaczyć, że JAMstack to **nie** jest żadna konkretna technologia. Nie jest kontrolowany, ani definiowany przez jakąś korporację. JAMstack jest raczej ruchem i społecznością. Zestawem dobrych praktyk i systemem pracy. Systemem przyjaznym dla programistów, którego efektem są strony internetowe przyjazne dla użytkowników.
 
 ## Dlaczego (nie) używać tego stosu?
 
-JAMstack jest odpowiedzią na wiele popularnych problemów związanych z tworzeniem stron internetowych. Kilka jego głównych zalet to:
+JAMstack jest odpowiedzią na wiele popularnych problemów związanych z tworzeniem stron internetowych. Trzeba jednak pamiętać, że nie ma rozwiązań doskonałych i to podejście ma swoje ograniczenia.
 
 ### Lepsza wydajność
 
@@ -46,7 +38,7 @@ Korzystanie z CDN poprawia również skalowalność. Nie musisz się martwić o 
 
 ### Mniejsze koszty
 
-Jak wspominałem wcześniej, projekty JAMstack stworzone są głównie ze statycznych plików i assetów. Hosting takich plików jest tani lub nawet darmowy. [Netlify](https://www.netlify.com/) jest platformą, która ma plan, pozwalający na darmowy hosting plików.
+Jak wspominałem wcześniej, projekty JAMstack stworzone są głównie ze statycznych plików i assetów. Hosting takich plików jest tani lub nawet darmowy. [Netlify](https://www.netlify.com/) jest platformą, która ma plan, pozwalający na darmowy hosting plików (nie jest to reklama - sam z niej korzystam).
 
 Oprócz kosztów hostingowych, JAMstack obniża także koszty związane z zatrudnianiem zespołu. Prostsza architektura z mniejszą liczbą serwerów, oznacza mniejszą liczbę osób niezbędnych do tworzenia i utrzymania projektu. Skomplikowane zadania DevOps również zostają uproszczone. Taki projekt nie wymaga wielu osób o wąskiej specjalizacji.
 
@@ -54,7 +46,7 @@ Oprócz kosztów hostingowych, JAMstack obniża także koszty związane z zatrud
 
 Prosta architektura przynosi jeszcze jedną korzyść - większe bezpieczeństwo. Mniej elementów oznacza, że istnieje mniej słabych punktów. Nie musisz się martwić o luki w bazie danych czy serwerze. Hakerzy mają mniejszą [powierzchnię ataku](https://en.wikipedia.org/wiki/Attack_surface) do spenetrowania.
 
-![Nie musisz przejmować się bazą danych jeżeli nie używasz bazy danych - roll safe mem](./roll-safe-meme.png)
+![roll-safe-meme.png](./roll-safe-meme.png)
 
 ### Komfort pracy programisty
 
@@ -62,11 +54,11 @@ Uproszczenie pewnych zadań pozytywnie wpływa na komfort pracy programisty. Dew
 
 ### Nie ma srebrnej kuli
 
-W inżynierii oprogramowania [nie ma srebrnej kuli](https://www.cgl.ucsf.edu/Outreach/pc204/NoSilverBullet.html) - magicznego rozwiązania, które załatwiłoby wszelkie problemy z tworzeniem oprogramowania. JAMstack nie jest wyjątkiem i ma swoje wady:
+W inżynierii oprogramowania [nie ma srebrnej kuli](https://www.cgl.ucsf.edu/Outreach/pc204/NoSilverBullet.html) - magicznego rozwiązania, które załatwiłoby wszelkie problemy z tworzeniem oprogramowania. JAMstack nie jest wyjątkiem i ma swoje wady.
 
 ### Konieczność budowania aplikacji
 
-Wcześniejsze generowanie plików ma swoje zalety. Wiążą się z tym jednak pewne koszty. Każda zmiana na stronie musi zostać poprzedzona fazą buildu. Oznacza to, że zmiany w danych nie są odzwierciedlone na stronie natychmiastowo. Może to być problematyczne dla ogromnych i często zmieniających się stron. Proces budowy w ich przypadku może się nadmiernie wydłużyć. Wymieniona wcześniej platforma Netlify udostępnia nam ograniczony czas budowania aplikacji. Dlatego stawianie kolejnego Faceboka w oparciu o tę architekturę może być problematyczne.
+Wcześniejsze generowanie plików ma swoje zalety. Wiążą się z tym jednak pewne koszty. Każda zmiana na stronie musi zostać poprzedzona fazą buildu. Oznacza to, że zmiany w danych nie są odzwierciedlone na stronie natychmiastowo. Może to być problematyczne dla ogromnych i często zmieniających się stron. Proces budowy w ich przypadku może się nadmiernie wydłużyć. Dlatego stawianie kolejnego Faceboka w oparciu o tę architekturę może być problematyczne.
 
 ### Korzystanie z dynamicznych danych
 
@@ -78,14 +70,13 @@ Jednocześnie, to nie tak, że nie możesz zrobić nic dynamicznego. Programiśc
 
 Mikroserwisy są nieodłącznym elementem tego rozwiązania. Większość dostępnych API i innych serwisów jest naprawdę solidna. Niemniej, jeżeli któryś z takich serwisów będzie miał problemy - dotkną one także części funkcjonalności twojej aplikacji. Nie różni się to od sytuacji, gdy jeden z twoich serwerów zawodzi. Jednakże, nad własnym serwerem masz większą kontrolę.
 
-## Pozostaje istotne pytanie - jak?
+## Jak wdrożyć to podejście w następnym projekcie?
 
-Tworząc projekt JAMstack musisz rozważyć i podjąć wybór w kilku ważnych kwestiach:
+Tworząc projekt JAMstack musisz rozważyć i podjąć wybór w kilku ważnych kwestiach.
 
 ### Tworzenie treści
 
-Treści w projektach JAMstack to często zwykłe pliki tekstowe. Znajdują się w tej samej strukturze folderów, co pluginy, szablony i inne assety. Na podstawie treści w postaci pliku Markdown, można wygenerować stronę HTML, która będzie korzystała z różnych komponentów i szablonów. Tworzenie treści w ten sposób, może być trudne dla przeciętnego użytkownika, ponieważ wymaga specjalnej składni. Dlatego, dla mniej technicznych użytkowników istnieją wygodniejsze rozwiązania.
-
+Treści w projektach JAMstack to często zwykłe pliki tekstowe. Znajdują się w tej samej strukturze folderów, co plugin’y, szablony i inne asset’y. Na podstawie treści w postaci pliku Markdown, można wygenerować stronę HTML, która będzie korzystała z różnych komponentów i szablonów (jak ten wpis). Tworzenie treści w ten sposób, może być trudne dla przeciętnego użytkownika, ponieważ wymaga specjalnej składni. Dlatego, dla mniej technicznych użytkowników istnieją wygodniejsze rozwiązania.
 **Headless CMS** jest alternatywną metodą tworzenia treści. Jest to serwis, który oferuje bogaty interfejs użytkownika dostępny za pomocą przeglądarki. Wykorzystując go, możesz w prosty sposób tworzyć i edytować zawartość. Headless oznacza, że edycji podlegają wyłącznie treści. Udostępnione przez serwis API umożliwia pobranie aktualnej zawartości w fazie budowania aplikacji. Kilka przykładowych usług to:
 
 - Sanity
@@ -107,7 +98,7 @@ Na podstawie treści, chcemy stworzyć gotowe strony, w postaci plików HTML. Mo
 
 ### Zewnętrzne API
 
-Korzystając z takich interfejsów, możesz dodać dodatkowe funkcje. Aktualnie na rynku jest mnóstwo serwisów oferujących najróżniejsze funkcjonalności - od komentarzy, przez formularze i wyszukiwanie, po obsługiwanie płatności i inne rozwiązania e-commerce. Możesz także stworzyć własne api, abstrahując logikę do własnych, spersonalizowanych funkcji.
+Korzystając z takich interfejsów, możesz dodać dodatkowe funkcje. Aktualnie na rynku jest mnóstwo serwisów oferujących najróżniejsze funkcjonalności - od komentarzy, przez formularze i wyszukiwanie, po obsługiwanie płatności i inne rozwiązania e-commerce. Możesz także stworzyć własne API, abstrahując logikę do własnych, spersonalizowanych funkcji.
 
 ### Platforma wdrożeniowa
 
@@ -121,7 +112,7 @@ Mając gotową aplikację potrzebujesz platformy hostingowej. Na rynku istnieje 
 
 ## Czy mogę już wsiąść na JAMstack hype train?
 
-Przed stworzeniem strony w oparciu o tę architekturę rozważ powyższe zalety i ograniczenia. Nie jest to rozwiązanie zupełnie uniwersalne i idealne dla każdej aplikacji. Jeżeli jesteś zdecydowany i potrzebujesz takiej wydajnej strony internetowej lub masz pytania - [napisz do mnie](/blog/jamstack-co-dlaczego-jak/#kontakt).
+Przed stworzeniem strony w oparciu o tę architekturę rozważ powyższe zalety i ograniczenia. Nie jest to rozwiązanie zupełnie uniwersalne i idealne dla każdej aplikacji. Jeżeli jesteś zdecydowany i potrzebujesz takiej wydajnej strony internetowej lub masz pytania - [napisz do mnie](https://www.notion.so/blog/jamstack-co-dlaczego-jak/#kontakt).
 
 <Callout type="info">
 
