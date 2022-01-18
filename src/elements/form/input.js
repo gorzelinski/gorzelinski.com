@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components"
 
+import { outline } from "../effects"
 import { ui } from "../typography"
 
 export const border = css`
@@ -24,6 +25,7 @@ export const border = css`
 export const Input = styled.input`
   ${ui}
   ${border}
+  ${outline}
   color: var(--color-gray-00);
   background-color: transparent;
   padding: calc(var(--space-xs) - var(--space-xxs));

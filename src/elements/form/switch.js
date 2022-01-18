@@ -1,8 +1,11 @@
 import styled from "styled-components"
 
-export const Switch = styled.input.attrs(props => ({
+import { outline } from "../effects"
+
+export const Switch = styled.input.attrs(() => ({
   type: "checkbox",
 }))`
+  ${outline}
   appearance: none;
   --active: var(--color-primary-base);
   --active-inner: var(--color-background);
