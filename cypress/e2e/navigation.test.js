@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-const email = "mateusz@gorzelinski.com"
+const email = "hello@gorzelinski.com"
 
 describe("Navigation tests", () => {
   beforeEach(() => {
@@ -23,7 +23,7 @@ describe("Navigation tests", () => {
     cy.url().should("include", "/blog")
     cy.findByRole("heading", { level: 1 }).should("contain", "Blog")
 
-    cy.get('a[href*="hello"]').should("be.visible").click()
+    cy.get('a[href*="hello-world"]').should("be.visible").click()
     cy.url().should("contain", "/blog/hello-world")
     cy.findByRole("heading", { level: 1 }).should("contain", "Hello")
 
@@ -66,7 +66,7 @@ describe("Navigation tests", () => {
   it("Navigates to blog post and checks its links", () => {
     cy.findByRole("link", { name: /all posts/i }).click()
     cy.findByRole("heading", { level: 1 }).should("contain", "Blog")
-    cy.get('a[href*="hello"]').should("be.visible").click()
+    cy.get('a[href*="hello-world"]').should("be.visible").click()
 
     cy.findByRole("link", { name: /jestem/i, exact: false }).should(
       "not.have.prop",
@@ -107,7 +107,7 @@ describe("Navigation tests", () => {
   it("Navigates to blog post and checks progress bar on scroll", () => {
     cy.findByRole("link", { name: /all posts/i }).click()
     cy.findByRole("heading", { level: 1 }).should("contain", "Blog")
-    cy.get('a[href*="hello"]').should("be.visible").click()
+    cy.get('a[href*="hello-world"]').should("be.visible").click()
     cy.findByTestId("progress").should("not.be.visible")
     cy.findByTestId("progress-thumb").should("not.be.visible")
     cy.scrollTo(0, 2000)

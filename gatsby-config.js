@@ -4,7 +4,7 @@ module.exports = {
     author: {
       name: `Matthew Gorzelinski`,
       summary: `Engineer with polymath aspirations.`,
-      email: `mateusz@gorzelinski.com`,
+      email: `hello@gorzelinski.com`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gorzelinski.com/`,
