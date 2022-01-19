@@ -26,7 +26,7 @@ describe("Theme tests", () => {
   it("Visits home page and tests themes", () => {
     cy.visit("/")
     checkLightTheme()
-    cy.findByLabelText(/zmień motyw/i).click()
+    cy.findByLabelText(/change theme/i).click()
     checkDarkTheme()
     cy.reload()
     checkDarkTheme()

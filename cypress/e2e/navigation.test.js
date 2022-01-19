@@ -15,9 +15,9 @@ describe("Navigation tests", () => {
     cy.url().should("contain", "/portfolio/an-lam")
     cy.findByRole("heading", { level: 1 }).should("contain", "An-lam")
 
-    cy.findByRole("link", { name: "O mnie" }).should("be.visible").click()
-    cy.url().should("include", "/o-mnie")
-    cy.findByRole("heading", { level: 1 }).should("contain", "krótka historia")
+    cy.findByRole("link", { name: "About" }).should("be.visible").click()
+    cy.url().should("include", "/about")
+    cy.findByRole("heading", { level: 1 }).should("contain", "story")
 
     cy.findByRole("link", { name: "Blog" }).should("be.visible").click()
     cy.url().should("include", "/blog")
@@ -32,8 +32,8 @@ describe("Navigation tests", () => {
     cy.findByRole("heading", { level: 1 }).should("be.visible")
   })
   it("Navigates around contact methods", () => {
-    cy.findByRole("link", { name: "Kontakt" }).click()
-    cy.url().should("contain", "#kontakt")
+    cy.findByRole("link", { name: "Contact" }).click()
+    cy.url().should("contain", "#contact")
 
     cy.findByRole("link", { name: email }).should(
       "have.prop",
@@ -41,7 +41,7 @@ describe("Navigation tests", () => {
       `mailto:${email}`
     )
 
-    cy.findByRole("link", { name: /skontaktuj/i, exact: false }).should(
+    cy.findByRole("link", { name: /contact me/i }).should(
       "have.prop",
       "href",
       `mailto:${email}`
@@ -64,7 +64,7 @@ describe("Navigation tests", () => {
       .and("contain", "https://www.facebook.com")
   })
   it("Navigates to blog post and checks its links", () => {
-    cy.findByRole("link", { name: /wszystkie wpisy/i }).click()
+    cy.findByRole("link", { name: /all posts/i }).click()
     cy.findByRole("heading", { level: 1 }).should("contain", "Blog")
     cy.get('a[href*="hello"]').should("be.visible").click()
 
@@ -105,7 +105,7 @@ describe("Navigation tests", () => {
     cy.get('a[rel="next"]').should("be.visible").and("have.prop", "href")
   })
   it("Navigates to blog post and checks progress bar on scroll", () => {
-    cy.findByRole("link", { name: /wszystkie wpisy/i }).click()
+    cy.findByRole("link", { name: /all posts/i }).click()
     cy.findByRole("heading", { level: 1 }).should("contain", "Blog")
     cy.get('a[href*="hello"]').should("be.visible").click()
     cy.findByTestId("progress").should("not.be.visible")
@@ -115,7 +115,7 @@ describe("Navigation tests", () => {
     cy.findByTestId("progress-thumb").should("be.visible")
   })
   it("Navigates to portfolio project and checks its links", () => {
-    cy.findByRole("link", { name: /wszystkie projekty/i })
+    cy.findByRole("link", { name: /all projects/i })
       .should("be.visible")
       .click()
     cy.findByRole("heading", { level: 1 }).should("contain", "Portfolio")

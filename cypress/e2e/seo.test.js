@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe("Seo tests", () => {
-  const siteTitle = "Gorzeliński"
+  const siteTitle = "MG"
   const twitter = "@gorzelinski"
   const shouldHaveTags = ({ h1, title, description, url, type }) => {
     cy.findByRole("heading", {
@@ -10,7 +10,7 @@ describe("Seo tests", () => {
       exact: false,
     }).should("be.visible")
 
-    cy.get("html").should("have.prop", "lang", "pl")
+    cy.get("html").should("have.prop", "lang", "en")
     cy.title().should("contain", title).and("contain", siteTitle)
     cy.get('meta[name="description"]')
       .should("have.prop", "content")
@@ -68,10 +68,10 @@ describe("Seo tests", () => {
   it("Visits home page and checks important seo tags", () => {
     const mock = {
       url: "https://gorzelinski.com",
-      title: "Tworzę rzeczy w internecie",
+      title: "I create things on the Internet",
       description: "A starter blog demonstrating what Gatsby can do.",
       type: "website",
-      h1: /rzeczy w internecie/i,
+      h1: /create/i,
     }
     cy.visit("/")
     shouldHaveTags(mock)
@@ -80,7 +80,7 @@ describe("Seo tests", () => {
     const mock = {
       url: "https://gorzelinski.com/portfolio",
       title: "Portfolio",
-      description: "Tu będzie opis portfolio",
+      description: "Here will be description",
       type: "website",
       h1: /portfolio/i,
     }
@@ -100,20 +100,20 @@ describe("Seo tests", () => {
   })
   it("Visits about me page and checks important seo tags", () => {
     const mock = {
-      url: "https://gorzelinski.com/o-mnie",
-      title: "O mnie",
-      description: "Tu będzie opis o mnie",
+      url: "https://gorzelinski.com/about",
+      title: "About",
+      description: "Here will be description",
       type: "website",
-      h1: /krótka historia/i,
+      h1: /short story/i,
     }
-    cy.visit("/o-mnie")
+    cy.visit("/about")
     shouldHaveTags(mock)
   })
   it("Visits blog page and checks important seo tags", () => {
     const mock = {
       url: "https://gorzelinski.com/blog",
       title: "Blog",
-      description: "Tu będzie opis bloga",
+      description: "Here will be description",
       type: "website",
       h1: /blog/i,
     }

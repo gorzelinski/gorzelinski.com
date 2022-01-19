@@ -3,7 +3,7 @@
 describe("Accessibility tests", () => {
   afterEach(() => {
     cy.checkA11y()
-    cy.findByLabelText(/zmień motyw/i).click()
+    cy.findByLabelText(/change theme/i).click()
     cy.checkA11y()
   })
   it("Has no detectable accessibility violations on load", () => {
@@ -16,7 +16,7 @@ describe("Accessibility tests", () => {
     cy.visit("/portfolio/an-lam").get("main").injectAxe()
   })
   it("Visits about me page and checks for accessibility violations", () => {
-    cy.visit("/o-mnie").get("main").injectAxe()
+    cy.visit("/about").get("main").injectAxe()
   })
   it("Visits blog page and checks for accessibility violations", () => {
     cy.visit("/blog").get("main").injectAxe()
