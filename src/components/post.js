@@ -22,7 +22,7 @@ const Post = ({ data = {} }) => {
         <GatsbyImage image={src} alt={alt}></GatsbyImage>
       </Figure>
       <div>
-        <Small $top>{`${date} • ${timeToRead} min. czytania`}</Small>
+        <Small $top>{`${date} • ${timeToRead} min read`}</Small>
         <H4 as="h3" $top>
           {title}
         </H4>
