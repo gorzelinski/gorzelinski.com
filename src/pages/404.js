@@ -2,7 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
-import { H2, P, Button, Section, Figure, Tile } from "../elements"
+import { H1, P, Button, Section, Figure, Tile } from "../elements"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -11,7 +11,7 @@ const NotFoundPage = ({ data = {} }) => {
 
   return (
     <Layout>
-      <Seo title="404: Nie znaleziono" />
+      <Seo title="Page not found" />
       <Section>
         <Figure as="div">
           <GatsbyImage
@@ -20,12 +20,15 @@ const NotFoundPage = ({ data = {} }) => {
           ></GatsbyImage>
         </Figure>
         <Tile $span2>
-          <H2 as="h1" $top>
-            Błąd 404: <br /> Ludzie, tu nic nie ma!
-          </H2>
-          <P $lead>Strona, której szukasz nie istnieje lub ją usunąłem.</P>
+          <H1 $decorative $top>
+            404
+          </H1>
+          <P $lead>
+            The page you're looking for doesn't exist. Or I deleted it. It's
+            hard to tell.
+          </P>
           <Button $primary $grow to="/">
-            Wróć do strony głównej
+            Back to home page
           </Button>
         </Tile>
       </Section>

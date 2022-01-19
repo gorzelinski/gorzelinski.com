@@ -13,15 +13,15 @@ const AboutMe = ({ data, location }) => {
   const text = data.text
   const image = getImage(data?.image)
   const metaImage = createMetaImage({
-    alt: `Wycentrowany napis "O mnie" na białym tle`,
+    alt: `Centred text "About" on white background`,
     src: data?.metaImage,
   })
 
   return (
     <Layout>
       <Seo
-        title="O mnie"
-        description="Tu będzie opis o mnie"
+        title="About"
+        description="Here will be description"
         image={metaImage}
         slug={location.pathname}
       ></Seo>
@@ -29,15 +29,14 @@ const AboutMe = ({ data, location }) => {
         <Figure $portrait>
           <GatsbyImage
             image={image}
-            alt={`${name} - zdjęcie profilowe`}
+            alt={`${name} - profile picture`}
           ></GatsbyImage>
           <Figcaption>
-            W rzeczywistości jestem przyjemniejszy niż wyglądam na tym zdjęciu.
-            Przyrzekam!
+            In reality, I'm more pleasant than in this picture. I promise!
           </Figcaption>
         </Figure>
         <Tile as="article">
-          <H1 $top>A oto moja krótka historia</H1>
+          <H1 $top>And here's my short story</H1>
           <MDXRenderer>{text.body}</MDXRenderer>
         </Tile>
       </Section>
@@ -57,7 +56,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    text: mdx(fileAbsolutePath: { regex: "/(about-me)/" }) {
+    text: mdx(fileAbsolutePath: { regex: "/(about)/" }) {
       body
     }
     image: file(relativePath: { eq: "gorzelinski.jpg" }) {
@@ -65,7 +64,7 @@ export const pageQuery = graphql`
         gatsbyImageData
       }
     }
-    metaImage: file(relativePath: { eq: "about-me.png" }) {
+    metaImage: file(relativePath: { eq: "about.png" }) {
       childImageSharp {
         gatsbyImageData(
           formats: AUTO

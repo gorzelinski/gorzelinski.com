@@ -108,7 +108,7 @@ describe("Projects component", () => {
   describe("renders message when", () => {
     it("there is no data", () => {
       render(<Projects></Projects>)
-      const message = screen.getByText(/brak projektów/i)
+      const message = screen.getByText(/no projects/i, { exact: false })
       const project = screen.queryByRole("article")
       expect(project).not.toBeInTheDocument()
       expect(message).toBeInTheDocument()
@@ -116,7 +116,7 @@ describe("Projects component", () => {
 
     it("data is empty", () => {
       render(<Projects data={emptyData}></Projects>)
-      const message = screen.getByText(/brak projektów/i)
+      const message = screen.getByText(/no projects/i, { exact: false })
       const project = screen.queryByRole("article")
       expect(project).not.toBeInTheDocument()
       expect(message).toBeInTheDocument()
@@ -127,7 +127,7 @@ describe("Projects component", () => {
     it("there is data", () => {
       render(<Projects data={defaultData}></Projects>)
       const projects = screen.getAllByRole("article")
-      const message = screen.queryByText(/brak projektów/i)
+      const message = screen.queryByText(/no projects/i, { exact: false })
       expect(message).not.toBeInTheDocument()
       expect(projects.length).toBe(2)
     })

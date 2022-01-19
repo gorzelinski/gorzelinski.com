@@ -15,12 +15,12 @@ describe("Navbar component", () => {
     })
 
     it("helper navigation", () => {
-      const helper = screen.getByRole("navigation", { name: /pomocnicza/i })
+      const helper = screen.getByRole("navigation", { name: /helper/i })
       expect(helper).toBeInTheDocument()
     })
 
     it("main navigation", () => {
-      const main = screen.getByRole("navigation", { name: /główna/i })
+      const main = screen.getByRole("navigation", { name: /main/i })
       expect(main).toBeInTheDocument()
     })
 
@@ -35,14 +35,14 @@ describe("Navbar component", () => {
     })
 
     it("link to contact section", () => {
-      const contact = screen.getByRole("link", { name: /kontakt/i })
-      expect(contact.getAttribute("href")).toBe("#kontakt")
+      const contact = screen.getByRole("link", { name: /contact/i })
+      expect(contact.getAttribute("href")).toBe("#contact")
     })
   })
 
   describe("doesn't render", () => {
     it("link to about page (default on mobile)", () => {
-      const about = screen.queryByRole("link", { name: /o mnie/i })
+      const about = screen.queryByRole("link", { name: /about/i })
       expect(about).not.toBeInTheDocument()
     })
 

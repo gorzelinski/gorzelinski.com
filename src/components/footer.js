@@ -18,10 +18,10 @@ const Footer = () => {
   const links = createSocialLinks(social)
 
   return (
-    <StyledFooter $border id="kontakt">
+    <StyledFooter $border id="contact">
       <Tile>
         <Small as="p" $top>
-          Napisz mi maila
+          Write me an email
         </Small>
         <Address>
           <Button as="a" $text $first href={`mailto:${email}`}>
@@ -31,13 +31,14 @@ const Footer = () => {
       </Tile>
       <Tile>
         <Small as="p" $top>
-          Znajdź mnie także na
+          Find me elsewhere
         </Small>
         <Socials data={links}></Socials>
       </Tile>
       <Tile>
         <Small $top $bottom>
-          © {new Date().getFullYear()} {title} • Stworzyłem tę stronę z miłością
+          © {new Date().getFullYear()} {title} • I've created this site with
+          love
         </Small>
       </Tile>
     </StyledFooter>

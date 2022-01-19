@@ -13,7 +13,7 @@ describe("ThemeSwitcher component", () => {
         </ThemeContext.Provider>
       )
 
-      const button = screen.getByLabelText(/zmień motyw/i)
+      const button = screen.getByLabelText(/change theme/i)
       expect(button).toBeInTheDocument()
     })
 
@@ -53,7 +53,7 @@ describe("ThemeSwitcher component", () => {
           <ThemeSwitcher></ThemeSwitcher>
         </ThemeContext.Provider>
       )
-      const button = screen.queryByLabelText(/zmień motyw/i)
+      const button = screen.queryByLabelText(/change theme/i)
       const sunny = screen.queryByTestId(/sunny/i)
 
       expect(button).not.toBeInTheDocument()

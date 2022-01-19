@@ -10,24 +10,24 @@ const Landing = () => {
         <H1
           $top
           $decorative
-          aria-label="Tworzę (koduję, projektuję, publikuję) rzeczy w internecie"
+          aria-label="I create (design, code, publish) things on the Internet"
         >
           <Typewriter
             strings={[
-              "Projektuję",
-              "Koduję",
-              "Publikuję",
-              "Tworzę rzeczy w internecie",
+              "I design",
+              "I code",
+              "I publish",
+              "I create things on the Internet",
             ]}
           ></Typewriter>
         </H1>
         <P $lead>
-          Pomagam małym firmom i jednostkom wkroczyć w XXI wiek, tworząc dla
-          nich spersonalizowane strony internetowe, które dbają o profesjonalny
-          wizerunek online.
+          I help individuals and small businesses step into the XXI century. I
+          create personalized websites for them, which take care of a
+          professional online presence.
         </P>
-        <Button $primary $grow to="#przywitaj-sie">
-          Stwórzmy coś razem
+        <Button $primary $grow to="#say-hello">
+          Let's create something
         </Button>
       </header>
     </Hero>

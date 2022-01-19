@@ -23,8 +23,8 @@ const ThemeSwitcher = () => {
       {theme ? (
         <>
           <Switch
-            title="Zmień motyw"
-            aria-label="Zmień motyw"
+            title="Change theme"
+            aria-label="Change theme"
             defaultChecked={theme === "dark" ? true : false}
             onChange={() => toggle()}
           ></Switch>

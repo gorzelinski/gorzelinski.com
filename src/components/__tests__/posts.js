@@ -184,7 +184,7 @@ describe("Posts component", () => {
   describe("renders message when", () => {
     it("there is no data", () => {
       render(<Posts></Posts>)
-      const message = screen.getByText(/brak wpisów/i)
+      const message = screen.getByText(/no posts/i, { exact: false })
       const post = screen.queryByRole("article")
       expect(post).not.toBeInTheDocument()
       expect(message).toBeInTheDocument()
@@ -192,7 +192,7 @@ describe("Posts component", () => {
 
     it("data is empty", () => {
       render(<Posts data={emptyData}></Posts>)
-      const message = screen.getByText(/brak wpisów/i)
+      const message = screen.getByText(/no posts/i, { exact: false })
       const post = screen.queryByRole("article")
       expect(post).not.toBeInTheDocument()
       expect(message).toBeInTheDocument()
@@ -203,7 +203,7 @@ describe("Posts component", () => {
     it("there is data", () => {
       render(<Posts data={defaultData}></Posts>)
       const posts = screen.getAllByRole("article")
-      const message = screen.queryByText(/brak wpisów/i)
+      const message = screen.queryByText(/no posts/i, { exact: false })
       expect(message).not.toBeInTheDocument()
       expect(posts.length).toBe(4)
     })

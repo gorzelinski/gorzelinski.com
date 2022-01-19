@@ -18,24 +18,24 @@ const Subscription = () => {
     <Section $featured>
       <Tile>
         <H3 as="h2" $top>
-          Chcesz być na bieżąco?
+          Stay up to date
         </H3>
         <P $lead>
-          Subskrybuj, aby otrzymywać powiadomienia o wpisach, case studies i
-          innych treściach. Nie wysyłam spamu. Jeżeli dostaniesz email od
-          nigeryjskiego księcia z tej domeny, to nie ja - anuluj jak
-          najszybciej.
+          Subscribe to get notifications about posts, case studies and other
+          content. But be aware - if you get a lucrative offer from a Nigerian
+          prince from this domain, it's not me - unsubscribe fast. I don't send
+          spam.
         </P>
         <Form>
           <Label $hidden htmlFor="name">
-            Imię
+            Name
           </Label>
           <Input
             required
             name="name"
             id="name"
             type="text"
-            placeholder="Twoje imię"
+            placeholder="Your name"
             autoComplete="off"
           ></Input>
           <Label $hidden htmlFor="email">
@@ -46,10 +46,10 @@ const Subscription = () => {
             name="email"
             id="email"
             type="email"
-            placeholder="Twój email"
+            placeholder="Your email"
           ></Input>
           <Button as="button" $grow $primary $iconWobble>
-            Subskrybuj
+            Subscribe
             <Icon>
               <Send></Send>
             </Icon>

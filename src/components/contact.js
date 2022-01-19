@@ -8,15 +8,15 @@ const Contact = () => {
   const { email } = bio.site.siteMetadata?.author
 
   return (
-    <Hero id="przywitaj-sie">
+    <Hero id="say-hello">
       <Tile $center $textCenter>
-        <H2 $top>Przywitaj się!</H2>
+        <H2 $top>Say hello!</H2>
         <P $lead>
-          Jeżeli chcesz porozmawiać o wpółpracy lub na inny, interesujacy temat
-          napisz do mnie. Nie kępuj się. Serio.
+          If you want to talk about cooperation - or anything interesting -
+          write me an email or dm. Don't hesitate. Seriously.
         </P>
         <Button as="a" $text $elementBuzzOut href={`mailto:${email}`}>
-          Skontaktuj się ze mną
+          Contact me
         </Button>
       </Tile>
     </Hero>

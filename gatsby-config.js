@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gorzeliński`,
+    title: `MG`,
     author: {
-      name: `Mateusz Gorzeliński`,
-      summary: `Inżynier o erudycyjnych aspiracjach.`,
+      name: `Matthew Gorzelinski`,
+      summary: `Engineer with polymath aspirations.`,
       email: `mateusz@gorzelinski.com`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,

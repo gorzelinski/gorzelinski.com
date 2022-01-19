@@ -28,7 +28,7 @@ const Post = ({ data = {} }) => {
         </H4>
         <P>{description}</P>
         <Button $text $first $iconForward to={`/blog${slug}`}>
-          Czytaj wpis
+          Read post
           <Icon>
             <ChevronForward></ChevronForward>
           </Icon>

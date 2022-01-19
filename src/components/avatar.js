@@ -26,7 +26,7 @@ const Avatar = () => {
       />
       <div>
         <H6 as="p" $top $bottom>
-          <Link href="/o-mnie">{name}</Link>
+          <Link href="/about">{name}</Link>
         </H6>
         <Small as="p" $bottom>
           {summary}

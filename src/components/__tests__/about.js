@@ -85,8 +85,8 @@ describe("About component", () => {
     })
 
     it("link to more", () => {
-      const link = screen.getByRole("link", { name: /o mnie/i })
-      expect(link.getAttribute("href")).toBe("/o-mnie")
+      const link = screen.getByRole("link", { name: /story/i, exact: false })
+      expect(link.getAttribute("href")).toBe("/about")
     })
   })
 })

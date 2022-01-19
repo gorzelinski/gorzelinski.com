@@ -10,7 +10,7 @@ import Subscription from "../components/subscription"
 
 const Blog = ({ data, location }) => {
   const metaImage = createMetaImage({
-    alt: `Wycentrowany napis "Blog" na białym tle`,
+    alt: `Centered text "Blog" on white background`,
     src: data?.metaImage,
   })
 
@@ -18,7 +18,7 @@ const Blog = ({ data, location }) => {
     <Layout location={location}>
       <Seo
         title="Blog"
-        description="Tu będzie opis bloga"
+        description="Here will be description"
         slug={location.pathname}
         image={metaImage}
       ></Seo>
@@ -28,7 +28,7 @@ const Blog = ({ data, location }) => {
             Blog
           </H1>
           <P as="h2" $ui>
-            Wszystkie wpisy
+            All posts
           </P>
         </Header>
         <Section as="div" $top>

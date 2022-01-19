@@ -8,7 +8,7 @@ const Projects = ({ data = { allMdx: { nodes: [] } } }) => {
 
   return projects.length === 0 ? (
     <Tile>
-      <P $ui>Brak projektów do wyświetlenia</P>
+      <P $ui>No projects to display</P>
     </Tile>
   ) : (
     projects.map(project => (

@@ -25,41 +25,39 @@ const About = ({ data = {} }) => {
       <Figure $portrait>
         <GatsbyImage
           image={image}
-          alt={`${name} - zdjęcie profilowe`}
+          alt={`${name} - profile picture`}
         ></GatsbyImage>
         <Figcaption>
-          W rzeczywistości jestem przyjemniejszy niż wyglądam na tym zdjęciu.
-          Przyrzekam!
+          In reality, I'm more pleasant than in this picture. I promise!
         </Figcaption>
       </Figure>
       <Tile>
         <Small as="p" $top>
-          Cześć, nazywam się
+          Hello, my name is
         </Small>
         <H2 $top>{name}</H2>
-        <P>Jestem inżynierem i humanistą. W jednym? Czy to jest legalne?!</P>
+        <P>I'm an engineer and humanist. In one? Is it legal?</P>
         <P>
-          Swoje techniczne umiejętności i humanistyczne zainteresowania staram
-          się rozwijać projektując, kodując i pisząc treści dla stron
-          internetowych, które tworzę. Do tego celu wykorzystuję głównie Figmę,
-          JAMStack, długopis i kartę papieru. Efekty tego rozwoju możesz znaleźć
-          w moim{" "}
+          I develop my technical skills and humanistic interests by designing,
+          coding and writing content for websites that I create. For that
+          purpose, I mainly use Figma, JAMstack and a good, old-fashioned pen
+          and paper. Effects of that development you can find in my{" "}
           <Link $text to="/portfolio">
             portfolio
           </Link>
           .
         </P>
         <P>
-          Nieustanie uczę się nowych rzeczy, eksploruję różne dziedziny wiedzy,
-          szperam w internecie i nadmiernie teoretyzuję. Swoimi znaleziskami i
-          przemyśleniami dzielę się na moim{" "}
+          I learn new things every day, explore new fields of knowledge, rummage
+          around the web and theorize too much. I share my findings and thoughts
+          on my{" "}
           <Link $text to="/blog">
-            blogu
+            blog
           </Link>
           .
         </P>
-        <Button $text $first $iconForward to="/o-mnie">
-          Więcej o mnie
+        <Button $text $first $iconForward to="/about">
+          Read my story
           <Icon>
             <ChevronForward></ChevronForward>
           </Icon>

@@ -26,7 +26,7 @@ describe("Subscirption component", () => {
 
     it("name input field", () => {
       const input = screen.getByRole("textbox", {
-        name: /imię/i,
+        name: /name/i,
         exact: false,
       })
       expect(input).toBeInTheDocument()

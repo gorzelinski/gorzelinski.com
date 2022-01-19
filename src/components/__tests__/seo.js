@@ -21,7 +21,7 @@ describe("SEO component", () => {
     })
   })
 
-  const defaultLang = "pl"
+  const defaultLang = "en"
   const mockDefaultDescription = "Default meta description"
   const mockCustomDescription = "Custom meta description"
   const mockDefaultTitle = "Gorzeliński"

@@ -8,7 +8,7 @@ const Posts = ({ data = { allMdx: { nodes: [] } } }) => {
 
   return posts.length === 0 ? (
     <Tile>
-      <P $ui>Brak wpisów do wyświetlenia</P>
+      <P $ui>No posts do display</P>
     </Tile>
   ) : (
     posts.map(post => <Post data={post} key={post.fields.slug}></Post>)

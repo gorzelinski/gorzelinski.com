@@ -18,19 +18,19 @@ const Index = ({ data }) => {
   const { posts } = useBlogPosts()
   const { bio } = useBio()
   const metaImage = createMetaImage({
-    alt: `Wycentrowany napis "Tworzę rzeczy w internecie" na białym tle`,
+    alt: `Centred text "I create things on the Internet" on white background`,
     src: data?.metaImage,
   })
 
   return (
     <Layout>
-      <Seo title="Tworzę rzeczy w internecie" image={metaImage}></Seo>
+      <Seo title="I create things on the Internet" image={metaImage}></Seo>
       <Landing></Landing>
       <Featured
         data={{
-          title: "Ostatnie projekty",
+          title: "Recent projects",
           slug: "/portfolio",
-          buttonText: "Wszystkie projekty",
+          buttonText: "All projects",
         }}
       >
         <Projects data={projects}></Projects>
@@ -38,9 +38,9 @@ const Index = ({ data }) => {
       <About data={bio}></About>
       <Featured
         data={{
-          title: "Ostatnie wpisy",
+          title: "Recent posts",
           slug: "/blog",
-          buttonText: "Wszystkie wpisy",
+          buttonText: "All posts",
         }}
       >
         <Posts data={posts}></Posts>

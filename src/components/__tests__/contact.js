@@ -33,7 +33,7 @@ describe("Contact component", () => {
 
     it("CTA button", () => {
       const cta = screen.getByRole("link", {
-        name: /skontaktuj/i,
+        name: /contact/i,
         exact: false,
       })
       expect(cta.getAttribute("href")).toEqual(

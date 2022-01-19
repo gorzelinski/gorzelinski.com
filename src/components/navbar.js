@@ -9,11 +9,11 @@ const Navbar = ({ location }) => {
     location?.pathname === pathname ? "active" : "active-subtle"
   return (
     <Header $section>
-      <Navigation $spaceBetween aria-label="Pomocnicza">
+      <Navigation $spaceBetween aria-label="Helper">
         <Logo></Logo>
         <ThemeSwitcher></ThemeSwitcher>
       </Navigation>
-      <Navigation $main aria-label="Główna">
+      <Navigation $main aria-label="Main">
         <Button
           $mobile
           $nav
@@ -26,11 +26,11 @@ const Navbar = ({ location }) => {
         <Button
           $mobile
           $nav
-          to="/o-mnie"
+          to="/about"
           activeClassName="active"
           partiallyActive={true}
         >
-          O mnie
+          About
         </Button>
         <Button
           $mobile
@@ -41,8 +41,8 @@ const Navbar = ({ location }) => {
         >
           Blog
         </Button>
-        <Button $mobile $primary to="#kontakt">
-          Kontakt
+        <Button $mobile $primary to="#contact">
+          Contact
         </Button>
       </Navigation>
     </Header>
