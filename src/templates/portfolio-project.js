@@ -60,7 +60,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <Subsection>
             <Tile>
               <Small as="p" $top>
-                Data:
+                Date:
               </Small>
               <H6 as="h2" $top $bottom>
                 {project.frontmatter.date}
@@ -68,7 +68,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
             </Tile>
             <Tile>
               <Small as="p" $top>
-                Klient:
+                Client:
               </Small>
               <H6 as="h2" $top $bottom>
                 {project.frontmatter.client}
@@ -76,7 +76,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
             </Tile>
             <Tile>
               <Small as="p" $top>
-                Moja rola:
+                My role:
               </Small>
               <H6 as="h2" $top $bottom>
                 {project.frontmatter.myRole}
@@ -84,7 +84,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
             </Tile>
             <Tile>
               <Small as="p" $top>
-                Narzędzia:
+                Tools:
               </Small>
               <H6 as="h2" $top $bottom>
                 {project.frontmatter.tools}
@@ -111,7 +111,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         </div>
       </Article>
       <Aside $higher $article>
-        <H3 $top>Sprawdź także:</H3>
+        <H3 $top>Check also</H3>
         <Pagination data={pagination}></Pagination>
       </Aside>
       <Subscription></Subscription>
@@ -139,7 +139,7 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
-        date(formatString: "DD MMMM, YYYY", locale: "pl")
+        date(formatString: "DD MMMM YYYY", locale: "en")
         description
         client
         myRole

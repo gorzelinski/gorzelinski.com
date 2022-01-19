@@ -60,7 +60,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <ProgressScroll></ProgressScroll>
         <Header>
           <Small $top>
-            {post.frontmatter.date} • {post.timeToRead} min. czytania
+            {post.frontmatter.date} • {post.timeToRead} min read
           </Small>
           <H1 $top>{post.frontmatter.title}</H1>
           <P $lead>{post.frontmatter.description}</P>
@@ -75,7 +75,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <div>
           <MDXRenderer>{post.body}</MDXRenderer>
           <Navigation as="div">
-            <P $ui>Udostępnij</P>
+            <P $ui>Share</P>
             <Socials data={links}></Socials>
           </Navigation>
         </div>
@@ -84,7 +84,7 @@ const BlogPostTemplate = ({ data, location }) => {
         </Footer>
       </Article>
       <Aside $article>
-        <H3 $top>Przeczytaj także:</H3>
+        <H3 $top>Read more</H3>
         <Pagination data={pagination}></Pagination>
       </Aside>
       <Subscription></Subscription>
@@ -112,7 +112,7 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
-        date(formatString: "DD MMMM, YYYY", locale: "pl")
+        date(formatString: "DD MMMM YYYY", locale: "en")
         description
         image {
           alt
