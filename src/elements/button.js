@@ -10,10 +10,8 @@ import {
   primaryColorStates,
   underline,
 } from "./effects"
-import { iconWobble } from "./animations"
-import { ui } from "./typography"
-import { tinySize, baseSize } from "./typography/sizes"
-import { elementBuzzOut } from "./animations/buzz-out"
+import { elementBuzzOut, iconWobble } from "./animations"
+import { baseSize, ui, tinySize } from "./typography"
 
 export const nav = css`
   ${underline};

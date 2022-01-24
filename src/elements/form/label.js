@@ -1,8 +1,7 @@
 import styled, { css } from "styled-components"
 
 import { marginReset, media } from "../utils"
-import { smallSize, tinySize } from "../typography/sizes"
-import { meta } from "../typography"
+import { meta, smallSize, tinySize } from "../typography"
 
 export const Label = styled.label`
   ${meta}

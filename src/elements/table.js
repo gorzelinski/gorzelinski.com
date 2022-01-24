@@ -2,8 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 import { media } from "./utils"
-import { baseSize, headingXXS } from "./typography/sizes"
-import { body } from "./typography/body"
+import { baseSize, body, headingXXS } from "./typography"
 
 export const StyledTable = styled.table`
   ${body}
