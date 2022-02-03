@@ -9,6 +9,7 @@ import Posts from "../components/posts"
 import Subscription from "../components/subscription"
 
 const Blog = ({ data, location }) => {
+  const { posts } = data
   const metaImage = createMetaImage({
     alt: `Centered text "Blog" on white background`,
     src: data?.metaImage,
@@ -32,7 +33,7 @@ const Blog = ({ data, location }) => {
           </P>
         </Header>
         <Section as="div" $top>
-          <Posts data={data}></Posts>
+          <Posts data={posts}></Posts>
         </Section>
       </Section>
       <Subscription></Subscription>
@@ -43,18 +44,20 @@ const Blog = ({ data, location }) => {
 export default Blog
 
 export const pageQuery = graphql`
-  query AllBlogPosts {
-    allMdx(
-      filter: { fileAbsolutePath: { regex: "/(blog)/" } }
+  query AllBlogPosts($locale: String!, $dateFormat: String!) {
+    posts: allMdx(
+      filter: {
+        fields: { locale: { eq: $locale } }
+        fileAbsolutePath: { regex: "/(blog)/" }
+      }
       sort: { fields: frontmatter___date, order: DESC }
     ) {
       nodes {
-        excerpt
         fields {
           slug
         }
         frontmatter {
-          date(formatString: "DD MMMM YYYY", locale: "en")
+          date(formatString: $dateFormat, locale: $locale)
           title
           description
           image {

@@ -36,7 +36,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
       <Seo
         type="article"
         title={project.frontmatter.title}
-        description={project.frontmatter.description || project.excerpt}
+        description={project.frontmatter.description}
         slug={location.pathname}
         image={metaImage}
         meta={[
@@ -123,9 +123,11 @@ export default PortfolioProjectTemplate
 
 export const pageQuery = graphql`
   query PortfolioProjectBySlug(
-    $id: String!
-    $previousProjectId: String
-    $nextProjectId: String
+    $locale: String!
+    $slug: String!
+    $dateFormat: String!
+    $previous: String
+    $next: String
   ) {
     site {
       siteMetadata {
@@ -133,13 +135,12 @@ export const pageQuery = graphql`
         title
       }
     }
-    mdx(id: { eq: $id }) {
-      id
+    mdx(fields: { locale: { eq: $locale }, slug: { eq: $slug } }) {
       excerpt(pruneLength: 160)
       body
       frontmatter {
         title
-        date(formatString: "DD MMMM YYYY", locale: "en")
+        date(formatString: $dateFormat, locale: $locale)
         description
         client
         myRole
@@ -155,7 +156,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    previous: mdx(id: { eq: $previousProjectId }) {
+    previous: mdx(
+      fields: { slug: { eq: $previous }, locale: { eq: $locale } }
+    ) {
       fields {
         slug
       }
@@ -163,7 +166,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    next: mdx(id: { eq: $nextProjectId }) {
+    next: mdx(fields: { slug: { eq: $next }, locale: { eq: $locale } }) {
       fields {
         slug
       }

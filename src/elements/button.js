@@ -1,4 +1,4 @@
-import { Link } from "gatsby"
+import { LocalizedLink } from "gatsby-theme-i18n"
 import styled, { css } from "styled-components"
 
 import { media } from "./utils"
@@ -58,7 +58,7 @@ export const primary = css`
   }
 `
 
-export const Button = styled(Link)`
+export const Button = styled(LocalizedLink)`
   ${ui}
   ${outline}
   text-decoration: none;

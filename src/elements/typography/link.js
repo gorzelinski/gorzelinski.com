@@ -1,4 +1,4 @@
-import { Link as GatsbyLink } from "gatsby"
+import { LocalizedLink } from "gatsby-theme-i18n"
 import styled, { css } from "styled-components"
 
 import { outline } from "../effects"
@@ -25,7 +25,7 @@ export const A = styled.a`
   ${link}
 `
 
-export const Link = styled(GatsbyLink)`
+export const Link = styled(LocalizedLink)`
   ${outline}
   ${link}
 `

@@ -9,6 +9,7 @@ import Projects from "../components/projects"
 import Subscription from "../components/subscription"
 
 const Portfolio = ({ data, location }) => {
+  const { projects } = data
   const metaImage = createMetaImage({
     alt: `Centered text "Portfolio" on white background`,
     src: data?.metaImage,
@@ -32,7 +33,7 @@ const Portfolio = ({ data, location }) => {
           </P>
         </Header>
         <Section as="div" $top>
-          <Projects data={data}></Projects>
+          <Projects data={projects}></Projects>
         </Section>
       </Section>
       <Subscription></Subscription>
@@ -43,24 +44,22 @@ const Portfolio = ({ data, location }) => {
 export default Portfolio
 
 export const pageQuery = graphql`
-  query AllPortfolioProjects {
-    allMdx(
-      filter: { fileAbsolutePath: { regex: "/(portfolio)/" } }
+  query AllPortfolioProjects($locale: String!) {
+    projects: allMdx(
+      filter: {
+        fields: { locale: { eq: $locale } }
+        fileAbsolutePath: { regex: "/(portfolio)/" }
+      }
       sort: { fields: frontmatter___date, order: DESC }
     ) {
       nodes {
-        excerpt
         fields {
           slug
         }
         frontmatter {
-          client
-          date
-          description
           myRole
           title
-          tools
-          live
+          description
           image {
             alt
             src {

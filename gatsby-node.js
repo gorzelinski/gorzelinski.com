@@ -1,8 +1,46 @@
 const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
+
+  const groupByLanguage = items =>
+    Object.values(
+      items.reduce((group, item) => {
+        const language = item.fields.locale
+        group[language] = group[language] ?? []
+        group[language].push(item)
+        return group
+      }, {})
+    )
+
+  const createPageSlugs = (items, index) => {
+    const previous = index === 0 ? null : items[index - 1].fields.slug
+    const next =
+      index === items.length - 1 ? null : items[index + 1].fields.slug
+
+    return { previous, next }
+  }
+
+  const customCreatePages = (items, createPageConfig) => {
+    const { path, component } = createPageConfig
+    const itemsByLanguage = groupByLanguage(items)
+
+    itemsByLanguage.forEach(items => {
+      items.forEach((item, index) => {
+        const { previous, next } = createPageSlugs(items, index)
+
+        createPage({
+          path: `${path}${item.fields.slug}`,
+          component,
+          context: {
+            slug: item.fields.slug,
+            previous,
+            next,
+          },
+        })
+      })
+    })
+  }
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
@@ -20,6 +58,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           nodes {
             id
             fields {
+              locale
               slug
             }
           }
@@ -39,6 +78,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           nodes {
             id
             fields {
+              locale
               slug
             }
           }
@@ -71,46 +111,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // `context` is available in the template as a prop and as a variable in GraphQL
 
   if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-
-      createPage({
-        path: `blog${post.fields.slug}`,
-        component: blogPost,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
-        },
-      })
+    customCreatePages(posts, {
+      path: "blog",
+      component: blogPost,
     })
   }
 
   if (projects.length > 0) {
-    projects.forEach((project, index) => {
-      const previousProjectId = index === 0 ? null : projects[index - 1].id
-      const nextProjectId =
-        index === projects.length - 1 ? null : projects[index + 1].id
-
-      createPage({
-        path: `portfolio${project.fields.slug}`,
-        component: portfolioProject,
-        context: {
-          id: project.id,
-          previousProjectId,
-          nextProjectId,
-        },
-      })
+    customCreatePages(projects, {
+      path: "portfolio",
+      component: portfolioProject,
     })
   }
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode })
+    const value = `/${path.basename(path.dirname(node.fileAbsolutePath))}`
 
     createNodeField({
       name: `slug`,

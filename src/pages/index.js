@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import { useBio, useBlogPosts, usePortfolioProjects } from "../hooks"
+import { useBio } from "../hooks"
 import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -14,8 +14,7 @@ import Contact from "../components/contact"
 import Subscription from "../components/subscription"
 
 const Index = ({ data }) => {
-  const { projects } = usePortfolioProjects()
-  const { posts } = useBlogPosts()
+  const { posts, projects } = data
   const { bio } = useBio()
   const metaImage = createMetaImage({
     alt: `Centred text "I create things on the Internet" on white background`,
@@ -54,7 +53,7 @@ const Index = ({ data }) => {
 export default Index
 
 export const pageQuery = graphql`
-  query IndexPage {
+  query IndexPage($locale: String!, $dateFormat: String!) {
     metaImage: file(relativePath: { eq: "index.png" }) {
       childImageSharp {
         gatsbyImageData(
@@ -65,6 +64,62 @@ export const pageQuery = graphql`
           aspectRatio: 1.91
           outputPixelDensities: 1
         )
+      }
+    }
+    posts: allMdx(
+      limit: 4
+      filter: {
+        fields: { locale: { eq: $locale } }
+        fileAbsolutePath: { regex: "/(blog)/" }
+      }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      nodes {
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: $dateFormat, locale: $locale)
+          title
+          description
+          image {
+            alt
+            src {
+              childImageSharp {
+                gatsbyImageData(breakpoints: [320, 480, 768], width: 768)
+              }
+            }
+          }
+        }
+        timeToRead
+      }
+    }
+    projects: allMdx(
+      limit: 4
+      filter: {
+        fields: { locale: { eq: $locale } }
+        fileAbsolutePath: { regex: "/(portfolio)/" }
+      }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      nodes {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          myRole
+          title
+          description
+          image {
+            alt
+            src {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+        }
       }
     }
   }

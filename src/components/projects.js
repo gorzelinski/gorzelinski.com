@@ -3,8 +3,8 @@ import React from "react"
 import { P, Tile } from "../elements"
 import Project from "./project"
 
-const Projects = ({ data = { allMdx: { nodes: [] } } }) => {
-  const projects = data.allMdx.nodes
+const Projects = ({ data = { nodes: [] } }) => {
+  const projects = data.nodes
 
   return projects.length === 0 ? (
     <Tile>

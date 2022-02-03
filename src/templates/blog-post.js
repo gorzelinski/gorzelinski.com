@@ -46,7 +46,7 @@ const BlogPostTemplate = ({ data, location }) => {
       <Seo
         type="article"
         title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        description={post.frontmatter.description}
         slug={location.pathname}
         image={metaImage}
         meta={[
@@ -96,9 +96,11 @@ export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug(
-    $id: String!
-    $previousPostId: String
-    $nextPostId: String
+    $locale: String!
+    $slug: String!
+    $dateFormat: String!
+    $previous: String
+    $next: String
   ) {
     site {
       siteMetadata {
@@ -106,13 +108,12 @@ export const pageQuery = graphql`
         title
       }
     }
-    mdx(id: { eq: $id }) {
-      id
+    mdx(fields: { locale: { eq: $locale }, slug: { eq: $slug } }) {
       excerpt(pruneLength: 160)
       body
       frontmatter {
         title
-        date(formatString: "DD MMMM YYYY", locale: "en")
+        date(formatString: $dateFormat, locale: $locale)
         description
         image {
           alt
@@ -130,7 +131,9 @@ export const pageQuery = graphql`
       }
       timeToRead
     }
-    previous: mdx(id: { eq: $previousPostId }) {
+    previous: mdx(
+      fields: { slug: { eq: $previous }, locale: { eq: $locale } }
+    ) {
       fields {
         slug
       }
@@ -138,7 +141,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    next: mdx(id: { eq: $nextPostId }) {
+    next: mdx(fields: { slug: { eq: $next }, locale: { eq: $locale } }) {
       fields {
         slug
       }
