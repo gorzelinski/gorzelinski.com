@@ -13,7 +13,7 @@ module.exports = {
     `<rootDir>.*/public`,
     `cypress`,
   ],
-  transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
+  transformIgnorePatterns: [`node_modules/(?!(gatsby-theme-i18n)/)`],
   globals: {
     __PATH_PREFIX__: ``,
   },

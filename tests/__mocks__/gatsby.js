@@ -23,5 +23,17 @@ module.exports = {
       })
   ),
   StaticQuery: jest.fn(),
-  useStaticQuery: jest.fn(),
+  useStaticQuery: jest.fn().mockImplementation(() => ({
+    themeI18N: {
+      defaultLang: "en",
+      config: {
+        code: "en",
+        hrefLang: "en-US",
+        name: "English",
+        localName: "English",
+        langDir: "ltr",
+        dateFormat: "MMMM DD, YYYY",
+      },
+    },
+  })),
 }
