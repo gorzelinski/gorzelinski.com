@@ -3,9 +3,9 @@ import { graphql } from "gatsby"
 
 import { H1, Header, P, Section } from "../elements"
 import { createMetaImage } from "../utils"
+import Cards from "../components/cards"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Posts from "../components/posts"
 import Subscription from "../components/subscription"
 
 const Blog = ({ data, location }) => {
@@ -33,7 +33,7 @@ const Blog = ({ data, location }) => {
           </P>
         </Header>
         <Section as="div" $top>
-          <Posts data={posts}></Posts>
+          <Cards data={posts}></Cards>
         </Section>
       </Section>
       <Subscription></Subscription>

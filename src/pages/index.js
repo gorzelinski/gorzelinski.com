@@ -7,9 +7,8 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Landing from "../components/landing"
 import Featured from "../components/featured"
-import Projects from "../components/projects"
+import Cards from "../components/cards"
 import About from "../components/about"
-import Posts from "../components/posts"
 import Contact from "../components/contact"
 import Subscription from "../components/subscription"
 
@@ -32,7 +31,7 @@ const Index = ({ data }) => {
           buttonText: "All projects",
         }}
       >
-        <Projects data={projects}></Projects>
+        <Cards data={projects}></Cards>
       </Featured>
       <About data={bio}></About>
       <Featured
@@ -42,7 +41,7 @@ const Index = ({ data }) => {
           buttonText: "All posts",
         }}
       >
-        <Posts data={posts}></Posts>
+        <Cards data={posts}></Cards>
       </Featured>
       <Subscription></Subscription>
       <Contact></Contact>
