@@ -34,6 +34,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
   return (
     <Layout>
       <Seo
+        lang={project.fields.locale}
         type="article"
         title={project.frontmatter.title}
         description={project.frontmatter.description}
@@ -138,6 +139,9 @@ export const pageQuery = graphql`
     mdx(fields: { locale: { eq: $locale }, slug: { eq: $slug } }) {
       excerpt(pruneLength: 160)
       body
+      fields {
+        locale
+      }
       frontmatter {
         title
         date(formatString: $dateFormat, locale: $locale)

@@ -44,6 +44,7 @@ const BlogPostTemplate = ({ data, location }) => {
   return (
     <Layout>
       <Seo
+        lang={post.fields.locale}
         type="article"
         title={post.frontmatter.title}
         description={post.frontmatter.description}
@@ -111,6 +112,9 @@ export const pageQuery = graphql`
     mdx(fields: { locale: { eq: $locale }, slug: { eq: $slug } }) {
       excerpt(pruneLength: 160)
       body
+      fields {
+        locale
+      }
       frontmatter {
         title
         date(formatString: $dateFormat, locale: $locale)
