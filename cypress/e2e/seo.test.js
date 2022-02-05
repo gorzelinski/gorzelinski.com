@@ -91,7 +91,7 @@ describe("Seo tests", () => {
     const mock = {
       url: "https://gorzelinski.com/portfolio/an-lam",
       title: "An-lam",
-      description: "An-lam to mała, lokalna",
+      description: "An-lam is a small",
       type: "article",
       h1: /an-lam/i,
     }
@@ -124,7 +124,7 @@ describe("Seo tests", () => {
     const mock = {
       url: "https://gorzelinski.com/blog/hello-world",
       title: "Hello... world?",
-      description: "Co ja właściwie",
+      description: "What I'm actually",
       type: "article",
       h1: /hello... world?/i,
     }
