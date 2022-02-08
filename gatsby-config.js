@@ -114,6 +114,8 @@ module.exports = {
             "pages/blog",
             "pages/index",
             "pages/portfolio",
+            "templates/blog-post",
+            "templates/portfolio-project",
             "components/bio",
             "components/cards",
             "components/contact",

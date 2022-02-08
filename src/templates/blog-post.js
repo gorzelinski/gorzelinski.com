@@ -1,4 +1,5 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -30,6 +31,7 @@ import Avatar from "../components/avatar"
 import SignUp from "../components/sign-up"
 
 const BlogPostTemplate = ({ data, location }) => {
+  const { t } = useTranslation("templates/blog-post")
   const { siteUrl } = data.site.siteMetadata
   const post = data.mdx
   const image = post.frontmatter?.image
@@ -61,7 +63,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <ProgressScroll></ProgressScroll>
         <Header>
           <Small $top>
-            {post.frontmatter.date} • {post.timeToRead} min read
+            {post.frontmatter.date} • {post.timeToRead} {t("min")}
           </Small>
           <H1 $top>{post.frontmatter.title}</H1>
           <P $lead>{post.frontmatter.description}</P>
@@ -76,7 +78,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <div>
           <MDXRenderer>{post.body}</MDXRenderer>
           <Navigation as="div">
-            <P $ui>Share</P>
+            <P $ui>{t("share")}</P>
             <Socials data={links}></Socials>
           </Navigation>
         </div>
@@ -85,7 +87,7 @@ const BlogPostTemplate = ({ data, location }) => {
         </Footer>
       </Article>
       <Aside $article>
-        <H3 $top>Read more</H3>
+        <H3 $top>{t("more")}</H3>
         <Pagination data={pagination}></Pagination>
       </Aside>
       <SignUp></SignUp>

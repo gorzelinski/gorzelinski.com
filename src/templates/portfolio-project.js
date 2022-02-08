@@ -1,4 +1,5 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
@@ -25,6 +26,7 @@ import ProgressScroll from "../components/progress-scroll"
 import SignUp from "../components/sign-up"
 
 const PortfolioProjectTemplate = ({ data, location }) => {
+  const { t } = useTranslation("templates/portfolio-project")
   const project = data.mdx
   const image = project.frontmatter?.image
   const metaImage = createMetaImage(image)
@@ -61,7 +63,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <Subsection>
             <Tile>
               <Small as="p" $top>
-                Date:
+                {t("date")}
               </Small>
               <H6 as="h2" $top $bottom>
                 {project.frontmatter.date}
@@ -69,7 +71,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
             </Tile>
             <Tile>
               <Small as="p" $top>
-                Client:
+                {t("client")}
               </Small>
               <H6 as="h2" $top $bottom>
                 {project.frontmatter.client}
@@ -77,7 +79,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
             </Tile>
             <Tile>
               <Small as="p" $top>
-                My role:
+                {t("role")}
               </Small>
               <H6 as="h2" $top $bottom>
                 {project.frontmatter.myRole}
@@ -85,7 +87,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
             </Tile>
             <Tile>
               <Small as="p" $top>
-                Tools:
+                {t("tools")}
               </Small>
               <H6 as="h2" $top $bottom>
                 {project.frontmatter.tools}
@@ -93,7 +95,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
             </Tile>
             <Tile $spanAll>
               <Small as="p" $top>
-                Live:
+                {t("live")}
               </Small>
               <H6 as="h2" $top $bottom>
                 <A
@@ -112,7 +114,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         </div>
       </Article>
       <Aside $higher $article>
-        <H3 $top>Check also</H3>
+        <H3 $top>{t("more")}</H3>
         <Pagination data={pagination}></Pagination>
       </Aside>
       <SignUp></SignUp>
