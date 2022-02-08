@@ -1,33 +1,28 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 
 import { Hero, H1, P, Button } from "../elements"
 import Typewriter from "./typewriter"
 
 const Landing = () => {
+  const { t } = useTranslation("components/landing")
+
   return (
     <Hero>
       <header>
-        <H1
-          $top
-          $decorative
-          aria-label="I create (design, code, publish) things on the Internet"
-        >
+        <H1 $top $decorative aria-label={t("aria")}>
           <Typewriter
             strings={[
-              "I design",
-              "I code",
-              "I publish",
-              "I create things on the Internet",
+              t("typewriter.design"),
+              t("typewriter.code"),
+              t("typewriter.publish"),
+              t("typewriter.create"),
             ]}
           ></Typewriter>
         </H1>
-        <P $lead>
-          I help individuals and small businesses step into the XXI century. I
-          create personalized websites for them, which take care of a
-          professional online presence.
-        </P>
+        <P $lead>{t("description")}</P>
         <Button $primary $grow to="#say-hello">
-          Let's create something
+          {t("cta")}
         </Button>
       </header>
     </Hero>
