@@ -1,0 +1,13 @@
+{
+  "heading": "Want to be up to date?",
+  "description": "Subscribe to get notifications about posts, case studies and other content. But be aware - if you get a lucrative offer from a Nigerian prince from this domain, it's not me - unsubscribe fast. I don't send spam.",
+  "name": {
+    "label": "Name",
+    "placeholder": "Your name"
+  },
+  "email": {
+    "label": "Email",
+    "placeholder": "Your email"
+  },
+  "button": "Sign up"
+}

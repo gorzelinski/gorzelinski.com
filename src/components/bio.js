@@ -1,4 +1,5 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { ChevronForward } from "@styled-icons/ionicons-solid"
 
@@ -16,48 +17,41 @@ import {
 } from "../elements"
 
 const Bio = ({ data = {} }) => {
+  const { t } = useTranslation("components/bio")
   const image = getImage(data?.image)
-  const name = data.site?.siteMetadata?.author?.name
-  const isDataComplete = image && name && true
+  const isDataComplete = image && true
 
   return isDataComplete ? (
     <Section>
       <Figure $portrait>
         <GatsbyImage
           image={image}
-          alt={`${name} - profile picture`}
+          alt={`${t("name")} - ${t("alt")}`}
         ></GatsbyImage>
-        <Figcaption>
-          In reality, I'm more pleasant than in this picture. I promise!
-        </Figcaption>
+        <Figcaption>{t("caption")}</Figcaption>
       </Figure>
       <Tile>
         <Small as="p" $top>
-          Hello, my name is
+          {t("greeting")}
         </Small>
-        <H2 $top>{name}</H2>
-        <P>I'm an engineer and humanist. In one? Is it legal?</P>
+        <H2 $top>{t("name")}</H2>
+        <P>{t("brief")}</P>
         <P>
-          I develop my technical skills and humanistic interests by designing,
-          coding and writing content for websites that I create. For that
-          purpose, I mainly use Figma, JAMstack and a good, old-fashioned pen
-          and paper. Effects of that development you can find in my{" "}
+          {t("portfolio.mention")}{" "}
           <Link $text to="/portfolio">
-            portfolio
+            {t("portfolio.button")}
           </Link>
           .
         </P>
         <P>
-          I learn new things every day, explore new fields of knowledge, rummage
-          around the web and theorize too much. I share my findings and thoughts
-          on my{" "}
+          {t("blog.mention")}{" "}
           <Link $text to="/blog">
-            blog
+            {t("blog.button")}
           </Link>
           .
         </P>
         <Button $text $first $iconForward to="/about">
-          Read my story
+          {t("story")}
           <Icon>
             <ChevronForward></ChevronForward>
           </Icon>

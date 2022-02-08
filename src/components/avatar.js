@@ -1,13 +1,12 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import { StaticImage } from "gatsby-plugin-image"
 
-import { useBio } from "../hooks"
 import { Avatar as StyledAvatar, H6, Small } from "../elements"
 import Link from "./link"
 
 const Avatar = () => {
-  const { bio } = useBio()
-  const { name, summary } = bio.site.siteMetadata.author
+  const { t } = useTranslation("components/bio")
 
   return (
     <StyledAvatar>
@@ -18,7 +17,7 @@ const Avatar = () => {
         width={64}
         height={64}
         quality={100}
-        alt={`${name}`}
+        alt={`${t("name")} - ${t("alt")}`}
         transformOptions={{
           fit: "cover",
           cropFocus: "top",
@@ -26,10 +25,10 @@ const Avatar = () => {
       />
       <div>
         <H6 as="p" $top $bottom>
-          <Link href="/about">{name}</Link>
+          <Link href="/about">{t("name")}</Link>
         </H6>
         <Small as="p" $bottom>
-          {summary}
+          {t("summary")}
         </Small>
       </div>
     </StyledAvatar>

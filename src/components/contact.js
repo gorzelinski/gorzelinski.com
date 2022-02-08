@@ -1,22 +1,21 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 
 import { Button, H2, Hero, P, Tile } from "../elements"
 import { useBio } from "../hooks"
 
 const Contact = () => {
+  const { t } = useTranslation("components/contact")
   const { bio } = useBio()
   const { email } = bio.site.siteMetadata?.author
 
   return (
     <Hero id="say-hello">
       <Tile $center $textCenter>
-        <H2 $top>Say hello!</H2>
-        <P $lead>
-          If you want to talk about cooperation - or anything interesting -
-          write me an email or dm. Don't hesitate. Seriously.
-        </P>
+        <H2 $top>{t("heading")}</H2>
+        <P $lead>{t("description")}</P>
         <Button as="a" $text $elementBuzzOut href={`mailto:${email}`}>
-          Contact me
+          {t("cta")}
         </Button>
       </Tile>
     </Hero>

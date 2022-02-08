@@ -1,4 +1,5 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 
 import {
   Address,
@@ -12,6 +13,7 @@ import { createSocialLinks } from "../utils"
 import Socials from "../components/socials"
 
 const Footer = () => {
+  const { t } = useTranslation("components/footer")
   const { bio } = useBio()
   const { title, social } = bio.site.siteMetadata
   const { email } = bio.site.siteMetadata?.author
@@ -21,7 +23,7 @@ const Footer = () => {
     <StyledFooter $border id="contact">
       <Tile>
         <Small as="p" $top>
-          Write me an email
+          {t("email")}
         </Small>
         <Address>
           <Button as="a" $text $first href={`mailto:${email}`}>
@@ -31,14 +33,13 @@ const Footer = () => {
       </Tile>
       <Tile>
         <Small as="p" $top>
-          Find me elsewhere
+          {t("socials")}
         </Small>
         <Socials data={links}></Socials>
       </Tile>
       <Tile>
         <Small $top $bottom>
-          © {new Date().getFullYear()} {title} • I've created this site with
-          love
+          © {new Date().getFullYear()} {title} • {t("note")}
         </Small>
       </Tile>
     </StyledFooter>

@@ -1,10 +1,12 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { ChevronForward } from "@styled-icons/ionicons-solid"
 
 import { Button, Card, Figure, H4, Icon, P, Small } from "../elements"
 
 const Project = ({ data = {} }) => {
+  const { t } = useTranslation("components/project")
   const image = data.frontmatter?.image
   const alt = image?.alt
   const src = getImage(image?.src)
@@ -29,7 +31,7 @@ const Project = ({ data = {} }) => {
         </H4>
         <P>{description}</P>
         <Button $text $first $iconForward to={`/portfolio${slug}`}>
-          Check case study
+          {t("button")}
           <Icon>
             <ChevronForward></ChevronForward>
           </Icon>

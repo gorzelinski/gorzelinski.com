@@ -30,14 +30,6 @@ const defaultData = {
       },
     },
   },
-  site: {
-    siteMetadata: {
-      author: {
-        name: "Default name",
-        summary: "Default summary",
-      },
-    },
-  },
 }
 
 describe("Bio component", () => {
@@ -47,20 +39,6 @@ describe("Bio component", () => {
 
       const image = screen.queryByRole("img")
       expect(image).not.toBeInTheDocument()
-    })
-
-    it("name", () => {
-      render(
-        <Bio
-          data={{
-            ...defaultData,
-            site: { siteMetadata: { author: { name: "" } } },
-          }}
-        ></Bio>
-      )
-
-      const name = screen.queryByRole("heading", { name: /default name/i })
-      expect(name).not.toBeInTheDocument()
     })
   })
 
@@ -80,7 +58,7 @@ describe("Bio component", () => {
     })
 
     it("name", () => {
-      const name = screen.getByRole("heading", { name: /default name/i })
+      const name = screen.getByRole("heading", { name: /name/i })
       expect(name).toBeInTheDocument()
     })
 

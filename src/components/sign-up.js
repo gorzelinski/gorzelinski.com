@@ -1,4 +1,5 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import { Send } from "@styled-icons/ionicons-solid"
 
 import {
@@ -14,42 +15,39 @@ import {
 } from "../elements"
 
 const SignUp = () => {
+  const { t } = useTranslation("components/sign-up")
+
   return (
     <Section $featured>
       <Tile>
         <H3 as="h2" $top>
-          Stay up to date
+          {t("heading")}
         </H3>
-        <P $lead>
-          Subscribe to get notifications about posts, case studies and other
-          content. But be aware - if you get a lucrative offer from a Nigerian
-          prince from this domain, it's not me - unsubscribe fast. I don't send
-          spam.
-        </P>
+        <P $lead>{t("description")}</P>
         <Form>
           <Label $hidden htmlFor="name">
-            Name
+            {t("name.label")}
           </Label>
           <Input
             required
             name="name"
             id="name"
             type="text"
-            placeholder="Your name"
+            placeholder={t("name.placeholder")}
             autoComplete="off"
           ></Input>
           <Label $hidden htmlFor="email">
-            Email
+            {t("email.label")}
           </Label>
           <Input
             required
             name="email"
             id="email"
             type="email"
-            placeholder="Your email"
+            placeholder={t("email.placeholder")}
           ></Input>
           <Button as="button" $grow $primary $iconWobble>
-            Subscribe
+            {t("button")}
             <Icon>
               <Send></Send>
             </Icon>

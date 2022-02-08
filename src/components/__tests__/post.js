@@ -93,7 +93,7 @@ describe("Post component", () => {
     })
 
     it("time to read", () => {
-      const timeToRead = screen.getByText(/min./i)
+      const timeToRead = screen.getByText(/min/i)
       expect(timeToRead).toBeInTheDocument()
     })
 

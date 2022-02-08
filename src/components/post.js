@@ -1,10 +1,12 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { ChevronForward } from "@styled-icons/ionicons-solid"
 
 import { Button, Card, Figure, H4, Icon, P, Small } from "../elements"
 
 const Post = ({ data = {} }) => {
+  const { t } = useTranslation("components/post")
   const image = data.frontmatter?.image
   const alt = image?.alt
   const src = getImage(image?.src)
@@ -22,13 +24,13 @@ const Post = ({ data = {} }) => {
         <GatsbyImage image={src} alt={alt}></GatsbyImage>
       </Figure>
       <div>
-        <Small $top>{`${date} • ${timeToRead} min read`}</Small>
+        <Small $top>{`${date} • ${timeToRead} ${t("min")}`}</Small>
         <H4 as="h3" $top>
           {title}
         </H4>
         <P>{description}</P>
         <Button $text $first $iconForward to={`/blog${slug}`}>
-          Read post
+          {t("button")}
           <Icon>
             <ChevronForward></ChevronForward>
           </Icon>

@@ -1,0 +1,17 @@
+{
+  "name": "Mateusz Gorzeliński",
+  "summary": "Inżynier o erudycyjnych aspiracjach.",
+  "alt": "zdjęcie profilowe",
+  "caption": "W rzeczywistości jestem przyjemniejszy niż na tym zdjęciu. Przyrzekam!",
+  "greeting": "Cześć, mam na imię",
+  "brief": "Jestem inżynierem i humanistą. W jednym? Czy to jest legalne?",
+  "portfolio": {
+    "mention": "Swoje techniczne umiejętności i techniczne zainteresowania rozwijam projektując, kodując i pisząc treści dla stron internetowych, które tworze. Do tego celu wykorzystuję głównie Figmę, JAMstack, długopis i kartę papieru. Efekty tego rozwoju możesz znaleźć w moim",
+    "button": "portfolio"
+  },
+  "blog": {
+    "mention": "Nieustannie uczę się nowych rzeczy, eksploruję różne dziedziny wiedzy, szperam w internecie i nadmiernie teoretyzuję. Swoimi znaleziskami i przemyśleniami dzielę się na moim",
+    "button": "blogu"
+  },
+  "story": "Moja historia"
+}

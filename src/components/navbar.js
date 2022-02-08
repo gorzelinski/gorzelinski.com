@@ -1,19 +1,22 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 
 import { Button, Header, Navigation } from "../elements"
 import Logo from "./logo"
 import ThemeSwitcher from "./theme-switcher"
 
 const Navbar = ({ location }) => {
+  const { t } = useTranslation("components/navbar")
   const selectActiveClass = pathname =>
     location?.pathname === pathname ? "active" : "active-subtle"
+
   return (
     <Header $section>
-      <Navigation $spaceBetween aria-label="Helper">
+      <Navigation $spaceBetween aria-label={t("helper")}>
         <Logo></Logo>
         <ThemeSwitcher></ThemeSwitcher>
       </Navigation>
-      <Navigation $main aria-label="Main">
+      <Navigation $main aria-label={t("main")}>
         <Button
           $mobile
           $nav
@@ -21,7 +24,7 @@ const Navbar = ({ location }) => {
           activeClassName={selectActiveClass("/portfolio")}
           partiallyActive={true}
         >
-          Portfolio
+          {t("portfolio")}
         </Button>
         <Button
           $mobile
@@ -30,7 +33,7 @@ const Navbar = ({ location }) => {
           activeClassName="active"
           partiallyActive={true}
         >
-          About
+          {t("about")}
         </Button>
         <Button
           $mobile
@@ -39,10 +42,10 @@ const Navbar = ({ location }) => {
           activeClassName={selectActiveClass("/blog")}
           partiallyActive={true}
         >
-          Blog
+          {t("blog")}
         </Button>
         <Button $mobile $primary to="#contact">
-          Contact
+          {t("contact")}
         </Button>
       </Navigation>
     </Header>

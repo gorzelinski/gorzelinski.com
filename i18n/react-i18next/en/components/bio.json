@@ -1,0 +1,17 @@
+{
+  "name": "Matthew Gorzelinski",
+  "summary": "Engineer with polymath aspirations.",
+  "alt": "profile picture",
+  "caption": "In reality, I'm more pleasant than in this picture. I promise!",
+  "greeting": "Hello, my name is",
+  "brief": "I'm an engineer and humanist. In one? Is it legal?",
+  "portfolio": {
+    "mention": "I develop my technical skills and humanistic interests by designing, coding and writing content for websites that I create. For that purpose, I mainly use Figma, JAMstack and a good, old-fashioned pen and paper. Effects of that development you can find in my",
+    "button": "portfolio"
+  },
+  "blog": {
+    "mention": "I learn new things every day, explore new fields of knowledge, rummage around the web and theorize too much. I share my findings and thoughts on my",
+    "button": "blog"
+  },
+  "story": "Read my story"
+}
