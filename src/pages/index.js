@@ -11,7 +11,7 @@ import Featured from "../components/featured"
 import Cards from "../components/cards"
 import Bio from "../components/bio"
 import Contact from "../components/contact"
-import Subscription from "../components/subscription"
+import SignUp from "../components/sign-up"
 
 const Index = ({ data }) => {
   const { t } = useTranslation("pages/index")
@@ -45,7 +45,7 @@ const Index = ({ data }) => {
       >
         <Cards data={posts}></Cards>
       </Featured>
-      <Subscription></Subscription>
+      <SignUp></SignUp>
       <Contact></Contact>
     </Layout>
   )

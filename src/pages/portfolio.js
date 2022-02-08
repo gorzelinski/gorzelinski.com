@@ -7,7 +7,7 @@ import { createMetaImage } from "../utils"
 import Cards from "../components/cards"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Subscription from "../components/subscription"
+import SignUp from "../components/sign-up"
 
 const Portfolio = ({ data, location }) => {
   const { t } = useTranslation("pages/portfolio")
@@ -38,7 +38,7 @@ const Portfolio = ({ data, location }) => {
           <Cards data={projects}></Cards>
         </Section>
       </Section>
-      <Subscription></Subscription>
+      <SignUp></SignUp>
     </Layout>
   )
 }

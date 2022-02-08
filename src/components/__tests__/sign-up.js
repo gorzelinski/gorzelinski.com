@@ -1,12 +1,12 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
 
-import Subscription from "../subscription"
+import SignUp from "../sign-up"
 
 describe("Subscirption component", () => {
   describe("renders", () => {
     beforeEach(() => {
-      render(<Subscription></Subscription>)
+      render(<SignUp></SignUp>)
     })
 
     it("title", () => {

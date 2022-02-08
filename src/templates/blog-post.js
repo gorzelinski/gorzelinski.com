@@ -25,9 +25,9 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Socials from "../components/socials"
 import Pagination from "../components/pagination"
-import Subscription from "../components/subscription"
 import ProgressScroll from "../components/progress-scroll"
 import Avatar from "../components/avatar"
+import SignUp from "../components/sign-up"
 
 const BlogPostTemplate = ({ data, location }) => {
   const { siteUrl } = data.site.siteMetadata
@@ -88,7 +88,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <H3 $top>Read more</H3>
         <Pagination data={pagination}></Pagination>
       </Aside>
-      <Subscription></Subscription>
+      <SignUp></SignUp>
     </Layout>
   )
 }

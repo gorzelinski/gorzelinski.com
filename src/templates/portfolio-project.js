@@ -21,8 +21,8 @@ import { createMetaImage, createPaginationLinks } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Pagination from "../components/pagination"
-import Subscription from "../components/subscription"
 import ProgressScroll from "../components/progress-scroll"
+import SignUp from "../components/sign-up"
 
 const PortfolioProjectTemplate = ({ data, location }) => {
   const project = data.mdx
@@ -115,7 +115,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         <H3 $top>Check also</H3>
         <Pagination data={pagination}></Pagination>
       </Aside>
-      <Subscription></Subscription>
+      <SignUp></SignUp>
     </Layout>
   )
 }

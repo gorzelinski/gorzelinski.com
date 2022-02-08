@@ -13,7 +13,7 @@ import {
   Tile,
 } from "../elements"
 
-const Subscription = () => {
+const SignUp = () => {
   return (
     <Section $featured>
       <Tile>
@@ -60,4 +60,4 @@ const Subscription = () => {
   )
 }
 
-export default Subscription
+export default SignUp
