@@ -1,4 +1,5 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 
 import { H1, Header, P, Section } from "../elements"
@@ -9,6 +10,7 @@ import Seo from "../components/seo"
 import Subscription from "../components/subscription"
 
 const Blog = ({ data, location }) => {
+  const { t } = useTranslation("pages/blog")
   const { posts } = data
   const metaImage = createMetaImage({
     alt: `Centered text "Blog" on white background`,
@@ -18,18 +20,18 @@ const Blog = ({ data, location }) => {
   return (
     <Layout location={location}>
       <Seo
-        title="Blog"
-        description="Here will be description"
+        title={t("title")}
+        description={t("description")}
         slug={location.pathname}
         image={metaImage}
       ></Seo>
       <Section $lower>
         <Header>
           <H1 $top $decorative>
-            Blog
+            {t("title")}
           </H1>
           <P as="h2" $ui>
-            All posts
+            {t("subtitle")}
           </P>
         </Header>
         <Section as="div" $top>

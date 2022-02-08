@@ -1,7 +1,7 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
 
-import About from "../about"
+import Bio from "../bio"
 
 const defaultData = {
   image: {
@@ -40,10 +40,10 @@ const defaultData = {
   },
 }
 
-describe("About component", () => {
+describe("Bio component", () => {
   describe("doesn't render (due to partial data)", () => {
     it("image", () => {
-      render(<About data={{ ...defaultData, image: {} }}></About>)
+      render(<Bio data={{ ...defaultData, image: {} }}></Bio>)
 
       const image = screen.queryByRole("img")
       expect(image).not.toBeInTheDocument()
@@ -51,12 +51,12 @@ describe("About component", () => {
 
     it("name", () => {
       render(
-        <About
+        <Bio
           data={{
             ...defaultData,
             site: { siteMetadata: { author: { name: "" } } },
           }}
-        ></About>
+        ></Bio>
       )
 
       const name = screen.queryByRole("heading", { name: /default name/i })
@@ -66,7 +66,7 @@ describe("About component", () => {
 
   describe("renders", () => {
     beforeEach(() => {
-      render(<About data={defaultData}></About>)
+      render(<Bio data={defaultData}></Bio>)
     })
 
     it("figure", () => {

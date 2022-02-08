@@ -1,4 +1,5 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 
 import { useBio } from "../hooks"
@@ -8,37 +9,38 @@ import Seo from "../components/seo"
 import Landing from "../components/landing"
 import Featured from "../components/featured"
 import Cards from "../components/cards"
-import About from "../components/about"
+import Bio from "../components/bio"
 import Contact from "../components/contact"
 import Subscription from "../components/subscription"
 
 const Index = ({ data }) => {
+  const { t } = useTranslation("pages/index")
   const { posts, projects } = data
   const { bio } = useBio()
   const metaImage = createMetaImage({
-    alt: `Centred text "I create things on the Internet" on white background`,
+    alt: t("alt"),
     src: data?.metaImage,
   })
 
   return (
     <Layout>
-      <Seo title="I create things on the Internet" image={metaImage}></Seo>
+      <Seo title={t("title")} image={metaImage}></Seo>
       <Landing></Landing>
       <Featured
         data={{
-          title: "Recent projects",
+          title: t("featuredProjects.title"),
           slug: "/portfolio",
-          buttonText: "All projects",
+          buttonText: t("featuredProjects.button"),
         }}
       >
         <Cards data={projects}></Cards>
       </Featured>
-      <About data={bio}></About>
+      <Bio data={bio}></Bio>
       <Featured
         data={{
-          title: "Recent posts",
+          title: t("featuredPosts.title"),
           slug: "/blog",
-          buttonText: "All posts",
+          buttonText: t("featuredPosts.button"),
         }}
       >
         <Cards data={posts}></Cards>

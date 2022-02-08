@@ -34,12 +34,15 @@
     "gatsby-remark-smartypants": "^5.4.0",
     "gatsby-source-filesystem": "^4.4.0",
     "gatsby-theme-i18n": "^3.0.0",
+    "gatsby-theme-i18n-react-i18next": "^3.0.0",
     "gatsby-transformer-sharp": "^4.4.0",
+    "i18next": "^20.6.1",
     "prism-react-renderer": "^1.2.1",
     "prismjs": "^1.25.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
+    "react-i18next": "^11.15.3",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {

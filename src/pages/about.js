@@ -1,4 +1,5 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
@@ -9,19 +10,20 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const AboutMe = ({ data, location }) => {
+  const { t } = useTranslation("pages/about")
   const name = data.site?.siteMetadata?.author?.name
   const text = data.text
   const image = getImage(data?.image)
   const metaImage = createMetaImage({
-    alt: `Centred text "About" on white background`,
+    alt: t("metaAlt"),
     src: data?.metaImage,
   })
 
   return (
     <Layout>
       <Seo
-        title="About"
-        description="Here will be description"
+        title={t("title")}
+        description={t("description")}
         image={metaImage}
         slug={location.pathname}
       ></Seo>
@@ -29,14 +31,12 @@ const AboutMe = ({ data, location }) => {
         <Figure $portrait>
           <GatsbyImage
             image={image}
-            alt={`${name} - profile picture`}
+            alt={`${name} - ${t("alt")}`}
           ></GatsbyImage>
-          <Figcaption>
-            In reality, I'm more pleasant than in this picture. I promise!
-          </Figcaption>
+          <Figcaption>{t("caption")}</Figcaption>
         </Figure>
         <Tile as="article">
-          <H1 $top>And here's my short story</H1>
+          <H1 $top>{t("heading")}</H1>
           <MDXRenderer>{text.body}</MDXRenderer>
         </Tile>
       </Section>

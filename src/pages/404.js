@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
@@ -7,28 +8,23 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const NotFoundPage = ({ data = {} }) => {
+  const { t } = useTranslation("pages/404")
   const image = getImage(data.image)
 
   return (
     <Layout>
-      <Seo title="Page not found" />
+      <Seo title={t("title")} />
       <Section>
         <Figure as="div">
-          <GatsbyImage
-            image={image}
-            alt="Marcin Najman w niebieskiej kurtce"
-          ></GatsbyImage>
+          <GatsbyImage image={image} alt={t("alt")}></GatsbyImage>
         </Figure>
         <Tile $span2>
           <H1 $decorative $top>
-            404
+            {t("title")}
           </H1>
-          <P $lead>
-            The page you're looking for doesn't exist. Or I deleted it. It's
-            hard to tell.
-          </P>
+          <P $lead>{t("subtitle")}</P>
           <Button $primary $grow to="/">
-            Back to home page
+            {t("button")}
           </Button>
         </Tile>
       </Section>

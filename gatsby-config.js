@@ -103,6 +103,21 @@ module.exports = {
         configPath: require.resolve(`./i18n/config.json`),
       },
     },
+    {
+      resolve: `gatsby-theme-i18n-react-i18next`,
+      options: {
+        locales: `./i18n/react-i18next`,
+        i18nextOptions: {
+          ns: [
+            "pages/404",
+            "pages/about",
+            "pages/blog",
+            "pages/index",
+            "pages/portfolio",
+          ],
+        },
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-google-analytics`,
     //   options: {

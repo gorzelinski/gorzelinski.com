@@ -15,7 +15,7 @@ import {
   Tile,
 } from "../elements"
 
-const About = ({ data = {} }) => {
+const Bio = ({ data = {} }) => {
   const image = getImage(data?.image)
   const name = data.site?.siteMetadata?.author?.name
   const isDataComplete = image && name && true
@@ -67,4 +67,4 @@ const About = ({ data = {} }) => {
   ) : null
 }
 
-export default About
+export default Bio
