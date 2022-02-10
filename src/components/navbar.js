@@ -5,10 +5,8 @@ import { Button, Header, Navigation } from "../elements"
 import Logo from "./logo"
 import ThemeSwitcher from "./theme-switcher"
 
-const Navbar = ({ location }) => {
+const Navbar = () => {
   const { t } = useTranslation("components/navbar")
-  const selectActiveClass = pathname =>
-    location?.pathname === pathname ? "active" : "active-subtle"
 
   return (
     <Header $section>
@@ -17,34 +15,16 @@ const Navbar = ({ location }) => {
         <ThemeSwitcher></ThemeSwitcher>
       </Navigation>
       <Navigation $main aria-label={t("main")}>
-        <Button
-          $mobile
-          $nav
-          to="/portfolio"
-          activeClassName={selectActiveClass("/portfolio")}
-          partiallyActive={true}
-        >
+        <Button $responsive $nav to="/portfolio" activeClassName="active">
           {t("portfolio")}
         </Button>
-        <Button
-          $mobile
-          $nav
-          to="/about"
-          activeClassName="active"
-          partiallyActive={true}
-        >
+        <Button $responsive $nav to="/about" activeClassName="active">
           {t("about")}
         </Button>
-        <Button
-          $mobile
-          $nav
-          to="/blog"
-          activeClassName={selectActiveClass("/blog")}
-          partiallyActive={true}
-        >
+        <Button $responsive $nav to="/blog" activeClassName="active">
           {t("blog")}
         </Button>
-        <Button $mobile $primary to="#contact">
+        <Button $responsive $primary to="#contact">
           {t("contact")}
         </Button>
       </Navigation>

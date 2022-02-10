@@ -34,7 +34,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
   const pagination = createPaginationLinks("/portfolio", previous, next)
 
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo
         lang={project.fields.locale}
         type="article"

@@ -11,7 +11,7 @@ import {
   underline,
 } from "./effects"
 import { elementBuzzOut, iconWobble } from "./animations"
-import { baseSize, ui, tinySize } from "./typography"
+import { baseSize, smallSize, ui, tinySize } from "./typography"
 
 export const nav = css`
   ${underline};
@@ -106,12 +106,22 @@ export const Button = styled(LocalizedLink)`
     `}
 
   ${props =>
-    props.$mobile &&
+    props.$responsive &&
     css`
       ${tinySize}
 
       ${media.mobile`
         ${baseSize}
+      `}
+    `}
+
+    ${props =>
+    props.$small &&
+    css`
+      ${tinySize}
+
+      ${media.mobile`
+        ${smallSize}
       `}
     `}
 

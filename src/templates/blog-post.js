@@ -44,7 +44,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const pagination = createPaginationLinks("/blog", previous, next)
 
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo
         lang={post.fields.locale}
         type="article"

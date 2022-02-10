@@ -9,7 +9,7 @@ import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const AboutMe = ({ data, location }) => {
+const About = ({ data, location }) => {
   const { t } = useTranslation("pages/about")
   const name = data.site?.siteMetadata?.author?.name
   const text = data.text
@@ -20,7 +20,7 @@ const AboutMe = ({ data, location }) => {
   })
 
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo
         title={t("title")}
         description={t("description")}
@@ -44,7 +44,7 @@ const AboutMe = ({ data, location }) => {
   )
 }
 
-export default AboutMe
+export default About
 
 export const pageQuery = graphql`
   query AllBioQuery {
