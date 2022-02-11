@@ -15,13 +15,13 @@ const Navbar = () => {
         <ThemeSwitcher></ThemeSwitcher>
       </Navigation>
       <Navigation $main aria-label={t("main")}>
-        <Button $responsive $nav to="/portfolio" activeClassName="active">
+        <Button $responsive $nav to="/portfolio/" activeClassName="active">
           {t("portfolio")}
         </Button>
         <Button $responsive $nav to="/about" activeClassName="active">
           {t("about")}
         </Button>
-        <Button $responsive $nav to="/blog" activeClassName="active">
+        <Button $responsive $nav to="/blog/" activeClassName="active">
           {t("blog")}
         </Button>
         <Button $responsive $primary to="#contact">

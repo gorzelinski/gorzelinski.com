@@ -1,6 +1,7 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
+import { useLocalization } from "gatsby-theme-i18n"
 
 import { H1, Header, P, Section } from "../elements"
 import { createMetaImage } from "../utils"
@@ -10,6 +11,7 @@ import Seo from "../components/seo"
 import SignUp from "../components/sign-up"
 
 const Portfolio = ({ data, location }) => {
+  const { locale } = useLocalization()
   const { t } = useTranslation("pages/portfolio")
   const { projects } = data
   const metaImage = createMetaImage({
@@ -20,6 +22,7 @@ const Portfolio = ({ data, location }) => {
   return (
     <Layout location={location}>
       <Seo
+        lang={locale}
         title={t("title")}
         description={t("description")}
         slug={location.pathname}

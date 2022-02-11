@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { useLocalization } from "gatsby-theme-i18n"
 
 import { Figcaption, Figure, H1, Section, Tile } from "../elements"
 import { createMetaImage } from "../utils"
@@ -10,6 +11,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const About = ({ data, location }) => {
+  const { locale } = useLocalization()
   const { t } = useTranslation("pages/about")
   const name = data.site?.siteMetadata?.author?.name
   const text = data.text
@@ -22,6 +24,7 @@ const About = ({ data, location }) => {
   return (
     <Layout location={location}>
       <Seo
+        lang={locale}
         title={t("title")}
         description={t("description")}
         image={metaImage}

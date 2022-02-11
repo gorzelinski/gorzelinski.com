@@ -115,7 +115,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
       </Article>
       <Aside $higher $article>
         <H3 $top>{t("more")}</H3>
-        <Pagination data={pagination}></Pagination>
+        <Pagination aria={t("more")} data={pagination}></Pagination>
       </Aside>
       <SignUp></SignUp>
     </Layout>

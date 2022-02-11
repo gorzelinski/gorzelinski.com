@@ -3,11 +3,11 @@ import { ChevronBack, ChevronForward } from "@styled-icons/ionicons-solid"
 
 import { Button, Icon, Navigation } from "../elements"
 
-const Pagination = ({ data }) => {
+const Pagination = ({ data, aria }) => {
   const { prev = null, next = null } = data
 
   return (
-    <Navigation $spaceBetween>
+    <Navigation aria-label={aria} $spaceBetween>
       {prev && (
         <Button $first $text $iconBack to={prev.slug} rel="prev">
           <Icon>

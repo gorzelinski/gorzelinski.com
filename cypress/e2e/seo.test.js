@@ -69,7 +69,7 @@ describe("Seo tests", () => {
     const mock = {
       url: "https://gorzelinski.com",
       title: "I create things on the Internet",
-      description: "A starter blog demonstrating what Gatsby can do.",
+      description: "Here will be the website description",
       type: "website",
       h1: /create/i,
     }
@@ -80,7 +80,7 @@ describe("Seo tests", () => {
     const mock = {
       url: "https://gorzelinski.com/portfolio",
       title: "Portfolio",
-      description: "Here will be description",
+      description: "Here will be the portfolio description",
       type: "website",
       h1: /portfolio/i,
     }
@@ -102,7 +102,7 @@ describe("Seo tests", () => {
     const mock = {
       url: "https://gorzelinski.com/about",
       title: "About",
-      description: "Here will be description",
+      description: "Here will be about description",
       type: "website",
       h1: /short story/i,
     }
@@ -113,7 +113,7 @@ describe("Seo tests", () => {
     const mock = {
       url: "https://gorzelinski.com/blog",
       title: "Blog",
-      description: "Here will be description",
+      description: "Here will be the blog description",
       type: "website",
       h1: /blog/i,
     }

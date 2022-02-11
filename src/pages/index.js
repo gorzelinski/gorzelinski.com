@@ -1,6 +1,7 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
+import { useLocalization } from "gatsby-theme-i18n"
 
 import { useBio } from "../hooks"
 import { createMetaImage } from "../utils"
@@ -14,6 +15,7 @@ import Contact from "../components/contact"
 import SignUp from "../components/sign-up"
 
 const Index = ({ data }) => {
+  const { locale } = useLocalization()
   const { t } = useTranslation("pages/index")
   const { posts, projects } = data
   const { bio } = useBio()
@@ -24,7 +26,12 @@ const Index = ({ data }) => {
 
   return (
     <Layout>
-      <Seo title={t("title")} image={metaImage}></Seo>
+      <Seo
+        lang={locale}
+        title={t("title")}
+        description={t("description")}
+        image={metaImage}
+      ></Seo>
       <Landing></Landing>
       <Featured
         data={{
