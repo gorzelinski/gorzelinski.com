@@ -14,7 +14,7 @@ import Bio from "../components/bio"
 import Contact from "../components/contact"
 import SignUp from "../components/sign-up"
 
-const Index = ({ data }) => {
+const Index = ({ data, location }) => {
   const { locale } = useLocalization()
   const { t } = useTranslation("pages/index")
   const { posts, projects } = data
@@ -25,7 +25,7 @@ const Index = ({ data }) => {
   })
 
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo
         lang={locale}
         title={t("title")}

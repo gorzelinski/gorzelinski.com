@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import { useLocalization } from "gatsby-theme-i18n"
 import { Globe } from "@styled-icons/ionicons-solid"
 
@@ -15,19 +14,18 @@ const LanguageSwitcher = ({ location }) => {
         <Globe></Globe>
       </Icon>
       {config.map(language => {
-        const { code } = language
-        const prefix = code === "en" ? "/" : `/${code}/`
+        const defaultUrl = "/"
         let baseUrl = ""
         if (path) {
-          baseUrl = locale === "en" ? path.replace("/", "") : path.substring(4)
+          baseUrl = locale === "en" ? path : path.substring(3)
         }
-        const url = `${prefix}${baseUrl}`
+        const url = baseUrl ? baseUrl : defaultUrl
 
         return (
           <Button
-            as={Link}
             key={language.code}
             lang={language.code}
+            language={language.code}
             hrefLang={language.hrefLang}
             to={url}
             $nav
