@@ -10,7 +10,7 @@ const LanguageSwitcher = ({ location }) => {
 
   return (
     <Navigation>
-      <Icon $text>
+      <Icon $type="text">
         <Globe></Globe>
       </Icon>
       {config.map(language => {
@@ -23,13 +23,13 @@ const LanguageSwitcher = ({ location }) => {
 
         return (
           <Button
+            $type="nav"
+            $size="responsive"
             key={language.code}
             lang={language.code}
             language={language.code}
             hrefLang={language.hrefLang}
             to={url}
-            $nav
-            $responsive
             activeClassName="active-subtle"
           >
             {language.localName}

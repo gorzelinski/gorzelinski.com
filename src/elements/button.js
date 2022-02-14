@@ -14,7 +14,6 @@ import { elementBuzzOut, iconWobble } from "./animations"
 import { baseSize, smallSize, ui, tinySize } from "./typography"
 
 export const nav = css`
-  ${underline};
   position: relative;
   &.active {
     color: var(--color-gray-00);
@@ -79,17 +78,22 @@ export const Button = styled(LocalizedLink)`
       display: flex;
     `}
 
-  ${props =>
-    props.$first &&
-    css`
-      margin-left: calc(-1 * var(--space-xs));
-    `}
-
-  ${props =>
-    props.$last &&
-    css`
-      margin-right: calc(-1 * var(--space-xs));
-    `}
+  ${props => {
+    switch (props.$align) {
+      case "left":
+        return css`
+          margin-left: calc(-1 * var(--space-xs));
+        `
+      case "right":
+        return css`
+          margin-right: calc(-1 * var(--space-xs));
+        `
+      default:
+        return css`
+          margin: 0;
+        `
+    }
+  }}
 
   ${props =>
     props.$grow &&
@@ -105,65 +109,54 @@ export const Button = styled(LocalizedLink)`
       `}
     `}
 
-  ${props =>
-    props.$responsive &&
-    css`
-      ${tinySize}
+  ${props => {
+    switch (props.$size) {
+      case "small":
+        return css`
+          ${tinySize}
+          ${media.mobile`
+            ${smallSize}
+          `}
+        `
+      case "responsive":
+        return css`
+          ${tinySize}
+          ${media.mobile`
+            ${baseSize}
+          `}
+        `
+      default:
+        return baseSize
+    }
+  }}
 
-      ${media.mobile`
-        ${baseSize}
-      `}
-    `}
+  ${props => {
+    switch (props.$type) {
+      case "nav":
+        return nav
+      case "text":
+        return text
+      case "primary":
+        return primary
+      default:
+        return primary
+    }
+  }}
 
-    ${props =>
-    props.$small &&
-    css`
-      ${tinySize}
-
-      ${media.mobile`
-        ${smallSize}
-      `}
-    `}
-
-  ${props =>
-    props.$nav &&
-    css`
-      ${nav}
-    `}
-
-  ${props =>
-    props.$text &&
-    css`
-      ${text}
-    `}
-
-  ${props =>
-    props.$primary &&
-    css`
-      ${primary}
-    `}
-
-  ${props =>
-    props.$iconForward &&
-    css`
-      ${iconForward}
-    `}
-
-  ${props =>
-    props.$iconBack &&
-    css`
-      ${iconBack}
-    `}
-
-  ${props =>
-    props.$iconWobble &&
-    css`
-      ${iconWobble}
-    `}
-    
-  ${props =>
-    props.$elementBuzzOut &&
-    css`
-      ${elementBuzzOut}
-    `}
+  ${props => {
+    switch (props.$animation) {
+      case "icon-forward":
+        return iconForward
+      case "icon-back":
+        return iconBack
+      case "icon-wobble":
+        return iconWobble
+      case "element-buzz-out":
+        return elementBuzzOut
+      case "underline":
+        return underline
+      default:
+        return null
+    }
+  }}
 `

@@ -46,7 +46,7 @@ const SignUp = () => {
             type="email"
             placeholder={t("email.placeholder")}
           ></Input>
-          <Button as="button" $grow $primary $iconWobble>
+          <Button as="button" $grow $type="primary" $animation="icon-wobble">
             {t("button")}
             <Icon>
               <Send></Send>

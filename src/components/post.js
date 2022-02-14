@@ -29,7 +29,12 @@ const Post = ({ data = {} }) => {
           {title}
         </H4>
         <P>{description}</P>
-        <Button $text $first $iconForward to={`/blog${slug}`}>
+        <Button
+          $type="text"
+          $align="left"
+          $animation="icon-forward"
+          to={`/blog${slug}`}
+        >
           {t("button")}
           <Icon>
             <ChevronForward></ChevronForward>

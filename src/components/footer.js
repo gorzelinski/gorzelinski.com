@@ -27,7 +27,7 @@ const Footer = ({ location }) => {
           {t("email")}
         </Small>
         <Address>
-          <Button as="a" $text $first href={`mailto:${email}`}>
+          <Button as="a" $type="text" $align="left" href={`mailto:${email}`}>
             {email}
           </Button>
         </Address>

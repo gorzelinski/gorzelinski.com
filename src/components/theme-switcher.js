@@ -30,7 +30,7 @@ const ThemeSwitcher = () => {
             defaultChecked={theme === "dark" ? true : false}
             onChange={() => toggle()}
           ></Switch>
-          <Icon $text>{selectIcon()}</Icon>
+          <Icon $type="text">{selectIcon()}</Icon>
         </>
       ) : null}
     </Navigation>

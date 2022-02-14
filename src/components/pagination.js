@@ -9,7 +9,13 @@ const Pagination = ({ data, aria }) => {
   return (
     <Navigation aria-label={aria} $spaceBetween>
       {prev && (
-        <Button $first $text $iconBack to={prev.slug} rel="prev">
+        <Button
+          $align="left"
+          $type="text"
+          $animation="icon-back"
+          to={prev.slug}
+          rel="prev"
+        >
           <Icon>
             <ChevronBack></ChevronBack>
           </Icon>
@@ -18,9 +24,9 @@ const Pagination = ({ data, aria }) => {
       )}
       {next && (
         <Button
-          {...(!prev ? { $first: true } : { $last: true })}
-          $text
-          $iconForward
+          {...(!prev ? { $align: "left" } : { $align: "right" })}
+          $type="text"
+          $animation="icon-forward"
           to={next.slug}
           rel="next"
         >

@@ -14,17 +14,22 @@ export const Navigation = styled.nav`
     gap: var(--space-s);
   `}
 
-  ${props =>
-    props.$first &&
-    css`
-      margin-left: calc(-1 * var(--space-xs));
-    `}
-
-  ${props =>
-    props.$last &&
-    css`
-      margin-right: calc(-1 * var(--space-xs));
-    `}
+  ${props => {
+    switch (props.$align) {
+      case "left":
+        return css`
+          margin-left: calc(-1 * var(--space-xs));
+        `
+      case "right":
+        return css`
+          margin-right: calc(-1 * var(--space-xs));
+        `
+      default:
+        return css`
+          margin: 0;
+        `
+    }
+  }}
 
   ${props =>
     props.$flex &&

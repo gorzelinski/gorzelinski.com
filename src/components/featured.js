@@ -14,7 +14,12 @@ const Featured = ({ data, children }) => {
           </H2>
         )}
         {slug && buttonText && (
-          <Button $text $iconForward $last to={slug}>
+          <Button
+            $type="text"
+            $animation="icon-forward"
+            $align="right"
+            to={slug}
+          >
             {buttonText}
             <Icon>
               <ChevronForward></ChevronForward>

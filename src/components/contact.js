@@ -11,10 +11,15 @@ const Contact = () => {
 
   return (
     <Hero id="say-hello">
-      <Tile $center $textCenter>
+      <Tile $center $textCenter Center>
         <H2 $top>{t("heading")}</H2>
         <P $lead>{t("description")}</P>
-        <Button as="a" $text $elementBuzzOut href={`mailto:${email}`}>
+        <Button
+          as="a"
+          $type="text"
+          $animation="element-buzz-out"
+          href={`mailto:${email}`}
+        >
           {t("cta")}
         </Button>
       </Tile>

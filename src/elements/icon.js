@@ -15,15 +15,16 @@ export const Icon = styled.span`
     height: var(--font-height-base);
   }
 
-  ${props =>
-    props.$primary &&
-    css`
-      ${primaryColorStates}
-    `}
-
-  ${props =>
-    props.$text &&
-    css`
-      ${textColorStates}
-    `}
+  ${props => {
+    switch (props.$type) {
+      case "primary":
+        return primaryColorStates
+      case "text":
+        return textColorStates
+      default:
+        return css`
+          color: inherit;
+        `
+    }
+  }}
 `

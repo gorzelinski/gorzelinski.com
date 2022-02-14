@@ -28,7 +28,7 @@ const Socials = ({ data = {} }) => {
   }
 
   return (
-    <Navigation as="div" $first $spanAll>
+    <Navigation as="div" $align="left" $spanAll>
       {Object.entries(data).map(array => {
         const name = array[0]
         const link = array[1]
@@ -36,13 +36,14 @@ const Socials = ({ data = {} }) => {
         return (
           <Button
             as="a"
+            $type="text"
             key={name}
             aria-label={name}
             rel="noopener noreferrer"
             target="_blank"
             href={link}
           >
-            <Icon $text>{selectIcon(name)}</Icon>
+            <Icon $type="text">{selectIcon(name)}</Icon>
           </Button>
         )
       })}

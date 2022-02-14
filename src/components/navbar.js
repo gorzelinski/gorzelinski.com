@@ -15,16 +15,34 @@ const Navbar = () => {
         <ThemeSwitcher></ThemeSwitcher>
       </Navigation>
       <Navigation $main aria-label={t("main")}>
-        <Button $responsive $nav to="/portfolio/" activeClassName="active">
+        <Button
+          $size="responsive"
+          $type="nav"
+          $animation="underline"
+          to="/portfolio/"
+          activeClassName="active"
+        >
           {t("portfolio")}
         </Button>
-        <Button $responsive $nav to="/about" activeClassName="active">
+        <Button
+          $size="responsive"
+          $type="nav"
+          $animation="underline"
+          to="/about"
+          activeClassName="active"
+        >
           {t("about")}
         </Button>
-        <Button $responsive $nav to="/blog/" activeClassName="active">
+        <Button
+          $size="responsive"
+          $type="nav"
+          $animation="underline"
+          to="/blog/"
+          activeClassName="active"
+        >
           {t("blog")}
         </Button>
-        <Button $responsive $primary to="#contact">
+        <Button $size="responsive" $type="primary" to="#contact">
           {t("contact")}
         </Button>
       </Navigation>

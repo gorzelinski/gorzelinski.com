@@ -30,7 +30,12 @@ const Project = ({ data = {} }) => {
           {title}
         </H4>
         <P>{description}</P>
-        <Button $text $first $iconForward to={`/portfolio${slug}`}>
+        <Button
+          $type="text"
+          $align="left"
+          $animation="icon-forward"
+          to={`/portfolio${slug}`}
+        >
           {t("button")}
           <Icon>
             <ChevronForward></ChevronForward>

@@ -38,19 +38,17 @@ const Bio = ({ data = {} }) => {
         <P>{t("brief")}</P>
         <P>
           {t("portfolio.mention")}{" "}
-          <Link $text to="/portfolio">
-            {t("portfolio.button")}
-          </Link>
-          .
+          <Link to="/portfolio">{t("portfolio.button")}</Link>.
         </P>
         <P>
-          {t("blog.mention")}{" "}
-          <Link $text to="/blog">
-            {t("blog.button")}
-          </Link>
-          .
+          {t("blog.mention")} <Link to="/blog">{t("blog.button")}</Link>.
         </P>
-        <Button $text $first $iconForward to="/about">
+        <Button
+          $type="text"
+          $align="left"
+          $animation="icon-forward"
+          to="/about"
+        >
           {t("story")}
           <Icon>
             <ChevronForward></ChevronForward>
