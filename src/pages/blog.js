@@ -28,16 +28,16 @@ const Blog = ({ data, location }) => {
         slug={location.pathname}
         image={metaImage}
       ></Seo>
-      <Section $lower>
+      <Section $marginTop="bigger">
         <Header>
-          <H1 $top $decorative>
+          <H1 $marginReset="top" $decorative>
             {t("title")}
           </H1>
           <P as="h2" $ui>
             {t("subtitle")}
           </P>
         </Header>
-        <Section as="div" $top>
+        <Section as="div" $marginReset="top">
           <Cards data={posts}></Cards>
         </Section>
       </Section>

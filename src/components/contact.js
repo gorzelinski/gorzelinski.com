@@ -12,7 +12,7 @@ const Contact = () => {
   return (
     <Hero id="say-hello">
       <Tile $justify="center" $textAlign="center">
-        <H2 $top>{t("heading")}</H2>
+        <H2 $marginReset="top">{t("heading")}</H2>
         <P $lead>{t("description")}</P>
         <Button
           as="a"

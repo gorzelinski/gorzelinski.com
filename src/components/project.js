@@ -23,10 +23,10 @@ const Project = ({ data = {} }) => {
         <GatsbyImage image={src} alt={alt}></GatsbyImage>
       </Figure>
       <div>
-        <Small as="p" $top>
+        <Small as="p" $marginReset="top">
           {myRole}
         </Small>
-        <H4 as="h3" $top>
+        <H4 as="h3" $marginReset="top">
           {title}
         </H4>
         <P>{description}</P>

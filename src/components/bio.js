@@ -31,10 +31,10 @@ const Bio = ({ data = {} }) => {
         <Figcaption>{t("caption")}</Figcaption>
       </Figure>
       <Tile>
-        <Small as="p" $top>
+        <Small as="p" $marginReset="top">
           {t("greeting")}
         </Small>
-        <H2 $top>{t("name")}</H2>
+        <H2 $marginReset="top">{t("name")}</H2>
         <P>{t("brief")}</P>
         <P>
           {t("portfolio.mention")}{" "}

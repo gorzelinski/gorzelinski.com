@@ -62,10 +62,10 @@ const BlogPostTemplate = ({ data, location }) => {
       <Article>
         <ProgressScroll></ProgressScroll>
         <Header>
-          <Small $top>
+          <Small $marginReset="top">
             {post.frontmatter.date} • {post.timeToRead} {t("min")}
           </Small>
-          <H1 $top>{post.frontmatter.title}</H1>
+          <H1 $marginReset="top">{post.frontmatter.title}</H1>
           <P $lead>{post.frontmatter.description}</P>
         </Header>
         <Figure $aspectRatio="wide">
@@ -87,7 +87,7 @@ const BlogPostTemplate = ({ data, location }) => {
         </Footer>
       </Article>
       <Aside $article>
-        <H3 $top>{t("more")}</H3>
+        <H3 $marginReset="top">{t("more")}</H3>
         <Pagination aria={t("more")} data={pagination}></Pagination>
       </Aside>
       <SignUp></SignUp>

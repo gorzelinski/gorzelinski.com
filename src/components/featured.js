@@ -8,11 +8,7 @@ const Featured = ({ data, children }) => {
   return (
     <Section>
       <Header $section>
-        {title && (
-          <H2 $top $bottom>
-            {title}
-          </H2>
-        )}
+        {title && <H2 $marginReset="both">{title}</H2>}
         {slug && buttonText && (
           <Button
             $type="text"
@@ -27,7 +23,7 @@ const Featured = ({ data, children }) => {
           </Button>
         )}
       </Header>
-      <Section as="div" $top>
+      <Section as="div" $marginReset="top">
         {children}
       </Section>
     </Section>

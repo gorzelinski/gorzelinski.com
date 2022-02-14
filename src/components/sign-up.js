@@ -20,7 +20,7 @@ const SignUp = () => {
   return (
     <Section $featured>
       <Tile>
-        <H3 as="h2" $top>
+        <H3 as="h2" $marginReset="top">
           {t("heading")}
         </H3>
         <P $lead>{t("description")}</P>

@@ -10,7 +10,7 @@ const Landing = () => {
   return (
     <Hero>
       <header>
-        <H1 $top $decorative aria-label={t("aria")}>
+        <H1 $marginReset="top" $decorative aria-label={t("aria")}>
           <Typewriter
             strings={[
               t("typewriter.design"),

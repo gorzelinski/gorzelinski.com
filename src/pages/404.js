@@ -21,7 +21,7 @@ const NotFoundPage = ({ data = {} }) => {
           <GatsbyImage image={image} alt={t("alt")}></GatsbyImage>
         </Figure>
         <Tile $span={2}>
-          <H1 $decorative $top>
+          <H1 $decorative $marginReset="top">
             {t("title")}
           </H1>
           <P $lead>{t("subtitle")}</P>

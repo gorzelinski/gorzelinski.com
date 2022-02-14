@@ -23,7 +23,7 @@ const Footer = ({ location }) => {
   return (
     <StyledFooter $border id="contact">
       <Tile>
-        <Small as="p" $top>
+        <Small as="p" $marginReset="top">
           {t("email")}
         </Small>
         <Address>
@@ -33,19 +33,19 @@ const Footer = ({ location }) => {
         </Address>
       </Tile>
       <Tile>
-        <Small as="p" $top>
+        <Small as="p" $marginReset="top">
           {t("socials")}
         </Small>
         <Socials data={links}></Socials>
       </Tile>
       <Tile>
-        <Small as="p" $top>
+        <Small as="p" $marginReset="top">
           {t("language")}
         </Small>
         <LanguageSwitcher location={location}></LanguageSwitcher>
       </Tile>
       <Tile $span="all">
-        <Small $top $bottom>
+        <Small $marginReset="both">
           © {new Date().getFullYear()} {title} • {t("note")}
         </Small>
       </Tile>

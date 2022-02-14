@@ -39,7 +39,7 @@ const About = ({ data, location }) => {
           <Figcaption>{t("caption")}</Figcaption>
         </Figure>
         <Tile as="article">
-          <H1 $top>{t("heading")}</H1>
+          <H1 $marginReset="top">{t("heading")}</H1>
           <MDXRenderer>{text.body}</MDXRenderer>
         </Tile>
       </Section>
