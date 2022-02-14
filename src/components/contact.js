@@ -11,7 +11,7 @@ const Contact = () => {
 
   return (
     <Hero id="say-hello">
-      <Tile $center $textCenter Center>
+      <Tile $justify="center" $textAlign="center">
         <H2 $top>{t("heading")}</H2>
         <P $lead>{t("description")}</P>
         <Button

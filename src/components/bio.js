@@ -23,7 +23,7 @@ const Bio = ({ data = {} }) => {
 
   return isDataComplete ? (
     <Section>
-      <Figure $portrait>
+      <Figure $aspectRatio="portrait">
         <GatsbyImage
           image={image}
           alt={`${t("name")} - ${t("alt")}`}

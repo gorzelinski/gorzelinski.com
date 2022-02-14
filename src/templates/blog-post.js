@@ -68,7 +68,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <H1 $top>{post.frontmatter.title}</H1>
           <P $lead>{post.frontmatter.description}</P>
         </Header>
-        <Figure $meta>
+        <Figure $aspectRatio="wide">
           <GatsbyImage
             image={getImage(image.src)}
             alt={image.alt}

@@ -44,7 +44,7 @@ const Footer = ({ location }) => {
         </Small>
         <LanguageSwitcher location={location}></LanguageSwitcher>
       </Tile>
-      <Tile $spanAll>
+      <Tile $span="all">
         <Small $top $bottom>
           © {new Date().getFullYear()} {title} • {t("note")}
         </Small>

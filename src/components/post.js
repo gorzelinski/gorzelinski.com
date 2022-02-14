@@ -19,7 +19,7 @@ const Post = ({ data = {} }) => {
     src && date && timeToRead && title && description && slug && true
 
   return isDataComplete ? (
-    <Card $span2 $horizontal>
+    <Card $span={2} $horizontal>
       <Figure as="div">
         <GatsbyImage image={src} alt={alt}></GatsbyImage>
       </Figure>

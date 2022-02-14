@@ -1,13 +1,10 @@
 import styled, { css } from "styled-components"
 
 import { border, media } from "./utils"
-import { spanAll, span2, span3, span4 } from "./grid"
+import { span } from "./grid"
 
 export const Card = styled.article`
-  ${span2}
-  ${span3}
-  ${span4}
-  ${spanAll}
+  ${span}
   ${border}
   overflow: hidden;
   display: grid;

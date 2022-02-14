@@ -19,7 +19,7 @@ const Project = ({ data = {} }) => {
 
   return isDataComplete ? (
     <Card>
-      <Figure as="div" $golden>
+      <Figure as="div" $aspectRatio="golden">
         <GatsbyImage image={src} alt={alt}></GatsbyImage>
       </Figure>
       <div>

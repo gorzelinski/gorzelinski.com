@@ -1,3 +1,4 @@
+export * from "./alignment"
 export * from "./blockquote"
 export * from "./break"
 export * from "./body"

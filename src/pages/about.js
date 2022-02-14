@@ -31,7 +31,7 @@ const About = ({ data, location }) => {
         slug={location.pathname}
       ></Seo>
       <Section>
-        <Figure $portrait>
+        <Figure $aspectRatio="portrait">
           <GatsbyImage
             image={image}
             alt={`${name} - ${t("alt")}`}

@@ -51,7 +51,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
       />
       <Article>
         <ProgressScroll></ProgressScroll>
-        <Figure $wide>
+        <Figure $aspectRatio="meta">
           <GatsbyImage
             image={getImage(image.src)}
             alt={image.alt}
@@ -93,7 +93,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
                 {project.frontmatter.tools}
               </H6>
             </Tile>
-            <Tile $spanAll>
+            <Tile $span="all">
               <Small as="p" $top>
                 {t("live")}
               </Small>
