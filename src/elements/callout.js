@@ -12,40 +12,40 @@ export const Callout = styled.div`
     margin-bottom: var(--font-height-xxs);
   `}
 
-  ${props =>
-    props.$info &&
-    css`
-      color: var(--color-primary-base);
-      background-color: var(--color-primary-100);
-    `}
-
-  ${props =>
-    props.$danger &&
-    css`
-      color: var(--color-danger-base);
-      background-color: var(--color-danger-100);
-    `}
-
-  ${props =>
-    props.$warning &&
-    css`
-      color: var(--color-warning-base);
-      background-color: var(--color-warning-100);
-    `}
-
-  ${props =>
-    props.$success &&
-    css`
-      color: var(--color-success-base);
-      background-color: var(--color-success-100);
-    `}
-
-  ${props =>
-    props.$idea &&
-    css`
-      color: var(--color-warning-base);
-      background-color: var(--color-gray-90);
-    `}
+  ${props => {
+    switch (props.$type) {
+      case "info":
+        return css`
+          color: var(--color-primary-base);
+          background-color: var(--color-primary-100);
+        `
+      case "danger":
+        return css`
+          color: var(--color-danger-base);
+          background-color: var(--color-danger-100);
+        `
+      case "warning":
+        return css`
+          color: var(--color-warning-base);
+          background-color: var(--color-warning-100);
+        `
+      case "success":
+        return css`
+          color: var(--color-success-base);
+          background-color: var(--color-success-100);
+        `
+      case "idea":
+        return css`
+          color: var(--color-warning-base);
+          background-color: var(--color-gray-90);
+        `
+      default:
+        return css`
+          color: var(--color-warning-base);
+          background-color: var(--color-gray-90);
+        `
+    }
+  }}
 
   & > *:nth-child(2) {
     margin-top: 0;
@@ -55,7 +55,7 @@ export const Callout = styled.div`
     margin-bottom: 0;
   }
 
-  & > span {
+  & > .icon {
     --width: calc(var(--font-height-base) + 2 * var(--space-xs));
     --height: var(--width);
     position: absolute;

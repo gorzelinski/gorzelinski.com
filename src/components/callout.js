@@ -27,8 +27,8 @@ const Callout = ({ children, type }) => {
     }
   }
   return (
-    <StyledCallout {...{ [`$${type}`]: true }}>
-      <Icon>{selectIcon(type)}</Icon>
+    <StyledCallout {...{ $type: type }}>
+      <Icon className="icon">{selectIcon(type)}</Icon>
       {children}
     </StyledCallout>
   )
