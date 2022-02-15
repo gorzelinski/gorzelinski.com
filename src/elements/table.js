@@ -2,18 +2,18 @@ import React from "react"
 import styled from "styled-components"
 
 import { media } from "./utils"
-import { baseSize, body, headingXXS } from "./typography"
+import { body, heading, paragraph } from "./typography"
 
 export const StyledTable = styled.table`
   ${body}
-  ${baseSize}
+  ${paragraph.base}
   width: 100%;
   border-collapse: collapse;
   border-spacing: var(--space-xs);
   margin-bottom: var(--font-height-base);
 
   ${media.tablet`
-    ${headingXXS}
+    ${heading.xxs}
     margin-bottom: var(--font-height-xxs);
   `}
 

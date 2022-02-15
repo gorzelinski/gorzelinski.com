@@ -66,7 +66,7 @@ const BlogPostTemplate = ({ data, location }) => {
             {post.frontmatter.date} • {post.timeToRead} {t("min")}
           </Small>
           <H1 $marginReset="top">{post.frontmatter.title}</H1>
-          <P $lead>{post.frontmatter.description}</P>
+          <P $type="lead">{post.frontmatter.description}</P>
         </Header>
         <Figure $aspectRatio="wide">
           <GatsbyImage
@@ -78,7 +78,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <div>
           <MDXRenderer>{post.body}</MDXRenderer>
           <Navigation as="div">
-            <P $ui>{t("share")}</P>
+            <P $type="ui">{t("share")}</P>
             <Socials data={links}></Socials>
           </Navigation>
         </div>

@@ -1,17 +1,7 @@
 import styled, { css } from "styled-components"
 
 import { marginReset, media } from "../utils"
-import {
-  baseSize,
-  headingDecorative,
-  headingL,
-  headingM,
-  headingS,
-  headingXL,
-  headingXS,
-  headingXXL,
-  headingXXS,
-} from "./sizes"
+import { paragraph, heading } from "./sizes"
 
 export const headings = css`
   ${marginReset}
@@ -27,94 +17,58 @@ export const headings = css`
   `}
 `
 
+const responsiveHeading = baseSize => {
+  const index = Object.keys(heading).indexOf(baseSize)
+  const sizes = Object.values(heading)
+  return css`
+    ${sizes[index]}
+
+    ${media.tablet`
+      ${sizes[index + 1]}
+    `}
+
+    ${media.desktop`
+      ${sizes[index + 2]}
+    `}
+  `
+}
+
 export const H1 = styled.h1`
   ${headings}
-  ${headingL}
+  ${responsiveHeading("l")}
 
-  ${media.tablet`
-    ${headingXL}
-  `}
-
-  ${media.desktop`
-    ${headingXXL}
-  `}
-
-  ${props =>
-    props.$decorative &&
-    css`
-      ${headingXL}
-
-      ${media.tablet`
-        ${headingXXL}
-      `}
-
-      ${media.desktop`
-        ${headingDecorative}
-      `}
-    `}
+  ${props => props.$decorative && responsiveHeading("xl")}
 `
 
 export const H2 = styled.h2`
   ${headings}
-  ${headingM}
-
-  ${media.tablet`
-    ${headingL}
-  `}
-
-  ${media.desktop`
-    ${headingXL}
-  `}
+  ${responsiveHeading("m")}
 `
 
 export const H3 = styled.h3`
   ${headings}
-  ${headingS}
-
-  ${media.tablet`
-    ${headingM}
-  `}
-
-  ${media.desktop`
-    ${headingL}
-  `}
+  ${responsiveHeading("s")}
 `
 
 export const H4 = styled.h4`
   ${headings}
-  ${headingXS}
-
-  ${media.tablet`
-    ${headingS}
-  `}
-
-  ${media.desktop`
-    ${headingM}
-  `}
+  ${responsiveHeading("xs")}
 `
 
 export const H5 = styled.h5`
   ${headings}
-  ${headingXXS}
-
-  ${media.tablet`
-    ${headingXS}
-  `}
-
-  ${media.desktop`
-    ${headingS}
-  `}
+  ${responsiveHeading("xxs")}
 `
 
 export const H6 = styled.h6`
   ${headings}
-  ${baseSize}
+  ${paragraph.base}
 
   ${media.tablet`
-    ${headingXXS}
+    ${heading.xxs}
   `}
 
   ${media.desktop`
-    ${headingXS}
+    ${heading.xs}
   `}
 `

@@ -11,7 +11,7 @@ const Cards = ({ data = { nodes: [] } }) => {
 
   return cards.length === 0 ? (
     <Tile>
-      <P $ui>{t("message")}</P>
+      <P $type="ui">{t("message")}</P>
     </Tile>
   ) : (
     cards.map(card =>

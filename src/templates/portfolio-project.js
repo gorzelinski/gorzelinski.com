@@ -59,7 +59,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         </Figure>
         <Header>
           <H1 $marginReset="top">{project.frontmatter.title}</H1>
-          <P $lead>{project.frontmatter.description}</P>
+          <P $type="lead">{project.frontmatter.description}</P>
           <Subsection>
             <Tile>
               <Small as="p" $marginReset="top">

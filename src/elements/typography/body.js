@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 import { media } from "../utils"
 
-import { baseSize, headingXS, headingXXS } from "./sizes"
+import { heading, paragraph } from "./sizes"
 
 export const body = css`
   font-family: var(--font-family-body);
@@ -10,7 +10,7 @@ export const body = css`
 `
 
 export const ui = css`
-  ${baseSize}
+  ${paragraph.base}
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--font-spacing-wide);
@@ -20,37 +20,44 @@ export const ui = css`
 `
 
 export const P = styled.p`
-  ${body}
-  ${baseSize}
   padding: 0;
-  margin: 0 0 var(--font-height-base) 0;
 
-  ${media.tablet`
-    ${headingXXS}
-    margin: 0 0 var(--font-height-xxs) 0;
-  `}
+  ${props => {
+    switch (props.$type) {
+      case "ui":
+        return css`
+          ${ui}
 
-  ${props =>
-    props.$ui &&
-    css`
-      ${ui}
+          ${media.tablet`
+            ${heading.xxs}
+              margin: 0;
+            `}
+        `
+      case "lead":
+        return css`
+          ${body}
+          color: var(--color-gray-base);
+          margin: 0 0 var(--font-height-base) 0;
+          ${heading.xxs}
 
-      ${media.tablet`
-        ${headingXXS}
-          margin: 0;
-      `}
-    `}
+          ${media.tablet`
+            ${heading.xs}
+            margin: 0 0 var(--font-height-xxs) 0;
+          `}
+        `
+      default:
+        return css`
+          ${body}
+          ${paragraph.base}
+          margin: 0 0 var(--font-height-base) 0;
 
-  ${props =>
-    props.$lead &&
-    css`
-      color: var(--color-gray-base);
-      ${headingXXS}
-
-      ${media.tablet`
-        ${headingXS}
-      `}
-    `}
+          ${media.tablet`
+            ${heading.xxs}
+            margin: 0 0 var(--font-height-xxs) 0;
+          `}
+        `
+    }
+  }}
 `
 
 export const Strong = styled.strong`

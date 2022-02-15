@@ -11,7 +11,7 @@ import {
   underline,
 } from "./effects"
 import { elementBuzzOut, iconWobble } from "./animations"
-import { baseSize, smallSize, ui, tinySize } from "./typography"
+import { paragraph, ui } from "./typography"
 
 export const nav = css`
   position: relative;
@@ -113,20 +113,20 @@ export const Button = styled(LocalizedLink)`
     switch (props.$size) {
       case "small":
         return css`
-          ${tinySize}
+          ${paragraph.tiny}
           ${media.mobile`
-            ${smallSize}
+            ${paragraph.small}
           `}
         `
       case "responsive":
         return css`
-          ${tinySize}
+          ${paragraph.tiny}
           ${media.mobile`
-            ${baseSize}
+            ${paragraph.base}
           `}
         `
       default:
-        return baseSize
+        return paragraph.base
     }
   }}
 

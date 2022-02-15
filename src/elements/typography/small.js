@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
 import { marginReset, media } from "../utils"
-import { smallSize, tinySize } from "./sizes"
+import { paragraph } from "./sizes"
 
 export const meta = css`
   font-family: var(--font-family-heading);
@@ -11,11 +11,11 @@ export const meta = css`
 
 export const Small = styled.small`
   ${meta}
-  ${tinySize}
+  ${paragraph.tiny}
   ${marginReset}
 
   ${media.mobile`
-    ${smallSize}
+    ${paragraph.small}
   `}
   
   display: block;
@@ -25,11 +25,11 @@ export const Small = styled.small`
 
 export const Figcaption = styled.figcaption`
   ${meta}
-  ${tinySize}
+  ${paragraph.tiny}
   ${marginReset}
 
   ${media.mobile`
-    ${smallSize}
+    ${paragraph.small}
   `}
 
   ${props =>

@@ -1,15 +1,15 @@
 import styled, { css } from "styled-components"
 
 import { marginReset, media } from "../utils"
-import { meta, smallSize, tinySize } from "../typography"
+import { meta, paragraph } from "../typography"
 
 export const Label = styled.label`
   ${meta}
-  ${tinySize}
+  ${paragraph.tiny}
   ${marginReset}
 
   ${media.mobile`
-    ${smallSize}
+    ${paragraph.small}
   `}
   
   display: block;

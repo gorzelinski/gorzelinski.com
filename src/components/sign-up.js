@@ -23,7 +23,7 @@ const SignUp = () => {
         <H3 as="h2" $marginReset="top">
           {t("heading")}
         </H3>
-        <P $lead>{t("description")}</P>
+        <P $type="lead">{t("description")}</P>
         <Form>
           <Label $hidden htmlFor="name">
             {t("name.label")}

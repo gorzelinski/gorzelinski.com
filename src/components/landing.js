@@ -20,7 +20,7 @@ const Landing = () => {
             ]}
           ></Typewriter>
         </H1>
-        <P $lead>{t("description")}</P>
+        <P $type="lead">{t("description")}</P>
         <Button $type="primary" $grow to="#say-hello">
           {t("cta")}
         </Button>

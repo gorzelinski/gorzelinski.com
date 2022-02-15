@@ -24,7 +24,7 @@ const NotFoundPage = ({ data = {} }) => {
           <H1 $decorative $marginReset="top">
             {t("title")}
           </H1>
-          <P $lead>{t("subtitle")}</P>
+          <P $type="lead">{t("subtitle")}</P>
           <Button $type="primary" $grow to="/">
             {t("button")}
           </Button>

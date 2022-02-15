@@ -33,7 +33,7 @@ const Portfolio = ({ data, location }) => {
           <H1 $marginReset="top" $decorative>
             {t("title")}
           </H1>
-          <P as="h2" $ui>
+          <P as="h2" $type="ui">
             {t("subtitle")}
           </P>
         </Header>
