@@ -5,7 +5,7 @@ import { span } from "./grid"
 
 export const Card = styled.article`
   ${span}
-  ${border}
+  ${border.all}
   overflow: hidden;
   display: grid;
   gap: var(--space-s);

@@ -1,14 +1,32 @@
 import { css } from "styled-components"
 
-export const border = css`
-  border-radius: var(--space-s);
-  border: var(--space-xxxs) solid var(--color-gray-80);
-`
+export const border = {
+  all: css`
+    border-radius: var(--space-s);
+    border: var(--space-xxxs) solid var(--color-gray-80);
+  `,
+  top: css`
+    border-top: var(--space-xxxs) solid var(--color-gray-80);
+  `,
+  bottom: css`
+    border-bottom: var(--space-xxxs) solid var(--color-gray-80);
+  `,
+  interactive: css`
+    border-style: solid;
+    border-radius: var(--space-xs);
+    border-width: var(--space-xxs);
+    border-color: var(--color-gray-80);
 
-export const borderTop = css`
-  border-top: var(--space-xxxs) solid var(--color-gray-80);
-`
+    &:hover {
+      border-color: var(--color-gray-60);
+    }
 
-export const borderBottom = css`
-  border-bottom: var(--space-xxxs) solid var(--color-gray-80);
-`
+    &:focus {
+      border-color: var(--color-gray-60);
+    }
+
+    &:active {
+      border-color: var(--color-gray-base);
+    }
+  `,
+}

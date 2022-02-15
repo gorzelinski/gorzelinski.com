@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { border, borderBottom, borderTop, media } from "../utils"
+import { border, media } from "../utils"
 
 export const code = css`
   font-size: var(--font-size-small);
@@ -20,8 +20,8 @@ export const InlineCode = styled.code`
 `
 
 export const BlockCode = styled.pre`
-  ${borderBottom}
-  ${borderTop}
+  ${border.bottom}
+  ${border.top}
   display: block;
   position: relative;
   padding: calc(var(--space-s) - var(--space-xxxs));
@@ -32,7 +32,7 @@ export const BlockCode = styled.pre`
   `}
 
   ${media.tablet`
-    ${border}
+    ${border.all}
     margin: 0 0 var(--font-height-xxs);
     box-shadow: var(--shadow-neumorphism);
   `}

@@ -10,7 +10,7 @@ export const Section = styled.section`
   ${props =>
     props.$featured &&
     css`
-      ${border}
+      ${border.all}
       background: var(--color-surface-background);
       padding: calc(var(--space-s) - var(--space-xxxs));
       box-shadow: var(--shadow-neumorphism);

@@ -2,29 +2,11 @@ import styled, { css } from "styled-components"
 
 import { outline } from "../effects"
 import { ui } from "../typography"
-
-export const border = css`
-  border-style: solid;
-  border-radius: var(--space-xs);
-  border-width: var(--space-xxs);
-  border-color: var(--color-gray-80);
-
-  &:hover {
-    border-color: var(--color-gray-60);
-  }
-
-  &:focus {
-    border-color: var(--color-gray-60);
-  }
-
-  &:active {
-    border-color: var(--color-gray-base);
-  }
-`
+import { border } from "../utils"
 
 export const Input = styled.input`
   ${ui}
-  ${border}
+  ${border.interactive}
   ${outline}
   color: var(--color-gray-00);
   background-color: transparent;

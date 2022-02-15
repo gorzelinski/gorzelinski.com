@@ -1,3 +1,3 @@
 export * from "./border"
-export * from "./margins"
+export * from "./margin"
 export * from "./media"
