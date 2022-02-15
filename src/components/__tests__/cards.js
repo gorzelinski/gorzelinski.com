@@ -261,7 +261,7 @@ const emptyData = {
   nodes: [],
 }
 
-describe("Posts component", () => {
+describe("Cards component", () => {
   describe("renders message when", () => {
     it("there is no data", () => {
       render(<Cards></Cards>)
