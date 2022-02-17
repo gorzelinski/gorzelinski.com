@@ -36,7 +36,7 @@ const Index = ({ data, location }) => {
       <Featured
         data={{
           title: t("featuredProjects.title"),
-          slug: "/portfolio",
+          slug: "/portfolio/",
           buttonText: t("featuredProjects.button"),
         }}
       >
@@ -46,7 +46,7 @@ const Index = ({ data, location }) => {
       <Featured
         data={{
           title: t("featuredPosts.title"),
-          slug: "/blog",
+          slug: "/blog/",
           buttonText: t("featuredPosts.button"),
         }}
       >
