@@ -20,10 +20,8 @@ const NotFoundPage = ({ data = {} }) => {
         <Figure as="div">
           <GatsbyImage image={image} alt={t("alt")}></GatsbyImage>
         </Figure>
-        <Tile $span={2}>
-          <H1 $decorative $marginReset="top">
-            {t("title")}
-          </H1>
+        <Tile>
+          <H1 $marginReset="top">{t("title")}</H1>
           <P $type="lead">{t("subtitle")}</P>
           <Button $type="primary" $grow to="/">
             {t("button")}
@@ -38,7 +36,7 @@ export default NotFoundPage
 
 export const pageQuery = graphql`
   query {
-    image: file(relativePath: { eq: "not-found.png" }) {
+    image: file(relativePath: { eq: "not-found.jpg" }) {
       childImageSharp {
         gatsbyImageData
       }
