@@ -1,7 +1,7 @@
 ---
 title: An-lam - strona firmowa
 date: "2021-05-01T22:12:03.284Z"
-description: "An-lam to mała, lokalna firma zajmująca się naprawą łodzi i jachtów. Jej niszowy charakter sprawia, że obsługuje także odległych klientów. Właściciel chcąc przedstawić im swoją ofertę, a także dotrzeć do nowych klientów stwierdził, że potrzebuje profesjonalnej strony internetowej."
+description: "An-lam to mała, lokalna firma zajmująca się naprawą łodzi i jachtów. Jej niszowy charakter sprawia, że obsługuje także odległych klientów."
 image:
   alt: "Makieta laptopa i smartfona zawierająca stronę An-lam"
   src: "./an-lam-thumbnail.png"
@@ -10,8 +10,6 @@ myRole: "Design, Kod, Treści"
 tools: "Figma, Gatsby, Github, Netlify"
 live: "https://an-lam.pl/"
 ---
-
-An-lam to mała, lokalna firma zajmująca się naprawą łodzi i jachtów. Jej niszowy charakter sprawia, że obsługuje także odległych klientów. Właściciel chcąc przedstawić im swoją ofertę, a także dotrzeć do nowych klientów stwierdził, że potrzebuje profesjonalnej strony internetowej.
 
 ## Problem
 
@@ -59,17 +57,17 @@ Paleta kolorów składa się z odcieni granatu, bieli i szarości. Nawiązuje do
 
 ## Architektura Systemu
 
-Mając projekt graficzny i treści mogłem przystąpić do kodowania (w zasadzie, poszczególne etapy przeplatały się ze sobą, ale dla uproszczenia przedstawiam wszystko sekwencyjnie). Biorąc pod uwagę fakt, że treści na stronie nie będą często aktualizowane (głównie podstrona realizacje), strona nie będzie szczególnie interaktywna, a wydajność jest istotna, zdecydowałem się na architekturę [JAMstack](/blog/jamstack-co-dlaczego-jak).
+Mając projekt graficzny i treści mogłem przystąpić do kodowania (w zasadzie, poszczególne etapy przeplatały się ze sobą, ale dla uproszczenia przedstawiam wszystko sekwencyjnie). Biorąc pod uwagę fakt, że treści na stronie nie będą często aktualizowane (głównie podstrona realizacje), strona nie będzie szczególnie interaktywna, a wydajność jest istotna, zdecydowałem się na architekturę [Jamstack](/blog/jamstack-co-dlaczego-jak).
 
 ## Gatsby
 
 Gatsby jest jednym z lepiej wyposażonych generatorów stron statycznych na rynku. Posiada sporo funkcji optymalizacji kodu i zdjęć. Wydajność stron jest zapewniona w zasadzie domyślnie. Oferuje sporo starterów, tematów i pluginów, co sprzyja prędkości rozwoju oprogramowania. W razie potrzeby ułatwia dodawanie kolejnych funkcji. Projekt rozpocząłem od [domyślnego startera](https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-default/), do którego dodałem dodatkowe pluginy:
 
-- `gatsby-source-filesystem` do pobierania danych z lokalnego systemu plików
-- `gatsby-transformer-json` do parsowania danych z plików JSON. Dzięki temu w łatwy sposób mogę dodawać kolejne realizacje
-- `gatsby-plugin-sharp` do przetwarzania zdjęć. Ma duży wpływ na wydajność strony (szczególnie obfitej w zdjęcia podstrony realizacje)
-- `gatsby-plugin-react-helmet` do uzupełniania metadanych strony. Istotny dla SEO
-- `gatsby-plugin-styled-components` do stylowania komponentów React
+- `gatsby-source-filesystem` do pobierania danych z lokalnego systemu plików.
+- `gatsby-transformer-json` do parsowania danych z plików JSON. Dzięki temu w łatwy sposób mogę dodawać kolejne realizacje.
+- `gatsby-plugin-sharp` do przetwarzania zdjęć. Ma duży wpływ na wydajność strony (szczególnie obfitej w zdjęcia podstrony realizacje).
+- `gatsby-plugin-react-helmet` do uzupełniania metadanych strony. Istotny dla SEO.
+- `gatsby-plugin-styled-components` do stylowania komponentów React.
 - i kilku innych...
 
 Wybierałem głównie te oficjalne i na bieżąco wspierane pluginy. Starałem się również nie dodawać ich zbyt wiele.
