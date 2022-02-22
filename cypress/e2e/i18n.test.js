@@ -102,7 +102,7 @@ const aboutMock = [
   {
     lang: "en",
     hreflang: "en-US",
-    url: "/about",
+    url: "/about/",
     title: "About",
     description: "Here will be about description.",
     heading: /story/i,
@@ -110,7 +110,7 @@ const aboutMock = [
   {
     lang: "pl",
     hreflang: "pl-PL",
-    url: "/pl/about",
+    url: "/pl/about/",
     title: "O mnie",
     description: "Tu będzie opis o mnie.",
     heading: /historia/i,
@@ -140,7 +140,7 @@ const projectsMock = [
   {
     lang: "en",
     hreflang: "en-US",
-    url: "/portfolio/gorzelinski",
+    url: "/portfolio/gorzelinski/",
     title: "Behind the scenes of my website",
     description:
       "This case study peeks behind the scenes of building my website.",
@@ -148,7 +148,7 @@ const projectsMock = [
   {
     lang: "pl",
     hreflang: "pl-PL",
-    url: "/pl/portfolio/gorzelinski",
+    url: "/pl/portfolio/gorzelinski/",
     title: "Kulisy powstawania mojej strony",
     description:
       "W tym case study przedstawiam kulisy powstawania mojej strony.",
@@ -159,7 +159,7 @@ const postsMock = [
   {
     lang: "en",
     hreflang: "en-US",
-    url: "/blog/stylish-design-principles-with-a-nasty-acronym-crap",
+    url: "/blog/stylish-design-principles-with-a-nasty-acronym-crap/",
     title: "Stylish design principles with a nasty acronym - CRAP",
     description:
       "In this post, we will look at four universal design principles that can improve any graphical work: website, slide, poster, document, etc.",
@@ -171,7 +171,7 @@ const postsMock = [
   {
     lang: "pl",
     hreflang: "pl-PL",
-    url: "/pl/blog/stylish-design-principles-with-a-nasty-acronym-crap",
+    url: "/pl/blog/stylish-design-principles-with-a-nasty-acronym-crap/",
     title: "Stylowe zasady designu o paskudnym akronimie - CRAP",
     description:
       "W tym wpisie przyjrzymy się czterem, uniwersalnym zasadom designu, które mogą poprawić dowolną pracę graficzną: stronę internetową, slajd, plakat, dokument itp.",
@@ -215,15 +215,15 @@ describe("I18n tests", () => {
   }
 
   const checkLinking = page => {
-    cy.get('a[rel="prev"]').click()
-    cy.findByRole("heading", { level: 1 }).should("be.visible")
-    cy.url().should("not.contain", page.url)
     if (page.lang === "en") {
-      cy.url().should("not.contain", page.lang)
+      cy.get('a[rel="prev"]')
+        .should("have.prop", "href")
+        .and("not.contain", page.lang)
     } else {
-      cy.url().should("contain", page.lang)
+      cy.get('a[rel="prev"]')
+        .should("have.prop", "href")
+        .and("contain", page.lang)
     }
-    cy.get('a[rel="next"]').click()
   }
 
   it("Visits home page and checks its translations", () => {
