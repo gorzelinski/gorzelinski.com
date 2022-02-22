@@ -1,13 +1,13 @@
 module.exports = {
   siteMetadata: {
+    siteUrl: `https://gorzelinski.com/`,
     title: `MG`,
+    description: `A starter blog demonstrating what Gatsby can do.`,
     author: {
       name: `Matthew Gorzelinski`,
       summary: `Engineer with polymath aspirations.`,
       email: `hello@gorzelinski.com`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gorzelinski.com/`,
     social: {
       github: `gorzelinski`,
       dribbble: `gorzelinski`,

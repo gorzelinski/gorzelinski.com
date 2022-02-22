@@ -1,25 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+
+import { useBio } from "../hooks/useBio"
 
 const Seo = ({ description, image, lang, meta, slug, title, type }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            siteUrl
-            social {
-              twitter
-            }
-          }
-        }
-      }
-    `
-  )
+  const {
+    bio: { site },
+  } = useBio()
 
   const url = `${site.siteMetadata.siteUrl}${slug}`
   const metaDescription = description || site.siteMetadata.description
