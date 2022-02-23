@@ -94,7 +94,7 @@ jobs:
         with:
           name: build-output
           path: public
-          retention-days: 3
+          retention-days: 1
   e2e-test-chrome:
     runs-on: ubuntu-latest
     strategy:
@@ -125,7 +125,7 @@ jobs:
       - name: Run Cypress
         uses: cypress-io/github-action@v2
         with:
-          start: npm start
+          start: npm run serve
           wait-on: "http://localhost:8000"
           browser: chrome
           install: false
@@ -159,7 +159,7 @@ jobs:
       - name: Run Cypress
         uses: cypress-io/github-action@v2
         with:
-          start: npm start
+          start: npm run serve
           wait-on: "http://localhost:8000"
           browser: firefox
           install: false
