@@ -123,7 +123,7 @@ jobs:
       - name: Run cypress
         uses: cypress-io/github-action@v2
         with:
-          start: npm run test:e2e:ci
+          start: npm start
           browser: chrome
   e2e-tests-firefox:
     runs-on: ubuntu-latest
@@ -155,5 +155,5 @@ jobs:
       - name: Run cypress
         uses: cypress-io/github-action@v2
         with:
-          start: npm run test:e2e:ci
+          start: npm start
           browser: firefox
