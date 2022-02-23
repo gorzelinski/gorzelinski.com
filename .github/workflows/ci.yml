@@ -98,7 +98,7 @@ jobs:
     strategy:
       matrix:
         node: [16]
-    needs: unit-test
+    needs: build
     steps:
       - name: Checkout commit
         uses: actions/checkout@v2
@@ -130,7 +130,7 @@ jobs:
     strategy:
       matrix:
         node: [16]
-    needs: unit-test
+    needs: build
     steps:
       - name: Checkout commit
         uses: actions/checkout@v2
