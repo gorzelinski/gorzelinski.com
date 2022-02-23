@@ -29,25 +29,19 @@ jobs:
       - name: Cache npm dependencies
         uses: actions/cache@v2
         id: cache-npm
-        env:
-          cache-npm: cache-node-modules
         with:
-          path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-npm }}-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-npm }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}
+            ${{ runner.os }}-node-
       - name: Cache Cypress binary
         uses: actions/cache@v2
         id: cache-cypress
-        env:
-          cache-cypress: cache-cypress-binary
         with:
           path: ~/.cache/Cypress
-          key: ${{ env.cache-cypress }}-${{ hashFiles('**/package-lock.json') }}
+          key: cypress-binary-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ env.cache-cypress }}-
+            cypress-binary-
       - name: Install dependencies
         if: steps.cache-npm.outputs.cache-hit != 'true' || steps.cache-cypress.outputs.cache-hit != 'true'
         run: npm install
@@ -66,13 +60,12 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Restore npm dependencies
         uses: actions/cache@v2
+        id: cache-npm
         with:
-          path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}
+            ${{ runner.os }}-node-
       - name: Run unit tests
         run: npm test
   build:
@@ -90,13 +83,12 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Restore npm dependencies
         uses: actions/cache@v2
+        id: cache-npm
         with:
-          path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}
+            ${{ runner.os }}-node-
       - name: Run build
         run: npm run build
       - name: Upload build artifacts
@@ -120,23 +112,20 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Restore npm dependencies
         uses: actions/cache@v2
+        id: cache-npm
         with:
-          path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}
+            ${{ runner.os }}-node-
       - name: Restore Cypress binary
         uses: actions/cache@v2
         id: cache-cypress
-        env:
-          cache-cypress: cache-cypress-binary
         with:
           path: ~/.cache/Cypress
-          key: ${{ env.cache-cypress }}-${{ hashFiles('**/package-lock.json') }}
+          key: cypress-binary-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ env.cache-cypress }}-
+            cypress-binary-
       - name: Download build artifacts
         uses: actions/download-artifact@v2
         with:
@@ -164,23 +153,20 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Restore npm dependencies
         uses: actions/cache@v2
+        id: cache-npm
         with:
-          path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}
+            ${{ runner.os }}-node-
       - name: Restore Cypress binary
         uses: actions/cache@v2
         id: cache-cypress
-        env:
-          cache-cypress: cache-cypress-binary
         with:
           path: ~/.cache/Cypress
-          key: ${{ env.cache-cypress }}-${{ hashFiles('**/package-lock.json') }}
+          key: cypress-binary-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ env.cache-cypress }}-
+            cypress-binary-
       - name: Download build artifacts
         uses: actions/download-artifact@v2
         with:
