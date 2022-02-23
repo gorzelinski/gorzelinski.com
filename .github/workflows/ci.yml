@@ -127,6 +127,16 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}
+      - name: Restore Cypress binary
+        uses: actions/cache@v2
+        id: cache-cypress
+        env:
+          cache-cypress: cache-cypress-binary
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ env.cache-cypress }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ env.cache-cypress }}-
       - name: Download build artifacts
         uses: actions/download-artifact@v2
         with:
@@ -161,6 +171,16 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}
+      - name: Restore Cypress binary
+        uses: actions/cache@v2
+        id: cache-cypress
+        env:
+          cache-cypress: cache-cypress-binary
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ env.cache-cypress }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ env.cache-cypress }}-
       - name: Download build artifacts
         uses: actions/download-artifact@v2
         with:
