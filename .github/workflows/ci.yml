@@ -44,7 +44,7 @@ jobs:
             cypress-binary-
       - name: Install dependencies
         if: steps.cache-npm.outputs.cache-hit != 'true' || steps.cache-cypress.outputs.cache-hit != 'true'
-        run: npm install
+        run: npm ci
   unit-test:
     runs-on: ubuntu-latest
     strategy:
