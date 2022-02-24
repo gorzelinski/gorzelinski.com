@@ -1,8 +1,16 @@
 name: CI
 on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "**.js"
+      - "**.jsx"
+      - "**.json"
+      - "**.yml"
   push:
     branches:
-      - ci
+      - main
     paths:
       - "**.js"
       - "**.jsx"
