@@ -5,6 +5,7 @@ export const useBio = () => {
     query BioQuery {
       site {
         siteMetadata {
+          siteUrl
           title
           author {
             name

@@ -25,7 +25,7 @@ const Avatar = () => {
       />
       <div>
         <H6 as="p" $marginReset="both">
-          <Link href="/about">{t("name")}</Link>
+          <Link href="/about/">{t("name")}</Link>
         </H6>
         <Small as="p" $marginReset="bottom">
           {t("summary")}

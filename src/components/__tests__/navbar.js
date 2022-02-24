@@ -36,7 +36,7 @@ describe("Navbar component", () => {
 
     it("link to about page", () => {
       const about = screen.queryByRole("link", { name: /about/i })
-      expect(about.getAttribute("href")).toBe("/about")
+      expect(about.getAttribute("href")).toBe("/about/")
     })
 
     it("link to blog page", () => {

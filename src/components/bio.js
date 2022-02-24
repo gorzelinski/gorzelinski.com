@@ -38,16 +38,16 @@ const Bio = ({ data = {} }) => {
         <P>{t("brief")}</P>
         <P>
           {t("portfolio.mention")}{" "}
-          <Link to="/portfolio">{t("portfolio.button")}</Link>.
+          <Link to="/portfolio/">{t("portfolio.button")}</Link>.
         </P>
         <P>
-          {t("blog.mention")} <Link to="/blog">{t("blog.button")}</Link>.
+          {t("blog.mention")} <Link to="/blog/">{t("blog.button")}</Link>.
         </P>
         <Button
           $type="text"
           $align="left"
           $animation="icon-forward"
-          to="/about"
+          to="/about/"
         >
           {t("story")}
           <Icon>

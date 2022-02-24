@@ -78,7 +78,7 @@ describe("Seo tests", () => {
   })
   it("Visits portfolio page and checks important seo tags", () => {
     const mock = {
-      url: "https://gorzelinski.com/portfolio",
+      url: "https://gorzelinski.com/portfolio/",
       title: "Portfolio",
       description: "Here will be the portfolio description",
       type: "website",
@@ -89,7 +89,7 @@ describe("Seo tests", () => {
   })
   it("Visits portfolio project and checks important seo tags", () => {
     const mock = {
-      url: "https://gorzelinski.com/portfolio/an-lam",
+      url: "https://gorzelinski.com/portfolio/an-lam/",
       title: "An-lam",
       description: "An-lam is a small",
       type: "article",
@@ -100,7 +100,7 @@ describe("Seo tests", () => {
   })
   it("Visits about me page and checks important seo tags", () => {
     const mock = {
-      url: "https://gorzelinski.com/about",
+      url: "https://gorzelinski.com/about/",
       title: "About",
       description: "Here will be about description",
       type: "website",
@@ -111,7 +111,7 @@ describe("Seo tests", () => {
   })
   it("Visits blog page and checks important seo tags", () => {
     const mock = {
-      url: "https://gorzelinski.com/blog",
+      url: "https://gorzelinski.com/blog/",
       title: "Blog",
       description: "Here will be the blog description",
       type: "website",
@@ -122,7 +122,7 @@ describe("Seo tests", () => {
   })
   it("Visits blog post and checks important seo tags", () => {
     const mock = {
-      url: "https://gorzelinski.com/blog/hello-world",
+      url: "https://gorzelinski.com/blog/hello-world/",
       title: "Hello... world?",
       description: "What I'm actually",
       type: "article",

@@ -28,7 +28,7 @@ const Navbar = () => {
           $size="responsive"
           $type="nav"
           $animation="underline"
-          to="/about"
+          to="/about/"
           activeClassName="active"
         >
           {t("about")}
@@ -42,7 +42,7 @@ const Navbar = () => {
         >
           {t("blog")}
         </Button>
-        <Button $size="responsive" $type="primary" to="#contact">
+        <Button as="a" $size="responsive" $type="primary" href="#contact">
           {t("contact")}
         </Button>
       </Navigation>
