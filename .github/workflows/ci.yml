@@ -8,14 +8,6 @@ on:
       - "**.jsx"
       - "**.json"
       - "**.yml"
-  push:
-    branches:
-      - main
-    paths:
-      - "**.js"
-      - "**.jsx"
-      - "**.json"
-      - "**.yml"
 
 concurrency:
   group: ${{ github.ref }}
