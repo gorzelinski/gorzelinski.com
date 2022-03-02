@@ -4,7 +4,7 @@ date: "2021-05-01T22:12:03.284Z"
 description: "An-lam is a small polish local business repairing boats and yachts. Its niche character makes it interesting also for distant clients."
 image:
   alt: "Mock of a laptop and smartphone with An-lam website"
-  src: "./an-lam-thumbnail.png"
+  src: "./an-lam-cover.png"
 client: An-lam
 myRole: "Design, Code, Content"
 tools: "Figma, Gatsby, Github, Netlify"
@@ -19,11 +19,19 @@ Before I started work, I had met with a business owner to understand his needs. 
 
 Before I started designing, I had done some research. I visited many competitors' websites - from local boatbuilders to yacht charters. I shared some links with the owner to recognize his aesthetic taste. Marine projects on _Behance_ and _Dribbble_ were also helpful. Using them, I've created an extensive mood board that I've been using during designing.
 
+![Moodboard for an-lam website](./moodboard.png)
+
 ## Wireframes
 
-I started the design process by creating several rough drafts of every section and renovations subpage. I started with pen and paper because the project was simple and minimalistic.
+I started the design process by creating several drafts of sections and renovations subpage. Then I fastly moved on to experimenting with fonts and colors.
 
-Based on drafts, I created some wireframes. I shared them with the entrepreneur. His decisions influenced the following work.
+![Set of different fonts and colors](./fonts-and-colors.png "Snippet of my experiments with fonts and colors")
+
+Based on drafts and experiments, I created some wireframes. I shared them with the entrepreneur. His decisions influenced the following work.
+
+![First landing section wireframe](./landing-wireframe-1.png "Test wireframe of landing section")
+
+![Second landing section wireframe](./landing-wireframe-2.png "Another test wireframe of landing section")
 
 ## Content
 
@@ -33,9 +41,13 @@ Knowing the structure of the pages, I started creating content. For every sectio
 
 For this project, I created a simple but formal design system. I divided it into five levels of [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/). The base of every design system is typography and colors. I and the owner both liked classical font - [Old Standard TT](https://fonts.google.com/specimen/Old+Standard+TT). I paired it with the simple, geometrical font - [Questrial](https://fonts.google.com/specimen/Questrial) - for contrast. I think this combination emphasizes the owner's love for classical items, his long-term experience, and the local character of the business. The color palette consisted of grays, whites, and navy blue. It refers to sea, yachts, and minimalism. The accessibility of a website is significant, so I tested the color contrast ratios.
 
+![Design system - typography](./design-system-typography.png "Headers in the design system")
+
+![Design system - colors](./design-system-colors.png "Colors in the design system")
+
 ## Architecture
 
-Having design and content, I could start coding (actually, different project stages were intertwined, but I present everything sequentially). The website will be mostly static, won't be often updated, and need to have good performance - because of that, I've chosen [Jamstack](/blog/jamstack-what-why-how) architecture.
+Having design and content, I could start coding (actually, different project stages were intertwined, but I present everything sequentially). The website will be mostly static, won't be often updated, and need to have good performance - because of that, I've chosen [Jamstack](/blog/jamstack-what-why-how/) architecture.
 
 ## Gatsby
 
@@ -100,6 +112,8 @@ describe("Services", () => {
 ```
 
 Besides unit tests, I also created some e2e tests. To achieve that, I added to the project `Cypress` with `Cypress Testing Library`. In this way, I unified searching for DOM elements. I simulated users' behavior with e2e tests: scrolling through sections, clicking links, etc. `Cypress-axe` library turned out to be very handy. It detected some problems with accessibility and helped me fix them.
+
+<img style="width: 100%;" alt="E2e test showcase" src="./e2e-tests.gif"></img>
 
 ## Github
 

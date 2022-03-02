@@ -4,7 +4,7 @@ date: "2021-05-01T22:12:03.284Z"
 description: "An-lam to mała, lokalna firma zajmująca się naprawą łodzi i jachtów. Jej niszowy charakter sprawia, że obsługuje także odległych klientów."
 image:
   alt: "Makieta laptopa i smartfona zawierająca stronę An-lam"
-  src: "./an-lam-thumbnail.png"
+  src: "./an-lam-cover.png"
 client: An-lam
 myRole: "Design, Kod, Treści"
 tools: "Figma, Gatsby, Github, Netlify"
@@ -20,25 +20,23 @@ Zanim zacząłem pracę, spotkałem się z właścicielem firmy, aby zrozumieć 
 Przed przystąpieniem do projektowania zrobiłem gruntowny research. Przejrzałem mnóstwo stron konkurencji - od lokalnych szkutników po czartery jachtów. Podesłałem kilka linków właścicielowi, aby zorientować się w jego guście estetycznym.
 Przydatne także okazały się projekty marynistyczne na _dribble_ i _behance_. Z ich pomocą stworzyłem obszerny moodboard, do którego wracałem podczas projektowania.
 
-![An-lam - moodboard](./an-lam-moodboard.jpg)
+![Moodboard dla strony an-lam](./moodboard.png)
 
 ## Sitemap
 
 Witryna z założenia miała być prosta, dlatego mapa strony nie jest złożona. Cała witryna składa się ze strony głównej podzielonej na 5 sekcji i podstrony realizacje, gdzie zostały przedstawione wybrane renowacje i naprawy.
 
-![An-lam - mapa strony](./an-lam-sitemap.png)
-
 ## Wireframes
 
-Projektowanie zacząłem od przygotowania kilku, zgrubnych szkiców każdej sekcji i podstrony realizacje. Projekt miał być minimalistyczny, dlatego stwierdziłem, że kartka i długopis są wystarczające.
+Projektowanie zacząłem od przygotowania kilku, zgrubnych szkiców sekcji i podstrony realizacje. Następnie szybko przeszedłem do eksperymentowania z róznymi fontami i kolorami.
 
-![An-lam - szkic sekcji realizacje](./an-lam-realizacje-sekcja-szkic.jpg)
+![Zestawienie różnych fontów i kolorów](./fonts-and-colors.png "Fragment moich eksperymentów z fontami i kolorami")
 
-![An-lam - szkic podstrony realizacje](./an-lam-realizacje-podstrona-szkic.jpg)
+Na podstawie szkiców i eksperymentów przygotowałem kilka próbnych układów, które podesłałem właścicielowi. Jego decyzje wpłynęły na dalsze prace.
 
-Na podstawie szkiców przygotowałem kilka próbnych układów, które podesłałem właścicielowi. Jego decyzje wpłynęły na dalsze prace.
+![Pierwszy testowy układ strony głównej](./landing-wireframe-1.png "Testowy układ strony głównej")
 
-![An-lam - przykładowe układy](./an-lam-uklady.jpg)
+![Drugi testowy układ strony głównej](./landing-wireframe-2.png "Inny testowy układ strony głównej")
 
 ## Treści
 
@@ -51,13 +49,13 @@ Podstawą każdego, takiego systemu są fonty i kolory.
 Zarówno mi jak i właścicielowi spodobał się klasyczny font - [Old Standard TT](https://fonts.google.com/specimen/Old+Standard+TT). Sparowałem go z prostym, geometrycznym fontem [Questrial](https://fonts.google.com/specimen/Questrial), dla uzyskania kontrastu. Myślę, że to połączenie dobrze podkreśla zamiłowanie właściciela do klasycznych rzeczy, jego wieloletnie doświadczenie i lokalny charakter firmy.
 Paleta kolorów składa się z odcieni granatu, bieli i szarości. Nawiązuje do morza, jachtów i minimalizmu. Dostępność strony była dla mnie również istotna, dlatego przetestowałem kontrast kolorów.
 
-![An-lam - typografia](./an-lam-design-system-typografia.jpg)
+![Design system - typografia](./design-system-typography.png "Nagłówki w systemie")
 
-![An-lam - kolory](./an-lam-design-system-kolory.jpg)
+![Design system - kolory](./design-system-colors.png "Kolory w systemie")
 
-## Architektura Systemu
+## Architektura
 
-Mając projekt graficzny i treści mogłem przystąpić do kodowania (w zasadzie, poszczególne etapy przeplatały się ze sobą, ale dla uproszczenia przedstawiam wszystko sekwencyjnie). Biorąc pod uwagę fakt, że treści na stronie nie będą często aktualizowane (głównie podstrona realizacje), strona nie będzie szczególnie interaktywna, a wydajność jest istotna, zdecydowałem się na architekturę [Jamstack](/blog/jamstack-co-dlaczego-jak).
+Mając projekt graficzny i treści mogłem przystąpić do kodowania (w zasadzie, poszczególne etapy przeplatały się ze sobą, ale dla uproszczenia przedstawiam wszystko sekwencyjnie). Biorąc pod uwagę fakt, że treści na stronie nie będą często aktualizowane (głównie podstrona realizacje), strona nie będzie szczególnie interaktywna, a wydajność jest istotna, zdecydowałem się na architekturę [Jamstack](/blog/jamstack-what-why-how/).
 
 ## Gatsby
 
@@ -125,7 +123,11 @@ describe("Services", () => {
 Poza testami jednostkowymi stworzyłem także kilka testów E2E. W tym celu, dodałem do projektu framework `Cypress` wraz z biblioteką `Cypress Testing Library`. Ujednoliciłem w ten sposób składnię wyszukiwania elementów DOM. Testy E2E wykorzystałem do symulacji zachowań użytkownika: przeglądania sekcji i podstron, klikania w poszczególne linki itp.
 Bardzo przydatna okazała się także biblioteka `cypress-axe`. Wykryła kilka problemów związanych z dostępnością strony i pomogła mi w ich usunięciu.
 
-<!-- ![An-lam - test e2e](./an-lam-e2e-test.gif) -->
+<img
+  style="width: 100%;"
+  alt="Prezentacja testów e2e"
+  src="./e2e-tests.gif"
+></img>
 
 ## Github
 
