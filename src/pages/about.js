@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { useLocalization } from "gatsby-theme-i18n"
 
-import { Figcaption, Figure, H1, P, Section, Tile } from "../elements"
+import { Figure, H1, P, Section, Tile } from "../elements"
 import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -29,24 +29,28 @@ const About = ({ data, location }) => {
         slug={location.pathname}
       ></Seo>
       <Section>
-        <Figure $aspectRatio="portrait">
+        {/* TODO: change image */}
+        <Figure $aspectRatio="wide" $span="all">
           <GatsbyImage
             image={image}
             alt={`${name} - ${t("alt")}`}
           ></GatsbyImage>
-          <Figcaption>{t("caption")}</Figcaption>
         </Figure>
-        <Tile as="article">
-          <H1 $marginReset="top">{t("heading")}</H1>
+        <H1 $marginReset="top">{t("heading")}</H1>
+        <Tile>
           <P>{t("story.childhood")}</P>
           <P>{t("story.teenager")}</P>
           <P>{t("story.education")}</P>
           <P>{t("story.university")}</P>
+        </Tile>
+        <Tile>
           <P>{t("story.experience")}</P>
           <P>{t("story.graduation")}</P>
           <P>{t("story.books")}</P>
           <P>{t("story.ending")}</P>
         </Tile>
+        <Tile></Tile>
+        <Tile></Tile>
       </Section>
     </Layout>
   )
