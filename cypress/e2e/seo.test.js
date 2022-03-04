@@ -84,7 +84,7 @@ describe("Seo tests", () => {
       type: "website",
       h1: /portfolio/i,
     }
-    cy.visit("/portfolio")
+    cy.visit("/portfolio/")
     shouldHaveTags(mock)
   })
   it("Visits portfolio project and checks important seo tags", () => {
@@ -95,7 +95,7 @@ describe("Seo tests", () => {
       type: "article",
       h1: /an-lam/i,
     }
-    cy.visit("/portfolio/an-lam")
+    cy.visit("/portfolio/an-lam/")
     shouldHaveTags(mock)
   })
   it("Visits about me page and checks important seo tags", () => {
@@ -106,7 +106,7 @@ describe("Seo tests", () => {
       type: "website",
       h1: /short story/i,
     }
-    cy.visit("/about")
+    cy.visit("/about/")
     shouldHaveTags(mock)
   })
   it("Visits blog page and checks important seo tags", () => {
@@ -117,7 +117,7 @@ describe("Seo tests", () => {
       type: "website",
       h1: /blog/i,
     }
-    cy.visit("/blog")
+    cy.visit("/blog/")
     shouldHaveTags(mock)
   })
   it("Visits blog post and checks important seo tags", () => {
@@ -128,7 +128,7 @@ describe("Seo tests", () => {
       type: "article",
       h1: /hello... world?/i,
     }
-    cy.visit("/blog/hello-world")
+    cy.visit("/blog/hello-world/")
     shouldHaveTags(mock)
   })
 })
