@@ -60,7 +60,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     // TODO: find a way to unwrap figure/img elements from p
-    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
