@@ -8,7 +8,7 @@ export const grid = css`
     auto-fit,
     minmax(min(var(--space-xxxl), 100%), 1fr)
   );
-  gap: var(--space-l) var(--space-s);
+  gap: var(--space-m) var(--space-s);
 
   ${media.tablet`
     gap: var(--space-l) var(--space-m);

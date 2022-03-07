@@ -6,7 +6,6 @@ import { ChevronForward } from "@styled-icons/ionicons-solid"
 import {
   Section,
   Figure,
-  Figcaption,
   Small,
   H2,
   P,
@@ -23,12 +22,11 @@ const Bio = ({ data = {} }) => {
 
   return isDataComplete ? (
     <Section>
-      <Figure $aspectRatio="portrait">
+      <Figure as="div" $rounded $aspectRatio="portrait">
         <GatsbyImage
           image={image}
           alt={`${t("name")} - ${t("alt")}`}
         ></GatsbyImage>
-        <Figcaption>{t("caption")}</Figcaption>
       </Figure>
       <Tile>
         <Small as="p" $marginReset="top">

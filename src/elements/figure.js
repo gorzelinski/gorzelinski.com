@@ -11,6 +11,14 @@ export const Figure = styled.figure`
     height: 100%;
   }
 
+  ${props =>
+    props.$rounded &&
+    css`
+      & > div {
+        border-radius: var(--space-s);
+      }
+    `}
+
   ${props => {
     switch (props.$aspectRatio) {
       case "square":

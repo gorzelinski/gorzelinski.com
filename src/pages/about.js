@@ -30,27 +30,29 @@ const About = ({ data, location }) => {
       ></Seo>
       <Section>
         {/* TODO: change image */}
-        <Figure $aspectRatio="wide" $span="all">
+        <Figure as="div" $aspectRatio="wide" $span="all">
           <GatsbyImage
             image={image}
             alt={`${name} - ${t("alt")}`}
           ></GatsbyImage>
         </Figure>
-        <H1 $marginReset="top">{t("heading")}</H1>
-        <Tile>
-          <P>{t("story.childhood")}</P>
-          <P>{t("story.teenager")}</P>
-          <P>{t("story.education")}</P>
-          <P>{t("story.university")}</P>
+        <Tile $span="all">
+          <H1 $marginReset="both">{t("heading")}</H1>
         </Tile>
-        <Tile>
-          <P>{t("story.experience")}</P>
-          <P>{t("story.graduation")}</P>
-          <P>{t("story.books")}</P>
-          <P>{t("story.ending")}</P>
-        </Tile>
-        <Tile></Tile>
-        <Tile></Tile>
+        <Section as="div" $marginReset="top">
+          <Tile>
+            <P>{t("story.childhood")}</P>
+            <P>{t("story.teenager")}</P>
+            <P>{t("story.education")}</P>
+            <P>{t("story.university")}</P>
+          </Tile>
+          <Tile>
+            <P>{t("story.experience")}</P>
+            <P>{t("story.graduation")}</P>
+            <P>{t("story.books")}</P>
+            <P>{t("story.ending")}</P>
+          </Tile>
+        </Section>
       </Section>
     </Layout>
   )

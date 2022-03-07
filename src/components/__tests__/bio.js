@@ -47,11 +47,6 @@ describe("Bio component", () => {
       render(<Bio data={defaultData}></Bio>)
     })
 
-    it("figure", () => {
-      const figure = screen.getByRole("figure")
-      expect(figure).toBeInTheDocument()
-    })
-
     it("image", () => {
       const image = screen.getByRole("img")
       expect(image).toBeInTheDocument()
