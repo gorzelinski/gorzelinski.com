@@ -1,10 +1,13 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import { Mail } from "@styled-icons/ionicons-solid"
 
 import {
   Address,
   Button,
   Footer as StyledFooter,
+  Icon,
+  Navigation,
   Small,
   Tile,
 } from "../elements"
@@ -27,9 +30,14 @@ const Footer = ({ location }) => {
           {t("email")}
         </Small>
         <Address>
-          <Button as="a" $type="text" $align="left" href={`mailto:${email}`}>
-            {email}
-          </Button>
+          <Navigation>
+            <Icon $type="text">
+              <Mail></Mail>
+            </Icon>
+            <Button as="a" $type="text" href={`mailto:${email}`}>
+              {email}
+            </Button>
+          </Navigation>
         </Address>
       </Tile>
       <Tile>
