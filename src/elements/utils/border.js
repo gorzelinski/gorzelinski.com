@@ -17,15 +17,15 @@ export const border = {
     border-width: var(--space-xxs);
     border-color: var(--color-gray-80);
 
-    &:hover {
+    &:hover:enabled {
       border-color: var(--color-gray-60);
     }
 
-    &:focus {
+    &:focus:enabled {
       border-color: var(--color-gray-60);
     }
 
-    &:active {
+    &:active:enabled {
       border-color: var(--color-gray-base);
     }
   `,

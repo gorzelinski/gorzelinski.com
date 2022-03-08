@@ -36,10 +36,18 @@ export const nav = css`
     color: var(--color-gray-00);
     transition: color var(--duration-natural) ease-out;
   }
+  &:disabled {
+    color: var(--color-gray-60);
+    cursor: not-allowed;
+  }
 `
 
 export const text = css`
   ${primaryColorStates}
+  &:disabled {
+    color: var(--color-gray-base);
+    cursor: not-allowed;
+  }
 `
 export const primary = css`
   ${primaryBackgroundColorStates}
@@ -48,12 +56,10 @@ export const primary = css`
   color: var(--color-gray-100);
   background-color: var(--color-primary-base);
   border-radius: var(--space-xs);
-
-  &:focus:after {
-    background-color: var(--color-primary-30);
-  }
-  &:active:after {
-    background-color: var(--color-primary-10);
+  &:disabled {
+    background: var(--color-gray-90);
+    color: var(--color-gray-base);
+    cursor: not-allowed;
   }
 `
 

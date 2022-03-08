@@ -9,7 +9,7 @@ export const Switch = styled.input.attrs(() => ({
   appearance: none;
   --active: var(--color-primary-base);
   --active-inner: var(--color-background);
-  --border: var(--color-gray-base);
+  --border: var(--color-primary-base);
   --background: var(--color-background);
   width: var(--space-l);
   height: var(--font-height-base);
@@ -33,6 +33,11 @@ export const Switch = styled.input.attrs(() => ({
     --d-o: var(--duration-natural);
     --d-t: var(--duration-slow);
     --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+    &:disabled {
+      &:after {
+        background: var(--color-gray-80);
+      }
+    }
   }
   &:after {
     --size: calc(var(--space-s) + var(--space-xxs));
@@ -48,5 +53,13 @@ export const Switch = styled.input.attrs(() => ({
     transform: translateX(var(--x, 0));
     transition: transform var(--d-t, 0.3s) var(--d-t-e, ease),
       opacity var(--d-o, 0.2s);
+  }
+  &:disabled {
+    cursor: not-allowed;
+    background: var(--color-gray-90);
+    border: var(--space-xxxs) solid var(--color-gray-base);
+    &:after {
+      background: var(--color-gray-base);
+    }
   }
 `
