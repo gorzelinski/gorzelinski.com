@@ -124,7 +124,7 @@ describe("Seo tests", () => {
     const mock = {
       url: "https://gorzelinski.com/blog/hello-world/",
       title: "Hello... world?",
-      description: "What I'm actually",
+      description: "What am I actually",
       type: "article",
       h1: /hello... world?/i,
     }

@@ -143,8 +143,12 @@ describe("Navigation tests", () => {
     cy.findByTestId("progress").should("not.be.visible")
     cy.findByTestId("progress-thumb").should("not.be.visible")
     cy.scrollTo(0, 2000)
-    cy.findByTestId("progress").should("be.visible")
-    cy.findByTestId("progress-thumb").should("be.visible")
+    cy.findByTestId("progress").should($progress => {
+      expect($progress).to.be.visible
+    })
+    cy.findByTestId("progress-thumb").should($progressThumb => {
+      expect($progressThumb).to.be.visible
+    })
   })
   it("Navigates to portfolio project and checks its links", () => {
     cy.findByRole("link", { name: portfolioMock.alternateLink })
