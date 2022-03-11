@@ -1,5 +1,5 @@
 :root {
-  --duration-immediate: 100ms;
+  --duration-immediate: 150ms;
   --duration-natural: 250ms;
   --duration-slow: 500ms;
   --duration-deliberate: 750ms;

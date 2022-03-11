@@ -30,7 +30,7 @@ const Footer = ({ location }) => {
           {t("email")}
         </Small>
         <Address>
-          <Navigation>
+          <Navigation as="div">
             <Icon $type="text">
               <Mail></Mail>
             </Icon>

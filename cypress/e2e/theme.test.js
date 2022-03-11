@@ -2,7 +2,7 @@
 
 describe("Theme tests", () => {
   const checkLightTheme = () => {
-    cy.findByTestId("sunny").should("be.visible")
+    cy.findByTestId("sun-and-moon").should("be.visible")
     cy.findByTestId("background").should(
       "have.css",
       "background-color",
@@ -13,7 +13,7 @@ describe("Theme tests", () => {
       .should("have.css", "color", "rgb(0, 0, 0)")
   }
   const checkDarkTheme = () => {
-    cy.findByTestId("moon").should("be.visible")
+    cy.findByTestId("sun-and-moon").should("be.visible")
     cy.findByTestId("background").should(
       "have.css",
       "background-color",
