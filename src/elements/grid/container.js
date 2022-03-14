@@ -25,7 +25,7 @@ export const subGrid = css`
     auto-fit,
     minmax(min(var(--space-xxxl), 100%), 1fr)
   );
-  gap: var(--font-height-base);
+  gap: var(--space-s);
 `
 
 export const article = css`

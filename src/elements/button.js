@@ -10,7 +10,7 @@ import {
   primaryColorStates,
   underline,
 } from "./effects"
-import { elementBuzzOut, iconWobble } from "./animations"
+import { elementBuzzOut, iconSpinning, iconWobble } from "./animations"
 import { paragraph, ui } from "./typography"
 
 export const nav = css`
@@ -155,6 +155,8 @@ export const Button = styled(LocalizedLink)`
         return iconForward
       case "icon-back":
         return iconBack
+      case "icon-spinning":
+        return iconSpinning
       case "icon-wobble":
         return iconWobble
       case "element-buzz-out":

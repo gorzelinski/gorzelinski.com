@@ -24,16 +24,6 @@ describe("Subscirption component", () => {
       expect(input.getAttribute("type")).toBe("email")
     })
 
-    it("name input field", () => {
-      const input = screen.getByRole("textbox", {
-        name: /name/i,
-        exact: false,
-      })
-      expect(input).toBeInTheDocument()
-      expect(input).toBeRequired()
-      expect(input.getAttribute("type")).toBe("text")
-    })
-
     it("subscribe button", () => {
       const button = screen.getByRole("button")
       expect(button).toBeInTheDocument()

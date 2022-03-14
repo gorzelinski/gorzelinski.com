@@ -1,16 +1,18 @@
 import styled, { css } from "styled-components"
 
-import { media } from "./utils"
+import { marginReset, media } from "./utils"
 
 export const Callout = styled.div`
   position: relative;
   border-radius: var(--space-s);
   padding: var(--space-s);
-  margin-bottom: var(--font-height-base);
+  margin: var(--font-height-base) 0;
 
   ${media.tablet`
-    margin-bottom: var(--font-height-xxs);
+    margin: var(--font-height-xxs) 0;
   `}
+
+  ${marginReset}
 
   ${props => {
     switch (props.$type) {
@@ -34,15 +36,10 @@ export const Callout = styled.div`
           color: var(--color-success-base);
           background-color: var(--color-success-100);
         `
-      case "idea":
-        return css`
-          color: var(--color-warning-base);
-          background-color: var(--color-gray-90);
-        `
       default:
         return css`
-          color: var(--color-warning-base);
-          background-color: var(--color-gray-90);
+          color: var(--color-primary-base);
+          background-color: var(--color-primary-100);
         `
     }
   }}

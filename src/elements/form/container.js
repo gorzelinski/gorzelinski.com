@@ -4,4 +4,5 @@ import { subGrid } from "../grid"
 
 export const Form = styled.form`
   ${subGrid}
+  align-items: start;
 `
