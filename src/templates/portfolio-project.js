@@ -23,7 +23,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Pagination from "../components/pagination"
 import ProgressScroll from "../components/progress-scroll"
-import SignUp from "../components/sign-up"
+import Subscribe from "../components/subscribe"
 
 const PortfolioProjectTemplate = ({ data, location }) => {
   const { t } = useTranslation("templates/portfolio-project")
@@ -117,7 +117,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         <H3 $marginReset="top">{t("more")}</H3>
         <Pagination aria={t("more")} data={pagination}></Pagination>
       </Aside>
-      <SignUp></SignUp>
+      <Subscribe></Subscribe>
     </Layout>
   )
 }

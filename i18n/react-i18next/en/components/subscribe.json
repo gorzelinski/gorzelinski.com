@@ -5,10 +5,10 @@
     "label": "Email",
     "placeholder": "Your email"
   },
-  "button": "Sign up",
+  "button": "Subscribe",
   "success": {
-    "heading": "Thank you for signing up!",
-    "description": "You'll receive notifications via email. If you don't receive an email shortly, double check your email boxes."
+    "heading": "Thank you for subscribing!",
+    "description": "You'll receive notifications via email. If you don't receive a confirmation email shortly, double check different email folders."
   },
   "error": {
     "heading": "Something went wrong.",

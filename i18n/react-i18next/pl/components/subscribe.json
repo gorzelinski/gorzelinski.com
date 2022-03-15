@@ -5,10 +5,10 @@
     "label": "Email",
     "placeholder": "Twój email"
   },
-  "button": "Zapisz się",
+  "button": "Subskrybuj",
   "success": {
-    "heading": "Dzięki za zapisanie się!",
-    "description": "Od teraz będziesz otrzymywał powiadomienia na email. Jeżeli nie otrzymasz wiadomości w krótkim czasie, sprawdź różne foldery."
+    "heading": "Dzięki za subsckrybcję!",
+    "description": "Od teraz będziesz otrzymywał powiadomienia na email. Jeżeli nie otrzymasz emaila potwierdzającego w krótkim czasie, sprawdź różne foldery poczty."
   },
   "error": {
     "heading": "Coś poszło nie tak.",

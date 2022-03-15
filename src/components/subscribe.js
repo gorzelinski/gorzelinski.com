@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
+import { useLocalization } from "gatsby-theme-i18n"
 import {
   AlertCircle,
   CheckmarkCircle,
@@ -21,9 +22,39 @@ import {
   Tile,
 } from "../elements"
 
-const SignUp = () => {
-  const { t } = useTranslation("components/sign-up")
+const Subscribe = () => {
+  const { locale } = useLocalization()
+  const { t } = useTranslation("components/subscribe")
   const [state, setState] = useState("idle")
+  const FORM_URL = `https://app.convertkit.com/forms/3084916/subscriptions`
+  const ENGLISH_TAG = `2987506`
+  const POLISH_TAG = `2987505`
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    setState("loading")
+    const data = new FormData(e.target)
+
+    try {
+      const response = await fetch(FORM_URL, {
+        method: "post",
+        body: data,
+        headers: {
+          accept: "application/json",
+        },
+      })
+
+      const json = await response.json()
+
+      if (json.status === "success") {
+        setState("success")
+        return
+      }
+      setState("error")
+    } catch (error) {
+      setState("error")
+    }
+  }
 
   const selectIcon = () => {
     switch (state) {
@@ -48,13 +79,22 @@ const SignUp = () => {
         </H3>
         <P $type="lead">{t("description")}</P>
         {state !== "success" ? (
-          <Form>
+          <Form action={FORM_URL} method="post" onSubmit={handleSubmit}>
+            <select
+              style={{ display: "none" }}
+              name="tags[]"
+              value={locale === "pl" ? POLISH_TAG : ENGLISH_TAG}
+              readOnly
+            >
+              <option value={ENGLISH_TAG}>English</option>
+              <option value={POLISH_TAG}>Polish</option>
+            </select>
             <Label $hidden htmlFor="email">
               {t("email.label")}
             </Label>
             <Input
               required
-              name="email"
+              name="email_address"
               id="email"
               type="email"
               placeholder={t("email.placeholder")}
@@ -67,6 +107,7 @@ const SignUp = () => {
               $type="primary"
               $animation={state === "loading" ? "icon-spinning" : "icon-wobble"}
               disabled={state === "idle" ? false : true}
+              type="submit"
             >
               {t("button")}
               <Icon>{selectIcon()}</Icon>
@@ -93,4 +134,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default Subscribe

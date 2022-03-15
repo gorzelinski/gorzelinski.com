@@ -8,7 +8,7 @@ import { createMetaImage } from "../utils"
 import Cards from "../components/cards"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import SignUp from "../components/sign-up"
+import Subscribe from "../components/subscribe"
 
 const Blog = ({ data, location }) => {
   const { locale } = useLocalization()
@@ -41,7 +41,7 @@ const Blog = ({ data, location }) => {
           <Cards data={posts}></Cards>
         </Section>
       </Section>
-      <SignUp></SignUp>
+      <Subscribe></Subscribe>
     </Layout>
   )
 }
