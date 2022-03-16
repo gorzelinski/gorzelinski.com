@@ -16,6 +16,7 @@
     "@reach/router": "^1.3.4",
     "@styled-icons/ionicons-solid": "^10.34.0",
     "babel-plugin-styled-components": "^2.0.2",
+    "canvas-confetti": "^1.5.1",
     "gatsby": "^4.7.2",
     "gatsby-plugin-feed": "^4.7.0",
     "gatsby-plugin-gatsby-cloud": "^4.7.0",
