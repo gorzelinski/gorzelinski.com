@@ -105,6 +105,7 @@ module.exports = {
             "pages/about",
             "pages/blog",
             "pages/index",
+            "pages/language-preference",
             "pages/portfolio",
             "pages/thank-you",
             "templates/blog-post",

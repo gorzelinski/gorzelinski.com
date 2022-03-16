@@ -63,7 +63,12 @@ const ThankYou = ({ location }) => {
             {t("title")}
           </H1>
           <P $type="lead">{t("description")}</P>
-          <Button as="button" ref={buttonRef} onClick={releaseConfetti}>
+          <Button
+            as="button"
+            $type="primary"
+            ref={buttonRef}
+            onClick={releaseConfetti}
+          >
             {t("button")} 🎉
           </Button>
         </Tile>
