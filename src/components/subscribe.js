@@ -15,16 +15,23 @@ import {
   H6,
   Icon,
   Input,
-  Label,
   P,
   Section,
   Tile,
 } from "../elements"
+import { useLocalization } from "gatsby-theme-i18n"
 
 const Subscribe = () => {
+  const { locale } = useLocalization()
   const { t } = useTranslation("components/subscribe")
   const [state, setState] = useState("idle")
-  const FORM_URL = `https://app.convertkit.com/forms/3084916/subscriptions`
+  const ENGLISH_FORM_ID = `3106682`
+  const POLISH_FORM_ID = `3084916`
+  const ENGLISH_TAG = `2999839`
+  const POLISH_TAG = `2987505`
+  const FORM_URL = `https://app.convertkit.com/forms/${
+    locale === "pl" ? POLISH_FORM_ID : ENGLISH_FORM_ID
+  }/subscriptions`
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -76,15 +83,21 @@ const Subscribe = () => {
         <P $type="lead">{t("description")}</P>
         {state !== "success" ? (
           <Form action={FORM_URL} method="post" onSubmit={handleSubmit}>
-            <Label $hidden htmlFor="email">
-              {t("email.label")}
-            </Label>
+            <input
+              style={{ display: "none" }}
+              type="checkbox"
+              name="tags[]"
+              value={locale === "pl" ? POLISH_TAG : ENGLISH_TAG}
+              checked={true}
+              readOnly
+            ></input>
             <Input
               required
               name="email_address"
               id="email"
               type="email"
-              placeholder={t("email.placeholder")}
+              placeholder={t("email")}
+              aria-label={t("email")}
               disabled={state === "loading" ? true : false}
               onClick={() => setState("idle")}
             ></Input>
