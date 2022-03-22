@@ -4,11 +4,11 @@
   "email": "Your email",
   "button": "Subscribe",
   "success": {
-    "heading": "Thank you for subscribing!",
-    "description": "You'll receive notifications via email. If you don't receive a confirmation email shortly, double check different email folders."
+    "heading": "Thank you for signing up!",
+    "description": "If you don't receive a confirmation email shortly, double check different email folders."
   },
   "error": {
-    "heading": "Something went wrong.",
+    "heading": "Something went wrong",
     "description": "There was an issue trying to submit. Check your email and try again."
   }
 }

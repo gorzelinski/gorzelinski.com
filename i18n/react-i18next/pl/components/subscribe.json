@@ -4,11 +4,11 @@
   "email": "Twój email",
   "button": "Subskrybuj",
   "success": {
-    "heading": "Dzięki za subsckrybcję!",
-    "description": "Od teraz będziesz otrzymywał powiadomienia na email. Jeżeli nie otrzymasz emaila potwierdzającego w krótkim czasie, sprawdź różne foldery poczty."
+    "heading": "Dzięki za zapisanie się!",
+    "description": "Jeżeli nie otrzymasz emaila potwierdzającego w krótkim czasie, sprawdź różne foldery poczty."
   },
   "error": {
-    "heading": "Coś poszło nie tak.",
+    "heading": "Coś poszło nie tak",
     "description": "Podczas wysyłania wystąpił problem. Sprawdź email i spróbuj ponownie."
   }
 }
