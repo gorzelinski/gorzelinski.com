@@ -1,6 +1,13 @@
 {
-  "heading": "Want to be up to date?",
-  "description": "Subscribe to get notifications about posts, case studies and other content. But be aware - if you get a lucrative offer from a Nigerian prince from this domain, it’s not me - unsubscribe fast. I don’t send spam.",
+  "heading": "Spark your curiosity💡",
+  "description": "Subscribe to my newsletter and get a monthly dose of:",
+  "topics": {
+    "webDevelopment": "Web development and design news, examples, inspiration",
+    "science": "Science theories and skepticism",
+    "books": "Book notes and summaries",
+    "personal": "My favorite resources, ideas, tools and other interesting links"
+  },
+  "footnote": "I’m not Nigerian prince to offer you opportunities. I don’t send spam. Unsubscribe anytime.",
   "email": "Your email",
   "button": "Subscribe",
   "success": {

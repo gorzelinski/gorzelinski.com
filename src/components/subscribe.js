@@ -15,9 +15,12 @@ import {
   H6,
   Icon,
   Input,
+  Li,
   P,
   Section,
+  Small,
   Tile,
+  Ul,
 } from "../elements"
 import { useLocalization } from "gatsby-theme-i18n"
 
@@ -76,43 +79,56 @@ const Subscribe = () => {
 
   return (
     <Section $featured>
-      <Tile>
+      <Tile $justify="center">
         <H3 as="h2" $marginReset="top">
           {t("heading")}
         </H3>
-        <P $type="lead">{t("description")}</P>
+        <P>{t("description")}</P>
+        <Ul>
+          <Li>{t("topics.webDevelopment")}</Li>
+          <Li>{t("topics.science")}</Li>
+          <Li>{t("topics.books")}</Li>
+          <Li>{t("topics.personal")}</Li>
+        </Ul>
         {state !== "success" ? (
-          <Form action={FORM_URL} method="post" onSubmit={handleSubmit}>
-            <input
-              style={{ display: "none" }}
-              type="checkbox"
-              name="tags[]"
-              value={locale === "pl" ? POLISH_TAG : ENGLISH_TAG}
-              checked={true}
-              readOnly
-            ></input>
-            <Input
-              required
-              name="email_address"
-              id="email"
-              type="email"
-              placeholder={t("email")}
-              aria-label={t("email")}
-              disabled={state === "loading" ? true : false}
-              onClick={() => setState("idle")}
-            ></Input>
-            <Button
-              as="button"
-              $grow
-              $type="primary"
-              $animation={state === "loading" ? "icon-spinning" : "icon-wobble"}
-              disabled={state === "idle" ? false : true}
-              type="submit"
-            >
-              {t("button")}
-              <Icon>{selectIcon()}</Icon>
-            </Button>
-          </Form>
+          <>
+            <Form action={FORM_URL} method="post" onSubmit={handleSubmit}>
+              <input
+                style={{ display: "none" }}
+                type="checkbox"
+                name="tags[]"
+                value={locale === "pl" ? POLISH_TAG : ENGLISH_TAG}
+                checked={true}
+                readOnly
+              ></input>
+              <Input
+                required
+                name="email_address"
+                id="email"
+                type="email"
+                placeholder={t("email")}
+                aria-label={t("email")}
+                disabled={state === "loading" ? true : false}
+                onClick={() => setState("idle")}
+              ></Input>
+              <Button
+                as="button"
+                $grow
+                $type="primary"
+                $animation={
+                  state === "loading" ? "icon-spinning" : "icon-wobble"
+                }
+                disabled={state === "idle" ? false : true}
+                type="submit"
+              >
+                {t("button")}
+                <Icon>{selectIcon()}</Icon>
+              </Button>
+              <Tile $span="all">
+                <Small $marginReset="bottom">{t("footnote")}</Small>
+              </Tile>
+            </Form>
+          </>
         ) : null}
         {state === "success" || state === "error" ? (
           <Callout

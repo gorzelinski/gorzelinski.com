@@ -22,9 +22,9 @@ const indexMock = [
       link: /posts/i,
     },
     signUp: {
-      heading: /up to date/i,
+      heading: /curiosity/i,
       button: /sign up/i,
-      description: /notification/i,
+      description: /newsletter/i,
       email: /your email/i,
     },
     contact: {
@@ -59,9 +59,9 @@ const indexMock = [
       link: /wpisy/i,
     },
     signUp: {
-      heading: /na bieżąco/i,
+      heading: /ciekawość/i,
       button: /zapisz się/i,
-      description: /powiadomienia/i,
+      description: /newsletter/i,
       email: /twój email/i,
     },
     contact: {

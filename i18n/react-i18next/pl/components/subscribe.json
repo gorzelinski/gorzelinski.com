@@ -1,6 +1,13 @@
 {
-  "heading": "Chcesz być na bieżąco?",
-  "description": "Subskrybuj, aby otrzymywać powiadomienia o nowych wpisach, case studies i innych treściach. Ale uważaj - jeżeli dostaniesz lukratywną propozycję od Nigeryjskiego księcia z tej domeny, to nie ja - anuluj jak najszybciej. Nie wysyłam spamu.",
+  "heading": "Rozpal swoją ciekawość💡",
+  "description": "Subskrybuj mój newsletter, aby otrzymywać comiesięczną dawkę:",
+  "topics": {
+    "webDevelopment": "Nowości, przykładów, inspiracji ze świata web development’u i designu",
+    "science": "Teorii naukowych i sceptycyzmu",
+    "books": "Notatek i podsumowań książek",
+    "personal": "Moich ulubionych źródeł, idei, narzędzi i innych interesujących linków"
+  },
+  "footnote": "Nie jestem nigeryjskim księciem, aby oferować ci okazje. Nie wysyłam spamu. Anuluj kiedy chcesz.",
   "email": "Twój email",
   "button": "Subskrybuj",
   "success": {
