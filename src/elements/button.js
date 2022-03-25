@@ -51,8 +51,6 @@ export const text = css`
 `
 export const primary = css`
   ${primaryBackgroundColorStates}
-  z-index: 0;
-  position: relative;
   color: var(--color-gray-100);
   background-color: var(--color-primary-base);
   border-radius: var(--space-xs);
