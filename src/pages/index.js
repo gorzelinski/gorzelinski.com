@@ -12,7 +12,7 @@ import Featured from "../components/featured"
 import Cards from "../components/cards"
 import Bio from "../components/bio"
 import Contact from "../components/contact"
-import SignUp from "../components/sign-up"
+import Subscribe from "../components/subscribe"
 
 const Index = ({ data, location }) => {
   const { locale } = useLocalization()
@@ -52,7 +52,7 @@ const Index = ({ data, location }) => {
       >
         <Cards data={posts}></Cards>
       </Featured>
-      <SignUp></SignUp>
+      <Subscribe></Subscribe>
       <Contact></Contact>
     </Layout>
   )

@@ -22,10 +22,9 @@ const indexMock = [
       link: /posts/i,
     },
     signUp: {
-      heading: /up to date/i,
+      heading: /curiosity/i,
       button: /sign up/i,
-      description: /notification/i,
-      name: /your name/i,
+      description: /newsletter/i,
       email: /your email/i,
     },
     contact: {
@@ -60,10 +59,9 @@ const indexMock = [
       link: /wpisy/i,
     },
     signUp: {
-      heading: /na bieżąco/i,
+      heading: /ciekawość/i,
       button: /zapisz się/i,
-      description: /powiadomienia/i,
-      name: /twoje imię/i,
+      description: /newsletter/i,
       email: /twój email/i,
     },
     contact: {
@@ -268,9 +266,7 @@ describe("I18n tests", () => {
       cy.findByText(page.signUp.description, { exact: false }).should(
         "be.visible"
       )
-      cy.findByPlaceholderText(page.signUp.name, { exact: false }).should(
-        "be.visible"
-      )
+
       cy.findByPlaceholderText(page.signUp.email, { exact: false }).should(
         "be.visible"
       )

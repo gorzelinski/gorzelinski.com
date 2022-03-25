@@ -1,0 +1,21 @@
+{
+  "heading": "Spark your curiosity💡",
+  "description": "Subscribe to my newsletter and get a monthly dose of:",
+  "topics": {
+    "webDevelopment": "Web development and design news, examples, inspiration",
+    "science": "Science theories and skepticism",
+    "books": "Book notes and summaries",
+    "personal": "My favorite resources, ideas, tools and other interesting links"
+  },
+  "footnote": "I’m not Nigerian prince to offer you opportunities. I don’t send spam. Unsubscribe anytime.",
+  "email": "Your email",
+  "button": "Subscribe",
+  "success": {
+    "heading": "Thank you for signing up!",
+    "description": "If you don't receive a confirmation email shortly, double check different email folders."
+  },
+  "error": {
+    "heading": "Something went wrong",
+    "description": "There was an issue trying to submit. Check your email and try again."
+  }
+}

@@ -19,9 +19,9 @@ export const Switch = styled.input.attrs(() => ({
   position: relative;
   margin: 0;
   cursor: pointer;
-  background: var(--b, var(--background));
+  background-color: var(--b, var(--background));
   border: var(--space-xxxs) solid var(--bc, var(--border));
-  transition: background var(--duration-natural),
+  transition: background-color var(--duration-natural),
     border-color var(--duration-natural);
 
   &:checked {
@@ -35,7 +35,7 @@ export const Switch = styled.input.attrs(() => ({
     --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
     &:disabled {
       &:after {
-        background: var(--color-gray-80);
+        background-color: var(--color-gray-80);
       }
     }
   }
@@ -49,17 +49,17 @@ export const Switch = styled.input.attrs(() => ({
     border-radius: 50%;
     width: var(--size);
     height: var(--size);
-    background: var(--ab, var(--border));
+    background-color: var(--ab, var(--border));
     transform: translateX(var(--x, 0));
     transition: transform var(--d-t, 0.3s) var(--d-t-e, ease),
       opacity var(--d-o, 0.2s);
   }
   &:disabled {
     cursor: not-allowed;
-    background: var(--color-gray-90);
+    background-color: var(--color-gray-90);
     border: var(--space-xxxs) solid var(--color-gray-base);
     &:after {
-      background: var(--color-gray-base);
+      background-color: var(--color-gray-base);
     }
   }
 `

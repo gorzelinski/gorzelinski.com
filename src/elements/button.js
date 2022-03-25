@@ -10,7 +10,7 @@ import {
   primaryColorStates,
   underline,
 } from "./effects"
-import { elementBuzzOut, iconWobble } from "./animations"
+import { elementBuzzOut, iconSpinning, iconWobble } from "./animations"
 import { paragraph, ui } from "./typography"
 
 export const nav = css`
@@ -51,8 +51,6 @@ export const text = css`
 `
 export const primary = css`
   ${primaryBackgroundColorStates}
-  z-index: 0;
-  position: relative;
   color: var(--color-gray-100);
   background-color: var(--color-primary-base);
   border-radius: var(--space-xs);
@@ -155,6 +153,8 @@ export const Button = styled(LocalizedLink)`
         return iconForward
       case "icon-back":
         return iconBack
+      case "icon-spinning":
+        return iconSpinning
       case "icon-wobble":
         return iconWobble
       case "element-buzz-out":

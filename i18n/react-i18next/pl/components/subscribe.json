@@ -1,0 +1,21 @@
+{
+  "heading": "Rozpal swoją ciekawość💡",
+  "description": "Subskrybuj mój newsletter, aby otrzymywać comiesięczną dawkę:",
+  "topics": {
+    "webDevelopment": "Nowości, przykładów, inspiracji ze świata web development’u i designu",
+    "science": "Teorii naukowych i sceptycyzmu",
+    "books": "Notatek i podsumowań książek",
+    "personal": "Moich ulubionych źródeł, idei, narzędzi i innych interesujących linków"
+  },
+  "footnote": "Nie jestem nigeryjskim księciem, aby oferować ci okazje. Nie wysyłam spamu. Anuluj kiedy chcesz.",
+  "email": "Twój email",
+  "button": "Subskrybuj",
+  "success": {
+    "heading": "Dzięki za zapisanie się!",
+    "description": "Jeżeli nie otrzymasz emaila potwierdzającego w krótkim czasie, sprawdź różne foldery poczty."
+  },
+  "error": {
+    "heading": "Coś poszło nie tak",
+    "description": "Podczas wysyłania wystąpił problem. Sprawdź email i spróbuj ponownie."
+  }
+}

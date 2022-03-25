@@ -2,8 +2,8 @@ import React from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
 
 import codeTheme from "../themes/code"
-
 import { BlockCode } from "../elements"
+
 const CodeBlock = ({ children }) => {
   const language = children.props.className.replace(/language-/, "") || ""
 

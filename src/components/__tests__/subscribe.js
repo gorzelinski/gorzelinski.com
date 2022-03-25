@@ -1,12 +1,12 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
 
-import SignUp from "../sign-up"
+import Subscribe from "../subscribe"
 
-describe("Subscirption component", () => {
+describe("Subscribe component", () => {
   describe("renders", () => {
     beforeEach(() => {
-      render(<SignUp></SignUp>)
+      render(<Subscribe></Subscribe>)
     })
 
     it("title", () => {
@@ -22,16 +22,6 @@ describe("Subscirption component", () => {
       expect(input).toBeInTheDocument()
       expect(input).toBeRequired()
       expect(input.getAttribute("type")).toBe("email")
-    })
-
-    it("name input field", () => {
-      const input = screen.getByRole("textbox", {
-        name: /name/i,
-        exact: false,
-      })
-      expect(input).toBeInTheDocument()
-      expect(input).toBeRequired()
-      expect(input.getAttribute("type")).toBe("text")
     })
 
     it("subscribe button", () => {
