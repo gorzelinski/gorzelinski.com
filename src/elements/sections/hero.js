@@ -8,7 +8,6 @@ export const Hero = styled.section`
   padding-top: var(--space-xxl);
 
   @media (orientation: portrait) {
-    --top-nav-height: calc(var(--font-height-base) + 2 * var(--space-xs));
     --margin-top: var(--space-m);
 
     min-height: calc(

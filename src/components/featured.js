@@ -7,7 +7,7 @@ const Featured = ({ data, children }) => {
   const { title = "", slug = "", buttonText = "" } = data
   return (
     <Section>
-      <Header $section>
+      <Header $type="section">
         {title && <H2 $marginReset="both">{title}</H2>}
         {slug && buttonText && (
           <Button

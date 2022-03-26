@@ -3,35 +3,46 @@ import styled, { css } from "styled-components"
 import { media } from "../utils"
 
 export const Header = styled.header`
-  ${props =>
-    props.$section &&
-    css`
-      width: 100%;
-      grid-column: 1 / -1;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-xs);
+  ${props => {
+    switch (props.$type) {
+      case "section":
+        return css`
+          width: 100%;
+          grid-column: 1 / -1;
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-xs);
 
-      & > *:nth-child(n) {
-        align-self: stretch;
-      }
+          & > *:first-child {
+            align-self: stretch;
+          }
 
-      & > *:nth-child(2n) {
-        align-self: flex-end;
-      }
+          & > *:last-child {
+            align-self: flex-end;
+          }
 
-      ${media.tablet`
-        align-items: baseline;
-        flex-direction: row;
-        justify-content: space-between;
+          ${media.mobile`
+            & > *:first-child {
+              align-self: flex-start;
+            }
+          `}
 
-        & > *:nth-child(n) {
-          align-self: auto;
-        }
+          ${media.tablet`
+            align-items: baseline;
+            flex-direction: row;
+            justify-content: space-between;
 
-        & > *:nth-child(2n) {
-          align-self: auto;
-        }
-      `}
-    `}
+            & > *:first-child {
+              align-self: auto;
+            }
+
+            & > *:last-child {
+              align-self: auto;
+            }
+          `}
+        `
+      default:
+        return css``
+    }
+  }}
 `

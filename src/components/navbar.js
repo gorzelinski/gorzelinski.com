@@ -9,7 +9,7 @@ const Navbar = () => {
   const { t } = useTranslation("components/navbar")
 
   return (
-    <Header $section>
+    <Header $type="section">
       <Navigation $spaceBetween aria-label={t("helper")}>
         <Logo></Logo>
         <ThemeSwitcher></ThemeSwitcher>
