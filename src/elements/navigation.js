@@ -67,6 +67,18 @@ export const Navigation = styled.nav`
       `}
     `}
 
+  ${props =>
+    props.$helper &&
+    css`
+      width: 100%;
+      justify-content: space-between;
+
+      ${media.mobile`
+        width: auto;
+        justify-content: start;
+      `}
+    `}
+
   & > p {
     margin-right: var(--space-xs);
   }

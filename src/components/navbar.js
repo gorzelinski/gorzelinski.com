@@ -1,16 +1,26 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import { useLocalization } from "gatsby-theme-i18n"
 
 import { Button, Header, Navigation } from "../elements"
 import Logo from "./logo"
 import ThemeSwitcher from "./theme-switcher"
 
-const Navbar = () => {
+const Navbar = ({ location }) => {
   const { t } = useTranslation("components/navbar")
+  const { locale } = useLocalization()
+
+  const selectClass = href => {
+    if (href === location?.pathname) {
+      return "active"
+    } else {
+      return "active-subtle"
+    }
+  }
 
   return (
-    <Header $type="section">
-      <Navigation $spaceBetween aria-label={t("helper")}>
+    <Header $type="main">
+      <Navigation $helper aria-label={t("helper")}>
         <Logo></Logo>
         <ThemeSwitcher></ThemeSwitcher>
       </Navigation>
@@ -20,7 +30,10 @@ const Navbar = () => {
           $type="nav"
           $animation="underline"
           to="/portfolio/"
-          activeClassName="active"
+          activeClassName={selectClass(
+            locale === "en" ? `/portfolio/` : `/${locale}/portfolio/`
+          )}
+          partiallyActive={true}
         >
           {t("portfolio")}
         </Button>
@@ -38,7 +51,10 @@ const Navbar = () => {
           $type="nav"
           $animation="underline"
           to="/blog/"
-          activeClassName="active"
+          activeClassName={selectClass(
+            locale === "en" ? `/blog/` : `/${locale}/blog/`
+          )}
+          partiallyActive={true}
         >
           {t("blog")}
         </Button>

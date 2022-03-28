@@ -5,6 +5,13 @@ import { media } from "../utils"
 export const Header = styled.header`
   ${props => {
     switch (props.$type) {
+      case "main":
+        return css`
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        `
       case "section":
         return css`
           width: 100%;

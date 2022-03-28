@@ -50,5 +50,5 @@
   --color-success-100: hsl(var(--color-success), 9%);
   --color-success-base: hsl(var(--color-success), 39%);
 
-  --shadow-neumorphism: 8px 8px 16px #0a0b0d, -8px -8px 16px #181b1d;
+  --shadow-neumorphism: 8px 8px 16px #0c0d0d, -8px -8px 16px #101113;
 }

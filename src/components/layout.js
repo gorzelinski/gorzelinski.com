@@ -10,7 +10,7 @@ const Layout = ({ children, location }) => {
     <ThemeProvider>
       <Background data-testid="background">
         <Wrapper $global>
-          <Navbar></Navbar>
+          <Navbar location={location}></Navbar>
           <main>{children}</main>
           <Footer location={location}></Footer>
         </Wrapper>
