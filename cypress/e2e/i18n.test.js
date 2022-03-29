@@ -160,7 +160,7 @@ const postsMock = [
     url: "/blog/stylish-design-principles-with-a-nasty-acronym-crap/",
     title: "Stylish design principles with a nasty acronym - CRAP",
     description:
-      "In this post, we will look at four universal design principles that can improve any graphical work: website, slide, poster, document, etc.",
+      "In this post, we will look at four universal design principles that can improve any graphical work: website, slide, document, etc.",
     date: "May 09, 2021",
     share: /share/i,
     more: /read more/i,
@@ -172,7 +172,7 @@ const postsMock = [
     url: "/pl/blog/stylish-design-principles-with-a-nasty-acronym-crap/",
     title: "Stylowe zasady designu o paskudnym akronimie - CRAP",
     description:
-      "W tym wpisie przyjrzymy się czterem, uniwersalnym zasadom designu, które mogą poprawić dowolną pracę graficzną: stronę internetową, slajd, plakat, dokument itp.",
+      "W tym wpisie przyjrzymy się czterem, uniwersalnym zasadom designu, które mogą poprawić dowolną pracę graficzną: stronę internetową, slajd, dokument itp.",
     date: "09 maja, 2021",
     share: /udostępnij/i,
     more: /przeczytaj także/i,

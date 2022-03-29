@@ -17,7 +17,8 @@ import Subscribe from "../components/subscribe"
 const Index = ({ data, location }) => {
   const { locale } = useLocalization()
   const { t } = useTranslation("pages/index")
-  const { posts, projects } = data
+  const lastPosts = data.lastPosts?.nodes
+  const lastProjects = data.lastProjects?.nodes
   const { bio } = useBio()
   const metaImage = createMetaImage({
     alt: t("alt"),
@@ -40,7 +41,7 @@ const Index = ({ data, location }) => {
           buttonText: t("featuredProjects.button"),
         }}
       >
-        <Cards data={projects}></Cards>
+        <Cards data={lastProjects}></Cards>
       </Featured>
       <Bio data={bio}></Bio>
       <Featured
@@ -50,7 +51,7 @@ const Index = ({ data, location }) => {
           buttonText: t("featuredPosts.button"),
         }}
       >
-        <Cards data={posts}></Cards>
+        <Cards data={lastPosts}></Cards>
       </Featured>
       <Subscribe></Subscribe>
       <Contact></Contact>
@@ -74,7 +75,7 @@ export const pageQuery = graphql`
         )
       }
     }
-    posts: allMdx(
+    lastPosts: allMdx(
       limit: 4
       filter: {
         fields: { locale: { eq: $locale } }
@@ -102,7 +103,7 @@ export const pageQuery = graphql`
         timeToRead
       }
     }
-    projects: allMdx(
+    lastProjects: allMdx(
       limit: 4
       filter: {
         fields: { locale: { eq: $locale } }

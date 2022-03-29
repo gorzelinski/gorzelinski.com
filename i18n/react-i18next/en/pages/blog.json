@@ -2,5 +2,6 @@
   "title": "Blog",
   "subtitle": "All posts",
   "description": "Here will be the blog description.",
-  "alt": "Centred text About on white background"
+  "alt": "Centred text About on white background",
+  "loadMore": "Load more"
 }

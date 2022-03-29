@@ -1,9 +1,9 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { useLocalization } from "gatsby-theme-i18n"
 
-import { H1, Header, P, Section } from "../elements"
+import { Button, H1, Header, P, Section, Tile } from "../elements"
 import { createMetaImage } from "../utils"
 import Cards from "../components/cards"
 import Layout from "../components/layout"
@@ -13,11 +13,36 @@ import Subscribe from "../components/subscribe"
 const Portfolio = ({ data, location }) => {
   const { locale } = useLocalization()
   const { t } = useTranslation("pages/portfolio")
-  const { projects } = data
   const metaImage = createMetaImage({
     alt: t("alt"),
     src: data?.metaImage,
   })
+  const allProjects = data.allProjects?.nodes
+  const projectsPerLoad = 6
+  const [list, setList] = useState([...allProjects.slice(0, projectsPerLoad)])
+  const [loadMore, setLoadMore] = useState(false)
+  const [hasMore, setHasMore] = useState(allProjects.length > projectsPerLoad)
+
+  const handleLoadMore = () => {
+    setLoadMore(true)
+  }
+
+  useEffect(() => {
+    if (loadMore && hasMore) {
+      const currentLength = list.length
+      const isMore = currentLength < allProjects.length
+      const nextResults = isMore
+        ? allProjects.slice(currentLength, currentLength + projectsPerLoad)
+        : []
+      setList([...list, ...nextResults])
+      setLoadMore(false)
+    }
+  }, [loadMore, hasMore, allProjects, list])
+
+  useEffect(() => {
+    const isMore = list.length < allProjects.length
+    setHasMore(isMore)
+  }, [list, allProjects])
 
   return (
     <Layout location={location}>
@@ -38,8 +63,15 @@ const Portfolio = ({ data, location }) => {
           </P>
         </Header>
         <Section as="div" $marginReset="top">
-          <Cards data={projects}></Cards>
+          <Cards data={list}></Cards>
         </Section>
+        {hasMore ? (
+          <Tile $span="all" $justify="center">
+            <Button as="button" $type="text" onClick={handleLoadMore}>
+              {t("loadMore")}
+            </Button>
+          </Tile>
+        ) : null}
       </Section>
       <Subscribe></Subscribe>
     </Layout>
@@ -50,7 +82,7 @@ export default Portfolio
 
 export const pageQuery = graphql`
   query AllPortfolioProjects($locale: String!) {
-    projects: allMdx(
+    allProjects: allMdx(
       filter: {
         fields: { locale: { eq: $locale } }
         fileAbsolutePath: { regex: "/(portfolio)/" }

@@ -2,5 +2,6 @@
   "title": "Portfolio",
   "subtitle": "Wszystkie projekty",
   "description": "Tu będzie opis portfolio.",
-  "alt": "Wycentrowany napis portfolio na białym tle"
+  "alt": "Wycentrowany napis portfolio na białym tle",
+  "loadMore": "Załaduj więcej"
 }

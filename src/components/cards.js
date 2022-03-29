@@ -5,9 +5,9 @@ import { P, Tile } from "../elements"
 import Post from "./post"
 import Project from "./project"
 
-const Cards = ({ data = { nodes: [] } }) => {
+const Cards = ({ data = [] }) => {
   const { t } = useTranslation("components/cards")
-  const cards = data?.nodes ?? []
+  const cards = data
 
   return cards.length === 0 ? (
     <Tile>
