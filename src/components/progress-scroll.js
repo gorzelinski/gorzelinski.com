@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-import { Progress } from "../elements"
+import { Progress, ProgressValue } from "../elements"
 
 const ProgressScroll = () => {
   const [scrollTop, setScrollTop] = useState(0)
@@ -23,14 +23,11 @@ const ProgressScroll = () => {
   }, [])
 
   return (
-    <Progress
-      data-testid="progress"
-      style={{ opacity: `${scrollTop < 10 || scrollTop > 85 ? 0 : 1}` }}
-    >
-      <div
-        data-testid="progress-thumb"
-        style={{ height: `${scrollTop}%` }}
-      ></div>
+    <Progress data-testid="progress" progress={scrollTop}>
+      <ProgressValue
+        data-testid="progress-value"
+        progress={scrollTop}
+      ></ProgressValue>
     </Progress>
   )
 }

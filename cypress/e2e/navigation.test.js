@@ -79,19 +79,19 @@ describe("Navigation tests", () => {
       `mailto:${email}`
     )
 
-    cy.findByRole("link", { name: "github" })
+    cy.findAllByRole("link", { name: "github" })
       .should("have.prop", "href")
       .and("contain", "https://github.com")
 
-    cy.findByRole("link", { name: "dribbble" })
+    cy.findAllByRole("link", { name: "dribbble" })
       .should("have.prop", "href")
       .and("contain", "https://dribbble.com")
 
-    cy.findByRole("link", { name: "twitter" })
+    cy.findAllByRole("link", { name: "twitter" })
       .should("have.prop", "href")
       .and("contain", "https://twitter.com")
 
-    cy.findByRole("link", { name: "facebook" })
+    cy.findAllByRole("link", { name: "facebook" })
       .should("have.prop", "href")
       .and("contain", "https://www.facebook.com")
   })
@@ -141,12 +141,12 @@ describe("Navigation tests", () => {
     cy.findByRole("heading", { level: 1 }).should("contain", blogMock.title)
     cy.get(`a[href*="${postMock.url}"]`).should("be.visible").click()
     cy.findByTestId("progress").should("not.be.visible")
-    cy.findByTestId("progress-thumb").should("not.be.visible")
+    cy.findByTestId("progress-value").should("not.be.visible")
     cy.scrollTo(0, 2000)
     cy.findByTestId("progress").should($progress => {
       expect($progress).to.be.visible
     })
-    cy.findByTestId("progress-thumb").should($progressThumb => {
+    cy.findByTestId("progress-value").should($progressThumb => {
       expect($progressThumb).to.be.visible
     })
   })

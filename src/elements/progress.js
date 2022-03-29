@@ -2,29 +2,39 @@ import styled from "styled-components"
 
 import { media } from "./utils"
 
-export const Progress = styled.div`
-  --height: var(--space-xxxl);
-  position: fixed;
+export const Progress = styled.div.attrs(props => ({
+  style: {
+    opacity: props.progress < 5 || props.progress > 95 ? 0 : 1,
+  },
+}))`
+  --width: calc(var(--space-xxxl) * 1.618);
   z-index: 100;
-  top: calc(50% - (var(--height) / 2));
-  width: var(--space-xxs);
-  height: var(--height);
   border-radius: var(--space-xs);
   background-color: var(--color-gray-80);
   transition: opacity var(--duration-natural) ease-in;
-  left: var(--space-xxs);
-
-  ${media.tiny`
-    left: var(--space-xs);
-  `}
+  position: fixed;
+  @media (orientation: portrait) {
+    left: 0;
+    width: 100%;
+    bottom: var(--mobile-nav-height);
+    height: var(--space-xxs);
+  }
 
   ${media.tablet`
-    --height: calc(var(--space-xxxl) * 1.618);
+    left: var(--space-xs);
+    top: calc(50% - (var(--width) / 2));
+    width: var(--width);
+    transform: rotate(90deg);
+    transform-origin: top left;
   `}
+`
 
-  & > div {
-    width: var(--space-xxs);
-    border-radius: var(--space-xs);
-    background-color: var(--color-primary-base);
-  }
+export const ProgressValue = styled.div.attrs(props => ({
+  style: {
+    width: `${props.progress}%`,
+  },
+}))`
+  height: var(--space-xxs);
+  border-radius: var(--space-xs);
+  background-color: var(--color-primary-base);
 `
