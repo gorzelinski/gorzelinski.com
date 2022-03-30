@@ -41,7 +41,7 @@ export const Wrapper = styled.div`
       ${media.large`
         margin: 0 auto;
         padding: var(--space-xl) 0;
-        max-width:  ${72 + "rem"};
+        max-width:  ${75 + "rem"};
       `}
     `}
 `

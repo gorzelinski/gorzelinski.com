@@ -7,7 +7,6 @@ import {
   Button,
   Footer as StyledFooter,
   Icon,
-  Navigation,
   Small,
   Tile,
 } from "../elements"
@@ -30,14 +29,12 @@ const Footer = ({ location }) => {
           {t("email")}
         </Small>
         <Address>
-          <Navigation as="div">
+          <Button as="a" $align="left" $type="text" href={`mailto:${email}`}>
             <Icon $type="text">
               <Mail></Mail>
             </Icon>
-            <Button as="a" $type="text" href={`mailto:${email}`}>
-              {email}
-            </Button>
-          </Navigation>
+            {email}
+          </Button>
         </Address>
       </Tile>
       <Tile>

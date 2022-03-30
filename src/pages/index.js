@@ -104,7 +104,7 @@ export const pageQuery = graphql`
       }
     }
     lastProjects: allMdx(
-      limit: 4
+      limit: 2
       filter: {
         fields: { locale: { eq: $locale } }
         fileAbsolutePath: { regex: "/(portfolio)/" }

@@ -25,7 +25,7 @@ export const span = css`
         `
       default:
         return css`
-          grid-column: span 1;
+          grid-column: auto;
         `
     }
   }}
@@ -56,7 +56,7 @@ export const heighten = css`
         `
       default:
         return css`
-          grid-row: span 1;
+          grid-row: auto;
         `
     }
   }}
