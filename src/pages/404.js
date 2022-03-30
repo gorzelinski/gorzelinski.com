@@ -1,28 +1,44 @@
 import * as React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { useLocalization } from "gatsby-theme-i18n"
 
-import { H1, P, Button, Section, Figure, Tile } from "../elements"
+import { H2, P, Button, Section, Tile, Video } from "../elements"
+import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import spanishInquisitionMp4 from "../images/spanish-inquisition.mp4"
+import spanishInquisitionWebm from "../images/spanish-inquisition.webm"
 
-const NotFoundPage = ({ data = {} }) => {
+const NotFoundPage = ({ data, location }) => {
   const { locale } = useLocalization()
   const { t } = useTranslation("pages/404")
-  const image = getImage(data.image)
+  const metaImage = createMetaImage({
+    alt: t("alt"),
+    src: data?.metaImage,
+  })
 
   return (
     <Layout>
-      <Seo lang={locale} title={t("title")} />
+      <Seo
+        lang={locale}
+        title={t("title")}
+        description={t("description")}
+        image={metaImage}
+        slug={location.pathname}
+      />
       <Section>
-        <Figure as="div">
-          <GatsbyImage image={image} alt={t("alt")}></GatsbyImage>
-        </Figure>
         <Tile>
-          <H1 $marginReset="top">{t("title")}</H1>
-          <P $type="lead">{t("subtitle")}</P>
+          <Video autoPlay muted loop>
+            <source src={spanishInquisitionWebm} type="video/webm"></source>
+            <source src={spanishInquisitionMp4} type="video/mp4"></source>
+          </Video>
+        </Tile>
+        <Tile>
+          <H2 as="h1" $marginReset="top">
+            {t("title")}
+          </H2>
+          <P $type="lead">{t("description")}</P>
           <Button $type="primary" $grow to="/">
             {t("button")}
           </Button>
@@ -35,10 +51,17 @@ const NotFoundPage = ({ data = {} }) => {
 export default NotFoundPage
 
 export const pageQuery = graphql`
-  query {
-    image: file(relativePath: { eq: "not-found.jpg" }) {
+  query NotFoundQuery {
+    metaImage: file(relativePath: { eq: "spanish-inquisition.jpg" }) {
       childImageSharp {
-        gatsbyImageData
+        gatsbyImageData(
+          formats: AUTO
+          layout: FIXED
+          placeholder: NONE
+          width: 1200
+          aspectRatio: 1.91
+          outputPixelDensities: 1
+        )
       }
     }
   }
