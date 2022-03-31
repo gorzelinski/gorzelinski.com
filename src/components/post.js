@@ -1,9 +1,9 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 import { ChevronForward } from "@styled-icons/ionicons-solid"
 
-import { Button, Card, Figure, H4, Icon, P, Small } from "../elements"
+import { Button, Card, H4, Icon, Image, P, Small } from "../elements"
 
 const Post = ({ data = {} }) => {
   const { t } = useTranslation("components/post")
@@ -20,9 +20,7 @@ const Post = ({ data = {} }) => {
 
   return isDataComplete ? (
     <Card $span={3} $horizontal>
-      <Figure as="div">
-        <GatsbyImage image={src} alt={alt}></GatsbyImage>
-      </Figure>
+      <Image image={src} alt={alt}></Image>
       <div>
         <Small $marginReset="top">{`${date} • ${timeToRead} ${t(
           "min"

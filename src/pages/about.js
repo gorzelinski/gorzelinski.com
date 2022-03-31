@@ -1,10 +1,10 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 import { useLocalization } from "gatsby-theme-i18n"
 
-import { Figure, H1, P, Section, Tile } from "../elements"
+import { H1, Image, P, Section, Tile } from "../elements"
 import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -30,12 +30,12 @@ const About = ({ data, location }) => {
       ></Seo>
       <Section>
         {/* TODO: change image */}
-        <Figure as="div" $aspectRatio="wide" $span="all">
-          <GatsbyImage
-            image={image}
-            alt={`${name} - ${t("alt")}`}
-          ></GatsbyImage>
-        </Figure>
+        <Image
+          $aspectRatio="wide"
+          $span="all"
+          image={image}
+          alt={`${name} - ${t("alt")}`}
+        ></Image>
         <Tile $span="all">
           <H1 $marginReset="both">{t("heading")}</H1>
         </Tile>

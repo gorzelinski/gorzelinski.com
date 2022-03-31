@@ -11,7 +11,8 @@ export const Article = styled.article`
     grid-column: 2;
   }
 
-  & > figure {
+  & > figure,
+  & > .gatsby-image-wrapper {
     grid-column: 1 / span 3;
     height: auto;
     margin: 0 calc(-1 * var(--space-s)) calc(2 * var(--font-height-base));

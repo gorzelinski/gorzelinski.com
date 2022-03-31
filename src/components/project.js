@@ -1,9 +1,9 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 import { ChevronForward } from "@styled-icons/ionicons-solid"
 
-import { Button, Card, Figure, H4, Icon, P, Small } from "../elements"
+import { Button, Card, H4, Icon, Image, P, Small } from "../elements"
 
 const Project = ({ data = {} }) => {
   const { t } = useTranslation("components/project")
@@ -19,9 +19,7 @@ const Project = ({ data = {} }) => {
 
   return isDataComplete ? (
     <Card>
-      <Figure as="div" $aspectRatio="golden">
-        <GatsbyImage image={src} alt={alt}></GatsbyImage>
-      </Figure>
+      <Image $aspectRatio="golden" image={src} alt={alt}></Image>
       <div>
         <Small as="p" $marginReset="top">
           {myRole}

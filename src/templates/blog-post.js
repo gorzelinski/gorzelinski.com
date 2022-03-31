@@ -2,7 +2,7 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 
 import {
   Article,
@@ -13,6 +13,7 @@ import {
   H1,
   H3,
   Header,
+  Image,
   Navigation,
   P,
   Small,
@@ -68,12 +69,13 @@ const BlogPostTemplate = ({ data, location }) => {
           <H1 $marginReset="top">{post.frontmatter.title}</H1>
           <P $type="lead">{post.frontmatter.description}</P>
         </Header>
-        <Figure $aspectRatio="wide">
-          <GatsbyImage
+        <Figure>
+          <Image
+            $aspectRatio="wide"
             image={getImage(image.src)}
             alt={image.alt}
-          ></GatsbyImage>
-          <Figcaption $center>{image.caption}</Figcaption>
+          ></Image>
+          <Figcaption $textAlign="center">{image.caption}</Figcaption>
         </Figure>
         <div>
           <MDXRenderer>{post.body}</MDXRenderer>

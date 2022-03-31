@@ -1,18 +1,18 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import {
   A,
   Article,
   Aside,
-  Figure,
   H1,
   H3,
   H6,
   Header,
+  Image,
   P,
   Small,
   Subsection,
@@ -51,12 +51,11 @@ const PortfolioProjectTemplate = ({ data, location }) => {
       />
       <Article>
         <ProgressScroll></ProgressScroll>
-        <Figure $aspectRatio="meta">
-          <GatsbyImage
-            image={getImage(image.src)}
-            alt={image.alt}
-          ></GatsbyImage>
-        </Figure>
+        <Image
+          $aspectRatio="meta"
+          image={getImage(image.src)}
+          alt={image.alt}
+        ></Image>
         <Header>
           <H1 $marginReset="top">{project.frontmatter.title}</H1>
           <P $type="lead">{project.frontmatter.description}</P>

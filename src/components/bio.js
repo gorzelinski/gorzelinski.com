@@ -1,11 +1,10 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 import { ChevronForward } from "@styled-icons/ionicons-solid"
 
 import {
   Section,
-  Figure,
   Small,
   H2,
   P,
@@ -13,6 +12,7 @@ import {
   Icon,
   Link,
   Tile,
+  Image,
 } from "../elements"
 
 const Bio = ({ data = {} }) => {
@@ -22,12 +22,12 @@ const Bio = ({ data = {} }) => {
 
   return isDataComplete ? (
     <Section>
-      <Figure as="div" $rounded $aspectRatio="portrait">
-        <GatsbyImage
-          image={image}
-          alt={`${t("name")} - ${t("alt")}`}
-        ></GatsbyImage>
-      </Figure>
+      <Image
+        $rounded
+        $aspectRatio="portrait"
+        image={image}
+        alt={`${t("name")} - ${t("alt")}`}
+      ></Image>
       <Tile>
         <Small as="p" $marginReset="top">
           {t("greeting")}

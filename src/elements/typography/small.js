@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components"
 
 import { marginReset, media } from "../utils"
+import { textAlign } from "./alignment"
 import { paragraph } from "./sizes"
 
 export const meta = css`
@@ -27,16 +28,11 @@ export const Figcaption = styled.figcaption`
   ${meta}
   ${paragraph.tiny}
   ${marginReset}
+  ${textAlign}
 
   ${media.mobile`
     ${paragraph.small}
   `}
-
-  ${props =>
-    props.$center &&
-    css`
-      text-align: center;
-    `}
   
   display: block;
   margin-top: var(--space-s);
