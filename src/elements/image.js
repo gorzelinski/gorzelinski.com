@@ -41,7 +41,6 @@ export const aspectRatios = css`
 export const Image = styled(GatsbyImage)`
   ${span}
   ${aspectRatios}
-  max-width: 100%;
 
   ${props =>
     props.$rounded &&
