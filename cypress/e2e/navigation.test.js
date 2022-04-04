@@ -8,11 +8,11 @@ const portfolioMock = {
 }
 const projectMock = {
   title: "An-lam",
-  url: "/an-lam",
+  url: "/an-lam/",
 }
 const aboutMock = {
   title: "About",
-  url: "/about",
+  url: "/about/",
   heading: "story",
 }
 const blogMock = {
@@ -22,7 +22,7 @@ const blogMock = {
 }
 const postMock = {
   title: "Hello",
-  url: "/hello-world",
+  url: "/hello-world/",
   internalLink: /engineer/i,
   externalLink: /flow/i,
 }
@@ -33,6 +33,11 @@ describe("Navigation tests", () => {
   })
   it("Navigates around the pages", () => {
     cy.findByRole("link", { name: portfolioMock.title })
+      .scrollIntoView({
+        easing: "linear",
+        duration: 300,
+        offset: { top: -150 },
+      })
       .should("be.visible")
       .click()
     cy.url().should("contain", portfolioMock.url)
@@ -47,11 +52,23 @@ describe("Navigation tests", () => {
 
     cy.findByRole("link", { name: aboutMock.title })
       .should("be.visible")
+      .scrollIntoView({
+        easing: "linear",
+        duration: 300,
+        offset: { top: -150 },
+      })
       .click()
     cy.url().should("include", aboutMock.url)
     cy.findByRole("heading", { level: 1 }).should("contain", aboutMock.heading)
 
-    cy.findByRole("link", { name: blogMock.title }).should("be.visible").click()
+    cy.findByRole("link", { name: blogMock.title })
+      .scrollIntoView({
+        easing: "linear",
+        duration: 300,
+        offset: { top: -150 },
+      })
+      .should("be.visible")
+      .click()
     cy.url().should("include", blogMock.url)
     cy.findByRole("heading", { level: 1 }).should("contain", blogMock.title)
 
@@ -59,12 +76,25 @@ describe("Navigation tests", () => {
     cy.url().should("contain", `${blogMock.url}${postMock.url}`)
     cy.findByRole("heading", { level: 1 }).should("contain", postMock.title)
 
-    cy.findByRole("link", { name: "MG" }).should("be.visible").click()
+    cy.findByRole("link", { name: "MG" })
+      .scrollIntoView({
+        easing: "linear",
+        duration: 300,
+        offset: { top: -150 },
+      })
+      .should("be.visible")
+      .click()
     cy.url().should("not.include", `${blogMock.url}${postMock.url}`)
     cy.findByRole("heading", { level: 1 }).should("be.visible")
   })
   it("Navigates around contact methods", () => {
-    cy.findByRole("link", { name: "Contact" }).click()
+    cy.findByRole("link", { name: "Contact" })
+      .scrollIntoView({
+        easing: "linear",
+        duration: 300,
+        offset: { top: -150 },
+      })
+      .click()
     cy.url().should("contain", "#contact")
 
     cy.findByRole("link", { name: email }).should(

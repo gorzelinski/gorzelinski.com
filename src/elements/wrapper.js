@@ -18,6 +18,8 @@ export const Wrapper = styled.div`
         var(--space-xxxs) + var(--space-xs) - var(--space-xxxs) +
           var(--font-height-tiny) + 3 * var(--space-xs)
       );
+      --wrapper-width-desktop: 80rem;
+      --wrapper-width-large: 83rem;
       padding: var(--space-s) var(--space-s)
         calc(var(--mobile-nav-height) + var(--space-s)) var(--space-s);
       max-width: 100%;
@@ -34,14 +36,12 @@ export const Wrapper = styled.div`
 
       ${media.desktop`
         margin: 0 auto;
-        padding: var(--space-xl) 0;
-        max-width:  ${72 + "rem"};
+        max-width:  var(--wrapper-width-desktop);
       `}
       
       ${media.large`
         margin: 0 auto;
-        padding: var(--space-xl) 0;
-        max-width:  ${75 + "rem"};
+        max-width: var(--wrapper-width-large);
       `}
     `}
 `
