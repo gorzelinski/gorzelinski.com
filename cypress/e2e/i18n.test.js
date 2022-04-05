@@ -327,7 +327,13 @@ describe("I18n tests", () => {
       checkTags(page, index, pages)
 
       cy.findByRole("heading", { name: page.heading }).should("be.visible")
-      cy.findAllByRole("link", { name: page.title }).should("be.visible")
+      cy.findAllByRole("link", { name: page.title })
+        .scrollIntoView({
+          easing: "linear",
+          duration: 300,
+          offset: { top: -150 },
+        })
+        .should("be.visible")
 
       if (pages[index + 1]) {
         changeLanguage(pages[index + 1].lang)

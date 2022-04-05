@@ -3,23 +3,20 @@ import { useTranslation } from "react-i18next"
 import { useLocalization } from "gatsby-theme-i18n"
 
 import { Button, Header, Navigation } from "../elements"
+import { useScrollDirection } from "../hooks"
 import Logo from "./logo"
 import ThemeSwitcher from "./theme-switcher"
 
 const Navbar = ({ location }) => {
   const { t } = useTranslation("components/navbar")
   const { locale } = useLocalization()
+  const { scrollDirection } = useScrollDirection(56)
 
-  const selectClass = href => {
-    if (href === location?.pathname) {
-      return "active"
-    } else {
-      return "active-subtle"
-    }
-  }
+  const selectClass = href =>
+    href === location?.pathname ? "active" : "active-subtle"
 
   return (
-    <Header $type="main">
+    <Header $type="main" $direction={scrollDirection}>
       <Navigation $helper aria-label={t("helper")}>
         <Logo></Logo>
         <ThemeSwitcher></ThemeSwitcher>

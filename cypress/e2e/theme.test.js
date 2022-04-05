@@ -2,7 +2,13 @@
 
 describe("Theme tests", () => {
   const checkLightTheme = () => {
-    cy.findByTestId("sun-and-moon").should("be.visible")
+    cy.findByTestId("sun-and-moon")
+      .scrollIntoView({
+        easing: "linear",
+        duration: 300,
+        offset: { top: -150 },
+      })
+      .should("be.visible")
     cy.findByTestId("background").should(
       "have.css",
       "background-color",
@@ -13,7 +19,13 @@ describe("Theme tests", () => {
       .should("have.css", "color", "rgb(0, 0, 0)")
   }
   const checkDarkTheme = () => {
-    cy.findByTestId("sun-and-moon").should("be.visible")
+    cy.findByTestId("sun-and-moon")
+      .scrollIntoView({
+        easing: "linear",
+        duration: 300,
+        offset: { top: -150 },
+      })
+      .should("be.visible")
     cy.findByTestId("background").should(
       "have.css",
       "background-color",
@@ -26,7 +38,13 @@ describe("Theme tests", () => {
   it("Visits home page and tests themes", () => {
     cy.visit("/")
     checkLightTheme()
-    cy.findByLabelText(/change theme/i).click()
+    cy.findByLabelText(/change theme/i)
+      .scrollIntoView({
+        easing: "linear",
+        duration: 300,
+        offset: { top: -150 },
+      })
+      .click()
     checkDarkTheme()
     cy.reload()
     checkDarkTheme()
