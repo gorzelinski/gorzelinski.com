@@ -10,7 +10,7 @@ import ThemeSwitcher from "./theme-switcher"
 const Navbar = ({ location }) => {
   const { t } = useTranslation("components/navbar")
   const { locale } = useLocalization()
-  const { scrollDirection } = useScrollDirection(56)
+  const { scrollDirection } = useScrollDirection()
 
   const selectClass = href =>
     href === location?.pathname ? "active" : "active-subtle"

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
 
-export const useScrollDirection = (threshold = 0) => {
+export const useScrollDirection = () => {
   const [scrollDirection, setScrollDirection] = useState("down")
 
   useEffect(() => {
+    const threshold = 56
     let lastScrollY = window.pageYOffset
     let ticking = false
 
@@ -30,7 +31,7 @@ export const useScrollDirection = (threshold = 0) => {
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [scrollDirection, threshold])
+  }, [scrollDirection])
 
   return { scrollDirection }
 }

@@ -1,7 +1,9 @@
 {
   "title": "Blog",
-  "subtitle": "Wszystkie wpisy",
   "description": "Tu będzie opis bloga.",
+  "subtitle": "Wszystkie wpisy",
+  "found": "Znaleziono wpisów",
+  "search": "Szukaj wpisów",
   "alt": "Wycentrowany napis About na białym tle",
   "loadMore": "Załaduj więcej"
 }

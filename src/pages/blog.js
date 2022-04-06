@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { useLocalization } from "gatsby-theme-i18n"
 
-import { Button, H1, Header, P, Section, Tile } from "../elements"
-import { createMetaImage } from "../utils"
+import { Button, H1, Header, Input, P, Section, Tile } from "../elements"
+import { createMetaImage, debounce } from "../utils"
 import Cards from "../components/cards"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -17,32 +17,59 @@ const Blog = ({ data, location }) => {
     alt: t("alt"),
     src: data?.metaImage,
   })
-  const allPosts = data.allPosts?.nodes
   const postsPerLoad = 8
-  const [list, setList] = useState([...allPosts.slice(0, postsPerLoad)])
+  const allPosts = data.allPosts?.nodes
+  const [filteredPosts, setFilteredPosts] = useState(allPosts)
+  const [currentPosts, setCurrentPosts] = useState(
+    filteredPosts.slice(0, postsPerLoad)
+  )
   const [loadMore, setLoadMore] = useState(false)
-  const [hasMore, setHasMore] = useState(allPosts.length > postsPerLoad)
+  const [hasMore, setHasMore] = useState(filteredPosts.length > postsPerLoad)
 
   const handleLoadMore = () => {
     setLoadMore(true)
   }
 
-  useEffect(() => {
-    if (loadMore && hasMore) {
-      const currentLength = list.length
-      const isMore = currentLength < allPosts.length
-      const nextResults = isMore
-        ? allPosts.slice(currentLength, currentLength + postsPerLoad)
-        : []
-      setList([...list, ...nextResults])
-      setLoadMore(false)
-    }
-  }, [loadMore, hasMore, allPosts, list])
+  const handleInputChange = useMemo(
+    () =>
+      debounce(event => {
+        const query = event.target.value
+        query
+          ? setFilteredPosts(
+              allPosts.filter(post => {
+                const { title, description, date } = post.frontmatter
+                return (
+                  title.toLowerCase().includes(query.toLowerCase()) ||
+                  description.toLowerCase().includes(query.toLowerCase()) ||
+                  date.toLowerCase().includes(query.toLowerCase())
+                )
+              })
+            )
+          : setFilteredPosts(allPosts)
+      }, 250),
+    [allPosts]
+  )
 
   useEffect(() => {
-    const isMore = list.length < allPosts.length
+    setCurrentPosts(filteredPosts.slice(0, postsPerLoad))
+  }, [filteredPosts])
+
+  useEffect(() => {
+    if (loadMore && hasMore) {
+      const currentLength = currentPosts.length
+      const isMore = currentLength < filteredPosts.length
+      const nextResults = isMore
+        ? filteredPosts.slice(currentLength, currentLength + postsPerLoad)
+        : []
+      setCurrentPosts([...currentPosts, ...nextResults])
+      setLoadMore(false)
+    }
+  }, [loadMore, hasMore, filteredPosts, currentPosts])
+
+  useEffect(() => {
+    const isMore = currentPosts.length < filteredPosts.length
     setHasMore(isMore)
-  }, [list, allPosts])
+  }, [currentPosts, filteredPosts])
 
   return (
     <Layout location={location}>
@@ -54,16 +81,24 @@ const Blog = ({ data, location }) => {
         image={metaImage}
       ></Seo>
       <Section $marginTop="bigger">
-        <Header>
+        <Header $type="section">
           <H1 $marginReset="top" $decorative>
             {t("title")}
           </H1>
           <P as="h2" $type="ui">
-            {t("subtitle")}
+            {filteredPosts === allPosts
+              ? t("subtitle")
+              : `${t("found")}: ${filteredPosts.length}`}
           </P>
         </Header>
         <Section as="div" $marginReset="top">
-          <Cards data={list}></Cards>
+          <Input
+            type="text"
+            placeholder={t("search")}
+            aria-label={t("search")}
+            onChange={handleInputChange}
+          ></Input>
+          <Cards data={currentPosts}></Cards>
         </Section>
         {hasMore ? (
           <Tile $span="all" $justify="center">
