@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 export const useScrollProgress = () => {
   const [progress, setProgress] = useState(0)
+  const animationFrame = useRef()
 
   useEffect(() => {
+    let ticking = false
+
     const updateScrollProgress = () => {
       const scrolled =
         (document.documentElement.scrollTop /
@@ -11,14 +14,22 @@ export const useScrollProgress = () => {
             document.documentElement.clientHeight)) *
         100
       setProgress(scrolled)
+      ticking = false
     }
 
     const handleScroll = () => {
-      window.requestAnimationFrame(updateScrollProgress)
+      if (!ticking) {
+        animationFrame.current =
+          window.requestAnimationFrame(updateScrollProgress)
+        ticking = true
+      }
     }
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => {
+      window.cancelAnimationFrame(animationFrame.current)
+      window.removeEventListener("scroll", handleScroll)
+    }
   }, [progress])
 
   return { progress }

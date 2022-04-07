@@ -1,7 +1,9 @@
 {
   "title": "Blog",
-  "subtitle": "All posts",
   "description": "Here will be the blog description.",
+  "subtitle": "All posts",
+  "found": "Found posts",
+  "search": "Search posts",
   "alt": "Centred text About on white background",
   "loadMore": "Load more"
 }

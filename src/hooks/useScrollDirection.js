@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
-export const useScrollDirection = (threshold = 0) => {
+export const useScrollDirection = () => {
   const [scrollDirection, setScrollDirection] = useState("down")
+  const animationFrame = useRef()
 
   useEffect(() => {
+    const threshold = 56
     let lastScrollY = window.pageYOffset
     let ticking = false
 
@@ -23,14 +25,19 @@ export const useScrollDirection = (threshold = 0) => {
 
     const handleScroll = () => {
       if (!ticking) {
-        window.requestAnimationFrame(updateScrollDirection)
+        animationFrame.current = window.requestAnimationFrame(
+          updateScrollDirection
+        )
         ticking = true
       }
     }
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [scrollDirection, threshold])
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => {
+      window.cancelAnimationFrame(animationFrame.current)
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [scrollDirection])
 
   return { scrollDirection }
 }

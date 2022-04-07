@@ -10,10 +10,13 @@ import ThemeSwitcher from "./theme-switcher"
 const Navbar = ({ location }) => {
   const { t } = useTranslation("components/navbar")
   const { locale } = useLocalization()
-  const { scrollDirection } = useScrollDirection(56)
+  const { scrollDirection } = useScrollDirection()
 
   const selectClass = href =>
     href === location?.pathname ? "active" : "active-subtle"
+
+  const selectHref = (href, locale) =>
+    locale === "en" ? href : `/${locale}${href}`
 
   return (
     <Header $type="main" $direction={scrollDirection}>
@@ -27,9 +30,7 @@ const Navbar = ({ location }) => {
           $type="nav"
           $animation="underline"
           to="/portfolio/"
-          activeClassName={selectClass(
-            locale === "en" ? `/portfolio/` : `/${locale}/portfolio/`
-          )}
+          activeClassName={selectClass(selectHref("/portfolio/", locale))}
           partiallyActive={true}
         >
           {t("portfolio")}
@@ -48,9 +49,7 @@ const Navbar = ({ location }) => {
           $type="nav"
           $animation="underline"
           to="/blog/"
-          activeClassName={selectClass(
-            locale === "en" ? `/blog/` : `/${locale}/blog/`
-          )}
+          activeClassName={selectClass(selectHref("/blog/", locale))}
           partiallyActive={true}
         >
           {t("blog")}

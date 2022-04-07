@@ -10,7 +10,7 @@ const Cards = ({ data = [] }) => {
   const cards = data
 
   return cards.length === 0 ? (
-    <Tile>
+    <Tile $span="all">
       <P $type="ui">{t("message")}</P>
     </Tile>
   ) : (
