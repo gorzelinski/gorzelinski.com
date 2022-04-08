@@ -14,19 +14,21 @@ export const border = {
   interactive: css`
     border-style: solid;
     border-radius: var(--space-xs);
-    border-width: var(--space-xxs);
+    border-width: var(--space-xxxs);
     border-color: var(--color-gray-80);
 
     &:hover:enabled {
       border-color: var(--color-gray-60);
     }
 
-    &:focus:enabled {
-      border-color: var(--color-gray-60);
+    &:focus:enabled,
+    &:focus-visible:enabled {
+      border-color: var(--color-gray-30);
+      outline: 0;
     }
 
     &:active:enabled {
-      border-color: var(--color-gray-base);
+      border-color: var(--color-gray-30);
     }
   `,
 }

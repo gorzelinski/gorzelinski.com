@@ -36,14 +36,14 @@ const Socials = ({ data = {} }) => {
         return (
           <Button
             as="a"
-            $type="text"
+            $type="icon"
             key={name}
             aria-label={name}
             rel="noopener noreferrer"
             target="_blank"
             href={link}
           >
-            <Icon $type="text">{selectIcon(name)}</Icon>
+            <Icon>{selectIcon(name)}</Icon>
           </Button>
         )
       })}

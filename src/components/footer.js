@@ -30,7 +30,7 @@ const Footer = ({ location }) => {
         </Small>
         <Address>
           <Button as="a" $align="left" $type="text" href={`mailto:${email}`}>
-            <Icon $type="text">
+            <Icon>
               <Mail></Mail>
             </Icon>
             {email}

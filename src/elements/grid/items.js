@@ -79,7 +79,7 @@ export const justify = css`
         `
       default:
         return css`
-          justify-self: start;
+          justify-self: stretch;
         `
     }
   }}

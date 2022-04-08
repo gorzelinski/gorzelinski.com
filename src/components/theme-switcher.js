@@ -146,12 +146,12 @@ const ThemeSwitcher = () => {
     <StyledThemeSwitcher theme={theme}>
       <Button
         as="button"
-        $type="text"
+        $type="icon"
         title={t("aria")}
         aria-label={t("aria")}
-        onClick={() => toggle()}
+        onClick={toggle}
       >
-        <Icon $type="text">
+        <Icon>
           <SunAndMoon></SunAndMoon>
         </Icon>
       </Button>

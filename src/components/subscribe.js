@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import {
   AlertCircle,
+  At,
   CheckmarkCircle,
   Send,
   Sync,
@@ -15,6 +16,7 @@ import {
   H6,
   Icon,
   Input,
+  InputWrapper,
   Li,
   P,
   Section,
@@ -101,16 +103,21 @@ const Subscribe = () => {
                 checked={true}
                 readOnly
               ></input>
-              <Input
-                required
-                name="email_address"
-                id="email"
-                type="email"
-                placeholder={t("email")}
-                aria-label={t("email")}
-                disabled={state === "loading" ? true : false}
-                onClick={() => setState("idle")}
-              ></Input>
+              <InputWrapper>
+                <Icon $type="border">
+                  <At></At>
+                </Icon>
+                <Input
+                  required
+                  name="email_address"
+                  id="email"
+                  type="email"
+                  placeholder={t("email")}
+                  aria-label={t("email")}
+                  disabled={state === "loading" ? true : false}
+                  onClick={() => setState("idle")}
+                ></Input>
+              </InputWrapper>
               <Button
                 as="button"
                 $grow

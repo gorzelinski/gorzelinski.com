@@ -7,7 +7,7 @@ export const primaryColorStates = css`
     color: var(--color-primary-40);
   }
   &:focus,
-  :focus-visible {
+  &:focus-visible {
     color: var(--color-primary-30);
   }
   &:active {
@@ -22,7 +22,7 @@ export const primaryBackgroundColorStates = css`
     background-color: var(--color-primary-40);
   }
   &:focus,
-  :focus-visible {
+  &:focus-visible {
     background-color: var(--color-primary-30);
   }
   &:active {
@@ -37,7 +37,7 @@ export const textColorStates = css`
     color: var(--color-gray-40);
   }
   &:focus,
-  :focus-visible {
+  &:focus-visible {
     color: var(--color-gray-20);
   }
   &:active {

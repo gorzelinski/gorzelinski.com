@@ -9,9 +9,18 @@ import {
   primaryBackgroundColorStates,
   primaryColorStates,
   underline,
+  textColorStates,
 } from "./effects"
 import { elementBuzzOut, iconSpinning, iconWobble } from "./animations"
 import { paragraph, ui } from "./typography"
+
+export const icon = css`
+  ${textColorStates}
+  &:disabled {
+    color: var(--color-gray-80);
+    cursor: not-allowed;
+  }
+`
 
 export const nav = css`
   position: relative;
@@ -32,7 +41,7 @@ export const nav = css`
     color: var(--color-gray-00);
   }
   &:hover,
-  :focus {
+  &:focus {
     color: var(--color-gray-00);
     transition: color var(--duration-natural) ease-out;
   }
@@ -136,6 +145,8 @@ export const Button = styled(LocalizedLink)`
 
   ${props => {
     switch (props.$type) {
+      case "icon":
+        return icon
       case "nav":
         return nav
       case "text":
