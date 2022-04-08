@@ -1,9 +1,21 @@
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { useLocalization } from "gatsby-theme-i18n"
+import { Search } from "@styled-icons/ionicons-solid"
 
-import { Button, H1, Header, Input, P, Section, Tile } from "../elements"
+import {
+  Button,
+  Form,
+  H1,
+  Header,
+  Icon,
+  Input,
+  InputWrapper,
+  P,
+  Section,
+  Tile,
+} from "../elements"
 import { createMetaImage, debounce } from "../utils"
 import Cards from "../components/cards"
 import Layout from "../components/layout"
@@ -25,27 +37,34 @@ const Blog = ({ data, location }) => {
   )
   const [loadMore, setLoadMore] = useState(false)
   const [hasMore, setHasMore] = useState(filteredPosts.length > postsPerLoad)
+  const resultsRef = useRef(null)
 
   const handleLoadMore = () => {
     setLoadMore(true)
+  }
+
+  const handleKeyUp = e => {
+    if (e.key === "Enter") {
+      e.target.blur()
+      resultsRef.current?.scrollIntoView({
+        behavior: "smooth",
+      })
+    }
   }
 
   const handleInputChange = useMemo(
     () =>
       debounce(event => {
         const query = event.target.value
-        query
-          ? setFilteredPosts(
-              allPosts.filter(post => {
-                const { title, description, date } = post.frontmatter
-                return (
-                  title.toLowerCase().includes(query.toLowerCase()) ||
-                  description.toLowerCase().includes(query.toLowerCase()) ||
-                  date.toLowerCase().includes(query.toLowerCase())
-                )
-              })
-            )
-          : setFilteredPosts(allPosts)
+        const filtered = allPosts.filter(post => {
+          const { title, description, date } = post.frontmatter
+          return (
+            title.toLowerCase().includes(query.toLowerCase()) ||
+            description.toLowerCase().includes(query.toLowerCase()) ||
+            date.toLowerCase().includes(query.toLowerCase())
+          )
+        })
+        query ? setFilteredPosts(filtered) : setFilteredPosts(allPosts)
       }, 250),
     [allPosts]
   )
@@ -91,13 +110,28 @@ const Blog = ({ data, location }) => {
               : `${t("found")}: ${filteredPosts.length}`}
           </P>
         </Header>
-        <Section as="div" $marginReset="top">
-          <Input
-            type="text"
-            placeholder={t("search")}
-            aria-label={t("search")}
-            onChange={handleInputChange}
-          ></Input>
+        <Tile $span="all">
+          <Form
+            role="search"
+            onSubmit={e => {
+              e.preventDefault()
+            }}
+          >
+            <InputWrapper>
+              <Icon $type="border">
+                <Search></Search>
+              </Icon>
+              <Input
+                type="search"
+                placeholder={t("search")}
+                aria-label={t("search")}
+                onChange={handleInputChange}
+                onKeyUp={handleKeyUp}
+              ></Input>
+            </InputWrapper>
+          </Form>
+        </Tile>
+        <Section as="div" $marginReset="top" ref={resultsRef}>
           <Cards data={currentPosts}></Cards>
         </Section>
         {hasMore ? (
