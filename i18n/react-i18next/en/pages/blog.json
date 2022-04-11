@@ -1,6 +1,7 @@
 {
-  "title": "Blog",
-  "description": "Here will be the blog description.",
+  "title": "Blog by Gorzelinski",
+  "description": "I write about design, web development, tech, science, and other nerdy stuff I'm currently interested in.",
+  "heading": "Blog",
   "subtitle": "All posts",
   "found": "Found posts",
   "search": "Search posts",

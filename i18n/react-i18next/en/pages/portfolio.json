@@ -1,7 +1,8 @@
 {
-  "title": "Portfolio",
+  "title": "The Gorzelinski Portfolio",
+  "description": "I design and code websites for my clients. Here's a little showcase of my work.",
+  "heading": "Portfolio",
   "subtitle": "All projects",
-  "description": "Here will be the portfolio description.",
   "alt": "Centered text Portfolio on white background",
   "loadMore": "Load more"
 }

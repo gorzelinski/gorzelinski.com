@@ -4,7 +4,16 @@ import { Helmet } from "react-helmet"
 
 import { useBio } from "../hooks/useBio"
 
-const Seo = ({ description, image, lang, meta, slug, title, type }) => {
+const Seo = ({
+  description,
+  image,
+  lang,
+  meta,
+  slug,
+  title,
+  type,
+  titleTemplate,
+}) => {
   const {
     bio: { site },
   } = useBio()
@@ -20,7 +29,7 @@ const Seo = ({ description, image, lang, meta, slug, title, type }) => {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      titleTemplate={titleTemplate ? `%s | ${defaultTitle}` : null}
       meta={[
         {
           name: `description`,
@@ -114,6 +123,7 @@ Seo.defaultProps = {
   description: ``,
   type: `website`,
   slug: ``,
+  titleTemplate: false,
 }
 
 Seo.propTypes = {
@@ -123,6 +133,7 @@ Seo.propTypes = {
   meta: PropTypes.arrayOf(PropTypes.object),
   slug: PropTypes.string,
   title: PropTypes.string.isRequired,
+  titleTemplate: PropTypes.bool,
   type: PropTypes.string,
 }
 

@@ -50,6 +50,7 @@ const BlogPostTemplate = ({ data, location }) => {
         lang={post.fields.locale}
         type="article"
         title={post.frontmatter.title}
+        titleTemplate={true}
         description={post.frontmatter.description}
         slug={location.pathname}
         image={metaImage}

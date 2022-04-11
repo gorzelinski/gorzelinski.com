@@ -1,7 +1,8 @@
 {
-  "title": "Portfolio",
+  "title": "Portfolio Gorzelińskiego",
+  "description": "Projektuję i koduję strony internetowe dla moich klientów. Oto mała wystawa mojej pracy.",
+  "heading": "Portfolio",
   "subtitle": "Wszystkie projekty",
-  "description": "Tu będzie opis portfolio.",
   "alt": "Wycentrowany napis portfolio na białym tle",
   "loadMore": "Załaduj więcej"
 }

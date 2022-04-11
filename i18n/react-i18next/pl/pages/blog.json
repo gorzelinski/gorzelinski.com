@@ -1,6 +1,7 @@
 {
-  "title": "Blog",
-  "description": "Tu będzie opis bloga.",
+  "title": "Blog autorstwa Gorzelińskiego",
+  "description": "Piszę o projektowaniu, web developmencie, technologii, nauce i innych nerdowskich rzeczach, które aktualnie mnie interesują.",
+  "heading": "Blog",
   "subtitle": "Wszystkie wpisy",
   "found": "Znaleziono wpisów",
   "search": "Szukaj wpisów",

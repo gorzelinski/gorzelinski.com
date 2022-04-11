@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe("Seo tests", () => {
-  const siteTitle = "MG"
+  const siteTitle = "Gorzelinski"
   const twitter = "@gorzelinski"
   const shouldHaveTags = ({ h1, title, description, url, type }) => {
     cy.findByRole("heading", {
@@ -68,8 +68,8 @@ describe("Seo tests", () => {
   it("Visits home page and checks important seo tags", () => {
     const mock = {
       url: "https://gorzelinski.com",
-      title: "I create things on the Internet",
-      description: "Here will be the website description",
+      title: "Matthew Gorzelinski",
+      description: "things on the Internet",
       type: "website",
       h1: /create/i,
     }
@@ -80,7 +80,7 @@ describe("Seo tests", () => {
     const mock = {
       url: "https://gorzelinski.com/portfolio/",
       title: "Portfolio",
-      description: "Here will be the portfolio description",
+      description: "websites",
       type: "website",
       h1: /portfolio/i,
     }
@@ -91,7 +91,7 @@ describe("Seo tests", () => {
     const mock = {
       url: "https://gorzelinski.com/portfolio/an-lam/",
       title: "An-lam",
-      description: "An-lam is a small",
+      description: "An-lam",
       type: "article",
       h1: /an-lam/i,
     }
@@ -102,7 +102,7 @@ describe("Seo tests", () => {
     const mock = {
       url: "https://gorzelinski.com/about/",
       title: "About",
-      description: "Here will be about description",
+      description: "Matthew",
       type: "website",
       h1: /short story/i,
     }
@@ -113,7 +113,7 @@ describe("Seo tests", () => {
     const mock = {
       url: "https://gorzelinski.com/blog/",
       title: "Blog",
-      description: "Here will be the blog description",
+      description: "web development",
       type: "website",
       h1: /blog/i,
     }

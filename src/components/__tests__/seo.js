@@ -10,7 +10,7 @@ describe("SEO component", () => {
     useStaticQuery.mockReturnValue({
       site: {
         siteMetadata: {
-          title: `Gorzeliński`,
+          title: `Gorzelinski`,
           description: `Default meta description`,
           siteUrl: `https://gorzelinski.com`,
           social: {
@@ -24,9 +24,8 @@ describe("SEO component", () => {
   const defaultLang = "en"
   const mockDefaultDescription = "Default meta description"
   const mockCustomDescription = "Custom meta description"
-  const mockDefaultTitle = "Gorzeliński"
+  const mockDefaultTitle = "Gorzelinski"
   const mockTitle = "Custom title"
-  const mockTitleTemplate = "Custom title | Gorzeliński"
   const mockDefaultUrl = "https://gorzelinski.com"
   const mockCustomUrl = "https://gorzelinski.com/custom"
   const mockDefaultType = "website"
@@ -51,7 +50,7 @@ describe("SEO component", () => {
     it("title", () => {
       render(<SEO title="Custom title" />)
       const { title } = Helmet.peek()
-      expect(title).toBe(mockTitleTemplate)
+      expect(title).toBe(mockTitle)
     })
 
     it("default description", () => {

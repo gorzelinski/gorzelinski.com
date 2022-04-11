@@ -39,6 +39,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         lang={project.fields.locale}
         type="article"
         title={project.frontmatter.title}
+        titleTemplate={true}
         description={project.frontmatter.description}
         slug={location.pathname}
         image={metaImage}

@@ -102,7 +102,7 @@ const Blog = ({ data, location }) => {
       <Section $marginTop="bigger">
         <Header $type="section">
           <H1 $marginReset="top" $decorative>
-            {t("title")}
+            {t("heading")}
           </H1>
           <P as="h2" $type="ui">
             {filteredPosts === allPosts

@@ -76,7 +76,7 @@ describe("Navigation tests", () => {
     cy.url().should("contain", `${blogMock.url}${postMock.url}`)
     cy.findByRole("heading", { level: 1 }).should("contain", postMock.title)
 
-    cy.findByRole("link", { name: "MG" })
+    cy.findByRole("link", { name: "Gorzelinski" })
       .scrollIntoView({
         easing: "linear",
         duration: 300,

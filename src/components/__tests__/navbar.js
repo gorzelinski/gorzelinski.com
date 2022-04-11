@@ -25,7 +25,7 @@ describe("Navbar component", () => {
     })
 
     it("link to home page", () => {
-      const home = screen.getByRole("link", { name: /mg/i })
+      const home = screen.getByRole("link", { name: /gorzelinski/i })
       expect(home.getAttribute("href")).toBe("/")
     })
 

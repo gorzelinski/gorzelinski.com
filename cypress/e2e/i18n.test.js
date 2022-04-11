@@ -5,8 +5,8 @@ const indexMock = [
     lang: "en",
     hreflang: "en-US",
     url: "/",
-    title: "I create things on the Internet",
-    description: "Here will be the website description.",
+    title: "Matthew Gorzelinski",
+    description: "things on the Internet",
     heading: /create/i,
     cta: /create/i,
     portfolio: {
@@ -42,8 +42,8 @@ const indexMock = [
     lang: "pl",
     hreflang: "pl-PL",
     url: "/pl/",
-    title: "Tworzę rzeczy w internecie",
-    description: "Tu będzie opis strony.",
+    title: "Mateusz Gorzeliński",
+    description: "rzeczy w internecie",
     heading: /tworzę/i,
     cta: /stwórzmy/i,
     portfolio: {
@@ -83,7 +83,7 @@ const portfolioMock = [
     hreflang: "en-US",
     url: "/portfolio/",
     title: "Portfolio",
-    description: "Here will be the portfolio description.",
+    description: "websites",
     project: /check case study/i,
   },
   {
@@ -91,7 +91,7 @@ const portfolioMock = [
     hreflang: "pl-PL",
     url: "/pl/portfolio/",
     title: "Portfolio",
-    description: "Tu będzie opis portfolio.",
+    description: "strony internetowe",
     project: /sprawdź case study/i,
   },
 ]
@@ -102,15 +102,17 @@ const aboutMock = [
     hreflang: "en-US",
     url: "/about/",
     title: "About",
-    description: "Here will be about description.",
+    link: "About",
+    description: "Matthew",
     heading: /story/i,
   },
   {
     lang: "pl",
     hreflang: "pl-PL",
     url: "/pl/about/",
-    title: "O mnie",
-    description: "Tu będzie opis o mnie.",
+    title: "O",
+    link: "O mnie",
+    description: "Mateusz",
     heading: /historia/i,
   },
 ]
@@ -121,7 +123,7 @@ const blogMock = [
     hreflang: "en-US",
     url: "/blog/",
     title: "Blog",
-    description: "Here will be the blog description.",
+    description: "design",
     post: /read post/i,
   },
   {
@@ -129,7 +131,7 @@ const blogMock = [
     hreflang: "pl-PL",
     url: "/pl/blog/",
     title: "Blog",
-    description: "Tu będzie opis bloga.",
+    description: "projektowaniu",
     post: /czytaj wpis/i,
   },
 ]
@@ -157,10 +159,10 @@ const postsMock = [
   {
     lang: "en",
     hreflang: "en-US",
-    url: "/blog/stylish-design-principles-with-a-nasty-acronym-crap/",
-    title: "Stylish design principles with a nasty acronym - CRAP",
+    url: "/blog/stylish-design-principles-with-a-nasty-acronym/",
+    title: "Stylish design principles with a nasty acronym",
     description:
-      "In this post, we will look at four universal design principles that can improve any graphical work: website, slide, document, etc.",
+      "In this post, we will look at four universal design principles that can improve any graphical work",
     date: "May 09, 2021",
     share: /share/i,
     more: /read more/i,
@@ -169,10 +171,10 @@ const postsMock = [
   {
     lang: "pl",
     hreflang: "pl-PL",
-    url: "/pl/blog/stylish-design-principles-with-a-nasty-acronym-crap/",
-    title: "Stylowe zasady designu o paskudnym akronimie - CRAP",
+    url: "/pl/blog/stylish-design-principles-with-a-nasty-acronym/",
+    title: "Stylowe zasady designu o paskudnym akronimie",
     description:
-      "W tym wpisie przyjrzymy się czterem, uniwersalnym zasadom designu, które mogą poprawić dowolną pracę graficzną: stronę internetową, slajd, dokument itp.",
+      "W tym wpisie przyjrzymy się czterem, uniwersalnym zasadom designu, które mogą poprawić dowolną pracę graficzną",
     date: "09 maja, 2021",
     share: /udostępnij/i,
     more: /przeczytaj także/i,
@@ -327,7 +329,7 @@ describe("I18n tests", () => {
       checkTags(page, index, pages)
 
       cy.findByRole("heading", { name: page.heading }).should("be.visible")
-      cy.findAllByRole("link", { name: page.title })
+      cy.findByRole("link", { name: page.link, exact: false })
         .scrollIntoView({
           easing: "linear",
           duration: 300,

@@ -15,7 +15,7 @@ const Landing = () => {
             strings={[
               t("typewriter.design"),
               t("typewriter.code"),
-              t("typewriter.publish"),
+              t("typewriter.write"),
               t("typewriter.create"),
             ]}
           ></Typewriter>
