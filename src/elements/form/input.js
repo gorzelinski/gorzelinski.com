@@ -19,6 +19,7 @@ export const InputWrapper = styled.div`
 export const Input = styled.input`
   ${ui}
   ${border.interactive}
+  appearance: none;
   color: var(--color-gray-30);
   background-color: transparent;
   padding: calc(var(--space-xs) - var(--space-xxxs));
