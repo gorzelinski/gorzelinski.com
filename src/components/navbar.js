@@ -24,7 +24,7 @@ const Navbar = ({ location }) => {
         <Logo></Logo>
         <ThemeSwitcher></ThemeSwitcher>
       </Navigation>
-      <Navigation $main aria-label={t("main")}>
+      <Navigation $main aria-label={t("main")} $direction={scrollDirection}>
         <Button
           $size="responsive"
           $type="nav"

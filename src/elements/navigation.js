@@ -3,7 +3,9 @@ import styled, { css } from "styled-components"
 import { border, media } from "./utils"
 import { span } from "./grid"
 
-export const Navigation = styled.nav`
+export const Navigation = styled.nav.attrs(props => ({
+  className: props.$direction === "down" ? "hidden" : "",
+}))`
   ${span}
   display: inline-flex;
   flex-wrap: wrap;
@@ -56,6 +58,7 @@ export const Navigation = styled.nav`
       right: 0;
       z-index: 100;
       justify-content: space-evenly;
+      transition: bottom var(--duration-immediate) ease-out;
 
       ${media.mobile`
         background-color: transparent;
@@ -65,6 +68,10 @@ export const Navigation = styled.nav`
         z-index: 0;
         justify-content: flex-end;
       `}
+
+      &.hidden {
+        bottom: calc(-1 * var(--mobile-nav-height));
+      }
     `}
 
   ${props =>

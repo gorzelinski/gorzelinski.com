@@ -16,7 +16,7 @@ export const Progress = styled.div.attrs(props => ({
   @media (orientation: portrait) {
     left: 0;
     width: 100%;
-    bottom: var(--mobile-nav-height);
+    bottom: 0;
     height: var(--space-xxs);
   }
 
