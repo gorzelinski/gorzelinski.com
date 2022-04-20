@@ -115,7 +115,6 @@ export const pageQuery = graphql`
       }
     }
     mdx(fields: { locale: { eq: $locale }, slug: { eq: $slug } }) {
-      excerpt(pruneLength: 160)
       body
       fields {
         locale
@@ -129,11 +128,7 @@ export const pageQuery = graphql`
           caption
           src {
             childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1200
-                aspectRatio: 1.91
-              )
+              gatsbyImageData(layout: CONSTRAINED, width: 1200, height: 630)
             }
           }
         }

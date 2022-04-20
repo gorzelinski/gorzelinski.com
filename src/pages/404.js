@@ -59,7 +59,7 @@ export const pageQuery = graphql`
           layout: FIXED
           placeholder: NONE
           width: 1200
-          aspectRatio: 1.91
+          height: 630
           outputPixelDensities: 1
         )
       }

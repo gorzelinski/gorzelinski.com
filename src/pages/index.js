@@ -63,14 +63,18 @@ export default Index
 
 export const pageQuery = graphql`
   query IndexPage($locale: String!, $dateFormat: String!) {
-    metaImage: file(relativePath: { eq: "index.png" }) {
+    metaImage: file(
+      sourceInstanceName: { eq: "images" }
+      relativeDirectory: { eq: $locale }
+      name: { eq: "index" }
+    ) {
       childImageSharp {
         gatsbyImageData(
           formats: AUTO
           layout: FIXED
           placeholder: NONE
           width: 1200
-          aspectRatio: 1.91
+          height: 630
           outputPixelDensities: 1
         )
       }

@@ -139,7 +139,6 @@ export const pageQuery = graphql`
       }
     }
     mdx(fields: { locale: { eq: $locale }, slug: { eq: $slug } }) {
-      excerpt(pruneLength: 160)
       body
       fields {
         locale

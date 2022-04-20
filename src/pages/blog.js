@@ -178,14 +178,18 @@ export const pageQuery = graphql`
         timeToRead
       }
     }
-    metaImage: file(relativePath: { eq: "blog.png" }) {
+    metaImage: file(
+      sourceInstanceName: { eq: "images" }
+      relativeDirectory: { eq: $locale }
+      name: { eq: "blog" }
+    ) {
       childImageSharp {
         gatsbyImageData(
           formats: AUTO
           layout: FIXED
           placeholder: NONE
           width: 1200
-          aspectRatio: 1.91
+          height: 630
           outputPixelDensities: 1
         )
       }

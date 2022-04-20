@@ -108,14 +108,18 @@ export const pageQuery = graphql`
         }
       }
     }
-    metaImage: file(relativePath: { eq: "portfolio.png" }) {
+    metaImage: file(
+      sourceInstanceName: { eq: "images" }
+      relativeDirectory: { eq: $locale }
+      name: { eq: "portfolio" }
+    ) {
       childImageSharp {
         gatsbyImageData(
           formats: AUTO
           layout: FIXED
           placeholder: NONE
           width: 1200
-          aspectRatio: 1.91
+          height: 630
           outputPixelDensities: 1
         )
       }

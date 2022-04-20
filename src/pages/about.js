@@ -61,7 +61,7 @@ const About = ({ data, location }) => {
 export default About
 
 export const pageQuery = graphql`
-  query AllBioQuery {
+  query AllBioQuery($locale: String!) {
     site {
       siteMetadata {
         author {
@@ -75,14 +75,18 @@ export const pageQuery = graphql`
         gatsbyImageData
       }
     }
-    metaImage: file(relativePath: { eq: "about.png" }) {
+    metaImage: file(
+      sourceInstanceName: { eq: "images" }
+      relativeDirectory: { eq: $locale }
+      name: { eq: "about" }
+    ) {
       childImageSharp {
         gatsbyImageData(
           formats: AUTO
           layout: FIXED
           placeholder: NONE
           width: 1200
-          aspectRatio: 1.91
+          height: 630
           outputPixelDensities: 1
         )
       }
