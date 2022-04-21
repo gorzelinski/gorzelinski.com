@@ -2,13 +2,13 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 import { useLocalization } from "gatsby-theme-i18n"
 
-import { Button, H1, Hero, P, Strong, Tile } from "../elements"
+import { Button, H1, Hero, P, Tile } from "../elements"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const LanguagePreference = ({ location }) => {
+const Preferences = ({ location }) => {
   const { locale } = useLocalization()
-  const { t } = useTranslation("pages/language-preference")
+  const { t } = useTranslation("pages/preferences")
 
   return (
     <Layout>
@@ -21,9 +21,7 @@ const LanguagePreference = ({ location }) => {
       <Hero>
         <Tile>
           <H1 $marginReset="top">{t("title")}</H1>
-          <P $type="lead">
-            {t("description")} <Strong>{t("language")}</Strong>
-          </P>
+          <P $type="lead">{t("description")}</P>
           <Button $type="primary" to="/">
             {t("button")}
           </Button>
@@ -33,4 +31,4 @@ const LanguagePreference = ({ location }) => {
   )
 }
 
-export default LanguagePreference
+export default Preferences

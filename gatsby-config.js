@@ -92,20 +92,20 @@ module.exports = {
       resolve: `gatsby-theme-i18n`,
       options: {
         defaultLang: `en`,
-        configPath: require.resolve(`./i18n/config.json`),
+        configPath: require.resolve(`./content/i18n/config.json`),
       },
     },
     {
       resolve: `gatsby-theme-i18n-react-i18next`,
       options: {
-        locales: `./i18n/react-i18next`,
+        locales: `./content/i18n/react-i18next`,
         i18nextOptions: {
           ns: [
             "pages/404",
             "pages/about",
             "pages/blog",
             "pages/index",
-            "pages/language-preference",
+            "pages/preferences",
             "pages/portfolio",
             "pages/thank-you",
             "templates/blog-post",
