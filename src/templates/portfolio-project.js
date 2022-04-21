@@ -53,6 +53,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
       <Article>
         <ProgressScroll></ProgressScroll>
         <Image
+          $rounded
           $aspectRatio="meta"
           image={getImage(image.src)}
           alt={image.alt}

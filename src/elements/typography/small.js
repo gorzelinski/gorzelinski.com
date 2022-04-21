@@ -34,6 +34,7 @@ export const Figcaption = styled.figcaption`
     ${paragraph.small}
   `}
   
+  font-style: italic;
   display: block;
   margin-top: var(--space-s);
 `
