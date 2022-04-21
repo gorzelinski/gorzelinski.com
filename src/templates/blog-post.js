@@ -72,7 +72,6 @@ const BlogPostTemplate = ({ data, location }) => {
         </Header>
         <Figure>
           <Image
-            $rounded
             $aspectRatio="wide"
             image={getImage(image.src)}
             alt={image.alt}
