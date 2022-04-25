@@ -150,18 +150,6 @@ exports.createSchemaCustomization = ({ actions }) => {
   // blog posts are stored inside "content/blog" instead of returning an error
   //TODO: Define project frontmatter fields
   createTypes(`
-    type SiteSiteMetadata {
-      author: Author
-      siteUrl: String
-      social: Social
-    }
-
-    type Author {
-      name: String
-      summary: String
-      email: String
-    }
-
     type Social {
       github: String
       dribbble: String
@@ -169,6 +157,18 @@ exports.createSchemaCustomization = ({ actions }) => {
       facebook: String
       linkedin: String
     }
+    
+    type Author {
+      name: String
+      summary: String
+      email: String
+      social: Social
+    }
+
+    type SiteSiteMetadata {
+      author: Author
+      siteUrl: String
+    }    
 
     type BannerImage {
       alt: String

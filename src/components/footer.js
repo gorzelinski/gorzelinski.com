@@ -18,8 +18,8 @@ import LanguageSwitcher from "./language-switcher"
 const Footer = ({ location }) => {
   const { t } = useTranslation("components/footer")
   const { bio } = useBio()
-  const { title, social } = bio.site.siteMetadata
-  const { email } = bio.site.siteMetadata?.author
+  const { title } = bio.site.siteMetadata
+  const { email, social } = bio.site.siteMetadata?.author
   const links = createSocialLinks(social)
 
   return (

@@ -9,8 +9,7 @@ import Socials from "./socials"
 const Contact = () => {
   const { t } = useTranslation("components/contact")
   const { bio } = useBio()
-  const { social } = bio.site.siteMetadata
-  const { email } = bio.site.siteMetadata?.author
+  const { email, social } = bio.site.siteMetadata?.author
   const links = createSocialLinks(social)
 
   return (

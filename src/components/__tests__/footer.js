@@ -12,12 +12,12 @@ jest.mock("../../hooks", () => ({
           author: {
             name: "authorsName",
             email: "authorsEmail",
-          },
-          social: {
-            github: "authorsGithub",
-            dribbble: "authorsDribbble",
-            twitter: "authorsTwitter",
-            facebook: "authorsFacebook",
+            social: {
+              github: "authorsGithub",
+              dribbble: "authorsDribbble",
+              twitter: "authorsTwitter",
+              facebook: "authorsFacebook",
+            },
           },
         },
       },

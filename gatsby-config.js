@@ -7,13 +7,13 @@ module.exports = {
       name: `Matthew Gorzelinski`,
       summary: `Engineer with polymath aspirations.`,
       email: `hello@gorzelinski.com`,
-    },
-    social: {
-      github: `gorzelinski`,
-      dribbble: `gorzelinski`,
-      twitter: `gorzelinski`,
-      facebook: `gorzelinski`,
-      linkedin: `mateusz-gorzelinski`,
+      social: {
+        github: `gorzelinski`,
+        dribbble: `gorzelinski`,
+        twitter: `gorzelinski`,
+        facebook: `gorzelinski`,
+        linkedin: `mateusz-gorzelinski`,
+      },
     },
   },
   plugins: [
@@ -46,14 +46,14 @@ module.exports = {
         defaults: {
           formats: [`auto`, `webp`, `avif`],
           placeholder: `dominantColor`,
-          quality: 50,
+          quality: 75,
           breakpoints: [320, 480, 768, 1200],
           backgroundColor: `transparent`,
           webpOptions: {
-            quality: 80,
+            quality: 90,
           },
           avifOptions: {
-            quality: 80,
+            quality: 90,
           },
         },
       },
