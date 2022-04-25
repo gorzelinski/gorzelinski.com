@@ -94,7 +94,7 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
-          myRole
+          services
           title
           description
           image {

@@ -5,7 +5,6 @@ import { getImage } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import {
-  A,
   Article,
   Aside,
   H1,
@@ -24,6 +23,7 @@ import Seo from "../components/seo"
 import Pagination from "../components/pagination"
 import ProgressScroll from "../components/progress-scroll"
 import Subscribe from "../components/subscribe"
+import Link from "../components/link"
 
 const PortfolioProjectTemplate = ({ data, location }) => {
   const { t } = useTranslation("templates/portfolio-project")
@@ -63,14 +63,6 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <Subsection>
             <Tile>
               <Small as="p" $marginReset="top">
-                {t("date")}
-              </Small>
-              <H6 as="h2" $marginReset="both">
-                {project.frontmatter.date}
-              </H6>
-            </Tile>
-            <Tile>
-              <Small as="p" $marginReset="both">
                 {t("client")}
               </Small>
               <H6 as="h2" $marginReset="both">
@@ -78,33 +70,29 @@ const PortfolioProjectTemplate = ({ data, location }) => {
               </H6>
             </Tile>
             <Tile>
-              <Small as="p" $marginReset="both">
-                {t("role")}
+              <Small as="p" $marginReset="top">
+                {t("links")}
+              </Small>
+              {project.frontmatter.links?.map(link => (
+                <H6 as="h2" $marginReset="both" key={link.text}>
+                  <Link href={link.href}>{link.text}</Link>
+                </H6>
+              ))}
+            </Tile>
+            <Tile>
+              <Small as="p" $marginReset="top">
+                {t("services")}
               </Small>
               <H6 as="h2" $marginReset="both">
-                {project.frontmatter.myRole}
+                {project.frontmatter.services?.join(", ")}
               </H6>
             </Tile>
             <Tile>
-              <Small as="p" $marginReset="both">
-                {t("tools")}
+              <Small as="p" $marginReset="top">
+                {t("deliverables")}
               </Small>
               <H6 as="h2" $marginReset="both">
-                {project.frontmatter.tools}
-              </H6>
-            </Tile>
-            <Tile $span="all">
-              <Small as="p" $marginReset="both">
-                {t("live")}
-              </Small>
-              <H6 as="h2" $marginReset="both">
-                <A
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={project.frontmatter.live}
-                >
-                  {project.frontmatter.live}
-                </A>
+                {project.frontmatter.deliverables?.join(", ")}
               </H6>
             </Tile>
           </Subsection>
@@ -128,7 +116,6 @@ export const pageQuery = graphql`
   query PortfolioProjectBySlug(
     $locale: String!
     $slug: String!
-    $dateFormat: String!
     $previous: String
     $next: String
   ) {
@@ -145,12 +132,14 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
-        date(formatString: $dateFormat, locale: $locale)
         description
         client
-        myRole
-        tools
-        live
+        services
+        deliverables
+        links {
+          text
+          href
+        }
         image {
           alt
           src {

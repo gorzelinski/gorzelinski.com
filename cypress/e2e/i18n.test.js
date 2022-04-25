@@ -84,7 +84,7 @@ const portfolioMock = [
     url: "/portfolio/",
     title: "Portfolio",
     description: "websites",
-    project: /check case study/i,
+    project: /check/i,
   },
   {
     lang: "pl",
@@ -92,7 +92,7 @@ const portfolioMock = [
     url: "/pl/portfolio/",
     title: "Portfolio",
     description: "strony internetowe",
-    project: /sprawdź case study/i,
+    project: /sprawdź/i,
   },
 ]
 
@@ -142,16 +142,14 @@ const projectsMock = [
     hreflang: "en-US",
     url: "/portfolio/gorzelinski/",
     title: "Behind the scenes of my website",
-    description:
-      "This case study peeks behind the scenes of building my website.",
+    description: "behind the scenes",
   },
   {
     lang: "pl",
     hreflang: "pl-PL",
     url: "/pl/portfolio/gorzelinski/",
     title: "Kulisy powstawania mojej strony",
-    description:
-      "W tym case study przedstawiam kulisy powstawania mojej strony.",
+    description: "kulisy",
   },
 ]
 

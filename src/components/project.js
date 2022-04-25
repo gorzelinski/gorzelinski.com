@@ -10,19 +10,19 @@ const Project = ({ data = {} }) => {
   const image = data.frontmatter?.image
   const alt = image?.alt
   const src = getImage(image?.src)
-  const myRole = data.frontmatter?.myRole
+  const services = data.frontmatter?.services
   const title = data.frontmatter?.title
   const description = data.frontmatter?.description
   const slug = data.fields?.slug
   const isDataComplete =
-    myRole && title && description && src && alt && slug && true
+    services && title && description && src && alt && slug && true
 
   return isDataComplete ? (
     <Card>
       <Image $aspectRatio="golden" image={src} alt={alt}></Image>
       <div>
         <Small as="p" $marginReset="top">
-          {myRole}
+          {services?.join(", ")}
         </Small>
         <H4 as="h3" $marginReset="top">
           {title}

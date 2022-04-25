@@ -178,7 +178,7 @@ const projectsMock = [
     },
     frontmatter: {
       description: "Default description",
-      myRole: "Default roles",
+      services: ["Default roles"],
       title: "Default title",
       image: {
         alt: "Default alt text",
@@ -218,7 +218,7 @@ const projectsMock = [
     },
     frontmatter: {
       description: "Default description 2",
-      myRole: "Default roles 2",
+      services: ["Default roles 2"],
       title: "Default title 2",
       image: {
         alt: "Default alt",

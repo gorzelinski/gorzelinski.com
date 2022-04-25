@@ -170,26 +170,35 @@ exports.createSchemaCustomization = ({ actions }) => {
       linkedin: String
     }
 
-    type MarkdownRemark implements Node {
-      frontmatter: Frontmatter
-      fields: Fields
-    }
-
-    type MetaImage {
+    type BannerImage {
       alt: String
       caption: String
       src: ImageSharp
+    }
+
+    type Link {
+      text: String
+      href: String
     }
 
     type Frontmatter {
       title: String
       description: String
       date: Date @dateformat
-      image: MetaImage
+      image: BannerImage
+      client: String
+      services: [String]
+      deliverables: [String]
+      links: [Link]
     }
 
     type Fields {
       slug: String
+    }
+
+    type MarkdownRemark implements Node {
+      frontmatter: Frontmatter
+      fields: Fields
     }
   `)
 }

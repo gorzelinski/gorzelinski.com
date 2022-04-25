@@ -1,8 +1,8 @@
 {
   "date": "Data",
   "client": "Klient",
-  "role": "Usługi",
-  "tools": "Narzędzia",
-  "live": "Linki",
+  "services": "Usługi",
+  "deliverables": "Rezultat",
+  "links": "Linki",
   "more": "Sprawdź także"
 }

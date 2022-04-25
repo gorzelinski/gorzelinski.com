@@ -12,10 +12,10 @@ const defaultData = {
     client: "Default client",
     date: "2021-05-01T22:12:03.284Z",
     description: "Default description",
-    myRole: "Default roles",
     title: "Default title",
-    tools: "Default tools",
-    live: "https://default.com/",
+    services: ["Default services"],
+    tools: ["Default tools"],
+    links: ["https://default.com/"],
     image: {
       alt: "Default alt text",
       src: {
@@ -100,8 +100,8 @@ describe("Project component", () => {
       expect(img).toBeInTheDocument()
     })
 
-    it("roles", () => {
-      const roles = screen.getByText(/default roles/i)
+    it("services", () => {
+      const roles = screen.getByText(/default services/i)
       expect(roles).toBeInTheDocument()
     })
 

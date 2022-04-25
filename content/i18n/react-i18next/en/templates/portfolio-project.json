@@ -1,8 +1,8 @@
 {
   "date": "Date",
   "client": "Client",
-  "role": "Services",
-  "tools": "Tools",
-  "live": "Links",
+  "services": "Services",
+  "deliverables": "Deliverables",
+  "links": "Links",
   "more": "Check also"
 }
