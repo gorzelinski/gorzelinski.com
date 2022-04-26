@@ -190,11 +190,11 @@ module.exports = {
         short_name: `Gorzelinski`,
         description: `Here will be description of the app.`,
         start_url: `/`,
-        background_color: `#0466c8`,
-        theme_color: `#ffffff`,
+        background_color: `#ffffff`,
+        theme_color: `#0466c8`,
         theme_color_in_head: false,
         display: `standalone`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/logo.png`, // This path is relative to the root of the site.
         icon_options: {
           purpose: `any`,
         },
