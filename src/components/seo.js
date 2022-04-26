@@ -61,11 +61,11 @@ const Seo = ({
         },
         {
           name: `twitter:site`,
-          content: `@${site.siteMetadata?.social?.twitter}`,
+          content: `@${site.siteMetadata?.author?.social?.twitter}`,
         },
         {
           name: `twitter:creator`,
-          content: `@${site.siteMetadata?.social?.twitter}`,
+          content: `@${site.siteMetadata?.author?.social?.twitter}`,
         },
         {
           name: `twitter:title`,

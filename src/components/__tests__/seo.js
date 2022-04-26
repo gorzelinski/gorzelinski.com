@@ -13,8 +13,10 @@ describe("SEO component", () => {
           title: `Gorzelinski`,
           description: `Default meta description`,
           siteUrl: `https://gorzelinski.com`,
-          social: {
-            twitter: `gorzelinski`,
+          author: {
+            social: {
+              twitter: `gorzelinski`,
+            },
           },
         },
       },
