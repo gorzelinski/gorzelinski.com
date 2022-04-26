@@ -39,14 +39,12 @@
   --color-warning-hue: 44;
   --color-warning-saturation: 100%;
   --color-warning: var(--color-warning-hue), var(--color-warning-saturation);
-  --color-background: var(--color-gray-100);
   --color-warning-100: hsl(var(--color-warning), 9%);
   --color-warning-base: hsl(var(--color-warning), 52%);
 
   --color-success-hue: 126;
   --color-success-saturation: 72%;
   --color-success: var(--color-success-hue), var(--color-success-saturation);
-  --color-background: var(--color-gray-100);
   --color-success-100: hsl(var(--color-success), 9%);
   --color-success-base: hsl(var(--color-success), 39%);
 
