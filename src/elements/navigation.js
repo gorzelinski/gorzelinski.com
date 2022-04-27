@@ -4,7 +4,7 @@ import { border, media } from "./utils"
 import { span } from "./grid"
 
 export const Navigation = styled.nav.attrs(props => ({
-  className: props.$direction === "down" ? "hidden" : "",
+  className: props.$direction,
 }))`
   ${span}
   display: inline-flex;
@@ -69,7 +69,7 @@ export const Navigation = styled.nav.attrs(props => ({
         justify-content: flex-end;
       `}
 
-      &.hidden {
+      &.down {
         bottom: calc(-1 * var(--mobile-nav-height));
       }
     `}

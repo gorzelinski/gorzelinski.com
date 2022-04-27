@@ -1,15 +1,16 @@
 import styled, { css } from "styled-components"
 
-import { media } from "../utils"
+import { border, media } from "../utils"
 
 export const Header = styled.header.attrs(props => ({
-  className: props.$direction === "up" ? "visible" : "",
+  className: props.$direction,
 }))`
   ${props => {
     switch (props.$type) {
       case "main":
         return css`
-          --padding: var(--space-xs) var(--space-s);
+          --padding: var(--space-xs) var(--space-s)
+            calc(var(--space-xs) - var(--space-xxxs));
           --margin: 0 calc(-1 * var(--space-s));
           margin: var(--margin);
           padding: var(--padding);
@@ -17,24 +18,32 @@ export const Header = styled.header.attrs(props => ({
           z-index: 100;
           position: sticky;
           left: 0;
-          top: calc(-1 * (var(--top-nav-height) + 2 * var(--space-xs)));
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           transition: top var(--duration-immediate) ease-out;
 
           ${media.tiny`
-            --padding: var(--space-xs) var(--space-m);
+            --padding: var(--space-xs) var(--space-m) calc(var(--space-xs) - var(--space-xxxs));
             --margin: 0 calc(-1 * var(--space-m));
           `}
 
           ${media.tablet`
-            top: calc(-1 * (var(--top-nav-height) + 2 * var(--space-s)));
-            --padding: var(--space-s) var(--space-m);
+            --padding: var(--space-s) var(--space-m) calc(var(--space-s) - var(--space-xxxs));
             --margin: 0 calc(-1 * var(--space-m));
           `}
 
-          &.visible {
+          &.start {
+            top: 0;
+            border-bottom: var(--space-xxxs) solid var(--color-background);
+          }
+
+          &.down {
+            top: calc(-1 * (var(--top-nav-height) + 2 * var(--space-s)));
+          }
+
+          &.up {
+            ${border.bottom}
             top: 0;
           }
         `
