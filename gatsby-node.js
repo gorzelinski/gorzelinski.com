@@ -187,6 +187,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       date: Date @dateformat
       image: BannerImage
       client: String
+      categories: [String]
+      tags: [String]
       services: [String]
       deliverables: [String]
       links: [Link]

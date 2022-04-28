@@ -123,6 +123,8 @@ export const pageQuery = graphql`
         title
         date(formatString: $dateFormat, locale: $locale)
         description
+        categories
+        tags
         image {
           alt
           caption
