@@ -32,8 +32,6 @@ const Subscribe = () => {
   const [state, setState] = useState("idle")
   const ENGLISH_FORM_ID = `3106682`
   const POLISH_FORM_ID = `3084916`
-  const ENGLISH_TAG = `2999839`
-  const POLISH_TAG = `2987505`
   const FORM_URL = `https://app.convertkit.com/forms/${
     locale === "pl" ? POLISH_FORM_ID : ENGLISH_FORM_ID
   }/subscriptions`
@@ -95,14 +93,6 @@ const Subscribe = () => {
         {state !== "success" ? (
           <>
             <Form action={FORM_URL} method="post" onSubmit={handleSubmit}>
-              <input
-                style={{ display: "none" }}
-                type="checkbox"
-                name="tags[]"
-                value={locale === "pl" ? POLISH_TAG : ENGLISH_TAG}
-                checked={true}
-                readOnly
-              ></input>
               <InputWrapper>
                 <Icon $type="border">
                   <At></At>

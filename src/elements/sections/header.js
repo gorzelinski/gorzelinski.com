@@ -14,6 +14,7 @@ export const Header = styled.header.attrs(props => ({
           --margin: 0 calc(-1 * var(--space-s));
           margin: var(--margin);
           padding: var(--padding);
+          border-bottom: var(--space-xxxs) solid var(--color-background);
           background-color: var(--color-background);
           z-index: 100;
           position: sticky;
@@ -35,7 +36,6 @@ export const Header = styled.header.attrs(props => ({
 
           &.start {
             top: 0;
-            border-bottom: var(--space-xxxs) solid var(--color-background);
           }
 
           &.down {
