@@ -163,7 +163,7 @@ const postsMock = [
       "In this post, we will look at four universal design principles that can improve any graphical work",
     date: "May 09, 2021",
     share: /share/i,
-    more: /read more/i,
+    more: /read/i,
     internalLink: /projects/i,
   },
   {
@@ -175,7 +175,7 @@ const postsMock = [
       "W tym wpisie przyjrzymy się czterem, uniwersalnym zasadom designu, które mogą poprawić dowolną pracę graficzną",
     date: "09 maja, 2021",
     share: /udostępnij/i,
-    more: /przeczytaj także/i,
+    more: /przeczytaj/i,
     internalLink: /projektów/i,
   },
 ]

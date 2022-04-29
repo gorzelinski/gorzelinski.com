@@ -6,16 +6,16 @@ import { getImage } from "gatsby-plugin-image"
 
 import {
   Article,
-  Aside,
   Figcaption,
   Figure,
   Footer,
   H1,
-  H3,
+  H2,
   Header,
   Image,
   Navigation,
   P,
+  Section,
   Small,
 } from "../elements"
 import {
@@ -29,6 +29,7 @@ import Socials from "../components/socials"
 import Pagination from "../components/pagination"
 import ProgressScroll from "../components/progress-scroll"
 import Avatar from "../components/avatar"
+import Cards from "../components/cards"
 import Subscribe from "../components/subscribe"
 
 const BlogPostTemplate = ({ data, location }) => {
@@ -42,6 +43,7 @@ const BlogPostTemplate = ({ data, location }) => {
     post.frontmatter.title
   )
   const { previous, next } = data
+  const related = data.related.nodes
   const pagination = createPaginationLinks("/blog", previous, next)
 
   return (
@@ -89,10 +91,13 @@ const BlogPostTemplate = ({ data, location }) => {
           <Avatar></Avatar>
         </Footer>
       </Article>
-      <Aside $article>
-        <H3 $marginReset="top">{t("more")}</H3>
-        <Pagination aria={t("more")} data={pagination}></Pagination>
-      </Aside>
+      <Section>
+        <Header $type="section">
+          <H2 $marginReset="both">{t("more")}</H2>
+        </Header>
+        {related.length > 0 ? <Cards data={related}></Cards> : null}
+        <Pagination data={pagination}></Pagination>
+      </Section>
       <Subscribe></Subscribe>
     </Layout>
   )
@@ -107,6 +112,7 @@ export const pageQuery = graphql`
     $dateFormat: String!
     $previous: String
     $next: String
+    $categories: [String]
   ) {
     site {
       siteMetadata {
@@ -153,6 +159,33 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
+      }
+    }
+    related: allMdx(
+      limit: 3
+      filter: {
+        fields: { locale: { eq: $locale }, slug: { ne: $slug } }
+        frontmatter: { categories: { in: $categories } }
+      }
+    ) {
+      nodes {
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: $dateFormat, locale: $locale)
+          title
+          description
+          image {
+            alt
+            src {
+              childImageSharp {
+                gatsbyImageData(breakpoints: [320, 480, 768], width: 768)
+              }
+            }
+          }
+        }
+        timeToRead
       }
     }
   }

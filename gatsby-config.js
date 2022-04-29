@@ -116,6 +116,7 @@ module.exports = {
             "components/footer",
             "components/landing",
             "components/navbar",
+            "components/pagination",
             "components/post",
             "components/project",
             "components/subscribe",

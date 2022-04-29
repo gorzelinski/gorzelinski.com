@@ -6,13 +6,13 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import {
   Article,
-  Aside,
   H1,
-  H3,
+  H2,
   H6,
   Header,
   Image,
   P,
+  Section,
   Small,
   Subsection,
   Tile,
@@ -101,10 +101,10 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <MDXRenderer>{project.body}</MDXRenderer>
         </div>
       </Article>
-      <Aside $marginTop="smaller" $article>
-        <H3 $marginReset="top">{t("more")}</H3>
+      <Section $marginTop="smaller">
+        <H2 $marginReset="both">{t("more")}</H2>
         <Pagination aria={t("more")} data={pagination}></Pagination>
-      </Aside>
+      </Section>
       <Subscribe></Subscribe>
     </Layout>
   )

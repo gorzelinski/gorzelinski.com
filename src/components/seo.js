@@ -11,8 +11,8 @@ const Seo = ({
   meta,
   slug,
   title,
-  type,
   titleTemplate,
+  type,
 }) => {
   const {
     bio: { site },

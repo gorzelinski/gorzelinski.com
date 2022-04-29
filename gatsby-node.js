@@ -28,6 +28,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     itemsByLanguage.forEach(items => {
       items.forEach((item, index) => {
         const { previous, next } = createPageSlugs(items, index)
+        const categories = item?.frontmatter?.categories
 
         createPage({
           path: `${path}${item.fields.slug}`,
@@ -36,6 +37,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             slug: item.fields.slug,
             previous,
             next,
+            ...(categories && { categories }),
           },
         })
       })
@@ -60,6 +62,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             fields {
               locale
               slug
+            }
+            frontmatter {
+              categories
             }
           }
         }
