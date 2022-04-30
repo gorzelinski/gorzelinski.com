@@ -1,7 +1,10 @@
 {
   "name": "Matthew Gorzelinski",
   "summary": "Engineer with erudite aspirations.",
-  "alt": "profile picture",
+  "image": {
+    "alt": "profile picture",
+    "title": "In reality, I'm nicer than I look in this picture. I assure you!"
+  },
   "greeting": "Hello, my name is",
   "brief": "I’m an engineer and humanist. In one? Is it legal?",
   "portfolio": {

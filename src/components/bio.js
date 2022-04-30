@@ -27,6 +27,7 @@ const Bio = ({ data = {} }) => {
         $aspectRatio="portrait"
         image={image}
         alt={`${t("name")} - ${t("alt")}`}
+        title={t("title")}
       ></Image>
       <Tile>
         <Small as="p" $marginReset="top">

@@ -136,7 +136,12 @@ export const pageQuery = graphql`
           caption
           src {
             childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED, width: 1200, height: 630)
+              gatsbyImageData(
+                layout: CONSTRAINED
+                width: 1200
+                height: 630
+                transformOptions: { cropFocus: CENTER }
+              )
             }
           }
         }
