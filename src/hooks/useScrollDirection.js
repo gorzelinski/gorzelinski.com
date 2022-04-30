@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 
 export const useScrollDirection = () => {
-  const [scrollDirection, setScrollDirection] = useState("start")
+  const [scrollDirection, setScrollDirection] = useState("")
   const animationFrame = useRef()
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const useScrollDirection = () => {
         return
       }
       if (scrollY < threshold) {
-        setScrollDirection("start")
+        setScrollDirection("")
         return
       }
       setScrollDirection(scrollY > lastScrollY ? "down" : "up")

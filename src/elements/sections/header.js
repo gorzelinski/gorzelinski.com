@@ -34,10 +34,6 @@ export const Header = styled.header.attrs(props => ({
             --margin: 0 calc(-1 * var(--space-m));
           `}
 
-          &.start {
-            top: 0;
-          }
-
           &.down {
             top: calc(-1 * (var(--top-nav-height) + 2 * var(--space-s)));
           }
