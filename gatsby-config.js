@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: `https://gorzelinski.com/`,
     title: `Gorzelinski`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `I create things on the Internet.`,
     author: {
       name: `Matthew Gorzelinski`,
       summary: `Engineer with polymath aspirations.`,
@@ -46,14 +46,14 @@ module.exports = {
         defaults: {
           formats: [`auto`, `webp`, `avif`],
           placeholder: `dominantColor`,
-          quality: 75,
+          quality: 80,
           breakpoints: [320, 480, 768, 1200],
           backgroundColor: `transparent`,
           webpOptions: {
-            quality: 90,
+            quality: 80,
           },
           avifOptions: {
-            quality: 90,
+            quality: 80,
           },
         },
       },
@@ -70,7 +70,7 @@ module.exports = {
             options: {
               maxWidth: 720,
               backgroundColor: `transparent`,
-              quality: 50,
+              quality: 80,
               withWebp: { quality: 80 },
               withAvif: { quality: 80 },
               srcSetBreakpoints: [720, 480, 320],
@@ -189,7 +189,7 @@ module.exports = {
       options: {
         name: `gorzelinski.com`,
         short_name: `Gorzelinski`,
-        description: `Here will be description of the app.`,
+        description: `I create things on the Internet.`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#0466c8`,
