@@ -1,7 +1,10 @@
 {
   "name": "Mateusz Gorzeliński",
   "summary": "Inżynier o erudycyjnych aspiracjach.",
-  "alt": "zdjęcie profilowe",
+  "image": {
+    "alt": "zdjęcie profilowe",
+    "title": "W rzeczywistości jestem milszy niż wyglądam na tym zdjęciu. Zapewniam was!"
+  },
   "greeting": "Cześć, mam na imię",
   "brief": "Jestem inżynierem i humanistą. W jednym? Czy to jest legalne?",
   "portfolio": {

@@ -57,11 +57,12 @@ const Blog = ({ data, location }) => {
       debounce(event => {
         const query = event.target.value
         const filtered = allPosts.filter(post => {
-          const { title, description, date } = post.frontmatter
+          const { title, description, categories, tags } = post.frontmatter
           return (
             title.toLowerCase().includes(query.toLowerCase()) ||
             description.toLowerCase().includes(query.toLowerCase()) ||
-            date.toLowerCase().includes(query.toLowerCase())
+            categories.includes(query.toLowerCase()) ||
+            tags.includes(query.toLowerCase())
           )
         })
         query ? setFilteredPosts(filtered) : setFilteredPosts(allPosts)
@@ -166,6 +167,8 @@ export const pageQuery = graphql`
           date(formatString: $dateFormat, locale: $locale)
           title
           description
+          categories
+          tags
           image {
             alt
             src {

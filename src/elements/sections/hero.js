@@ -29,6 +29,6 @@ export const Hero = styled.section`
   `}
 
   & > * {
-    max-width: calc(72rem / 1.618);
+    max-width: calc(75rem / 1.618);
   }
 `
