@@ -1,16 +1,10 @@
 import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
-import {
-  AlertCircle,
-  At,
-  CheckmarkCircle,
-  Send,
-  Sync,
-} from "@styled-icons/ionicons-solid"
+import { useLocalization } from "gatsby-theme-i18n"
+import { At, Send, Sync } from "@styled-icons/ionicons-solid"
 
 import {
   Button,
-  Callout,
   Form,
   H3,
   H6,
@@ -24,7 +18,7 @@ import {
   Tile,
   Ul,
 } from "../elements"
-import { useLocalization } from "gatsby-theme-i18n"
+import Callout from "./callout"
 
 const Subscribe = () => {
   const { locale } = useLocalization()
@@ -59,21 +53,6 @@ const Subscribe = () => {
       setState("error")
     } catch (error) {
       setState("error")
-    }
-  }
-
-  const selectIcon = () => {
-    switch (state) {
-      case "idle":
-        return <Send></Send>
-      case "loading":
-        return <Sync></Sync>
-      case "success":
-        return <CheckmarkCircle></CheckmarkCircle>
-      case "error":
-        return <AlertCircle></AlertCircle>
-      default:
-        return <Send></Send>
     }
   }
 
@@ -119,7 +98,9 @@ const Subscribe = () => {
                 type="submit"
               >
                 {t("button")}
-                <Icon>{selectIcon()}</Icon>
+                <Icon>
+                  {state === "loading" ? <Sync></Sync> : <Send></Send>}
+                </Icon>
               </Button>
               <Tile $span="all">
                 <Small $marginReset="bottom">{t("footnote")}</Small>
@@ -129,8 +110,8 @@ const Subscribe = () => {
         ) : null}
         {state === "success" || state === "error" ? (
           <Callout
-            $marginReset="bottom"
-            $type={state === "success" ? "success" : "danger"}
+            marginReset="bottom"
+            type={state === "success" ? "success" : "danger"}
           >
             <H6 as="h3" $marginReset="top">
               {state === "success" ? t("success.heading") : t("error.heading")}

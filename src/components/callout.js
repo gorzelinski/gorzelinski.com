@@ -9,7 +9,7 @@ import {
 
 import { Icon, Callout as StyledCallout } from "../elements"
 
-const Callout = ({ children, type }) => {
+const Callout = ({ children, type, marginReset }) => {
   const selectIcon = type => {
     switch (type) {
       case "info":
@@ -27,7 +27,7 @@ const Callout = ({ children, type }) => {
     }
   }
   return (
-    <StyledCallout {...{ $type: type }}>
+    <StyledCallout {...{ $type: type, $marginReset: marginReset }}>
       <Icon className="icon">{selectIcon(type)}</Icon>
       {children}
     </StyledCallout>

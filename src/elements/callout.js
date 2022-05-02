@@ -57,7 +57,7 @@ export const Callout = styled.div`
     --height: var(--width);
     position: absolute;
     top: calc(-1 * var(--height) / 2);
-    right: calc(-1 * var(--width) / 2);
+    right: calc(-1 * var(--width) / 4);
     padding: var(--space-xs);
     background-color: var(--color-background);
     border-radius: 50%;

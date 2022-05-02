@@ -14,7 +14,7 @@ export const InlineCode = styled.code`
   display: inline-block;
   line-height: var(--font-height-small);
   color: var(--color-primary-base);
-  background-color: var(--color-primary-100);
+  background-color: var(--color-gray-90);
   border-radius: var(--space-xs);
   padding: var(--space-xxs) var(--space-xs);
 `
