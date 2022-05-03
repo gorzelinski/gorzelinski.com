@@ -8,12 +8,13 @@ export const useScrollProgress = () => {
     let ticking = false
 
     const updateScrollProgress = () => {
+      const article = document.getElementById("article")
+      const root = document.documentElement
       const scrolled =
-        (document.documentElement.scrollTop /
-          (document.documentElement.scrollHeight -
-            document.documentElement.clientHeight)) *
+        ((root.scrollTop - article.offsetTop) /
+          (article.scrollHeight - root.clientHeight)) *
         100
-      setProgress(scrolled)
+      setProgress(scrolled < 0 ? 0 : scrolled > 100 ? 100 : scrolled)
       ticking = false
     }
 

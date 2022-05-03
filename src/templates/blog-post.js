@@ -63,7 +63,7 @@ const BlogPostTemplate = ({ data, location }) => {
           },
         ]}
       />
-      <Article>
+      <Article id="article">
         <ProgressScroll></ProgressScroll>
         <Header>
           <Small $marginReset="top">

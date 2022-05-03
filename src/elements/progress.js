@@ -4,7 +4,7 @@ import { media } from "./utils"
 
 export const Progress = styled.div.attrs(props => ({
   style: {
-    opacity: props.progress < 5 || props.progress > 95 ? 0 : 1,
+    opacity: props.progress < 5 || props.progress > 99 ? 0 : 1,
   },
 }))`
   --width: calc(var(--space-xxxl) * 1.618);

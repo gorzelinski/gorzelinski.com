@@ -50,7 +50,7 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           },
         ]}
       />
-      <Article>
+      <Article id="article">
         <ProgressScroll></ProgressScroll>
         <Image
           $aspectRatio="meta"
