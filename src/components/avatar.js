@@ -1,9 +1,21 @@
 import React from "react"
+import styled from "styled-components"
 import { useTranslation } from "react-i18next"
 import { StaticImage } from "gatsby-plugin-image"
 
-import { Avatar as StyledAvatar, H6, Small } from "../elements"
+import { H6, Small } from "../elements"
 import Link from "./link"
+
+const StyledAvatar = styled.div`
+  display: flex;
+  gap: var(--space-s);
+  align-items: center;
+
+  .gatsby-image-wrapper {
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+`
 
 const Avatar = () => {
   const { t } = useTranslation("components/bio")
