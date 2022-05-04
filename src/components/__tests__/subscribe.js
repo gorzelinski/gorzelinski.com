@@ -3,6 +3,14 @@ import { render, screen } from "@testing-library/react"
 
 import Subscribe from "../subscribe"
 
+jest.mock("react-i18next", () => ({
+  useTranslation: () => {
+    return {
+      t: str => (str === "topics" ? [] : str),
+    }
+  },
+}))
+
 describe("Subscribe component", () => {
   describe("renders", () => {
     beforeEach(() => {

@@ -64,10 +64,9 @@ const Subscribe = () => {
         </H3>
         <P>{t("description")}</P>
         <Ul>
-          <Li>{t("topics.webDevelopment")}</Li>
-          <Li>{t("topics.science")}</Li>
-          <Li>{t("topics.books")}</Li>
-          <Li>{t("topics.personal")}</Li>
+          {t("topics", { returnObjects: true }).map((topic, index) => (
+            <Li key={`topic-${index + 1}`}>{topic}</Li>
+          ))}
         </Ul>
         {state !== "success" ? (
           <>

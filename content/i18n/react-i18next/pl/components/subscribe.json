@@ -1,12 +1,12 @@
 {
   "heading": "Rozpal swoją ciekawość💡",
   "description": "Subskrybuj mój newsletter, aby otrzymywać comiesięczną dawkę:",
-  "topics": {
-    "webDevelopment": "Nowości, przykładów, inspiracji ze świata web development’u i designu",
-    "science": "Teorii naukowych i sceptycyzmu",
-    "books": "Notatek i podsumowań książek",
-    "personal": "Moich ulubionych źródeł, idei, narzędzi i innych interesujących linków"
-  },
+  "topics": [
+    "Nowości, przykładów, inspiracji ze świata web development’u i designu",
+    "Teorii naukowych i sceptycyzmu",
+    "Notatek i podsumowań książek",
+    "Moich ulubionych źródeł, idei, narzędzi i innych interesujących linków"
+  ],
   "footnote": "Nie jestem nigeryjskim księciem, aby oferować ci okazje. Nie wysyłam spamu. Anuluj kiedy chcesz.",
   "email": "Twój email",
   "button": "Subskrybuj",
