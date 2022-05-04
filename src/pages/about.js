@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
 import { useLocalization } from "gatsby-theme-i18n"
 
-import { H1, Image, P, Section, Tile } from "../elements"
+import { H1, H2, H6, Image, P, Section, Tile } from "../elements"
 import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -41,18 +41,33 @@ const About = ({ data, location }) => {
         </Tile>
         <Section as="div" $marginReset="top">
           <Tile>
-            <P>{t("story.childhood")}</P>
-            <P>{t("story.teenager")}</P>
-            <P>{t("story.education")}</P>
-            <P>{t("story.university")}</P>
+            {t("story", { returnObjects: true })
+              .filter((_, index, array) => index < array.length / 2)
+              .map((part, index) => (
+                <P key={`story-1-${index + 1}`}>{part}</P>
+              ))}
           </Tile>
           <Tile>
-            <P>{t("story.experience")}</P>
-            <P>{t("story.graduation")}</P>
-            <P>{t("story.books")}</P>
-            <P>{t("story.ending")}</P>
+            {t("story", { returnObjects: true })
+              .filter((_, index, array) => index >= array.length / 2)
+              .map((part, index) => (
+                <P key={`story-2-${index + 1}`}>{part}</P>
+              ))}
           </Tile>
         </Section>
+      </Section>
+      <Section>
+        <Tile $span="all">
+          <H2 $marginReset="both">{t("weird")}</H2>
+        </Tile>
+        {t("facts", { returnObjects: true }).map((fact, index) => (
+          <Tile key={`fact-${index + 1}`}>
+            <H6 as="h3" $marginReset="top">
+              {fact.heading}
+            </H6>
+            <P $marginReset="both">{fact.description}</P>
+          </Tile>
+        ))}
       </Section>
     </Layout>
   )
