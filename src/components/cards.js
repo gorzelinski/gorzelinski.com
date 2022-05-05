@@ -9,11 +9,7 @@ const Cards = ({ data = [] }) => {
   const { t } = useTranslation("components/cards")
   const cards = data
 
-  return cards.length === 0 ? (
-    <Tile $span="all">
-      <P $type="ui">{t("message")}</P>
-    </Tile>
-  ) : (
+  return cards.length > 0 ? (
     cards.map(card =>
       card.frontmatter.date ? (
         <Post data={card} key={card.fields.slug}></Post>
@@ -21,6 +17,10 @@ const Cards = ({ data = [] }) => {
         <Project data={card} key={card.fields.slug}></Project>
       )
     )
+  ) : (
+    <Tile $span="all">
+      <P $type="ui">{t("message")}</P>
+    </Tile>
   )
 }
 
