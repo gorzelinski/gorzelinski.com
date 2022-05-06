@@ -148,5 +148,9 @@
         }
       ]
     }
-  ]
+  ],
+  "posts": {
+    "heading": "Wolisz krótszą formę? Proszę bardzo",
+    "button": "Wszystkie wpisy"
+  }
 }

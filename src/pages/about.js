@@ -9,6 +9,8 @@ import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Link from "../components/link"
+import Featured from "../components/featured"
+import Cards from "../components/cards"
 
 const About = ({ data, location }) => {
   const { locale } = useLocalization()
@@ -19,6 +21,7 @@ const About = ({ data, location }) => {
     alt: t("metaAlt"),
     src: data?.metaImage,
   })
+  const lastPosts = data.lastPosts?.nodes
 
   return (
     <Layout location={location}>
@@ -108,6 +111,15 @@ const About = ({ data, location }) => {
           </Tile>
         ))}
       </Section>
+      <Featured
+        data={{
+          title: t("posts.heading"),
+          slug: "/blog/",
+          buttonText: t("posts.button"),
+        }}
+      >
+        <Cards data={lastPosts}></Cards>
+      </Featured>
     </Layout>
   )
 }
@@ -115,7 +127,7 @@ const About = ({ data, location }) => {
 export default About
 
 export const pageQuery = graphql`
-  query AllBioQuery($locale: String!) {
+  query AllBioQuery($locale: String!, $dateFormat: String!) {
     site {
       siteMetadata {
         author {
@@ -143,6 +155,34 @@ export const pageQuery = graphql`
           height: 630
           outputPixelDensities: 1
         )
+      }
+    }
+    lastPosts: allMdx(
+      limit: 3
+      filter: {
+        fields: { locale: { eq: $locale } }
+        fileAbsolutePath: { regex: "/(blog)/" }
+      }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      nodes {
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: $dateFormat, locale: $locale)
+          title
+          description
+          image {
+            alt
+            src {
+              childImageSharp {
+                gatsbyImageData(breakpoints: [320, 480, 768], width: 768)
+              }
+            }
+          }
+        }
+        timeToRead
       }
     }
   }

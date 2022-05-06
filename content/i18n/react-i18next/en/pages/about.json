@@ -148,5 +148,9 @@
         }
       ]
     }
-  ]
+  ],
+  "posts": {
+    "heading": "Want a shorter form? Here you go",
+    "button": "All posts"
+  }
 }
