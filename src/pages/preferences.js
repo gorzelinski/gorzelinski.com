@@ -20,7 +20,7 @@ const Preferences = ({ location }) => {
       ></Seo>
       <Hero>
         <Tile>
-          <H1 $marginReset="top">{t("title")}</H1>
+          <H1>{t("title")}</H1>
           <P $type="lead">{t("description")}</P>
           <Button $type="primary" to="/">
             {t("button")}

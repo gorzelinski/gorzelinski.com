@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { marginReset, media } from "../utils"
+import { media } from "../utils"
 
 import { heading, paragraph } from "./sizes"
 
@@ -21,7 +21,6 @@ export const ui = css`
 
 export const P = styled.p`
   padding: 0;
-  ${marginReset}
 
   ${props => {
     switch (props.$type) {

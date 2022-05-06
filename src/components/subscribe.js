@@ -59,9 +59,7 @@ const Subscribe = () => {
   return (
     <Section $featured>
       <Tile $justify="center">
-        <H3 as="h2" $marginReset="top">
-          {t("heading")}
-        </H3>
+        <H3 as="h2">{t("heading")}</H3>
         <P>{t("description")}</P>
         <Ul>
           {t("topics", { returnObjects: true }).map((topic, index) => (
@@ -102,17 +100,14 @@ const Subscribe = () => {
                 </Icon>
               </Button>
               <Tile $span="all">
-                <Small $marginReset="bottom">{t("footnote")}</Small>
+                <Small>{t("footnote")}</Small>
               </Tile>
             </Form>
           </>
         ) : null}
         {state === "success" || state === "error" ? (
-          <Callout
-            marginReset="bottom"
-            type={state === "success" ? "success" : "danger"}
-          >
-            <H6 as="h3" $marginReset="top">
+          <Callout type={state === "success" ? "success" : "danger"}>
+            <H6 as="h3">
               {state === "success" ? t("success.heading") : t("error.heading")}
             </H6>
             <P>

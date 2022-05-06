@@ -59,7 +59,7 @@ const ThankYou = ({ location }) => {
       ></Seo>
       <Hero>
         <Tile>
-          <H1 $marginReset="top" $decorative ref={headerRef}>
+          <H1 $decorative ref={headerRef}>
             {t("title")}
           </H1>
           <P $type="lead">{t("description")}</P>

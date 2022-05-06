@@ -35,9 +35,7 @@ const NotFoundPage = ({ data, location }) => {
           </Video>
         </Tile>
         <Tile>
-          <H2 as="h1" $marginReset="top">
-            {t("title")}
-          </H2>
+          <H2 as="h1">{t("title")}</H2>
           <P $type="lead">{t("description")}</P>
           <Button $type="primary" $grow to="/">
             {t("button")}

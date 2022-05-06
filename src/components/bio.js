@@ -30,10 +30,8 @@ const Bio = ({ data = {} }) => {
         title={t("image.title")}
       ></Image>
       <Tile>
-        <Small as="p" $marginReset="top">
-          {t("greeting")}
-        </Small>
-        <H2 $marginReset="top">{t("name")}</H2>
+        <Small as="p">{t("greeting")}</Small>
+        <H2>{t("name")}</H2>
         <P>{t("brief")}</P>
         <P>
           {t("portfolio.mention")}{" "}

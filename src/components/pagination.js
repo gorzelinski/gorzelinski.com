@@ -12,7 +12,7 @@ const Pagination = ({ data }) => {
     <Header as="nav" $type="section" aria-label={t("aria")}>
       {prev && (
         <Tile>
-          <Small $marginReset="top">{t("previous")}</Small>
+          <Small>{t("previous")}</Small>
           <Button
             $align="left"
             $type="text"
@@ -29,7 +29,7 @@ const Pagination = ({ data }) => {
       )}
       {next && (
         <Tile {...(!prev ? { $textAlign: "start" } : { $textAlign: "end" })}>
-          <Small $marginReset="top">{t("next")}</Small>
+          <Small>{t("next")}</Small>
           <Button
             {...(!prev ? { $align: "left" } : { $align: "right" })}
             $type="text"

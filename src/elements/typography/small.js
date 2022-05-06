@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { marginReset, media } from "../utils"
+import { media } from "../utils"
 import { textAlign } from "./alignment"
 import { paragraph } from "./sizes"
 
@@ -13,12 +13,15 @@ export const meta = css`
 export const Small = styled.small`
   ${meta}
   ${paragraph.tiny}
-  ${marginReset}
 
   ${media.mobile`
     ${paragraph.small}
   `}
-  
+
+  & + :is(h1, h2, h3, h4, h5, h6) {
+    margin-top: 0;
+  }
+
   display: block;
   margin-top: var(--space-xs);
   margin-bottom: var(--space-xs);
@@ -27,7 +30,6 @@ export const Small = styled.small`
 export const Figcaption = styled.figcaption`
   ${meta}
   ${paragraph.tiny}
-  ${marginReset}
   ${textAlign}
 
   ${media.mobile`

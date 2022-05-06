@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { marginReset, media } from "../utils"
+import { media } from "../utils"
 import { heading, paragraph } from "./sizes"
 import { body } from "./body"
 
@@ -39,7 +39,6 @@ export const listItem = css`
 
 export const Ul = styled.ul`
   ${list}
-  ${marginReset}
 `
 
 export const Ol = styled.ol`

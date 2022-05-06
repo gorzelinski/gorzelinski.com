@@ -55,14 +55,12 @@ const Portfolio = ({ data, location }) => {
       ></Seo>
       <Section $marginTop="bigger">
         <Header>
-          <H1 $marginReset="top" $decorative>
-            {t("heading")}
-          </H1>
+          <H1 $decorative>{t("heading")}</H1>
           <P as="h2" $type="ui">
             {t("subtitle")}
           </P>
         </Header>
-        <Section as="div" $marginReset="top">
+        <Section as="div" $marginTop="none">
           <Cards data={list}></Cards>
         </Section>
         {hasMore ? (

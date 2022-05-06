@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { useTranslation } from "react-i18next"
 import { StaticImage } from "gatsby-plugin-image"
 
-import { H6, Small } from "../elements"
+import { P, Small, Tile } from "../elements"
 import Link from "./link"
 
 const StyledAvatar = styled.div`
@@ -35,14 +35,14 @@ const Avatar = () => {
           cropFocus: "top",
         }}
       />
-      <div>
-        <H6 as="p" $marginReset="both">
-          <Link href="/about/">{t("name")}</Link>
-        </H6>
-        <Small as="p" $marginReset="bottom">
-          {t("summary")}
-        </Small>
-      </div>
+      <Tile>
+        <P $type="ui">
+          <Link href="/about/" rel="author">
+            {t("name")}
+          </Link>
+        </P>
+        <Small as="p">{t("summary")}</Small>
+      </Tile>
     </StyledAvatar>
   )
 }

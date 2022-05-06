@@ -1,10 +1,9 @@
 import styled, { css } from "styled-components"
 
-import { marginReset, media } from "../utils"
+import { media } from "../utils"
 import { paragraph, heading } from "./sizes"
 
 export const headings = css`
-  ${marginReset}
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-medium);
   color: var(--color-gray-00);

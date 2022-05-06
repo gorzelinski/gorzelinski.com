@@ -25,9 +25,7 @@ const Footer = ({ location }) => {
   return (
     <StyledFooter $border id="contact">
       <Tile>
-        <Small as="p" $marginReset="top">
-          {t("email")}
-        </Small>
+        <Small as="p">{t("email")}</Small>
         <Address>
           <Button as="a" $align="left" $type="text" href={`mailto:${email}`}>
             <Icon>
@@ -38,19 +36,15 @@ const Footer = ({ location }) => {
         </Address>
       </Tile>
       <Tile>
-        <Small as="p" $marginReset="top">
-          {t("socials")}
-        </Small>
+        <Small as="p">{t("socials")}</Small>
         <Socials data={links}></Socials>
       </Tile>
       <Tile>
-        <Small as="p" $marginReset="top">
-          {t("language")}
-        </Small>
+        <Small as="p">{t("language")}</Small>
         <LanguageSwitcher location={location}></LanguageSwitcher>
       </Tile>
       <Tile $span="all">
-        <Small $marginReset="both">
+        <Small>
           © {new Date().getFullYear()} {title} • {t("note")}
         </Small>
       </Tile>

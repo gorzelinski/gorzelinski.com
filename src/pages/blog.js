@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { useLocalization } from "gatsby-theme-i18n"
@@ -37,7 +37,6 @@ const Blog = ({ data, location }) => {
   )
   const [loadMore, setLoadMore] = useState(false)
   const [hasMore, setHasMore] = useState(filteredPosts.length > postsPerLoad)
-  const resultsRef = useRef(null)
 
   const handleLoadMore = () => {
     setLoadMore(true)
@@ -46,7 +45,7 @@ const Blog = ({ data, location }) => {
   const handleKeyUp = e => {
     if (e.key === "Enter") {
       e.target.blur()
-      resultsRef.current?.scrollIntoView({
+      document.querySelector("article")?.scrollIntoView({
         behavior: "smooth",
       })
     }
@@ -100,11 +99,9 @@ const Blog = ({ data, location }) => {
         slug={location.pathname}
         image={metaImage}
       ></Seo>
-      <Section $marginTop="bigger">
+      <Section $marginTop="big">
         <Header $type="section">
-          <H1 $marginReset="top" $decorative>
-            {t("heading")}
-          </H1>
+          <H1 $decorative>{t("heading")}</H1>
           <P as="h2" $type="ui">
             {filteredPosts === allPosts
               ? t("subtitle")
@@ -132,9 +129,7 @@ const Blog = ({ data, location }) => {
             </InputWrapper>
           </Form>
         </Tile>
-        <Section as="div" $marginReset="top" ref={resultsRef}>
-          <Cards data={currentPosts}></Cards>
-        </Section>
+        <Cards data={currentPosts}></Cards>
         {hasMore ? (
           <Tile $span="all" $justify="center">
             <Button as="button" $type="text" onClick={handleLoadMore}>

@@ -58,42 +58,28 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           alt={image.alt}
         ></Image>
         <Header>
-          <H1 $marginReset="top">{project.frontmatter.title}</H1>
+          <H1>{project.frontmatter.title}</H1>
           <P $type="lead">{project.frontmatter.description}</P>
           <Subsection>
             <Tile>
-              <Small as="p" $marginReset="top">
-                {t("client")}
-              </Small>
-              <H6 as="h2" $marginReset="both">
-                {project.frontmatter.client}
-              </H6>
+              <Small as="p">{t("client")}</Small>
+              <H6 as="h2">{project.frontmatter.client}</H6>
             </Tile>
             <Tile>
-              <Small as="p" $marginReset="top">
-                {t("links")}
-              </Small>
+              <Small as="p">{t("links")}</Small>
               {project.frontmatter.links?.map(link => (
-                <H6 as="h2" $marginReset="both" key={link.text}>
+                <H6 as="h2" key={link.text}>
                   <Link href={link.href}>{link.text}</Link>
                 </H6>
               ))}
             </Tile>
             <Tile>
-              <Small as="p" $marginReset="top">
-                {t("services")}
-              </Small>
-              <H6 as="h2" $marginReset="both">
-                {project.frontmatter.services?.join(", ")}
-              </H6>
+              <Small as="p">{t("services")}</Small>
+              <H6 as="h2">{project.frontmatter.services?.join(", ")}</H6>
             </Tile>
             <Tile>
-              <Small as="p" $marginReset="top">
-                {t("deliverables")}
-              </Small>
-              <H6 as="h2" $marginReset="both">
-                {project.frontmatter.deliverables?.join(", ")}
-              </H6>
+              <Small as="p">{t("deliverables")}</Small>
+              <H6 as="h2">{project.frontmatter.deliverables?.join(", ")}</H6>
             </Tile>
           </Subsection>
         </Header>
@@ -101,8 +87,10 @@ const PortfolioProjectTemplate = ({ data, location }) => {
           <MDXRenderer>{project.body}</MDXRenderer>
         </div>
       </Article>
-      <Section $marginTop="smaller">
-        <H2 $marginReset="both">{t("more")}</H2>
+      <Section $marginTop="small">
+        <Tile $span="all">
+          <H2>{t("more")}</H2>
+        </Tile>
         <Pagination aria={t("more")} data={pagination}></Pagination>
       </Section>
       <Subscribe></Subscribe>

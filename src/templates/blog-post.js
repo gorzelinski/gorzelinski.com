@@ -66,10 +66,10 @@ const BlogPostTemplate = ({ data, location }) => {
       <Article id="article">
         <ProgressScroll></ProgressScroll>
         <Header>
-          <Small $marginReset="top">
+          <Small>
             {post.frontmatter.date} • {post.timeToRead} {t("min")}
           </Small>
-          <H1 $marginReset="top">{post.frontmatter.title}</H1>
+          <H1>{post.frontmatter.title}</H1>
           <P $type="lead">{post.frontmatter.description}</P>
         </Header>
         <Figure>
@@ -93,7 +93,7 @@ const BlogPostTemplate = ({ data, location }) => {
       </Article>
       <Section>
         <Header $type="section">
-          <H2 $marginReset="both">{t("more")}</H2>
+          <H2>{t("more")}</H2>
         </Header>
         {related.length > 0 ? <Cards data={related}></Cards> : null}
         <Pagination data={pagination}></Pagination>

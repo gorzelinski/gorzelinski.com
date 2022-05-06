@@ -41,9 +41,9 @@ const About = ({ data, location }) => {
           alt={`${name} - ${t("alt")}`}
         ></Image>
         <Tile $span="all">
-          <H1 $marginReset="both">{t("heading")}</H1>
+          <H1>{t("heading")}</H1>
         </Tile>
-        <Section as="div" $marginReset="top">
+        <Section as="div" $marginTop="none">
           <Tile>
             {t("story", { returnObjects: true })
               .filter((_, index, array) => index < array.length / 2)
@@ -62,46 +62,36 @@ const About = ({ data, location }) => {
       </Section>
       <Section>
         <Tile $span="all">
-          <H2 $marginReset="both">{t("random")}</H2>
+          <H2>{t("random")}</H2>
         </Tile>
         {t("facts", { returnObjects: true }).map((fact, index) => (
           <Tile key={`fact-${index + 1}`}>
-            <H6 as="h3" $marginReset="top">
-              {fact.heading}
-            </H6>
-            <P $marginReset="both">{fact.description}</P>
+            <H6 as="h3">{fact.heading}</H6>
+            <P>{fact.description}</P>
           </Tile>
         ))}
       </Section>
       <Section>
         <Tile $span="all">
-          <H2 $marginReset="top">{t("core.heading")}</H2>
-          <P $type="lead" $marginReset="bottom">
-            {t("core.description")}
-          </P>
+          <H2>{t("core.heading")}</H2>
+          <P $type="lead">{t("core.description")}</P>
         </Tile>
         {t("values", { returnObjects: true }).map(value => (
           <Tile $span={2} key={value.heading}>
-            <H3 $marginReset="top">{value.heading}</H3>
-            <P $type="lead" $marginReset="bottom">
-              {value.description}
-            </P>
+            <H3>{value.heading}</H3>
+            <P $type="lead">{value.description}</P>
           </Tile>
         ))}
       </Section>
       <Section>
         <Tile $span="all">
-          <H2 $marginReset="top">{t("cultural.heading")}</H2>
-          <P $type="lead" $marginReset="bottom">
-            {t("cultural.description")}
-          </P>
+          <H2>{t("cultural.heading")}</H2>
+          <P $type="lead">{t("cultural.description")}</P>
         </Tile>
         {t("corner", { returnObjects: true }).map((media, index) => (
           <Tile key={`media-${index}`}>
-            <H6 $marginReset="top" as="h3">
-              {media.heading}
-            </H6>
-            <Ul $marginReset="both">
+            <H6 as="h3">{media.heading}</H6>
+            <Ul>
               {media.items.map((item, index) => (
                 <Li key={`title-${index}`}>
                   <Link href={item.link}>{item.title}</Link>

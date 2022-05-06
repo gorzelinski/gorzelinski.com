@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import { getImage } from "gatsby-plugin-image"
 import { ChevronForward } from "@styled-icons/ionicons-solid"
 
-import { Button, Card, H4, Icon, Image, P, Small } from "../elements"
+import { Button, Card, H4, Icon, Image, P, Small, Tile } from "../elements"
 
 const Post = ({ data = {} }) => {
   const { t } = useTranslation("components/post")
@@ -21,13 +21,9 @@ const Post = ({ data = {} }) => {
   return isDataComplete ? (
     <Card $span="all" $horizontal>
       <Image image={src} alt={alt}></Image>
-      <div>
-        <Small $marginReset="top">{`${date} • ${timeToRead} ${t(
-          "min"
-        )}`}</Small>
-        <H4 as="h3" $marginReset="top">
-          {title}
-        </H4>
+      <Tile>
+        <Small>{`${date} • ${timeToRead} ${t("min")}`}</Small>
+        <H4 as="h3">{title}</H4>
         <P>{description}</P>
         <Button
           $type="text"
@@ -40,7 +36,7 @@ const Post = ({ data = {} }) => {
             <ChevronForward></ChevronForward>
           </Icon>
         </Button>
-      </div>
+      </Tile>
     </Card>
   ) : null
 }

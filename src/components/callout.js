@@ -8,7 +8,7 @@ import {
   Bulb,
 } from "@styled-icons/ionicons-solid"
 
-import { marginReset, media } from "../elements/utils"
+import { media } from "../elements/utils"
 import { Icon } from "../elements"
 
 const StyledCallout = styled.div`
@@ -20,8 +20,6 @@ const StyledCallout = styled.div`
   ${media.tablet`
     margin: var(--font-height-xxs) 0;
   `}
-
-  ${marginReset}
 
   ${props => {
     switch (props.$type) {
@@ -73,7 +71,7 @@ const StyledCallout = styled.div`
   }
 `
 
-const Callout = ({ children, type, marginReset }) => {
+const Callout = ({ children, type }) => {
   const selectIcon = type => {
     switch (type) {
       case "info":
@@ -91,7 +89,7 @@ const Callout = ({ children, type, marginReset }) => {
     }
   }
   return (
-    <StyledCallout {...{ $type: type, $marginReset: marginReset }}>
+    <StyledCallout {...{ $type: type }}>
       <Icon className="icon">{selectIcon(type)}</Icon>
       {children}
     </StyledCallout>

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import { getImage } from "gatsby-plugin-image"
 import { ChevronForward } from "@styled-icons/ionicons-solid"
 
-import { Button, Card, H4, Icon, Image, P, Small } from "../elements"
+import { Button, Card, H4, Icon, Image, P, Small, Tile } from "../elements"
 
 const Project = ({ data = {} }) => {
   const { t } = useTranslation("components/project")
@@ -20,13 +20,9 @@ const Project = ({ data = {} }) => {
   return isDataComplete ? (
     <Card>
       <Image $aspectRatio="golden" image={src} alt={alt}></Image>
-      <div>
-        <Small as="p" $marginReset="top">
-          {services?.join(", ")}
-        </Small>
-        <H4 as="h3" $marginReset="top">
-          {title}
-        </H4>
+      <Tile>
+        <Small as="p">{services?.join(", ")}</Small>
+        <H4 as="h3">{title}</H4>
         <P>{description}</P>
         <Button
           $type="text"
@@ -39,7 +35,7 @@ const Project = ({ data = {} }) => {
             <ChevronForward></ChevronForward>
           </Icon>
         </Button>
-      </div>
+      </Tile>
     </Card>
   ) : null
 }
