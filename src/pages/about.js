@@ -4,13 +4,28 @@ import { graphql } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
 import { useLocalization } from "gatsby-theme-i18n"
 
-import { H1, H2, H3, H6, Image, Li, P, Section, Tile, Ul } from "../elements"
+import {
+  Button,
+  H1,
+  H2,
+  H3,
+  H6,
+  Hero,
+  Icon,
+  Image,
+  Li,
+  P,
+  Section,
+  Tile,
+  Ul,
+} from "../elements"
 import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Link from "../components/link"
 import Featured from "../components/featured"
 import Cards from "../components/cards"
+import { ChevronForward } from "@styled-icons/ionicons-solid"
 
 const About = ({ data, location }) => {
   const { locale } = useLocalization()
@@ -110,6 +125,18 @@ const About = ({ data, location }) => {
       >
         <Cards data={lastPosts}></Cards>
       </Featured>
+      <Hero>
+        <Tile $span={2}>
+          <H2>{t("uses.heading")}</H2>
+          <P $type="lead">{t("uses.description")}</P>
+          <Button $type="text" $align="left" to="/uses/">
+            {t("uses.button")}
+            <Icon>
+              <ChevronForward></ChevronForward>
+            </Icon>
+          </Button>
+        </Tile>
+      </Hero>
     </Layout>
   )
 }

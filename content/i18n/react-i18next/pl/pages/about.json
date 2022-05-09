@@ -152,5 +152,10 @@
   "posts": {
     "heading": "Wolisz krótszą formę? Proszę bardzo",
     "button": "Wszystkie wpisy"
+  },
+  "uses": {
+    "heading": "Moje technologie",
+    "description": "Zawsze mnie interesuje jakich technologii i gadżetów używają inni ludzie. Stworzyłem tę listę dla geeków takich jak ja. Będę się starał, aby była aktualna.",
+    "button": "Rzeczy których używam"
   }
 }

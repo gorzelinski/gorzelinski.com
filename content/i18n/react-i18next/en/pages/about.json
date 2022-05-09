@@ -152,5 +152,10 @@
   "posts": {
     "heading": "Want a shorter form? Here you go",
     "button": "All posts"
+  },
+  "uses": {
+    "heading": "My tech",
+    "description": "I’m always interested in what tech and gadgets people are using. I created this list for geeks like me. I’ll try to keep it up to date.",
+    "button": "Stuff I use"
   }
 }
