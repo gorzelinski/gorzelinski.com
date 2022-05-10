@@ -108,6 +108,7 @@ module.exports = {
             "pages/preferences",
             "pages/portfolio",
             "pages/thank-you",
+            "pages/uses",
             "templates/blog-post",
             "templates/portfolio-project",
             "components/bio",

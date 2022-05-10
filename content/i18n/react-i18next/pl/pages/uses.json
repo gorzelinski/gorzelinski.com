@@ -1,0 +1,315 @@
+{
+  "title": "Rzeczy, których używam",
+  "description": "Wyprzedzając pytania postanowiłem, że zrobię osobną stronę ze szczegółami software’u i hardware’u, którego używam. No i jestem geekiem, więc lubię takie listy.",
+  "metaAlt": "Wycentrowany napis Rzeczy, których uzywam na białym tle",
+  "techs": [
+    {
+      "heading": "Serwisy",
+      "list": [
+        {
+          "name": "Toggl Track",
+          "description": "aby mierzyć czas moich produktywnych zajęć.",
+          "link": "https://toggl.com/track/"
+        },
+        {
+          "name": "Google Keep",
+          "description": "używam do surowych notatek, list zakupów i w sytuacji „nagłego pomysłu”.",
+          "link": "https://keep.google.com/"
+        },
+        {
+          "name": "Evernote",
+          "description": "był moim głównym narzędziem do robienia notatek przez długi czas (mam tam trochę notatek, ale przerzucam się na Notion).",
+          "link": "https://evernote.com/"
+        },
+        {
+          "name": "Notion",
+          "description": "produktywne narzędzie typu wszystko w jednym (todo listy, notatki, tablice kanban i więcej).",
+          "link": "https://notion.so/"
+        },
+        {
+          "name": "GitHub",
+          "description": "tam jest cały kod źródłowy mojej strony. Używam także github actions do CI/CD.",
+          "link": "https://github.com/"
+        },
+        {
+          "name": "Netlify",
+          "description": "mój hosting CDN. Oferuje także dodatkowe funkcjonalności jak anonimowe statystyki.",
+          "link": "https://www.netlify.com/"
+        },
+        {
+          "name": "ConvertKit",
+          "description": "jeżeli dostałeś maila z mojego newslettera, to za sprawą ConvertKit.",
+          "link": "https://convertkit.com/"
+        },
+        {
+          "name": "Udemy",
+          "description": "platforma z kursami edukacyjnymi. Przerobiłem na niej sporo technicznych i kreatywnych tutoriali.",
+          "link": "https://www.udemy.com/"
+        }
+      ]
+    },
+    {
+      "heading": "Stos technologiczny",
+      "list": [
+        {
+          "name": "React",
+          "description": "najpopularniejszy front-end framework. Na początku miałem wątpliwości co do JSX, ale aktualnie lubię go.",
+          "link": "https://reactjs.org/"
+        },
+        {
+          "name": "Style components",
+          "description": "pomagają mi tworzyć komponenty wielokrotnego użytku. Dzięki temu mój design system jest spójny.",
+          "link": "https://styled-components.com/"
+        },
+        {
+          "name": "Gatsby",
+          "description": "strona na którą patrzysz została wygenerowana przez Statyczny Generator Stron - Gatsby. W domyśle zapewnia wydajność, skalowalność i bezpieczeństwo.",
+          "link": "https://www.gatsbyjs.com/"
+        },
+        {
+          "name": "Prettier",
+          "description": "formatuje kod dla mnie. Mogę przykładać mniej uwagi do stylowania, a i tak moje formatowanie jest perfekcyjne.",
+          "link": "https://prettier.io/"
+        },
+        {
+          "name": "ESLint",
+          "description": "podświetla kod dla mnie. Pokazuje mi, gdy robię w kodzie coś głupiego.",
+          "link": "https://eslint.org/"
+        },
+        {
+          "name": "Jest",
+          "description": "framework dla testów jednostkowych.",
+          "link": "https://jestjs.io/"
+        },
+        {
+          "name": "Testing library",
+          "description": "biblioteka zachęcająca do dobrych praktyk w testowaniu (jak znajdowanie elementów po rolach ARIA).",
+          "link": "https://testing-library.com/"
+        },
+        {
+          "name": "Cypress",
+          "description": "framework do testowania end-to-end. Z jego pomocą można symulować zachowanie użytkownika (klikanie, przewijanie itp.).",
+          "link": "https://www.cypress.io/"
+        },
+        {
+          "name": "Cypress Axe",
+          "description": "biblioteka do testowania dostępności. Dostępność jest zaniedbanym aspektem wielu stron.",
+          "link": "https://www.npmjs.com/package/cypress-axe"
+        },
+        {
+          "name": "MDX",
+          "description": "wzbogacony Markdown. Główny format dla moich treści. Używam go zamiast Markdown, ponieważ umożliwia mi wykorzystywanie moich niestandardowych komponentów.",
+          "link": "https://mdxjs.com/"
+        },
+        {
+          "name": "Gatsby theme i18n & react i18next ",
+          "description": "wtyczki do umiędzynarodowienia strony.",
+          "link": "https://www.gatsbyjs.com/plugins/gatsby-theme-i18n/"
+        }
+      ]
+    },
+    {
+      "heading": "Aplikacje",
+      "list": [
+        {
+          "name": "Visual Studio Code",
+          "description": "prawdopodobnie najlepszy edytor kodu do języka JavaScript. Ma integrację z Gitem, wiele rozszerzeń i innych funkcjonalności jak IDE.",
+          "link": "https://code.visualstudio.com/"
+        },
+        {
+          "name": "Figma",
+          "description": "moje główne narzędzie do projektowania. Jest intuicyjne i skoncentrowane na komponentach. Tworzenie design systemu z jego pomocą jest łatwe Ma rosnącą społeczność, która tworzy wiele przydatnych rozszerzeń i plików projektowych. Dostępne nawet z poziomu przeglądarki.",
+          "link": "https://www.figma.com/"
+        },
+        {
+          "name": "Notion",
+          "description": "istnieje aplikacja dla systemu Android i Windows.",
+          "link": "https://www.notion.so/desktop"
+        },
+        {
+          "name": "Google Chrome",
+          "description": "moja główna przeglądarka. Często prowadzi jeżeli chodzi o przyjmowanie nowych funkcjonalności. Używam jej do przeglądania i tworzenia internetu. Rozszerzenia:",
+          "link": "https://www.google.com/chrome/",
+          "details": [
+            {
+              "name": "React Dev Tools",
+              "description": "do debugowania i testowania komponentów react.",
+              "link": "https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en"
+            },
+            {
+              "name": "Raindrop.io",
+              "description": "menedżer zakładek.",
+              "link": "https://raindrop.io/"
+            }
+          ]
+        },
+        {
+          "name": "Mozilla Firefox",
+          "description": "wspierająca przeglądarka. Wykorzystuje ją do przeglądania i testowania wsparcia dla niektórych funkcjonalności (lubię także jej narzędzia grid).",
+          "link": "https://www.mozilla.org/en-US/firefox/new/"
+        },
+        {
+          "name": "Spotify",
+          "description": "moje centrum audio. Słucham muzyki, gdy koduję i podcastów, gdy spaceruję.",
+          "link": "https://www.spotify.com/"
+        },
+        {
+          "name": "Peek",
+          "description": "przydatna, gdy chcę zrobić gif, albo krótkie nagranie ekranu na Ubuntu.",
+          "link": "http://manpages.ubuntu.com/manpages/impish/man1/peek.1.html"
+        },
+        {
+          "name": "Nvidia GeForce Experience",
+          "description": "software do aktualizowania sterowników GPU, optymalizowania ustawień gier i nagrywania ekranu (Windows 10).",
+          "link": "https://www.nvidia.com/en-us/geforce/geforce-experience/"
+        },
+        {
+          "name": "MSI Afterburner",
+          "description": "software do ręcznego podkręcania karty graficznej.",
+          "link": "https://www.msi.com/Landing/afterburner/graphics-cards"
+        },
+        {
+          "name": "Razer Synapse",
+          "description": "aplikacja do konfigurowania mojej myszki i innych rzeczy Razera.",
+          "link": "https://www.razer.com/eu-en/synapse-3"
+        },
+        {
+          "name": "Origin",
+          "description": "używam głównie dla serii Battlefield i innych tytułów od EA.",
+          "link": "https://www.origin.com/gbr/en-us/store/download"
+        },
+        {
+          "name": "Ubisoft Connect",
+          "description": "lubię niektóre serie od Ubisoft (Assassin’s Creed, Splinter Cell, Watch Dogs).",
+          "link": "https://ubisoftconnect.com/en-US/"
+        },
+        {
+          "name": "Steam",
+          "description": "pozostałe gry mam na Steam.",
+          "link": "https://store.steampowered.com/"
+        },
+        {
+          "name": "Discord",
+          "description": "do komunikacji.",
+          "link": "https://discord.com/"
+        }
+      ]
+    },
+    {
+      "heading": "Konfiguracja biurka",
+      "list": [
+        {
+          "name": "Komuter stacjonarny",
+          "description": "mój główny pc. Szczegóły:",
+          "details": [
+            {
+              "name": "Płyta główna",
+              "description": "MSI Z170A Gaming Pro Carbon"
+            },
+            {
+              "name": "Procesor",
+              "description": "Intel i7 6700K (OC)"
+            },
+            {
+              "name": "Chłodzenie procesora",
+              "description": "be quiet! Dark Rock Pro 3"
+            },
+            {
+              "name": "RAM",
+              "description": "Kingston HyperX 16GB"
+            },
+            {
+              "name": "Karta graficzna",
+              "description": "MSI GTX 1070 Gaming X"
+            },
+            {
+              "name": "SSD 1 (Ubuntu)",
+              "description": "GoodRam SSD 240GB"
+            },
+            {
+              "name": "SSD 2 (Windows 10)",
+              "description": "Adata XPG M.2 256GB"
+            },
+            {
+              "name": "HDD",
+              "description": "WD Blue 1TB"
+            },
+            {
+              "name": "Obudowa",
+              "description": "NZXT H440"
+            },
+            {
+              "name": "Zasilacz",
+              "description": "SilentiumPC Enduro FM1 Gold 550W"
+            }
+          ]
+        },
+        {
+          "name": "LG 27\" 4k HDR (27UK650-W)",
+          "description": "mój główny monitor. Ma 99% pokrycia palety kolorów sRGB, więc daje wierny obraz. Dzięki rozdzielczości 4k, mogę upchać na nim wiele rzeczy, jak 3 - 4 pliki z kodem obok siebie. Gry i filmy, które obsługują HDR wyglądają na nim bardzo żywo i kontrastowo."
+        },
+        {
+          "name": "LG 29\" 2560x1080 (29UB65-P)",
+          "description": "mój drugi monitor. W portrecie, pisanie kodu czy przeglądanie sieci jest wydajne. Proporcje 21:9 są wygodne dla jednego monitora, ale zabierają trochę miejsca obok drugiego. Pewnie go wymienię."
+        },
+        {
+          "name": "Razer Viper Ultimate",
+          "description": "bezprzewodowa, lekka myszka. Dobra do gier fps i innych rzeczy. Dodatkowo, może kupię coś bardziej „produktywnego” jak Logitech MX Master."
+        },
+        {
+          "name": "BenQ Zowie G-Sr",
+          "description": "podkładka pod optyczne myszy."
+        },
+        {
+          "name": "Cooler Master MasterKeys Pro M (Cherry MX Brown)",
+          "description": "moja klawiatura mechaniczna. Mam ją od kilku lat. Pisanie jest nadal satysfakcjonujące. Mogę na niej grać w snake’a diodami LED. Niepotrzebne? Tak, ale całkiem fajne."
+        },
+        {
+          "name": "HyperX Cloud II",
+          "description": "kupiłem go niedawno, zastępując poprzednią wersję. Headset gamingowy, ale z dość dokładnym profilem audio, który się sprawdza przy innych mediach. Bardzo wygodny."
+        },
+        {
+          "name": "Ikea Bekant",
+          "description": "moje biurko narożne. Ma dużą powierzchnię do pracy i sprytne rozwiązanie do zarządzania kablami - ani jeden z moich kabli nie leży na ziemi."
+        },
+        {
+          "name": "Ikea JÄRVFJÄLLET",
+          "description": "moje krzesło biurowe. Podoba mi się jego estetyka - czysta i minimalistyczna. Nie jest tak wygodne jak krzesła ergonomiczne, ale za tę cenę oferuje niezłą jakość."
+        },
+        {
+          "name": "Gumowa kaczka",
+          "description": "pomaga mi w debugowaniu trudnych problemów."
+        }
+      ]
+    },
+    {
+      "heading": "Inne gadżety",
+      "list": [
+        {
+          "name": "Samsung Galaxy S20FE",
+          "description": "mój główny telefon. W zasadzie flagowiec, ale za dwie trzecie ceny. Ma wyświetlacz o odświeżaniu 120Hz z dobrym PPI, Snapdragona 865, aparaty dobrej jakości i inne, przydatne funkcje, takie jak ładowanie indukcyjne. Myślę, że w 2022 to jest nadal opłacalny smartfon."
+        },
+        {
+          "name": "Plantronics BackBeat Fit Sport",
+          "description": "moje słuchawki Bluetooth, gdy jestem w drodze. Używam ich gdy spaceruję, biegam czy skaczę na skakance."
+        },
+        {
+          "name": "Amazon Kindle Paperwhite 4",
+          "description": "Lubię fizyczne wydania książek. Wolę je od e-booków. Jednakże, to przenośne urządzenie jest idealne, gdy chcę coś przeczytać, a nie chcę nosić większego ciężaru."
+        },
+        {
+          "name": "PlayStation 4 Pro",
+          "description": "moja aktualna konsola. Gram na maszynach od Sony od czasów PSX. To się nie zmieni, bo prawdopodobnie kupię PlayStation 5. Lubię tytuły ekskluzywne na tę platformę, szczególnie od Naughty Dog. Kanapowa kooperacja jest nadal moją ulubioną rozgrywką multiplayer."
+        },
+        {
+          "name": "Kawiarka",
+          "description": "świetna alternatywa dla ekspresu do kawy. Lubię cały rytuał mielenia ziaren kawy, napełniania kawiarki i czekania. Kawa wtedy smakuje po prostu lepiej."
+        },
+        {
+          "name": "Maszynka na żyletki",
+          "description": "golę się jak mój dziadek. Byłem zaskoczony jak gładko przy jej pomocy mogę się ogolić. Wymaga to jednak cierpliwości i ostrożności. Dodatkowym plusem jest zmniejszenie zużycia plastiku."
+        }
+      ]
+    }
+  ]
+}
