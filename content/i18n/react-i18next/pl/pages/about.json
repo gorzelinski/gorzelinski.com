@@ -3,7 +3,7 @@
   "description": "Cześć, jestem Mateusz. Jestem inżynierem o erudycyjnych aspiracjach.",
   "heading": "A oto moja krótka historia",
   "alt": "zdjęcie profilowe",
-  "metaAlt": "Wycentrowany napis Portfolio na białym tle",
+  "metaAlt": "Wycentrowany napis O mnie na białym tle",
   "story": [
     "Moje najwcześniejsze wspomnienia nierozerwalnie związane są z elektroniką. Do dziś pamiętam dreszczyk emocji, towarzyszący mi podczas dźwięku uruchamiania pierwszego PlayStation. Brzmiał on jak przejście przez portal - wejście w inną, cyfrową galaktykę. Ta galaktyka już wtedy mnie pochłonęła. Po niemal 20 latach nadal w niej tkwię.",
     "Z biegiem lat, zainteresowanie elektroniką się u mnie pogłębiało. Mając kilkanaście lat dostałem swój pierwszy telefon - używany Sony Ericsson k300i. Nadal pamiętam jego specyfikację: 12MB pamięci, aparat VGA(0,3Mpix), wyświetlacz o 65 tysiącach kolorów. Wówczas te liczby nie mówiły mi wiele. Lubiłem jednak je analizować i porównywać między modelami. W zasadzie nadal to robię. Wówczas przeglądałem ulotki operatorów telekomunikacyjnych. Dziś przyjmuje to formę śledzenia blogów i vlogów technologicznych.",
@@ -156,6 +156,6 @@
   "uses": {
     "heading": "Moje technologie",
     "description": "Zawsze mnie interesuje jakich technologii i gadżetów używają inni ludzie. Stworzyłem tę listę dla geeków takich jak ja. Będę się starał, aby była aktualna.",
-    "button": "Rzeczy których używam"
+    "button": "Rzeczy, których używam"
   }
 }
