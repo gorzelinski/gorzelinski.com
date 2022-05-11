@@ -3,6 +3,13 @@ import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
 import { useLocalization } from "gatsby-theme-i18n"
+import {
+  Book,
+  ChevronForward,
+  GameController,
+  Headset,
+  Tv,
+} from "@styled-icons/ionicons-solid"
 
 import {
   Button,
@@ -25,18 +32,31 @@ import Seo from "../components/seo"
 import Link from "../components/link"
 import Featured from "../components/featured"
 import Cards from "../components/cards"
-import { ChevronForward } from "@styled-icons/ionicons-solid"
 
 const About = ({ data, location }) => {
   const { locale } = useLocalization()
   const { t } = useTranslation("pages/about")
-  const name = data.site?.siteMetadata?.author?.name
   const image = getImage(data?.image)
   const metaImage = createMetaImage({
     alt: t("metaAlt"),
     src: data?.metaImage,
   })
   const lastPosts = data.lastPosts?.nodes
+
+  const selectIcon = index => {
+    switch (index) {
+      case 0:
+        return <Tv></Tv>
+      case 1:
+        return <Headset></Headset>
+      case 2:
+        return <GameController></GameController>
+      case 3:
+        return <Book></Book>
+      default:
+        return null
+    }
+  }
 
   return (
     <Layout location={location}>
@@ -53,7 +73,7 @@ const About = ({ data, location }) => {
           $aspectRatio="wide"
           $span="all"
           image={image}
-          alt={`${name} - ${t("alt")}`}
+          alt={t("alt")}
         ></Image>
         <Tile $span="all">
           <H1>{t("heading")}</H1>
@@ -105,7 +125,9 @@ const About = ({ data, location }) => {
         </Tile>
         {t("corner", { returnObjects: true }).map((media, index) => (
           <Tile key={`media-${index}`}>
-            <H6 as="h3">{media.heading}</H6>
+            <H6 as="h3">
+              <Icon>{selectIcon(index)}</Icon> {media.heading}
+            </H6>
             <Ul>
               {media.items.map((item, index) => (
                 <Li key={`title-${index}`}>
