@@ -31,11 +31,12 @@ export const Wrapper = styled.div`
 
       ${media.tablet`
         margin: 0;
-        padding: var(--space-xl) var(--space-l);
+        padding: var(--space-l);
       `}
 
       ${media.desktop`
         margin: 0 auto;
+        padding: var(--space-xl) var(--space-l) var(--space-l);
         max-width:  var(--wrapper-width-desktop);
       `}
       

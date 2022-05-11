@@ -15,31 +15,31 @@ describe("Subscirption component", () => {
   describe("renders", () => {
     it("github link", () => {
       render(<Socials data={defaultData}></Socials>)
-      const link = screen.getByRole("link", { name: "github", exact: false })
+      const link = screen.getByRole("link", { name: "Github", exact: false })
       expect(link).toBeInTheDocument()
     })
 
     it("dribbble link", () => {
       render(<Socials data={defaultData}></Socials>)
-      const link = screen.getByRole("link", { name: "dribbble", exact: false })
+      const link = screen.getByRole("link", { name: "Dribbble", exact: false })
       expect(link).toBeInTheDocument()
     })
 
     it("twitter link", () => {
       render(<Socials data={defaultData}></Socials>)
-      const link = screen.getByRole("link", { name: "twitter", exact: false })
+      const link = screen.getByRole("link", { name: "Twitter", exact: false })
       expect(link).toBeInTheDocument()
     })
 
     it("facebook link", () => {
       render(<Socials data={defaultData}></Socials>)
-      const link = screen.getByRole("link", { name: "facebook", exact: false })
+      const link = screen.getByRole("link", { name: "Facebook", exact: false })
       expect(link).toBeInTheDocument()
     })
 
     it("linkedin link", () => {
       render(<Socials data={defaultData}></Socials>)
-      const link = screen.getByRole("link", { name: "linkedin", exact: false })
+      const link = screen.getByRole("link", { name: "Linkedin", exact: false })
       expect(link).toBeInTheDocument()
     })
 

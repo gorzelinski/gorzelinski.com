@@ -54,14 +54,14 @@ const Blog = ({ data, location }) => {
   const handleInputChange = useMemo(
     () =>
       debounce(event => {
-        const query = event.target.value
+        const query = event.target.value.trim().toLowerCase()
         const filtered = allPosts.filter(post => {
           const { title, description, categories, tags } = post.frontmatter
           return (
-            title.toLowerCase().includes(query.toLowerCase()) ||
-            description.toLowerCase().includes(query.toLowerCase()) ||
-            categories.includes(query.toLowerCase()) ||
-            tags.includes(query.toLowerCase())
+            title.toLowerCase().includes(query) ||
+            description.toLowerCase().includes(query) ||
+            categories.includes(query) ||
+            tags.includes(query)
           )
         })
         query ? setFilteredPosts(filtered) : setFilteredPosts(allPosts)

@@ -11,9 +11,7 @@ export const Header = styled.header.attrs(props => ({
   & > *:last-child {
     margin-bottom: 0;
   }
-  & > :is(h1, h2, h3) {
-    margin: 0;
-  }
+
   ${props => {
     switch (props.$type) {
       case "main":
@@ -66,6 +64,10 @@ export const Header = styled.header.attrs(props => ({
 
           & > *:nth-child(2) {
             align-self: flex-end;
+          }
+
+          & > :is(h1, h2, h3) {
+            margin: 0;
           }
 
           ${media.tablet`
