@@ -1,0 +1,29 @@
+{
+  "random": "Random facts about me",
+  "facts": [
+    {
+      "heading": "🎵 The noise of home appliances calms me",
+      "description": "Vacuum cleaner or hairdryer sounds have never annoyed me. I like them. It appears odd, but something is soothing in this kind of white noise to many people. “Vacum Cleaner Sound” videos on Youtube have millions of views. You can even buy devices that generate white noise."
+    },
+    {
+      "heading": "❄️ I’m an INTJ in MBTI",
+      "description": "Myers–Briggs Type Indicator is a personality test to identify a person’s type, strengths, and preferences. I wouldn’t take it too seriously, but it’s a fun exercise. The description of my type states that I’m a cold, lonely villain (I might have exaggerated that a bit)."
+    },
+    {
+      "heading": "☀️ I sneeze in the bright light",
+      "description": "It’s not as uncontrollable as if I’m allergic. On a sunny day, I feel the urge to sneeze after I’ve just gone outside. I’ve done some reading, and it even has a name - photic sneeze reflex. It’s a rare condition (affecting 10 - 30% population) caused by gens. Thanks, dad!"
+    },
+    {
+      "heading": "⏱️ I could pass some of the Navy SEALs Physical Screening Tests",
+      "description": "One part of the test requires doing a minimum of 42 push-ups in 2 minutes. The last part is a 1.5-mile (~2.41 km) run in under 11 minutes. I’ve done that a few times at the gym. I hope I can still do that."
+    },
+    {
+      "heading": "📄 I have a surname by mistake",
+      "description": "Due to some typo in my grandfather’s documents, my surname is “Gorzeliński” (with polish letters). The correct spelling should be probably “Garzeliński.” Anyway, it’s hard to pronounce either way - even for polish people."
+    },
+    {
+      "heading": "📘 I’m a bookworm",
+      "description": "Last year I read 48 books. I don’t know any fast reading techniques. Actually, I’m a slow reader who pauses and ponders. I just read over an hour on average every day."
+    }
+  ]
+}

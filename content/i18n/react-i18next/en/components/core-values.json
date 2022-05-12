@@ -1,0 +1,20 @@
+{
+  "core": {
+    "heading": "My core values",
+    "description": "The values I try to live by."
+  },
+  "values": [
+    {
+      "heading": "Truth",
+      "description": "Probably one of the most important. It is at the root of most of my endeavors. I constantly expand and verify my views. I want the worldview in my head to be as close as possible to reality."
+    },
+    {
+      "heading": "Curiosity",
+      "description": "“I have no special talents. I am only passionately curious.” - Einstein once wrote to his friend (this quote is real - I verified it). He was humble. I’ll never be as talented as Einstein was, but his curiosity can be an inspiration for me. Discovering and understanding new knowledge can be a reward for its own sake."
+    },
+    {
+      "heading": "Empathy",
+      "description": "In my truth-seeking journey, I’m not alone. I stand on the shoulders of giants. Most of the things in my life I owe to other people. I should be grateful, give some of that help back, and try my best to understand their point of view."
+    }
+  ]
+}

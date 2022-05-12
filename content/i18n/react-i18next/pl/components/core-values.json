@@ -1,0 +1,20 @@
+{
+  "core": {
+    "heading": "Moje podstawowe wartości",
+    "description": "Wartości zgodnie z którymi staram się żyć."
+  },
+  "values": [
+    {
+      "heading": "Prawda",
+      "description": "Prawdopodobnie jedna z najważniejszych. Jest podstawą wszelkich moich działań. Cały czas poszerzam i weryfikuję moje przekonania. Chcę, aby światopogląd w mojej głowe był jak najbliższy rzeczywistości."
+    },
+    {
+      "heading": "Ciekawość",
+      "description": "„Nie mam żadnych niezwykłych uzdolnień oprócz namiętnej ciekawości” - napisał kiedyś Einstein do przyjaciela (ten cytat jest prawdziwy - sprawdzałem). Był skromny. Nigdy nie będę tak utalentowany jak on, ale jego ciekawość może stanowić dla mnie inspirację. Odkrywanie i rozumienie nowej wiedzy może być nagrodą samą w sobie."
+    },
+    {
+      "heading": "Empatia",
+      "description": "W mojej podróży w poszukiwaniu prawdy nie jestem sam. Stoję na ramionach gigantów. Większość rzeczy w moim życiu zawdzięczam innym ludziom. Powienienm być wdzięczny, zwracać pomoc i starać się jak najlepiej zrozumieć inne punkty widzenia."
+    }
+  ]
+}

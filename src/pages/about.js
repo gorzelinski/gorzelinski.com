@@ -3,35 +3,17 @@ import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
 import { useLocalization } from "gatsby-theme-i18n"
-import {
-  Book,
-  ChevronForward,
-  GameController,
-  Headset,
-  Tv,
-} from "@styled-icons/ionicons-solid"
 
-import {
-  Button,
-  H1,
-  H2,
-  H3,
-  H6,
-  Hero,
-  Icon,
-  Image,
-  Li,
-  P,
-  Section,
-  Tile,
-  Ul,
-} from "../elements"
+import { H1, Image, P, Section, Tile } from "../elements"
 import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Link from "../components/link"
+import RandomFacts from "../components/random-facts"
+import CoreValues from "../components/core-values"
+import CulturalCorner from "../components/cultural-corner"
 import Featured from "../components/featured"
 import Cards from "../components/cards"
+import MyTech from "../components/my-tech"
 
 const About = ({ data, location }) => {
   const { locale } = useLocalization()
@@ -42,21 +24,6 @@ const About = ({ data, location }) => {
     src: data?.metaImage,
   })
   const lastPosts = data.lastPosts?.nodes
-
-  const selectIcon = index => {
-    switch (index) {
-      case 0:
-        return <Tv></Tv>
-      case 1:
-        return <Headset></Headset>
-      case 2:
-        return <GameController></GameController>
-      case 3:
-        return <Book></Book>
-      default:
-        return null
-    }
-  }
 
   return (
     <Layout location={location}>
@@ -95,49 +62,9 @@ const About = ({ data, location }) => {
           </Tile>
         </Section>
       </Section>
-      <Section>
-        <Tile $span="all">
-          <H2>{t("random")}</H2>
-        </Tile>
-        {t("facts", { returnObjects: true }).map((fact, index) => (
-          <Tile key={`fact-${index + 1}`}>
-            <H6 as="h3">{fact.heading}</H6>
-            <P>{fact.description}</P>
-          </Tile>
-        ))}
-      </Section>
-      <Section>
-        <Tile $span="all">
-          <H2>{t("core.heading")}</H2>
-          <P $type="lead">{t("core.description")}</P>
-        </Tile>
-        {t("values", { returnObjects: true }).map(value => (
-          <Tile $span={2} key={value.heading}>
-            <H3>{value.heading}</H3>
-            <P $type="lead">{value.description}</P>
-          </Tile>
-        ))}
-      </Section>
-      <Section>
-        <Tile $span="all">
-          <H2>{t("cultural.heading")}</H2>
-          <P $type="lead">{t("cultural.description")}</P>
-        </Tile>
-        {t("corner", { returnObjects: true }).map((media, index) => (
-          <Tile key={`media-${index}`}>
-            <H6 as="h3">
-              <Icon>{selectIcon(index)}</Icon> {media.heading}
-            </H6>
-            <Ul>
-              {media.items.map((item, index) => (
-                <Li key={`title-${index}`}>
-                  <Link href={item.link}>{item.title}</Link>
-                </Li>
-              ))}
-            </Ul>
-          </Tile>
-        ))}
-      </Section>
+      <RandomFacts></RandomFacts>
+      <CoreValues></CoreValues>
+      <CulturalCorner></CulturalCorner>
       <Featured
         data={{
           title: t("posts.heading"),
@@ -147,18 +74,7 @@ const About = ({ data, location }) => {
       >
         <Cards data={lastPosts}></Cards>
       </Featured>
-      <Hero>
-        <Tile $span={2}>
-          <H2>{t("uses.heading")}</H2>
-          <P $type="lead">{t("uses.description")}</P>
-          <Button $type="text" $align="left" to="/uses/">
-            {t("uses.button")}
-            <Icon>
-              <ChevronForward></ChevronForward>
-            </Icon>
-          </Button>
-        </Tile>
-      </Hero>
+      <MyTech></MyTech>
     </Layout>
   )
 }
