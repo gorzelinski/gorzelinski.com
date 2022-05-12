@@ -34,3 +34,9 @@ export const createPaginationLinks = (pageSlug, previous, next) => ({
     slug: `${pageSlug}${next.fields.slug}`,
   },
 })
+
+export const isInternal = (siteUrl, href) => {
+  const pageUrl = new URL(siteUrl)
+  const linkUrl = new URL(href, siteUrl)
+  return linkUrl.host === pageUrl.host
+}

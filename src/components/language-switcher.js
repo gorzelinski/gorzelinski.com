@@ -14,6 +14,7 @@ const LanguageSwitcher = ({ location }) => {
         <Globe></Globe>
       </Icon>
       {config.map(language => {
+        const { code, hrefLang, localName } = language
         const defaultUrl = "/"
         let baseUrl = ""
         if (path) {
@@ -25,14 +26,14 @@ const LanguageSwitcher = ({ location }) => {
           <Button
             $type="nav"
             $size="responsive"
-            key={language.code}
-            lang={language.code}
-            language={language.code}
-            hrefLang={language.hrefLang}
+            key={code}
+            lang={code}
+            language={code}
+            hrefLang={hrefLang}
             to={url}
             activeClassName="active-subtle"
           >
-            {language.localName}
+            {localName}
           </Button>
         )
       })}

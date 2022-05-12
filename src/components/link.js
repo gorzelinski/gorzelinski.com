@@ -1,6 +1,7 @@
 import React from "react"
 
 import { A, Link as GatsbyLink } from "../elements"
+import { isInternal } from "../utils"
 import { useBio } from "../hooks"
 
 const Link = ({ children, href, ...other }) => {
@@ -12,13 +13,7 @@ const Link = ({ children, href, ...other }) => {
     },
   } = useBio()
 
-  const isInternal = href => {
-    const pageUrl = new URL(siteUrl)
-    const linkUrl = new URL(href, siteUrl)
-    return linkUrl.host === pageUrl.host
-  }
-
-  return isInternal(href) ? (
+  return isInternal(siteUrl, href) ? (
     <GatsbyLink to={href} {...other}>
       {children}
     </GatsbyLink>
