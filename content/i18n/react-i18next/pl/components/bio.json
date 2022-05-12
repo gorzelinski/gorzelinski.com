@@ -8,7 +8,7 @@
   "greeting": "Cześć, mam na imię",
   "brief": "Jestem inżynierem i humanistą. W jednym? Czy to jest legalne?",
   "portfolio": {
-    "mention": "Swoje techniczne umiejętności i techniczne zainteresowania rozwijam projektując, kodując i pisząc treści dla stron internetowych, które tworze. Do tego celu wykorzystuję głównie Figmę, JAMstack, długopis i kartę papieru. Efekty tego rozwoju możesz znaleźć w moim",
+    "mention": "Swoje techniczne umiejętności i techniczne zainteresowania rozwijam projektując, kodując i pisząc treści dla stron internetowych. Do tego celu wykorzystuję głównie Figmę, JAMstack, długopis i kartę papieru. Efekty tego rozwoju możesz znaleźć w moim",
     "button": "portfolio"
   },
   "blog": {

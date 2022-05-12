@@ -8,7 +8,7 @@
   "greeting": "Hello, my name is",
   "brief": "I’m an engineer and humanist. In one? Is it legal?",
   "portfolio": {
-    "mention": "I develop my technical skills and humanistic interests by designing, coding and writing content for websites that I create. For that purpose, I mainly use Figma, JAMstack and a good, old-fashioned pen and paper. Effects of that development you can find in my",
+    "mention": "I develop my technical skills and humanistic interests by designing, coding and writing content for websites. For that purpose I mainly use Figma, JAMstack, pen and paper. Effects of that development you can find in my",
     "button": "portfolio"
   },
   "blog": {
