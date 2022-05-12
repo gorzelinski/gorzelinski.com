@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "gorzelinski.com",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Personal website, blog and portfolio by Gorzelinski",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Matthew Gorzelinski <hello@gorzelinski.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
@@ -62,15 +62,11 @@
     "prettier": "2.6.1",
     "start-server-and-test": "^1.14.0"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "0BSD",
+  "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "https://github.com/gorzelinski/gorzelinski.com"
   },
   "scripts": {
     "build": "gatsby build",
