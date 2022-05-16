@@ -69,6 +69,10 @@ const StyledCallout = styled.div`
     background-color: var(--color-background);
     border-radius: 50%;
   }
+
+  & code {
+    background-color: inherit;
+  }
 `
 
 const Callout = ({ children, type }) => {
