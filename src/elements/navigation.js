@@ -12,7 +12,7 @@ export const Navigation = styled.nav.attrs(props => ({
   align-items: center;
   gap: var(--space-xs);
 
-  ${media.tablet`
+  ${media.desktop`
     gap: var(--space-s);
   `}
 
@@ -60,7 +60,7 @@ export const Navigation = styled.nav.attrs(props => ({
       justify-content: space-evenly;
       transition: bottom var(--duration-immediate) ease-out;
 
-      ${media.mobile`
+      ${media.tablet`
         background-color: transparent;
         border-top: 0;
         padding: 0;

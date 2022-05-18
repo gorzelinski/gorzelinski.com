@@ -153,7 +153,6 @@ exports.createSchemaCustomization = ({ actions }) => {
   // Also explicitly define the Markdown frontmatter
   // This way the "MarkdownRemark" queries will return `null` even when no
   // blog posts are stored inside "content/blog" instead of returning an error
-  //TODO: Define project frontmatter fields
   createTypes(`
     type Social {
       github: String

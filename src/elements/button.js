@@ -134,7 +134,7 @@ export const Button = styled(LocalizedLink)`
       case "responsive":
         return css`
           ${paragraph.tiny}
-          ${media.mobile`
+          ${media.tablet`
             ${paragraph.base}
           `}
         `
