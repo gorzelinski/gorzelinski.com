@@ -49,8 +49,12 @@ const NotFoundPage = ({ data, location }) => {
 export default NotFoundPage
 
 export const pageQuery = graphql`
-  query NotFoundQuery {
-    metaImage: file(relativePath: { eq: "spanish-inquisition.jpg" }) {
+  query NotFoundQuery($locale: String!) {
+    metaImage: file(
+      sourceInstanceName: { eq: "images" }
+      relativeDirectory: { eq: $locale }
+      name: { eq: "404" }
+    ) {
       childImageSharp {
         gatsbyImageData(
           formats: AUTO

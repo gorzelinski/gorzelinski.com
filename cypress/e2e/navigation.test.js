@@ -9,34 +9,29 @@ const socials = [
 ]
 const pages = [
   {
-    title: "Portfolio",
     heading: "Portfolio",
     url: "/portfolio/",
     button: "Portfolio",
     alternateLink: /all projects/i,
   },
   {
-    title: "An-lam",
     heading: "An-lam",
     url: "/portfolio/an-lam/",
     button: "Check project",
   },
   { title: "About", heading: "story", url: "/about/", button: "About" },
   {
-    title: "Stuff I use",
-    heading: "Stuff",
+    heading: "uses",
     url: "/uses/",
     button: "Stuff I use",
   },
   {
-    title: "Blog",
     heading: "Blog",
     url: "/blog/",
     button: "Blog",
     alternateLink: /all posts/i,
   },
   {
-    title: "Matthew Gorzelinski",
     heading: "I",
     url: "/",
     button: "Matthew Gorzelinski",

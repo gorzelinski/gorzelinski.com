@@ -35,10 +35,10 @@ const pages = [
   {
     slug: "/uses/",
     url: "https://gorzelinski.com/uses/",
-    title: "Stuff I use",
+    title: "What Matthew uses?",
     description: "specifics",
     type: "website",
-    h1: /stuff/i,
+    h1: /uses/i,
   },
   {
     slug: "/blog/",
