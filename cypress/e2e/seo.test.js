@@ -1,4 +1,62 @@
 /// <reference types="Cypress" />
+const pages = [
+  {
+    slug: "/",
+    url: "https://gorzelinski.com",
+    title: "Matthew Gorzelinski",
+    description: "things on the Internet",
+    type: "website",
+    h1: /create/i,
+  },
+  {
+    slug: "/portfolio/",
+    url: "https://gorzelinski.com/portfolio/",
+    title: "Portfolio",
+    description: "websites",
+    type: "website",
+    h1: /portfolio/i,
+  },
+  {
+    slug: "/portfolio/an-lam/",
+    url: "https://gorzelinski.com/portfolio/an-lam/",
+    title: "An-lam",
+    description: "An-lam",
+    type: "article",
+    h1: /an-lam/i,
+  },
+  {
+    slug: "/about/",
+    url: "https://gorzelinski.com/about/",
+    title: "About",
+    description: "Matthew",
+    type: "website",
+    h1: /short story/i,
+  },
+  {
+    slug: "/uses/",
+    url: "https://gorzelinski.com/uses/",
+    title: "Stuff I use",
+    description: "specifics",
+    type: "website",
+    h1: /stuff/i,
+  },
+  {
+    slug: "/blog/",
+    url: "https://gorzelinski.com/blog/",
+    title: "Blog",
+    description: "web development",
+    type: "website",
+    h1: /blog/i,
+  },
+  {
+    slug: "/blog/hello-world/",
+    url: "https://gorzelinski.com/blog/hello-world/",
+    title: "Hello... world?",
+    description: "What am I actually",
+    type: "article",
+    h1: /hello... world?/i,
+  },
+]
 
 describe("Seo tests", () => {
   const siteTitle = "Gorzelinski"
@@ -11,7 +69,7 @@ describe("Seo tests", () => {
     }).should("be.visible")
 
     cy.get("html").should("have.prop", "lang", "en")
-    cy.title().should("contain", title).and("contain", siteTitle)
+    cy.title().should("contain", title)
     cy.get('meta[name="description"]')
       .should("have.prop", "content")
       .and("contain", description)
@@ -65,70 +123,11 @@ describe("Seo tests", () => {
       .should("have.prop", "content")
       .and("be.ok")
   }
-  it("Visits home page and checks important seo tags", () => {
-    const mock = {
-      url: "https://gorzelinski.com",
-      title: "Matthew Gorzelinski",
-      description: "things on the Internet",
-      type: "website",
-      h1: /create/i,
-    }
-    cy.visit("/")
-    shouldHaveTags(mock)
-  })
-  it("Visits portfolio page and checks important seo tags", () => {
-    const mock = {
-      url: "https://gorzelinski.com/portfolio/",
-      title: "Portfolio",
-      description: "websites",
-      type: "website",
-      h1: /portfolio/i,
-    }
-    cy.visit("/portfolio/")
-    shouldHaveTags(mock)
-  })
-  it("Visits portfolio project and checks important seo tags", () => {
-    const mock = {
-      url: "https://gorzelinski.com/portfolio/an-lam/",
-      title: "An-lam",
-      description: "An-lam",
-      type: "article",
-      h1: /an-lam/i,
-    }
-    cy.visit("/portfolio/an-lam/")
-    shouldHaveTags(mock)
-  })
-  it("Visits about me page and checks important seo tags", () => {
-    const mock = {
-      url: "https://gorzelinski.com/about/",
-      title: "About",
-      description: "Matthew",
-      type: "website",
-      h1: /short story/i,
-    }
-    cy.visit("/about/")
-    shouldHaveTags(mock)
-  })
-  it("Visits blog page and checks important seo tags", () => {
-    const mock = {
-      url: "https://gorzelinski.com/blog/",
-      title: "Blog",
-      description: "web development",
-      type: "website",
-      h1: /blog/i,
-    }
-    cy.visit("/blog/")
-    shouldHaveTags(mock)
-  })
-  it("Visits blog post and checks important seo tags", () => {
-    const mock = {
-      url: "https://gorzelinski.com/blog/hello-world/",
-      title: "Hello... world?",
-      description: "What am I actually",
-      type: "article",
-      h1: /hello... world?/i,
-    }
-    cy.visit("/blog/hello-world/")
-    shouldHaveTags(mock)
+
+  pages.forEach(page => {
+    it(`Visits ${page.slug} and checks important seo tags`, () => {
+      cy.visit(page.slug)
+      shouldHaveTags(page)
+    })
   })
 })

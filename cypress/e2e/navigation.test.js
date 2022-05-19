@@ -1,92 +1,69 @@
 /// <reference types="Cypress" />
 
 const email = "hello@gorzelinski.com"
-const portfolioMock = {
-  title: "Portfolio",
-  url: "/portfolio",
-  alternateLink: /all projects/i,
-}
-const projectMock = {
-  title: "An-lam",
-  url: "/an-lam/",
-}
-const aboutMock = {
-  title: "About",
-  url: "/about/",
-  heading: "story",
-}
-const blogMock = {
-  title: "Blog",
-  url: "/blog",
-  alternateLink: /all posts/i,
-}
-const postMock = {
-  title: "Hello",
-  url: "/hello-world/",
-  internalLink: /engineer/i,
-  externalLink: /flow/i,
-}
+const socials = [
+  { name: "Github", url: "https://github.com", handler: "gorzelinski" },
+  { name: "Dribbble", url: "https://dribbble.com", handler: "gorzelinski" },
+  { name: "Facebook", url: "https://www.facebook.com", handler: "gorzelinski" },
+  { name: "Twitter", url: "https://twitter.com", handler: "gorzelinski" },
+]
+const pages = [
+  {
+    title: "Portfolio",
+    heading: "Portfolio",
+    url: "/portfolio/",
+    button: "Portfolio",
+    alternateLink: /all projects/i,
+  },
+  {
+    title: "An-lam",
+    heading: "An-lam",
+    url: "/portfolio/an-lam/",
+    button: "Check project",
+  },
+  { title: "About", heading: "story", url: "/about/", button: "About" },
+  {
+    title: "Stuff I use",
+    heading: "Stuff",
+    url: "/uses/",
+    button: "Stuff I use",
+  },
+  {
+    title: "Blog",
+    heading: "Blog",
+    url: "/blog/",
+    button: "Blog",
+    alternateLink: /all posts/i,
+  },
+  {
+    title: "Matthew Gorzelinski",
+    heading: "I",
+    url: "/",
+    button: "Matthew Gorzelinski",
+  },
+]
 
 describe("Navigation tests", () => {
   beforeEach(() => {
     cy.visit("/")
   })
+
   it("Navigates around the pages", () => {
-    cy.findByRole("link", { name: portfolioMock.title })
-      .scrollIntoView({
-        easing: "linear",
-        duration: 300,
-        offset: { top: -150 },
-      })
-      .should("be.visible")
-      .click()
-    cy.url().should("contain", portfolioMock.url)
-    cy.findByRole("heading", { level: 1 }).should(
-      "contain",
-      portfolioMock.title
-    )
-
-    cy.get(`a[href*="${projectMock.url}"]`).should("be.visible").click()
-    cy.url().should("contain", `${portfolioMock.url}${projectMock.url}`)
-    cy.findByRole("heading", { level: 1 }).should("contain", projectMock.title)
-
-    cy.findByRole("link", { name: aboutMock.title })
-      .should("be.visible")
-      .scrollIntoView({
-        easing: "linear",
-        duration: 300,
-        offset: { top: -150 },
-      })
-      .click()
-    cy.url().should("include", aboutMock.url)
-    cy.findByRole("heading", { level: 1 }).should("contain", aboutMock.heading)
-
-    cy.findByRole("link", { name: blogMock.title })
-      .scrollIntoView({
-        easing: "linear",
-        duration: 300,
-        offset: { top: -150 },
-      })
-      .should("be.visible")
-      .click()
-    cy.url().should("include", blogMock.url)
-    cy.findByRole("heading", { level: 1 }).should("contain", blogMock.title)
-
-    cy.get(`a[href*="${postMock.url}"]`).should("be.visible").click()
-    cy.url().should("contain", `${blogMock.url}${postMock.url}`)
-    cy.findByRole("heading", { level: 1 }).should("contain", postMock.title)
-
-    cy.findByRole("link", { name: "Gorzelinski" })
-      .scrollIntoView({
-        easing: "linear",
-        duration: 300,
-        offset: { top: -150 },
-      })
-      .should("be.visible")
-      .click()
-    cy.url().should("not.include", `${blogMock.url}${postMock.url}`)
-    cy.findByRole("heading", { level: 1 }).should("be.visible")
+    pages.forEach(page => {
+      cy.findAllByRole("link", { name: page.button })
+        .filter(`a[href="${page.url}"]`)
+        .scrollIntoView({
+          easing: "linear",
+          duration: 300,
+          offset: { top: -150 },
+        })
+        .should("be.visible")
+        .click()
+      cy.findByRole("heading", { level: 1 }).should("contain", page.heading)
+      cy.url().should("contain", page.url)
+    })
   })
+
   it("Navigates around contact methods", () => {
     cy.findByRole("link", { name: "Contact" })
       .scrollIntoView({
@@ -109,104 +86,11 @@ describe("Navigation tests", () => {
       `mailto:${email}`
     )
 
-    cy.findAllByRole("link", { name: "github" })
-      .should("have.prop", "href")
-      .and("contain", "https://github.com")
-
-    cy.findAllByRole("link", { name: "dribbble" })
-      .should("have.prop", "href")
-      .and("contain", "https://dribbble.com")
-
-    cy.findAllByRole("link", { name: "twitter" })
-      .should("have.prop", "href")
-      .and("contain", "https://twitter.com")
-
-    cy.findAllByRole("link", { name: "facebook" })
-      .should("have.prop", "href")
-      .and("contain", "https://www.facebook.com")
-  })
-  it("Navigates to blog and checks its search functionality", () => {
-    cy.findByRole("link", { name: blogMock.title }).click()
-
-    cy.findByPlaceholderText(/search posts/i, { exact: false })
-      .type("Hello... world?{enter}", { delay: 100 })
-      .should("not.have.focus")
-
-    cy.findAllByRole("link", { name: /read/i, exact: false }).should(
-      "have.length",
-      1
-    )
-    cy.findByPlaceholderText(/search posts/i, { exact: false }).clear()
-
-    cy.findAllByRole("link", { name: /read/i, exact: false }).should(
-      "have.length.greaterThan",
-      1
-    )
-  })
-  it("Navigates to blog post and checks its links", () => {
-    cy.findByRole("link", { name: blogMock.alternateLink }).click()
-    cy.findByRole("heading", { level: 1 }).should("contain", "Blog")
-    cy.get(`a[href*="${postMock.url}"]`).should("be.visible").click()
-
-    cy.findByRole("link", { name: postMock.internalLink, exact: false }).should(
-      "not.have.prop",
-      "target",
-      "_blank"
-    )
-
-    cy.findByRole("link", { name: postMock.externalLink, exact: false })
-      .should("have.prop", "target", "_blank")
-      .and("have.prop", "rel")
-      .and("contain", "nofollow")
-      .and("contain", "noopener")
-      .and("contain", "noreferrer")
-
-    cy.findAllByRole("link", { name: "twitter" })
-      .first()
-      .should("have.prop", "href")
-      .and("contain", "https://twitter.com/intent/tweet?url=")
-
-    cy.findAllByRole("link", { name: "facebook" })
-      .first()
-      .should("have.prop", "href")
-      .and("contain", "https://www.facebook.com/sharer.php?u=")
-
-    cy.findAllByRole("link", { name: "linkedin" })
-      .first()
-      .should("have.prop", "href")
-      .and("contain", "https://www.linkedin.com/sharing/share-offsite/?url=")
-
-    cy.get('a[rel="next"]').should("be.visible").click()
-
-    cy.url().should("not.contain", postMock.url)
-
-    cy.get('a[rel="prev"]').should("be.visible").and("have.prop", "href")
-
-    cy.get('a[rel="next"]').should("be.visible").and("have.prop", "href")
-  })
-  it("Navigates to blog post and checks progress bar on scroll", () => {
-    cy.findByRole("link", { name: blogMock.alternateLink }).click()
-    cy.findByRole("heading", { level: 1 }).should("contain", blogMock.title)
-    cy.get(`a[href*="${postMock.url}"]`).should("be.visible").click()
-    cy.findByTestId("progress").should("not.be.visible")
-    cy.findByTestId("progress-value").should("not.be.visible")
-    cy.scrollTo(0, 2000, { duration: 250 })
-    cy.findByTestId("progress").should("be.visible")
-    cy.findByTestId("progress-value").should("be.visible")
-  })
-  it("Navigates to portfolio project and checks its links", () => {
-    cy.findByRole("link", { name: portfolioMock.alternateLink })
-      .should("be.visible")
-      .click()
-    cy.findByRole("heading", { level: 1 }).should(
-      "contain",
-      portfolioMock.title
-    )
-    cy.get(`a[href*="${projectMock.url}"]`).should("be.visible").click()
-
-    cy.get('a[rel="next"]').should("be.visible").click()
-    cy.url().should("not.contain", projectMock.url)
-
-    cy.get('a[rel="prev"]').should("be.visible").and("have.prop", "href")
+    socials.forEach(social => {
+      cy.findAllByRole("link", { name: social.name })
+        .should("have.prop", "href")
+        .and("contain", social.url)
+        .and("contain", social.handler)
+    })
   })
 })

@@ -180,6 +180,27 @@ const postsMock = [
   },
 ]
 
+const usesMock = [
+  {
+    lang: "en",
+    hreflang: "en-US",
+    url: "/uses/",
+    title: "Stuff I use",
+    description: "specifics",
+    heading: "Services",
+    item: /productive activities/i,
+  },
+  {
+    lang: "pl",
+    hreflang: "pl-PL",
+    url: "/pl/uses/",
+    title: "Rzeczy, których używam",
+    description: "szczegółami",
+    heading: "Serwisy",
+    item: /produktywnych zajęć/i,
+  },
+]
+
 describe("I18n tests", () => {
   const changeLanguage = lang => {
     cy.get(`a[lang="${lang}"]`).click()
@@ -334,6 +355,23 @@ describe("I18n tests", () => {
           offset: { top: -150 },
         })
         .should("be.visible")
+
+      if (pages[index + 1]) {
+        changeLanguage(pages[index + 1].lang)
+      }
+    })
+  })
+
+  it("Visits uses page and checks its translations", () => {
+    cy.visit(usesMock[0].url)
+    usesMock.forEach((page, index, pages) => {
+      cy.url().should("contain", page.url)
+      checkTags(page, index, pages)
+
+      cy.findByRole("heading", { name: page.title }).should("be.visible")
+      cy.findByText(page.description, { exact: false }).should("be.visible")
+      cy.findByRole("heading", { name: page.heading }).should("be.visible")
+      cy.findByText(page.item, { exact: false }).should("be.visible")
 
       if (pages[index + 1]) {
         changeLanguage(pages[index + 1].lang)
