@@ -12,7 +12,7 @@ export const Section = styled.section`
       ${border.all}
       background: var(--color-surface-background);
       padding: calc(var(--space-s) - var(--space-xxxs));
-      box-shadow: var(--shadow-neumorphism);
+      box-shadow: var(--shadow-depth-40);
 
       ${media.tablet`
         padding: calc(var(--space-m) - var(--space-xxxs));
@@ -21,7 +21,7 @@ export const Section = styled.section`
         padding: calc(var(--space-l) - var(--space-xxxs));
       `}
     `}
-  
+
   grid-column: 1 / -1;
 `
 

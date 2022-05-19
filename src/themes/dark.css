@@ -48,5 +48,9 @@
   --color-success-100: hsl(var(--color-success), 9%);
   --color-success-base: hsl(var(--color-success), 39%);
 
-  --shadow-neumorphism: 8px 8px 16px #0c0d0d, -8px -8px 16px #101113;
+  --shadow-depth-00: 1px 1px 2px #0a0a0b, -1px -1px 2px #121415;
+  --shadow-depth-10: 2px 2px 4px #0a0a0b, -2px -2px 4px #121415;
+  --shadow-depth-20: 4px 4px 8px #0a0a0b, -4px -4px 8px #121415;
+  --shadow-depth-30: 8px 8px 16px #0a0a0b, -8px -8px 16px #121415;
+  --shadow-depth-40: 12px 12px 24px #0a0a0b, -12px -12px 24px #121415;
 }

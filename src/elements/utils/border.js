@@ -3,7 +3,7 @@ import { css } from "styled-components"
 export const border = {
   all: css`
     border-radius: var(--space-s);
-    border: var(--space-xxxs) solid var(--color-gray-80);
+    border: var(--space-xxxs) solid var(--color-gray-90);
   `,
   top: css`
     border-top: var(--space-xxxs) solid var(--color-gray-80);
