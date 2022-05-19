@@ -7,13 +7,7 @@ const Logo = () => {
   const { t } = useTranslation("components/bio")
 
   return (
-    <Button
-      $align="left"
-      $type="nav"
-      aria-label="Gorzelinski"
-      to="/"
-      activeClassName="active-subtle"
-    >
+    <Button $align="left" $type="nav" to="/" activeClassName="active-subtle">
       {t("name")}
     </Button>
   )
