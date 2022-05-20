@@ -6,7 +6,13 @@ import { article } from "../grid"
 export const Article = styled.article`
   ${article}
   ${marginTop}
+  --margin: var(--font-height-base);
+  --margin-banner: calc(2 * var(--margin));
+  --margin-sections: var(--margin);
 
+  ${media.tablet`
+    --margin: var(--font-height-xxs);
+  `}
   & > * {
     grid-column: 2;
   }
@@ -15,24 +21,17 @@ export const Article = styled.article`
   & > .gatsby-image-wrapper {
     grid-column: 1 / span 3;
     height: auto;
-    margin: 0 calc(-1 * var(--space-s)) calc(2 * var(--font-height-base));
-
-    ${media.tiny`
-      margin: 0 calc(-1 * var(--space-m)) calc(2 * var(--font-height-base));
-    `}
-
-    ${media.tablet`
-      margin: 0 0 calc(2 * var(--font-height-base));
-    `}
+    margin: 0 var(--overflow-wrapper);
+    margin-bottom: var(--margin-banner);
   }
 
   & > header {
-    margin-bottom: calc(2 * var(--font-height-base));
+    margin-bottom: var(--margin-banner);
   }
 
   & > footer {
-    margin-top: var(--font-height-base);
-    padding-top: var(--font-height-base);
+    margin-top: var(--margin-sections);
+    padding-top: var(--margin-sections);
     ${border.top}
   }
 

@@ -16,9 +16,10 @@ export const Header = styled.header.attrs(props => ({
     switch (props.$type) {
       case "main":
         return css`
-          --padding: var(--space-xs) var(--space-s)
-            calc(var(--space-xs) - var(--space-xxxs));
-          --margin: 0 calc(-1 * var(--space-s));
+          --padding-vertical: var(--space-xs);
+          --padding: var(--padding-vertical) var(--wrapper-padding)
+            calc(var(--padding-vertical) - var(--space-xxxs));
+          --margin: 0 var(--overflow-wrapper);
           margin: var(--margin);
           padding: var(--padding);
           border-bottom: var(--space-xxxs) solid var(--color-background);
@@ -31,14 +32,13 @@ export const Header = styled.header.attrs(props => ({
           justify-content: space-between;
           transition: top var(--duration-immediate) ease-out;
 
-          ${media.tiny`
-            --padding: var(--space-xs) var(--space-m) calc(var(--space-xs) - var(--space-xxxs));
-            --margin: 0 calc(-1 * var(--space-m));
+          ${media.tablet`
+            --padding-vertical: var(--space-s);
           `}
 
-          ${media.tablet`
-            --padding: var(--space-s) var(--space-m) calc(var(--space-s) - var(--space-xxxs));
-            --margin: 0 calc(-1 * var(--space-m));
+          ${media.desktop`
+            --wrapper-padding: var(--space-m);
+            --overflow-wrapper: calc(-1 * var(--wrapper-padding));
           `}
 
           &.down {

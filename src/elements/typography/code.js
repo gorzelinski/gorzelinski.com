@@ -25,12 +25,8 @@ export const BlockCode = styled.pre`
   display: block;
   position: relative;
   padding: calc(var(--space-s) - var(--space-xxxs));
-  margin: 0 calc(-1 * var(--space-s)) var(--font-height-base);
+  margin: 0 var(--overflow-wrapper) var(--font-height-base);
   box-shadow: var(--shadow-depth-10);
-
-  ${media.tiny`
-    margin: 0 calc(-1 * var(--space-m)) var(--font-height-base);
-  `}
 
   ${media.tablet`
     ${border.all}

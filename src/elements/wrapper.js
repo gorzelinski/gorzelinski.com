@@ -18,31 +18,31 @@ export const Wrapper = styled.div`
         var(--space-xxxs) + var(--space-xs) - var(--space-xxxs) +
           var(--font-height-tiny) + 3 * var(--space-xs)
       );
-      --wrapper-width-desktop: 80rem;
-      --wrapper-width-large: 83rem;
-      padding: var(--space-s) var(--space-s)
-        calc(var(--mobile-nav-height) + var(--space-s)) var(--space-s);
-      max-width: 100%;
+      --wrapper-padding: var(--space-s);
+      --wrapper-margin: 0;
+      --overflow-wrapper: calc(-1 * var(--wrapper-padding));
+      padding: var(--wrapper-padding);
+      margin: var(--wrapper-margin);
+      max-width: var(--wrapper-width, 100%);
 
       ${media.tiny`
-        margin: 0;
-        padding: var(--space-m) var(--space-m) calc(var(--mobile-nav-height) + var(--space-m)) var(--space-m);
+        --wrapper-padding: var(--space-m);
       `}
 
       ${media.tablet`
-        margin: 0;
-        padding: var(--space-l);
+        --wrapper-padding: var(--space-l);
       `}
 
       ${media.desktop`
-        margin: 0 auto;
-        padding: var(--space-xl) var(--space-l) var(--space-l);
-        max-width:  var(--wrapper-width-desktop);
+        --wrapper-margin: 0 auto;
+        --wrapper-padding: 0;
+        --wrapper-width: 72rem;
+        padding: var(--space-l) var(--wrapper-padding);
       `}
       
       ${media.large`
-        margin: 0 auto;
-        max-width: var(--wrapper-width-large);
+        --wrapper-margin: 0 auto;
+        --wrapper-width: 75rem;
       `}
     `}
 `
