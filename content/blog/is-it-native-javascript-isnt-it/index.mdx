@@ -141,7 +141,7 @@ const laptop = {
   },
 }
 
-const info = laptop?.graphicsCard?.manufacturer // undefined
+const info = laptop?.graphicsCard?.manufacturer //undefined
 ```
 
 With optional chaining, you can try to access nested properties that may not be available. The above snippet won't throw an error. It will return `undefined`. If a reference is `null` or `undefined`, the expression returns `undefined`. In my opinion, the `?.` operator is concise and intuitive. Is like a question: "Is there a manufacturer (of the graphics card) property on the laptop object?". If so - return it. Otherwise, return `undefined`. This operator is more powerful. You can also use the syntax with function calls.

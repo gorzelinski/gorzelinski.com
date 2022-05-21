@@ -141,7 +141,7 @@ const laptop = {
   },
 }
 
-const info = laptop?.graphicsCard?.manufacturer // undefined
+const info = laptop?.graphicsCard?.manufacturer //undefined
 ```
 
 Używając tego zapisu możesz próbować uzyskać dostęp do wartości, które mogą być niedostępne. Powyższy fragment nie wyrzuca błędu. Zwraca `undefined`. Jeżeli odniesienie jest `null` albo `undefined`, wyrażenie zwraca `undefined`. Myślę, że operator `?.` jest zwięzły i intuicyjny. Jest jak pytanie: “czy istnieje producent (karty graficznej) w obiekcie laptop?”. Jeżeli tak - zwróć tę wartość. W inny wypadku zwróć `undefined`. Ten operator jest bardziej uniwersalny. Możesz użyć tej składni przy wywoływaniu funkcji.
