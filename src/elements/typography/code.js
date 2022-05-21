@@ -25,12 +25,12 @@ export const BlockCode = styled.pre`
   display: block;
   position: relative;
   padding: calc(var(--space-s) - var(--space-xxxs));
-  margin: 0 var(--overflow-wrapper) var(--font-height-base);
+  margin: 0 var(--overflow-wrapper);
+  margin-bottom: var(--vertical-rhythm);
   box-shadow: var(--shadow-depth-10);
 
   ${media.tablet`
     ${border.all}
-    margin: 0 0 var(--font-height-xxs);
   `}
 
   & > code {

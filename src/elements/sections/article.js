@@ -1,18 +1,14 @@
 import styled from "styled-components"
 
-import { border, marginTop, media } from "../utils"
+import { border, marginTop } from "../utils"
 import { article } from "../grid"
 
 export const Article = styled.article`
   ${article}
   ${marginTop}
-  --margin: var(--font-height-base);
-  --margin-banner: calc(2 * var(--margin));
-  --margin-sections: var(--margin);
+  --margin-banner: calc(2 * var(--vertical-rhythm));
+  --margin-sections: var(--vertical-rhythm);
 
-  ${media.tablet`
-    --margin: var(--font-height-xxs);
-  `}
   & > * {
     grid-column: 2;
   }

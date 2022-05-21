@@ -10,11 +10,10 @@ export const StyledTable = styled.table`
   width: 100%;
   border-collapse: collapse;
   border-spacing: var(--space-xs);
-  margin-bottom: var(--font-height-base);
+  margin-bottom: var(--vertical-rhythm);
 
   ${media.tablet`
     ${heading.xxs}
-    margin-bottom: var(--font-height-xxs);
   `}
 
   & th {

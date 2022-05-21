@@ -21,6 +21,7 @@ export const Wrapper = styled.div`
       --wrapper-padding: var(--space-s);
       --wrapper-margin: 0;
       --overflow-wrapper: calc(-1 * var(--wrapper-padding));
+      --vertical-rhythm: var(--font-height-base);
       padding: var(--wrapper-padding);
       margin: var(--wrapper-margin);
       max-width: var(--wrapper-width, 100%);
@@ -31,6 +32,7 @@ export const Wrapper = styled.div`
 
       ${media.tablet`
         --wrapper-padding: var(--space-l);
+        --vertical-rhythm: var(--font-height-xxs);
       `}
 
       ${media.desktop`

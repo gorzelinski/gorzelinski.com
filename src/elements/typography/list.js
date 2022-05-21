@@ -8,7 +8,7 @@ export const list = css`
   margin-left: 0;
   margin-right: 0;
   padding: 0;
-  margin-bottom: var(--space-m);
+  margin-bottom: var(--vertical-rhythm);
   list-style-position: inside;
 `
 

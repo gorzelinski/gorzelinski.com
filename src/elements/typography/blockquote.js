@@ -3,13 +3,13 @@ import styled from "styled-components"
 import { media } from "../utils"
 
 export const Blockquote = styled.blockquote`
-  padding: 0 0 0 var(--space-s);
-  margin: var(--font-height-base) var(--space-m) var(--font-height-base) 0;
+  padding-left: calc(var(--wrapper-padding) / 2);
+  margin: var(--vertical-rhythm) calc(var(--overflow-wrapper) / 2);
   border-left: var(--space-xxs) solid var(--color-primary-base);
 
   ${media.tablet`
-    padding-left: var(--font-height-base);
-    margin: var(--font-height-base) var(--font-height-base) var(--font-height-base) calc((var(--space-xxs) + var(--font-height-base)) * -1);
+    --overflow-wrapper: 0px;
+    --wrapper-padding: var(--space-m);
   `}
 
   & > p {

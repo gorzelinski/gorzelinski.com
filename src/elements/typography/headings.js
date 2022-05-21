@@ -7,13 +7,8 @@ export const headings = css`
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-medium);
   color: var(--color-gray-00);
-  margin-top: calc(var(--font-height-base) * 2);
-  margin-bottom: var(--font-height-base);
-
-  ${media.tablet`
-    margin-top: calc(var(--font-height-xxs) * 2);
-    margin-bottom: var(--font-height-xxs);
-  `}
+  margin-top: calc(var(--vertical-rhythm) * 2);
+  margin-bottom: var(--vertical-rhythm);
 `
 
 const responsiveHeading = baseSize => {

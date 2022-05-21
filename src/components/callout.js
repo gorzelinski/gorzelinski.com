@@ -8,18 +8,13 @@ import {
   Bulb,
 } from "@styled-icons/ionicons-solid"
 
-import { media } from "../elements/utils"
 import { Icon } from "../elements"
 
 const StyledCallout = styled.div`
   position: relative;
   border-radius: var(--space-s);
   padding: var(--space-s);
-  margin: var(--font-height-base) 0;
-
-  ${media.tablet`
-    margin: var(--font-height-xxs) 0;
-  `}
+  margin: var(--vertical-rhythm) 0;
 
   ${props => {
     switch (props.$type) {
