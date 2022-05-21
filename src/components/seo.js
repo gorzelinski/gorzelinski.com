@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 
 import { useBio } from "../hooks/useBio"
+import { useTranslation } from "react-i18next"
 
 const Seo = ({
   description,
@@ -17,10 +18,11 @@ const Seo = ({
   const {
     bio: { site },
   } = useBio()
+  const { t } = useTranslation("pages/index")
 
   const url = `${site.siteMetadata.siteUrl}${slug}`
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const metaDescription = description || t("description")
+  const defaultTitle = t("title") || site.siteMetadata?.title
   const metaImage = image ? `${site.siteMetadata.siteUrl}${image.src}` : null
 
   return (

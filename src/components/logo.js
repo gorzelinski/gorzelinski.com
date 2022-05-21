@@ -4,11 +4,11 @@ import { useTranslation } from "react-i18next"
 import { Button } from "../elements"
 
 const Logo = () => {
-  const { t } = useTranslation("components/bio")
+  const { t } = useTranslation("pages/index")
 
   return (
     <Button $align="left" $type="nav" to="/" activeClassName="active-subtle">
-      {t("name")}
+      {t("title")}
     </Button>
   )
 }

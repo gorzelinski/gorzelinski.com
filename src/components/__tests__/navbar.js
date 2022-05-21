@@ -24,13 +24,6 @@ describe("Navbar component", () => {
       expect(main).toBeInTheDocument()
     })
 
-    it("link to home page", () => {
-      const home = screen.getByRole("link", {
-        name: /name/i,
-      })
-      expect(home.getAttribute("href")).toBe("/")
-    })
-
     it("link to portfolio page", () => {
       const portfolio = screen.getByRole("link", { name: /portfolio/i })
       expect(portfolio.getAttribute("href")).toBe("/portfolio/")

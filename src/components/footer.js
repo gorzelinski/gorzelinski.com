@@ -18,7 +18,6 @@ import LanguageSwitcher from "./language-switcher"
 const Footer = ({ location }) => {
   const { t } = useTranslation("components/footer")
   const { bio } = useBio()
-  const { title } = bio.site.siteMetadata
   const { email, social } = bio.site.siteMetadata?.author
   const links = createSocialLinks(social)
 
@@ -45,7 +44,7 @@ const Footer = ({ location }) => {
       </Tile>
       <Tile $span="all">
         <Small>
-          © {new Date().getFullYear()} {title} • {t("note")}
+          © {new Date().getFullYear()} {t("copyright")} • {t("note")}
         </Small>
       </Tile>
     </StyledFooter>

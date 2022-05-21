@@ -47,7 +47,7 @@ describe("Footer component", () => {
 
     it("copyright info", () => {
       const copyright = screen.getByText(/©/i)
-      expect(copyright.innerHTML).toEqual(expect.stringMatching(/siteTitle/i))
+      expect(copyright.innerHTML).toEqual(expect.stringMatching("copyright"))
     })
   })
 })
