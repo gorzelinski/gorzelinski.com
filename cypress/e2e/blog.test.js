@@ -20,6 +20,7 @@ const postMock = {
 const blogMock = {
   title: "Blog",
   heading: "Blog",
+  search: "Search posts",
   url: "/blog/",
   button: "Blog",
   alternateLink: /all posts/i,
@@ -33,10 +34,22 @@ describe("Blog tests", () => {
       "have.length.greaterThan",
       1
     )
-    cy.findByPlaceholderText(/search posts/i, { exact: false })
-      .type("Hello... world?{enter}", { delay: 100 })
+    cy.findByText("All posts").should("be.visible")
+    cy.findByPlaceholderText(blogMock.search, { exact: false })
+      .type("Non existing post", { delay: 50 })
+      .type("?{enter}", { delay: 300 })
+      .should("have.focus")
+    cy.findByText("Found posts", { exact: false }).should("contain.text", "0")
+    cy.findAllByRole("link", { name: postMock.button, exact: false }).should(
+      "have.length",
+      0
+    )
+    cy.findByPlaceholderText(blogMock.search, { exact: false })
+      .clear()
+      .type("Hello... world", { delay: 50 })
+      .type("?{enter}", { delay: 300 })
       .should("not.have.focus")
-    cy.findAllByRole("link", { name: /read/i, exact: false })
+    cy.findAllByRole("link", { name: postMock.button, exact: false })
       .should("have.length", 1)
       .click()
   })
@@ -63,6 +76,7 @@ describe("Blog tests", () => {
     })
 
     cy.get('a[rel="next"]').should("be.visible").click()
+    cy.findByRole("heading", { level: 1 }).should("be.visible")
     cy.url().should("not.contain", postMock.url)
     cy.get('a[rel="next"]').should("be.visible").and("have.prop", "href")
     cy.get('a[rel="prev"]').should("be.visible").and("have.prop", "href")
