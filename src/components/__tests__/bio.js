@@ -3,6 +3,14 @@ import { render, screen } from "@testing-library/react"
 
 import Bio from "../bio"
 
+jest.mock("react-i18next", () => ({
+  useTranslation: () => {
+    return {
+      t: str => (str === "activities" ? [] : str),
+    }
+  },
+}))
+
 const defaultData = {
   image: {
     childImageSharp: {

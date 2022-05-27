@@ -7,13 +7,22 @@
   },
   "greeting": "Hello, my name is",
   "brief": "I’m an engineer and humanist. In one? Is it legal?",
-  "portfolio": {
-    "mention": "I develop my technical skills and humanistic interests by designing, coding and writing content for websites. For that purpose I mainly use Figma, JAMstack, pen and paper. Effects of that development you can find in my",
-    "button": "portfolio"
-  },
-  "blog": {
-    "mention": "I learn new things every day, explore new fields of knowledge, rummage around the web and theorize too much. I share my findings and thoughts on my",
-    "button": "blog"
-  },
+  "activities": [
+    {
+      "mention": "I develop my technical skills and humanistic interests by designing, coding, and writing content for websites. I mainly use Figma, JAMstack, pen, and paper as my tools. You can find the effects of that development in my",
+      "button": "portfolio",
+      "link": "/portfolio/"
+    },
+    {
+      "mention": "If you're interested in more details of my stuff, you can check what I",
+      "button": "use",
+      "link": "/uses/"
+    },
+    {
+      "mention": "I learn new things every day, explore new fields of knowledge, rummage around the web and theorize too much. I share my findings and thoughts on my",
+      "button": "blog",
+      "link": "/blog/"
+    }
+  ],
   "story": "Read my story"
 }

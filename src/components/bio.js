@@ -33,13 +33,12 @@ const Bio = ({ data = {} }) => {
         <Small as="p">{t("greeting")}</Small>
         <H2>{t("name")}</H2>
         <P>{t("brief")}</P>
-        <P>
-          {t("portfolio.mention")}{" "}
-          <Link to="/portfolio/">{t("portfolio.button")}</Link>.
-        </P>
-        <P>
-          {t("blog.mention")} <Link to="/blog/">{t("blog.button")}</Link>.
-        </P>
+        {t("activities", { returnObjects: true }).map(activity => (
+          <P>
+            {activity.mention} <Link to={activity.link}>{activity.button}</Link>
+            .
+          </P>
+        ))}
         <Button
           $type="text"
           $align="left"
