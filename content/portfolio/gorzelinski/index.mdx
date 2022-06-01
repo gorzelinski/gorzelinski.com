@@ -1,14 +1,143 @@
 ---
 title: Behind the scenes of my website
-description: "This case study peeks behind the scenes of building my website."
+description: "After several months of designing, coding, and writing, I've finally published my website."
 date: 2022-05-29T16:00:00+02:00
 image:
-  alt: "Mock with my website"
+  alt: "Collage of mockups with my website"
   src: "./gorzelinski-thumbnail.png"
-client: Gorzeliński
-services: ["Design", "Code", "Content"]
-deliverables: ["Design system", "Website"]
-links: [{ text: "Recursion", href: "/" }]
+client: Me
+services: ["UI/UX Design", "Frontend Development", "Content Creation", "DevOps"]
+deliverables: ["Design system", "Website", "Portfolio", "Blog", "Newsletter"]
+links: [{ text: "Recursion", href: "/portfolio/gorzelinski/" }]
 ---
 
-Here will be case study. Work in progress...
+## Problem
+
+"The shoemaker's son always goes barefoot." Or maybe "the web developer is offline." Even though I started learning frontend development a while ago, I've never coded a website for myself. I've been feeling impostor syndrome and thought, I'm not good enough. But, this way, I could delay it ad infinitum. I've decided to change that. I've wanted my corner on the Internet - where I can express myself and share my findings.
+
+## Sketches
+
+> It's easier to start with pen and paper.
+
+Keeping that in mind, I've started generating ideas. I've made rough sketches of all pages.
+
+![Different section sketches of my website](./sketches.png)
+
+It's not Da Vinci-level sketching skills, but they were handy before making wireframes.
+
+## Wireframes
+
+Wireframes should be like a middle ground between sketches and higher fidelity designs and prototypes. Not worrying too much about fonts and colors, I've made a lot of wireframes.
+
+![Wireframes of the landing section](./wireframes-landing.png)
+
+![Wireframes of the porfolio page](./wireframes-portfolio.png)
+
+![Wireframes of about page](./wireframes-about.png)
+
+![Wireframes of the blog page](./wireframes-blog.png)
+
+## Colors
+
+I've spent more time searching for colors than I would like to admit. But, after many hours of experimenting (and accessibility testing), I've agreed with myself. The color palette should be minimalistic, simple, and consists of grays and whites. And, of course, with a blue accent. There is not much thought behind it - I just like blue.
+
+![Color palettes of my website](./colors.png)
+
+## Typography
+
+I wanted this site to be typography-oriented, so I spent another chunk of time looking for typefaces. My goal was to contrast modern sans-serif font with a more classic serif. I also needed a font for code snippets.
+
+![Montserrat - font for headings](./montserrat.png)
+
+![Lora - font for body text](./lora.png)
+
+![Fira Code - font for code snippets](./fira-code.png)
+
+## Design System
+
+Having essentials and some content, I started to create a design system. I wanted it to be flexible, consistent, and easily scalable. I made abstract design primitives (elements) like buttons and headings.
+
+![Design primitives - buttons](./buttons.png)
+
+I used them in many different contexts to build more concrete components like this one - landing section of home page.
+
+```jsx
+import React from "react"
+import { useTranslation } from "react-i18next"
+
+import { Hero, H1, P, Button, Tile } from "../elements"
+import Typewriter from "./typewriter"
+
+const Landing = () => {
+  const { t } = useTranslation("components/landing")
+
+  return (
+    <Hero>
+      <Tile as="header">
+        <H1 $decorative aria-label={t("aria")}>
+          <Typewriter
+            strings={[
+              t("typewriter.design"),
+              t("typewriter.code"),
+              t("typewriter.write"),
+              t("typewriter.create"),
+            ]}
+          ></Typewriter>
+        </H1>
+        <P $type="lead">{t("description")}</P>
+        <Button as="a" $type="primary" $grow href="#say-hello">
+          {t("cta")}
+        </Button>
+      </Tile>
+    </Hero>
+  )
+}
+
+export default Landing
+```
+
+With design primitives, components, and sections, I created responsive templates for every page.
+
+![Templates of home and portfolio pages](./templates-home-portfolio.png)
+
+My design is not finished and is more like a process. I constantly develop it. Therefore, you can play "spot the difference" between this showcase and the current version of my website.
+
+![Templates of about and blog pages](./templates-about-blog.png)
+
+I found that flexibility is desirable during the whole process. Same as breaks - it gives a new perspective. New ideas were coming to me at the different stages of the process and in unexpected moments. Like the idea for the progress bar - I found it surfing the web. Yes, I stole it, and I'm not ashamed of that!
+
+> The only art I'll ever study is stuff that I can steal from.
+>
+> &mdash;<cite> David Bowie</cite>
+
+## Gatsby
+
+To implement my website, I used Static Site Generator - Gatsby. Pages are built and optimized in the generation process, even before the user requests them. Websites created with this approach are usually more efficient than traditional solutions like WordPress.
+
+But, if pages are prebuilt, how to know which theme the user chose? Implementing the theme switching feature was an unexpected challenge for me. But, after some reading on Gatsby's build process and testing, I managed to make it work smoothly.
+
+<img
+  style="max-width: 100%; border: 1px var(--color-gray-80) solid;"
+  alt="Switching themes on my website"
+  src="./theme-switch.gif"
+></img>
+
+## Testing
+
+Besides manual testing, I wrote automated tests. I used `Jest` for component testing. To test integration between components and more complex user behavior, I used `Cypress` with `cypress-axe`. Those tests cover different website aspects - accessibility, internationalization, SEO, and more.
+
+## GitHub
+
+I'll try to add content and features to my website regularly, so long-term maintenance was the aim from the start. I enabled continuous integration with Github actions to minimize the number of bugs and gain more confidence in my project. Every change in the codebase triggers a series of checks and tests.
+
+![Graph of tasks in continuous integration](./ci.png)
+
+I use Conventional Commits to format messages and GitHub Flow as a branching strategy.
+
+<Callout type="info">
+
+At the time of writing, I'm using JavaScript in the project. But, I may move
+to Typescript for additional type checking. I'll try to keep the description
+of this project up to date.
+
+</Callout>
