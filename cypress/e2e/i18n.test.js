@@ -142,14 +142,14 @@ const projectsMock = [
     hreflang: "en-US",
     url: "/portfolio/gorzelinski/",
     title: "Behind the scenes of my website",
-    description: "behind the scenes",
+    description: "my website",
   },
   {
     lang: "pl",
     hreflang: "pl-PL",
     url: "/pl/portfolio/gorzelinski/",
     title: "Kulisy powstawania mojej strony",
-    description: "kulisy",
+    description: "moją stronę",
   },
 ]
 
