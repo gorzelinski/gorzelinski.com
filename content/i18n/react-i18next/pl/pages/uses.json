@@ -203,44 +203,44 @@
           "description": "mój główny pc. Szczegóły:",
           "details": [
             {
-              "name": "Płyta główna",
-              "description": "MSI Z170A Gaming Pro Carbon"
+              "name": "MSI Z170A Gaming Pro Carbon",
+              "description": "Płyta główna"
             },
             {
-              "name": "Procesor",
-              "description": "Intel i7 6700K (OC)"
+              "name": "Intel i7 6700K (OC)",
+              "description": "Procesor"
             },
             {
-              "name": "Chłodzenie procesora",
-              "description": "be quiet! Dark Rock Pro 3"
+              "name": "be quiet! Dark Rock Pro 3",
+              "description": "Chłodzenie procesora"
             },
             {
-              "name": "RAM",
-              "description": "Kingston HyperX 16GB"
+              "name": "Kingston HyperX 16GB",
+              "description": "RAM"
             },
             {
-              "name": "Karta graficzna",
-              "description": "MSI GTX 1070 Gaming X"
+              "name": "MSI GTX 1070 Gaming X",
+              "description": "Karta graficzna"
             },
             {
-              "name": "SSD 1 (Ubuntu)",
-              "description": "GoodRam SSD 240GB"
+              "name": "GoodRam SSD 240GB",
+              "description": "SSD 1 (Ubuntu)"
             },
             {
-              "name": "SSD 2 (Windows 10)",
-              "description": "Adata XPG M.2 256GB"
+              "name": "Adata XPG M.2 256GB",
+              "description": "SSD 2 (Windows 10)"
             },
             {
-              "name": "HDD",
-              "description": "WD Blue 1TB"
+              "description": "HDD",
+              "name": "WD Blue 1TB"
             },
             {
-              "name": "Obudowa",
-              "description": "NZXT H440"
+              "name": "NZXT H440",
+              "description": "Obudowa"
             },
             {
-              "name": "Zasilacz",
-              "description": "SilentiumPC Enduro FM1 Gold 550W"
+              "name": "SilentiumPC Enduro FM1 Gold 550W",
+              "description": "Zasilacz"
             }
           ]
         },
