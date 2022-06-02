@@ -49,7 +49,7 @@ export const Navigation = styled.nav.attrs(props => ({
     props.$main &&
     css`
       ${border.top}
-      background-color: var(--color-background);
+      background-color: inherit;
       padding: calc(var(--space-xs) - var(--space-xxxs)) var(--space-xs)
         var(--space-xs);
       position: fixed;
@@ -58,7 +58,8 @@ export const Navigation = styled.nav.attrs(props => ({
       right: 0;
       z-index: 100;
       justify-content: space-evenly;
-      transition: bottom var(--duration-immediate) ease-out;
+      transition: bottom var(--duration-immediate) ease-out,
+        border-color var(--duration-natural) ease-out;
 
       ${media.tablet`
         background-color: transparent;

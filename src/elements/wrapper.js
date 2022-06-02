@@ -6,6 +6,7 @@ export const Background = styled.div`
   background-color: var(--color-background);
   min-height: 100vh;
   height: auto;
+  transition: background-color var(--duration-natural) ease-out;
 `
 
 // TODO: make layout better on large screens. Change max width after

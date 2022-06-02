@@ -11,8 +11,10 @@ export const Progress = styled.div.attrs(props => ({
   z-index: 100;
   border-radius: var(--space-xs);
   background-color: var(--color-gray-80);
-  transition: opacity var(--duration-natural) ease-in;
+  transition: opacity var(--duration-natural) ease-in,
+    background-color var(--duration-natural) ease-out;
   position: fixed;
+
   @media (orientation: portrait) {
     left: 0;
     width: 100%;

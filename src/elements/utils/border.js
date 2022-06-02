@@ -21,8 +21,7 @@ export const border = {
       border-color: var(--color-gray-60);
     }
 
-    &:focus:enabled,
-    &:focus-visible:enabled {
+    &:focus:enabled {
       border-color: var(--color-gray-30);
       outline: 0;
     }

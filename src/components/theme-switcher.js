@@ -11,33 +11,6 @@ const StyledThemeSwitcher = styled.div`
   .sun-beams {
     transform-origin: center center;
   }
-  & .moon,
-  .sun,
-  .sun-beams {
-    fill: var(--color-gray-base);
-  }
-  &:hover {
-    & .moon,
-    .sun,
-    .sun-beams {
-      fill: var(--color-gray-40);
-    }
-  }
-  &:focus,
-  :focus-visible {
-    & .moon,
-    .sun,
-    .sun-beams {
-      fill: var(--color-gray-20);
-    }
-  }
-  &:active {
-    & .moon,
-    .sun,
-    .sun-beams {
-      fill: var(--color-gray-00);
-    }
-  }
   & .sun {
     transition: transform var(--duration-slow) ease;
   }

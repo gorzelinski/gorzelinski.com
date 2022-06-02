@@ -3,19 +3,17 @@ import styled, { css } from "styled-components"
 
 import { media } from "./utils"
 import {
+  colorStates,
   iconBack,
   iconForward,
   outline,
-  primaryBackgroundColorStates,
-  primaryColorStates,
   underline,
-  textColorStates,
 } from "./effects"
 import { elementBuzzOut, iconSpinning, iconWobble } from "./animations"
 import { paragraph, ui } from "./typography"
 
 export const icon = css`
-  ${textColorStates}
+  ${colorStates.text}
   &:disabled {
     color: var(--color-gray-80);
     cursor: not-allowed;
@@ -24,27 +22,15 @@ export const icon = css`
 
 export const nav = css`
   position: relative;
+  transition: color var(--duration-natural) ease-out;
+
   &.active {
     color: var(--color-gray-00);
-    &:after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: var(--space-xxs);
-      bottom: 0;
-      left: 0;
-      background-color: var(--color-gray-00);
-      transform: scaleX(1);
-    }
   }
-  &.active-subtle {
+  &:is(.active-subtle, :hover, :focus) {
     color: var(--color-gray-00);
   }
-  &:hover,
-  &:focus {
-    color: var(--color-gray-00);
-    transition: color var(--duration-natural) ease-out;
-  }
+
   &:disabled {
     color: var(--color-gray-60);
     cursor: not-allowed;
@@ -52,16 +38,15 @@ export const nav = css`
 `
 
 export const text = css`
-  ${primaryColorStates}
+  ${colorStates.primary}
   &:disabled {
     color: var(--color-gray-base);
     cursor: not-allowed;
   }
 `
 export const primary = css`
-  ${primaryBackgroundColorStates}
+  ${colorStates.primaryBackground}
   color: var(--color-gray-100);
-  background-color: var(--color-primary-base);
   border-radius: var(--space-xs);
   &:disabled {
     background: var(--color-gray-90);
@@ -73,9 +58,10 @@ export const primary = css`
 export const Button = styled(LocalizedLink)`
   ${ui}
   ${outline}
+  --padding: var(--space-xs);
   text-decoration: none;
   justify-self: start;
-  padding: var(--space-xs);
+  padding: var(--padding);
   border: 0;
   background-color: transparent;
   cursor: pointer;
@@ -95,11 +81,11 @@ export const Button = styled(LocalizedLink)`
     switch (props.$align) {
       case "left":
         return css`
-          margin-left: calc(-1 * var(--space-xs));
+          margin-left: calc(-1 * var(--padding));
         `
       case "right":
         return css`
-          margin-right: calc(-1 * var(--space-xs));
+          margin-right: calc(-1 * var(--padding));
         `
       default:
         return css`

@@ -13,7 +13,8 @@ export const Section = styled.section`
       background: var(--color-surface-background);
       padding: calc(var(--space-s) - var(--space-xxxs));
       box-shadow: var(--shadow-depth-40);
-
+      transition: box-shadow var(--duration-natural) ease-out,
+        border-color var(--duration-natural) ease-out;
       ${media.tablet`
         padding: calc(var(--space-m) - var(--space-xxxs));
       `}

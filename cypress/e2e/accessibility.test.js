@@ -12,8 +12,18 @@ const pages = [
 
 describe("Accessibility tests", () => {
   afterEach(() => {
+    cy.findByTestId("background").should(
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    )
     cy.checkA11y()
     cy.findByLabelText(/change theme/i).click()
+    cy.findByTestId("background").should(
+      "have.css",
+      "background-color",
+      "rgb(14, 15, 16)"
+    )
     cy.checkA11y()
   })
   pages.forEach(page => {

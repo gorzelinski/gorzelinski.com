@@ -23,6 +23,8 @@ export const Input = styled.input`
   color: var(--color-gray-30);
   background-color: transparent;
   padding: calc(var(--space-xs) - var(--space-xxxs));
+  transition: border-color var(--duration-natural) ease-out,
+    color var(--duration-natural) ease-out;
 
   &::placeholder {
     color: var(--color-gray-80);

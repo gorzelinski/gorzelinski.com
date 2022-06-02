@@ -15,6 +15,7 @@ const StyledCallout = styled.div`
   border-radius: var(--space-s);
   padding: var(--space-s);
   margin: var(--vertical-rhythm) 0;
+  transition: background-color var(--duration-natural) ease-out;
 
   ${props => {
     switch (props.$type) {
@@ -63,6 +64,7 @@ const StyledCallout = styled.div`
     padding: var(--space-xs);
     background-color: var(--color-background);
     border-radius: 50%;
+    transition: inherit;
   }
 
   & code {

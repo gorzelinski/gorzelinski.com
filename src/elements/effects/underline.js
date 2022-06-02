@@ -13,11 +13,7 @@ export const underline = css`
     transform-origin: bottom right;
     transition: transform var(--duration-natural) ease-out;
   }
-  &:hover:after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
-  &:focus:after {
+  &:is(:hover, :focus, .active):after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }

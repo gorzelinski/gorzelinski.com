@@ -42,6 +42,9 @@ export const Card = styled.article`
   padding: var(--gap);
   gap: var(--gap);
   box-shadow: var(--shadow-depth-20);
+  transition: box-shadow var(--duration-immediate) ease-out,
+    border-color var(--duration-natural) ease-out;
+
   &:hover {
     box-shadow: var(--shadow-depth-10);
   }

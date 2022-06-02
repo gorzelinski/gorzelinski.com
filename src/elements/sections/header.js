@@ -30,7 +30,9 @@ export const Header = styled.header.attrs(props => ({
           display: flex;
           flex-direction: row;
           justify-content: space-between;
-          transition: top var(--duration-immediate) ease-out;
+          transition: top var(--duration-immediate) ease-out,
+            background-color var(--duration-natural) ease-out,
+            border-color var(--duration-natural) ease-out;
 
           ${media.tablet`
             --padding-vertical: var(--space-s);
