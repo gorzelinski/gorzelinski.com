@@ -21,9 +21,10 @@ export const Input = styled.input`
   ${border.interactive}
   appearance: none;
   color: var(--color-gray-30);
-  background-color: transparent;
+  background-color: var(--color-background);
   padding: calc(var(--space-xs) - var(--space-xxxs));
   transition: border-color var(--duration-natural) ease-out,
+    background-color var(--duration-natural) ease-out,
     color var(--duration-natural) ease-out;
 
   &::placeholder {

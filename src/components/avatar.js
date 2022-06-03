@@ -13,7 +13,7 @@ const StyledAvatar = styled.div`
 
   .gatsby-image-wrapper {
     border-radius: 50%;
-    flex-shrink: 0;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
   }
 `
 

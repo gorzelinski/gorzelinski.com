@@ -41,11 +41,12 @@ export const aspectRatios = css`
 export const Image = styled(GatsbyImage)`
   ${span}
   ${aspectRatios}
-
+  
   ${props =>
     props.$rounded &&
     css`
       & {
+        z-index: 0;
         border-radius: var(--space-s);
       }
     `}

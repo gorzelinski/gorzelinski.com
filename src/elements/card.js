@@ -35,6 +35,7 @@ export const Card = styled.article`
   ${textAlign}
   ${border.all}
   --gap: var(--space-xs);
+  z-index: 0;
   overflow: hidden;
   display: grid;
   align-content: start;
@@ -48,6 +49,7 @@ export const Card = styled.article`
   &:hover {
     box-shadow: var(--shadow-depth-10);
   }
+
   & > .gatsby-image-wrapper {
     aspect-ratio: 1.618;
     margin: calc(-1 * var(--gap)) calc(-1 * var(--gap)) 0;

@@ -16,11 +16,10 @@ export const useScrollDirection = () => {
         ticking = false
         return
       }
-      if (scrollY < threshold) {
-        setScrollDirection("")
-        return
-      }
-      setScrollDirection(scrollY > lastScrollY ? "down" : "up")
+
+      setScrollDirection(
+        scrollY < threshold ? "" : scrollY > lastScrollY ? "down" : "up"
+      )
       lastScrollY = scrollY > 0 ? scrollY : 0
       ticking = false
     }
