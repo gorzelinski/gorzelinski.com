@@ -33,8 +33,8 @@ const Bio = ({ data = {} }) => {
         <Small as="p">{t("greeting")}</Small>
         <H2>{t("name")}</H2>
         <P>{t("brief")}</P>
-        {t("activities", { returnObjects: true }).map(activity => (
-          <P>
+        {t("activities", { returnObjects: true }).map((activity, index) => (
+          <P key={`activity-${index}`}>
             {activity.mention} <Link to={activity.link}>{activity.button}</Link>
             .
           </P>
