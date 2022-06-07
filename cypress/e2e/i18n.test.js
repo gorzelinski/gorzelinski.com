@@ -43,7 +43,7 @@ const indexMock = [
     hreflang: "pl-PL",
     url: "/pl/",
     title: "Mateusz Gorzeliński",
-    description: "rzeczy w internecie",
+    description: "rzeczy w Internecie",
     heading: /tworzę/i,
     cta: /stwórzmy/i,
     portfolio: {
