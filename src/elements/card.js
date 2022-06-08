@@ -51,7 +51,6 @@ export const Card = styled.article`
   }
 
   & > .gatsby-image-wrapper {
-    aspect-ratio: 1.618;
     margin: calc(-1 * var(--gap)) calc(-1 * var(--gap)) 0;
   }
 
