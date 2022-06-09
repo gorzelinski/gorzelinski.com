@@ -5,8 +5,10 @@ import { Globe } from "@styled-icons/ionicons-solid"
 import { Button, Icon, Navigation } from "../elements"
 
 const LanguageSwitcher = ({ location }) => {
-  const path = location?.pathname
   const { config, locale } = useLocalization()
+  const path = location?.pathname
+    ? location.pathname.replace(`/${locale}/`, "/")
+    : "/"
 
   return (
     <Navigation>
@@ -15,22 +17,16 @@ const LanguageSwitcher = ({ location }) => {
       </Icon>
       {config.map(language => {
         const { code, hrefLang, localName } = language
-        const defaultUrl = "/"
-        let baseUrl = ""
-        if (path) {
-          baseUrl = locale === "en" ? path : path.substring(3)
-        }
-        const url = baseUrl ? baseUrl : defaultUrl
 
         return (
           <Button
             $type="nav"
             $size="responsive"
             key={code}
-            lang={code}
             language={code}
+            lang={code}
             hrefLang={hrefLang}
-            to={url}
+            to={path}
             activeClassName="active-subtle"
           >
             {localName}

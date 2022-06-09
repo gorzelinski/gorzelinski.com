@@ -9,14 +9,11 @@ import ThemeSwitcher from "./theme-switcher"
 
 const Navbar = ({ location }) => {
   const { t } = useTranslation("components/navbar")
-  const { locale } = useLocalization()
+  const { locale, localizedPath, defaultLang } = useLocalization()
   const { scrollDirection } = useScrollDirection()
 
   const selectClass = href =>
     href === location?.pathname ? "active" : "active-subtle"
-
-  const selectHref = (href, locale) =>
-    locale === "en" ? href : `/${locale}${href}`
 
   return (
     <Header $type="main" $direction={scrollDirection}>
@@ -26,17 +23,19 @@ const Navbar = ({ location }) => {
       </Navigation>
       <Navigation $main aria-label={t("main")} $direction={scrollDirection}>
         <Button
-          $size="responsive"
+          $size="small"
           $type="nav"
           $animation="underline"
           to="/portfolio/"
-          activeClassName={selectClass(selectHref("/portfolio/", locale))}
+          activeClassName={selectClass(
+            localizedPath({ path: "/portfolio/", locale, defaultLang })
+          )}
           partiallyActive={true}
         >
           {t("portfolio")}
         </Button>
         <Button
-          $size="responsive"
+          $size="small"
           $type="nav"
           $animation="underline"
           to="/about/"
@@ -45,16 +44,18 @@ const Navbar = ({ location }) => {
           {t("about")}
         </Button>
         <Button
-          $size="responsive"
+          $size="small"
           $type="nav"
           $animation="underline"
           to="/blog/"
-          activeClassName={selectClass(selectHref("/blog/", locale))}
+          activeClassName={selectClass(
+            localizedPath({ path: "/blog/", locale, defaultLang })
+          )}
           partiallyActive={true}
         >
           {t("blog")}
         </Button>
-        <Button as="a" $size="responsive" $type="primary" href="#contact">
+        <Button as="a" $size="small" $type="primary" href="#contact">
           {t("contact")}
         </Button>
       </Navigation>
