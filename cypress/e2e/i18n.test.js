@@ -284,7 +284,7 @@ describe("I18n tests", () => {
         name: page.signUp.heading,
         exact: false,
       }).should("be.visible")
-      cy.findByText(page.signUp.description, { exact: false }).should(
+      cy.findAllByText(page.signUp.description, { exact: false }).should(
         "be.visible"
       )
 
@@ -348,7 +348,8 @@ describe("I18n tests", () => {
       checkTags(page, index, pages)
 
       cy.findByRole("heading", { name: page.heading }).should("be.visible")
-      cy.findByRole("link", { name: page.link, exact: false })
+      cy.findAllByRole("link", { name: page.link, exact: false })
+        .first()
         .scrollIntoView({
           easing: "linear",
           duration: 300,

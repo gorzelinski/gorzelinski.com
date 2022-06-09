@@ -3,5 +3,13 @@
   "socials": "Find me elsewhere",
   "language": "Change language",
   "copyright": "Matthew Gorzelinski",
-  "note": "I’ve created this site with love (and coffee)"
+  "note": "I’ve created this site with love (and coffee)",
+  "pages": [
+    { "name": "Home", "link": "/" },
+    { "name": "Portfolio", "link": "/portfolio/" },
+    { "name": "About", "link": "/about/" },
+    { "name": "Uses", "link": "/uses/" },
+    { "name": "Blog", "link": "/blog/" }
+  ],
+  "contact": "Contact"
 }

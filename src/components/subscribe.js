@@ -57,7 +57,7 @@ const Subscribe = () => {
   }
 
   return (
-    <Section $featured>
+    <Section $featured id="newsletter">
       <Tile $justify="center">
         <H3 as="h2">{t("heading")}</H3>
         <P>{t("description")}</P>

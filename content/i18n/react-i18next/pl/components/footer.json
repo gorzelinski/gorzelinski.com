@@ -3,5 +3,13 @@
   "socials": "Znajdź mnie także na",
   "language": "Zmień język",
   "copyright": "Mateusz Gorzeliński",
-  "note": "Stworzyłem tę stronę z miłością (i kawą)"
+  "note": "Stworzyłem tę stronę z miłością (i kawą)",
+  "pages": [
+    { "name": "Główna", "link": "/" },
+    { "name": "Portfolio", "link": "/portfolio/" },
+    { "name": "O mnie", "link": "/about/" },
+    { "name": "Używa", "link": "/uses/" },
+    { "name": "Blog", "link": "/blog/" }
+  ],
+  "contact": "Kontakt"
 }

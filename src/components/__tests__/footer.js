@@ -25,6 +25,14 @@ jest.mock("../../hooks", () => ({
   }),
 }))
 
+jest.mock("react-i18next", () => ({
+  useTranslation: () => {
+    return {
+      t: str => (str === "pages" ? [] : str),
+    }
+  },
+}))
+
 describe("Footer component", () => {
   describe("renders", () => {
     beforeEach(() => {

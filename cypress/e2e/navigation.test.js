@@ -47,6 +47,7 @@ describe("Navigation tests", () => {
     pages.forEach(page => {
       cy.findAllByRole("link", { name: page.button })
         .filter(`a[href="${page.url}"]`)
+        .first()
         .scrollIntoView({
           easing: "linear",
           duration: 300,
@@ -60,7 +61,8 @@ describe("Navigation tests", () => {
   })
 
   it("Navigates around contact methods", () => {
-    cy.findByRole("link", { name: "Contact" })
+    cy.findAllByRole("link", { name: "Contact" })
+      .first()
       .scrollIntoView({
         easing: "linear",
         duration: 300,
