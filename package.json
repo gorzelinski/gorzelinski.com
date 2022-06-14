@@ -54,7 +54,7 @@
     "axe-core": "^4.4.2",
     "babel-jest": "^28.1.1",
     "babel-preset-gatsby": "^2.16.0",
-    "cypress": "^9.7.0",
+    "cypress": "^10.1.0",
     "cypress-axe": "^0.14.0",
     "husky": "^7.0.4",
     "identity-obj-proxy": "^3.0.0",
