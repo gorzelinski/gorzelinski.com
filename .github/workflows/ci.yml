@@ -109,7 +109,7 @@ jobs:
           name: build-output
           path: public
       - name: Run Cypress
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           start: npm run serve
           wait-on: "http://localhost:8000"
@@ -145,7 +145,7 @@ jobs:
           name: build-output
           path: public
       - name: Run Cypress
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           start: npm run serve
           wait-on: "http://localhost:8000"
