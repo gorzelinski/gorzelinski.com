@@ -69,10 +69,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: npm
-      - name: Install Gatsby CLI
-        run: npm install -g gatsby-cli
-      - name: Clear cache
-        run: npm run clean
       - name: Install dependencies
         run: npm ci -f
       - name: Run build
