@@ -28,7 +28,7 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: npm
       - name: Install dependencies
-        run: npm ci -f
+        run: npm ci --legacy-peer-deps
       - name: Cache Cypress binary
         uses: actions/cache@v3
         id: cache-cypress
@@ -52,7 +52,7 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: npm
       - name: Install dependencies
-        run: npm ci -f
+        run: npm ci --legacy-peer-deps
       - name: Run unit tests
         run: npm test
   build:
@@ -70,7 +70,7 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: npm
       - name: Install dependencies
-        run: npm ci -f
+        run: npm ci --legacy-peer-deps
       - name: Install gatsby cli
         run: npm install -g gatsby-cli
       - name: Remove cache
@@ -98,7 +98,7 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: npm
       - name: Install dependencies
-        run: npm ci -f
+        run: npm ci --legacy-peer-deps
       - name: Restore Cypress binary
         uses: actions/cache@v3
         id: cache-cypress
@@ -134,7 +134,7 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: npm
       - name: Install dependencies
-        run: npm ci -f
+        run: npm ci --legacy-peer-deps
       - name: Restore Cypress binary
         uses: actions/cache@v3
         id: cache-cypress
