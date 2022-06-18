@@ -71,6 +71,8 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci -f
+      - name: Remove cache
+        run: rm -rf .cache
       - name: Run build
         run: npm run build
       - name: Upload build artifacts
