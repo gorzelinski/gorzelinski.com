@@ -71,8 +71,10 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci -f
+      - name: Install gatsby cli
+        run: npm install -g gatsby-cli
       - name: Remove cache
-        run: rm -rf .cache
+        run: gatsby clean
       - name: Run build
         run: npm run build
       - name: Upload build artifacts
