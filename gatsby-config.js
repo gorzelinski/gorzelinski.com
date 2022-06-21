@@ -74,7 +74,7 @@ module.exports = {
               withWebp: { quality: 80 },
               withAvif: { quality: 80 },
               srcSetBreakpoints: [720, 480, 320],
-              // showCaptions: [`title`],
+              showCaptions: [`title`],
             },
           },
           {
