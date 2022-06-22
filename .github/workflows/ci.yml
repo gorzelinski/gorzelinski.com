@@ -29,14 +29,14 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
-      # - name: Cache Cypress binary
-      #   uses: actions/cache@v3
-      #   id: cache-cypress
-      #   with:
-      #     path: ~/.cache/Cypress
-      #     key: cypress-binary-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       cypress-binary-
+      - name: Cache Cypress binary
+        uses: actions/cache@v3
+        id: cache-cypress
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-binary-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            cypress-binary-
   unit-test:
     runs-on: ubuntu-latest
     strategy:
@@ -97,14 +97,14 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
-      # - name: Restore Cypress binary
-      #   uses: actions/cache@v3
-      #   id: cache-cypress
-      #   with:
-      #     path: ~/.cache/Cypress
-      #     key: cypress-binary-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       cypress-binary-
+      - name: Restore Cypress binary
+        uses: actions/cache@v3
+        id: cache-cypress
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-binary-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            cypress-binary-
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
@@ -132,14 +132,14 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
-      # - name: Restore Cypress binary
-      #   uses: actions/cache@v3
-      #   id: cache-cypress
-      #   with:
-      #     path: ~/.cache/Cypress
-      #     key: cypress-binary-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       cypress-binary-
+      - name: Restore Cypress binary
+        uses: actions/cache@v3
+        id: cache-cypress
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-binary-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            cypress-binary-
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
