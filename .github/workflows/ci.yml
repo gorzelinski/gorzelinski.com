@@ -150,4 +150,5 @@ jobs:
           start: npm run serve
           wait-on: "http://localhost:8000"
           browser: firefox
+          headed: true
           install: false
