@@ -21,16 +21,16 @@ jobs:
         node: [16]
     steps:
       - name: Checkout commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Use Node ${{ matrix.node }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
           cache: npm
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
       - name: Cache Cypress binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: cache-cypress
         with:
           path: ~/.cache/Cypress
@@ -45,14 +45,14 @@ jobs:
     needs: install-cache
     steps:
       - name: Checkout commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Use Node ${{ matrix.node }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
           cache: npm
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
       - name: Run unit tests
         run: npm test
   build:
@@ -63,21 +63,23 @@ jobs:
     needs: unit-test
     steps:
       - name: Checkout commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Use Node ${{ matrix.node }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
           cache: npm
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
       - name: Run build
         run: npm run build
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: build-output
-          path: public
+          path: |
+            .cache
+            public
           retention-days: 1
   e2e-test-chrome:
     runs-on: ubuntu-latest
@@ -87,16 +89,16 @@ jobs:
     needs: build
     steps:
       - name: Checkout commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Use Node ${{ matrix.node }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
           cache: npm
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
       - name: Restore Cypress binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: cache-cypress
         with:
           path: ~/.cache/Cypress
@@ -104,12 +106,11 @@ jobs:
           restore-keys: |
             cypress-binary-
       - name: Download build artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: build-output
-          path: public
       - name: Run Cypress
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           start: npm run serve
           wait-on: "http://localhost:8000"
@@ -123,16 +124,16 @@ jobs:
     needs: build
     steps:
       - name: Checkout commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Use Node ${{ matrix.node }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
           cache: npm
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
       - name: Restore Cypress binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: cache-cypress
         with:
           path: ~/.cache/Cypress
@@ -140,14 +141,14 @@ jobs:
           restore-keys: |
             cypress-binary-
       - name: Download build artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: build-output
-          path: public
       - name: Run Cypress
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           start: npm run serve
           wait-on: "http://localhost:8000"
           browser: firefox
+          headed: true
           install: false

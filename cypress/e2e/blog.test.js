@@ -38,7 +38,7 @@ describe("Blog tests", () => {
     cy.findByPlaceholderText(blogMock.search, { exact: false })
       .type("Non existing post", { delay: 50 })
       .type("?{enter}", { delay: 300 })
-      .should("have.focus")
+
     cy.findByText("Found posts", { exact: false }).should("contain.text", "0")
     cy.findAllByRole("link", { name: postMock.button, exact: false }).should(
       "have.length",

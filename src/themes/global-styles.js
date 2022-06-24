@@ -1,10 +1,5 @@
 import { createGlobalStyle } from "styled-components"
-import "@fontsource/montserrat/400.css"
-import "@fontsource/montserrat/500.css"
-import "@fontsource/lora/400.css"
-import "@fontsource/lora/600.css"
-import "@fontsource/fira-code/400.css"
-import "@fontsource/fira-code/600.css"
+
 import "./normalize.css"
 import "./tokens.css"
 import "./light.css"

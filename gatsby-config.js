@@ -74,7 +74,7 @@ module.exports = {
               withWebp: { quality: 80 },
               withAvif: { quality: 80 },
               srcSetBreakpoints: [720, 480, 320],
-              showCaptions: [`title`],
+              // showCaptions: [`title`],
             },
           },
           {
@@ -232,6 +232,77 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/`,
+        excludes: ["/thank-you/", "/preferences/", "/404.html", "/404/"],
+        query: `
+        {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
+          themeI18N {
+            config {
+              code
+            }
+          }
+          allSitePage(sort: {fields: path}) {
+            nodes {
+              path
+            }
+          }
+        }
+        `,
+        resolvePages: ({
+          site: {
+            siteMetadata: { siteUrl },
+          },
+          themeI18N: { config: languages },
+          allSitePage: { nodes: pages },
+        }) => {
+          const defaultPages = pages
+            .filter(
+              page =>
+                !languages.some(language =>
+                  page.path.startsWith(`/${language.code}/`)
+                )
+            )
+            .map(page => ({
+              path: `${siteUrl}${page.path}`,
+            }))
+
+          // Code for a more complex sitemap with alternate links. I'm not sure which is better.
+          // const allPages = pages.map(page => {
+          //   const defaultPath = languages.some(language =>
+          //     page.path.startsWith(`/${language.code}/`)
+          //   )
+          //     ? page.path.substring(3)
+          //     : page.path
+
+          //   return {
+          //     path: `${siteUrl}${page.path}`,
+          //     links: languages.map(language => ({
+          //       lang: language.code,
+          //       url: `${siteUrl}${
+          //         language.code === "en" ? "" : "/" + language.code
+          //       }${defaultPath}`,
+          //     })),
+          //   }
+          // })
+
+          return defaultPages
+        },
+        filterPages: (page, excludedPath) => page.path.includes(excludedPath),
+        serialize: ({ path }) => {
+          return {
+            url: path,
+          }
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gorzelinski.com`,
@@ -250,8 +321,5 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-gatsby-cloud`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }

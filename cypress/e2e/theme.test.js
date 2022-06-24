@@ -35,6 +35,9 @@ describe("Theme tests", () => {
       .first()
       .should("have.css", "color", "rgb(255, 255, 255)")
   }
+  before(() => {
+    window.localStorage.setItem("theme", JSON.stringify("light"))
+  })
   it("Visits home page and tests themes", () => {
     cy.visit("/")
     checkLightTheme()
