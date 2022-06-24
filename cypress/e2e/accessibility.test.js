@@ -11,6 +11,9 @@ const pages = [
 ]
 
 describe("Accessibility tests", () => {
+  beforeEach(() => {
+    window.localStorage.setItem("theme", JSON.stringify("light"))
+  })
   afterEach(() => {
     cy.findByTestId("background").should(
       "have.css",
