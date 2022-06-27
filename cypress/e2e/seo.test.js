@@ -127,7 +127,7 @@ describe("Seo tests", () => {
   pages.forEach(page => {
     it(`Visits ${page.slug} and checks important seo tags`, () => {
       cy.visit(page.slug)
-      cy.findByTestId("sun-and-moon").scrollIntoView().should("be.visible")
+      cy.findByTestId("sun-and-moon").should("exist")
       shouldHaveTags(page)
     })
   })

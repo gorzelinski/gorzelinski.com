@@ -184,7 +184,7 @@ describe("I18n tests", () => {
       const { lang, hreflang, url, heading, link } = translation
       it(`Visits ${url} and checks translation`, () => {
         cy.visit(url)
-        cy.findByTestId("sun-and-moon").scrollIntoView().should("be.visible")
+        cy.findByTestId("sun-and-moon").should("exist")
         cy.findByRole("heading", { name: heading }).should("be.visible")
         checkHeadTags(translation, index, translations)
         cy.findAllByRole("link", { name: link })
