@@ -12,6 +12,10 @@
           "link": "https://www.imdb.com/title/tt0386676/"
         },
         {
+          "title": "Trailer Park Boys",
+          "link": "https://www.imdb.com/title/tt0290988/"
+        },
+        {
           "title": "Mr. Robot",
           "link": "https://www.imdb.com/title/tt4158110/"
         },
@@ -33,6 +37,10 @@
           "link": "https://www.theskepticsguide.org/"
         },
         {
+          "title": "Rationally Speaking",
+          "link": "http://rationallyspeakingpodcast.org/"
+        },
+        {
           "title": "99% Invisible",
           "link": "https://99percentinvisible.org/"
         },
@@ -49,6 +57,10 @@
     {
       "heading": "What to play?",
       "items": [
+        {
+          "title": "Disco Elysium: the Final Cut",
+          "link": "https://www.metacritic.com/game/pc/disco-elysium-the-final-cut"
+        },
         {
           "title": "Final Fantasy VII Remake",
           "link": "https://www.metacritic.com/game/playstation-4/final-fantasy-vii-remake"
@@ -70,6 +82,10 @@
     {
       "heading": "What to read?",
       "items": [
+        {
+          "title": "Thinking, Fast and Slow",
+          "link": "https://www.goodreads.com/book/show/11468377-thinking-fast-and-slow"
+        },
         {
           "title": "Behave: The Biology of Humans at Our Best and Worst",
           "link": "https://www.goodreads.com/book/show/31170723-behave"

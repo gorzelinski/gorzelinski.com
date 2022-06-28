@@ -12,6 +12,10 @@
           "link": "https://www.filmweb.pl/serial/Biuro-2005-202887"
         },
         {
+          "title": "Chłopaki z baraków",
+          "link": "https://www.filmweb.pl/serial/Ch%C5%82opaki+z+barak%C3%B3w-2001-134084"
+        },
+        {
           "title": "Mr. Robot",
           "link": "https://www.filmweb.pl/serial/Mr.+Robot-2015-733795"
         },
@@ -33,6 +37,10 @@
           "link": "https://www.theskepticsguide.org/"
         },
         {
+          "title": "Rationally Speaking",
+          "link": "http://rationallyspeakingpodcast.org/"
+        },
+        {
           "title": "99% Invisible",
           "link": "https://99percentinvisible.org/"
         },
@@ -49,6 +57,10 @@
     {
       "heading": "W co zagrać?",
       "items": [
+        {
+          "title": "Disco Elysium: the Final Cut",
+          "link": "https://www.gry-online.pl/gry/disco-elysium/z3483d"
+        },
         {
           "title": "Final Fantasy VII Remake",
           "link": "https://www.gry-online.pl/gry/final-fantasy-vii-remake/zb431c"
@@ -70,6 +82,10 @@
     {
       "heading": "Co przeczytać?",
       "items": [
+        {
+          "title": "Pułapki myślenia. O myśleniu szybkim i wolnym",
+          "link": "https://lubimyczytac.pl/ksiazka/154212/pulapki-myslenia-o-mysleniu-szybkim-i-wolnym"
+        },
         {
           "title": "Zachowuj się. Jak biologia wydobywa z nas to, co najgorsze, i to, co najlepsze",
           "link": "https://lubimyczytac.pl/ksiazka/4949256/zachowuj-sie-jak-biologia-wydobywa-z-nas-to-co-najgorsze-i-to-co-najlepsze"
