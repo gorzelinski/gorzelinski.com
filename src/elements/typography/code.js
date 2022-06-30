@@ -17,8 +17,9 @@ export const InlineCode = styled.code`
   line-height: var(--font-height-small);
   color: var(--color-primary-base);
   background-color: var(--color-gray-90);
-  border-radius: var(--space-xs);
+  border-radius: var(--border-radius-s);
   padding: var(--space-xxs) var(--space-xs);
+  box-shadow: var(--shadow-depth-00);
 `
 
 export const BlockCode = styled.pre`

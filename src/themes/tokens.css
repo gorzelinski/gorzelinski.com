@@ -4,8 +4,11 @@
   --duration-slow: 500ms;
   --duration-deliberate: 750ms;
 
-  --font-family-heading: "Montserrat", sans-serif;
-  --font-family-body: "Lora", serif;
+  --font-fallback: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  --font-family-heading: "Montserrat", var(--font-fallback);
+  --font-family-body: "Lora", var(--font-fallback);
   --font-family-code: "Fira Code", monospace;
 
   --font-size-tiny: 0.75rem;
@@ -40,19 +43,6 @@
   --font-weight-medium: 500;
   --font-weight-bold: 600;
 
-  --gradient-rainbow: linear-gradient(
-    45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
-  );
-
   --space-xxxs: 1px;
   --space-xxs: 0.125rem;
   --space-xs: 0.5rem;
@@ -62,4 +52,9 @@
   --space-xl: 6.5rem;
   --space-xxl: 10.5rem;
   --space-xxxl: 17rem;
+
+  --border-radius-xs: 4px;
+  --border-radius-s: 8px;
+  --border-radius-m: 16px;
+  --border-radius-l: 32px;
 }

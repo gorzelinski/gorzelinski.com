@@ -2,7 +2,7 @@ import { css } from "styled-components"
 
 export const border = {
   all: css`
-    border-radius: var(--space-s);
+    border-radius: var(--border-radius-m);
     border: var(--space-xxxs) solid var(--color-gray-90);
   `,
   top: css`
@@ -13,7 +13,7 @@ export const border = {
   `,
   interactive: css`
     border-style: solid;
-    border-radius: var(--space-xs);
+    border-radius: var(--border-radius-s);
     border-width: var(--space-xxxs);
     border-color: var(--color-gray-80);
 

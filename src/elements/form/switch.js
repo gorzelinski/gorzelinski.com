@@ -13,7 +13,7 @@ export const Switch = styled.input.attrs(() => ({
   --background: var(--color-background);
   width: var(--space-l);
   height: var(--font-height-base);
-  border-radius: var(--space-s);
+  border-radius: var(--border-radius-m);
   display: inline-block;
   vertical-align: top;
   position: relative;

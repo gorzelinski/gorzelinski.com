@@ -9,7 +9,7 @@ export const Progress = styled.div.attrs(props => ({
 }))`
   --width: calc(var(--space-xxxl) * 1.618);
   z-index: 100;
-  border-radius: var(--space-xs);
+  border-radius: var(--border-radius-xs);
   background-color: var(--color-gray-80);
   transition: opacity var(--duration-natural) ease-in,
     background-color var(--duration-natural) ease-out;
@@ -37,6 +37,6 @@ export const ProgressValue = styled.div.attrs(props => ({
   },
 }))`
   height: var(--space-xxs);
-  border-radius: var(--space-xs);
+  border-radius: var(--border-radius-s);
   background-color: var(--color-primary-base);
 `

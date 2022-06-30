@@ -30,23 +30,23 @@
 
   --color-background: var(--color-gray-100);
 
-  --color-danger-hue: 347;
-  --color-danger-saturation: 64%;
-  --color-danger: var(--color-danger-hue), var(--color-danger-saturation);
-  --color-danger-100: hsl(var(--color-danger), 15%);
-  --color-danger-base: hsl(var(--color-danger), 62%);
+  --color-red-hue: 347;
+  --color-red-saturation: 64%;
+  --color-red: var(--color-red-hue), var(--color-red-saturation);
+  --color-red-100: hsl(var(--color-red), 15%);
+  --color-red-base: hsl(var(--color-red), 62%);
 
-  --color-warning-hue: 44;
-  --color-warning-saturation: 100%;
-  --color-warning: var(--color-warning-hue), var(--color-warning-saturation);
-  --color-warning-100: hsl(var(--color-warning), 9%);
-  --color-warning-base: hsl(var(--color-warning), 52%);
+  --color-orange-hue: 44;
+  --color-orange-saturation: 100%;
+  --color-orange: var(--color-orange-hue), var(--color-orange-saturation);
+  --color-orange-100: hsl(var(--color-orange), 9%);
+  --color-orange-base: hsl(var(--color-orange), 52%);
 
-  --color-success-hue: 126;
-  --color-success-saturation: 72%;
-  --color-success: var(--color-success-hue), var(--color-success-saturation);
-  --color-success-100: hsl(var(--color-success), 9%);
-  --color-success-base: hsl(var(--color-success), 39%);
+  --color-green-hue: 126;
+  --color-green-saturation: 72%;
+  --color-green: var(--color-green-hue), var(--color-green-saturation);
+  --color-green-100: hsl(var(--color-green), 9%);
+  --color-green-base: hsl(var(--color-green), 39%);
 
   --shadow-depth-00: 1px 1px 2px #0a0a0b, -1px -1px 2px #121415;
   --shadow-depth-10: 2px 2px 4px #0a0a0b, -2px -2px 4px #121415;

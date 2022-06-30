@@ -12,7 +12,7 @@ import { Icon } from "../elements"
 
 const StyledCallout = styled.div`
   position: relative;
-  border-radius: var(--space-s);
+  border-radius: var(--border-radius-m);
   padding: var(--space-s);
   margin: var(--vertical-rhythm) 0;
   transition: background-color var(--duration-natural) ease-out;
@@ -26,18 +26,18 @@ const StyledCallout = styled.div`
         `
       case "danger":
         return css`
-          color: var(--color-danger-base);
-          background-color: var(--color-danger-100);
+          color: var(--color-red-base);
+          background-color: var(--color-red-100);
         `
       case "warning":
         return css`
-          color: var(--color-warning-base);
-          background-color: var(--color-warning-100);
+          color: var(--color-orange-base);
+          background-color: var(--color-orange-100);
         `
       case "success":
         return css`
-          color: var(--color-success-base);
-          background-color: var(--color-success-100);
+          color: var(--color-green-base);
+          background-color: var(--color-green-100);
         `
       default:
         return css`
@@ -65,10 +65,6 @@ const StyledCallout = styled.div`
     background-color: var(--color-background);
     border-radius: 50%;
     transition: inherit;
-  }
-
-  & code {
-    background-color: inherit;
   }
 `
 

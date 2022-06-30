@@ -24,6 +24,7 @@ export const Header = styled.header.attrs(props => ({
           padding: var(--padding);
           border-bottom: var(--space-xxxs) solid var(--color-background);
           background-color: var(--color-background);
+          opacity: 0.95;
           z-index: 100;
           position: sticky;
           left: 0;

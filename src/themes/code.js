@@ -31,7 +31,7 @@ const code = {
     {
       types: ["inserted", "string"],
       style: {
-        color: "var(--color-success-base)",
+        color: "var(--color-green-base)",
       },
     },
     {
@@ -43,13 +43,13 @@ const code = {
     {
       types: ["function", "tag"],
       style: {
-        color: "var(--color-danger-base)",
+        color: "var(--color-red-base)",
       },
     },
     {
       types: ["symbol", "regex"],
       style: {
-        color: "var(--color-warning-base)",
+        color: "var(--color-orange-base)",
       },
     },
     {

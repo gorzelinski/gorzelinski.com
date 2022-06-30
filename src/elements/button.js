@@ -47,7 +47,7 @@ export const text = css`
 export const primary = css`
   ${colorStates.primaryBackground}
   color: var(--color-gray-100);
-  border-radius: var(--space-xs);
+  border-radius: var(--border-radius-s);
   &:disabled {
     background: var(--color-gray-90);
     color: var(--color-gray-base);
