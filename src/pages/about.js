@@ -1,10 +1,9 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
-import { getImage } from "gatsby-plugin-image"
 import { useLocalization } from "gatsby-theme-i18n"
 
-import { H1, Image, P, Section, Tile } from "../elements"
+import { H1, P, Section, Tile } from "../elements"
 import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -18,7 +17,6 @@ import MyTech from "../components/my-tech"
 const About = ({ data, location }) => {
   const { locale } = useLocalization()
   const { t } = useTranslation("pages/about")
-  const image = getImage(data?.image)
   const metaImage = createMetaImage({
     alt: t("metaAlt"),
     src: data?.metaImage,
@@ -35,13 +33,6 @@ const About = ({ data, location }) => {
         slug={location.pathname}
       ></Seo>
       <Section>
-        {/* TODO: change image */}
-        <Image
-          $aspectRatio="wide"
-          $span="all"
-          image={image}
-          alt={t("alt")}
-        ></Image>
         <Tile $span="all">
           <H1>{t("heading")}</H1>
         </Tile>
@@ -89,11 +80,6 @@ export const pageQuery = graphql`
           name
           summary
         }
-      }
-    }
-    image: file(relativePath: { eq: "gorzelinski.jpg" }) {
-      childImageSharp {
-        gatsbyImageData
       }
     }
     metaImage: file(
