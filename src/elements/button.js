@@ -77,6 +77,12 @@ export const Button = styled(LocalizedLink)`
       display: flex;
     `}
 
+  ${props =>
+    props.$bold &&
+    css`
+      font-weight: var(--font-weight-bold);
+    `}
+
   ${props => {
     switch (props.$align) {
       case "left":
