@@ -1,10 +1,12 @@
 import styled from "styled-components"
 
 import { border, marginTop } from "../utils"
-import { article } from "../grid"
+import { grid } from "../grid"
 
-export const Article = styled.article`
-  ${article}
+export const Article = styled.article.attrs(() => ({
+  $grid: "article",
+}))`
+  ${grid}
   ${marginTop}
   --margin-banner: calc(2 * var(--vertical-rhythm));
   --margin-sections: var(--vertical-rhythm);

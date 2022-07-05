@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
 import { border, marginTop, media } from "../utils"
-import { grid, subGrid } from "../grid"
+import { grid } from "../grid"
 
 export const Section = styled.section`
   ${grid}
@@ -29,6 +29,8 @@ export const Section = styled.section`
   grid-column: 1 / -1;
 `
 
-export const Subsection = styled.div`
-  ${subGrid}
+export const Subsection = styled.div.attrs(() => ({
+  $grid: "sub",
+}))`
+  ${grid}
 `

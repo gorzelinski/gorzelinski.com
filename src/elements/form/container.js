@@ -1,8 +1,10 @@
 import styled from "styled-components"
 
-import { subGrid } from "../grid"
+import { grid } from "../grid"
 
-export const Form = styled.form`
-  ${subGrid}
+export const Form = styled.form.attrs(() => ({
+  $grid: "sub",
+}))`
+  ${grid}
   align-items: start;
 `
