@@ -1,4 +1,9 @@
 :root {
+  --border-radius-00: 4px;
+  --border-radius-10: 8px;
+  --border-radius-20: 16px;
+  --border-radius-30: 32px;
+
   --duration-immediate: 150ms;
   --duration-natural: 250ms;
   --duration-slow: 500ms;
@@ -11,29 +16,29 @@
   --font-family-body: "Lora", var(--font-fallback);
   --font-family-code: "Fira Code", monospace;
 
-  --font-size-tiny: 0.75rem;
-  --font-size-small: 0.875rem;
+  --font-size-00: 0.75rem;
+  --font-size-10: 0.875rem;
   --font-size-base: 1rem;
-  --font-size-xxs: 1.125rem;
-  --font-size-xs: 1.375rem;
-  --font-size-s: 1.5rem;
-  --font-size-m: 1.75rem;
-  --font-size-l: 2rem;
-  --font-size-xl: 2.5rem;
-  --font-size-xxl: 3rem;
-  --font-size-decorative: 4rem;
+  --font-size-30: 1.125rem;
+  --font-size-40: 1.375rem;
+  --font-size-50: 1.5rem;
+  --font-size-60: 1.75rem;
+  --font-size-70: 2rem;
+  --font-size-80: 2.5rem;
+  --font-size-90: 3rem;
+  --font-size-100: 4rem;
 
-  --font-height-tiny: 1rem;
-  --font-height-small: 1.25rem;
+  --font-height-00: 1rem;
+  --font-height-10: 1.25rem;
   --font-height-base: 1.5rem;
-  --font-height-xxs: 1.75rem;
-  --font-height-xs: 1.875rem;
-  --font-height-s: 2rem;
-  --font-height-m: 2.25rem;
-  --font-height-l: 2.5rem;
-  --font-height-xl: 3rem;
-  --font-height-xxl: 3.5rem;
-  --font-height-decorative: 5rem;
+  --font-height-30: 1.75rem;
+  --font-height-40: 1.875rem;
+  --font-height-50: 2rem;
+  --font-height-60: 2.25rem;
+  --font-height-70: 2.5rem;
+  --font-height-80: 3rem;
+  --font-height-90: 3.5rem;
+  --font-height-100: 5rem;
 
   --font-spacing-packed: -0.05em;
   --font-spacing-narrow: -0.025em;
@@ -43,18 +48,15 @@
   --font-weight-medium: 500;
   --font-weight-bold: 600;
 
-  --space-xxxs: 1px;
-  --space-xxs: 0.125rem;
-  --space-xs: 0.5rem;
-  --space-s: 1rem;
-  --space-m: 2rem;
-  --space-l: 4rem;
-  --space-xl: 6.5rem;
-  --space-xxl: 10.5rem;
-  --space-xxxl: 17rem;
+  --space-00: 1px;
+  --space-10: 2px;
+  --space-20: 8px;
+  --space-30: 16px;
+  --space-40: 32px;
+  --space-50: 64px;
+  --space-60: 104px;
+  --space-70: 168px;
+  --space-80: 272px;
 
-  --border-radius-xs: 4px;
-  --border-radius-s: 8px;
-  --border-radius-m: 16px;
-  --border-radius-l: 32px;
+  --space-line-length: 720px;
 }

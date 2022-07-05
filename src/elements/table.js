@@ -9,7 +9,7 @@ export const StyledTable = styled.table`
   ${paragraph.base}
   width: 100%;
   border-collapse: collapse;
-  border-spacing: var(--space-xs);
+  border-spacing: var(--space-20);
   margin-bottom: var(--vertical-rhythm);
 
   ${media.tablet`
@@ -20,19 +20,19 @@ export const StyledTable = styled.table`
     display: table-cell;
     font-weight: var(--font-weight-bold);
     text-align: start;
-    padding: var(--space-xs);
+    padding: var(--space-20);
   }
 
   & td {
     display: table-cell;
     font-weight: var(--font-weight-regular);
     text-align: start;
-    padding: var(--space-xs);
+    padding: var(--space-20);
   }
 
   & tbody {
-    border-top: var(--space-xxxs) solid var(--color-gray-70);
-    border-bottom: var(--space-xxxs) solid var(--color-gray-70);
+    border-top: var(--space-00) solid var(--color-gray-70);
+    border-bottom: var(--space-00) solid var(--color-gray-70);
   }
 
   & tbody tr:nth-child(2n) {

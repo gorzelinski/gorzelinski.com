@@ -47,7 +47,7 @@ export const Image = styled(GatsbyImage)`
     css`
       & {
         z-index: 0;
-        border-radius: var(--border-radius-m);
+        border-radius: var(--border-radius-20);
       }
     `}
 `

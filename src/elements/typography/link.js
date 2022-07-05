@@ -7,8 +7,8 @@ export const link = css`
   color: var(--color-primary-base);
   cursor: pointer;
   text-decoration: underline;
-  text-underline-offset: calc(var(--space-xxs));
-  text-decoration-thickness: var(--space-xxs);
+  text-underline-offset: var(--space-10);
+  text-decoration-thickness: var(--space-10);
   text-decoration-color: transparent;
   transition: text-decoration-color var(--duration-immediate) ease-out;
   &:hover,

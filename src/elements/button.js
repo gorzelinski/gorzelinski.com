@@ -47,7 +47,7 @@ export const text = css`
 export const primary = css`
   ${colorStates.primaryBackground}
   color: var(--color-gray-100);
-  border-radius: var(--border-radius-s);
+  border-radius: var(--border-radius-10);
   &:disabled {
     background: var(--color-gray-90);
     color: var(--color-gray-base);
@@ -58,7 +58,7 @@ export const primary = css`
 export const Button = styled(LocalizedLink)`
   ${ui}
   ${outline}
-  --padding: var(--space-xs);
+  --padding: var(--space-20);
   text-decoration: none;
   justify-self: start;
   padding: var(--padding);
@@ -69,7 +69,7 @@ export const Button = styled(LocalizedLink)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-20);
 
   ${props =>
     props.$flex &&

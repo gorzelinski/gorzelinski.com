@@ -12,8 +12,8 @@ import { Icon } from "../elements"
 
 const StyledCallout = styled.div`
   position: relative;
-  border-radius: var(--border-radius-m);
-  padding: var(--space-s);
+  border-radius: var(--border-radius-20);
+  padding: var(--space-30);
   margin: var(--vertical-rhythm) 0;
   transition: background-color var(--duration-natural) ease-out;
 
@@ -56,12 +56,12 @@ const StyledCallout = styled.div`
   }
 
   & > .icon {
-    --width: calc(var(--font-height-base) + 2 * var(--space-xs));
+    --width: calc(var(--font-height-base) + 2 * var(--space-20));
     --height: var(--width);
     position: absolute;
     top: calc(-1 * var(--height) / 2);
     right: calc(-1 * var(--width) / 4);
-    padding: var(--space-xs);
+    padding: var(--space-20);
     background-color: var(--color-background);
     border-radius: 50%;
     transition: inherit;

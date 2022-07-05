@@ -7,9 +7,9 @@ export const Progress = styled.div.attrs(props => ({
     opacity: props.progress < 5 || props.progress > 99 ? 0 : 1,
   },
 }))`
-  --width: calc(var(--space-xxxl) * 1.618);
+  --width: calc(var(--space-80) * 1.618);
   z-index: 100;
-  border-radius: var(--border-radius-xs);
+  border-radius: var(--border-radius-00);
   background-color: var(--color-gray-80);
   transition: opacity var(--duration-natural) ease-in,
     background-color var(--duration-natural) ease-out;
@@ -19,11 +19,11 @@ export const Progress = styled.div.attrs(props => ({
     left: 0;
     width: 100%;
     bottom: 0;
-    height: var(--space-xxs);
+    height: var(--space-10);
   }
 
   ${media.tablet`
-    left: var(--space-xs);
+    left: var(--space-20);
     top: calc(50% - (var(--width) / 2));
     width: var(--width);
     transform: rotate(90deg);
@@ -36,7 +36,7 @@ export const ProgressValue = styled.div.attrs(props => ({
     width: `${props.progress}%`,
   },
 }))`
-  height: var(--space-xxs);
-  border-radius: var(--border-radius-s);
+  height: var(--space-10);
+  border-radius: var(--border-radius-10);
   background-color: var(--color-primary-base);
 `

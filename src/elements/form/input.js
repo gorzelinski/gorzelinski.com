@@ -7,12 +7,12 @@ export const InputWrapper = styled.div`
   position: relative;
   & > input {
     width: 100%;
-    padding-left: calc(var(--space-xs) * 2 + var(--font-height-base));
+    padding-left: calc(var(--space-20) * 2 + var(--font-height-base));
   }
   & > span {
     position: absolute;
-    top: var(--space-xs);
-    left: var(--space-xs);
+    top: var(--space-20);
+    left: var(--space-20);
   }
 `
 
@@ -22,7 +22,7 @@ export const Input = styled.input`
   appearance: none;
   color: var(--color-gray-30);
   background-color: var(--color-background);
-  padding: calc(var(--space-xs) - var(--space-xxxs));
+  padding: calc(var(--space-20) - var(--space-00));
   transition: border-color var(--duration-natural) ease-out,
     background-color var(--duration-natural) ease-out,
     color var(--duration-natural) ease-out;

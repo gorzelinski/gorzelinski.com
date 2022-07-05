@@ -5,22 +5,22 @@ import { media } from "../utils"
 
 export const Hero = styled.section`
   ${grid}
-  padding-top: var(--space-xxl);
+  padding-top: var(--space-70);
 
   @media (orientation: portrait) {
-    --margin-top: var(--space-m);
+    --margin-top: var(--space-40);
 
     min-height: calc(
-      100vh - var(--mobile-nav-height) - var(--margin-top) -
-        var(--top-nav-height)
+      100vh - var(--nav-mobile-height) - var(--margin-top) -
+        var(--nav-top-height)
     );
-    padding-top: var(--space-m);
+    padding-top: var(--space-40);
     align-items: center;
   }
 
   ${media.mobile`
     @media (orientation: portrait) {
-      padding-top: var(--space-xxl);
+      padding-top: var(--space-70);
       min-height: auto;
       align-items: start;
     }
@@ -29,6 +29,6 @@ export const Hero = styled.section`
   `}
 
   & > * {
-    max-width: calc(75rem / 1.618);
+    max-width: calc(var(--wrapper-width) / 1.618);
   }
 `

@@ -42,7 +42,7 @@ export const P = styled.p`
 
           ${media.tablet`
             ${heading.xs}
-            margin: 0 0 var(--font-height-xxs) 0;
+            margin: 0 0 var(--font-height-30) 0;
           `}
         `
       default:
@@ -53,7 +53,7 @@ export const P = styled.p`
 
           ${media.tablet`
             ${heading.xxs}
-            margin: 0 0 var(--font-height-xxs) 0;
+            margin: 0 0 var(--font-height-30) 0;
           `}
         `
     }

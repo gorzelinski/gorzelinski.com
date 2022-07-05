@@ -16,13 +16,13 @@ export const Header = styled.header.attrs(props => ({
     switch (props.$type) {
       case "main":
         return css`
-          --padding-vertical: var(--space-xs);
+          --padding-vertical: var(--space-20);
           --padding: var(--padding-vertical) var(--wrapper-padding)
-            calc(var(--padding-vertical) - var(--space-xxxs));
+            calc(var(--padding-vertical) - var(--space-00));
           --margin: 0 var(--overflow-wrapper);
           margin: var(--margin);
           padding: var(--padding);
-          border-bottom: var(--space-xxxs) solid var(--color-background);
+          border-bottom: var(--space-00) solid var(--color-background);
           background-color: var(--color-background);
           opacity: 0.95;
           z-index: 100;
@@ -36,16 +36,16 @@ export const Header = styled.header.attrs(props => ({
             border-color var(--duration-natural) ease-out;
 
           ${media.tablet`
-            --padding-vertical: var(--space-s);
+            --padding-vertical: var(--space-30);
           `}
 
           ${media.desktop`
-            --wrapper-padding: var(--space-m);
+            --wrapper-padding: var(--space-40);
             --overflow-wrapper: calc(-1 * var(--wrapper-padding));
           `}
 
           &.down {
-            top: calc(-1 * (var(--top-nav-height) + 2 * var(--space-s)));
+            top: calc(-1 * (var(--nav-top-height) + 2 * var(--space-30)));
           }
 
           &.up {
@@ -59,7 +59,7 @@ export const Header = styled.header.attrs(props => ({
           grid-column: 1 / -1;
           display: flex;
           flex-direction: column;
-          gap: var(--space-xs);
+          gap: var(--space-20);
 
           & > *:nth-child(1) {
             align-self: flex-start;

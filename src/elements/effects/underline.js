@@ -5,7 +5,7 @@ export const underline = css`
     content: "";
     position: absolute;
     width: 100%;
-    height: var(--space-xxs);
+    height: var(--space-10);
     bottom: 0;
     left: 0;
     background-color: var(--color-gray-00);

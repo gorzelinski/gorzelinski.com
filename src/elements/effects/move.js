@@ -8,13 +8,13 @@ export const iconForward = css`
 
   &:hover {
     & > span {
-      transform: translateX(calc(1 * var(--space-xs)));
+      transform: translateX(calc(1 * var(--space-20)));
     }
   }
 
   &:active {
     & > span {
-      transform: translateX(calc(2 * var(--space-xs)));
+      transform: translateX(calc(2 * var(--space-20)));
     }
   }
 `
@@ -27,13 +27,13 @@ export const iconBack = css`
 
   &:hover {
     & > span {
-      transform: translateX(calc(-1 * var(--space-xs)));
+      transform: translateX(calc(-1 * var(--space-20)));
     }
   }
 
   &:active {
     & > span {
-      transform: translateX(calc(-2 * var(--space-xs)));
+      transform: translateX(calc(-2 * var(--space-20)));
     }
   }
 `

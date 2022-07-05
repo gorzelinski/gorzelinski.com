@@ -8,7 +8,7 @@ import Link from "./link"
 
 const StyledAvatar = styled.div`
   display: flex;
-  gap: var(--space-s);
+  gap: var(--space-30);
   align-items: center;
 
   .gatsby-image-wrapper {

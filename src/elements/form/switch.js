@@ -11,22 +11,22 @@ export const Switch = styled.input.attrs(() => ({
   --active-inner: var(--color-background);
   --border: var(--color-primary-base);
   --background: var(--color-background);
-  width: var(--space-l);
+  width: var(--space-50);
   height: var(--font-height-base);
-  border-radius: var(--border-radius-m);
+  border-radius: var(--border-radius-20);
   display: inline-block;
   vertical-align: top;
   position: relative;
   margin: 0;
   cursor: pointer;
   background-color: var(--b, var(--background));
-  border: var(--space-xxxs) solid var(--bc, var(--border));
+  border: var(--space-00) solid var(--bc, var(--border));
   transition: background-color var(--duration-natural),
     border-color var(--duration-natural);
 
   &:checked {
-    --size: calc(var(--space-s) + var(--space-xxs));
-    --x: calc(var(--space-l) - var(--size) - 3 * var(--space-xxs));
+    --size: calc(var(--space-30) + var(--space-10));
+    --x: calc(var(--space-50) - var(--size) - 3 * var(--space-10));
     --ab: var(--active-inner);
     --b: var(--active);
     --bc: var(--active);
@@ -40,12 +40,12 @@ export const Switch = styled.input.attrs(() => ({
     }
   }
   &:after {
-    --size: calc(var(--space-s) + var(--space-xxs));
+    --size: calc(var(--space-30) + var(--space-10));
     content: "";
     display: block;
     position: absolute;
-    left: var(--space-xxs);
-    top: var(--space-xxs);
+    left: var(--space-10);
+    top: var(--space-10);
     border-radius: 50%;
     width: var(--size);
     height: var(--size);
@@ -57,7 +57,7 @@ export const Switch = styled.input.attrs(() => ({
   &:disabled {
     cursor: not-allowed;
     background-color: var(--color-gray-90);
-    border: var(--space-xxxs) solid var(--color-gray-base);
+    border: var(--space-00) solid var(--color-gray-base);
     &:after {
       background-color: var(--color-gray-base);
     }

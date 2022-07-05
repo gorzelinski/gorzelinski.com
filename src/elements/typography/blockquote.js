@@ -5,22 +5,22 @@ import { media } from "../utils"
 export const Blockquote = styled.blockquote`
   padding-left: calc(var(--wrapper-padding) / 2);
   margin: var(--vertical-rhythm) calc(var(--overflow-wrapper) / 2);
-  border-left: var(--space-xxs) solid var(--color-primary-base);
+  border-left: var(--space-10) solid var(--color-primary-base);
 
   ${media.tablet`
     --overflow-wrapper: 0px;
-    --wrapper-padding: var(--space-m);
+    --wrapper-padding: var(--space-40);
   `}
 
   & > p {
     font-style: italic;
-    font-size: var(--font-size-xs);
-    line-height: var(--font-height-s);
+    font-size: var(--font-size-40);
+    line-height: var(--font-height-50);
     color: var(--color-gray-40);
 
     ${media.tablet`
-      font-size: var(--font-size-s);
-      line-height: var(--font-height-m);
+      font-size: var(--font-size-50);
+      line-height: var(--font-height-60);
     `}
   }
 

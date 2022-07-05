@@ -23,8 +23,8 @@ export const Small = styled.small`
   }
 
   display: block;
-  margin-top: var(--space-xs);
-  margin-bottom: var(--space-xs);
+  margin-top: var(--space-20);
+  margin-bottom: var(--space-20);
 `
 
 export const Figcaption = styled.figcaption`
@@ -38,5 +38,5 @@ export const Figcaption = styled.figcaption`
   
   font-style: italic;
   display: block;
-  margin-top: var(--space-s);
+  margin-top: var(--space-30);
 `

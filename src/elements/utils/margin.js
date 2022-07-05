@@ -14,23 +14,23 @@ export const marginTop = css`
         `
       case "small":
         return css`
-          margin-top: var(--space-l);
+          margin-top: var(--space-50);
           ${media.tablet`
-            margin-top: var(--space-xl);
+            margin-top: var(--space-60);
           `}
         `
       case "big":
         return css`
-          margin-top: var(--space-xxl);
+          margin-top: var(--space-70);
           ${media.tablet`
-            margin-top: var(--space-xxxl);
+            margin-top: var(--space-80);
           `}
         `
       default:
         return css`
-          margin-top: var(--space-xl);
+          margin-top: var(--space-60);
           ${media.tablet`
-            margin-top: var(--space-xxl);
+            margin-top: var(--space-70);
           `}
         `
     }

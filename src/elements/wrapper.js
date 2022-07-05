@@ -14,12 +14,12 @@ export const Wrapper = styled.div`
   ${props =>
     props.$global &&
     css`
-      --top-nav-height: calc(var(--font-height-base) + 2 * var(--space-xs));
-      --mobile-nav-height: calc(
-        var(--space-xxxs) + var(--space-xs) - var(--space-xxxs) +
-          var(--font-height-tiny) + 3 * var(--space-xs)
+      --nav-top-height: calc(var(--font-height-base) + 2 * var(--space-20));
+      --nav-mobile-height: calc(
+        var(--space-00) + var(--space-20) - var(--space-00) +
+          var(--font-height-00) + 3 * var(--space-20)
       );
-      --wrapper-padding: var(--space-s);
+      --wrapper-padding: var(--space-30);
       --wrapper-margin: 0;
       --overflow-wrapper: calc(-1 * var(--wrapper-padding));
       --vertical-rhythm: var(--font-height-base);
@@ -28,19 +28,19 @@ export const Wrapper = styled.div`
       max-width: var(--wrapper-width, 100%);
 
       ${media.tiny`
-        --wrapper-padding: var(--space-m);
+        --wrapper-padding: var(--space-40);
       `}
 
       ${media.tablet`
-        --wrapper-padding: var(--space-l);
-        --vertical-rhythm: var(--font-height-xxs);
+        --wrapper-padding: var(--space-50);
+        --vertical-rhythm: var(--font-height-30);
       `}
 
       ${media.desktop`
         --wrapper-margin: 0 auto;
         --wrapper-padding: 0;
         --wrapper-width: 72rem;
-        padding: var(--space-l) var(--wrapper-padding);
+        padding: var(--space-50) var(--wrapper-padding);
       `}
       
       ${media.large`

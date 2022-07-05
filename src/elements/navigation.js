@@ -10,21 +10,21 @@ export const Navigation = styled.nav.attrs(props => ({
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-20);
 
   ${media.desktop`
-    gap: var(--space-s);
+    gap: var(--space-30);
   `}
 
   ${props => {
     switch (props.$align) {
       case "left":
         return css`
-          margin-left: calc(-1 * var(--space-xs));
+          margin-left: calc(-1 * var(--space-20));
         `
       case "right":
         return css`
-          margin-right: calc(-1 * var(--space-xs));
+          margin-right: calc(-1 * var(--space-20));
         `
       default:
         return css`
@@ -50,8 +50,8 @@ export const Navigation = styled.nav.attrs(props => ({
     css`
       ${border.top}
       background-color: inherit;
-      padding: calc(var(--space-xs) - var(--space-xxxs)) var(--space-xs)
-        var(--space-xs);
+      padding: calc(var(--space-20) - var(--space-00)) var(--space-20)
+        var(--space-20);
       position: fixed;
       bottom: 0;
       left: 0;
@@ -71,7 +71,7 @@ export const Navigation = styled.nav.attrs(props => ({
       `}
 
       &.down {
-        bottom: calc(-1 * var(--mobile-nav-height));
+        bottom: calc(-1 * var(--nav-mobile-height));
       }
     `}
 
@@ -88,6 +88,6 @@ export const Navigation = styled.nav.attrs(props => ({
     `}
 
   & > p {
-    margin-right: var(--space-xs);
+    margin-right: var(--space-20);
   }
 `

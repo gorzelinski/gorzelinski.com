@@ -13,7 +13,7 @@ const horizontal = css`
     grid-template-columns: 1fr 3fr;
     & > .gatsby-image-wrapper {
       aspect-ratio: auto;
-      min-height: var(--space-xxxl);
+      min-height: var(--space-80);
       align-self: stretch;
       margin: calc(-1 * var(--gap)) 0 calc(-1 * var(--gap)) calc(-1 * var(--gap));
       grid-column: 1;
@@ -34,7 +34,7 @@ export const Card = styled.article`
   ${heighten}
   ${textAlign}
   ${border.all}
-  --gap: var(--space-xs);
+  --gap: var(--space-20);
   z-index: 0;
   overflow: hidden;
   display: grid;
@@ -55,7 +55,7 @@ export const Card = styled.article`
   }
 
   ${media.tiny`
-    --gap: var(--space-s);
+    --gap: var(--space-30);
   `}
 
   ${media.desktop`

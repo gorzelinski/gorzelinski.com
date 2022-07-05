@@ -13,5 +13,5 @@ export const Label = styled.label`
   
   display: block;
   ${props => props.$hidden && visuallyHidden}
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-20);
 `
