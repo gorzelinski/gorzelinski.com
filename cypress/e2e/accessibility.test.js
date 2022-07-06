@@ -31,7 +31,8 @@ describe("Accessibility tests", () => {
   })
   pages.forEach(page => {
     it(`Visits ${page} and checks for accessibility violations`, () => {
-      cy.visit(page).get("main").injectAxe()
+      cy.visit(page)
+      cy.injectAxe()
     })
   })
 })
