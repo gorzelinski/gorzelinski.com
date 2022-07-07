@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { useTranslation } from "react-i18next"
 import { StaticImage } from "gatsby-plugin-image"
 
-import { P, Small, Tile } from "../elements"
+import { H6, Small, Tile } from "../elements"
 import Link from "./link"
 
 const StyledAvatar = styled.div`
@@ -14,6 +14,9 @@ const StyledAvatar = styled.div`
   .gatsby-image-wrapper {
     border-radius: 50%;
     -webkit-mask-image: -webkit-radial-gradient(white, black);
+  }
+  & * {
+    margin: 0;
   }
 `
 
@@ -36,11 +39,11 @@ const Avatar = () => {
         }}
       />
       <Tile>
-        <P $type="ui">
+        <H6 as="h2">
           <Link href="/about/" rel="author">
             {t("name")}
           </Link>
-        </P>
+        </H6>
         <Small as="p">{t("summary")}</Small>
       </Tile>
     </StyledAvatar>
