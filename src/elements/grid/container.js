@@ -31,7 +31,7 @@ export const grid = css`
             auto-fit,
             minmax(min(var(--space-80), 100%), 1fr)
           );
-          gap: var(--space-30);
+          gap: var(--vertical-rhythm);
         `
       case "article":
         return css`

@@ -53,10 +53,9 @@ const Footer = ({ location }) => {
             </Button>
           ))}
           <Button
-            as="a"
             $type="nav"
             $size="small"
-            href="#newsletter"
+            to="/#newsletter"
             title="Newsletter"
             aria-label="Newsletter"
           >

@@ -17,6 +17,7 @@ import {
   P,
   Section,
   Small,
+  Tile,
 } from "../elements"
 import {
   createMetaImage,
@@ -82,13 +83,17 @@ const BlogPostTemplate = ({ data, location }) => {
         </Figure>
         <div>
           <MDXRenderer>{post.body}</MDXRenderer>
-          <Navigation as="div">
-            <P $type="ui">{t("share")}</P>
-            <Socials data={links}></Socials>
-          </Navigation>
         </div>
-        <Footer>
-          <Avatar></Avatar>
+        <Footer $grid="sub">
+          <Tile $span="all">
+            <Navigation as="div">
+              <P $type="ui">{t("share")}</P>
+              <Socials data={links}></Socials>
+            </Navigation>
+          </Tile>
+          <Tile $span="all">
+            <Avatar></Avatar>
+          </Tile>
         </Footer>
       </Article>
       <Section>
