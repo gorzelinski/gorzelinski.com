@@ -5,7 +5,7 @@
     "name": "English",
     "localName": "English",
     "langDir": "ltr",
-    "dateFormat": "MMMM DD, YYYY"
+    "dateFormat": "MMMM D, YYYY"
   },
   {
     "code": "pl",
@@ -13,6 +13,6 @@
     "name": "Polish",
     "localName": "Polski",
     "langDir": "ltr",
-    "dateFormat": "DD MMMM, YYYY"
+    "dateFormat": "D MMMM, YYYY"
   }
 ]
