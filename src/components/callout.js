@@ -1,14 +1,14 @@
 import React from "react"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import {
   InformationCircle,
   Warning,
   AlertCircle,
   CheckmarkCircle,
-  Bulb,
 } from "@styled-icons/ionicons-solid"
 
 import { Icon } from "../elements"
+import { colorStates } from "../elements/effects"
 
 const StyledCallout = styled.div`
   position: relative;
@@ -17,35 +17,7 @@ const StyledCallout = styled.div`
   margin: var(--vertical-rhythm) 0;
   transition: background-color var(--duration-natural) ease-out;
 
-  ${props => {
-    switch (props.$type) {
-      case "info":
-        return css`
-          color: var(--color-primary-base);
-          background-color: var(--color-primary-100);
-        `
-      case "danger":
-        return css`
-          color: var(--color-red-base);
-          background-color: var(--color-red-100);
-        `
-      case "warning":
-        return css`
-          color: var(--color-orange-base);
-          background-color: var(--color-orange-100);
-        `
-      case "success":
-        return css`
-          color: var(--color-green-base);
-          background-color: var(--color-green-100);
-        `
-      default:
-        return css`
-          color: var(--color-primary-base);
-          background-color: var(--color-primary-100);
-        `
-    }
-  }}
+  ${colorStates.type}
 
   & > *:nth-child(2) {
     margin-top: 0;
@@ -79,8 +51,6 @@ const Callout = ({ children, type }) => {
         return <Warning></Warning>
       case "success":
         return <CheckmarkCircle></CheckmarkCircle>
-      case "idea":
-        return <Bulb></Bulb>
       default:
         return null
     }
