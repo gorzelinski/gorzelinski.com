@@ -48,6 +48,10 @@ const PortfolioProjectTemplate = ({ data, location }) => {
             property: "article:published_time",
             content: project.frontmatter.date,
           },
+          {
+            property: "article:modified_time",
+            content: project.frontmatter.updated,
+          },
         ]}
       />
       <Article id="article">
@@ -121,6 +125,8 @@ export const pageQuery = graphql`
       frontmatter {
         title
         description
+        date
+        updated
         client
         services
         deliverables

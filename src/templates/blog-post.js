@@ -15,6 +15,7 @@ import {
   Image,
   Navigation,
   P,
+  Pill,
   Section,
   Small,
   Tile,
@@ -60,7 +61,11 @@ const BlogPostTemplate = ({ data, location }) => {
         meta={[
           {
             property: "article:published_time",
-            content: post.frontmatter.date,
+            content: post.frontmatter.rawDate,
+          },
+          {
+            property: "article:modified_time",
+            content: post.frontmatter.rawUpdated,
           },
         ]}
       />
@@ -72,6 +77,9 @@ const BlogPostTemplate = ({ data, location }) => {
           </Small>
           <H1>{post.frontmatter.title}</H1>
           <P $type="lead">{post.frontmatter.description}</P>
+          <Pill>
+            {t("updated")} {post.frontmatter.updated}
+          </Pill>
         </Header>
         <Figure>
           <Image
@@ -132,7 +140,10 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
+        rawDate: date
+        rawUpdated: updated
         date(formatString: $dateFormat, locale: $locale)
+        updated(formatString: $dateFormat, locale: $locale)
         description
         categories
         tags

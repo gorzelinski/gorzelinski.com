@@ -111,7 +111,7 @@ const pages = [
         "In this post, we will look at four universal design principles that can improve any graphical work",
       heading: "Stylish design principles with a nasty acronym",
       link: /projects/i,
-      date: "May 09, 2021",
+      date: "July 8, 2022",
       share: /share/i,
       more: /read/i,
     },
@@ -124,7 +124,7 @@ const pages = [
         "W tym wpisie przyjrzymy się czterem, uniwersalnym zasadom designu, które mogą poprawić dowolną pracę graficzną",
       heading: "Stylowe zasady designu o paskudnym akronimie",
       link: /projektów/i,
-      date: "09 maja, 2021",
+      date: "8 lipca, 2022",
       share: /udostępnij/i,
       more: /przeczytaj/i,
     },
@@ -199,7 +199,9 @@ describe("I18n tests", () => {
           .and("contain", `${lang === "en" ? "" : lang}`)
 
         if (translation.date) {
-          cy.findByText(translation.date, { exact: false }).should("be.visible")
+          cy.findAllByText(translation.date, { exact: false }).should(
+            "be.visible"
+          )
           cy.get('a[rel="prev"]')
             .should("have.prop", "href")
             .and("contain", `${lang === "en" ? "" : lang}`)
