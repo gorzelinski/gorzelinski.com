@@ -7,7 +7,7 @@ export const Progress = styled.div.attrs(props => ({
     opacity: props.progress < 5 || props.progress > 99 ? 0 : 1,
   },
 }))`
-  --width: calc(var(--space-80) * 1.618);
+  --width: var(--space-80);
   z-index: 100;
   border-radius: var(--border-radius-00);
   background-color: var(--color-gray-80);

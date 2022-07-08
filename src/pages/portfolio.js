@@ -53,7 +53,7 @@ const Portfolio = ({ data, location }) => {
         slug={location.pathname}
         image={metaImage}
       ></Seo>
-      <Section $marginTop="big">
+      <Section>
         <Header>
           <H1 $decorative>{t("heading")}</H1>
           <P as="h2" $type="ui">

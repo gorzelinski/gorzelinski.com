@@ -54,9 +54,9 @@
   --space-30: 16px;
   --space-40: 32px;
   --space-50: 64px;
-  --space-60: 104px;
-  --space-70: 168px;
-  --space-80: 272px;
+  --space-60: 128px;
+  --space-70: 256px;
+  --space-80: 440px;
 
-  --space-line-length: 720px;
+  --space-line-length: 90ch;
 }

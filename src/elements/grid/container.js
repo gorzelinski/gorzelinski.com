@@ -6,7 +6,7 @@ const base = css`
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(min(var(--space-80), 100%), 1fr)
+    minmax(min(var(--space-70), 100%), 1fr)
   );
   gap: var(--space-30);
 
@@ -29,7 +29,7 @@ export const grid = css`
           display: grid;
           grid-template-columns: repeat(
             auto-fit,
-            minmax(min(var(--space-80), 100%), 1fr)
+            minmax(min(var(--space-70), 100%), 1fr)
           );
           gap: var(--vertical-rhythm);
         `
