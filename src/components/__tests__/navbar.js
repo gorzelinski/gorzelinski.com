@@ -2,7 +2,7 @@ import React from "react"
 import { render, screen } from "@testing-library/react"
 
 import Navbar from "../navbar"
-import ThemeProvider from "../theme-provider"
+import ThemeProvider from "../../themes/theme-provider"
 
 describe("Navbar component", () => {
   describe("renders", () => {

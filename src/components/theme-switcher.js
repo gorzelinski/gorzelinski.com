@@ -3,12 +3,10 @@ import { useTranslation } from "react-i18next"
 import styled, { css } from "styled-components"
 
 import { Button, Icon } from "../elements"
-import { ThemeContext } from "./theme-provider"
+import { ThemeContext } from "../themes/theme-provider"
 
 const StyledThemeSwitcher = styled.div`
-  & .moon,
-  .sun,
-  .sun-beams {
+  & :is(.moon, .sun, .sun-beams) {
     transform-origin: center center;
   }
   & .sun {

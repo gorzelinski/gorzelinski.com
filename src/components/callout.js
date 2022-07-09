@@ -1,10 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 import {
-  InformationCircle,
-  Warning,
   AlertCircle,
   CheckmarkCircle,
+  InformationCircle,
+  Warning,
 } from "@styled-icons/ionicons-solid"
 
 import { Icon } from "../elements"
@@ -55,6 +55,7 @@ const Callout = ({ children, type }) => {
         return null
     }
   }
+
   return (
     <StyledCallout {...{ $type: type }}>
       <Icon className="icon">{selectIcon(type)}</Icon>

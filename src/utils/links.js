@@ -17,11 +17,11 @@ export const createSocialLinks = ({
   facebook,
   linkedin,
 }) => ({
-  github: `https://github.com/${github}`,
-  dribbble: `https://dribbble.com/${dribbble}`,
-  twitter: `https://twitter.com/${twitter}`,
-  facebook: `https://www.facebook.com/${facebook}`,
-  linkedin: `https://www.linkedin.com/in/${linkedin}`,
+  ...(github && { github: `https://github.com/${github}` }),
+  ...(dribbble && { dribbble: `https://dribbble.com/${dribbble}` }),
+  ...(twitter && { twitter: `https://twitter.com/${twitter}` }),
+  ...(facebook && { facebook: `https://www.facebook.com/${facebook}` }),
+  ...(linkedin && { linkedin: `https://www.linkedin.com/in/${linkedin}` }),
 })
 
 export const createPaginationLinks = (pageSlug, previous, next) => ({

@@ -32,7 +32,7 @@ const Avatar = () => {
         width={64}
         height={64}
         quality={100}
-        alt={`${t("name")} - ${t("alt")}`}
+        alt={t("image.alt")}
         transformOptions={{
           fit: "cover",
           cropFocus: "top",

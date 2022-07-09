@@ -1,9 +1,9 @@
 import React from "react"
 
 import { Background, Wrapper } from "../elements"
-import ThemeProvider from "./theme-provider"
-import Navbar from "./navbar"
 import Footer from "./footer"
+import Navbar from "./navbar"
+import ThemeProvider from "../themes/theme-provider"
 
 const Layout = ({ children, location }) => {
   return (

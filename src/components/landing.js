@@ -1,7 +1,7 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 
-import { Hero, H1, P, Button, Tile } from "../elements"
+import { H1, Hero, P, Button, Tile } from "../elements"
 import Typewriter from "./typewriter"
 
 const Landing = () => {

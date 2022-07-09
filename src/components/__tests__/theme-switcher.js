@@ -1,8 +1,8 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
 
+import { ThemeContext } from "../../themes/theme-provider"
 import ThemeSwitcher from "../theme-switcher"
-import { ThemeContext } from "../theme-provider"
 
 describe("ThemeSwitcher component", () => {
   describe("renders", () => {

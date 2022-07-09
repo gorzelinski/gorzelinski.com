@@ -12,9 +12,9 @@ import {
   Small,
   Tile,
 } from "../elements"
-import { useBio } from "../hooks"
 import { createSocialLinks } from "../utils"
-import Socials from "../components/socials"
+import { useBio } from "../hooks"
+import Socials from "./socials"
 import LanguageSwitcher from "./language-switcher"
 
 const Footer = ({ location }) => {

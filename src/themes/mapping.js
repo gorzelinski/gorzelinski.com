@@ -18,9 +18,9 @@ import {
   Table,
   Ul,
 } from "../elements"
-import Callout from "./callout"
-import CodeBlock from "./code"
-import Link from "./link"
+import Callout from "../components/callout"
+import CodeBlock from "../components/code"
+import Link from "../components/link"
 
 const components = {
   a: Link,

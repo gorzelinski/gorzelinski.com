@@ -4,15 +4,15 @@ import { getImage } from "gatsby-plugin-image"
 import { ChevronForward } from "@styled-icons/ionicons-solid"
 
 import {
+  Button,
+  H2,
+  Icon,
+  Image,
+  Link,
+  P,
   Section,
   Small,
-  H2,
-  P,
-  Button,
-  Icon,
-  Link,
   Tile,
-  Image,
 } from "../elements"
 
 const Bio = ({ data = {} }) => {

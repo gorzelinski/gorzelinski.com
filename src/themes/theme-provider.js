@@ -3,12 +3,18 @@ import { MDXProvider } from "@mdx-js/react"
 
 import { setToLS } from "../utils"
 import components from "./mapping"
-import GlobalStyles from "../themes/global-styles"
+import GlobalStyles from "./global-styles"
 
 export const ThemeContext = createContext()
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(undefined)
+
+  const saveTheme = preference => {
+    setTheme(preference)
+    setToLS("theme", preference)
+    setClass(preference)
+  }
 
   useEffect(() => {
     const root = document.documentElement
@@ -19,12 +25,6 @@ const ThemeProvider = ({ children }) => {
   const setClass = newClass => {
     const oldClass = document.documentElement.classList.value
     document.documentElement.classList.replace(oldClass, newClass)
-  }
-
-  const saveTheme = preference => {
-    setTheme(preference)
-    setToLS("theme", preference)
-    setClass(preference)
   }
 
   return (

@@ -5,13 +5,8 @@ import { isInternal } from "../utils"
 import { useBio } from "../hooks"
 
 const Link = ({ children, href, ...other }) => {
-  const {
-    bio: {
-      site: {
-        siteMetadata: { siteUrl },
-      },
-    },
-  } = useBio()
+  const { bio } = useBio()
+  const siteUrl = bio.site?.siteMetadata?.siteUrl
 
   return isInternal(siteUrl, href) ? (
     <GatsbyLink to={href} {...other}>
