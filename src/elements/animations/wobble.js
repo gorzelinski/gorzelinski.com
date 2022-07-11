@@ -23,7 +23,7 @@ export const wobble = keyframes`
 
 export const iconWobble = css`
   &:hover {
-    & > span {
+    & > .icon {
       animation-name: ${wobble};
       animation-duration: var(--duration-deliberate);
       animation-iteration-count: 1;

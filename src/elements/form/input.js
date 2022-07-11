@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-import { ui } from "../typography"
 import { border } from "../utils"
+import { ui } from "../typography"
 
 export const InputWrapper = styled.div`
   position: relative;
@@ -9,7 +9,7 @@ export const InputWrapper = styled.div`
     width: 100%;
     padding-left: calc(var(--space-20) * 2 + var(--font-height-base));
   }
-  & > span {
+  & > .icon {
     position: absolute;
     top: var(--space-20);
     left: var(--space-20);

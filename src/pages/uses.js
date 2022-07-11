@@ -26,7 +26,7 @@ const Uses = ({ data, location }) => {
         slug={location.pathname}
         image={metaImage}
       ></Seo>
-      <Section $marginTop="big">
+      <Section>
         <Tile $span="all">
           <H1 $decorative>{t("title")}</H1>
           <P $type="lead">{t("description")}</P>

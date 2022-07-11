@@ -5,7 +5,7 @@ import { paragraph, heading } from "./sizes"
 
 export const headings = css`
   font-family: var(--font-family-heading);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-bold);
   color: var(--color-gray-00);
   margin-top: calc(var(--vertical-rhythm) * 2);
   margin-bottom: var(--vertical-rhythm);

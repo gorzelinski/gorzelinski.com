@@ -9,7 +9,7 @@ export const spinning = keyframes`
 `
 
 export const iconSpinning = css`
-  & > span {
+  & > .icon {
     animation-name: ${spinning};
     animation-duration: var(--duration-deliberate);
     animation-iteration-count: infinite;

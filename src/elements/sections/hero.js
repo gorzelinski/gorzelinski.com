@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-import { grid } from "../grid"
 import { media } from "../utils"
+import { grid } from "../grid"
 
 export const Hero = styled.section`
   ${grid}

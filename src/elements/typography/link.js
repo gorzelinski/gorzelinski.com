@@ -11,8 +11,7 @@ export const link = css`
   text-decoration-thickness: var(--space-10);
   text-decoration-color: transparent;
   transition: text-decoration-color var(--duration-immediate) ease-out;
-  &:hover,
-  :focus {
+  &:is(:hover, :focus) {
     text-decoration-color: var(--color-primary-base);
   }
   &:visited {

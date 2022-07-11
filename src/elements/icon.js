@@ -1,7 +1,9 @@
 import styled, { css } from "styled-components"
 import { StyledIconBase } from "@styled-icons/styled-icon"
 
-export const Icon = styled.span`
+export const Icon = styled.span.attrs(() => ({
+  className: "icon",
+}))`
   vertical-align: top;
   line-height: 0;
   display: inline-block;

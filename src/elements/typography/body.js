@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
-import { media } from "../utils"
 
+import { media } from "../utils"
 import { heading, paragraph } from "./sizes"
 
 export const body = css`

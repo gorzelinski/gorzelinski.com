@@ -23,7 +23,7 @@ export const Progress = styled.div.attrs(props => ({
   }
 
   ${media.tablet`
-    left: var(--space-20);
+    left: var(--space-30);
     top: calc(50% - (var(--width) / 2));
     width: var(--width);
     transform: rotate(90deg);

@@ -2,13 +2,7 @@ import { LocalizedLink } from "gatsby-theme-i18n"
 import styled, { css } from "styled-components"
 
 import { media } from "./utils"
-import {
-  colorStates,
-  iconBack,
-  iconForward,
-  outline,
-  underline,
-} from "./effects"
+import { colorStates, moveIcon, outline, underline } from "./effects"
 import { elementBuzzOut, iconSpinning, iconWobble } from "./animations"
 import { paragraph, ui } from "./typography"
 
@@ -153,9 +147,9 @@ export const Button = styled(LocalizedLink)`
   ${props => {
     switch (props.$animation) {
       case "icon-forward":
-        return iconForward
+        return moveIcon.forward
       case "icon-back":
-        return iconBack
+        return moveIcon.back
       case "icon-spinning":
         return iconSpinning
       case "icon-wobble":
