@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 const light = {
-  backgroundColor: "rgb(252, 252, 253)",
+  backgroundColor: "rgb(250, 250, 250)",
   text: "rgb(0, 0, 0)",
 }
 

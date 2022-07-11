@@ -18,7 +18,7 @@ describe("Accessibility tests", () => {
     cy.findByTestId("background").should(
       "have.css",
       "background-color",
-      "rgb(252, 252, 253)"
+      "rgb(250, 250, 250)"
     )
     cy.checkA11y()
     cy.findByLabelText(/change theme/i).click()
