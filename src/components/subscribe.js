@@ -75,6 +75,7 @@ const Subscribe = () => {
                 </Icon>
                 <Input
                   required
+                  autoComplete="off"
                   name="email_address"
                   id="email"
                   type="email"
