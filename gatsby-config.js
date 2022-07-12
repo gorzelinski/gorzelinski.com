@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://gorzelinski.com/`,
+    siteUrl: `https://gorzelinski.com`,
     title: `Gorzelinski`,
     description: `I create things on the Internet.`,
     author: {
@@ -47,7 +47,7 @@ module.exports = {
           formats: [`auto`, `webp`, `avif`],
           placeholder: `dominantColor`,
           quality: 80,
-          breakpoints: [320, 480, 768, 1200],
+          breakpoints: [750, 1080, 1366, 1920, 2560],
           backgroundColor: `transparent`,
           webpOptions: {
             quality: 80,
@@ -68,12 +68,11 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 720,
               backgroundColor: `transparent`,
               quality: 80,
               withWebp: { quality: 80 },
               withAvif: { quality: 80 },
-              srcSetBreakpoints: [720, 480, 320],
+              maxWidth: 720,
               linkImagesToOriginal: false,
               // showCaptions: [`title`],
             },

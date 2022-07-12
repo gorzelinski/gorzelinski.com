@@ -45,7 +45,7 @@ export const Wrapper = styled.div`
       
       ${media.large`
         --wrapper-margin: 0 auto;
-        --wrapper-width: 75rem;
+        --wrapper-width: 80rem;
       `}
     `}
 `

@@ -138,7 +138,11 @@ export const pageQuery = graphql`
           alt
           src {
             childImageSharp {
-              gatsbyImageData
+              gatsbyImageData(
+                width: 2560
+                aspectRatio: 1.91
+                transformOptions: { cropFocus: CENTER }
+              )
             }
           }
         }

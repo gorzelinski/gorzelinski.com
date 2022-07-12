@@ -153,9 +153,8 @@ export const pageQuery = graphql`
           src {
             childImageSharp {
               gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1200
-                height: 630
+                width: 2560
+                aspectRatio: 1.91
                 transformOptions: { cropFocus: CENTER }
               )
             }
@@ -201,7 +200,7 @@ export const pageQuery = graphql`
             alt
             src {
               childImageSharp {
-                gatsbyImageData(breakpoints: [320, 480, 768], width: 768)
+                gatsbyImageData(width: 1080)
               }
             }
           }
