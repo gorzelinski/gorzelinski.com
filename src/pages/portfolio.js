@@ -54,7 +54,7 @@ const Portfolio = ({ data, location }) => {
         image={metaImage}
       ></Seo>
       <Section>
-        <Header>
+        <Header $type="section">
           <H1 $decorative>{t("heading")}</H1>
           <P as="h2" $type="ui">
             {t("subtitle")}
