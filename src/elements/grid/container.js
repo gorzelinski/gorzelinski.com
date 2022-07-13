@@ -6,7 +6,7 @@ const base = css`
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(min(var(--space-70), 100%), 1fr)
+    minmax(min(var(--column), 100%), 1fr)
   );
   gap: var(--space-30);
 
@@ -20,6 +20,8 @@ const base = css`
 `
 
 export const grid = css`
+  --column: calc((768px - var(--space-40) - (var(--space-50) * 2)) / 2);
+
   ${props => {
     switch (props.$grid) {
       case "base":
@@ -29,7 +31,7 @@ export const grid = css`
           display: grid;
           grid-template-columns: repeat(
             auto-fit,
-            minmax(min(var(--space-70), 100%), 1fr)
+            minmax(min(var(--column), 100%), 1fr)
           );
           gap: var(--vertical-rhythm);
         `
@@ -37,7 +39,7 @@ export const grid = css`
         return css`
           display: grid;
           grid-template-columns:
-            minmax(0, 1fr) minmax(1ex, var(--space-line-length))
+            minmax(0, 1fr) minmax(1ch, var(--space-line-length))
             minmax(0, 1fr);
         `
       default:
