@@ -81,8 +81,8 @@ export const pageQuery = graphql`
           formats: AUTO
           layout: FIXED
           placeholder: NONE
-          width: 1200
-          height: 630
+          width: 2400
+          height: 1260
           outputPixelDensities: 1
         )
       }

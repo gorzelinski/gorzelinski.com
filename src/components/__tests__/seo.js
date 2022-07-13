@@ -34,10 +34,10 @@ describe("SEO component", () => {
   const mockCustomType = "article"
   const mockTwitterHandler = "@gorzelinski"
   const mockImage = {
-    src: "https://gorzelinski.com/slug-to-image",
+    src: "/slug-to-image",
     alt: "Alt text",
-    width: 1200,
-    height: 628,
+    width: 2400,
+    height: 1260,
   }
 
   describe("base tags", () => {
@@ -123,51 +123,21 @@ describe("SEO component", () => {
     })
 
     it("og:image", () => {
-      render(
-        <SEO
-          title="Custom title"
-          image={{
-            src: "/slug-to-image",
-            alt: "Alt text",
-            width: 1200,
-            height: 628,
-          }}
-        />
-      )
+      render(<SEO title="Custom title" image={mockImage} />)
       const { metaTags } = Helmet.peek()
       const ogImage = metaTags.find(tag => tag.property === "og:image")
-      expect(ogImage.content).toBe(mockImage.src)
+      expect(ogImage.content).toBe(`${mockDefaultUrl}${mockImage.src}`)
     })
 
     it("og:image:alt", () => {
-      render(
-        <SEO
-          title="Custom title"
-          image={{
-            src: "/slug-to-image",
-            alt: "Alt text",
-            width: 1200,
-            height: 628,
-          }}
-        />
-      )
+      render(<SEO title="Custom title" image={mockImage} />)
       const { metaTags } = Helmet.peek()
       const ogImageAlt = metaTags.find(tag => tag.property === "og:image:alt")
       expect(ogImageAlt.content).toBe(mockImage.alt)
     })
 
     it("og:image:wdith", () => {
-      render(
-        <SEO
-          title="Custom title"
-          image={{
-            src: "/slug-to-image",
-            alt: "Alt text",
-            width: 1200,
-            height: 628,
-          }}
-        />
-      )
+      render(<SEO title="Custom title" image={mockImage} />)
       const { metaTags } = Helmet.peek()
       const ogImageWidth = metaTags.find(
         tag => tag.property === "og:image:width"
@@ -176,17 +146,7 @@ describe("SEO component", () => {
     })
 
     it("og:image:height", () => {
-      render(
-        <SEO
-          title="Custom title"
-          image={{
-            src: "/slug-to-image",
-            alt: "Alt text",
-            width: 1200,
-            height: 628,
-          }}
-        />
-      )
+      render(<SEO title="Custom title" image={mockImage} />)
       const { metaTags } = Helmet.peek()
       const ogImageHeight = metaTags.find(
         tag => tag.property === "og:image:height"
@@ -250,51 +210,21 @@ describe("SEO component", () => {
     })
 
     it("twitter:card (image)", () => {
-      render(
-        <SEO
-          title="Custom title"
-          image={{
-            src: "/slug-to-image",
-            alt: "Alt text",
-            width: 1200,
-            height: 628,
-          }}
-        />
-      )
+      render(<SEO title="Custom title" image={mockImage} />)
       const { metaTags } = Helmet.peek()
       const twitterCard = metaTags.find(tag => tag.name === "twitter:card")
       expect(twitterCard.content).toBe("summary_large_image")
     })
 
     it("twitter:image", () => {
-      render(
-        <SEO
-          title="Custom title"
-          image={{
-            src: "/slug-to-image",
-            alt: "Alt text",
-            width: 1200,
-            height: 628,
-          }}
-        />
-      )
+      render(<SEO title="Custom title" image={mockImage} />)
       const { metaTags } = Helmet.peek()
       const twitterImage = metaTags.find(tag => tag.name === "twitter:image")
-      expect(twitterImage.content).toBe(mockImage.src)
+      expect(twitterImage.content).toBe(`${mockDefaultUrl}${mockImage.src}`)
     })
 
     it("twitter:image:alt", () => {
-      render(
-        <SEO
-          title="Custom title"
-          image={{
-            src: "/slug-to-image",
-            alt: "Alt text",
-            width: 1200,
-            height: 628,
-          }}
-        />
-      )
+      render(<SEO title="Custom title" image={mockImage} />)
       const { metaTags } = Helmet.peek()
       const twitterImageAlt = metaTags.find(
         tag => tag.name === "twitter:image:alt"
