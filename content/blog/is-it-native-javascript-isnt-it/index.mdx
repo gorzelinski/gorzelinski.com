@@ -19,7 +19,7 @@ The first time I used Gatsby, I spotted some strange code snippet.
 const defaultTitle = site.siteMetadata?.title
 ```
 
-I wondered, "what's with that question mark after dot? Is it some special Gatsby syntax?" That didn't make sense to me, so I started looking for more information. After some research and Googling stupid questions, I found the term I was looking for - **optional chaining.** I was surprised - it is a native JavaScript. This syntax was introduced in ES2020 (on the day I'm writing this post, it is at stage 4 of the proposal process). To see why and how it works first, we need to look at some errors.
+I wondered, "what's with that question mark after dot? Is it some special Gatsby syntax?" That didn't make sense to me, so I started looking for more information. After some research and Googling stupid questions, I found the term I was looking for - **optional chaining.** I was surprised - it is a native JavaScript. This syntax was introduced in ES2020 (on the day of writing this post, it is at stage four of the proposal process). First, we look at some errors to see why it's useful.
 
 <Callout type="info">
 
@@ -158,7 +158,7 @@ const laptop = {
 const info = laptop.nonExistingMethod?.() //undefined
 ```
 
-The object has not any method. Still, the snippet above doesn't throw an exception. It returns `undefined`. Let's go further - is it possible to use this operator with arrays? Yes, it is.
+The object has not any method. Still, the snippet above doesn't throw an exception. It returns `undefined`. Let's go further - can you use this operator with arrays? Yes, you can.
 
 ```js
 const laptop = {
@@ -184,7 +184,7 @@ const laptop = {
 const info = laptop.graphicsCard?.manufacturer ?? "integrated" //integrated
 ```
 
-You can interpret the above snippet like this: "If there is a graphics card manufacturer in the laptop object, assign its value to info variable. Otherwise, assign the integrated string." From the previous section, we know that our optional chaining returns `undefined`. Then interpreter moves to the logical operator. The nullish coalescing operator is a special case of logical OR. It returns its right-hand side operand when its left-hand side operand is `null` or `undefined`. Logical OR returns the right-hand side operand if the left-hand side operand is any `falsy` value.
+You can interpret the above snippet like this: "If a graphics card manufacturer in the laptop object exists, assign its value to info variable. Otherwise, assign the integrated string." From the previous section, we know that our optional chaining returns `undefined`. Then interpreter moves to the logical operator. The nullish coalescing operator is a specific case of logical OR. It returns the right-hand side operand when its left-hand side operand is nullish (`null` or `undefined`). Logical OR returns the right-hand side operand if the left-hand side operand is any `falsy` value.
 
 ```js
 const a = null ?? "default" //"default"
@@ -197,7 +197,7 @@ const f = NaN || "default" //"default"
 const g = 0 || "default" //"default" - it returns "default" for falsy values
 ```
 
-The behavior of logical OR can lead to unexpected errors. For example, if you want a default number, but 0 is a correct, expected value. That's why the nullish coalescing operator is handy. It is stricter and can prevent bugs like this. But it does not replace logical OR. You also can't chain the nullish coalescing operator with other logical operators without parenthesis.
+The behavior of logical OR can lead to unexpected errors. For example, if you want a default number, but 0 is a correct, expected value. That's why the nullish coalescing operator is handy. It is stricter and can prevent bugs like this. But it does not replace logical OR. Also, you can't chain the nullish coalescing operator with other logical operators without parenthesis.
 
 <Callout type="danger">
 
@@ -217,7 +217,7 @@ The above code is correct and returns "default.”
 
 ## Bonus - logical nullish assignment
 
-While researching this post, I found one more operator with a double question mark. If we "add" an equal sign to the nullish coalescing operator, we get **the logical nullish assignment.** It is easy to deduce what it is doing. Instead of returning, it assigns a particular value to x if x is nullish (null or undefined).
+While researching this post, I found one more operator with a double question mark. If we "add" an equal sign to the nullish coalescing operator, we get **the logical nullish assignment.** It is easy to deduce what it is doing. Instead of returning, it assigns a particular value to x if x is nullish.
 
 ```js
 const laptop = {
@@ -231,7 +231,7 @@ console.log(laptop.processor) //"Intel"
 console.log(laptop.graphicsCard) //"Nvidia"
 ```
 
-It is shortcut for the expression with the nullish coalescing operator. The two expressions below are equivalents.
+It is a shortcut for the expression with the nullish coalescing operator. The two expressions below are equivalents.
 
 ```js
 const laptop = {

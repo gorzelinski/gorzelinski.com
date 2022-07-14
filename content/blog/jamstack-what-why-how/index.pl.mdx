@@ -23,7 +23,7 @@ Jednocześnie nie jest to zbiór przypadkowych liter. Ludzie w branży IT lubią
 - **APIs -** interfejsy, które definiują interakcje pomiędzy fragmentami software'u. Operacje po stronie serwera - w tej architekturze - są wyabstrahowane do API wielokrotnego użytku. Są dostępne poprzez protokół HTTPS z pomocą języka JavaScript.
 - **Markup -** dokument w konkretnym formacie. Strony - w tym podejściu - są serwowane jako statyczne pliki HTML. Możesz je wygenerować za pomocą języka Markdown, MDX lub przez Statyczny Generator Stron.
 
-Jednakże, JAMstack to nie jest żadna konkretna technologia. Nie jest kontrolowany, ani definiowany przez jakąś korporację. JAMstack jest raczej ruchem i społecznością. Zestawem dobrych praktyk i systemem pracy. Systemem przyjaznym dla programistów, którego efektem są strony internetowe przyjazne dla użytkowników.
+Jednakże, JAMstack to nie jest żadna konkretna technologia. Nie jest kontrolowany, ani definiowany przez jakąś korporację. JAMstack jest raczej ruchem i społecznością. Zestawem dobrych praktyk i systemem pracy. Systemem przyjaznym dla programistów, produkującym strony internetowe przyjazne dla użytkowników.
 
 ## Dlaczego (nie) używać tego stosu?
 
@@ -61,11 +61,11 @@ W inżynierii oprogramowania [nie ma srebrnej kuli](https://www.cgl.ucsf.edu/Out
 
 ### Konieczność budowania aplikacji
 
-Wcześniejsze generowanie może być super, ale ma swoje prblemy. Każda zmiana na stronie musi zostać poprzedzona fazą buildu. Oznacza to, że zmiany nie są odzwierciedlone na stronie natychmiastowo. Może to być problematyczne dla ogromnych stron, które zmieniają się często. Proces budowy w ich przypadku może się nadmiernie wydłużyć. To kosztuje czas i pieniądze. Dlatego stawianie kolejnego Facebooka (albo Albicli) w oparciu o tę architekturę może być problematyczne.
+Wcześniejsze generowanie może być super, ale ma swoje prblemy. Każda zmiana na stronie musi zostać poprzedzona fazą buildu. Oznacza to, że zmiany nie są odzwierciedlone na stronie natychmiastowo. Może to być problematyczne dla ogromnych stron, które zmieniają się często. Proces budowy w ich przypadku może się nadmiernie wydłużyć. To kosztuje czas i pieniądze. Dlatego stawianie kolejnego Facebooka w oparciu o tę architekturę może być problematyczne.
 
 ### Korzystanie z dynamicznych danych
 
-Marzenie o byciu kolejnym Zuckerbergiem (albo Sakiewiczem) stosując to podejście może być problematyczne z jeszcze jednego powodu - dynamiczne dane. Dane użytkowników lub inne - czasu rzeczywistego - nie mogą po prostu zostać wygenerowane wcześniej. W niektórych aplikacjach nie da się z tego zrezygnować.
+Marzenie o byciu kolejnym Zuckerbergiem stosując to podejście może być problematyczne z jeszcze jednego powodu - dynamiczne dane. Dane użytkowników lub inne - czasu rzeczywistego - nie mogą po prostu zostać wygenerowane wcześniej. W niektórych aplikacjach nie da się z tego zrezygnować.
 
 Jednocześnie, to nie tak, że nie możesz zrobić nic dynamicznego. Programiści z sukcesem tworzą strony Jamstack, które regularnie są aktualizowane. Mój blog jest stworzony z wykorzystaniem tej architektury, pomimo, że posty pojawiają się regularnie (powiedzmy). Dynamiczny e-commerce również może zostać stworzony. Problem może się zacząć przy ogromnej skali - masie stron i bardzo częstych aktualizacjach.
 

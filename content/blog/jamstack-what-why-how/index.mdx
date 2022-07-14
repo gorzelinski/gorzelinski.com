@@ -23,7 +23,7 @@ At the same time, it's not a bunch of random letters. People in the computer sci
 - **APIs -** interfaces that define interactions between software. Back-end operations - in this architecture - are abstracted to the APIs. You can reach them via HTTPS protocol.
 - **Markup -** document in some format. Pages - in this approach - are served as HTML files. You can generate them with Markdown, MDX, or Static Site Generator.
 
-Nevertheless, Jamstack is **not** a specific technology. This stack is not controlled (or defined) by any corporation. It is more like a movement and a community. Jamstack is a set of good practices and a working system. The system is convenient for developers, and it results in websites that are convenient for the users.
+Nevertheless, Jamstack is **not** a specific technology. This stack is not controlled (or defined) by any corporation. It is more like a movement and a community. Jamstack is a set of good practices and a working system. The system is convenient for developers and produces websites friendly for the users.
 
 ## Why (not) use this approach?
 
@@ -31,7 +31,7 @@ Jamstack is the answer to many well-known problems associated with web developme
 
 ### Better performance
 
-Website performance matters. Web crawlers index websites considering performance as a significant factor. Users may leave if your website is loading slowly. I'm a patient guy (hey, I'm sitting here typing for another hour), but my patience is put to the test when I'm waiting for a damn website to load. But I'm not alone. There was a study about [tolerable waiting time](https://www.tandfonline.com/doi/abs/10.1080/01449290410001669914). Most users are willing to wait for just about 2 seconds. And not all of them have fast internet connections.
+Website performance matters. Web crawlers index websites considering performance as a significant factor. Users may leave if your website is loading slowly. I'm a patient guy (hey, I'm sitting here typing for another hour), but my patience is on the edge when I wait for a damn website to load. But I'm not alone. There was a study about [tolerable waiting time](https://www.tandfonline.com/doi/abs/10.1080/01449290410001669914). Most users are willing to wait for just about 2 seconds. And not all of them have fast internet connections.
 
 Jamstack approach precompiles pages. User, after request, gets a finished page. You don't need to send many requests to different servers. CDN sends your website with all the assets. Distributed nature of a CDN allows sending them from the nearest edge. It shortens the route the files need to travel, and it saves time.
 
@@ -46,13 +46,13 @@ Besides hosting fees, Jamstack lowers the costs of a team. Simpler architecture 
 
 ### Improved security
 
-Simple architecture has one more benefit - improved security. Less number of elements means fewer weak links. You don't have to worry about server or database breaches. Hackers have smaller [attack surface](https://en.wikipedia.org/wiki/Attack_surface) to penetrate.
+Simple architecture has one more benefit - improved security. Less number of elements means fewer weak links. You don't have to worry about server or database breaches. Hackers have a smaller [attack surface](https://en.wikipedia.org/wiki/Attack_surface) to penetrate.
 
 ![You don't need to worry about a database if you don't use a database](./roll-safe-meme.png)
 
 ### Developer's convenience
 
-Simplifying some tasks have a positive effect on a developer's working comfort. On their mental health, probably too. You don't have to focus on complex configurations - you can focus on writing code. And a happy developer (or any other worker really) is a productive one. It may make the project better.
+Simplifying some tasks have a positive effect on a developer's working comfort. On their mental health, probably too. You don't have to focus on complex configurations - you can focus on writing code. And a happy developer is a productive one. It may make the project better.
 
 ### There is no silver bullet
 
@@ -64,13 +64,13 @@ Procompilation can be great, but it has flaws. Every change on the website needs
 
 ### Use of dynamic data
 
-The dream of becoming the next Zuckerberg with this approach can be problematic for another reason - dynamic data. Users' data - and other real-time data - cannot be generated earlier. Some applications cannot avoid them.
+The dream of becoming the next Zuckerberg with this approach can be problematic for another reason - dynamic data. You can't generate users' (or other real-time) data earlier. Some applications cannot avoid them.
 
 At the same time, it's not like you cannot create anything dynamic. Developers create Jamstack sites that are regularly updated. I've created this blog with Jamstack, although posts are published regularly (let's say). You can develop e-commerce with it. The problem may occur on a large scale - with numerous subpages and frequent updates.
 
 ### Dependence on external services
 
-Microservices are substantial for this approach. Most of the third-party APIs and other services are solid. Nevertheless, if one of these services fails, your app will lose some functionality. It's not so different from the situation when one of your servers fails. But, you have more control over your server.
+Microservices are substantial for this approach. Most of the third-party APIs and other services are solid. Nevertheless, if one of these services fails, your app will lose some functionality. It's not so different when one of your servers fails. But, you have more control over your server.
 
 ## How to implement this approach in the next project?
 
@@ -80,7 +80,7 @@ To create a Jamstack project, you need to make decisions in several aspects.
 
 Contents in a Jamstack project are usually simple text files. They are in the same file structure as plugins, templates, and assets. Using Markdown or MDX, you can generate HTML pages that use custom components and templates (this blog post uses such a template). But, creating content this way requires specific syntax. For non-technical users, there are convenient alternatives.
 
-**Headless CMS** is a service that offers a rich user interface available via browser. Using it, you can easily create and edit content. Headless means that only the data layer is editable, and it's decoupled from the rendering layer (head), which you can choose. There may even be multiple rendering layers. Such a service exposes API for downloading data in the build phase. A few examples are:
+**Headless CMS** is a service that offers a rich user interface available via browser. Using it, you can easily create and edit content. Headless means that only the data layer is editable. It's decoupled from the rendering layer (head), which you can choose. There may even be multiple rendering layers. Such a service exposes API for downloading data in the build phase. A few examples are:
 
 - Sanity
 - Contentful
@@ -97,7 +97,7 @@ Contents in a Jamstack project are usually simple text files. They are in the sa
 
 ### Static Site Generator
 
-Having content, we need HTML pages to present it. You could code them by hand, which is reasonable for tiny websites. But, for most cases, it's worth using a Static Site Generator. It does what the name implies - it generates static pages using provided content. Almost. The name may insinuate the result is entirely static. But it's not the case! Generated files are static, but the finished website may have dynamic features. It's usually the domain of external APIs. There are many generators in different programming languages:
+Having content, we need HTML pages to present it. You could code them by hand, which is reasonable for tiny websites. But, for most cases, it's worth using a Static Site Generator. It does what the name implies - it generates static pages using provided content. Almost. The name may insinuate the result is non-interactive. But it's not the case! Generated files are static, but the finished website may have dynamic features. It's usually the domain of external APIs. There are many generators in different programming languages:
 
 - Next.js
 - Hugo
@@ -109,11 +109,11 @@ Having content, we need HTML pages to present it. You could code them by hand, w
 
 ### External APIs
 
-Many services offer various functionalities - from comments, through forms and searching to payment processing and e-commerce stuff. You can even create your APIs, abstracting some logic to custom functions.
+Many services offer various functionalities - from comments, through forms and searching to payment processing and e-commerce. You can even create your APIs, abstracting some logic to custom functions.
 
 ### Deployment
 
-When your app has all the required features, you need to deploy it somewhere. Today, on the market, there are some solid feature-rich hosting platforms. Beyond hosting, they offer functionalities such as form processing, data analytics, and easy to configure CD. Check platforms like:
+When your app has all the required features, you need to deploy it somewhere. Today, on the market, there are some solid feature-rich hosting platforms. Beyond hosting, they offer options such as form processing, data analytics, and easy-to-configure CD. Check platforms like:
 
 - Vercel
 - Github Pages

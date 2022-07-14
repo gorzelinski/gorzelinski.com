@@ -14,12 +14,12 @@ links: [{ text: "an-lam.pl", href: "https://an-lam.pl" }]
 
 ## Problem
 
-Zanim zacząłem pracę, spotkałem się z właścicielem firmy, aby zrozumieć czego dokładnie potrzebuje. Po serii pytań i dyskusji doszliśmy do porozumienia. Potrzebna była strona-wizytówka prezentująca ofertę firmy, która przekona posiadacza łodzi do skorzystania z niej. Aby to osiągnąć strona musi wyglądać profesjonalnie, działać wydajnie, prezentować dotychczasowe renowacje i podkreślać wieloletnie doświadczenie właściciela w branży.
+Zanim zacząłem pracę, spotkałem się z właścicielem firmy, aby zrozumieć czego dokładnie potrzebuje. Po serii pytań i dyskusji doszliśmy do porozumienia. Potrzebna była strona-wizytówka prezentująca ofertę firmy, która zamieni posiadacza łodzi w klienta. Aby to osiągnąć strona musi wyglądać profesjonalnie, działać wydajnie, prezentować dotychczasowe renowacje i podkreślać wieloletnie doświadczenie właściciela w branży.
 
 ## Inspiracja
 
 Przed przystąpieniem do projektowania zrobiłem gruntowny research. Przejrzałem mnóstwo stron konkurencji - od lokalnych szkutników po czartery jachtów. Podesłałem kilka linków właścicielowi, aby zorientować się w jego guście estetycznym.
-Przydatne także okazały się projekty marynistyczne na _dribble_ i _behance_. Z ich pomocą stworzyłem obszerny moodboard, do którego wracałem podczas projektowania.
+Przydatne także okazały się projekty marynistyczne na _dribble_ i _behance_. Z ich pomocą stworzyłem moodboard, do którego wracałem podczas projektowania.
 
 ![Moodboard dla strony an-lam](./moodboard.png)
 
@@ -55,7 +55,7 @@ Paleta kolorów składa się z odcieni granatu, bieli i szarości. Nawiązuje do
 
 ## Architektura
 
-Mając projekt graficzny i treści mogłem przystąpić do kodowania (w zasadzie, poszczególne etapy przeplatały się ze sobą, ale dla uproszczenia przedstawiam wszystko sekwencyjnie). Biorąc pod uwagę fakt, że treści na stronie nie będą często aktualizowane (głównie podstrona realizacje), strona nie będzie szczególnie interaktywna, a wydajność jest istotna, zdecydowałem się na architekturę [Jamstack](/blog/jamstack-what-why-how/).
+Mając projekt graficzny i treści mogłem przystąpić do kodowania (w zasadzie, poszczególne etapy przeplatały się ze sobą, ale dla uproszczenia przedstawiam wszystko sekwencyjnie). Biorąc pod uwagę fakt, że treści na stronie nie będą często aktualizowane, strona nie będzie szczególnie interaktywna, a wydajność jest istotna, zdecydowałem się na architekturę [Jamstack](/blog/jamstack-what-why-how/).
 
 ## Gatsby
 
@@ -74,7 +74,7 @@ Wybierałem głównie te oficjalne i na bieżąco wspierane pluginy. Starałem s
 
 Gatsby nie wspiera testów jednostkowych w domyśle. Dodanie ich wymaga odpowiedniej konfiguracji.
 
-W projekcie wykorzystałem framework `Jest` wraz z biblioteką `React Testing Library`. Moim zdaniem, wymusza ona dobre praktyki, takie jak wyszukiwanie elementów po rolach ARIA.
+W projekcie wykorzystałem framework `Jest` wraz z biblioteką `React Testing Library`. Wymusza ona dobre praktyki, takie jak wyszukiwanie elementów po rolach ARIA.
 Tworzona strona nie posiadała zbyt wiele logiki, którą zazwyczaj obejmują takie testy. Mimo to, były one całkiem przydatne - wykorzystałem je do sprawdzenia niezbędnej treści na stronie.
 
 ```jsx
@@ -140,7 +140,7 @@ Po połączeniu z repozytorium, w projekcie uruchomiłem ciągłą integrację. 
 
 ## Podsumowanie
 
-Efektem mojej pracy jest minimalistyczna, responsywna, estetyczna i wydajna strona internetowa, która uzyskuje najwyższe wyniki w audycie lighthouse. Praca nad tym projektem uświadomiła mi, jak istotny jest regularny kontakt z klientem. Sam nie jestem ekspertem w dziedzinie jachtów i laminowania. Konsultacje z klientem w tym zakresie okazały się bardzo wartościowe. I nie tylko - jego spostrzeżenia z zakresu designu również były pomocne. Myślę, że uczyniły projekt lepszym.
+Efektem mojej pracy jest minimalistyczna, responsywna, estetyczna i wydajna strona internetowa, która uzyskuje najwyższe wyniki w audycie lighthouse.
 
 ![Sekcja O nas - komputer stacjonarny](./about-us.png)
 

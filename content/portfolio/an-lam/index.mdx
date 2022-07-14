@@ -14,7 +14,7 @@ links: [{ text: "an-lam.pl", href: "https://an-lam.pl" }]
 
 ## Problem
 
-Before I started work, I had met with a business owner to understand his needs. After some questions and discussion, we've agreed. He needed a business-card-style website with an offer that convinces a boat owner to use this offer. The website needs to look professional, work efficiently, display past repairs, and underline the long-term experience of the owner to achieve this goal.
+Before I started work, I met with a business owner to understand his needs. After some questions and discussion, we've agreed. He needed a convincing business-card-style website with an offer that transforms a boat owner into a client. The website needs to look professional, work efficiently, display past repairs, and underline the long-term experience of the owner to achieve this goal.
 
 ## Inspiration
 
@@ -48,11 +48,11 @@ The color palette consisted of grays, whites, and navy blue. It refers to sea, y
 
 ## Architecture
 
-Having design and content, I could start coding (actually, different project stages were intertwined, but I present everything sequentially). The website will be mostly static, won't be often updated, and need to have good performance - because of that, I've chosen [Jamstack](/blog/jamstack-what-why-how/) architecture.
+Having design and content, I could start coding (actually, different project stages were intertwined, but I present everything sequentially). The website will be mostly static, won't be often updated, and need to have good performance. Because of that, I've chosen [Jamstack](/blog/jamstack-what-why-how/) architecture.
 
 ## Gatsby
 
-Gatsby is one of the most feature-rich static site generators out there. It offers code and image optimization. There are many starters, themes, and plugins, which improve the speed of software development. I've started the project using [default starter](https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-default), and then I added some plugins:
+Gatsby is one of the most feature-rich static site generators out there. It offers code and image optimization. There are many starters, themes, and plugins, which improve the speed of software development. I've started the project using the [default starter](https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-default). Then I added some plugins:
 
 - `gatsby-source-filesystem` for handling local files.
 - `gatsby-transformer-JSON` to parse data from JSON files. It allows me to add new repairs easily in the future.
@@ -67,7 +67,7 @@ I was choosing mainly official and supported plugins. I also tried to add only t
 
 Gatsby doesn't support unit tests out of the box. I've added config to be able to write them.
 
-In the project, I used the framework `Jest` with `React Testing Library`. In my opinion, it enforces good practices like finding elements by ARIA roles. There was not too much logic in this website - usually covered by unit tests. But, they were still helpful - I used them to test if components rendered everything correctly.
+In the project, I used the framework `Jest` with `React Testing Library`. It enforces good practices like finding elements by ARIA roles. There was not too much logic - usually covered by unit tests. But, they were still helpful - I used them to test if components rendered everything correctly.
 
 ```jsx
 import React from "react"
@@ -126,7 +126,7 @@ Netlify is a platform that combines CDN, serverless functions, and build automat
 
 ## Summary
 
-The effect of my work is a minimalistic, responsive, aesthetic, and performant website, that scores high in lighthouse audits.
+The effect of my work is a minimalistic, responsive, aesthetic, and performant website that scores high in lighthouse audits.
 
 ![Section About us - desktop](./about-us.png)
 
