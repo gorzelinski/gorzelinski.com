@@ -10,6 +10,11 @@ export const ThemeContext = createContext()
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(undefined)
 
+  const setClass = newClass => {
+    const oldClass = document.documentElement.classList.value
+    document.documentElement.classList.replace(oldClass, newClass)
+  }
+
   const saveTheme = preference => {
     setTheme(preference)
     setToLS("theme", preference)
@@ -17,15 +22,9 @@ const ThemeProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    const root = document.documentElement
-    const initialThemePreference = root.classList.value
+    const initialThemePreference = document.documentElement.classList.value
     setTheme(initialThemePreference)
   }, [])
-
-  const setClass = newClass => {
-    const oldClass = document.documentElement.classList.value
-    document.documentElement.classList.replace(oldClass, newClass)
-  }
 
   return (
     <ThemeContext.Provider value={{ theme, saveTheme }}>
