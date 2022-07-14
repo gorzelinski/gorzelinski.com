@@ -77,7 +77,7 @@ describe("Navigation tests", () => {
       `mailto:${email}`
     )
 
-    cy.findByRole("link", { name: /contact me/i }).should(
+    cy.findByRole("link", { name: /get in touch/i }).should(
       "have.prop",
       "href",
       `mailto:${email}`
