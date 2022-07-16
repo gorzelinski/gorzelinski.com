@@ -9,7 +9,6 @@ export const Background = styled.div`
   transition: background-color var(--duration-natural) ease-out;
 `
 
-// TODO: make layout better on large screens. Change max width after
 export const Wrapper = styled.div`
   ${props =>
     props.$global &&
