@@ -13,9 +13,10 @@ export const useBio = () => {
             email
             social {
               github
-              dribbble
               twitter
+              dribbble
               facebook
+              instagram
               linkedin
             }
           }

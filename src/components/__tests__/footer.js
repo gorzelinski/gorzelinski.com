@@ -17,6 +17,7 @@ jest.mock("../../hooks", () => ({
               dribbble: "authorsDribbble",
               twitter: "authorsTwitter",
               facebook: "authorsFacebook",
+              instagram: "authorsInstagram",
             },
           },
         },

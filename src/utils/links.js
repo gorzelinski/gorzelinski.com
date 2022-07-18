@@ -12,15 +12,17 @@ export const createShareLinks = (url, title) => ({
 
 export const createSocialLinks = ({
   github,
-  dribbble,
   twitter,
+  dribbble,
   facebook,
+  instagram,
   linkedin,
 }) => ({
   ...(github && { github: `https://github.com/${github}` }),
-  ...(dribbble && { dribbble: `https://dribbble.com/${dribbble}` }),
   ...(twitter && { twitter: `https://twitter.com/${twitter}` }),
+  ...(dribbble && { dribbble: `https://dribbble.com/${dribbble}` }),
   ...(facebook && { facebook: `https://www.facebook.com/${facebook}` }),
+  ...(instagram && { instagram: `https://www.instagram.com/${instagram}/` }),
   ...(linkedin && { linkedin: `https://www.linkedin.com/in/${linkedin}` }),
 })
 

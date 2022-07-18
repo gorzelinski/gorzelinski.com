@@ -3,6 +3,7 @@ import {
   LogoDribbble,
   LogoFacebook,
   LogoGithub,
+  LogoInstagram,
   LogoLinkedin,
   LogoTwitter,
 } from "@styled-icons/ionicons-solid"
@@ -14,12 +15,14 @@ const Socials = ({ data = {} }) => {
     switch (name) {
       case "github":
         return <LogoGithub></LogoGithub>
-      case "dribbble":
-        return <LogoDribbble></LogoDribbble>
       case "twitter":
         return <LogoTwitter></LogoTwitter>
+      case "dribbble":
+        return <LogoDribbble></LogoDribbble>
       case "facebook":
         return <LogoFacebook></LogoFacebook>
+      case "instagram":
+        return <LogoInstagram></LogoInstagram>
       case "linkedin":
         return <LogoLinkedin></LogoLinkedin>
       default:

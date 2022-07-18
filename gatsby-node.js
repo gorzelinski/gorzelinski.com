@@ -156,9 +156,10 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(`
     type Social {
       github: String
-      dribbble: String
       twitter: String
+      dribbble: String
       facebook: String
+      instagram: String
       linkedin: String
     }
     

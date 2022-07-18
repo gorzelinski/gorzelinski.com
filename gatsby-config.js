@@ -9,9 +9,10 @@ module.exports = {
       email: `hello@gorzelinski.com`,
       social: {
         github: `gorzelinski`,
-        dribbble: `gorzelinski`,
         twitter: `gorzelinski`,
+        dribbble: `gorzelinski`,
         facebook: `gorzelinski`,
+        instagram: `gorzelinsky`,
         linkedin: `mateusz-gorzelinski`,
       },
     },
