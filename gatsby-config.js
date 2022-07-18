@@ -309,7 +309,7 @@ module.exports = {
         short_name: `Gorzelinski`,
         description: `I create things on the Internet.`,
         start_url: `/`,
-        background_color: `#ffffff`,
+        background_color: `#fafafa`,
         theme_color: `#0466c8`,
         theme_color_in_head: false,
         display: `standalone`,
