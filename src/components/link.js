@@ -1,12 +1,20 @@
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 
 import { A, Link as GatsbyLink } from "../elements"
 import { isInternal } from "../utils"
-import { useBio } from "../hooks"
 
 const Link = ({ children, href, ...other }) => {
-  const { bio } = useBio()
-  const siteUrl = bio.site?.siteMetadata?.siteUrl
+  const data = useStaticQuery(graphql`
+    query LinkQuery {
+      site {
+        siteMetadata {
+          siteUrl
+        }
+      }
+    }
+  `)
+  const siteUrl = data.site?.siteMetadata?.siteUrl
 
   return isInternal(siteUrl, href) ? (
     <GatsbyLink to={href} {...other}>

@@ -3,29 +3,6 @@ import { render, screen } from "@testing-library/react"
 
 import Contact from "../contact"
 
-jest.mock("../../hooks", () => ({
-  useBio: () => ({
-    bio: {
-      site: {
-        siteMetadata: {
-          title: "siteTitle",
-          author: {
-            name: "authorsName",
-            email: "authorsEmail",
-            social: {
-              github: "authorsGithub",
-              dribbble: "authorsDribbble",
-              twitter: "authorsTwitter",
-              facebook: "authorsFacebook",
-              instagram: "authorsInstagram",
-            },
-          },
-        },
-      },
-    },
-  }),
-}))
-
 describe("Contact component", () => {
   describe("renders", () => {
     beforeEach(() => {

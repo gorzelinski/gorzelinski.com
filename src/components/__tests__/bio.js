@@ -1,8 +1,10 @@
 import React from "react"
+import * as Gatsby from "gatsby"
 import { render, screen } from "@testing-library/react"
 
 import Bio from "../bio"
 
+// TODO: mock globally
 jest.mock("react-i18next", () => ({
   useTranslation: () => {
     return {
@@ -40,19 +42,37 @@ const defaultData = {
   },
 }
 
+const useStaticQuery = jest.spyOn(Gatsby, "useStaticQuery")
+useStaticQuery.mockImplementation(() => ({
+  themeI18N: {
+    defaultLang: "en",
+    config: [
+      {
+        code: "en",
+        hrefLang: "en-US",
+        name: "English",
+        localName: "English",
+        langDir: "ltr",
+        dateFormat: "MMMM DD, YYYY",
+      },
+      {
+        code: "pl",
+        hrefLang: "pl-PL",
+        name: "Polish",
+        localName: "Polski",
+        langDir: "ltr",
+        dateFormat: "DD MMMM, YYYY",
+      },
+    ],
+  },
+  ...defaultData,
+}))
+
 describe("Bio component", () => {
-  describe("doesn't render (due to partial data)", () => {
-    it("image", () => {
-      render(<Bio data={{ ...defaultData, image: {} }}></Bio>)
-
-      const image = screen.queryByRole("img")
-      expect(image).not.toBeInTheDocument()
-    })
-  })
-
   describe("renders", () => {
     beforeEach(() => {
-      render(<Bio data={defaultData}></Bio>)
+      jest.clearAllMocks()
+      render(<Bio></Bio>)
     })
 
     it("image", () => {

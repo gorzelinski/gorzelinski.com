@@ -1,5 +1,6 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import { graphql, useStaticQuery } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
 import { ChevronForward } from "@styled-icons/ionicons-solid"
 
@@ -15,8 +16,17 @@ import {
   Tile,
 } from "../elements"
 
-const Bio = ({ data = {} }) => {
+const Bio = () => {
   const { t } = useTranslation("components/bio")
+  const data = useStaticQuery(graphql`
+    query BioQuery {
+      image: file(relativePath: { eq: "gorzelinski.jpg" }) {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
+    }
+  `)
   const image = getImage(data?.image)
   const isDataComplete = image && true
 
