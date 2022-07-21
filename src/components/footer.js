@@ -93,13 +93,7 @@ const Footer = ({ location }) => {
           >
             RSS
           </Button>
-          <Button
-            as="a"
-            $align="left"
-            $type="nav"
-            $size="small"
-            href={`mailto:${email}`}
-          >
+          <Button as="a" $type="nav" $size="small" href={`mailto:${email}`}>
             {t("contact")}
           </Button>
         </Navigation>
