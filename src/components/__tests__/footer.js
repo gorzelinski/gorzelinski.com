@@ -3,29 +3,7 @@ import { render, screen } from "@testing-library/react"
 
 import Footer from "../footer"
 
-jest.mock("../../hooks", () => ({
-  useBio: () => ({
-    bio: {
-      site: {
-        siteMetadata: {
-          title: "siteTitle",
-          author: {
-            name: "authorsName",
-            email: "authorsEmail",
-            social: {
-              github: "authorsGithub",
-              dribbble: "authorsDribbble",
-              twitter: "authorsTwitter",
-              facebook: "authorsFacebook",
-              instagram: "authorsInstagram",
-            },
-          },
-        },
-      },
-    },
-  }),
-}))
-
+// TODO: mock globally
 jest.mock("react-i18next", () => ({
   useTranslation: () => {
     return {

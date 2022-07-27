@@ -45,15 +45,12 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          formats: [`auto`, `webp`, `avif`],
+          formats: [`auto`, `webp`],
           placeholder: `dominantColor`,
           quality: 80,
           breakpoints: [750, 1080, 1366, 1920, 2560],
           backgroundColor: `transparent`,
           webpOptions: {
-            quality: 80,
-          },
-          avifOptions: {
             quality: 80,
           },
         },
@@ -72,8 +69,8 @@ module.exports = {
               backgroundColor: `transparent`,
               quality: 80,
               withWebp: { quality: 80 },
-              withAvif: { quality: 80 },
-              maxWidth: 720,
+              maxWidth: 1440,
+              srcSetBreakpoints: [720, 1080],
               linkImagesToOriginal: false,
               // showCaptions: [`title`],
             },

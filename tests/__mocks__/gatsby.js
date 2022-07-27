@@ -1,6 +1,21 @@
 const React = require("react")
 const gatsby = jest.requireActual("gatsby")
 
+const siteMetaData = {
+  title: "siteTitle",
+  author: {
+    name: "authorsName",
+    email: "authorsEmail",
+    social: {
+      github: "authorsGithub",
+      dribbble: "authorsDribbble",
+      twitter: "authorsTwitter",
+      facebook: "authorsFacebook",
+      instagram: "authorsInstagram",
+    },
+  },
+}
+
 module.exports = {
   ...gatsby,
   graphql: jest.fn(),
@@ -24,6 +39,11 @@ module.exports = {
   ),
   StaticQuery: jest.fn(),
   useStaticQuery: jest.fn().mockImplementation(() => ({
+    site: {
+      siteMetadata: {
+        ...siteMetaData,
+      },
+    },
     themeI18N: {
       defaultLang: "en",
       config: [

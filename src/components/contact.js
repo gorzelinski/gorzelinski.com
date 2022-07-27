@@ -1,15 +1,33 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import { graphql, useStaticQuery } from "gatsby"
 
 import { Button, H2, Hero, P, Subsection, Tile } from "../elements"
-import { useBio } from "../hooks"
 import { createSocialLinks } from "../utils"
 import Socials from "./socials"
 
 const Contact = () => {
   const { t } = useTranslation("components/contact")
-  const { bio } = useBio()
-  const { email, social } = bio.site.siteMetadata?.author
+  const data = useStaticQuery(graphql`
+    query ContactQuery {
+      site {
+        siteMetadata {
+          author {
+            email
+            social {
+              github
+              twitter
+              dribbble
+              facebook
+              instagram
+              linkedin
+            }
+          }
+        }
+      }
+    }
+  `)
+  const { email, social } = data.site.siteMetadata?.author
   const links = createSocialLinks(social)
 
   return (

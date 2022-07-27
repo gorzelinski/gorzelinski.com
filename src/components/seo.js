@@ -1,9 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-
-import { useBio } from "../hooks/useBio"
 import { useTranslation } from "react-i18next"
+import { graphql, useStaticQuery } from "gatsby"
 
 const Seo = ({
   description,
@@ -15,9 +14,22 @@ const Seo = ({
   titleTemplate,
   type,
 }) => {
-  const {
-    bio: { site },
-  } = useBio()
+  const { site } = useStaticQuery(graphql`
+    query SeoQuery {
+      site {
+        siteMetadata {
+          siteUrl
+          title
+          author {
+            email
+            social {
+              twitter
+            }
+          }
+        }
+      }
+    }
+  `)
   const { t } = useTranslation("pages/index")
 
   const url = `${site.siteMetadata.siteUrl}${slug}`

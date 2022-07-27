@@ -59,6 +59,7 @@
     "jest": "^28.1.2",
     "jest-environment-jsdom": "^28.1.2",
     "jest-styled-components": "^7.0.8",
+    "netlify-cli": "^10.10.0",
     "prettier": "2.7.1",
     "start-server-and-test": "^1.14.0"
   },

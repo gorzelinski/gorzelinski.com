@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { useLocalization } from "gatsby-theme-i18n"
 
-import { useBio } from "../hooks"
 import { createMetaImage } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -19,7 +18,6 @@ const Index = ({ data, location }) => {
   const { t } = useTranslation("pages/index")
   const lastPosts = data.lastPosts?.nodes
   const lastProjects = data.lastProjects?.nodes
-  const { bio } = useBio()
   const metaImage = createMetaImage({
     alt: t("alt"),
     src: data?.metaImage,
@@ -43,7 +41,7 @@ const Index = ({ data, location }) => {
       >
         <Cards data={lastProjects}></Cards>
       </Featured>
-      <Bio data={bio}></Bio>
+      <Bio></Bio>
       <Featured
         data={{
           title: t("featuredPosts.title"),

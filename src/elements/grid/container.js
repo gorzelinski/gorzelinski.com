@@ -3,7 +3,6 @@ import { css } from "styled-components"
 import { media } from "../utils"
 
 const base = css`
-  display: grid;
   grid-template-columns: repeat(
     auto-fit,
     minmax(min(var(--column), 100%), 1fr)
@@ -21,6 +20,7 @@ const base = css`
 
 export const grid = css`
   --column: calc((768px - var(--space-40) - (var(--space-50) * 2)) / 2);
+  display: grid;
 
   ${props => {
     switch (props.$grid) {
@@ -28,7 +28,6 @@ export const grid = css`
         return base
       case "sub":
         return css`
-          display: grid;
           grid-template-columns: repeat(
             auto-fit,
             minmax(min(var(--column), 100%), 1fr)
@@ -37,7 +36,6 @@ export const grid = css`
         `
       case "article":
         return css`
-          display: grid;
           grid-template-columns:
             minmax(0, 1fr) minmax(1ch, var(--space-line-length))
             minmax(0, 1fr);

@@ -1,5 +1,7 @@
 import { css } from "styled-components"
 
+import { media } from "../utils"
+
 export const span = css`
   ${props => {
     switch (props.$span) {
@@ -9,15 +11,30 @@ export const span = css`
         `
       case 2:
         return css`
-          grid-column: span 2;
+          grid-column: span 1;
+          ${media.tablet`
+            grid-column: span 2;
+          `}
         `
       case 3:
         return css`
-          grid-column: span 3;
+          grid-column: span 1;
+          ${media.tablet`
+            grid-column: span 2;
+          `}
+          ${media.desktop`
+            grid-column: span 3;
+          `}
         `
       case 4:
         return css`
-          grid-column: span 4;
+          grid-column: span 1;
+          ${media.tablet`
+            grid-column: span 2;
+          `}
+          ${media.desktop`
+            grid-column: span 4;
+          `}
         `
       case "all":
         return css`

@@ -1,5 +1,6 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import { graphql, useStaticQuery } from "gatsby"
 import { useLocalization } from "gatsby-theme-i18n"
 import { Mail } from "@styled-icons/ionicons-solid"
 
@@ -13,15 +14,32 @@ import {
   Tile,
 } from "../elements"
 import { createSocialLinks } from "../utils"
-import { useBio } from "../hooks"
 import Socials from "./socials"
 import LanguageSwitcher from "./language-switcher"
 
 const Footer = ({ location }) => {
   const { locale, localizedPath, defaultLang } = useLocalization()
   const { t } = useTranslation("components/footer")
-  const { bio } = useBio()
-  const { email, social } = bio.site.siteMetadata?.author
+  const data = useStaticQuery(graphql`
+    query FooterQuery {
+      site {
+        siteMetadata {
+          author {
+            email
+            social {
+              github
+              twitter
+              dribbble
+              facebook
+              instagram
+              linkedin
+            }
+          }
+        }
+      }
+    }
+  `)
+  const { email, social } = data.site.siteMetadata?.author
   const links = createSocialLinks(social)
 
   return (
@@ -74,15 +92,6 @@ const Footer = ({ location }) => {
             })}
           >
             RSS
-          </Button>
-          <Button
-            as="a"
-            $align="left"
-            $type="nav"
-            $size="small"
-            href={`mailto:${email}`}
-          >
-            {t("contact")}
           </Button>
         </Navigation>
       </Tile>
