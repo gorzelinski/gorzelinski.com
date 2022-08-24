@@ -102,7 +102,7 @@ export const pageQuery = graphql`
       limit: 3
       filter: {
         fields: { locale: { eq: $locale } }
-        fileAbsolutePath: { regex: "/(blog)/" }
+        frontmatter: { type: { eq: "post" } }
       }
       sort: { fields: frontmatter___date, order: DESC }
     ) {

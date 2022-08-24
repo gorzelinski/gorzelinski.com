@@ -81,7 +81,7 @@ export const pageQuery = graphql`
       limit: 4
       filter: {
         fields: { locale: { eq: $locale } }
-        fileAbsolutePath: { regex: "/(blog)/" }
+        frontmatter: { type: { eq: "post" } }
       }
       sort: { fields: frontmatter___date, order: DESC }
     ) {
@@ -109,7 +109,7 @@ export const pageQuery = graphql`
       limit: 2
       filter: {
         fields: { locale: { eq: $locale } }
-        fileAbsolutePath: { regex: "/(portfolio)/" }
+        frontmatter: { type: { eq: "project" } }
       }
       sort: { fields: frontmatter___date, order: DESC }
     ) {
