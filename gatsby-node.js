@@ -169,7 +169,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type BannerImage {
       alt: String
       caption: String
-      src: ImageSharp
+      src: File @fileByRelativePath
     }
 
     type Link {
@@ -195,7 +195,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       slug: String
     }
 
-    type MarkdownRemark implements Node {
+    type Mdx implements Node {
       frontmatter: Frontmatter
       fields: Fields
     }
