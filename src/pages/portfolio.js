@@ -83,7 +83,7 @@ export const pageQuery = graphql`
     allProjects: allMdx(
       filter: {
         fields: { locale: { eq: $locale } }
-        fileAbsolutePath: { regex: "/(portfolio)/" }
+        frontmatter: { type: { eq: "project" } }
       }
       sort: { fields: frontmatter___date, order: DESC }
     ) {

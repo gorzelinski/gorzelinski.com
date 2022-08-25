@@ -43,7 +43,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       {
         allMdx(
           sort: { fields: [frontmatter___date], order: ASC }
-          filter: { fileAbsolutePath: { regex: "/(blog)/" } }
+          filter: { frontmatter: { type: { eq: "post" } } }
           limit: 1000
         ) {
           group(field: fields___locale) {
@@ -67,7 +67,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       {
         allMdx(
           sort: { fields: [frontmatter___date], order: ASC }
-          filter: { fileAbsolutePath: { regex: "/(portfolio)/" } }
+          filter: { frontmatter: { type: { eq: "project" } } }
           limit: 1000
         ) {
           group(field: fields___locale) {
@@ -169,7 +169,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type BannerImage {
       alt: String
       caption: String
-      src: ImageSharp
+      src: File @fileByRelativePath
     }
 
     type Link {
@@ -195,7 +195,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       slug: String
     }
 
-    type MarkdownRemark implements Node {
+    type Mdx implements Node {
       frontmatter: Frontmatter
       fields: Fields
     }
