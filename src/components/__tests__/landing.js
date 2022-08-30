@@ -3,6 +3,10 @@ import { render, screen } from "@testing-library/react"
 
 import Landing from "../landing"
 
+jest.mock("../../hooks/usePrefersReducedMotion.js", () => ({
+  usePrefersReducedMotion: () => true,
+}))
+
 describe("Landing component", () => {
   describe("renders", () => {
     beforeEach(() => {
