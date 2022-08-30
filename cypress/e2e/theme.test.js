@@ -35,7 +35,9 @@ describe("Theme tests", () => {
       onBeforeLoad(win) {
         cy.stub(win, "matchMedia")
           .withArgs("(prefers-color-scheme: dark)")
-          .returns({ matches: true })
+          .returns({ matches: true, addEventListener: () => {} })
+          .withArgs("(prefers-reduced-motion: reduce)")
+          .returns({ matches: false, addEventListener: () => {} })
       },
     })
     checkDarkTheme()
