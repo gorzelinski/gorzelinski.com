@@ -4,6 +4,13 @@ import { render, screen } from "@testing-library/react"
 import Navbar from "../navbar"
 import ThemeProvider from "../../themes/theme-provider"
 
+jest.mock("../../hooks/useTheme.js", () => ({
+  useTheme: () => ({
+    theme: "light",
+    saveTheme: jest.fn(),
+  }),
+}))
+
 describe("Navbar component", () => {
   describe("renders", () => {
     beforeEach(() => {
