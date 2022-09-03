@@ -35,7 +35,7 @@ const renderNodes = reactNodes => {
 }
 
 const useMock = [k => k, {}]
-useMock.t = k => k
+useMock.t = (k, returnObjects = false) => (returnObjects ? [] : k)
 useMock.i18n = {}
 
 module.exports = {

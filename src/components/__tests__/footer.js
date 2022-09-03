@@ -3,15 +3,6 @@ import { render, screen } from "@testing-library/react"
 
 import Footer from "../footer"
 
-// TODO: mock globally
-jest.mock("react-i18next", () => ({
-  useTranslation: () => {
-    return {
-      t: str => (str === "pages" ? [] : str),
-    }
-  },
-}))
-
 describe("Footer component", () => {
   describe("renders", () => {
     beforeEach(() => {
