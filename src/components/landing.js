@@ -2,7 +2,7 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 
 import { H1, Hero, P, Button, Tile } from "../elements"
-import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion"
+import { usePrefersReducedMotion } from "../hooks"
 import Typewriter from "./typewriter"
 
 const Landing = () => {

@@ -1,6 +1,5 @@
-import React, { useState } from "react"
+import React from "react"
 import { useTranslation } from "react-i18next"
-import { useLocalization } from "gatsby-theme-i18n"
 import { At, Send, Sync } from "@styled-icons/ionicons-solid"
 
 import {
@@ -18,43 +17,12 @@ import {
   Tile,
   Ul,
 } from "../elements"
+import { useSubscribe } from "../hooks"
 import Callout from "./callout"
 
 const Subscribe = () => {
-  const { locale } = useLocalization()
   const { t } = useTranslation("components/subscribe")
-  const [state, setState] = useState("idle")
-  const ENGLISH_FORM_ID = `3106682`
-  const POLISH_FORM_ID = `3084916`
-  const FORM_URL = `https://app.convertkit.com/forms/${
-    locale === "pl" ? POLISH_FORM_ID : ENGLISH_FORM_ID
-  }/subscriptions`
-
-  const handleSubmit = async e => {
-    e.preventDefault()
-    setState("loading")
-    const data = new FormData(e.target)
-
-    try {
-      const response = await fetch(FORM_URL, {
-        method: "post",
-        body: data,
-        headers: {
-          accept: "application/json",
-        },
-      })
-
-      const json = await response.json()
-
-      if (json.status === "success") {
-        setState("success")
-        return
-      }
-      setState("error")
-    } catch (error) {
-      setState("error")
-    }
-  }
+  const { state, setState, handleSubmit, FORM_URL } = useSubscribe()
 
   return (
     <Section $featured id="newsletter">
