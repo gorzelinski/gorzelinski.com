@@ -1,7 +1,7 @@
 import React, { createContext } from "react"
 import { MDXProvider } from "@mdx-js/react"
 
-import { useTheme } from "../hooks/useTheme"
+import { useTheme } from "../hooks"
 import components from "./mapping"
 import GlobalStyles from "./global-styles"
 
