@@ -14,6 +14,7 @@ const postMock = {
       name: "Linkedin",
       url: "https://www.linkedin.com/sharing/share-offsite/?url=",
     },
+    { name: "Email", url: "mailto:" },
   ],
 }
 
@@ -73,6 +74,7 @@ describe("Blog tests", () => {
         .first()
         .should("have.prop", "href")
         .and("contain", link.url)
+        .and("contain", encodeURIComponent(postMock.url))
     })
 
     cy.get('a[rel="next"]').should("be.visible").click()

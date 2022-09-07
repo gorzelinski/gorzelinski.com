@@ -1,14 +1,13 @@
-export const createShareLinks = (url, title) => ({
-  twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-    url
-  )}&text=${encodeURIComponent(title)}`,
-  facebook: `https://www.facebook.com/sharer.php?u=${encodeURIComponent(
-    url
-  )}&quote=${encodeURIComponent(title)}`,
-  linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-    url
-  )}`,
-})
+export const createShareLinks = (url, title) => {
+  const encodedUrl = encodeURIComponent(url)
+  const encodedTitle = encodeURIComponent(title)
+  return {
+    twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+    facebook: `https://www.facebook.com/sharer.php?u=${encodedUrl}&quote=${encodedTitle}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+    email: `mailto:?subject=${encodedTitle}&body=${encodedUrl}`,
+  }
+}
 
 export const createSocialLinks = ({
   github,

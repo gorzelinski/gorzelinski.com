@@ -6,6 +6,7 @@ import {
   LogoInstagram,
   LogoLinkedin,
   LogoTwitter,
+  Mail,
 } from "@styled-icons/ionicons-solid"
 
 import { Button, Icon, Navigation } from "../elements"
@@ -25,6 +26,8 @@ const Socials = ({ data = {} }) => {
         return <LogoInstagram></LogoInstagram>
       case "linkedin":
         return <LogoLinkedin></LogoLinkedin>
+      case "email":
+        return <Mail></Mail>
       default:
         return null
     }
