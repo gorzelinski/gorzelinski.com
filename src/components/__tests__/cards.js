@@ -10,6 +10,7 @@ const postsMock = [
       slug: "/default-slug/",
     },
     frontmatter: {
+      type: "post",
       date: "May 1, 2022",
       title: "Default title",
       description: "Default description",
@@ -51,6 +52,7 @@ const postsMock = [
       slug: "/default-slug-2/",
     },
     frontmatter: {
+      type: "post",
       date: "May 2, 2022",
       title: "Default title 2",
       description: "Default description 2",
@@ -92,6 +94,7 @@ const postsMock = [
       slug: "/default-slug-3/",
     },
     frontmatter: {
+      type: "post",
       date: "May 3, 2022",
       title: "Default title 3",
       description: "Default description 3",
@@ -133,6 +136,7 @@ const postsMock = [
       slug: "/default-slug-4/",
     },
     frontmatter: {
+      type: "post",
       date: "May 4, 2022",
       title: "Default title 4",
       description: "Default description 4",
@@ -177,6 +181,7 @@ const projectsMock = [
       slug: "/default-slug/",
     },
     frontmatter: {
+      type: "project",
       description: "Default description",
       services: ["Default roles"],
       title: "Default title",
@@ -217,6 +222,7 @@ const projectsMock = [
       slug: "/default-slug-2/",
     },
     frontmatter: {
+      type: "project",
       description: "Default description 2",
       services: ["Default roles 2"],
       title: "Default title 2",

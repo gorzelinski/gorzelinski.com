@@ -92,6 +92,7 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
+          type
           services
           title
           description

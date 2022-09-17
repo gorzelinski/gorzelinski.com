@@ -165,6 +165,7 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
+          type
           date(formatString: $dateFormat, locale: $locale)
           title
           description
