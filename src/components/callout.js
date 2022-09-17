@@ -7,8 +7,7 @@ import {
   Warning,
 } from "@styled-icons/ionicons-solid"
 
-import { Icon } from "../elements"
-import { colorStates } from "../elements/effects"
+import { colorStates, Icon } from "../elements"
 
 const StyledCallout = styled.div`
   position: relative;

@@ -1,4 +1,4 @@
-const code = {
+export const code = {
   plain: {
     color: "var(--color-gray-base)",
     backgroundColor: "var(--color-gray-90)",
@@ -60,5 +60,3 @@ const code = {
     },
   ],
 }
-
-export default code

@@ -1,6 +1,7 @@
 export * from "./address"
 export * from "./button"
 export * from "./card"
+export * from "./effects"
 export * from "./figure"
 export * from "./form"
 export * from "./icon"

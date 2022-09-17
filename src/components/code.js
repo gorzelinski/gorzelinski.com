@@ -1,7 +1,7 @@
 import React from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
 
-import codeTheme from "../themes/code"
+import { code } from "../themes"
 import { BlockCode } from "../elements"
 
 const CodeBlock = ({ children }) => {
@@ -12,7 +12,7 @@ const CodeBlock = ({ children }) => {
       {...defaultProps}
       code={children.props.children}
       language={language}
-      theme={codeTheme}
+      theme={code}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <BlockCode
