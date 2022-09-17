@@ -10,13 +10,16 @@ const Cards = ({ data = [] }) => {
   const cards = data
 
   return cards.length > 0 ? (
-    cards.map(card =>
-      card.frontmatter.date ? (
-        <Post data={card} key={card.fields.slug}></Post>
-      ) : (
-        <Project data={card} key={card.fields.slug}></Project>
-      )
-    )
+    cards.map(card => {
+      switch (card.frontmatter.type) {
+        case "post":
+          return <Post data={card} key={card.fields.slug}></Post>
+        case "project":
+          return <Project data={card} key={card.fields.slug}></Project>
+        default:
+          return null
+      }
+    })
   ) : (
     <Tile $span="all">
       <P $type="ui">{t("message")}</P>
