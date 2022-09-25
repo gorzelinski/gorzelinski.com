@@ -2,10 +2,13 @@ import React from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
 
 import { code } from "../themes"
-import { BlockCode } from "../elements"
+import { BlockCode, Small } from "../elements"
 
 const CodeBlock = ({ children }) => {
   const language = children.props.className.replace(/language-/, "") || ""
+  const isShell = language === "bash" || language === "shell"
+  const metastring = children.props.metastring
+  const title = metastring ? metastring : ""
 
   return (
     <Highlight
@@ -21,17 +24,22 @@ const CodeBlock = ({ children }) => {
             ...style,
           }}
         >
+          <div className="header">
+            {title ? <Small className="title">{title}</Small> : null}
+            <Small className="language">
+              {isShell ? "🔴  🟡  🟢" : language.toUpperCase()}
+            </Small>
+          </div>
           <code>
-            {tokens.map((line, i) => (
-              <div key={i} {...getLineProps({ line, key: i })}>
-                <span>{i + 1}</span>
+            {tokens.slice(0, -1).map((line, i) => (
+              <div className="line" key={i} {...getLineProps({ line, key: i })}>
+                {isShell ? null : <span className="line-number">{i + 1}</span>}
                 {line.map((token, key) => (
                   <span key={key} {...getTokenProps({ token, key })} />
                 ))}
               </div>
             ))}
           </code>
-          <small>{language}</small>
         </BlockCode>
       )}
     </Highlight>

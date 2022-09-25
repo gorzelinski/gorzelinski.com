@@ -4,6 +4,7 @@ import { border, media } from "../utils"
 
 export const code = css`
   font-size: var(--font-size-10);
+  line-height: var(--font-height-10);
   font-family: var(--font-family-code);
   font-weight: var(--font-weight-regular);
   transition: background-color var(--duration-natural) ease-out,
@@ -14,7 +15,6 @@ export const InlineCode = styled.code`
   ${code}
   font-weight: inherit;
   display: inline-block;
-  line-height: var(--font-height-10);
   color: var(--color-primary-base);
   background-color: var(--color-gray-90);
   border-radius: var(--border-radius-10);
@@ -25,41 +25,60 @@ export const InlineCode = styled.code`
 export const BlockCode = styled.pre`
   ${border.bottom}
   ${border.top}
+  ${code}
   display: block;
   position: relative;
-  padding: calc(var(--space-30) - var(--space-00));
-  margin: 0 var(--overflow-wrapper);
-  margin-bottom: var(--vertical-rhythm);
+  padding: var(--space-30);
+  margin: 0 var(--overflow-wrapper) var(--vertical-rhythm);
   box-shadow: var(--shadow-depth-10);
 
   ${media.tablet`
+    margin: 0 0 var(--vertical-rhythm);
     ${border.all}
   `}
 
+  & .header {
+    display: flex;
+    gap: var(--space-20);
+    justify-content: space-between;
+    flex-wrap: wrap;
+    & > * {
+      user-select: none;
+      margin: 0;
+    }
+  }
+  & .title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--color-gray-00);
+  }
+  & .language {
+    flex: 0;
+    color: var(--color-gray-00);
+  }
+
   & > code {
-    ${code}
+    --line-margin: var(--space-30);
+    --line-number-margin: var(--space-20);
     display: inline-block;
     max-width: 100%;
     overflow-x: auto;
     line-height: var(--font-height-base);
-    & > div:last-child {
-      margin-bottom: var(--space-30);
+    & .token-line:last-child {
+      margin-bottom: var(--line-margin);
     }
-    & > div {
-      & > span:first-child {
-        display: inline-block;
-        width: 2rem;
-        text-align: right;
-        user-select: none;
-        padding: 0 var(--space-30) 0 0;
-      }
+    & .token-line:first-child {
+      margin-top: var(--line-margin);
     }
-  }
-
-  & > small {
-    position: absolute;
-    right: var(--space-30);
-    top: var(--space-30);
-    user-select: none;
+    & .line-number {
+      user-select: none;
+      display: inline-block;
+      width: 2ch;
+      margin: 0 var(--line-number-margin) 0 0;
+      ${media.tablet`
+        --line-number-margin: var(--space-30);
+      `}
+    }
   }
 `
