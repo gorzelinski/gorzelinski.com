@@ -7,11 +7,11 @@ export const code = {
     {
       types: ["punctuation", "constant", "deleted"],
       style: {
-        color: "var(--color-primary-40)",
+        color: "var(--color-primary-60)",
       },
     },
     {
-      types: ["variable", "keyword", "selector"],
+      types: ["variable", "keyword", "key", "selector"],
       style: {
         color: "var(--color-primary-base)",
       },
@@ -23,9 +23,9 @@ export const code = {
       },
     },
     {
-      types: ["operator", "property"],
+      types: ["property"],
       style: {
-        color: "var(--color-gray-00)",
+        color: "var(--color-gray-10)",
       },
     },
     {
@@ -47,7 +47,7 @@ export const code = {
       },
     },
     {
-      types: ["symbol", "regex"],
+      types: ["symbol", "regex", "operator"],
       style: {
         color: "var(--color-orange-base)",
       },
