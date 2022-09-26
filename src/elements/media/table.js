@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import { media } from "./utils"
-import { body, heading, paragraph } from "./typography"
+import { media } from "../utils"
+import { body, heading, paragraph } from "../typography"
 
 export const StyledTable = styled.table`
   ${body}

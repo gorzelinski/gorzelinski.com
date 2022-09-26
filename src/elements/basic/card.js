@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components"
 
-import { border, media } from "./utils"
-import { heighten, span } from "./grid"
-import { textAlign } from "./typography"
+import { border, media } from "../utils"
+import { heighten, span } from "../grid"
+import { textAlign } from "../typography"
 
 const vertical = css``
 

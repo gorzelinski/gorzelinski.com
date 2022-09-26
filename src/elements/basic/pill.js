@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-import { colorStates } from "./effects"
-import { Small } from "./typography"
+import { colorStates } from "../effects"
+import { Small } from "../typography"
 
 export const Pill = styled(Small)`
   margin: 0;

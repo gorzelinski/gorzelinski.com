@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
-import { border, media } from "./utils"
-import { span } from "./grid"
+import { border, media } from "../utils"
+import { span } from "../grid"
 
 export const Navigation = styled.nav.attrs(props => ({
   className: props.$direction,

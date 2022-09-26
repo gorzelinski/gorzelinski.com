@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-import { span, heighten, justify } from "./grid"
-import { textAlign } from "./typography"
+import { span, heighten, justify } from "../grid"
+import { textAlign } from "../typography"
 
 export const Tile = styled.div`
   ${span}

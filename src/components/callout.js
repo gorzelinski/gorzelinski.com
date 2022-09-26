@@ -51,7 +51,7 @@ const Callout = ({ children, type }) => {
       case "success":
         return <CheckmarkCircle></CheckmarkCircle>
       default:
-        return null
+        return <InformationCircle></InformationCircle>
     }
   }
 

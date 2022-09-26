@@ -1,10 +1,10 @@
 import { LocalizedLink } from "gatsby-theme-i18n"
 import styled, { css } from "styled-components"
 
-import { media } from "./utils"
-import { colorStates, moveIcon, outline, underline } from "./effects"
-import { elementBuzzOut, iconSpinning, iconWobble } from "./animations"
-import { paragraph, ui } from "./typography"
+import { media } from "../utils"
+import { colorStates, moveIcon, outline, underline } from "../effects"
+import { elementBuzzOut, iconSpinning, iconWobble } from "../animations"
+import { paragraph, ui } from "../typography"
 
 export const icon = css`
   ${colorStates.text}

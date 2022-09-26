@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { media } from "./utils"
+import { media } from "../utils"
 
 export const Progress = styled.div.attrs(props => ({
   style: {

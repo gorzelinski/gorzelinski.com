@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-import { span } from "./grid"
+import { span } from "../grid"
 
 export const aspectRatios = css`
   ${props => {
