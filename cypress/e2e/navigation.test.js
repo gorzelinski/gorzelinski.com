@@ -6,6 +6,16 @@ const socials = [
   { name: "Dribbble", url: "https://dribbble.com", handler: "gorzelinski" },
   { name: "Facebook", url: "https://www.facebook.com", handler: "gorzelinski" },
   { name: "Twitter", url: "https://twitter.com", handler: "gorzelinski" },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com",
+    handler: "gorzelinsky",
+  },
+  {
+    name: "Linkedin",
+    url: "https://www.linkedin.com",
+    handler: "mateusz-gorzelinski",
+  },
 ]
 const pages = [
   {
