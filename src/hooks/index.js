@@ -1,3 +1,4 @@
+export * from "./useLoadMore"
 export * from "./usePrefersReducedMotion"
 export * from "./useScrollDirection"
 export * from "./useScrollProgress"
