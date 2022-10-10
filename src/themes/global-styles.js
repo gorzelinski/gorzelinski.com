@@ -13,6 +13,10 @@ const GlobalStyles = createGlobalStyle`
     --scrollbar-width: var(--space-30);
     --scrollbar-height: var(--space-20);
   }
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
   *,
   :after,
   :before {
