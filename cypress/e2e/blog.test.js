@@ -25,18 +25,42 @@ const blogMock = {
   url: "/blog/",
   button: "Blog",
   alternateLink: /all posts/i,
+  loadMore: "Load more",
 }
 
 describe("Blog tests", () => {
-  it("Checks search functionality", () => {
+  it("Checks load more functionality", () => {
     cy.visit(blogMock.url)
 
+    cy.findAllByRole("link", { name: postMock.button, exact: false }).should(
+      "have.length",
+      8
+    )
+    cy.findByRole("button", {
+      name: blogMock.loadMore,
+      exact: false,
+    })
+      .scrollIntoView({
+        easing: "linear",
+        duration: 300,
+      })
+      .click()
+    cy.findAllByRole("link", {
+      name: postMock.button,
+    }).should("have.length.greaterThan", 8)
+  })
+
+  it("Checks search functionality", () => {
     cy.findAllByRole("link", { name: postMock.button, exact: false }).should(
       "have.length.greaterThan",
       1
     )
     cy.findByText("All posts").should("be.visible")
     cy.findByPlaceholderText(blogMock.search, { exact: false })
+      .scrollIntoView({
+        easing: "linear",
+        duration: 300,
+      })
       .type("Non existing post", { delay: 50 })
       .type("?{enter}", { delay: 300 })
 
