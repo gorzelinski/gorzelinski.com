@@ -53,7 +53,7 @@
       "list": [
         {
           "name": "React",
-          "description": "najpopularniejszy front-end framework. Na początku miałem wątpliwości co do JSX, ale aktualnie lubię go.",
+          "description": "najpopularniejszy framework front-end. Na początku miałem wątpliwości co do JSX, ale aktualnie lubię go.",
           "link": "https://reactjs.org/"
         },
         {
@@ -98,7 +98,7 @@
         },
         {
           "name": "MDX",
-          "description": "wzbogacony Markdown. Główny format dla moich treści. Używam go zamiast Markdown, ponieważ umożliwia mi wykorzystywanie moich niestandardowych komponentów.",
+          "description": "wzbogacony Markdown. Główny format dla moich treści. Używam go zamiast Markdown, ponieważ umożliwia mi wykorzystywanie niestandardowych komponentów.",
           "link": "https://mdxjs.com/"
         },
         {
@@ -118,7 +118,7 @@
         },
         {
           "name": "Figma",
-          "description": "moje główne narzędzie do projektowania. Jest intuicyjne i skoncentrowane na komponentach. Tworzenie design systemu z jego pomocą jest łatwe Ma rosnącą społeczność, która tworzy wiele przydatnych rozszerzeń i plików projektowych. Dostępne nawet z poziomu przeglądarki.",
+          "description": "moje główne narzędzie do projektowania. Jest intuicyjne i skoncentrowane na komponentach. Tworzenie systemu projektowania z jego pomocą jest łatwe. Ma rosnącą społeczność, która tworzy wiele przydatnych rozszerzeń i plików projektowych. Dostępne nawet z poziomu przeglądarki.",
           "link": "https://www.figma.com/"
         },
         {
