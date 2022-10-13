@@ -1,0 +1,314 @@
+﻿---
+title: Programowanie obiektowe w języku JavaScript
+description: "Programowanie obiektowe jest podstawą wielu języków programowania. Dlatego zapoznamy się z tym paradygmatem, umieścimy go w kontekście i wykorzystamy w praktyce."
+date: 2022-10-13T12:30:00+02:00
+updated: 2022-10-13T12:30:00+02:00
+image:
+  alt: "Cztery filary betonowego budynku pod błękitnym niebem"
+  caption: "Zdjęcie autorstwa Mayer Tawfik"
+  src: "./mayer-tawfik-Py2V6tUYgqw-unsplash.jpg"
+categories: ["computer science", "web development"]
+tags: ["oop", "fp", "paradygmat", "programowanie", "assembly", "javascript"]
+type: "post"
+---
+
+Ostatnio pisałem o konkretnych technologiach: React, Gatsby czy Netlify CMS. W [pierwszym wpisie](/blog/hello-world/), obiecałem jednak bardziej uniwersalną wiedzę. Dziesięć postów później, czas wypełnić obietnicę. Ten wpis będzie bardziej teoretyczny. Ale nie chcę żeby stał się zbyt abstrakcyjny, dlatego napiszę o OOP (Object Oriented Programming) w kontekście języka JavaScript.
+
+## OOP jest jednym z paradygmatów programowania
+
+Zanim nawet dotkniemy definicję OOP, potrzebujemy krótkiej lekcji historii. Da nam ona kontekst, szerszy obraz, a co za tym idzie lepsze zrozumienie.
+
+Każdy kod sprowadza się do zer i jedynek. To jest to, co rozumieją komputery. Najniższym paradygmatem programowania jest kod maszynowy, który reprezentuje instrukcje bezpośrednio, jako sekwencje cyfr. Jest łatwy do zrozumienia dla maszyn, ale trudny dla ludzi.
+
+W latach 60. XX wieku, nastąpił rozwój języków assembly. Jest to mały krok naprzód w stosunku do kodu maszynowego. Pisząc w assemblerze mamy do dyspozycji operatory takie jak: READ, WRITE, GET i PUT. Możemy także używać symbolicznych etykiet dla adresów pamięci. Sam nawet pisałem coś tam w assemblerze na uczelni. Ten kod wyglądał mniej więcej tak:
+
+```nasm
+; hello-DOS.asm - single-segment, 16-bit "hello world" program
+;
+; assemble with "nasm -f bin -o hi.com hello-DOS.asm"
+
+    org  0x100        ; .com files always start 256 bytes into the segment
+
+    ; int 21h is going to want...
+
+    mov  dx, msg      ; the address of or message in dx
+    mov  ah, 9        ; ah=9 - "print string" sub-function
+    int  0x21         ; call dos services
+
+    mov  ah, 0x4c     ; "terminate program" sub-function
+    int  0x21         ; call dos services
+
+    msg  db 'Hello, World!', 0x0d, 0x0a, '$'   ; $-terminated message
+```
+
+Pomimo, że trudno go zrozumieć i nie jest tak wyrafinowany jak współczesne języki programowania, ludzie nadal używają assemblera w rzeczach takich jak systemy wbudowane.
+
+C, COBOL czy BASIC to przykłady języków trzeciej generacji. Wszystkie te języki podążają za proceduralnym paradygmatem programowania - komputer otrzymuje procedury, za którymi musi podążać, aby rozwiązać konkretny problem. Łatwiej pisać taki kod, ale nadal nie ma w nim struktury czy organizacji. Mamy po prostu instrukcje typu krok po kroku.
+
+Z czasem ludzie zaczęli się zgadzać co do dobrych praktyk i języki zorientowane obiektowo, takie jak C# czy Python, zostały wynalezione. Od tej pory programiści mogli modelować rzeczy z rzeczywistości przy pomocy obiektów. Obiekt to podstawowa, fundamentalna jednostka budulcowa wszystkich tych języków.
+
+Dodatkowo, programowanie funkcjonalne zyskuje popularność. Współpracuje ono dobrze z obliczeniami równoległymi i rozproszonymi - gorącymi tematami aktualnie. Funkcje są podstawową jednostką w tym paradygmacie. Zachowują się one jak matematyczne funkcje. Większość języków programowania wspiera więcej niż jeden paradygmat. JavaScript jest jednym z nich.
+
+## FP i OOP
+
+We wszystkich programach istnieją dwa główne komponenty:
+
+- Dane
+- Zachowania
+
+**Programowanie zorientowane obiektowo** mówi, że umieszczanie danych i zachowań w jednym miejscu - obiekcie - upraszcza zrozumienie działania programu. Można to porównać to zapakowania wszystkiego w szczelnie zamkniętym pudełku.
+
+**Programowanie funkcjonalne** mówi, że dane i zachowania to dwie odrębne rzeczy i powinny być trzymane oddzielnie dla przejrzystości programu. Można je porównać do rury i serii zaworów - dane przepływają od jednego końca rury do drugiego, zmieniając kształt po drodze.
+
+To **nie** są zawody pod tytułem: "programowanie funkcjonalne kontra programowanie zorientowane obiektowo". Używałem OOP pisząc w Node i FP w React. Nie trzymaj się kurczowo jednego paradygmatu. Oba mają swoje zastosowania i mogą być komplementarne.
+
+## Dlaczego używać OOP?
+
+Tak jak wspomniałem chcemy, aby nasz kod był łatwy do zrozumienia. Częściej czytamy kod niż go piszemy. Współczesne oprogramowanie może być bardzo złożone. Windows 10 składa się z ok. 50 milionów linii kodu, a Facebook z jeszcze większej ich liczby. Przeciętna aplikacja może zawierać ich tysiące. Aby zorganizować jakoś ten złożony kod, możemy użyć naszego paradygmatu. Wykorzystując OOP chcemy, aby nasz kod był:
+
+- Jasny
+- Łatwy do rozbudowy
+- Łatwy w zarządzaniu
+- Pamięciowo wydajny
+- DRY (Don't Repeat Yourself)
+
+## OOP w języku JavaScript
+
+Przeszliśmy przez krótką historię paradygmatów programowania wymieniając różne języki. Teraz skupimy się na jednym - języku JavaScript - i napiszemy trochę kodu, aby zaprezentować je w praktyce. Zaczniemy od strukturalnego kodu i stopniowo przejdziemy do kodu zorientowanego na obiekty. JavaScript ewoluuje i nie zawsze mieliśmy składnie do jasnego OOP.
+
+---
+
+Załóżmy, że mamy dwa komputery: stacjonarny i laptop. Chcemy modelować je w kodzie. Pierwszym, naiwnym podejściem będzie podejście proceduralne, które może wyglądać tak:
+
+```javascript Kod proceduralny
+const desktop = {
+  name: "Mac Studio",
+  gpu: "AMD Radeon Pro W6800X",
+  info() {
+    console.log(`Nazwa komputera: ${this.name}`)
+  },
+}
+
+const laptop = {
+  name: "Macbook Air",
+  display: '13.6"',
+  info() {
+    console.log(`Nazwa komputera: ${this.name}`)
+  },
+}
+```
+
+Możemy tworzyć odrębne obiekty dla każdej maszyny. Ale wyobraź sobie, że chcemy teraz dziesięć kolejnych. Musielibyśmy ręcznie stworzyć obiekt dla każdego komputera, albo kopiować wiele linii kodu. Stale byśmy się powtarzali.
+
+### Funkcje fabryczne
+
+Aby ograniczyć powtarzanie, możemy napisać funkcję, która stworzy obiekty dla nas - funkcję fabryczną.
+
+```javascript Funkcja fabryczna
+function createComputer(name) {
+  return {
+    name,
+    info() {
+      console.log(`Nazwa komputera: ${this.name}`)
+    },
+  }
+}
+
+const desktop = createComputer("Mac Studio")
+const laptop = createComputer("Macbook Air")
+```
+
+Możemy tę funkcję wywołać wiele razy, aby stworzyć wiele obiektów. Nie powtarzamy się już tak bardzo. Ale istnieje inny problem. Spójrz na funkcję `info()`. Pozostaje ona taka sama dla każdego komputera, a jednak kopiujemy ją za każdym razem. Nie jest to specjalnie oszczędne pod kątem pamięci.
+
+### Object.create()
+
+Jakiś czas temu, programiści dodali metodę `create()` do wbudowanego obiektu `Object`. Wykorzystuje ona istniejący obiekt jako prototyp, dla nowo stworzonego obiektu. W ten sposób możemy zdefiniować funkcję raz i odziedziczyć ją wykorzystując dziedziczenie prototypowe.
+
+```javascript Object.create()
+const computerFunctions = {
+  info() {
+    console.log(`Nazwa komputera: ${this.name}`)
+  },
+}
+
+function createComputer(name) {
+  let newComputer = Object.create(computerFunctions)
+  newComputer.name = name
+  return newComputer
+}
+
+const desktop = createComputer("Mac Studio")
+const laptop = createComputer("Macbook Air")
+```
+
+<Callout type="warning">
+
+Język JavaScript nie posiada klasycznego dziedziczenia znanego z języków takich jak Java czy C++. Posiada on tylko jedną konstrukcję - obiekt. Ale to nie jest bug - to jest feature! Każdy obiekt ma link do innego, który nazwany jest jego **prototypem.** Te powiązane obiekty tworzą **łańcuch prototypowy.**
+
+</Callout>
+
+Moglibyśmy się tu zatrzymać. Nie powtarzamy się i nasz kod nie zajmuje zbędnego miejsca. Ale możemy także ulepszyć inne części paradygmatu OOP. Wcześniej wspominałem o tych zamkniętych pudełkach. Nie mamy tu tego i powyższy fragment kodu jest trochę trudny do zrozumienia. Użyjmy naszej wiedzy na temat prototypów i sprawdźmy czy uda nam się coś ulepszyć.
+
+### Funkcje konstruktora
+
+Każda funkcja wywołana używając słowa `new` to funkcja konstruktora. Wbudowane obiekty takie jak `Array` czy `Function` są właśnie funkcjami konstrukcyjnymi. W języku JavaScript wszystko posiada funkcję konstruktora (z wyjątkiem `null` i `undefined`). To słowo kluczowe `new` robi klika rzeczy za kulisami:
+
+1. Tworzy nowy obiekt.
+2. Zwraca ten obiekt.
+3. Wiąże `this` do zwróconego obiektu.
+4. Wiąże prototyp obiektu do funkcji konstruktora.
+
+```javascript Funkcja konstruktora
+function Computer(name) {
+  this.name = name
+}
+
+Computer.prototype.info = function () {
+  console.log(`Nazwa komputera: ${this.name}`)
+}
+
+const desktop = new Computer("Mac Studio")
+const laptop = new Computer("Macbook Air")
+```
+
+Możemy wykorzystać prototyp do zdefiniowania współdzielonej funkcjonalności raz i będzie ona dostępna dla każdego obiektu stworzonego przy pomocy funkcji konstrukcyjnej.
+
+<Callout type="warning">
+
+Ale uważaj - to nie zadziała z funkcjami strzałkowymi. Funkcje strzałkowe używają zasięgu leksykalnego - definiują `this` na podstawie swojego miejsca w kodzie. Jeżeli zdefiniowalibyśmy funkcję `info()` jako strzałkową w naszym fragmencie, `this` wskazywałoby na obiekt `window`.
+
+</Callout>
+
+Programiści JavaScript pisali w ten sposób przez długi czas. Prawdopodobnie znalazłbyś podobne fragmenty kody w starszych repozytoriach. Ale wraz z ES6 dostaliśmy nowy sposób, aby pisać kod zorientowany obiektowo.
+
+### Klasy
+
+Nowa składnia została wprowadzona (wraz z wieloma innymi funkcjonalnościami) w specyfikacji ECMAScript 6. Poniższy fragment może wyglądać znajomo dla programistów, którzy używali wcześniej C++ albo inny, obiektowy język.
+
+```javascript Klasy
+class Computer {
+  constructor(name) {
+    this.name = name
+  }
+  info() {
+    console.log(`Nazwa komputera: ${this.name}`)
+  }
+}
+
+const desktop = new Computer("Mac Studio")
+const laptop = new Computer("Macbook Air")
+```
+
+Chyba największą zaletą jest to, że wszystko jest umieszczone w jednym “pudełku”. Wszystkie właściwości i metody są pomiędzy klamrami. Nie musimy używać prototypów bezpośrednio.
+
+<Callout type="warning">
+
+Ale pamiętaj - pomimo tego, że istnieje słowo `class`, to jest to tak zwany lukier składniowy. Pod spodem, cały czas używamy dziedziczenia prototypowego. W innych językach klasy są realną rzeczą. W przeciwieństwie do języka JavaScript, gdzie istnieją tylko obiekty.
+
+</Callout>
+
+Możesz argumentować, że używanie słowa `class` wraz z dziedziczeniem prototypowym jest zwodnicze. I trochę jest. Ale w mojej opinii, korzyści wynikające z czytelności przeważają nad tą wadą. Myślę, że ten kod jest łatwy do zrozumienia i wygląda jak OOP. Szczególnie, gdy dodamy dziedziczenie.
+
+```javascript Klasy i dziedziczenie
+class Computer {
+  constructor(name) {
+    this.name = name
+  }
+  info() {
+    console.log(`Nazwa komputera: ${this.name}`)
+  }
+}
+
+class Desktop extends Computer {
+  constructor(name, gpu) {
+    super(name)
+    this.gpu = gpu
+  }
+}
+
+class Laptop extends Computer {
+  constructor(name, display) {
+    super(name)
+    this.display = display
+  }
+}
+
+const desktop = new Desktop("Mac Studio", "AMD Radeon Pro W6800X")
+const laptop = new Laptop("Macbook Air", '13.6"')
+```
+
+Klasy `Desktop` i `Laptop` mają łańcuch prototypowy z klasą `Computer`. Podklasy dziedziczą z klasy bazowej (zwanej także super klasą). Aby odziedziczyć właściwości, musimy wywołać metodę `super()` wewnątrz konstruktora. Poniżej tej metody możemy dodać właściwości specyficzne dla podklasy. Ten typ dziedziczenia nie kopiuje wszystkiego z klasy bazowej jak w klasycznych językach obiektowych. Zamiast tego, poszerzamy łańcuch prototypowy wykorzystując `extends`. Ma to swoje zalety pod kątem optymalizacji pamięci.
+
+## Cztery filary OOP
+
+Mówienie o filarach pod koniec wpisu może wydawać się dziwne. Ale są one dobrym podsumowaniem i my już je poznaliśmy!
+
+### Enkapsulacja
+
+Spójrz na nasze klasy - wszystko jest wewnątrz obiektu owinięte przez klamry. Nasz kod składa się z zamkniętych jednostek. Poddaliśmy nasz kod **enkapsulacji.** Taki kod jest łatwy do zrozumienia.
+
+### Abstrakcja
+
+Nasze przykłady nie są skomplikowane, aby uprościć wywód. Ale wyobraź sobie, że metoda `info()` jest złożona. Nie musisz wiedzieć jak działa, aby jej użyć. Złożoność jest wyabstrahowana przed tobą. **Abstrakcja** oznacza, że ukrywamy złożoność przed użytkownikiem. Taki kod jest łatwy w użyciu.
+
+### Dziedziczenie
+
+Nasze klasy **dziedziczą** część funkcjonalności od siebie. Unikamy przepisywania i powtarzania siebie. Oszczędzamy także miejsce, definiując wspólne metody.
+
+### Polimorfizm
+
+Dobra, skłamałem. Nie poznaliśmy jeszcze jednego z filarów. Ale odkupuję swoje winy w tym momencie. Słowo “polimorfizm” pochodzi od greckiego słowa “polymorphos”, które dosłownie oznacza “wiele postaci”. Etymologia dobrze opisuje to co chcemy osiągnąć polimorfizmem w OOP. Nie wiem czy istnieje jedna, konkretna definicja polimorfizmu. Nie chcę kłócić się z ludźmi mądrzejszymi ode mnie, dlatego nie twierdzę, że przytaczam precyzyjną definicję. Ale pomysł jest taki, że wywołujemy tę samą metodę na różnych obiektach i każdy z nich reaguje inaczej. JavaScript jest typowany dynamicznie i ogranicza polimorfizm. Ale możemy napisać coś takiego:
+
+```javascript Klasy i polimorfizm
+class Computer {
+  constructor(name) {
+    this.name = name
+  }
+  info() {
+    console.log(`Nazwa komputera: ${this.name}`)
+  }
+}
+
+class Desktop extends Computer {
+  constructor(name, gpu) {
+    super(name)
+    this.gpu = gpu
+  }
+  info() {
+    console.log(`Nazwa komputera: ${this.name}\nGPU: ${this.gpu}`)
+  }
+}
+
+class Laptop extends Computer {
+  constructor(name, display) {
+    super(name)
+    this.display = display
+  }
+  info() {
+    console.log(`Nazwa komputera: ${this.name}\nWyświetlacz: ${this.display}`)
+  }
+}
+
+const desktop = new Desktop("Mac Studio", "AMD Radeon Pro W6800X")
+const laptop = new Laptop("Macbook Air", '13.6"')
+
+desktop.info()
+//Nazwa komputera: Mac Studio
+//GPU: AMD Readeon Pro W6800X
+laptop.info()
+//Nazwa komputera: Macbook Air
+//Wyświetlacz: 13.6"
+```
+
+Nasza metoda `info()` jest **polimorficzna.** W zależności od obiektu, wyświetla informacje o różnych peryferiach komputerowych.
+
+## Podsumowanie
+
+Odkryliśmy zasady, koncepty i cele programowania zorientowanego obiektowo. Dodatkowo, wiemy teraz jak je zastosować w przyszłych projektach JavaScript. Mam nadzieję, że ten post był pomocny i że udało ci się dotrwać do końca. A jeżeli nie masz dość, sprawdź także poniższe linki:
+
+- [Assembler](https://montcs.bloomu.edu/Information/LowLevel/Assembly/hello-asm.html)
+- [Dziedziczenie i łańcuch prototypowy (MDN web docs)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+- [Operator new (MDN web docs)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new)
+- [Klasy (MDN web docs)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+- [JavaScript: The Advanced Concepts (kurs ZTM)](https://zerotomastery.io/courses/advanced-javascript-concepts/)
+- [Paradygmaty programowania (Wikipedia)](https://en.wikipedia.org/wiki/Programming_paradigm)

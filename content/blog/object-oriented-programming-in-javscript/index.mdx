@@ -1,0 +1,315 @@
+﻿---
+title: Object-Oriented Programming in JavaScript
+description: "Object-oriented programming is a foundation for many programming languages. So, we'll familiarize ourselves with this paradigm, put it in context and use it in practice."
+date: 2022-10-13T12:30:00+02:00
+updated: 2022-10-13T12:30:00+02:00
+image:
+  alt: "Four pillars of the concrete building under the blue sky"
+  caption: "Photo by Mayer Tawfik"
+  src: "./mayer-tawfik-Py2V6tUYgqw-unsplash.jpg"
+categories: ["computer science", "web development"]
+tags: ["oop", "fp", "programming", "paradigm", "assembly", "javascript"]
+type: "post"
+---
+
+Lately, I've been writing about specific technologies: React, Gatsby, or Netlify CMS. But, in my [first post](/blog/hello-world/), I promised universal knowledge. Ten posts later, I think it's time to fulfill the promise. This post will be more theoretical. But I don't want to make it too abstract, so I'll write about OOP in the context of JavaScript language.
+
+## OOP is one of the programming paradigms
+
+Even before we touch on the definition of OOP, we need a short history lesson. It will give us context, and a bigger picture, hence a better understanding.
+
+Every code boils down to ones and zeros. It's what computers understand. The lowest-level programming paradigms are machine code, which directly represents the instructions as a sequence of numbers. It's easy to understand for machines but hard for humans.
+
+In the 1960s, there was a development of assembly languages. It is a little step up from machine code. Writing in assembly, we can use logical operators such as READ, WRITE, GET, and PUT or use symbolic labels for memory addresses. I even wrote some assembly code at my university, which looked like this:
+
+```nasm
+; hello-DOS.asm - single-segment, 16-bit "hello world" program
+;
+; assemble with "nasm -f bin -o hi.com hello-DOS.asm"
+
+    org  0x100        ; .com files always start 256 bytes into the segment
+
+    ; int 21h is going to want...
+
+    mov  dx, msg      ; the address of or message in dx
+    mov  ah, 9        ; ah=9 - "print string" sub-function
+    int  0x21         ; call dos services
+
+    mov  ah, 0x4c     ; "terminate program" sub-function
+    int  0x21         ; call dos services
+
+    msg  db 'Hello, World!', 0x0d, 0x0a, '$'   ; $-terminated message
+```
+
+Even though it's hard to understand and not sophisticated as modern languages, people still use it in things like embedded systems.
+
+C, COBOL, or BASIC are examples of third-generation languages. All these languages follow a procedural paradigm - you write procedures a computer needs to follow to solve a specific problem. Code is easier to write, but still, there is no structure or organization. We have just step-by-step instructions.
+
+People started agreeing on good practices, and after some time, they invented object-oriented programming languages such as C#, Python, or JavaScript. Programmers can now model real-world things with objects. An object is the foundational building block of all these languages.
+
+Also, another paradigm called functional programming is gaining attention. It works well with concurrent and distributed computing - hot topics now. Functions are building blocks in this paradigm. They behave like mathematical functions. Most programming languages support more than one programming paradigm. JavaScript is one of them.
+
+## FP and OOP
+
+In all programs, there are two primary components:
+
+- Data
+- Behavior
+
+**Object-oriented programming** says that bringing together the data and its behavior in a single location - object - makes the program easier to understand. It's like packing everything inside a tightly sealed box.
+
+**Functional programming** says that data and behavior are distinctly different things and should be kept separately for clarity. It is like a pipe with some valves - the data flows from one end to the other, changing along the way.
+
+It's **not** functional programming vs. object-oriented programming. I used OOP in Node and FP in React. Don't hang on tightly to one. Both have use cases and can be complementary.
+
+## Why use OOP?
+
+As I mentioned, we want code that is easy to understand. We read code more often than we write it. Current software can be very complex. Windows 10 have about 50 million lines of code, and Facebook has even more. An average app can still have thousands of lines. To make this complex code more organized, we can use our paradigm. Using OOP, we want the code to be:
+
+- Clear
+- Easy to extend
+- Easy to maintain
+- Memory efficient
+- DRY (Don't repeat yourself)
+
+## OOP in JavaScript
+
+We've just moved through the short history of programming paradigms featuring different languages. Now, we will focus on one - JavaScript - and write some code to show them in practice. We will start with structural code and move toward more object-oriented code. JavaScript is evolving, and we didn't always have syntax for clear OOP.
+
+---
+
+Let's say we have two computers: a desktop and a laptop, and we want to model them in code. The first naive and procedural approach can look like this:
+
+```javascript Procedural code
+const desktop = {
+  name: "Mac Studio",
+  gpu: "AMD Radeon Pro W6800X",
+  info() {
+    console.log(`Name of the computer: ${this.name}`)
+  },
+}
+
+const laptop = {
+  name: "Macbook Air",
+  display: '13.6"',
+  info() {
+    console.log(`Name of the computer: ${this.name}`)
+  },
+}
+```
+
+We can create an object for each machine. But imagine we want ten more. We would have to create an object for each one by hand or copy-paste multiple lines of code. We would repeat ourselves constantly.
+
+### Factory Functions
+
+To limit repeating, we can create a function that will make objects for us - a factory function.
+
+```javascript Factory Function
+function createComputer(name) {
+  return {
+    name,
+    info() {
+      console.log(`Name of the computer: ${this.name}`)
+    },
+  }
+}
+
+const desktop = createComputer("Mac Studio")
+const laptop = createComputer("Macbook Air")
+```
+
+We can call the function multiple times to create multiple objects. We don't repeat ourselves as much. But, there is another problem. Look at the `info()` function. It stays the same for every computer, yet we copy it each time. It's not very memory-efficient.
+
+### Object.create()
+
+Some time ago, developers added the `create()` method on the built-in `Object`. It uses an existing object as the prototype for the newly created object. This way, we can define the function once and inherit it through JavaScript prototype inheritance.
+
+```javascript Object.create()
+const computerFunctions = {
+  info() {
+    console.log(`Name of the computer: ${this.name}`)
+  },
+}
+
+function createComputer(name) {
+  let newComputer = Object.create(computerFunctions)
+  newComputer.name = name
+  return newComputer
+}
+
+const desktop = createComputer("Mac Studio")
+const laptop = createComputer("Macbook Air")
+```
+
+<Callout type="warning">
+
+JavaScript doesn't have classical inheritance known from languages like Java or C++. It has only one construct - an object. But it's not a bug - it's a feature! Each object has a link to another one called its **prototype.** These linked objects create a **prototype chain.**
+
+</Callout>
+
+We could stop here. We don't repeat ourselves, and the code is memory efficient. But, there are other parts of OOP we could improve. Earlier, I was talking about this sealed box in the context of OOP. We don't have that here, and the above snippet is a little hard to understand. Let's use this knowledge about prototypes and see if we can improve something.
+
+### Constructor Functions
+
+Any function invoked using the `new` keyword is called a constructor function. Built-in objects like `Array` or `Function` are in fact constructor functions. In JavaScript, there is a constructor function for everything (with an exception for `null` and `undefined`). This `new` keyword does a few things behind the scenes:
+
+1. It creates a new object.
+2. Returns that object.
+3. Binds `this` to the returned object.
+4. Links object's prototype to the constructor function.
+
+```javascript Constructor Function
+function Computer(name) {
+  this.name = name
+}
+
+Computer.prototype.info = function () {
+  console.log(`Name of the computer: ${this.name}`)
+}
+
+const desktop = new Computer("Mac Studio")
+const laptop = new Computer("Macbook Air")
+```
+
+We can use the prototype to define the shared function once, and it will be available for every object created with the constructor function.
+
+<Callout type="warning">
+
+Be aware - it won't work with arrow functions. Arrow functions use lexical scope - they define `this` based on their place in code. If we define `info()` as an arrow function in our snippet, `this` will be pointing to the `window`.
+
+</Callout>
+
+JavaScript developers have been writing things that way for a long time. You can probably spot similar snippets in older code bases. But, with ES6, we've got a new way to write object-oriented code.
+
+### Classes
+
+New syntax was introduced to JavaScript language (alongside many other features) with ECMAScript 6 specification. The below snippet may look familiar to developers who have used C++ or other object-oriented languages.
+
+```javascript Classes
+class Computer {
+  constructor(name) {
+    this.name = name
+  }
+  info() {
+    console.log(`Name of the computer: ${this.name}`)
+  }
+}
+
+const desktop = new Computer("Mac Studio")
+const laptop = new Computer("Macbook Air")
+```
+
+The best part is that everything is in one "box." All properties and methods are between curly braces. We don't need to use prototypes explicitly.
+
+<Callout type="warning">
+
+But remember, even though there is a `class` keyword, it is syntactic sugar. Underneath the hood, we're still using prototype inheritance. In other languages, classes are an actual thing. Opposed to that, in JavaScript, they are still objects.
+
+</Callout>
+
+You may argue that using the `class` keyword with prototype inheritance is deceptive. And it is a little. But I think the benefit of readability overweight the cons. In my opinion, this code is easy to understand and looks like OOP. Especially when we add inheritance.
+
+```javascript Classes and inheritance
+class Computer {
+  constructor(name) {
+    this.name = name
+  }
+  info() {
+    console.log(`Name of the computer: ${this.name}`)
+  }
+}
+
+class Desktop extends Computer {
+  constructor(name, gpu) {
+    super(name)
+    this.gpu = gpu
+  }
+}
+
+class Laptop extends Computer {
+  constructor(name, display) {
+    super(name)
+    this.display = display
+  }
+}
+
+const desktop = new Desktop("Mac Studio", "AMD Radeon Pro W6800X")
+const laptop = new Laptop("Macbook Air", '13.6"')
+```
+
+`Desktop` and `Laptop` have prototype chains up to the `Computer` class. Subclasses inherit from the base class (also called superclass). To inherit properties, we must invoke the `super()` method inside the constructor. Under this method, we can easily add properties specific to the subclass.
+This type of inheritance doesn't copy everything from the base class like in classical object-oriented languages. Instead, it links the prototype chain with the `extends` keyword. So, it has memory-saving benefits.
+
+## Four pillars of OOP
+
+Talking about pillars at the end of the post may look strange. But it is a good summary, and we've just learned them!
+
+### Encapsulation
+
+Look at our classes - everything is inside objects wrapped by curly braces. Our code consists of closed units. We've **encapsulated** our code. The code written this way is easy to understand.
+
+### Abstraction
+
+Our examples are uncomplicated to simplify reasoning. But imagine the `info()` method is complex. You don't need to know how it works to use it. The complexity is abstracted away from you. **Abstraction** means hiding complexity from the user. The code is easy to use.
+
+### Inheritance
+
+Our classes **inherit** from each other parts of the functionality. We avoid rewriting and repeating ourselves. We also save space by having shared methods.
+
+### Polymorphism
+
+Ok, I lied. We haven't touched on one of the pillars. But I'm redeeming myself now. The word "polymorphism" comes from the Greek word "polymorphos," which means "many forms." The etymology accurately describes what we want to accomplish with polymorphism in OOP. I don't know if there is one correct definition of polymorphism. I don't want to argue with people smarter than me, so I'm not claiming I'm giving a precise definition. But the idea is that we can call the same method on different objects, and each object responds distinctly. JavaScript is a dynamically typed language, so it limits polymorphism. But we can write something like this:
+
+```javascript Classes and polymorphism
+class Computer {
+  constructor(name) {
+    this.name = name
+  }
+  info() {
+    console.log(`Name of the computer: ${this.name}`)
+  }
+}
+
+class Desktop extends Computer {
+  constructor(name, gpu) {
+    super(name)
+    this.gpu = gpu
+  }
+  info() {
+    console.log(`Name of the computer: ${this.name}\nGPU: ${this.gpu}`)
+  }
+}
+
+class Laptop extends Computer {
+  constructor(name, display) {
+    super(name)
+    this.display = display
+  }
+  info() {
+    console.log(`Name of the computer: ${this.name}\nDisplay: ${this.display}`)
+  }
+}
+
+const desktop = new Desktop("Mac Studio", "AMD Radeon Pro W6800X")
+const laptop = new Laptop("Macbook Air", '13.6"')
+
+desktop.info()
+//Name of the computer: Mac Studio
+//GPU: AMD Readeon Pro W6800X
+laptop.info()
+//Name of the computer: Macbook Air
+//Display: 13.6"
+```
+
+Our `info()` method is **polymorphic.** Depending on the object, it displays info about different computer components.
+
+## Summary
+
+We've explored object-oriented programming principles, concepts, and goals. Also, now we know how to implement them in future JavaScript projects. I hope this post was helpful and you've got to the end. And if you don't have enough, check out below links:
+
+- [Assembly](https://montcs.bloomu.edu/Information/LowLevel/Assembly/hello-asm.html)
+- [Inheritance and the prototype chain (MDN web docs)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+- [New operator (MDN web docs)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new)
+- [Classes (MDN web docs)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+- [JavaScript: The Advanced Concepts (ZTM course)](https://zerotomastery.io/courses/advanced-javascript-concepts/)
+- [Programming paradigms (Wiki page)](https://en.wikipedia.org/wiki/Programming_paradigm)
