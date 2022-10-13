@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { useLocalization } from "gatsby-theme-i18n"
 
 import { Button, H1, Header, P, Section, Tile } from "../elements"
 import { createMetaImage } from "../utils"
+import { useLoadMore } from "../hooks"
 import Cards from "../components/cards"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -17,32 +18,10 @@ const Portfolio = ({ data, location }) => {
     alt: t("alt"),
     src: data?.metaImage,
   })
-  const allProjects = data.allProjects?.nodes
-  const projectsPerLoad = 6
-  const [list, setList] = useState([...allProjects.slice(0, projectsPerLoad)])
-  const [loadMore, setLoadMore] = useState(false)
-  const [hasMore, setHasMore] = useState(allProjects.length > projectsPerLoad)
-
-  const handleLoadMore = () => {
-    setLoadMore(true)
-  }
-
-  useEffect(() => {
-    if (loadMore && hasMore) {
-      const currentLength = list.length
-      const isMore = currentLength < allProjects.length
-      const nextResults = isMore
-        ? allProjects.slice(currentLength, currentLength + projectsPerLoad)
-        : []
-      setList([...list, ...nextResults])
-      setLoadMore(false)
-    }
-  }, [loadMore, hasMore, allProjects, list])
-
-  useEffect(() => {
-    const isMore = list.length < allProjects.length
-    setHasMore(isMore)
-  }, [list, allProjects])
+  const { currentItems, hasMore, handleLoadMore } = useLoadMore(
+    data.allProjects?.nodes,
+    6
+  )
 
   return (
     <Layout location={location}>
@@ -61,7 +40,7 @@ const Portfolio = ({ data, location }) => {
           </P>
         </Header>
         <Section as="div" $marginTop="none">
-          <Cards data={list}></Cards>
+          <Cards data={currentItems}></Cards>
         </Section>
         {hasMore ? (
           <Tile $span="all" $justify="center">

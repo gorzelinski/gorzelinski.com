@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { useLocalization } from "gatsby-theme-i18n"
@@ -16,7 +16,8 @@ import {
   Section,
   Tile,
 } from "../elements"
-import { createMetaImage, debounce } from "../utils"
+import { createMetaImage } from "../utils"
+import { useLoadMore } from "../hooks"
 import Cards from "../components/cards"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -29,72 +30,15 @@ const Blog = ({ data, location }) => {
     alt: t("alt"),
     src: data?.metaImage,
   })
-  const postsPerLoad = 8
-  const allPosts = data.allPosts?.nodes
-  const [filteredPosts, setFilteredPosts] = useState(allPosts)
-  const [currentPosts, setCurrentPosts] = useState(
-    filteredPosts.slice(0, postsPerLoad)
-  )
-  const [hasMore, setHasMore] = useState(
-    currentPosts.length < filteredPosts.length
-  )
-  const [loadMore, setLoadMore] = useState(false)
-  const [query, setQuery] = useState("")
-
-  const handleLoadMore = () => {
-    setLoadMore(true)
-  }
-
-  const handleKeyUp = e => {
-    if (query && currentPosts.length > 0 && e.key === "Enter") {
-      e.target.blur()
-      document.querySelector("article")?.scrollIntoView({
-        behavior: "smooth",
-      })
-    }
-  }
-
-  const handleInputChange = debounce(e => {
-    setQuery(e.target.value.trim().toLowerCase())
-  }, 250)
-
-  useEffect(() => {
-    if (query) {
-      const matchingPosts = allPosts.filter(post => {
-        const { title, description, categories, tags } = post.frontmatter
-        return (
-          title.toLowerCase().includes(query) ||
-          description.toLowerCase().includes(query) ||
-          categories.includes(query) ||
-          tags.includes(query)
-        )
-      })
-      setFilteredPosts(matchingPosts)
-    } else {
-      setFilteredPosts(allPosts)
-    }
-  }, [query, allPosts])
-
-  useEffect(() => {
-    setCurrentPosts(filteredPosts.slice(0, postsPerLoad))
-  }, [filteredPosts])
-
-  useEffect(() => {
-    const isMore = currentPosts.length < filteredPosts.length
-    setHasMore(isMore)
-  }, [currentPosts, filteredPosts])
-
-  useEffect(() => {
-    if (loadMore && hasMore) {
-      const currentLength = currentPosts.length
-      const isMore = currentLength < filteredPosts.length
-      const nextResults = isMore
-        ? filteredPosts.slice(currentLength, currentLength + postsPerLoad)
-        : []
-      setCurrentPosts([...currentPosts, ...nextResults])
-      setLoadMore(false)
-    }
-  }, [loadMore, hasMore, filteredPosts, currentPosts])
+  const {
+    allItems,
+    currentItems,
+    filteredItems,
+    hasMore,
+    handleInputChange,
+    handleKeyUp,
+    handleLoadMore,
+  } = useLoadMore(data.allPosts?.nodes)
 
   return (
     <Layout location={location}>
@@ -109,9 +53,9 @@ const Blog = ({ data, location }) => {
         <Header $type="section">
           <H1 $decorative>{t("heading")}</H1>
           <P as="h2" $type="ui">
-            {filteredPosts === allPosts
+            {filteredItems === allItems
               ? t("subtitle")
-              : `${t("found")}: ${filteredPosts.length}`}
+              : `${t("found")}: ${filteredItems.length}`}
           </P>
         </Header>
         <Tile $span="all">
@@ -135,7 +79,7 @@ const Blog = ({ data, location }) => {
             </InputWrapper>
           </Form>
         </Tile>
-        <Cards data={currentPosts}></Cards>
+        <Cards data={currentItems}></Cards>
         {hasMore ? (
           <Tile $span="all" $justify="center">
             <Button as="button" $type="text" onClick={handleLoadMore}>
