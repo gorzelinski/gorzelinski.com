@@ -1,6 +1,7 @@
 export const createShareLinks = (url, title) => {
   const encodedUrl = encodeURIComponent(url)
   const encodedTitle = encodeURIComponent(title)
+
   return {
     twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
     facebook: `https://www.facebook.com/sharer.php?u=${encodedUrl}&quote=${encodedTitle}`,
@@ -36,7 +37,7 @@ export const createPaginationLinks = (pageSlug, previous, next) => ({
   },
 })
 
-export const isInternal = (siteUrl, href) => {
+export const isLinkInternal = (siteUrl, href) => {
   const pageUrl = new URL(siteUrl)
   const linkUrl = new URL(href, siteUrl)
   return linkUrl.host === pageUrl.host
