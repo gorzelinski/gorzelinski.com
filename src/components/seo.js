@@ -31,7 +31,6 @@ const Seo = ({
     }
   `)
   const { t } = useTranslation("pages/index")
-
   const url = `${site.siteMetadata.siteUrl}${slug}`
   const metaDescription = description || t("description")
   const defaultTitle = t("title") || site.siteMetadata?.title

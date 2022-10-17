@@ -11,7 +11,7 @@ const Preferences = ({ location }) => {
   const { t } = useTranslation("pages/preferences")
 
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo
         lang={locale}
         title={t("title")}
@@ -20,7 +20,7 @@ const Preferences = ({ location }) => {
       ></Seo>
       <Hero>
         <Tile>
-          <H1>{t("title")}</H1>
+          <H1 $decorative>{t("title")}</H1>
           <P $type="lead">{t("description")}</P>
           <Button $type="primary" to="/">
             {t("button")}
