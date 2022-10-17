@@ -40,5 +40,5 @@ export const useScrollDirection = () => {
     }
   }, [scrollDirection])
 
-  return { scrollDirection }
+  return scrollDirection
 }
