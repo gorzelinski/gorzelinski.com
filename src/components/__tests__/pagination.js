@@ -1,23 +1,13 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
 
+import { pagination } from "./fixtures"
 import Pagination from "../pagination"
-
-const defaultData = {
-  prev: {
-    text: "Title of previous item",
-    slug: "/slug-to-previous-item",
-  },
-  next: {
-    text: "Title of next item",
-    slug: "/slug-to-next-item",
-  },
-}
 
 describe("Pagination component", () => {
   describe("renders", () => {
     it("link to next item", () => {
-      render(<Pagination data={defaultData}></Pagination>)
+      render(<Pagination data={pagination}></Pagination>)
       const next = screen.getByRole("link", {
         name: "Title of next item",
       })
@@ -25,7 +15,7 @@ describe("Pagination component", () => {
     })
 
     it("link to previous item", () => {
-      render(<Pagination data={defaultData}></Pagination>)
+      render(<Pagination data={pagination}></Pagination>)
       const next = screen.getByRole("link", {
         name: "Title of previous item",
       })
@@ -35,7 +25,7 @@ describe("Pagination component", () => {
 
   describe("doesn't render (due to partial data)", () => {
     it("link to next item", () => {
-      render(<Pagination data={{ ...defaultData, next: null }}></Pagination>)
+      render(<Pagination data={{ ...pagination, next: null }}></Pagination>)
       const next = screen.queryByRole("link", {
         name: "Title of next item",
       })
@@ -43,7 +33,7 @@ describe("Pagination component", () => {
     })
 
     it("link to previous item", () => {
-      render(<Pagination data={{ ...defaultData, prev: null }}></Pagination>)
+      render(<Pagination data={{ ...pagination, prev: null }}></Pagination>)
       const prev = screen.queryByRole("link", {
         name: "Title of previous item",
       })

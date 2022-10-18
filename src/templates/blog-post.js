@@ -1,8 +1,8 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
 import { getImage } from "gatsby-plugin-image"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import {
   Article,
