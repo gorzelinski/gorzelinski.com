@@ -1,9 +1,10 @@
 /// <reference types="Cypress" />
-import pages from "../fixtures/navigation.json"
+import allPages from "../fixtures/pages.json"
 import socials from "../fixtures/socials.json"
 import { email } from "../fixtures/email.json"
 
 describe("Navigation tests", () => {
+  const pages = allPages.filter(page => page.slug !== "/blog/hello-world/")
   beforeEach(() => {
     cy.visit("/")
   })

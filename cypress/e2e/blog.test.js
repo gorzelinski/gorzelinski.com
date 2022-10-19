@@ -1,8 +1,10 @@
 /// <reference types="Cypress" />
-import blog from "../fixtures/blog.json"
-import post from "../fixtures/post.json"
+import pages from "../fixtures/pages.json"
 
 describe("Blog tests", () => {
+  const blog = pages.find(page => page.slug === "/blog/")
+  const post = pages.find(page => page.slug === "/blog/hello-world/")
+
   it("Checks load more functionality", () => {
     cy.visit(blog.slug)
 

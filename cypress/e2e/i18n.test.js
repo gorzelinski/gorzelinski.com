@@ -14,7 +14,7 @@ describe("I18n tests", () => {
       cy.get(`link[hreflang|="${page.hreflang}"]`)
         .should("have.prop", "rel", "alternate")
         .and("have.prop", "href")
-        .and("contain", page.url)
+        .and("contain", page.slug)
     })
 
     cy.get('meta[property="og:locale"]').should(
@@ -35,10 +35,10 @@ describe("I18n tests", () => {
 
   pages.forEach(translations => {
     translations.forEach((translation, index) => {
-      const { lang, hreflang, url, heading, link } = translation
+      const { lang, hreflang, slug, heading, link } = translation
 
-      it(`Visits ${url} and checks translation`, () => {
-        cy.visit(url)
+      it(`Visits ${slug} and checks translation`, () => {
+        cy.visit(slug)
         cy.findByTestId(icon).should("exist")
         cy.findByRole("heading", {
           name: new RegExp(heading, "i"),

@@ -3,7 +3,7 @@
     {
       "lang": "en",
       "hreflang": "en-US",
-      "url": "/",
+      "slug": "/",
       "title": "Matthew Gorzelinski",
       "description": "things on the Internet",
       "heading": "create",
@@ -12,7 +12,7 @@
     {
       "lang": "pl",
       "hreflang": "pl-PL",
-      "url": "/pl/",
+      "slug": "/pl/",
       "title": "Mateusz Gorzeliński",
       "description": "rzeczy w Internecie",
       "heading": "tworzę",
@@ -23,7 +23,7 @@
     {
       "lang": "en",
       "hreflang": "en-US",
-      "url": "/portfolio/",
+      "slug": "/portfolio/",
       "title": "Portfolio",
       "description": "websites",
       "heading": "Portfolio",
@@ -32,7 +32,7 @@
     {
       "lang": "pl",
       "hreflang": "pl-PL",
-      "url": "/pl/portfolio/",
+      "slug": "/pl/portfolio/",
       "title": "Portfolio",
       "description": "strony internetowe",
       "heading": "Portfolio",
@@ -43,7 +43,7 @@
     {
       "lang": "en",
       "hreflang": "en-US",
-      "url": "/about/",
+      "slug": "/about/",
       "title": "About",
       "description": "Matthew",
       "heading": "story",
@@ -52,7 +52,7 @@
     {
       "lang": "pl",
       "hreflang": "pl-PL",
-      "url": "/pl/about/",
+      "slug": "/pl/about/",
       "title": "O",
       "description": "Mateusz",
       "heading": "historia",
@@ -63,7 +63,7 @@
     {
       "lang": "en",
       "hreflang": "en-US",
-      "url": "/blog/",
+      "slug": "/blog/",
       "title": "Blog",
       "description": "design",
       "heading": "Blog",
@@ -72,7 +72,7 @@
     {
       "lang": "pl",
       "hreflang": "pl-PL",
-      "url": "/pl/blog/",
+      "slug": "/pl/blog/",
       "title": "Blog",
       "description": "projektowaniu",
       "heading": "Blog",
@@ -83,7 +83,7 @@
     {
       "lang": "en",
       "hreflang": "en-US",
-      "url": "/portfolio/gorzelinski/",
+      "slug": "/portfolio/gorzelinski/",
       "title": "Behind the scenes of my website",
       "description": "my website",
       "heading": "Behind the scenes of my website",
@@ -92,7 +92,7 @@
     {
       "lang": "pl",
       "hreflang": "pl-PL",
-      "url": "/pl/portfolio/gorzelinski/",
+      "slug": "/pl/portfolio/gorzelinski/",
       "title": "Kulisy powstawania mojej strony",
       "description": "moją stronę",
       "heading": "Kulisy powstawania mojej strony",
@@ -103,7 +103,7 @@
     {
       "lang": "en",
       "hreflang": "en-US",
-      "url": "/blog/stylish-design-principles-with-a-nasty-acronym/",
+      "slug": "/blog/stylish-design-principles-with-a-nasty-acronym/",
       "title": "Stylish design principles with a nasty acronym",
       "description": "In this post, we will look at four universal design principles that can improve any graphical work",
       "heading": "Stylish design principles with a nasty acronym",
@@ -115,7 +115,7 @@
     {
       "lang": "pl",
       "hreflang": "pl-PL",
-      "url": "/pl/blog/stylish-design-principles-with-a-nasty-acronym/",
+      "slug": "/pl/blog/stylish-design-principles-with-a-nasty-acronym/",
       "title": "Stylowe zasady designu o paskudnym akronimie",
       "description": "W tym wpisie przyjrzymy się czterem, uniwersalnym zasadom designu, które mogą poprawić dowolną pracę graficzną",
       "heading": "Stylowe zasady designu o paskudnym akronimie",
@@ -129,7 +129,7 @@
     {
       "lang": "en",
       "hreflang": "en-US",
-      "url": "/uses/",
+      "slug": "/uses/",
       "title": "What Matthew uses?",
       "description": "specifics",
       "heading": "Services",
@@ -138,7 +138,7 @@
     {
       "lang": "pl",
       "hreflang": "pl-PL",
-      "url": "/pl/uses/",
+      "slug": "/pl/uses/",
       "title": "Czego Mateusz używa?",
       "description": "szczegółami",
       "heading": "Serwisy",

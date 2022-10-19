@@ -5,7 +5,8 @@
     "title": "Matthew Gorzelinski",
     "description": "things on the Internet",
     "type": "website",
-    "heading": "create"
+    "heading": "create",
+    "button": "Matthew Gorzelinski"
   },
   {
     "slug": "/portfolio/",
@@ -13,7 +14,9 @@
     "title": "Portfolio",
     "description": "websites",
     "type": "website",
-    "heading": "portfolio"
+    "heading": "portfolio",
+    "button": "Portfolio",
+    "alternateLink": "All projects"
   },
   {
     "slug": "/portfolio/an-lam/",
@@ -21,7 +24,8 @@
     "title": "An-lam",
     "description": "An-lam",
     "type": "article",
-    "heading": "an-lam"
+    "heading": "an-lam",
+    "button": "Check project"
   },
   {
     "slug": "/about/",
@@ -37,7 +41,8 @@
     "title": "What Matthew uses?",
     "description": "specifics",
     "type": "website",
-    "heading": "uses"
+    "heading": "uses",
+    "button": "Stuff I use"
   },
   {
     "slug": "/blog/",
@@ -45,7 +50,11 @@
     "title": "Blog",
     "description": "web development",
     "type": "website",
-    "heading": "blog"
+    "heading": "Blog",
+    "button": "Blog",
+    "search": "Search posts",
+    "alternateLink": "All posts",
+    "loadMore": "Load more"
   },
   {
     "slug": "/blog/hello-world/",
@@ -53,6 +62,18 @@
     "title": "Hello... world?",
     "description": "What am I actually",
     "type": "article",
-    "heading": "Hello... world?"
+    "heading": "Hello... world?",
+    "button": "Read post",
+    "internalLink": "I’m an engineer",
+    "externalLink": "flow state",
+    "share": [
+      { "name": "Twitter", "url": "https://twitter.com/intent/tweet?url=" },
+      { "name": "Facebook", "url": "https://www.facebook.com/sharer.php?u=" },
+      {
+        "name": "Linkedin",
+        "url": "https://www.linkedin.com/sharing/share-offsite/?url="
+      },
+      { "name": "Email", "url": "mailto:" }
+    ]
   }
 ]
