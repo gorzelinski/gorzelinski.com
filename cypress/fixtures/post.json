@@ -1,0 +1,17 @@
+{
+  "title": "Hello",
+  "heading": "Hello... world?",
+  "slug": "/blog/hello-world/",
+  "button": "Read post",
+  "internalLink": "I’m an engineer",
+  "externalLink": "flow state",
+  "share": [
+    { "name": "Twitter", "url": "https://twitter.com/intent/tweet?url=" },
+    { "name": "Facebook", "url": "https://www.facebook.com/sharer.php?u=" },
+    {
+      "name": "Linkedin",
+      "url": "https://www.linkedin.com/sharing/share-offsite/?url="
+    },
+    { "name": "Email", "url": "mailto:" }
+  ]
+}

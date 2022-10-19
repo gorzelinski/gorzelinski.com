@@ -1,37 +1,31 @@
 /// <reference types="Cypress" />
-
-const pages = [
-  "/",
-  "/portfolio/",
-  "/portfolio/an-lam/",
-  "/about/",
-  "/uses/",
-  "/blog/",
-  "/blog/hello-world/",
-]
+import pages from "../fixtures/pages.json"
+import { light, dark } from "../fixtures/theme.json"
 
 describe("Accessibility tests", () => {
   beforeEach(() => {
     window.localStorage.setItem("theme", JSON.stringify("light"))
   })
+
   afterEach(() => {
     cy.findByTestId("background").should(
       "have.css",
       "background-color",
-      "rgb(250, 250, 250)"
+      light.backgroundColor
     )
     cy.checkA11y()
     cy.findByLabelText(/change theme/i).click()
     cy.findByTestId("background").should(
       "have.css",
       "background-color",
-      "rgb(14, 15, 16)"
+      dark.backgroundColor
     )
     cy.checkA11y()
   })
+
   pages.forEach(page => {
-    it(`Visits ${page} and checks for accessibility violations`, () => {
-      cy.visit(page)
+    it(`Visits ${page.slug} and checks for accessibility violations`, () => {
+      cy.visit(page.slug)
       cy.injectAxe()
     })
   })

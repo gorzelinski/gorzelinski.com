@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "/",
+    "url": "https://gorzelinski.com",
+    "title": "Matthew Gorzelinski",
+    "description": "things on the Internet",
+    "type": "website",
+    "heading": "create"
+  },
+  {
+    "slug": "/portfolio/",
+    "url": "https://gorzelinski.com/portfolio/",
+    "title": "Portfolio",
+    "description": "websites",
+    "type": "website",
+    "heading": "portfolio"
+  },
+  {
+    "slug": "/portfolio/an-lam/",
+    "url": "https://gorzelinski.com/portfolio/an-lam/",
+    "title": "An-lam",
+    "description": "An-lam",
+    "type": "article",
+    "heading": "an-lam"
+  },
+  {
+    "slug": "/about/",
+    "url": "https://gorzelinski.com/about/",
+    "title": "About",
+    "description": "Matthew",
+    "type": "website",
+    "heading": "short story"
+  },
+  {
+    "slug": "/uses/",
+    "url": "https://gorzelinski.com/uses/",
+    "title": "What Matthew uses?",
+    "description": "specifics",
+    "type": "website",
+    "heading": "uses"
+  },
+  {
+    "slug": "/blog/",
+    "url": "https://gorzelinski.com/blog/",
+    "title": "Blog",
+    "description": "web development",
+    "type": "website",
+    "heading": "blog"
+  },
+  {
+    "slug": "/blog/hello-world/",
+    "url": "https://gorzelinski.com/blog/hello-world/",
+    "title": "Hello... world?",
+    "description": "What am I actually",
+    "type": "article",
+    "heading": "Hello... world?"
+  }
+]
