@@ -1,7 +1,6 @@
 /// <reference types="Cypress" />
 import { icon } from "../fixtures/theme.json"
-import { form } from "../fixtures/subscription.json"
-import user from "../fixtures/user.json"
+import { form, user } from "../fixtures/subscription.json"
 
 describe("Subscription tests", () => {
   it("Tests whole sign up flow", () => {

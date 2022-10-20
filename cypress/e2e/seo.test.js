@@ -7,7 +7,7 @@ describe("Seo tests", () => {
   let twitter
 
   before(() => {
-    cy.fixture("socials").then(socials => {
+    cy.fixture("contact").then(({ socials }) => {
       const handler = socials.find(social => social.name === "Twitter").handler
       twitter = `@${handler}`
     })

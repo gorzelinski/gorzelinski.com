@@ -4,5 +4,8 @@
     "button": "Subscribe",
     "error": "wrong",
     "success": "Thank you"
+  },
+  "user": {
+    "email": "user@example.com"
   }
 }

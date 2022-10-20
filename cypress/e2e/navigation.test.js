@@ -1,7 +1,6 @@
 /// <reference types="Cypress" />
 import allPages from "../fixtures/pages.json"
-import socials from "../fixtures/socials.json"
-import { email } from "../fixtures/email.json"
+import { socials, email } from "../fixtures/contact.json"
 
 describe("Navigation tests", () => {
   const pages = allPages.filter(page => page.slug !== "/blog/hello-world/")
