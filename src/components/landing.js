@@ -2,18 +2,18 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 
 import { H1, Hero, P, Button, Tile } from "../elements"
-import { usePrefersReducedMotion } from "../hooks"
+import { useReducedMotion } from "../hooks"
 import Typewriter from "./typewriter"
 
 const Landing = () => {
   const { t } = useTranslation("components/landing")
-  const hasReducedMotionPreference = usePrefersReducedMotion()
+  const hasReducedMotion = useReducedMotion()
 
   return (
     <Hero>
       <Tile as="header">
         <H1 aria-label={t("aria")}>
-          {hasReducedMotionPreference ? (
+          {hasReducedMotion ? (
             t("typewriter.create")
           ) : (
             <Typewriter

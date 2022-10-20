@@ -1,5 +1,5 @@
 export * from "./useLoadMore"
-export * from "./usePrefersReducedMotion"
+export * from "./useReducedMotion"
 export * from "./useScrollDirection"
 export * from "./useScrollProgress"
 export * from "./useSubscribe"

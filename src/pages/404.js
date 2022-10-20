@@ -19,7 +19,7 @@ const NotFoundPage = ({ data, location }) => {
   })
 
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo
         lang={locale}
         title={t("title")}
