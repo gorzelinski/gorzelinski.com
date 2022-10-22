@@ -14,11 +14,11 @@ type: "post"
 
 I like minimalism. I like minimalism in my room, on my screen, and - as you can see - on my blog. But, even for me, some bells and whistles are cool. I think thoughtful animation can improve user experience. You can spot subtle examples on my website. Some designers or developers may not agree with me. Efficiency may be a top priority for them. But, sometimes, it's not even about preferences.
 
-On December 16, 1997, an episode of Pokemon shown on Tokyo TV resulted in migraines, visual distortions, nausea, motion sickness, and seizures in over 500 children. But, you don't need a flashy tv series or video game to cause these reactions. Flashing light, patterns of lines, gratings, checkerboards, or other configurations can provoke a _photic-induced seizure._[<sup>[1]</sup>](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1528-1167.2005.31405.x)
+On December 16, 1997, an episode of Pokemon shown on Tokyo TV resulted in migraines, visual distortions, nausea, motion sickness, and seizures in over 500 children. But you don't need a flashy tv series or video game to cause these reactions. Flashing light, patterns of lines, gratings, checkerboards, or other configurations can provoke a _photic-induced seizure._[<sup>[1]</sup>](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1528-1167.2005.31405.x)
 
 There is a classification of different vestibular disorders. The system is responsible for our spatial orientation. For some people, its work can be disturbed by external triggers. Visually-induced dizziness or vertigo can be caused by a complex, distorted, large field or moving visual stimulus. People can feel an illusion of self-motion without actually moving.[<sup>[2]</sup>](https://www.researchgate.net/profile/Alexandre-Bisdorff/publication/38070636_Classification_of_vestibular_symptoms_Towards_an_international_classification_of_vestibular_disorders/links/00463515a70a1c1b7c000000/Classification-of-vestibular-symptoms-Towards-an-international-classification-of-vestibular-disorders.pdf)
 
-A flashing screen or motion (basically an animation) can trigger considerable physical reactions for some users. Some of them sound like a reaction to a carousel for many people - myself included. So, don't take your users on an involuntarily trip to an amusement park. Don't spin them right 'round baby right 'round.
+A flashing screen or motion (basically an animation) can trigger considerable physical reactions in some users. Some of them sound like a reaction to a carousel for many people - myself included. So, don't take your users on an involuntarily trip to an amusement park. Don't spin them right 'round baby right 'round.
 
 ## Reduce motion options
 
@@ -38,7 +38,7 @@ Browser support is good, so I'll try to make my website more accessible!
 
 ## Usage
 
-My website is minimalistic, so there are hardly any animations. But, there is one good example, the typewriter effect on my [home page](/). I created a typewriter component that takes an array of strings and simulates typing them.
+My website is minimalistic, so there are hardly any animations. But there is one good example, the typewriter effect on my [home page](/). I created a typewriter component that takes an array of strings and simulates typing them.
 
 Mdn documentation states: "the `prefers-reduced-motion` media feature is used to detect if the user has requested that the system minimize the amount of non-essential motion it uses." Even though the mentioned effect neatly conveys what I am often doing - typing - it's mainly for aesthetics. So, it's a good candidate for reduced motion.
 
@@ -178,6 +178,6 @@ The usage is straightforward. I import the custom hook and use it to return redu
 }
 ```
 
-But, I don't think it's a good idea. First, I encourage you to minimize the usage of the `!important` syntax. Using it too often can mess with CSS specificity. Second, not all animations are in CSS. This snippet can't take care of canvas, SVG, or other JS animations. And also, reduced animation doesn't mean no animations. Some animations can improve the user experience. Sometimes the line between essential and non-essential animations is blurry, but even considering the problem is a good start. At the end of writing, I found this [article](http://alistapart.com/article/designing-safer-web-animation-for-motion-sensitivity/) - there are examples of troubling animations, so it may help.
+But I don't think it's a good idea. First, I encourage you to minimize the usage of the `!important` syntax. Using it too often can mess with CSS specificity. Second, not all animations are in CSS. This snippet can't take care of canvas, SVG, or other JS animations. And also, reduced animation doesn't mean no animations. Some animations can improve the user experience. Sometimes the line between essential and non-essential animations is blurry, but even considering the problem is a good start. At the end of writing, I found this [article](http://alistapart.com/article/designing-safer-web-animation-for-motion-sensitivity/) - there are examples of troubling animations, so it may help.
 
 Meticulous preparation of animations and their reduced versions can be tiring. But - as always - it's worth it. Making your website more accessible can save trouble for some people, so more people can enjoy your content.

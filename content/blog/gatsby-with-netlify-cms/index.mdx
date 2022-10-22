@@ -103,7 +103,7 @@ There are specific options for collections. A collection is a list of objects of
 - `label` - label for the collection in the UI. It defaults to the name, but it doesn't need to be the same.
 - `label_singular` - the same as above, but for individual elements. It defaults to the label.
 - `description` - it's an optional description for the UI.
-- `folder` or `files` - a collection type. The `folder` option takes a path to a folder. Inside this folder, there should be multiple files with the same format and fields (e.g., blog posts). The `files` option contains uniquely configured files (e.g., about page).
+- `folder` or `files` - a collection type. The `folder` option takes a path to a folder. Inside this folder, there should be multiple files with the same format and fields (e.g., blog posts). The `files` option contains uniquely configured files (e.g., the about page).
 - `filter` - it's an option for the folder only. As the name suggests - it filters files from the folder. It takes `field` and `value` to use during filtration.
 - `create` - another option for the folder only. A `true` value allows users to create new items in the collection. `false` by default.
 - `extension` - used for finding and saving files in a folder collection.
@@ -113,7 +113,7 @@ There are specific options for collections. A collection is a list of objects of
   - `{{year}}` - a year of the file creation date.
   - `{{second}}` - a second of the file creation date
   - `{{field_name}}` - beside defined tags, you can also use custom ones by wrapping the field name in double curly braces.
-- `preview_path` - a template for generating paths to content on the live site. The tags are the same as the previous ones with exceptions:
+- `preview_path` - a template for generating paths to content on the live site. The tags are the same as the previous ones with the exceptions:
   - `{{slug}}` - here, it means the entire slug for the current entry.
   - Date tags may require additional config.
   - `{[dirname}}` - path to the parent folder of the collection.
@@ -219,4 +219,4 @@ Visit `https://your-website.netlify.app/admin/` and your browser should display 
 
 ![Authentication in Netlify CMS](./netlify-cms-authentication.png)
 
-After logging in, you can create a blog post, populate its fields and click "publish now." It will save your changes in the repository after a few seconds. Woohoo! We made it. "But. . .posts aren't displayed on the website", you may say pessimistically. I would respond - yeah, good point. However, the goal of this post was to integrate Netlify CMS with Gatsby. I wanted to keep everything else as simple as possible, so I started with a minimal setup. And if you started with a blog, you have this part already. This post is getting long, so I'll end here. I may add a second part, where we will display our posts.
+After logging in, you can create a blog post, populate its fields and click "publish now." It will save your changes in the repository after a few seconds. Woohoo! We made it. "But. . .posts aren't displayed on the website", you may say pessimistically. I would respond - yeah, good point. However, the goal of this post was to integrate Netlify CMS with Gatsby. I wanted to keep everything else as simple as possible, so I started with a minimal setup. And if you started with a blog, you have this part already. This post is getting long, so I'll end here. I may add a second part where we will display our posts.
