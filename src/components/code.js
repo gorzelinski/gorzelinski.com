@@ -8,7 +8,7 @@ const CodeBlock = ({ children }) => {
   const language = children.props.className.replace(/language-/, "") || ""
   const isShell = language === "bash" || language === "shell"
   const metastring = children.props.metastring
-  const title = metastring ? metastring : ""
+  const title = metastring?.split("title=")[1]
 
   return (
     <Highlight
