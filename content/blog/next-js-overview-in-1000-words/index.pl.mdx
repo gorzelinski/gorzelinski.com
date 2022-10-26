@@ -51,7 +51,7 @@ Po co tak długo marudzić o strategiach renderowania we wpisie o Next.js? Bo my
 
 Programiści stojący za Next.js stworzyli niestandardowy hak React do pobierania danych. Jest to rekomendowany sposób pobierania danych po stronie klienta.
 
-```jsx title=Client-Side Rendering w Next.js
+```jsx #Client-Side Rendering w Next.js
 import useSWR from "swr"
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
@@ -65,7 +65,7 @@ function Profile() {
 
 Wyeksportowanie funkcji `getServerSideProps` ze strony, pozwala renderować ją na każde zapytanie. Strona użyje danych zwróconych przez tę funkcję.
 
-```jsx title=Server-Side Rendering w Next.js
+```jsx #Server-Side Rendering w Next.js
 export async function getServerSideProps(context) {
   return {
     props: {},
@@ -77,7 +77,7 @@ export async function getServerSideProps(context) {
 
 Możesz wykorzystać generowanie statyczne z funkcją `getStaticProps`. Next.js użyje zwróconych danych, aby renderować stronę w trakcie fazy budowania. Ta funkcja współpracuje z `getStaticPaths`, aby dynamicznie generować ścieżki na podstawie dostarczonych treści.
 
-```jsx title=Static Site Generation w Next.js
+```jsx #Static Site Generation w Next.js
 export async function getStaticProps(context) {
   return {
     props: {},
@@ -89,7 +89,7 @@ export async function getStaticProps(context) {
 
 Ta strategia jest charakterystyczna dla Next.js. Próbuje niwelować problemy związane ze statyczną generacją. Pozwala ona na aktualizowanie stron, po fazie budowania aplikacji. W ten sposób nie musisz budować wszystkiego na nowo. Aby ją wykorzystać, musisz dodać parametr `revalidate` do `getStaticProps`.
 
-```jsx title=Incremental Static Regeneration w Next.js
+```jsx #Incremental Static Regeneration w Next.js
 export async function getStaticProps(context) {
   return {
     props: {},

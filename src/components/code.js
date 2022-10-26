@@ -8,10 +8,22 @@ const CodeBlock = ({ children }) => {
   const language = children.props.className.replace(/language-/, "") || ""
   const isShell = language === "bash" || language === "shell"
   const metastring = children.props.metastring
-  const [highlight, title] = metastring ? metastring.split("title=") : ["", ""]
-  const [leftBound, rightBound] = highlight
-    ? highlight.replace(/[{}]/g, "").split(",")
-    : [0, 0]
+  const [highlight, title] = metastring ? metastring.split("#", 2) : ["", ""]
+
+  const highlightLines = (metastring, lineNumber) => {
+    if (!metastring) {
+      return ""
+    }
+    const ranges = metastring
+      .replace(/[{}]/g, "")
+      .split("|")
+      .map(range => range.split("-").map(value => parseInt(value)))
+    const inRange = ranges.some(([start, end]) =>
+      end ? lineNumber >= start && lineNumber <= end : lineNumber === start
+    )
+
+    return inRange ? "highlight" : ""
+  }
 
   return (
     <Highlight
@@ -39,12 +51,7 @@ const CodeBlock = ({ children }) => {
 
               return (
                 <div
-                  data-testid={`line ${
-                    parseInt(leftBound) <= lineNumber &&
-                    lineNumber <= parseInt(rightBound)
-                      ? "highlight"
-                      : ""
-                  }`}
+                  data-testid={`line ${highlightLines(highlight, lineNumber)}`}
                   key={i}
                   {...getLineProps({ line, key: i })}
                 >

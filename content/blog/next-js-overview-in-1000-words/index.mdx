@@ -51,7 +51,7 @@ Why babble so much about rendering methods in the Next.js post? Because I think 
 
 The team behind Next.js has created a custom React hook for data fetching. It is a recommended way to fetch data on the client side.
 
-```jsx title=Client-Side Rendering in Next.js
+```jsx #Client-Side Rendering in Next.js
 import useSWR from "swr"
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
@@ -65,7 +65,7 @@ function Profile() {
 
 Exporting `getServerSideProps` from a page allows rendering the page on each request. The page will use the data returned from this function.
 
-```jsx title=Server-Side Rendering in Next.js
+```jsx #Server-Side Rendering in Next.js
 export async function getServerSideProps(context) {
   return {
     props: {},
@@ -77,7 +77,7 @@ export async function getServerSideProps(context) {
 
 You can use static site generation with the `getStaticProps` function. Next.js uses returned data to pre-render a page at build time. This function works with `getStaticPaths` to generate paths dynamically from the delivered content.
 
-```jsx title=Static Site Generation in Next.js
+```jsx #Static Site Generation in Next.js
 export async function getStaticProps(context) {
   return {
     props: {},
@@ -89,7 +89,7 @@ export async function getStaticProps(context) {
 
 The strategy is specific to Next.js. It attempts to solve static site generation issues. It allows you to update static pages after you've built your website. So you no longer need to rebuild the entire thing. To use it, you need to add the `revalidate` prop to `getStaticProps`.
 
-```jsx title=Incremental Static Regeneration in Next.js
+```jsx #Incremental Static Regeneration in Next.js
 export async function getStaticProps(context) {
   return {
     props: {},
