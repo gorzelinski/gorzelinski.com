@@ -8,7 +8,10 @@ const CodeBlock = ({ children }) => {
   const language = children.props.className.replace(/language-/, "") || ""
   const isShell = language === "bash" || language === "shell"
   const metastring = children.props.metastring
-  const title = metastring?.split("title=")[1]
+  const [highlight, title] = metastring ? metastring.split("title=") : ["", ""]
+  const [leftBound, rightBound] = highlight
+    ? highlight.replace(/[{}]/g, "").split(",")
+    : [0, 0]
 
   return (
     <Highlight
@@ -31,14 +34,29 @@ const CodeBlock = ({ children }) => {
             </Small>
           </div>
           <code>
-            {tokens.slice(0, -1).map((line, i) => (
-              <div className="line" key={i} {...getLineProps({ line, key: i })}>
-                {isShell ? null : <span className="line-number">{i + 1}</span>}
-                {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token, key })} />
-                ))}
-              </div>
-            ))}
+            {tokens.slice(0, -1).map((line, i) => {
+              const lineNumber = i + 1
+
+              return (
+                <div
+                  data-testid={`line ${
+                    parseInt(leftBound) <= lineNumber &&
+                    lineNumber <= parseInt(rightBound)
+                      ? "highlight"
+                      : ""
+                  }`}
+                  key={i}
+                  {...getLineProps({ line, key: i })}
+                >
+                  {isShell ? null : (
+                    <span className="line-number">{lineNumber}</span>
+                  )}
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
+              )
+            })}
           </code>
         </BlockCode>
       )}
