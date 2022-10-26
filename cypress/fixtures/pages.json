@@ -7,7 +7,7 @@
     "title": "Matthew Gorzelinski",
     "description": "things on the Internet",
     "type": "website",
-    "heading": "create",
+    "heading": "design",
     "button": "Matthew Gorzelinski",
     "localizedLink": "create"
   },
@@ -19,7 +19,7 @@
     "title": "Portfolio",
     "description": "websites",
     "type": "website",
-    "heading": "portfolio",
+    "heading": "Portfolio",
     "button": "Portfolio",
     "localizedLink": "check",
     "alternateLink": "All projects"
@@ -45,6 +45,7 @@
     "description": "Matthew",
     "type": "website",
     "heading": "short story",
+    "button": "About",
     "localizedLink": "About"
   },
   {

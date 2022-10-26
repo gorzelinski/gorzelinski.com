@@ -80,7 +80,7 @@ Przeszliśmy przez krótką historię paradygmatów programowania wymieniając r
 
 Załóżmy, że mamy dwa komputery: stacjonarny i laptop. Chcemy modelować je w kodzie. Pierwszym, naiwnym podejściem będzie podejście proceduralne, które może wyglądać tak:
 
-```javascript title=Kod proceduralny
+```javascript #Kod proceduralny
 const desktop = {
   name: "Mac Studio",
   gpu: "AMD Radeon Pro W6800X",
@@ -104,7 +104,7 @@ Możemy tworzyć odrębne obiekty dla każdej maszyny. Ale wyobraź sobie, że c
 
 Aby ograniczyć powtarzanie, możemy napisać funkcję, która stworzy obiekty dla nas - funkcję fabryczną.
 
-```javascript title=Funkcja fabryczna
+```javascript #Funkcja fabryczna
 function createComputer(name) {
   return {
     name,
@@ -124,7 +124,7 @@ Możemy tę funkcję wywołać wiele razy, aby stworzyć wiele obiektów. Nie po
 
 Jakiś czas temu, programiści dodali metodę `create()` do wbudowanego obiektu `Object`. Wykorzystuje ona istniejący obiekt jako prototyp, dla nowo stworzonego obiektu. W ten sposób możemy zdefiniować funkcję raz i odziedziczyć ją wykorzystując dziedziczenie prototypowe.
 
-```javascript title=Object.create()
+```javascript #Object.create()
 const computerFunctions = {
   info() {
     console.log(`Nazwa komputera: ${this.name}`)
@@ -158,7 +158,7 @@ Każda funkcja wywołana używając słowa `new` to funkcja konstruktora. Wbudow
 3. Wiąże `this` do zwróconego obiektu.
 4. Wiąże prototyp obiektu do funkcji konstruktora.
 
-```javascript title=Funkcja konstruktora
+```javascript #Funkcja konstruktora
 function Computer(name) {
   this.name = name
 }
@@ -185,7 +185,7 @@ Programiści JavaScript pisali w ten sposób przez długi czas. Prawdopodobnie z
 
 Nowa składnia została wprowadzona (wraz z wieloma innymi funkcjonalnościami) w specyfikacji ECMAScript 6. Poniższy fragment może wyglądać znajomo dla programistów, którzy używali wcześniej C++ albo inny, obiektowy język.
 
-```javascript title=Klasy
+```javascript #Klasy
 class Computer {
   constructor(name) {
     this.name = name
@@ -209,7 +209,7 @@ Ale pamiętaj - pomimo tego, że istnieje słowo `class`, to jest to tak zwany l
 
 Możesz argumentować, że używanie słowa `class` wraz z dziedziczeniem prototypowym jest zwodnicze. I trochę jest. Ale w mojej opinii, korzyści wynikające z czytelności przeważają nad tą wadą. Myślę, że ten kod jest łatwy do zrozumienia i wygląda jak OOP. Szczególnie, gdy dodamy dziedziczenie.
 
-```javascript title=Klasy i dziedziczenie
+```javascript #Klasy i dziedziczenie
 class Computer {
   constructor(name) {
     this.name = name
@@ -259,7 +259,7 @@ Nasze klasy **dziedziczą** część funkcjonalności od siebie. Unikamy przepis
 
 Dobra, skłamałem. Nie poznaliśmy jeszcze jednego z filarów. Ale odkupuję swoje winy w tym momencie. Słowo “polimorfizm” pochodzi od greckiego słowa “polymorphos”, które dosłownie oznacza “wiele postaci”. Etymologia dobrze opisuje to co chcemy osiągnąć polimorfizmem w OOP. Nie wiem czy istnieje jedna, konkretna definicja polimorfizmu. Nie chcę kłócić się z ludźmi mądrzejszymi ode mnie, dlatego nie twierdzę, że przytaczam precyzyjną definicję. Ale pomysł jest taki, że wywołujemy tę samą metodę na różnych obiektach i każdy z nich reaguje inaczej. JavaScript jest typowany dynamicznie i ogranicza polimorfizm. Ale możemy napisać coś takiego:
 
-```javascript title=Klasy i polimorfizm
+```javascript #Klasy i polimorfizm
 class Computer {
   constructor(name) {
     this.name = name

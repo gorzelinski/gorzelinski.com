@@ -80,7 +80,7 @@ We've just moved through the short history of programming paradigms featuring di
 
 Let's say we have two computers: a desktop and a laptop, and we want to model them in code. The first naive and procedural approach can look like this:
 
-```javascript title=Procedural code
+```javascript #Procedural code
 const desktop = {
   name: "Mac Studio",
   gpu: "AMD Radeon Pro W6800X",
@@ -104,7 +104,7 @@ We can create an object for each machine. But imagine we want ten more. We would
 
 To limit repeating, we can create a function that will make objects for us - a factory function.
 
-```javascript title=Factory Function
+```javascript #Factory Function
 function createComputer(name) {
   return {
     name,
@@ -124,7 +124,7 @@ We can call the function multiple times to create multiple objects. We don't rep
 
 Some time ago, developers added the `create()` method on the built-in `Object`. It uses an existing object as the prototype for the newly created object. This way, we can define the function once and inherit it through JavaScript prototype inheritance.
 
-```javascript title=Object.create()
+```javascript #Object.create()
 const computerFunctions = {
   info() {
     console.log(`Name of the computer: ${this.name}`)
@@ -158,7 +158,7 @@ Any function invoked using the `new` keyword is called a constructor function. B
 3. Binds `this` to the returned object.
 4. Links object's prototype to the constructor function.
 
-```javascript title=Constructor Function
+```javascript #Constructor Function
 function Computer(name) {
   this.name = name
 }
@@ -185,7 +185,7 @@ JavaScript developers have been writing things that way for a long time. You can
 
 New syntax was introduced to JavaScript language (alongside many other features) with ECMAScript 6 specification. The below snippet may look familiar to developers who have used C++ or other object-oriented languages.
 
-```javascript title=Classes
+```javascript #Classes
 class Computer {
   constructor(name) {
     this.name = name
@@ -209,7 +209,7 @@ But remember, even though there is a `class` keyword, it is syntactic sugar. Und
 
 You may argue that using the `class` keyword with prototype inheritance is deceptive. And it is a little. But I think the benefit of readability overweight the cons. In my opinion, this code is easy to understand and looks like OOP. Especially when we add inheritance.
 
-```javascript title=Classes and inheritance
+```javascript #Classes and inheritance
 class Computer {
   constructor(name) {
     this.name = name
@@ -260,7 +260,7 @@ Our classes **inherit** from each other parts of the functionality. We avoid rew
 
 Ok, I lied. We haven't touched on one of the pillars. But I'm redeeming myself now. The word "polymorphism" comes from the Greek word "polymorphos," which means "many forms." The etymology accurately describes what we want to accomplish with polymorphism in OOP. I don't know if there is one correct definition of polymorphism. I don't want to argue with people smarter than me, so I'm not claiming I'm giving a precise definition. But the idea is that we can call the same method on different objects, and each object responds distinctly. JavaScript is a dynamically typed language, so it limits polymorphism. But we can write something like this:
 
-```javascript title=Classes and polymorphism
+```javascript #Classes and polymorphism
 class Computer {
   constructor(name) {
     this.name = name
