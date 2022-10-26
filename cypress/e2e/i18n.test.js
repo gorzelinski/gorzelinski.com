@@ -48,6 +48,7 @@ describe("I18n tests", () => {
 
         cy.findByTestId(icon).should("exist")
         cy.findByRole("heading", {
+          level: 1,
           name: new RegExp(heading, "i"),
         }).should("be.visible")
         checkHeadTags(translation, index, translations)

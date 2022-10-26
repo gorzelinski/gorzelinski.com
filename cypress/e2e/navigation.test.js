@@ -3,7 +3,11 @@ import allPages from "../fixtures/pages.json"
 import { socials, email } from "../fixtures/contact.json"
 
 describe("Navigation tests", () => {
-  const pages = allPages.filter(page => page.slug !== "/blog/hello-world/")
+  const exclude = ["/blog/hello-world/", "/portfolio/an-lam/"]
+  const pages = allPages.filter(
+    page => !exclude.some(slug => slug === page.slug)
+  )
+
   beforeEach(() => {
     cy.visit("/")
   })
@@ -20,7 +24,10 @@ describe("Navigation tests", () => {
         })
         .should("be.visible")
         .click()
-      cy.findByRole("heading", { level: 1 }).should("be.ok")
+      cy.findByRole("heading", { level: 1 }).should(
+        "contain.text",
+        page.heading
+      )
       cy.url().should("contain", page.slug)
     })
   })
