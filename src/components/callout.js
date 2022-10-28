@@ -16,7 +16,7 @@ const StyledCallout = styled.div`
   margin: var(--vertical-rhythm) 0;
   transition: background-color var(--duration-natural) ease-out;
 
-  ${colorStates.type}
+  ${colorStates}
 
   & > *:nth-child(2) {
     margin-top: 0;

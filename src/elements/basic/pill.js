@@ -14,5 +14,5 @@ export const Pill = styled(Small)`
   padding: var(--space-20);
   user-select: none;
   transition: background-color var(--duration-natural) ease-out;
-  ${colorStates.type}
+  ${colorStates}
 `
