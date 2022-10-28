@@ -16,7 +16,7 @@ export const Article = styled.article.attrs(() => ({
   }
 
   & > figure,
-  & > .gatsby-image-wrapper {
+  & > .image-wrapper {
     grid-column: 1 / span 3;
     height: auto;
     margin: 0 var(--overflow-wrapper);

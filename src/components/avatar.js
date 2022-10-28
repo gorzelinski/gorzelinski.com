@@ -15,6 +15,7 @@ const StyledAvatar = styled.div`
     border-radius: 50%;
     -webkit-mask-image: -webkit-radial-gradient(white, black);
   }
+
   & * {
     margin: 0;
   }

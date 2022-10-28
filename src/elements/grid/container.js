@@ -37,7 +37,7 @@ export const grid = css`
       case "article":
         return css`
           grid-template-columns:
-            minmax(0, 1fr) minmax(1ch, var(--space-line-length))
+            minmax(0, 1fr) minmax(1ch, var(--line-length))
             minmax(0, 1fr);
         `
       default:

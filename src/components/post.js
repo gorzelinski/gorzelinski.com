@@ -19,7 +19,7 @@ const Post = ({ data = {} }) => {
     src && date && timeToRead && title && description && slug && true
 
   return isDataComplete ? (
-    <Card $span="all" $type="horizontal">
+    <Card $span="all" $horizontal>
       <Image image={src} alt={alt} $aspectRatio="golden"></Image>
       <Small>{`${date} • ${timeToRead} ${t("min")}`}</Small>
       <H4 as="h3">{title}</H4>
