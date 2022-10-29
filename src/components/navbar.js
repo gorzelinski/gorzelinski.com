@@ -27,10 +27,10 @@ const Navbar = ({ location }) => {
           $type="nav"
           $animation="underline"
           to="/portfolio/"
+          partiallyActive={true}
           activeClassName={selectClass(
             localizedPath({ path: "/portfolio/", locale, defaultLang })
           )}
-          partiallyActive={true}
         >
           {t("portfolio")}
         </Button>
@@ -48,10 +48,10 @@ const Navbar = ({ location }) => {
           $type="nav"
           $animation="underline"
           to="/blog/"
+          partiallyActive={true}
           activeClassName={selectClass(
             localizedPath({ path: "/blog/", locale, defaultLang })
           )}
-          partiallyActive={true}
         >
           {t("blog")}
         </Button>

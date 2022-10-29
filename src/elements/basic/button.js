@@ -122,12 +122,6 @@ export const Button = styled(LocalizedLink)`
   }
 
   ${props =>
-    props.$flex &&
-    css`
-      --display: flex;
-    `}
-
-  ${props =>
     props.$bold &&
     css`
       --font-weight: var(--font-weight-bold);
