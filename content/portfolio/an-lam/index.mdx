@@ -25,7 +25,7 @@ Before I started designing, I had done some research. I visited many competitors
 
 ## Wireframes
 
-I started the design process by creating several drafts of sections and renovations subpage. Then I fastly moved on to experimenting with fonts and colors. Based on drafts and experiments, I created some wireframes. I shared them with the entrepreneur. His decisions influenced the following work.
+I started the design process by creating several drafts of sections and the renovations subpage. Then I fastly moved on to experimenting with fonts and colors. Based on drafts and experiments, I created some wireframes. I shared them with the entrepreneur. His decisions influenced the following work.
 
 ![Wireframes of landing section](./wireframes.png)
 
@@ -43,7 +43,7 @@ For this project, I created a simple but formal design system. I divided it into
 
 ![Questrial - body text](./questrial.png)
 
-The color palette consisted of grays, whites, and navy blue. It refers to sea, yachts, and minimalism. The accessibility of a website is significant, so I tested the color contrast ratios.
+The color palette consisted of grays, whites, and navy blue. It refers to the sea, yachts, and minimalism. The accessibility of a website is significant, so I tested the color contrast ratios.
 
 ![Design system - colors](./design-system-colors.png)
 
@@ -62,13 +62,13 @@ Gatsby is one of the most feature-rich static site generators out there. It offe
 - `gatsby-plugin-styled-components` for styling react components.
 - and few more
 
-I was choosing mainly official and supported plugins. I also tried to add only the necessary ones.
+I've chosen mainly official and supported plugins. I also tried to add only the necessary ones.
 
 ## Testing
 
-Gatsby doesn't support unit tests out of the box. I've added config to be able to write them.
+Gatsby doesn't support unit tests out of the box. I've added a config to be able to write them.
 
-In the project, I used the framework `Jest` with `React Testing Library`. It enforces good practices like finding elements by ARIA roles. There was not too much logic - usually covered by unit tests. But, they were still helpful - I used them to test if components rendered everything correctly.
+In the project, I used the framework `Jest` with `React Testing Library`. It enforces good practices like finding elements by ARIA roles. There was not too much logic - usually covered by unit tests. But they were still helpful - I used them to test if the components rendered everything correctly.
 
 ```jsx
 import React from "react"
@@ -113,13 +113,13 @@ describe("Services", () => {
 })
 ```
 
-Besides unit tests, I also created some e2e tests. To achieve that, I added to the project `Cypress` with `Cypress Testing Library`. In this way, I unified searching for DOM elements. I simulated users' behavior with e2e tests: scrolling through sections, clicking links, etc. `Cypress-axe` library turned out to be very handy. It detected some problems with accessibility and helped me fix them.
+Besides unit tests, I also created some e2e tests. To achieve that, I added `Cypress` with `Cypress Testing Library`. In this way, I unified searching for DOM elements. I simulated users' behavior with e2e tests: scrolling through sections, clicking links, etc. `Cypress-axe` library turned out to be very handy. It detected some problems with accessibility and helped me fix them.
 
 <img style="width: 100%;" alt="E2e test showcase" src="./e2e-tests.gif"></img>
 
-## Github
+## GitHub
 
-I used Git as a version control system. I was formating commits using Angular convention. Before every commit, the `husky` package was starting git scripts. I put the whole codebase in the Github repository. I linked the repository with Netlify.
+I used Git as a version control system. I was formatting commits using Angular convention. Before every commit, the `husky` package was starting git scripts. I put the whole codebase in the GitHub repository. I linked the repository with Netlify.
 
 ## Netlify
 

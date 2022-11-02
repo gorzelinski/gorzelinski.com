@@ -1,18 +1,9 @@
 /// <reference types="Cypress" />
-
-const light = {
-  backgroundColor: "rgb(250, 250, 250)",
-  text: "rgb(0, 0, 0)",
-}
-
-const dark = {
-  backgroundColor: "rgb(14, 15, 16)",
-  text: "rgb(255, 255, 255)",
-}
+import { light, dark, icon } from "../fixtures/theme.json"
 
 describe("Theme tests", () => {
   const checkLightTheme = () => {
-    cy.findByTestId("sun-and-moon").should("exist")
+    cy.findByTestId(icon).should("exist")
     cy.findByTestId("background").should(
       "have.css",
       "background-color",
@@ -20,8 +11,9 @@ describe("Theme tests", () => {
     )
     cy.findAllByRole("heading").first().should("have.css", "color", light.text)
   }
+
   const checkDarkTheme = () => {
-    cy.findByTestId("sun-and-moon").should("exist")
+    cy.findByTestId(icon).should("exist")
     cy.findByTestId("background").should(
       "have.css",
       "background-color",
@@ -40,6 +32,7 @@ describe("Theme tests", () => {
           .returns({ matches: false, addEventListener: () => {} })
       },
     })
+
     checkDarkTheme()
     cy.findByLabelText(/change theme/i)
       .scrollIntoView({

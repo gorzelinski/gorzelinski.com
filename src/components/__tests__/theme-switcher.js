@@ -6,24 +6,20 @@ import ThemeSwitcher from "../theme-switcher"
 
 describe("ThemeSwitcher component", () => {
   describe("renders", () => {
-    it("button", () => {
+    beforeEach(() => {
       render(
         <ThemeContext.Provider value={{ theme: "light", saveTheme: jest.fn() }}>
           <ThemeSwitcher></ThemeSwitcher>
         </ThemeContext.Provider>
       )
+    })
 
+    it("button", () => {
       const button = screen.getByLabelText(/aria/i)
       expect(button).toBeInTheDocument()
     })
 
     it("sun and moon icon", () => {
-      render(
-        <ThemeContext.Provider value={{ theme: "light", saveTheme: jest.fn() }}>
-          <ThemeSwitcher></ThemeSwitcher>
-        </ThemeContext.Provider>
-      )
-
       const icon = screen.getByTestId(/sun-and-moon/i)
       expect(icon).toBeInTheDocument()
     })

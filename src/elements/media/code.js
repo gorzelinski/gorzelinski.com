@@ -66,11 +66,17 @@ export const BlockCode = styled.pre`
     max-width: 100%;
     overflow-x: auto;
     line-height: var(--font-height-base);
-    & .token-line:last-child {
+    & [data-testid*="line"]:last-child {
       margin-bottom: var(--line-margin);
     }
-    & .token-line:first-child {
+    & [data-testid*="line"]:first-child {
       margin-top: var(--line-margin);
+    }
+    & [data-testid*="highlight"] {
+      & .line-number {
+        color: var(--color-primary-base);
+        font-weight: var(--font-weight-bold);
+      }
     }
     & .line-number {
       user-select: none;

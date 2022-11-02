@@ -13,6 +13,7 @@ module.exports = {
     `\\.cache`,
     `<rootDir>.*/public`,
     `cypress`,
+    `fixtures`,
   ],
   transformIgnorePatterns: [
     `node_modules/(?!(gatsby-theme-i18n|gatsby-script)/)`,

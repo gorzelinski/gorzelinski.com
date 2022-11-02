@@ -1,0 +1,67 @@
+[
+  {
+    "lang": "pl",
+    "hreflang": "pl-PL",
+    "slug": "/pl/",
+    "title": "Mateusz Gorzeliński",
+    "description": "rzeczy w Internecie",
+    "heading": "tworzę",
+    "localizedLink": "stwórzmy"
+  },
+  {
+    "lang": "pl",
+    "hreflang": "pl-PL",
+    "slug": "/pl/portfolio/",
+    "title": "Portfolio",
+    "description": "strony internetowe",
+    "heading": "Portfolio",
+    "localizedLink": "sprawdź"
+  },
+  {
+    "lang": "pl",
+    "hreflang": "pl-PL",
+    "slug": "/pl/portfolio/an-lam/",
+    "title": "An-lam",
+    "description": "",
+    "heading": "An-lam - strona firmowa",
+    "localizedLink": "Jamstack"
+  },
+  {
+    "lang": "pl",
+    "hreflang": "pl-PL",
+    "slug": "/pl/about/",
+    "title": "O",
+    "description": "Mateusz",
+    "heading": "historia",
+    "localizedLink": "O mnie"
+  },
+  {
+    "lang": "pl",
+    "hreflang": "pl-PL",
+    "slug": "/pl/uses/",
+    "title": "Czego Mateusz używa?",
+    "description": "szczegółami",
+    "heading": "używa",
+    "localizedLink": "Główna"
+  },
+  {
+    "lang": "pl",
+    "hreflang": "pl-PL",
+    "slug": "/pl/blog/",
+    "title": "Blog",
+    "description": "projektowaniu",
+    "heading": "Blog",
+    "localizedLink": "czytaj wpis"
+  },
+  {
+    "lang": "pl",
+    "hreflang": "pl-PL",
+    "slug": "/pl/blog/hello-world/",
+    "title": "Hello... world?",
+    "description": "Co ja właściwie",
+    "heading": "Hello... world?",
+    "localizedLink": "Jestem inżynierem",
+    "date": "7 lipca, 2022",
+    "more": "Przeczytaj więcej"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "light": {
+    "backgroundColor": "rgb(250, 250, 250)",
+    "text": "rgb(0, 0, 0)"
+  },
+  "dark": {
+    "backgroundColor": "rgb(14, 15, 16)",
+    "text": "rgb(255, 255, 255)"
+  },
+  "icon": "sun-and-moon"
+}

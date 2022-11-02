@@ -13,6 +13,7 @@ describe("Reduced motion tests", () => {
           .returns({ matches: true, addEventListener: () => {} })
       },
     })
+
     cy.findByRole("heading", { level: 1, timeout: 2000 }).should(
       "have.text",
       staticString

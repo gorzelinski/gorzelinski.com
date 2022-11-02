@@ -1,20 +1,11 @@
 /// <reference types="Cypress" />
-
-const form = {
-  email: "Your email",
-  button: "Subscribe",
-  error: "wrong",
-  success: "Thank you",
-}
-
-const user = {
-  email: "user@example.com",
-}
+import { icon } from "../fixtures/theme.json"
+import { form, user } from "../fixtures/subscription.json"
 
 describe("Subscription tests", () => {
   it("Tests whole sign up flow", () => {
     cy.visit("/blog/hello-world/")
-    cy.findByTestId("sun-and-moon").should("exist")
+    cy.findByTestId(icon).should("exist")
 
     cy.findByPlaceholderText(form.email)
       .as("email")

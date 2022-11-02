@@ -34,7 +34,7 @@ Jamstack is the answer to many well-known problems associated with web developme
 
 Website performance matters. Web crawlers index websites considering performance as a significant factor. Users may leave if your website is loading slowly. I'm a patient guy (hey, I'm sitting here typing for another hour), but my patience is on the edge when I wait for a damn website to load. But I'm not alone. There was a study about [tolerable waiting time](https://www.tandfonline.com/doi/abs/10.1080/01449290410001669914). Most users are willing to wait for just about 2 seconds. And not all of them have fast internet connections.
 
-Jamstack approach precompiles pages. User, after request, gets a finished page. You don't need to send many requests to different servers. CDN sends your website with all the assets. Distributed nature of a CDN allows sending them from the nearest edge. It shortens the route the files need to travel, and it saves time.
+Jamstack approach precompiles pages. A user, after a request, gets a finished page. You don't need to send many requests to different servers. CDN sends your website with all the assets. Distributed nature of a CDN allows sending them from the nearest edge. It shortens the route the files need to travel, and it saves time.
 
 ### Scalability
 
@@ -72,7 +72,7 @@ At the same time, it's not like you cannot create anything dynamic. Developers c
 
 ### Dependence on external services
 
-Microservices are substantial for this approach. Most of the third-party APIs and other services are solid. Nevertheless, if one of these services fails, your app will lose some functionality. It's not so different when one of your servers fails. But, you have more control over your server.
+Microservices are substantial for this approach. Most of the third-party APIs and other services are solid. Nevertheless, if one of these services fails, your app will lose some functionality. It's not so different when one of your servers fails. But you have more control over your server.
 
 ## How to implement this approach in the next project?
 
@@ -101,7 +101,7 @@ Contents in a Jamstack project are usually simple text files. They are in the sa
 
 Having content, we need HTML pages to present it. You could code them by hand, which is reasonable for tiny websites. But, for most cases, it's worth using a Static Site Generator. It does what the name implies - it generates static pages using provided content. Almost. The name may insinuate the result is non-interactive. But it's not the case! Generated files are static, but the finished website may have dynamic features. It's usually the domain of external APIs. There are many generators in different programming languages:
 
-- Next.js
+- [Next.js](/blog/next-js-overview-in-1000-words/)
 - Hugo
 - Gatsby
 - Jekyll
@@ -111,7 +111,7 @@ Having content, we need HTML pages to present it. You could code them by hand, w
 
 ### External APIs
 
-Many services offer various functionalities - from comments, through forms and searching to payment processing and e-commerce. You can even create your APIs, abstracting some logic to custom functions.
+Many services offer various functionalities - from comments, through forms and searching to payment processing and e-commerce. You can even create your APIs, abstracting some logic into custom functions.
 
 ### Deployment
 
@@ -123,9 +123,9 @@ When your app has all the required features, you need to deploy it somewhere. To
 - Azure Static Web Apps
 - Digital Ocean
 
-### Can I aboard the Jamstack hype train?
+### Can I board the Jamstack hype train?
 
-Before making a website with this architecture, consider its pros and cons. This approach is not ideal for every application. If you're decided and want such a fast website or have questions - [write to me](/blog/jamstack-what-why-how/#contact).
+Before making a website with this architecture, consider its pros and cons. This approach is not ideal for every application. If you've decided and want such a fast website or have questions - [write to me](/blog/jamstack-what-why-how/#contact).
 
 <Callout type="info">
 

@@ -1,69 +1,21 @@
 /// <reference types="Cypress" />
-const pages = [
-  {
-    slug: "/",
-    url: "https://gorzelinski.com",
-    title: "Matthew Gorzelinski",
-    description: "things on the Internet",
-    type: "website",
-    h1: /create/i,
-  },
-  {
-    slug: "/portfolio/",
-    url: "https://gorzelinski.com/portfolio/",
-    title: "Portfolio",
-    description: "websites",
-    type: "website",
-    h1: /portfolio/i,
-  },
-  {
-    slug: "/portfolio/an-lam/",
-    url: "https://gorzelinski.com/portfolio/an-lam/",
-    title: "An-lam",
-    description: "An-lam",
-    type: "article",
-    h1: /an-lam/i,
-  },
-  {
-    slug: "/about/",
-    url: "https://gorzelinski.com/about/",
-    title: "About",
-    description: "Matthew",
-    type: "website",
-    h1: /short story/i,
-  },
-  {
-    slug: "/uses/",
-    url: "https://gorzelinski.com/uses/",
-    title: "What Matthew uses?",
-    description: "specifics",
-    type: "website",
-    h1: /uses/i,
-  },
-  {
-    slug: "/blog/",
-    url: "https://gorzelinski.com/blog/",
-    title: "Blog",
-    description: "web development",
-    type: "website",
-    h1: /blog/i,
-  },
-  {
-    slug: "/blog/hello-world/",
-    url: "https://gorzelinski.com/blog/hello-world/",
-    title: "Hello... world?",
-    description: "What am I actually",
-    type: "article",
-    h1: /hello... world?/i,
-  },
-]
+import pages from "../fixtures/pages.json"
+import { icon } from "../fixtures/theme.json"
 
 describe("Seo tests", () => {
-  const siteTitle = "Gorzelinski"
-  const twitter = "@gorzelinski"
-  const shouldHaveTags = ({ h1, title, description, url, type }) => {
+  const siteTitle = "Matthew Gorzelinski"
+  let twitter
+
+  before(() => {
+    cy.fixture("contact").then(({ socials }) => {
+      const handler = socials.find(social => social.name === "Twitter").handler
+      twitter = `@${handler}`
+    })
+  })
+
+  const shouldHaveTags = ({ heading, title, description, url, type }) => {
     cy.findByRole("heading", {
-      name: h1,
+      name: new RegExp(heading, "i"),
       level: 1,
       exact: false,
     }).should("be.visible")
@@ -127,7 +79,8 @@ describe("Seo tests", () => {
   pages.forEach(page => {
     it(`Visits ${page.slug} and checks important seo tags`, () => {
       cy.visit(page.slug)
-      cy.findByTestId("sun-and-moon").should("exist")
+      cy.findByTestId(icon).should("exist")
+
       shouldHaveTags(page)
     })
   })

@@ -12,7 +12,7 @@ tags: ["python", "web", "scraping", "books"]
 type: "post"
 ---
 
-I like to read books. Different genres fill my bookshelf: economy, psychology, philosophy, biographies, nonfiction, and especially - science. Bonobo from Frans de Waal's book cover looks at Einstein's prominent face. Before I put anything there, I search. I literally can spend an hour before I click “buy” in an online bookstore. I look for recommendations everywhere: asking friends, and strangers, browsing through Quora, Medium, and of course - Goodreads. Browsing the web is fun, but every hour spent searching is taking time from actual reading. So, like a real programmer, let's spend other hours automating this process!
+I like to read books. Different genres fill my bookshelf: economy, psychology, philosophy, biographies, nonfiction, and especially - science. Bonobo from Frans de Waal's book cover looks at Einstein's prominent face. Before I put anything there, I search. I can spend an hour before I click “buy” in an online bookstore. I look for recommendations everywhere: asking friends, and strangers, browsing through Quora, Medium, and of course - Goodreads. Browsing the web is fun, but every hour spent searching is taking time from actual reading. So, like a real programmer, let's spend other hours automating this process!
 
 Before I write any code, I need to clarify - I'm not a Python developer. I've completed several Python and data science courses and read a book, but that's it. This post is an opportunity to learn more. You can learn with me. A little knowledge of Python and the web is required to continue.
 
@@ -156,7 +156,7 @@ for book in books:
     print(int(ratings.replace(",", "")))  # Int like 84 006
 ```
 
-A lot going on here, so let's stop for a moment. For every book on a page, we want to extract info about the average rating and the number of ratings. First, we select the `span` with this information and grab text from it (last element). We split the string using spaces and use list unpacking to take just numbers. The average rating is first in the list, and the number of ratings is one before last. We also need to converse the numbers to `float` and `int` because they are strings. I know I could use regex or iterating over the list to extract that info and don't rely on positions, but I wanted to keep it simple. Then I also extracted the info about the title, author, and link.
+A lot going on here, so let's stop for a moment. For every book on a page, we want to extract info about the average rating and the number of ratings. First, we select the `span` with this information and grab text from it (last element). We split the string using spaces and used list unpacking to take just numbers. The average rating is first in the list, and the number of ratings is one before the last. We also need to convert the numbers to `float` and `int` because they are strings. I know I could use regex or iterate over the list to extract that info and don't rely on positions, but I wanted to keep it simple. Then I also extracted the info about the title, author, and link.
 
 ```python
 from requests import get
