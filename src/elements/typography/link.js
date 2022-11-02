@@ -4,8 +4,8 @@ import styled, { css } from "styled-components"
 import { outline } from "../effects"
 
 export const link = css`
-  color: var(--color-primary-base);
   cursor: pointer;
+  color: var(--color-primary-base);
   text-decoration: underline;
   text-underline-offset: var(--space-10);
   text-decoration-thickness: var(--space-10);

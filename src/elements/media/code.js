@@ -8,7 +8,8 @@ export const code = css`
   font-family: var(--font-family-code);
   font-weight: var(--font-weight-regular);
   transition: background-color var(--duration-natural) ease-out,
-    box-shadow var(--duration-natural) ease-out;
+    box-shadow var(--duration-natural) ease-out,
+    border-color var(--duration-natural) ease-out;
 `
 
 export const InlineCode = styled.code`

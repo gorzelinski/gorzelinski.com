@@ -7,14 +7,16 @@ const base = css`
     auto-fit,
     minmax(min(var(--column), 100%), 1fr)
   );
-  gap: var(--space-30);
+  --gap: var(--space-30);
+
+  gap: var(--gap);
 
   ${media.tiny`
-    gap: var(--space-40);
+    --gap: var(--space-40);
   `}
 
   ${media.desktop`
-    gap: var(--space-50);
+    --gap: var(--space-50);
   `}
 `
 

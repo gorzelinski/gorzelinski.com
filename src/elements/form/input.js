@@ -1,10 +1,11 @@
 import styled from "styled-components"
 
-import { border } from "../utils"
+import { border, borderTransition } from "../utils"
 import { ui } from "../typography"
 
 export const InputWrapper = styled.div`
   position: relative;
+
   & > input {
     width: 100%;
     padding-left: calc(var(--space-20) * 2 + var(--font-height-base));
@@ -23,7 +24,7 @@ export const Input = styled.input`
   color: var(--color-gray-30);
   background-color: var(--color-background);
   padding: calc(var(--space-20) - var(--space-00));
-  transition: border-color var(--duration-natural) ease-out,
+  transition: ${borderTransition},
     background-color var(--duration-natural) ease-out,
     color var(--duration-natural) ease-out;
 

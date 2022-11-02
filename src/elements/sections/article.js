@@ -17,10 +17,10 @@ export const Article = styled.article.attrs(() => ({
 
   & > figure,
   & > .image-wrapper {
-    grid-column: 1 / span 3;
     height: auto;
     margin: 0 var(--overflow-wrapper);
     margin-bottom: var(--margin-banner);
+    grid-column: 1 / span 3;
   }
 
   & > header {
@@ -28,9 +28,9 @@ export const Article = styled.article.attrs(() => ({
   }
 
   & > footer {
+    ${border.top}
     margin-top: var(--margin-sections);
     padding-top: var(--margin-sections);
-    ${border.top}
   }
 
   & > div > *:first-child {
