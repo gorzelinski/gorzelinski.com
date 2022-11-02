@@ -20,12 +20,10 @@ export const border = {
     &:hover:enabled {
       border-color: var(--color-gray-60);
     }
-
     &:focus:enabled {
       border-color: var(--color-gray-30);
       outline: 0;
     }
-
     &:active:enabled {
       border-color: var(--color-gray-30);
     }

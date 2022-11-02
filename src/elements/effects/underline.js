@@ -3,9 +3,9 @@ import { css } from "styled-components"
 export const underline = css`
   &:after {
     content: "";
-    position: absolute;
     width: 100%;
     height: var(--space-10);
+    position: absolute;
     bottom: 0;
     left: 0;
     background-color: var(--color-gray-00);

@@ -22,18 +22,21 @@ export const listItem = css`
     ${heading.xxs}
   `}
 
-  & > p {
-    margin-bottom: var(--space-30);
-  }
   &:last-child {
     margin-bottom: 0;
   }
+
+  &::marker {
+    color: var(--color-primary-base);
+  }
+
+  & > p {
+    margin-bottom: var(--space-30);
+  }
+
   & > ul {
     margin-left: var(--space-40);
     margin-top: var(--space-30);
-  }
-  &::marker {
-    color: var(--color-primary-base);
   }
 `
 

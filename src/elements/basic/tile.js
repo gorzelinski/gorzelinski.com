@@ -8,6 +8,7 @@ export const Tile = styled.div`
   ${heighten}
   ${justify}
   ${textAlign}
+  
   & > *:first-child {
     margin-top: 0;
   }

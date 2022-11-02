@@ -48,6 +48,8 @@
   --font-weight-medium: 500;
   --font-weight-bold: 600;
 
+  --line-length: 90ch;
+
   --space-00: 1px;
   --space-10: 2px;
   --space-20: 8px;
@@ -57,6 +59,4 @@
   --space-60: 128px;
   --space-70: 256px;
   --space-80: 440px;
-
-  --space-line-length: 90ch;
 }

@@ -8,6 +8,7 @@ export const Header = styled.header.attrs(props => ({
   & > *:first-child {
     margin-top: 0;
   }
+
   & > *:last-child {
     margin-bottom: 0;
   }
@@ -20,14 +21,17 @@ export const Header = styled.header.attrs(props => ({
           --padding: var(--padding-vertical) var(--wrapper-padding)
             calc(var(--padding-vertical) - var(--space-00));
           --margin: 0 var(--overflow-wrapper);
+          --top: unset;
+
+          z-index: 100;
+          opacity: 0.95;
+          position: sticky;
+          top: var(--top);
+          left: 0;
+          border-bottom: var(--space-00) solid var(--color-background);
           margin: var(--margin);
           padding: var(--padding);
-          border-bottom: var(--space-00) solid var(--color-background);
           background-color: var(--color-background);
-          opacity: 0.95;
-          z-index: 100;
-          position: sticky;
-          left: 0;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
@@ -45,20 +49,22 @@ export const Header = styled.header.attrs(props => ({
           `}
 
           &.down {
-            top: calc(-1 * (var(--nav-top-height) + 2 * var(--space-30)));
+            --top: calc(-1 * (var(--nav-top-height) + 2 * var(--space-30)));
           }
 
           &.up {
             ${border.bottom}
-            top: 0;
+            --top: 0;
           }
         `
       case "section":
         return css`
+          --flex-direction: column;
+
           width: 100%;
           grid-column: 1 / -1;
           display: flex;
-          flex-direction: column;
+          flex-direction: var(--flex-direction);
           gap: var(--space-20);
 
           & > *:nth-child(1) {
@@ -74,8 +80,9 @@ export const Header = styled.header.attrs(props => ({
           }
 
           ${media.tablet`
+            --flex-direction: row;
+
             align-items: baseline;
-            flex-direction: row;
             justify-content: space-between;
 
             & > *:nth-child(1) {

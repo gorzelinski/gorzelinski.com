@@ -12,7 +12,6 @@ export const moveIcon = {
         transform: translateX(calc(1 * var(--space-20)));
       }
     }
-
     &:active {
       & > .icon {
         transform: translateX(calc(2 * var(--space-20)));
@@ -30,7 +29,6 @@ export const moveIcon = {
         transform: translateX(calc(-1 * var(--space-20)));
       }
     }
-
     &:active {
       & > .icon {
         transform: translateX(calc(-2 * var(--space-20)));

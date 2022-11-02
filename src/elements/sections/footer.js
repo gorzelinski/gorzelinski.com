@@ -10,7 +10,7 @@ export const Footer = styled.footer`
   ${props =>
     props.$border &&
     css`
-      padding-top: calc(var(--space-40) - var(--space-00));
       ${border.top}
+      padding-top: calc(var(--space-40) - var(--space-00));
     `}
 `

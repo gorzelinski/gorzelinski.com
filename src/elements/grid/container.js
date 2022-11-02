@@ -7,14 +7,16 @@ const base = css`
     auto-fit,
     minmax(min(var(--column), 100%), 1fr)
   );
-  gap: var(--space-30);
+  --gap: var(--space-30);
+
+  gap: var(--gap);
 
   ${media.tiny`
-    gap: var(--space-40);
+    --gap: var(--space-40);
   `}
 
   ${media.desktop`
-    gap: var(--space-50);
+    --gap: var(--space-50);
   `}
 `
 
@@ -37,7 +39,7 @@ export const grid = css`
       case "article":
         return css`
           grid-template-columns:
-            minmax(0, 1fr) minmax(1ch, var(--space-line-length))
+            minmax(0, 1fr) minmax(1ch, var(--line-length))
             minmax(0, 1fr);
         `
       default:

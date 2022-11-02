@@ -38,7 +38,9 @@ export const aspectRatios = css`
   }}
 `
 
-export const Image = styled(GatsbyImage)`
+export const Image = styled(GatsbyImage).attrs(() => ({
+  className: "image-wrapper",
+}))`
   ${span}
   ${aspectRatios}
   
