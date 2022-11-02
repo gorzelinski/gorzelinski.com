@@ -43,17 +43,20 @@ export const BlockCode = styled.pre`
     gap: var(--space-20);
     justify-content: space-between;
     flex-wrap: wrap;
+
     & > * {
       user-select: none;
       margin: 0;
     }
   }
+
   & .title {
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     color: var(--color-gray-00);
   }
+
   & .language {
     flex: 0;
     color: var(--color-gray-00);
@@ -62,27 +65,33 @@ export const BlockCode = styled.pre`
   & > code {
     --line-margin: var(--space-30);
     --line-number-margin: var(--space-20);
+
     display: inline-block;
     max-width: 100%;
     overflow-x: auto;
     line-height: var(--font-height-base);
+
     & [data-testid*="line"]:last-child {
       margin-bottom: var(--line-margin);
     }
+
     & [data-testid*="line"]:first-child {
       margin-top: var(--line-margin);
     }
+
     & [data-testid*="highlight"] {
       & .line-number {
         color: var(--color-primary-base);
         font-weight: var(--font-weight-bold);
       }
     }
+
     & .line-number {
       user-select: none;
       display: inline-block;
       width: 2ch;
       margin: 0 var(--line-number-margin) 0 0;
+
       ${media.tablet`
         --line-number-margin: var(--space-30);
       `}
