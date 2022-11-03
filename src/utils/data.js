@@ -1,4 +1,4 @@
-export const extractPostData = data => {
+const extractCommonData = data => {
   const locale = data.fields?.locale
   const slug = data.fields?.slug
   const image = data.frontmatter?.image
@@ -6,7 +6,6 @@ export const extractPostData = data => {
   const updated = data.frontmatter?.updated
   const title = data.frontmatter?.title
   const description = data.frontmatter?.description
-  const timeToRead = data?.timeToRead
   const body = data?.body
 
   return {
@@ -17,7 +16,30 @@ export const extractPostData = data => {
     updated,
     title,
     description,
-    timeToRead,
     body,
+  }
+}
+
+export const extractPostData = data => {
+  const timeToRead = data?.timeToRead
+
+  return {
+    ...extractCommonData(data),
+    timeToRead,
+  }
+}
+
+export const extractProjectData = data => {
+  const client = data.frontmatter?.client
+  const services = data.frontmatter?.services
+  const deliverables = data.frontmatter?.deliverables
+  const links = data.frontmatter?.links
+
+  return {
+    ...extractCommonData(data),
+    client,
+    services,
+    deliverables,
+    links,
   }
 }
