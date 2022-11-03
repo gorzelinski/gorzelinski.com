@@ -1,7 +1,6 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
-import { getImage } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import {
@@ -21,9 +20,11 @@ import {
   Tile,
 } from "../elements"
 import {
+  createFeaturedImage,
   createMetaImage,
   createPaginationLinks,
   createShareLinks,
+  extractPostData,
 } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -37,13 +38,21 @@ import Subscribe from "../components/subscribe"
 const BlogPostTemplate = ({ data, location }) => {
   const { t } = useTranslation("templates/blog-post")
   const { siteUrl } = data.site.siteMetadata
-  const post = data.mdx
-  const image = post.frontmatter?.image
+  const {
+    locale,
+    title,
+    description,
+    date,
+    updated,
+    rawDate,
+    rawUpdated,
+    timeToRead,
+    image,
+    body,
+  } = extractPostData(data.mdx)
   const metaImage = createMetaImage(image)
-  const links = createShareLinks(
-    `${siteUrl}${location.pathname}`,
-    post.frontmatter.title
-  )
+  const featuredImage = createFeaturedImage(image)
+  const links = createShareLinks(`${siteUrl}${location.pathname}`, title)
   const { previous, next } = data
   const related = data.related.nodes
   const pagination = createPaginationLinks("/blog", previous, next)
@@ -51,21 +60,21 @@ const BlogPostTemplate = ({ data, location }) => {
   return (
     <Layout location={location}>
       <Seo
-        lang={post.fields.locale}
+        lang={locale}
         type="article"
-        title={post.frontmatter.title}
+        title={title}
         titleTemplate={true}
-        description={post.frontmatter.description}
+        description={description}
         slug={location.pathname}
         image={metaImage}
         meta={[
           {
             property: "article:published_time",
-            content: post.frontmatter.rawDate,
+            content: rawDate,
           },
           {
             property: "article:modified_time",
-            content: post.frontmatter.rawUpdated,
+            content: rawUpdated,
           },
         ]}
       />
@@ -73,24 +82,24 @@ const BlogPostTemplate = ({ data, location }) => {
         <ProgressScroll></ProgressScroll>
         <Header>
           <Small>
-            {post.frontmatter.date} • {post.timeToRead} {t("min")}
+            {date} • {timeToRead} {t("min")}
           </Small>
-          <H1>{post.frontmatter.title}</H1>
-          <P $type="lead">{post.frontmatter.description}</P>
+          <H1>{title}</H1>
+          <P $type="lead">{description}</P>
           <Pill>
-            {t("updated")} {post.frontmatter.updated}
+            {t("updated")} {updated}
           </Pill>
         </Header>
         <Figure>
           <Image
             $aspectRatio="wide"
-            image={getImage(image.src)}
-            alt={image.alt}
+            image={featuredImage.srcset}
+            alt={featuredImage.alt}
           ></Image>
-          <Figcaption $textAlign="center">{image.caption}</Figcaption>
+          <Figcaption $textAlign="center">{featuredImage.caption}</Figcaption>
         </Figure>
         <div>
-          <MDXRenderer>{post.body}</MDXRenderer>
+          <MDXRenderer>{body}</MDXRenderer>
         </div>
         <Footer $grid="sub">
           <Tile $span="all">
