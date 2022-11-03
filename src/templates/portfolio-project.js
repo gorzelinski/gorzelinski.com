@@ -1,7 +1,6 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
-import { getImage } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import {
@@ -17,7 +16,12 @@ import {
   Subsection,
   Tile,
 } from "../elements"
-import { createMetaImage, createPaginationLinks } from "../utils"
+import {
+  createFeaturedImage,
+  createMetaImage,
+  createPaginationLinks,
+  extractProjectData,
+} from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Pagination from "../components/pagination"
@@ -27,30 +31,42 @@ import Link from "../components/link"
 
 const PortfolioProjectTemplate = ({ data, location }) => {
   const { t } = useTranslation("templates/portfolio-project")
-  const project = data.mdx
-  const image = project.frontmatter?.image
+  const {
+    image,
+    locale,
+    title,
+    description,
+    date,
+    updated,
+    client,
+    links,
+    services,
+    deliverables,
+    body,
+  } = extractProjectData(data.mdx)
   const metaImage = createMetaImage(image)
+  const featuredImage = createFeaturedImage(image)
   const { previous, next } = data
   const pagination = createPaginationLinks("/portfolio", previous, next)
 
   return (
     <Layout location={location}>
       <Seo
-        lang={project.fields.locale}
+        lang={locale}
         type="article"
-        title={project.frontmatter.title}
+        title={title}
         titleTemplate={true}
-        description={project.frontmatter.description}
+        description={description}
         slug={location.pathname}
         image={metaImage}
         meta={[
           {
             property: "article:published_time",
-            content: project.frontmatter.date,
+            content: date,
           },
           {
             property: "article:modified_time",
-            content: project.frontmatter.updated,
+            content: updated,
           },
         ]}
       />
@@ -58,20 +74,20 @@ const PortfolioProjectTemplate = ({ data, location }) => {
         <ProgressScroll></ProgressScroll>
         <Image
           $aspectRatio="meta"
-          image={getImage(image.src)}
-          alt={image.alt}
+          image={featuredImage.srcset}
+          alt={featuredImage.alt}
         ></Image>
         <Header>
-          <H1>{project.frontmatter.title}</H1>
-          <P $type="lead">{project.frontmatter.description}</P>
+          <H1>{title}</H1>
+          <P $type="lead">{description}</P>
           <Subsection>
             <Tile>
               <Small as="p">{t("client")}</Small>
-              <H6 as="h2">{project.frontmatter.client}</H6>
+              <H6 as="h2">{client}</H6>
             </Tile>
             <Tile>
               <Small as="p">{t("links")}</Small>
-              {project.frontmatter.links?.map(link => (
+              {links?.map(link => (
                 <H6 as="h2" key={link.text}>
                   <Link href={link.href}>{link.text}</Link>
                 </H6>
@@ -79,16 +95,16 @@ const PortfolioProjectTemplate = ({ data, location }) => {
             </Tile>
             <Tile>
               <Small as="p">{t("services")}</Small>
-              <H6 as="h2">{project.frontmatter.services?.join(", ")}</H6>
+              <H6 as="h2">{services?.join(", ")}</H6>
             </Tile>
             <Tile>
               <Small as="p">{t("deliverables")}</Small>
-              <H6 as="h2">{project.frontmatter.deliverables?.join(", ")}</H6>
+              <H6 as="h2">{deliverables?.join(", ")}</H6>
             </Tile>
           </Subsection>
         </Header>
         <div>
-          <MDXRenderer>{project.body}</MDXRenderer>
+          <MDXRenderer>{body}</MDXRenderer>
         </div>
       </Article>
       <Section $marginTop="small">

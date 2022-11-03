@@ -60,7 +60,7 @@ const Index = ({ data, location }) => {
 export default Index
 
 export const pageQuery = graphql`
-  query IndexPage($locale: String!, $dateFormat: String!) {
+  query IndexPage($locale: String!) {
     metaImage: file(
       sourceInstanceName: { eq: "images" }
       relativeDirectory: { eq: $locale }
@@ -87,11 +87,12 @@ export const pageQuery = graphql`
     ) {
       nodes {
         fields {
+          locale
           slug
         }
         frontmatter {
           type
-          date(formatString: $dateFormat, locale: $locale)
+          date
           title
           description
           image {
