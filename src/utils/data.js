@@ -4,8 +4,6 @@ export const extractPostData = data => {
   const image = data.frontmatter?.image
   const date = data.frontmatter?.date
   const updated = data.frontmatter?.updated
-  const rawDate = data.frontmatter?.rawDate
-  const rawUpdated = data.frontmatter?.rawUpdated
   const title = data.frontmatter?.title
   const description = data.frontmatter?.description
   const timeToRead = data?.timeToRead
@@ -17,8 +15,6 @@ export const extractPostData = data => {
     image,
     date,
     updated,
-    rawDate,
-    rawUpdated,
     title,
     description,
     timeToRead,

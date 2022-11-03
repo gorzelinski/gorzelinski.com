@@ -73,7 +73,7 @@ const About = ({ data, location }) => {
 export default About
 
 export const pageQuery = graphql`
-  query AllBioQuery($locale: String!, $dateFormat: String!) {
+  query AllBioQuery($locale: String!) {
     site {
       siteMetadata {
         author {
@@ -99,7 +99,7 @@ export const pageQuery = graphql`
       }
     }
     lastPosts: allMdx(
-      limit: 3
+      limit: 2
       filter: {
         fields: { locale: { eq: $locale } }
         frontmatter: { type: { eq: "post" } }
@@ -108,11 +108,12 @@ export const pageQuery = graphql`
     ) {
       nodes {
         fields {
+          locale
           slug
         }
         frontmatter {
           type
-          date(formatString: $dateFormat, locale: $locale)
+          date
           title
           description
           image {

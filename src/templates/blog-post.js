@@ -25,6 +25,7 @@ import {
   createPaginationLinks,
   createShareLinks,
   extractPostData,
+  formatDate,
 } from "../utils"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -38,18 +39,8 @@ import Subscribe from "../components/subscribe"
 const BlogPostTemplate = ({ data, location }) => {
   const { t } = useTranslation("templates/blog-post")
   const { siteUrl } = data.site.siteMetadata
-  const {
-    locale,
-    title,
-    description,
-    date,
-    updated,
-    rawDate,
-    rawUpdated,
-    timeToRead,
-    image,
-    body,
-  } = extractPostData(data.mdx)
+  const { locale, title, description, date, updated, timeToRead, image, body } =
+    extractPostData(data.mdx)
   const metaImage = createMetaImage(image)
   const featuredImage = createFeaturedImage(image)
   const links = createShareLinks(`${siteUrl}${location.pathname}`, title)
@@ -70,11 +61,11 @@ const BlogPostTemplate = ({ data, location }) => {
         meta={[
           {
             property: "article:published_time",
-            content: rawDate,
+            content: date,
           },
           {
             property: "article:modified_time",
-            content: rawUpdated,
+            content: updated,
           },
         ]}
       />
@@ -82,12 +73,12 @@ const BlogPostTemplate = ({ data, location }) => {
         <ProgressScroll></ProgressScroll>
         <Header>
           <Small>
-            {date} • {timeToRead} {t("min")}
+            {formatDate(date, locale)} • {timeToRead} {t("min")}
           </Small>
           <H1>{title}</H1>
           <P $type="lead">{description}</P>
           <Pill>
-            {t("updated")} {updated}
+            {t("updated")} {formatDate(updated, locale)}
           </Pill>
         </Header>
         <Figure>
@@ -131,7 +122,6 @@ export const pageQuery = graphql`
   query BlogPostBySlug(
     $locale: String!
     $slug: String!
-    $dateFormat: String!
     $previous: String
     $next: String
     $categories: [String]
@@ -149,10 +139,8 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
-        rawDate: date
-        rawUpdated: updated
-        date(formatString: $dateFormat, locale: $locale)
-        updated(formatString: $dateFormat, locale: $locale)
+        date
+        updated
         description
         categories
         tags
@@ -199,11 +187,12 @@ export const pageQuery = graphql`
     ) {
       nodes {
         fields {
+          locale
           slug
         }
         frontmatter {
           type
-          date(formatString: $dateFormat, locale: $locale)
+          date
           title
           description
           image {

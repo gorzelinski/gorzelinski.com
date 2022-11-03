@@ -96,7 +96,7 @@ const Blog = ({ data, location }) => {
 export default Blog
 
 export const pageQuery = graphql`
-  query AllBlogPosts($locale: String!, $dateFormat: String!) {
+  query AllBlogPosts($locale: String!) {
     allPosts: allMdx(
       filter: {
         fields: { locale: { eq: $locale } }
@@ -106,11 +106,12 @@ export const pageQuery = graphql`
     ) {
       nodes {
         fields {
+          locale
           slug
         }
         frontmatter {
           type
-          date(formatString: $dateFormat, locale: $locale)
+          date
           title
           description
           categories
