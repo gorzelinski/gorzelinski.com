@@ -1,8 +1,7 @@
 import React from "react"
+import Helmet from "react-helmet"
 import { render } from "@testing-library/react"
 import { useStaticQuery } from "gatsby"
-
-import Helmet from "react-helmet"
 
 import { seo } from "./fixtures"
 import SEO from "../seo"
