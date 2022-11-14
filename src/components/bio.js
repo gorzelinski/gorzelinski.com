@@ -28,9 +28,8 @@ const Bio = () => {
     }
   `)
   const image = getImage(data?.image)
-  const isDataComplete = image && true
 
-  return isDataComplete ? (
+  return image ? (
     <Section>
       <Image
         $rounded
