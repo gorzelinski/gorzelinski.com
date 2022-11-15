@@ -9,13 +9,11 @@ export const projects = [
     frontmatter: {
       type: "project",
       description: "Default description",
-      services: ["Default roles"],
+      services: ["Default services"],
       title: "Default title",
       image: {
         alt: "Default alt text",
-        src: {
-          ...image.image,
-        },
+        src: image.src,
       },
     },
   },
@@ -27,13 +25,11 @@ export const projects = [
     frontmatter: {
       type: "project",
       description: "Default description 2",
-      services: ["Default roles 2"],
+      services: ["Default services 2"],
       title: "Default title 2",
       image: {
         alt: "Default alt",
-        src: {
-          ...image.image,
-        },
+        src: image.src,
       },
     },
   },
@@ -54,9 +50,7 @@ export const project = {
     links: ["https://default.com/"],
     image: {
       alt: "Default alt text",
-      src: {
-        ...image.image,
-      },
+      src: image.src,
     },
   },
 }

@@ -13,9 +13,7 @@ export const posts = [
       description: "Default description",
       image: {
         alt: "Default alt text",
-        src: {
-          ...image.image,
-        },
+        src: image.src,
       },
     },
     timeToRead: 4,
@@ -32,9 +30,7 @@ export const posts = [
       description: "Default description 2",
       image: {
         alt: "Default alt text",
-        src: {
-          ...image.image,
-        },
+        src: image.src,
       },
     },
     timeToRead: 4,
@@ -51,9 +47,7 @@ export const posts = [
       description: "Default description 3",
       image: {
         alt: "Default alt text",
-        src: {
-          ...image.image,
-        },
+        src: image.src,
       },
     },
     timeToRead: 1,
@@ -70,9 +64,7 @@ export const posts = [
       description: "Default description 4",
       image: {
         alt: "Default alt text",
-        src: {
-          ...image.image,
-        },
+        src: image.src,
       },
     },
     timeToRead: 3,
@@ -90,9 +82,7 @@ export const post = {
     title: "Default title",
     image: {
       alt: "Default alt text",
-      src: {
-        ...image.image,
-      },
+      src: image.src,
     },
   },
   timeToRead: 5,

@@ -20,14 +20,14 @@ const Bio = () => {
   const { t } = useTranslation("components/bio")
   const data = useStaticQuery(graphql`
     query BioQuery {
-      image: file(relativePath: { eq: "gorzelinski.jpg" }) {
+      src: file(relativePath: { eq: "gorzelinski.jpg" }) {
         childImageSharp {
           gatsbyImageData
         }
       }
     }
   `)
-  const image = getImage(data?.image)
+  const image = getImage(data?.src)
 
   return image ? (
     <Section>

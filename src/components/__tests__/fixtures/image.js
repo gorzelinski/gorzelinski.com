@@ -1,5 +1,5 @@
 export const image = {
-  image: {
+  src: {
     childImageSharp: {
       gatsbyImageData: {
         layout: "constrained",
