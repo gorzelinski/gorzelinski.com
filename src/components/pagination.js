@@ -1,6 +1,5 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
-import { ChevronBack, ChevronForward } from "@styled-icons/ionicons-solid"
 
 import { Button, Header, Icon, Small, Tile } from "../elements"
 
@@ -20,9 +19,7 @@ const Pagination = ({ data }) => {
             to={prev.slug}
             rel="prev"
           >
-            <Icon>
-              <ChevronBack></ChevronBack>
-            </Icon>
+            <Icon type="chevron-back"></Icon>
             {prev.text}
           </Button>
         </Tile>
@@ -38,9 +35,7 @@ const Pagination = ({ data }) => {
             rel="next"
           >
             {next.text}
-            <Icon>
-              <ChevronForward></ChevronForward>
-            </Icon>
+            <Icon type="chevron-forward"></Icon>
           </Button>
         </Tile>
       )}

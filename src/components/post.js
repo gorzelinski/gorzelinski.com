@@ -1,6 +1,5 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
-import { ChevronForward } from "@styled-icons/ionicons-solid"
 
 import { Button, Card, H4, Icon, Image, P, Small } from "../elements"
 import { createFeaturedImage, extractPostData, formatDate } from "../utils"
@@ -26,9 +25,7 @@ const Post = ({ data = {} }) => {
         to={`/blog${slug}`}
       >
         {t("button")}
-        <Icon>
-          <ChevronForward></ChevronForward>
-        </Icon>
+        <Icon type="chevron-forward"></Icon>
       </Button>
     </Card>
   ) : null

@@ -2,7 +2,6 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql, useStaticQuery } from "gatsby"
 import { useLocalization } from "gatsby-theme-i18n"
-import { Mail } from "@styled-icons/ionicons-solid"
 
 import {
   Address,
@@ -48,9 +47,7 @@ const Footer = ({ location }) => {
         <Small as="p">{t("email")}</Small>
         <Address>
           <Button as="a" $align="left" $type="text" href={`mailto:${email}`}>
-            <Icon>
-              <Mail></Mail>
-            </Icon>
+            <Icon type="email"></Icon>
             {email}
           </Button>
         </Address>

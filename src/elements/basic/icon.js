@@ -1,7 +1,10 @@
+import React from "react"
 import styled, { css } from "styled-components"
 import { StyledIconBase } from "@styled-icons/styled-icon"
 
-export const Icon = styled.span.attrs(() => ({
+import { selectIcon } from "../utils"
+
+export const StyledIcon = styled.span.attrs(() => ({
   className: "icon",
 }))`
   --color: inherit;
@@ -17,7 +20,7 @@ export const Icon = styled.span.attrs(() => ({
   }
 
   ${props => {
-    switch (props.$type) {
+    switch (props.$color) {
       case "primary":
         return css`
           --color: var(--color-primary-base);
@@ -37,3 +40,7 @@ export const Icon = styled.span.attrs(() => ({
     }
   }}
 `
+
+export const Icon = ({ type, $color }) => (
+  <StyledIcon {...{ $color }}>{selectIcon(type)}</StyledIcon>
+)

@@ -1,6 +1,5 @@
 import React from "react"
 import { useLocalization } from "gatsby-theme-i18n"
-import { Globe } from "@styled-icons/ionicons-solid"
 
 import { Button, Icon, Navigation } from "../elements"
 
@@ -12,9 +11,7 @@ const LanguageSwitcher = ({ location }) => {
 
   return (
     <Navigation>
-      <Icon $type="text">
-        <Globe></Globe>
-      </Icon>
+      <Icon type="globe" $color="text"></Icon>
       {config.map(language => {
         const { code, hrefLang, localName } = language
 

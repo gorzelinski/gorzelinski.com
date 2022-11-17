@@ -2,7 +2,6 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql, useStaticQuery } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
-import { ChevronForward } from "@styled-icons/ionicons-solid"
 
 import {
   Button,
@@ -55,9 +54,7 @@ const Bio = () => {
           to="/about/"
         >
           {t("story")}
-          <Icon>
-            <ChevronForward></ChevronForward>
-          </Icon>
+          <Icon type="chevron-forward"></Icon>
         </Button>
       </Tile>
     </Section>

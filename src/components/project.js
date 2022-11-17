@@ -1,6 +1,5 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
-import { ChevronForward } from "@styled-icons/ionicons-solid"
 
 import { Button, Card, H4, Icon, Image, P, Small } from "../elements"
 import { createFeaturedImage, extractProjectData } from "../utils"
@@ -25,9 +24,7 @@ const Project = ({ data = {} }) => {
         to={`/portfolio${slug}`}
       >
         {t("button")}
-        <Icon>
-          <ChevronForward></ChevronForward>
-        </Icon>
+        <Icon type="chevron-forward"></Icon>
       </Button>
     </Card>
   ) : null

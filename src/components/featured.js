@@ -1,5 +1,4 @@
 import React from "react"
-import { ChevronForward } from "@styled-icons/ionicons-solid"
 
 import { Button, H2, Header, Icon, Section } from "../elements"
 
@@ -18,9 +17,7 @@ const Featured = ({ data, children }) => {
             to={slug}
           >
             {buttonText}
-            <Icon>
-              <ChevronForward></ChevronForward>
-            </Icon>
+            <Icon type="chevron-forward"></Icon>
           </Button>
         )}
       </Header>

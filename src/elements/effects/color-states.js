@@ -5,7 +5,7 @@ export const colorStates = props => {
     color: var(--color-primary-base);
     background-color: var(--color-primary-100);
   `
-  switch (props.$type) {
+  switch (props.$color) {
     case "info":
       return info
     case "danger":
