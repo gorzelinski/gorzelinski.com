@@ -1,6 +1,5 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
-import { At, Send, Sync } from "@styled-icons/ionicons-solid"
 
 import {
   Button,
@@ -38,9 +37,7 @@ const Subscribe = () => {
           <>
             <Form action={FORM_URL} method="post" onSubmit={handleSubmit}>
               <InputWrapper>
-                <Icon $type="border">
-                  <At></At>
-                </Icon>
+                <Icon type="at" $color="border"></Icon>
                 <Input
                   required
                   autoComplete="off"
@@ -64,9 +61,7 @@ const Subscribe = () => {
                 type="submit"
               >
                 {t("button")}
-                <Icon>
-                  {state === "loading" ? <Sync></Sync> : <Send></Send>}
-                </Icon>
+                <Icon type={state === "loading" ? "loading" : "send"}></Icon>
               </Button>
               <Tile $span="all">
                 <Small>{t("footnote")}</Small>

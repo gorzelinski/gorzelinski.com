@@ -2,7 +2,6 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 import { graphql } from "gatsby"
 import { useLocalization } from "gatsby-theme-i18n"
-import { Search } from "@styled-icons/ionicons-solid"
 
 import {
   Button,
@@ -66,9 +65,7 @@ const Blog = ({ data, location }) => {
             }}
           >
             <InputWrapper>
-              <Icon $type="border">
-                <Search></Search>
-              </Icon>
+              <Icon type="search" $color="border"></Icon>
               <Input
                 type="search"
                 placeholder={t("search")}

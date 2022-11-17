@@ -6,6 +6,7 @@
   "corner": [
     {
       "heading": "Co obejrzeć?",
+      "icon": "tv",
       "items": [
         {
           "title": "Biuro",
@@ -31,6 +32,7 @@
     },
     {
       "heading": "Czego posłuchać?",
+      "icon": "headset",
       "items": [
         {
           "title": "The Skeptics Guide to the Universe",
@@ -56,6 +58,7 @@
     },
     {
       "heading": "W co zagrać?",
+      "icon": "game-controller",
       "items": [
         {
           "title": "Disco Elysium: the Final Cut",
@@ -81,6 +84,7 @@
     },
     {
       "heading": "Co przeczytać?",
+      "icon": "book",
       "items": [
         {
           "title": "Pułapki myślenia. O myśleniu szybkim i wolnym",

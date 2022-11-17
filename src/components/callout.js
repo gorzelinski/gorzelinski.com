@@ -1,11 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import {
-  AlertCircle,
-  CheckmarkCircle,
-  InformationCircle,
-  Warning,
-} from "@styled-icons/ionicons-solid"
 
 import { colorStates, Icon } from "../elements"
 
@@ -39,28 +33,11 @@ const StyledCallout = styled.div`
   }
 `
 
-const Callout = ({ children, type }) => {
-  const selectIcon = type => {
-    switch (type) {
-      case "info":
-        return <InformationCircle></InformationCircle>
-      case "danger":
-        return <AlertCircle></AlertCircle>
-      case "warning":
-        return <Warning></Warning>
-      case "success":
-        return <CheckmarkCircle></CheckmarkCircle>
-      default:
-        return <InformationCircle></InformationCircle>
-    }
-  }
-
-  return (
-    <StyledCallout {...{ $type: type }}>
-      <Icon>{selectIcon(type)}</Icon>
-      {children}
-    </StyledCallout>
-  )
-}
+const Callout = ({ children, type }) => (
+  <StyledCallout {...{ $color: type }}>
+    <Icon type={type}></Icon>
+    {children}
+  </StyledCallout>
+)
 
 export default Callout

@@ -6,6 +6,7 @@
   "corner": [
     {
       "heading": "What to watch?",
+      "icon": "tv",
       "items": [
         {
           "title": "The Office",
@@ -31,6 +32,7 @@
     },
     {
       "heading": "What to listen to?",
+      "icon": "headset",
       "items": [
         {
           "title": "The Skeptics Guide to the Universe",
@@ -56,6 +58,7 @@
     },
     {
       "heading": "What to play?",
+      "icon": "game-controller",
       "items": [
         {
           "title": "Disco Elysium: the Final Cut",
@@ -81,6 +84,7 @@
     },
     {
       "heading": "What to read?",
+      "icon": "book",
       "items": [
         {
           "title": "Thinking, Fast and Slow",
