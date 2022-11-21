@@ -11,6 +11,7 @@ describe("Footer component", () => {
 
     it("email button", () => {
       const email = screen.getByRole("link", { name: /authorsemail/i })
+
       expect(email.getAttribute("href")).toEqual(
         expect.stringMatching(/mailto:authorsemail/i)
       )
@@ -20,11 +21,13 @@ describe("Footer component", () => {
       const socials = screen
         .getAllByRole("link")
         .filter(link => link.hasAttribute("aria-label"))
+
       expect(socials.length).toBeGreaterThan(4)
     })
 
     it("copyright info", () => {
       const copyright = screen.getByText(/©/i)
+
       expect(copyright.innerHTML).toEqual(expect.stringMatching("copyright"))
     })
   })

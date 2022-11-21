@@ -16,11 +16,13 @@ describe("ThemeSwitcher component", () => {
 
     it("button", () => {
       const button = screen.getByLabelText(/aria/i)
+
       expect(button).toBeInTheDocument()
     })
 
     it("sun and moon icon", () => {
       const icon = screen.getByTestId(/sun-and-moon/i)
+
       expect(icon).toBeInTheDocument()
     })
   })
@@ -34,6 +36,7 @@ describe("ThemeSwitcher component", () => {
           <ThemeSwitcher></ThemeSwitcher>
         </ThemeContext.Provider>
       )
+
       const button = screen.queryByLabelText(/aria/i)
       const sunny = screen.queryByTestId(/sunny/i)
 

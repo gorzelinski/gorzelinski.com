@@ -11,6 +11,7 @@ describe("Subscribe component", () => {
 
     it("title", () => {
       const title = screen.getByRole("heading")
+
       expect(title).toBeInTheDocument()
     })
 
@@ -19,6 +20,7 @@ describe("Subscribe component", () => {
         name: /email/i,
         exact: false,
       })
+
       expect(input).toBeInTheDocument()
       expect(input).toBeRequired()
       expect(input.getAttribute("type")).toBe("email")
@@ -26,6 +28,7 @@ describe("Subscribe component", () => {
 
     it("subscribe button", () => {
       const button = screen.getByRole("button")
+
       expect(button).toBeInTheDocument()
     })
   })

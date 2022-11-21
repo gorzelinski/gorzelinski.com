@@ -15,11 +15,13 @@ describe("Landing component", () => {
 
     it("title", () => {
       const title = screen.getByRole("heading", { level: 1 })
+
       expect(title).toBeInTheDocument()
     })
 
     it("cta", () => {
       const cta = screen.getByRole("link")
+
       expect(cta).toBeInTheDocument()
     })
   })

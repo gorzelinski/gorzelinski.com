@@ -8,6 +8,7 @@ describe("Logo component", () => {
     render(<Logo></Logo>)
 
     const logo = screen.getByRole("link")
+
     expect(logo.getAttribute("href")).toBe("/")
   })
 })

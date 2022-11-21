@@ -40,16 +40,19 @@ describe("Bio component", () => {
 
     it("image", () => {
       const image = screen.getByRole("img")
+
       expect(image).toBeInTheDocument()
     })
 
     it("name", () => {
       const name = screen.getByRole("heading", { name: /name/i })
+
       expect(name).toBeInTheDocument()
     })
 
     it("link to more", () => {
       const link = screen.getByRole("link", { name: /story/i, exact: false })
+
       expect(link.getAttribute("href")).toBe("/about/")
     })
   })
