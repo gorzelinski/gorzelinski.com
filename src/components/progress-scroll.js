@@ -4,7 +4,7 @@ import { Progress, ProgressValue } from "../elements"
 import { useScrollProgress } from "../hooks"
 
 const ProgressScroll = () => {
-  const { progress } = useScrollProgress()
+  const progress = useScrollProgress()
 
   return (
     <Progress data-testid="progress" progress={progress}>

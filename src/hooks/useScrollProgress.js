@@ -35,5 +35,5 @@ export const useScrollProgress = () => {
     }
   }, [progress])
 
-  return { progress }
+  return progress
 }
