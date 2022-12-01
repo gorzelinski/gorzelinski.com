@@ -6,6 +6,7 @@ import { selectIcon } from "../utils"
 
 export const StyledIcon = styled.span.attrs(() => ({
   className: "icon",
+  "data-testid": "icon",
 }))`
   --color: inherit;
 
