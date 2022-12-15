@@ -39,14 +39,14 @@ const About = ({ data, location }) => {
         <Section as="div" $marginTop="none">
           <Tile>
             {t("story", { returnObjects: true })
-              .filter((_, index, array) => index < array.length / 2)
+              .filter((_, index, array) => index < (array.length - 1) / 2)
               .map((part, index) => (
                 <P key={`story-1-${index + 1}`}>{part}</P>
               ))}
           </Tile>
           <Tile>
             {t("story", { returnObjects: true })
-              .filter((_, index, array) => index >= array.length / 2)
+              .filter((_, index, array) => index >= (array.length - 1) / 2)
               .map((part, index) => (
                 <P key={`story-2-${index + 1}`}>{part}</P>
               ))}
