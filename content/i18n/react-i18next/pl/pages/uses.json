@@ -245,16 +245,20 @@
           ]
         },
         {
+          "name": "MacBook Pro 16\" 2019",
+          "description": "laptop, którego używam. Z zalet - jest to MacBook. Z wad - ma tylko porty USB-C."
+        },
+        {
           "name": "LG 27\" 4k HDR (27UK650-W)",
           "description": "mój główny monitor. Ma 99% pokrycia palety kolorów sRGB, więc daje wierny obraz. Dzięki rozdzielczości 4k, mogę upchać na nim wiele rzeczy, jak 3 - 4 pliki z kodem obok siebie. Gry i filmy, które obsługują HDR wyglądają na nim bardzo żywo i kontrastowo."
         },
         {
-          "name": "LG 29\" 2560x1080 (29UB65-P)",
-          "description": "mój drugi monitor. W portrecie, pisanie kodu czy przeglądanie sieci jest wydajne. Proporcje 21:9 są wygodne dla jednego monitora, ale zabierają trochę miejsca obok drugiego. Pewnie go wymienię."
+          "name": "Razer Viper Ultimate",
+          "description": "bezprzewodowa, lekka myszka. Dobra do gier fps i innych rzeczy."
         },
         {
-          "name": "Razer Viper Ultimate",
-          "description": "bezprzewodowa, lekka myszka. Dobra do gier fps i innych rzeczy. Dodatkowo, może kupię coś bardziej „produktywnego” jak Logitech MX Master."
+          "name": "Logitech MX Master 3S",
+          "description": "bezprzewodowa, cięższa myszka. Dedykowana do bardziej produktywnych zadań. Uwielbiam jej elektromagnetyczny scroll - przewijanie stron internetowych lub wielu lini kodu nigdy nie było takie szybkie!"
         },
         {
           "name": "BenQ Zowie G-Sr",
@@ -287,15 +291,19 @@
       "list": [
         {
           "name": "Samsung Galaxy S20FE",
-          "description": "mój główny telefon. W zasadzie flagowiec, ale za dwie trzecie ceny. Ma wyświetlacz o odświeżaniu 120Hz z dobrym PPI, Snapdragona 865, aparaty dobrej jakości i inne, przydatne funkcje, takie jak ładowanie indukcyjne. Myślę, że w 2022 to jest nadal opłacalny smartfon."
+          "description": "mój główny telefon. W zasadzie flagowiec, ale za dwie trzecie ceny. Ma wyświetlacz o odświeżaniu 120Hz z dobrym PPI, Snapdragona 865, aparaty dobrej jakości i inne, przydatne funkcje, takie jak ładowanie indukcyjne."
         },
         {
           "name": "Plantronics BackBeat Fit Sport",
           "description": "moje słuchawki Bluetooth, gdy jestem w drodze. Używam ich gdy spaceruję, biegam czy skaczę na skakance."
         },
         {
+          "name": "Sony WH-1000XM4",
+          "description": "para nausznych słuchawek z aktywną redukcją szumów. Używam ich, gdy chcę się odciąć od świata lub gdy sąsiad odkrywa w sobie majsterkowicza."
+        },
+        {
           "name": "Amazon Kindle Paperwhite 4",
-          "description": "Lubię fizyczne wydania książek. Wolę je od e-booków. Jednakże, to przenośne urządzenie jest idealne, gdy chcę coś przeczytać, a nie chcę nosić większego ciężaru."
+          "description": "lubię fizyczne wydania książek. Wolę je od e-booków. Jednakże, to przenośne urządzenie jest idealne, gdy chcę coś przeczytać, a nie chcę nosić większego ciężaru."
         },
         {
           "name": "PlayStation 4 Pro",

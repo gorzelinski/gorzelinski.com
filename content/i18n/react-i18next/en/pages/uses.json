@@ -245,16 +245,20 @@
           ]
         },
         {
+          "name": "MacBook Pro 16\" 2019",
+          "description": "laptop I use. Of the advantages - it is a MacBook. Of the disadvantages - it only has USB-C ports."
+        },
+        {
           "name": "LG 27\" 4k HDR (27UK650-W)",
           "description": "my primary monitor. It has 99% sRGB color coverage, so it produces accurate pictures. With 4k resolution, I can pack a lot of stuff on it, like 3 - 4 code files side by side. Games or movies that use HDR look very vibrant and contrasty."
         },
         {
-          "name": "LG 29\" 2560x1080 (29UB65-P)",
-          "description": "my second monitor. In portrait, writing code or browsing the web is efficient. The 21:9 ratio is convenient for one monitor but takes space next to another. I may replace it."
+          "name": "Razer Viper Ultimate",
+          "description": "a wireless, lightweight mouse. Good for fps games and other things."
         },
         {
-          "name": "Razer Viper Ultimate",
-          "description": "a wireless, lightweight mouse. Good for fps games and other things. Additionally, I may buy something more “productive,” like a Logitech MX Master."
+          "name": "Logitech MX Master 3S",
+          "description": "a wireless, heavier mouse. A mouse dedicated to more productive tasks. I love its electromagnetic scroll - scrolling through websites or multiple lines of code was never so fast!"
         },
         {
           "name": "BenQ Zowie G-Sr",
@@ -287,11 +291,15 @@
       "list": [
         {
           "name": "Samsung Galaxy S20FE",
-          "description": "my primary phone. Almost a flagship, but for two-thirds the price. It has a 120Hz display with good PPI, Snapdragon 865, quality cameras, and other features like induction charging. I think in 2022, it is still a good deal."
+          "description": "my primary phone. Almost a flagship, but for two-thirds the price. It has a 120Hz display with good PPI, Snapdragon 865, quality cameras, and other features like induction charging."
         },
         {
           "name": "Plantronics BackBeat Fit Sport",
           "description": "my Bluetooth headphones when I’m on the go. I use them when walking, running, or skipping rope."
+        },
+        {
+          "name": "Sony WH-1000XM4",
+          "description": "it's an on-ear, noise-canceling pair of headphones. I use them when I want to shut myself off from the world or when my neighbor discovers a handyperson in himself."
         },
         {
           "name": "Amazon Kindle Paperwhite 4",
