@@ -269,6 +269,10 @@
           "description": "my mechanical keyboard. I have had it for several years. Typing is still satisfying. I can play snake on it with LEDs. Unnecessary? Yes, but pretty cool."
         },
         {
+          "name": "Apple Magic Keyboard",
+          "description": "a keyboard for MacBook. A complete opposite of a mechanical keyboard - it's lightweight, flat, and wireless. But typing on it is also satisfying."
+        },
+        {
           "name": "HyperX Cloud II",
           "description": "I bought it recently, replacing the previous version. Gaming headset with an accurate audio profile that works for consuming other media. Very comfortable."
         },
