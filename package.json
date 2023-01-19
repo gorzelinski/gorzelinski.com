@@ -8,9 +8,9 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
-    "@fontsource/fira-code": "^4.5.12",
-    "@fontsource/lora": "^4.5.12",
-    "@fontsource/montserrat": "^4.5.13",
+    "@fontsource/fira-code": "^4.5.13",
+    "@fontsource/lora": "^4.5.13",
+    "@fontsource/montserrat": "^4.5.14",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@styled-icons/ionicons-solid": "^10.46.0",
@@ -53,7 +53,7 @@
     "babel-preset-gatsby": "^2.24.0",
     "cypress": "^10.11.0",
     "cypress-axe": "^1.0.0",
-    "husky": "^8.0.2",
+    "husky": "^8.0.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.2.2",
     "jest-environment-jsdom": "^29.2.2",
