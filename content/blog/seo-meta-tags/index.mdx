@@ -1,0 +1,315 @@
+---
+title: SEO meta tags
+description: In this post, we will try to answer the question - what to put in our "heads" to save ourselves headaches caused by SEO problems?
+date: 2023-01-28T13:00:00+02:00
+updated: 2023-01-28T13:00:00+02:00
+image:
+  alt: "A cardboard tag on a white background"
+  caption: "Photo by Brett Jordan"
+  src: "./brett-jordan-B9N22h2s0to-unsplash.jpg"
+categories: ["seo"]
+tags: ["meta", "tags"]
+type: "post"
+---
+
+If you're looking at this website now, there is a high probability you found it on Google. It has indexed high enough for you to notice it, and information scraps displayed in SERP (Search Engine Results Page) persuaded you to click on it.
+
+I don't care that much about SEO. I don't use fancy SEO techniques, and - in my opinion - good content is the best SEO strategy. Saying that, still, I think there are some meta tags and good practices we can use to make our website rank higher and display better around the web.
+
+## What is SEO?
+
+SEO is another acronym, of course. It stands for Search Engine Optimization. It is a process of improving a website to increase visibility in search engines like Google or Bing. Mainly Google in practice.
+
+![Google vs Bing bomb meme](./google-vs-bing-bomb.jpg)
+
+You can have the most beautiful website, but it won't be helpful if nobody finds it. Of course, you can pay for ads, but most people skip them and go straight to the organic search results. Meta tags and good practices should help position our websites higher there.
+
+## Meta tags
+
+Meta tags are snippets of text that provide additional information about a website. Search engines use that information to understand page content better. Most meta tags won't be helpful for humans. The name of one meta tag is robots - their target audience. Meta tags are added to the head section of your HTML and won't appear on the page. They can look like this:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Author: A.N. Author, Illustrator: P. Picture, Category: Books, Price:  £9.24, Length: 784 pages"
+    />
+    <meta
+      name="google-site-verification"
+      content="+nxGUDJ4QpAZ5l9Bsjdi102tLVC21AIh5d1Nl23908vVuFHs34="
+    />
+    <title>Example Books - high-quality used books for children</title>
+    <meta name="robots" content="noindex,nofollow" />
+  </head>
+</html>
+```
+
+## List of meta tags
+
+We can't throw random things in our "heads." There are specific tags responsible for different things. I'll cover some of them: essential, important for SEO, social, and others. That won't be a definitive list, but for most websites will be enough.
+
+### Meta charset
+
+This attribute declares the document's character encoding. UTF-8 is the only valid encoding for HTML 5 documents, so there is no choice here. There is another restriction - meta tag with this attribute must be located within the first 1 KB of the document.
+
+```html
+<meta charset="utf-8" />
+```
+
+### Meta viewport
+
+We need a little context for this tag. The browser's viewport is the area of the window where users see the content. It's often not the same size as the rendered page - the browser provides scrollbars for all the content. Some pages are not optimized for mobile and break. That's why mobile devices display pages in a virtual, wider viewport and then shrink the result. However, this is **not** good for mobile-friendly pages. And here comes our meta tag - it solves this problem of the virtual viewport. On a typical, responsive website, it looks like this:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+```
+
+The most common properties of the tag include:
+
+- `width` - controls the width of the viewport. You can set it to a specific number (pixels) or the `device-width` (100vw).
+- `height` - works the same as the above but for viewport height.
+- `initial-scale` - controls the zoom level on the initial load. It takes values from 0.1 to 10.
+- `interactive-widget` - specifies the effect interactive UI widgets (e.g., mobile keyboard) have on the page's viewport.
+
+### Link canonical
+
+Imagine a scenario - you started blogging on Medium, and one of your blog posts is at the address `https://my-blog.medium.com/blog-post/`. But after some time building your blog, you started migrating your post to the address `https://my-blog/blog-post/`. Migration runs successfully, but there is a problem - indexation. Google is still indexing your blog post from Medium. You can solve this problem of duplicated content by setting the canonical link. Google will crawl a page with the canonical URL, and all other URLs will be considered duplicates.
+
+```html
+<link rel="canonical" href="https://my-blog.com/blog-post/" />
+```
+
+### Meta title
+
+It's one of the few meta tags that you can see. If you found this blog post on Google, you saw the title of this blog post in your search results. Now it's displayed on your browser tab. Browser tabs and mentioned earlier SERP display the text from this tag.
+
+```html
+<title>Primary keyword and the rest of the title | Brand name</title>
+```
+
+The title of a web page should be an accurate and concise description of a page's content. To achieve that, you can follow some good practices.
+
+- The title length should be around 50 - 60 characters. To be precise, Google has a limit of 600 px to display titles. It will truncate the longer ones.
+- Put an important keyword first. You can follow the template from the snippet above.
+- But don't overdo your keywords. A title is not a place for a list of keywords.
+- You can also put your brand name in the title, for example, after a pipe character or a dash. But remember, it takes some of that precious length!
+- As we saw earlier, we should avoid duplicated content. If the content is unique, the title also should be.
+- A title should persuade readers to click on your website, so it's a good place for novelty, paradox, or humor. But don't use clickbait - don't go the dark side of the force.
+
+### Meta description
+
+```html
+<meta name="description" content="You can place the page description here." />
+```
+
+It's another tag you can see in search results - just under the title. The meta description should briefly summarize the page's content. For this tag, there are also good practices worth following.
+
+- The description length can be longer than the title, but you should keep it under 160 characters.
+- You can also include your keyword here if it makes sense.
+- It may be tempting to copy-paste one description to multiple pages, but that defeats its purpose. Similarly to the title - the description should be unique.
+- The description should also be accurate - avoid generic and vague texts.
+
+<Callout type="info">
+
+"I'm looking at my website in search results, and that's not my description! What the hell?" Don't be surprised if there is another text displayed in search results. Google doesn't always show the meta description you set. Sometimes it shows a different bit of text from your page. But that doesn't mean you should resign from setting one.
+
+</Callout>
+
+### Meta robots
+
+Here's this tag for robots. It tells search engines what to do with your page. Be cautious here - using the wrong attribute can cause SEO problems. The most important values are:
+
+- `index` - tells robots to index the page.
+- `noindex` - tells robots not to index the page.
+- `follow` - tells robots to crawl links on the page.
+- `nofollow` - tells robots not to crawl links on the page.
+
+You can combine these values, so there are four possibilities.
+
+```html
+<meta name="”robots”" content="noindex, nofollow" />
+<meta name="”robots”" content="index, follow" />
+<meta name="”robots”" content="noindex, follow" />
+<meta name="”robots”" content="index, nofollow" />
+```
+
+### Twitter cards
+
+Sharing your website on social media platforms can also gain you some visitors. But a simple link paste is not enough to display your website attractively. Fortunately, there are some social meta tags to improve that. Twitter has meta tags to show website info in different cards. I'll list the essential ones.
+
+```html
+<meta
+  name="twitter:url"
+  content="https://gorzelinski.com/blog/webpack-parcel-babel-blah-blah-why-do-i-need-a-module-bundler/"
+/>
+```
+
+URL of the content. The URL of the canonical link will be the best to use here.
+
+```html
+<meta name="twitter:site" content="@gorzelinski" />
+```
+
+Twitter username of website. It should be proceeded by the "@" sign.
+
+```html
+<meta name="twitter:creator" content="@gorzelinski" />
+```
+
+Someone had to create the content on the page. To mark the creator, use the above tag.
+
+```html
+<meta
+  name="twitter:title"
+  content="Webpack, Parcel, Babel, blah, blah. . .why do I need a module bundler?"
+/>
+```
+
+As the name suggests - it's the title of the page. You can reuse the `meta title`, but you don't have to. The length should be similar to the `meta title` - max 70 characters.
+
+```html
+<meta
+  name="twitter:description"
+  content="A module bundler is a base for many projects and frameworks. Usually, we don't pay much attention to these underlying tools. But maybe we should?"
+/>
+```
+
+Once again, it's self-explanatory - a description of the page. It can be a little longer than a `meta description` - a maximum of 200 characters.
+
+```html
+<meta name="twitter:card" content="summary_large_image" />
+```
+
+This tag defines the styles of the Twitter card. There are a few cards to choose from:
+
+- Summary Card
+- Summary Card with Large Image
+- App Card
+- Player Card
+
+I'll show an example below.
+
+```html
+<meta
+  name="twitter:image"
+  content="https://gorzelinski.com/link-to-image.jpg"
+/>
+```
+
+URL of an image to use in the card. But be aware - there are some restrictions. The image must be less than 5 MB in size. The supported formats are:
+
+- JPG
+- PNG
+- WebP
+- GIF (Twitter will use the first frame in the case of animated gif)
+
+```html
+<meta
+  name="twitter:image:alt"
+  content="Black and brown Dachshund standing in box"
+/>
+```
+
+Accessibility is significant, and every image on your page should have alternative text - including meta images.
+
+Combining all that information, here is how one of my last posts renders in the summary card with large image (yup, I used this example because of the cute Dachshund).
+
+![Example of a Twitter Summary Card with Large Image](./twitter-card-summary-large-image.png)
+
+### Open Graph
+
+These meta tags also control how links are displayed when shared on social media. They're part of Facebook's [Open Graph protocol](https://ogp.me/). However, they can be used by multiple social media platforms, including LinkedIn or Twitter (if the card info is absent). Most of them cover the same functionality as Twitter meta tags.
+
+```html
+<meta property="og:site_name" content="Matthew Gorzelinski" />
+```
+
+But `site_url` doesn't have an equivalent in Twitter tags. If a particular page is a part of a website, you should put the name of that overall website here.
+
+```html
+<meta
+  property="og:url"
+  content="https://gorzelinski.com/blog/webpack-parcel-babel-blah-blah-why-do-i-need-a-module-bundler/"
+/>
+```
+
+It works the same as `twitter:url`. You should put the canonical link here.
+
+```html
+<meta property="og:type" content="article" />
+```
+
+This tag also doesn't have an equivalent. It describes the type of content you're sharing. There are some different options - global types:
+
+- article
+- book
+- profile
+- website
+- music
+- video
+
+Most pages can have the type `website` (no surprise). A blog post (like this one) can have the type `article`. There are also informative tags linked to these types, like `article:author` or `article:published_date`.
+
+```html
+<meta
+  property="og:title"
+  content="Webpack, Parcel, Babel, blah, blah. . .why do I need a module bundler?"
+/>
+```
+
+It's an OG equivalent of `twitter:title` - a place for the page title.
+
+```html
+<meta
+  property="og:description"
+  content="A module bundler is a base for many projects and frameworks. Usually, we don't pay much attention to these underlying tools. But maybe we should?"
+/>
+```
+
+It works similarly to the `twitter:description` - description of the page.
+
+```html
+<meta property="og:image" content="https://gorzelinski.com/link-to-image.jpg" />
+```
+
+You can also put images in Facebook posts. The difference is that the recommended aspect ratio is 1.91:1. The maximum size is 8 MB, so it's bigger.
+
+```html
+<meta
+  property="og:image:alt"
+  content="Black and brown Dachshund standing in box"
+/>
+```
+
+You should also add alt text for the OG meta image.
+
+```html
+<meta property="og:image:width" content="2560" />
+```
+
+```html
+<meta property="og:image:height" content="1340" />
+```
+
+Additionally, you can set the dimensions of your meta image: width and height.
+
+Having all tags in place, here's how the same post displays on Facebook (just look at that cute face).
+
+![Example of a Facebook post using OG meta tags](./facebook-meta-tags.png)
+
+## Summary
+
+SEO is a complex topic, and it's impossible to compress all the helpful information inside one blog post. But some good practices and meta tags are a good start. Additionally, I was planning to write about sitemaps, JSON-LD, language meta tags, etc. But the post is getting long, and those topics are slightly different. I may write about them - you can let me know if you like to read more about SEO on my blog. And if you want to read more about SEO now, check out the below links.
+
+- [What is SEO?](https://moz.com/learn/seo/what-is-seo)
+- [Meta tags for social media](https://moz.com/blog/meta-data-templates-123)
+- [Meta tags for SEO](https://ahrefs.com/blog/seo-meta-tags/)
+- [About Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards)
+- [Twitter Card Tags](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup)
+- [The Open Graph protocol](https://ogp.me/)
+- [Facebook sharing](https://developers.facebook.com/docs/sharing/best-practices/)
+
+Share this post to check how it displays on social media. It's not about increasing my reach. No way! You can just check if meta tags work correctly.
