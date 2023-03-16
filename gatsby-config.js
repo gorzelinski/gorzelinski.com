@@ -136,7 +136,7 @@ module.exports = {
             serialize: ({ query: { allMdx } }) => {
               return allMdx.nodes.map(node => {
                 const url = `https://gorzelinski.com/${
-                  node.frontmatter.client ? "portfolio" : "blog"
+                  node.frontmatter.type === "post" ? "blog" : "portfolio"
                 }${node.fields.slug}`
                 return Object.assign({}, node.frontmatter, {
                   author: `Matthew Gorzelinski`,
@@ -162,7 +162,7 @@ module.exports = {
                     title
                     date
                     description
-                    client
+                    type
                   }
                 }
               }
@@ -180,7 +180,7 @@ module.exports = {
             serialize: ({ query: { allMdx } }) => {
               return allMdx.nodes.map(node => {
                 const url = `https://gorzelinski.com/pl/${
-                  node.frontmatter.client ? "portfolio" : "blog"
+                  node.frontmatter.type === "post" ? "blog" : "portfolio"
                 }${node.fields.slug}`
                 return Object.assign({}, node.frontmatter, {
                   author: `Mateusz Gorzeliński`,
@@ -206,7 +206,7 @@ module.exports = {
                     title
                     date
                     description
-                    client
+                    type
                   }
                 }
               }
