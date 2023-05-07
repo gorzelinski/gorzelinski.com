@@ -20,7 +20,7 @@ Let's continue our TypeScript series. Today, we will look at a concept that's pr
 
 Usually, when we work with types, we define them like this.
 
-```tsx #Defining Types in TypeScript
+```ts #Defining Types in TypeScript
 let person: string
 person = "Sam"
 
@@ -34,7 +34,7 @@ A **generic** is like a variable but for types. A variable can receive different
 
 If you look closely, some basic types like Array or Promise are generics in TypeScript. In vanilla JavaScript, arrays can store multiple different types. We want to be more precise using TS. For example, defining an array of strings can give TS more information and give us better auto-completion. We can write it two ways. We can use the standard syntax…
 
-```tsx #Basic Types and Generics
+```ts #Basic Types and Generics
 let hobbies: string[] // The standard syntax.
 let hobbies: Array<string> // The other syntax using generics.
 hobbies = ["sneaking"]
@@ -49,7 +49,7 @@ hobbies[0].split("")
 
 An alternative syntax for basic types is ok, but now let's write some custom generics. Let's see these variables for types in action.
 
-```tsx #Generic Function
+```ts #Generic Function
 function merge<T, U>(a: T, b: U) {
   return {
     ...a,
@@ -68,7 +68,7 @@ To define generics, we need additional pair of (pointing) brackets. The conventi
 
 Generic constraints come to the rescue. Sometimes we want flexibility, but at the same time, we want some validation. You can set certain limitations for the type generic is based on. You can use the **extends** keyword to define generic constraints.
 
-```tsx #Generic Constraints
+```ts #Generic Constraints
 function merge<T extends object, U extends object>(a: T, b: U) {
   return {
     ...a,
@@ -83,7 +83,7 @@ merge("Sam", "Fisher")
 
 Now our function only accepts objects, and it avoids runtime errors. But let's go further with our example. Let's say that later in the code, we want to be sure that there is a specific property. We can define interfaces and tell our parameters to extend them.
 
-```tsx #Generic Interfaces
+```ts #Generic Interfaces
 interface BasicInfo {
   name: string
 }
@@ -105,7 +105,7 @@ person.name // You can be sure there is the name property.
 
 Let's imagine another scenario - we want to access an object property by passing a string. In such a scenario, we can use the **keyof** keyword. The first parameter in the below example should be an object. The second parameter should be any key in that object. The keyof operator takes an object type and produces a string or numeric literal union of its keys.
 
-```tsx #The keyof keyword
+```ts #The keyof keyword
 function extract<T extends object, U extends keyof T>(obj: T, key: U) {
   return obj[key]
 }
@@ -126,7 +126,7 @@ To read more about literal or union types, check my post about [basic TypeScript
 
 Similarly to functions, you can write generic classes. The syntax is the same - using angled brackets. Such a class can be both flexible and strongly typed.
 
-```tsx #Generic Class
+```ts #Generic Class
 class Data<T extends string | number | boolean> {
   private data: T[] = []
 
@@ -149,7 +149,7 @@ number.addItem(50)
 
 We didn't lock the above class to one type. At first, TypeScript doesn't know which type it is. But then TypeScript knows the concrete type you pass in - when you call the function or instantiate the class. You can even be more granular and introduce new generic types in class methods or properties. That’s a good use case when you don't need them in the entire class.
 
-```tsx #Generics inside classes
+```ts #Generics inside classes
 class Data {
   constructor(private data: Array<string | number | boolean> = []) {}
 
@@ -167,7 +167,7 @@ const object = new Data([{ name: "Sam" }]) // TypeScript error.
 
 Seeing the previous snippet, you may ask, "how that's different from the union type?" Yeah, they look similar, but they work differently. I think the best way to explain the difference will be to use examples. Let's go back to our class.
 
-```tsx #Generic vs. Union Types
+```ts #Generic vs. Union Types
 class Data<T extends string | number | boolean> {
   private data: T[] = []
 
@@ -183,7 +183,7 @@ class Data<T extends string | number | boolean> {
 
 Writing our class like this using generics, we say: "You have to choose the type of data you want to store, and then you're only allowed to add that type of data." Use generics if you want flexibility but then want to stick to a specific type. It's a different story using union types.
 
-```tsx #Generic vs. Union Types
+```ts #Generic vs. Union Types
 class Data {
   private data: (string | number | boolean)[] = []
 
@@ -207,7 +207,7 @@ There are also many examples of generic utility types. They are like a set of he
 
 In vanilla JavaScript, you can create an object and then add properties. TypeScript doesn't like on-fly adding. But let's say you need such a functionality.
 
-```tsx #Partial Utility Type
+```ts #Partial Utility Type
 interface Computer {
   name: string
   description: string
@@ -234,7 +234,7 @@ Partial wraps a type and changes its properties to optional. In our example, we 
 
 It's the opposite of partial. It constructs a type consisting of all properties of the passed type set to required. With that knowledge, we can rewrite our previous snippet.
 
-```tsx #Required Utility Type
+```ts #Required Utility Type
 interface Computer {
   name?: string
   description?: string
@@ -262,7 +262,7 @@ const laptop = updateComputer(desktop, { description: 'It has a 16" display.' })
 
 It works similarly to the other two. The difference is it changes all properties to read-only. You can't reassign them later.
 
-```tsx #Readonly Utility Type
+```ts #Readonly Utility Type
 interface Computer {
   id: string
 }

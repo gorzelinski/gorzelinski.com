@@ -18,7 +18,7 @@ Kontynuujmy naszą TypeScriptową serię. Dziś przyjrzymy się konceptowi, któ
 
 Zwykle, gdy pracujemy z typami, definiujemy je tak.
 
-```tsx #Definiowanie typów w języku TypeScript
+```ts #Definiowanie typów w języku TypeScript
 let person: string
 person = "Sam"
 
@@ -33,7 +33,7 @@ Definiujesz zmienną, inicjalizujesz ją (lub nie), definiujesz typ lub pozwalas
 
 Jeżeli przyjrzysz się bliżej, podstawowe typy, takie jak Array czy Promise, to generyki w języku TypeScript. W “waniliowym” JavaScripcie, tablice mogą przechowywać różne typy. Używając TS-a, chcemy być bardziej precyzyjni. Na przykład, definiując tablicę z łańcuchami znaków, dajemy TS-owi więcej informacji, a w zamian otrzymujemy lepsze podpowiedzi. Możemy zapisać to na dwa sposoby. Możemy użyć standardowej składni…
 
-```tsx #Podstawowe typy i typy generyczne
+```ts #Podstawowe typy i typy generyczne
 let hobbies: string[] // Standardowa składnia.
 let hobbies: Array<string> // Inna składnia wykorzystująca typy generyczne.
 hobbies = ["sneaking"]
@@ -48,7 +48,7 @@ hobbies[0].split("")
 
 Alternatywna składnia dla podstawowych typów jest ok, ale napiszmy jakieś niestandardowe generyki. Zobaczmy te zmienne dla typów w akcji.
 
-```tsx #Generyczna funkcja
+```ts #Generyczna funkcja
 function merge<T, U>(a: T, b: U) {
   return {
     ...a,
@@ -67,7 +67,7 @@ Aby zdefiniować typy generyczne, potrzebujemy dodatkową parę (ostrych) nawias
 
 Z pomocą przychodzą ograniczenia typów generycznych. Czasami chcemy elastyczności, ale z drugiej strony walidacji. Możesz ustawić pewne limity dla typów na których bazują typy generyczne. Słowo kluczowe **extends** służy do ustawiania takich ograniczeń.
 
-```tsx #Ograniczenia typów generycznych
+```ts #Ograniczenia typów generycznych
 function merge<T extends object, U extends object>(a: T, b: U) {
   return {
     ...a,
@@ -82,7 +82,7 @@ merge("Sam", "Fisher")
 
 Teraz nasza funkcja przyjmuje tylko obiekty i unika błędów w czasie wykonywania programu. Pójdźmy nawet dalej z naszym przykładem. Powiedzmy, że w dalszej części kodu chcemy użyć jakiejś właściwości i chcemy mieć pewność, że będzie ona istniała. Możemy zdefiniować interfejsy i wykorzystać je z naszymi parametrami.
 
-```tsx #Generyczne interfejsy
+```ts #Generyczne interfejsy
 interface BasicInfo {
   name: string
 }
@@ -104,7 +104,7 @@ person.name // You can be sure there is the name property.
 
 Wyobraźmy sobie jeszcze inny scenariusz - chcemy mieć dostęp do właściwości obiektu, posyłając string. W takim scenariuszu, możemy wykorzystać słowo kluczowe **keyof.** Pierwszy parametr w poniższym przykładzie powinien być obiektem. Drugi parametr powinien być kluczem w tym obiekcie. Operator keyof przyjmuje obiekt i zwraca unię na którą składają się jego klucze.
 
-```tsx #Słowo kluczowe keyof
+```ts #Słowo kluczowe keyof
 function extract<T extends object, U extends keyof T>(obj: T, key: U) {
   return obj[key]
 }
@@ -125,7 +125,7 @@ Aby przeczytać więcej o typach union lub literal, sprawdź mój post o [typach
 
 Podobnie do funkcji, możesz zapisywać generyczne klasy. Składnia jest w zasadzie jednakowa - wykorzystując ostre nawiasy. Taka klasa może być jednocześnie elastyczna i silnie typowana.
 
-```tsx #Generyczna klasa
+```ts #Generyczna klasa
 class Data<T extends string | number | boolean> {
   private data: T[] = []
 
@@ -148,7 +148,7 @@ number.addItem(50)
 
 Nie ograniczyliśmy powyższej klasy do jednego typu. Na początku TypeScript nie wie, jakiego jest typu. Ale później TypeScript rozpoznaje podesłany typ - przy wywołaniu funkcji lub inicjalizacji klasy. Możesz być nawet bardziej granularny i wprowadzić nowe typy generyczne, wewnątrz metod lub właściwości klasy. Ten zapis jest przydatny, gdy nie potrzebujesz ich w całej klasie.
 
-```tsx #Typy generyczne wewnątrz klasy
+```ts #Typy generyczne wewnątrz klasy
 class Data {
   constructor(private data: Array<string | number | boolean> = []) {}
 
@@ -166,7 +166,7 @@ const object = new Data([{ name: "Sam" }]) // TypeScript error.
 
 Widząc poprzedni fragment kodu, możesz zapytać: “czym to się różni od union types?”. No tak, zapis wygląda podobnie, ale te typy działają inaczej. Myślę, że wykorzystując przykłady, będzie najłatwiej pokazać tę różnicę. Wróćmy do naszej klasy.
 
-```tsx #Typy generyczne, a union types
+```ts #Typy generyczne, a union types
 class Data<T extends string | number | boolean> {
   private data: T[] = []
 
@@ -182,7 +182,7 @@ class Data<T extends string | number | boolean> {
 
 Zapisując naszą klasę w ten sposób, wykorzystując typy generyczne, mówimy: “musisz wybrać pomiędzy typami danych, który z nich chcesz przechowywać, a następnie możesz dodawać tylko taki typ danych”. Wykorzystuj generyki jeżeli potrzebujesz elastyczności, ale jednocześnie chcesz się trzymać konkretnego typu. Wykorzystując union types, sprawa wygląda inaczej.
 
-```tsx #Typy generyczne, a union types
+```ts #Typy generyczne, a union types
 class Data {
   private data: (string | number | boolean)[] = []
 
@@ -206,7 +206,7 @@ Istnieje wiele przykładów generycznych typów użytkowych. Są one jak zbiór 
 
 W czystym JavaScripcie możesz stworzyć obiekt, a następnie dodawać do niego właściwości. TypeScript nie lubi takiego dodawania “w locie”. Ale powiedzmy, że potrzebujesz takiej funkcjonalności.
 
-```tsx #Typ użytkowy Partial
+```ts #Typ użytkowy Partial
 interface Computer {
   name: string
   description: string
@@ -233,7 +233,7 @@ Partial owija typ i ustawia jego właściwości jako opcjonalne. W naszym przyk�
 
 Jest to przeciwieństwo typu partial. Konstruuje typ zawierający wszystkie właściwości podanego typu, ustawiając je jako wymagane. Wiedząc to, możemy przepisać nasz poprzedni fragment kodu.
 
-```tsx #Typ użytkowy Required
+```ts #Typ użytkowy Required
 interface Computer {
   name?: string
   description?: string
@@ -261,7 +261,7 @@ const laptop = updateComputer(desktop, { description: 'It has a 16" display.' })
 
 Działa podobnie do dwóch pozostałych. Różnica polega na tym, że zmienia wszystkie właściwości na takie tylko do odczytu. Nie możesz im póżniej ponownie przypisać wartości.
 
-```tsx #Typ użytkowy Readonly
+```ts #Typ użytkowy Readonly
 interface Computer {
   id: string
 }
