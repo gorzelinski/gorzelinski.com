@@ -10,7 +10,7 @@ export const StyledTable = styled.table`
   width: 100%;
   border-collapse: collapse;
   border-spacing: var(--space-20);
-  margin-bottom: var(--vertical-rhythm);
+  margin-bottom: var(--space-30);
 
   ${media.tablet`
     ${heading.xxs}
@@ -42,6 +42,7 @@ export const StyledTable = styled.table`
 
 export const TableWrapper = styled.div`
   overflow: auto;
+  margin-bottom: var(--vertical-rhythm);
 `
 
 export const Table = ({ children }) => (

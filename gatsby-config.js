@@ -136,7 +136,7 @@ module.exports = {
             serialize: ({ query: { allMdx } }) => {
               return allMdx.nodes.map(node => {
                 const url = `https://gorzelinski.com/${
-                  node.frontmatter.client ? "portfolio" : "blog"
+                  node.frontmatter.type === "post" ? "blog" : "portfolio"
                 }${node.fields.slug}`
                 return Object.assign({}, node.frontmatter, {
                   author: `Matthew Gorzelinski`,
@@ -162,7 +162,7 @@ module.exports = {
                     title
                     date
                     description
-                    client
+                    type
                   }
                 }
               }
@@ -180,7 +180,7 @@ module.exports = {
             serialize: ({ query: { allMdx } }) => {
               return allMdx.nodes.map(node => {
                 const url = `https://gorzelinski.com/pl/${
-                  node.frontmatter.client ? "portfolio" : "blog"
+                  node.frontmatter.type === "post" ? "blog" : "portfolio"
                 }${node.fields.slug}`
                 return Object.assign({}, node.frontmatter, {
                   author: `Mateusz Gorzeliński`,
@@ -206,7 +206,7 @@ module.exports = {
                     title
                     date
                     description
-                    client
+                    type
                   }
                 }
               }
@@ -265,25 +265,6 @@ module.exports = {
               path: `${siteUrl}${page.path}`,
             }))
 
-          // Code for a more complex sitemap with alternate links. I'm not sure which is better.
-          // const allPages = pages.map(page => {
-          //   const defaultPath = languages.some(language =>
-          //     page.path.startsWith(`/${language.code}/`)
-          //   )
-          //     ? page.path.substring(3)
-          //     : page.path
-
-          //   return {
-          //     path: `${siteUrl}${page.path}`,
-          //     links: languages.map(language => ({
-          //       lang: language.code,
-          //       url: `${siteUrl}${
-          //         language.code === "en" ? "" : "/" + language.code
-          //       }${defaultPath}`,
-          //     })),
-          //   }
-          // })
-
           return defaultPages
         },
         filterPages: (page, excludedPath) => page.path.includes(excludedPath),
@@ -305,7 +286,7 @@ module.exports = {
         theme_color: `#0466c8`,
         theme_color_in_head: false,
         display: `standalone`,
-        icon: `src/images/logo.png`, // This path is relative to the root of the site.
+        icon: `src/images/logo.png`,
         icon_options: {
           purpose: `any`,
         },
