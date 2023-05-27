@@ -33,7 +33,7 @@ const Seo = ({
   const { t } = useTranslation("pages/index")
   const url = `${site.siteMetadata.siteUrl}${slug}`
   const metaDescription = description || t("description")
-  const defaultTitle = t("title") || site.siteMetadata?.title
+  const defaultTitle = t("brand") || site.siteMetadata?.title
   const metaImage = image ? `${site.siteMetadata.siteUrl}${image.src}` : null
 
   return (

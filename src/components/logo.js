@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"
 import { Button } from "../elements"
 
 const Logo = () => {
-  const { t } = useTranslation("pages/index")
+  const { t } = useTranslation("components/navbar")
 
   return (
     <Button
@@ -14,7 +14,7 @@ const Logo = () => {
       to="/"
       activeClassName="active-subtle"
     >
-      {t("title")}
+      {t("home")}
     </Button>
   )
 }

@@ -2,7 +2,7 @@ export const seo = {
   defaultLang: "en",
   defaultDescription: "description",
   customDescription: "Custom meta description",
-  defaultTitle: "title",
+  defaultTitle: "brand",
   title: "Custom title",
   defaultUrl: "https://gorzelinski.com",
   customUrl: "https://gorzelinski.com/custom",
