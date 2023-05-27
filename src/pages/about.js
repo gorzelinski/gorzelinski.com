@@ -28,6 +28,7 @@ const About = ({ data, location }) => {
       <Seo
         lang={locale}
         title={t("title")}
+        titleTemplate={true}
         description={t("description")}
         image={metaImage}
         slug={location.pathname}

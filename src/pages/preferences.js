@@ -15,6 +15,7 @@ const Preferences = ({ location }) => {
       <Seo
         lang={locale}
         title={t("title")}
+        titleTemplate={true}
         description={t("description")}
         slug={location.pathname}
       ></Seo>
