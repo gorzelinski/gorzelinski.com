@@ -18,7 +18,7 @@ export const Hero = styled.section`
     --padding-top: var(--space-40);
     --align-items: center;
     --min-height: calc(
-      100vh - var(--nav-mobile-height) - var(--margin-top) -
+      100svh - var(--nav-mobile-height) - var(--margin-top) -
         var(--nav-top-height)
     );
   }
