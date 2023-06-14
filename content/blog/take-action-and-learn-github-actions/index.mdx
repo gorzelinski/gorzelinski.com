@@ -1,0 +1,253 @@
+---
+title: Take action and learn GitHub Actions!
+description: "Programmers love to automate stuff. But automation is beneficial only when it takes less time than it returns. With GitHub Actions, we may achieve that profit."
+date: 2023-06-14T19:00:00+02:00
+updated: 2023-06-14T19:00:00+02:00
+image:
+  alt: "A worn, black-and-white movie clapper board"
+  caption: "Photo by Harald Müller"
+  src: "./harald-muller-ACAJGonG8rA-unsplash.jpg"
+categories: ["web development"]
+tags: ["devops", "github", "actions", "ci", "cd"]
+type: "post"
+---
+
+"Never spend 6 minutes doing something by hand when you can spend 6 hours failing to automate it." - the old joke goes. Even though, as programmers, we tend to overcomplicate things, there are obvious benefits of automation.
+
+![How long can you work on making a routine task more efficient before you're spending more time than you save? - xkcd comic](./xkcd-is-it-worth-the-time-2x.png)
+
+Think about it - it's not like your whole day is about programming. Other mundane or organizational tasks also need our attention - labeling issues, updating packages, integrating and deploying code, etc. Oh, and we shouldn't forget about everyone's favorite - meetings.
+
+Over the last decade, developers created many automation tools and platforms like CircleCI, Jenkins, or Travis (not Scott) to solve some of the mentioned issues. But we will focus on a relatively new player in the game - GitHub Actions.
+
+## Not another CI/CD tool?
+
+Before we learn what GitHub Actions are, we should find out what they are not. "GitHub Actions is a CI/CD tool." While doing research, I repeatedly saw this misconception. And don't get me wrong - it is, but it doesn't have to be. The use case is broader. GitHub Actions is a platform to automate tasks with workflows. CI or CD is one of many possible workflows.
+
+## Why use GitHub Actions?
+
+Ok, but why pick them instead of other battle-tested solutions? There are a couple of reasons.
+
+- It doesn't require third-party integrations. Looking at statistics, you most likely use GitHub already.
+- The setup is easy. You don't need to be a DevOps specialist to use it (don't be mad at me, guys - you're invaluable for more complex stuff).
+- It abstracts low-level terminal commands and other logic. Recall how many small steps are required to start a Node.js app from scratch. Have you done it? Good, now you can forget them again because they'll be abstracted.
+- There are many integrations with various tools and tech stacks. Java, .NET, Node.js? Go to the [GitHub Marketplace](https://github.com/marketplace) and find the environment you need. Oh, and there is an integration with Go.
+- You don't need to start from scratch. Mentioned marketplace offers tons of ready-to-use apps and actions. You can also base your custom actions on templates.
+
+## What is a GitHub workflow?
+
+First, let's familiarize ourselves with basic terminology. We'll learn top-down, starting from general concepts and moving on to details.
+
+**A workflow** is an automated process that will run one or more jobs. You can configure it by adding the YAML file in the `.github/workflows` directory. We'll take a look at syntax in the following sections.
+
+**A job** is a set of steps in a workflow. Steps can run commands, set up tasks, or run a GitHub action. By default, jobs run in parallel, but you can configure them to run sequentially by adding dependencies.
+
+**An action** is a single step in a job. It's a custom app for the GitHub Actions platform that performs a frequently repeated task. You can create your custom action or find many ready-to-use in GitHub Marketplace.
+
+**A runner** is a server that runs your workflow when they're triggered. Each job in a workflow runs in a new virtual environment. GitHub manages those servers and offers three major operating systems: Ubuntu, Windows, and macOS.
+
+## How do GitHub Actions work?
+
+GitHub emits **events** when something happens in or to your repository, like opening a PR or issue. In response to those events, you can run GitHub Actions. Those actions are also repositories. Overall, it's similar to the event-driven nature of JavaScript. So, the general idea is straightforward:
+
+1. Listen to an event.
+2. Trigger the proper workflow.
+
+## Syntax of the GitHub workflow config file
+
+As I mentioned, you need a YAML file to configure the GitHub workflow. Let's see how to structure such a file.
+
+- `name` - the name of the workflow. The repo action page displays it.
+- `on` - the name of the event that triggers the workflow, like `push` or `pull_request`. There is a list of all [GitHub events](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
+- `jobs` - it's a section where you put individual jobs.
+- `job-name` - a customizable name for a particular task. Under this key, you put a list of steps. Each step can:
+  - Have a `name`.
+  - `use` a predefined action.
+  - `run` a terminal command.
+  - Be executed `with` some parameters.
+
+## CI pipeline with GitHub Actions
+
+People learn best with examples (at least I do), so let's look at an example CI config.
+
+```yaml {1-3|12|17|40|58|84|119} #GitHub Actions CI config
+name: CI
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "**.js"
+      - "**.jsx"
+      - "**.json"
+      - "**.yml"
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  install-cache:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16]
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@v3
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+      - name: Cache Cypress binary
+        uses: actions/cache@v3
+        id: cache-cypress
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-binary-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            cypress-binary-
+  unit-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16]
+    needs: install-cache
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@v3
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+      - name: Run unit tests
+        run: npm test
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16]
+    needs: unit-test
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@v3
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+      - name: Run build
+        run: npm run build
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-output
+          path: |
+            .cache
+            public
+          retention-days: 1
+  e2e-test-chrome:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16]
+    needs: build
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@v3
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+      - name: Restore Cypress binary
+        uses: actions/cache@v3
+        id: cache-cypress
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-binary-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            cypress-binary-
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-output
+      - name: Run Cypress
+        uses: cypress-io/github-action@v4
+        with:
+          start: npm run serve
+          wait-on: "http://localhost:8000"
+          browser: chrome
+          install: false
+  e2e-tests-firefox:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16]
+    needs: build
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@v3
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+      - name: Restore Cypress binary
+        uses: actions/cache@v3
+        id: cache-cypress
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-binary-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            cypress-binary-
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-output
+      - name: Run Cypress
+        uses: cypress-io/github-action@v4
+        with:
+          start: npm run serve
+          wait-on: "http://localhost:8000"
+          browser: firefox
+          headed: true
+          install: false
+```
+
+Oh boy, it's a long file. But don't be intimidated - we'll try to decipher it. Our workflow is called "CI." It will run when someone makes a pull request to the `main` branch. Also, changes must include files with listed extensions. Why? Because changing files like Markdown or MDX most likely won't break anything, so there is no need to run the workflow.
+
+The concurrency section allows canceling jobs in progress when they are in the same group. For example, don't continue building a project after failing tests - it doesn't make sense.
+
+The `install-cache` job starts by accessing the repository. There is a predefined action for that called just `checkout`.
+Then we need to set up the node. In our example, we'll use node 16 by accessing the number from the matrix. With a matrix strategy, you can automatically create multiple job runs based on variables.
+
+Having a node, we can install dependencies. The `npm ci` command works like `npm install`, but developers designed it for automated environments.
+Finally, we're checking for cached Cypress binaries. We'll find out why later.
+
+The `unit-test` job - without surprise - runs unit tests. It starts similarly to the previous job - by checking if there are cached files. We don't need to install dependencies every time we run the workflow. The last step actually `runs` tests.
+
+The following job `builds` the project. It's an example of a sequential job. It has a dependency - the previous step. After the build process, the `upload-artifact` action caches the build output for one day.
+
+The last two jobs are very similar - they both run end-to-end tests. One runs them on Chrome and one on Firefox. Those jobs must run after the build process. They try to access cached files for the project and Cypress to be efficient. After all of the jobs executed successfully, the whole workflow is finished.
+
+![GitHub Actions page with CI schema](../../portfolio/gorzelinski/ci.png)
+
+I hope this post introduced you to GitHub Actions. After reading it, you should know why and how to use them. Maybe you'll even manage to automate some mundane tasks in under 6 hours now. We may continue this automation journey and write custom GitHub Action. But, for now, the best I can do is to offer you some helpful links.
+
+- [GitHub Marketplace](https://github.com/marketplace)
+- [Events that trigger workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)
+- [GitHub Actions Documentation](https://docs.github.com/en/actions)
+- [Quickstart for GitHub Actions](https://docs.github.com/en/actions/quickstart)
