@@ -5,7 +5,7 @@ module.exports = {
     description: `I create things on the Internet.`,
     author: {
       name: `Matthew Gorzelinski`,
-      summary: `Engineer with polymath aspirations.`,
+      summary: `Software engineer with polymath aspirations.`,
       email: `hello@gorzelinski.com`,
       social: {
         github: `gorzelinski`,
