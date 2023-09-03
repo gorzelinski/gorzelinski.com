@@ -33,10 +33,12 @@ export const StyledTable = styled.table`
   & tbody {
     border-top: var(--space-00) solid var(--color-gray-70);
     border-bottom: var(--space-00) solid var(--color-gray-70);
+    transition: border-color var(--duration-natural) ease-out;
   }
 
   & tbody tr:nth-child(2n) {
     background-color: var(--color-primary-100);
+    transition: background-color var(--duration-natural) ease-out;
   }
 `
 
