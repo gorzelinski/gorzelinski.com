@@ -2,8 +2,10 @@
   "form": {
     "email": "Your email",
     "button": "Subscribe",
+    "success": "Thank you",
+    "quarantined": "Almost there",
     "error": "wrong",
-    "success": "Thank you"
+    "url": "https://app.convertkit.com/**"
   },
   "user": {
     "email": "user@example.com"

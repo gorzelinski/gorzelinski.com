@@ -25,11 +25,24 @@ export const useSubscribe = () => {
       })
 
       const json = await response.json()
+      console.log(json)
+
+      if (json.status === "quarantined") {
+        try {
+          window.open(json.url, "_blank", "noopener,popup,height=512,width=512")
+          setState("quarantined")
+        } catch (error) {
+          setState("error")
+        } finally {
+          return
+        }
+      }
 
       if (json.status === "success") {
         setState("success")
         return
       }
+
       setState("error")
     } catch (error) {
       setState("error")

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"
 import {
   Button,
   Form,
-  H3,
+  H2,
   H6,
   Icon,
   Input,
@@ -26,14 +26,14 @@ const Subscribe = () => {
   return (
     <Section $featured id="newsletter">
       <Tile $justify="center">
-        <H3 as="h2">{t("heading")}</H3>
+        <H2>{t("heading")}</H2>
         <P>{t("description")}</P>
         <Ul>
           {t("topics", { returnObjects: true }).map((topic, index) => (
             <Li key={`topic-${index + 1}`}>{topic}</Li>
           ))}
         </Ul>
-        {state !== "success" ? (
+        {state === "success" || state === "quarantined" ? null : (
           <>
             <Form action={FORM_URL} method="post" onSubmit={handleSubmit}>
               <InputWrapper>
@@ -46,7 +46,7 @@ const Subscribe = () => {
                   type="email"
                   placeholder={t("email")}
                   aria-label={t("email")}
-                  disabled={state === "loading" ? true : false}
+                  disabled={state === "loading"}
                   onClick={() => setState("idle")}
                 ></Input>
               </InputWrapper>
@@ -57,7 +57,7 @@ const Subscribe = () => {
                 $animation={
                   state === "loading" ? "icon-spinning" : "icon-wobble"
                 }
-                disabled={state === "idle" ? false : true}
+                disabled={state !== "idle"}
                 type="submit"
               >
                 {t("button")}
@@ -68,15 +68,29 @@ const Subscribe = () => {
               </Tile>
             </Form>
           </>
-        ) : null}
-        {state === "success" || state === "error" ? (
-          <Callout type={state === "success" ? "success" : "danger"}>
+        )}
+        {state === "success" || state === "quarantined" || state === "error" ? (
+          <Callout
+            type={
+              state === "success"
+                ? "success"
+                : state === "quarantined"
+                ? "warning"
+                : "danger"
+            }
+          >
             <H6 as="h3">
-              {state === "success" ? t("success.heading") : t("error.heading")}
+              {state === "success"
+                ? t("success.heading")
+                : state === "quarantined"
+                ? t("quarantined.heading")
+                : t("error.heading")}
             </H6>
             <P>
               {state === "success"
                 ? t("success.description")
+                : state === "quarantined"
+                ? t("quarantined.description")
                 : t("error.description")}
             </P>
           </Callout>
