@@ -13,6 +13,10 @@
     "heading": "Thank you for signing up!",
     "description": "If you don't receive a confirmation email shortly, double check different email folders."
   },
+  "quarantined": {
+    "heading": "Almost there!",
+    "description": "Confirm you’re not a robot, and your email will be on its way."
+  },
   "error": {
     "heading": "Something went wrong",
     "description": "There was an issue trying to submit. Check your email and try again."

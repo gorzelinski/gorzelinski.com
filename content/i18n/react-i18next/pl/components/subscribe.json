@@ -13,6 +13,10 @@
     "heading": "Dzięki za zapisanie się!",
     "description": "Jeżeli nie otrzymasz emaila potwierdzającego w krótkim czasie, sprawdź różne foldery poczty."
   },
+  "quarantined": {
+    "heading": "Już prawie!",
+    "description": "Potwierdź, że nie jesteś robotem, a twój email będzie w drodze."
+  },
   "error": {
     "heading": "Coś poszło nie tak",
     "description": "Podczas wysyłania wystąpił problem. Sprawdź email i spróbuj ponownie."
