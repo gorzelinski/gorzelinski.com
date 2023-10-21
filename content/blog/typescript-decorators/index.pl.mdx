@@ -12,7 +12,7 @@ tags: ["typescript", "javascript", "decorators", "metaprogramowanie"]
 type: "post"
 ---
 
-Dekoratory to eksperymentalna funkcjonalność w TypeScrpcie. Zostały dodane w TypeScript 5.0 i mogą być dołączone do 5 różnych rzeczy: deklaracji klasy, metody, akcesora, właściwości i parametru. Zatem dotyczą głównie klasy. Możesz je wykorzystywać w metaprogramowaniu - technice, w której program ma wiedzę o samym sobie, albo może sobą manipulować. Nie mają one bezpośredniego wpływu na końcowego użytkownika. Jest to dobrze dostrojony instrument do pisania kodu, który jest łatwy do użycia przez innych programistów. Dostrójmy nasze instrumenty mózgowe, aby nauczyć się dekoratorów!
+Dekoratory to eksperymentalna funkcjonalność w TypeScripcie. Zostały dodane w TypeScript 5.0 i mogą być dołączone do 5 różnych rzeczy: deklaracji klasy, metody, akcesora, właściwości i parametru. Zatem dotyczą głównie klasy. Możesz je wykorzystywać w metaprogramowaniu - technice, w której program ma wiedzę o samym sobie, albo może sobą manipulować. Nie mają one bezpośredniego wpływu na końcowego użytkownika. Jest to dobrze dostrojony instrument do pisania kodu, który jest łatwy do użycia przez innych programistów. Dostrójmy nasze instrumenty mózgowe, aby nauczyć się dekoratorów!
 
 <Callout type="info">
 
@@ -100,7 +100,7 @@ class Civilian {
 }
 ```
 
-Możemy wykorzystać parametry, aby posyłać wartości do tego wewnętrznego dekoratora. Daje nam to elastyczność w konfigurowaniu co dekorator robi wewnętrznie. W ten sposób możemy wygenerować wile podobnych, ale różnych dekoratorów.
+Możemy wykorzystać parametry, aby posyłać wartości do tego wewnętrznego dekoratora. Daje nam to elastyczność w konfigurowaniu co dekorator robi wewnętrznie. W ten sposób możemy wygenerować wiele podobnych, ale różnych dekoratorów.
 
 ## Wiele dekoratorów
 
@@ -362,7 +362,7 @@ export class AgentComponent {
 }
 ```
 
-Powyższy przykład reprezentuje rozpoznawalny dekorator `Component`. Dekorator ten oznacza klasę jak komponent Angular. Otrzymuje on konfigurację i metadane, determinujące jak ten podstawowy blok UI powinien wyglądać i się zachowywać podczas wykonywania programu. Możesz posłać tam template HTML, stylowanie czy schematy.
+Powyższy przykład reprezentuje rozpoznawalny dekorator `Component`. Dekorator ten oznacza klasę jako komponent Angulara. Otrzymuje on konfigurację i metadane, determinujące jak ten podstawowy blok UI powinien wyglądać i się zachowywać podczas wykonywania programu. Możesz posłać tam template HTML, stylowanie czy schematy.
 
 ### NestJS
 
