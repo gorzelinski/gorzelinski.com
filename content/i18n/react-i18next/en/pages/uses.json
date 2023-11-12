@@ -199,54 +199,12 @@
       "heading": "Desk setup",
       "list": [
         {
-          "name": "Desktop PC",
-          "description": "my main computer. Details:",
-          "details": [
-            {
-              "name": "MSI Z170A Gaming Pro Carbon",
-              "description": "Motherboard"
-            },
-            {
-              "name": "Intel i7 6700K (OC)",
-              "description": "Processor"
-            },
-            {
-              "name": "be quiet! Dark Rock Pro 3",
-              "description": "CPU cooler"
-            },
-            {
-              "name": "Kingston HyperX 16GB",
-              "description": "RAM"
-            },
-            {
-              "name": "MSI GTX 1070 Gaming X",
-              "description": "Graphics card"
-            },
-            {
-              "name": "GoodRam SSD 240GB",
-              "description": "SSD 1 (Ubuntu)"
-            },
-            {
-              "name": "Adata XPG M.2 256GB",
-              "description": "SSD 2 (Windows 10)"
-            },
-            {
-              "name": "WD Blue 1TB",
-              "description": "HDD"
-            },
-            {
-              "name": "NZXT H440",
-              "description": "Case"
-            },
-            {
-              "name": "SilentiumPC Enduro FM1 Gold 550W",
-              "description": "Power supply"
-            }
-          ]
+          "name": "MacBook Pro 16\" 2019",
+          "description": "the laptop I use at work. Of the advantages - it is a MacBook. Of the disadvantages - it only has USB-C ports."
         },
         {
-          "name": "MacBook Pro 16\" 2019",
-          "description": "laptop I use. Of the advantages - it is a MacBook. Of the disadvantages - it only has USB-C ports."
+          "name": "MacBook Pro 14\" M3 Pro",
+          "description": "the laptop I use personally. Apple even listened to their customers because the ports are back with these new laptops. You can plug in an HDMI cable or insert an SDXC card. The speakers, display, and overall build quality are good. The new M3 chips are really performant."
         },
         {
           "name": "LG 27\" 4k HDR (27UK650-W)",
