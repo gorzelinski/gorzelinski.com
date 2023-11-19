@@ -1,6 +1,0 @@
-export * from "./basic"
-export * from "./effects"
-export * from "./form"
-export * from "./media"
-export * from "./sections"
-export * from "./typography"

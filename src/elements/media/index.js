@@ -1,5 +1,0 @@
-export * from "./code"
-export * from "./figure"
-export * from "./image"
-export * from "./table"
-export * from "./video"
