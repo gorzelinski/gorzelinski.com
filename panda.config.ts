@@ -221,6 +221,109 @@ export default defineConfig({
             }
           }
         }
+      },
+      fonts: {
+        sans: {
+          value: ['var(--font-montserrat)']
+        },
+        serif: {
+          value: ['var(--font-lora)']
+        },
+        mono: {
+          value: ['var(--font-fira-code)']
+        }
+      },
+      fontSizes: {
+        '4xl': {
+          value: '4rem'
+        },
+        '3xl': {
+          value: '3rem'
+        },
+        '2xl': {
+          value: '2.5rem'
+        },
+        xl: {
+          value: '2rem'
+        },
+        l: {
+          value: '1.75rem'
+        },
+        m: {
+          value: '1.5rem'
+        },
+        s: {
+          value: '1.375rem'
+        },
+        xs: {
+          value: '1.125rem'
+        },
+        '2xs': {
+          value: '1rem'
+        },
+        '3xs': {
+          value: '0.075rem'
+        },
+        '4xs': {
+          value: '0.75rem'
+        }
+      },
+      fontWeights: {
+        regular: {
+          value: '400'
+        },
+        medium: {
+          value: '500'
+        },
+        bold: {
+          value: '600'
+        }
+      },
+      letterSpacings: {
+        packed: {
+          value: '-0.05em'
+        },
+        narrow: {
+          value: '-0.025em'
+        },
+        wide: {
+          value: '0.1em'
+        }
+      },
+      lineHeights: {
+        '4xl': {
+          value: '5rem'
+        },
+        '3xl': {
+          value: '3.5rem'
+        },
+        '2xl': {
+          value: '3rem'
+        },
+        xl: {
+          value: '2.5rem'
+        },
+        l: {
+          value: '2.25rem'
+        },
+        m: {
+          value: '2rem'
+        },
+        s: {
+          value: '1.875rem'
+        },
+        xs: {
+          value: '1.75rem'
+        },
+        '2xs': {
+          value: '1.5rem'
+        },
+        '3xs': {
+          value: '1.25rem'
+        },
+        '4xs': {
+          value: '1rem'
+        }
       }
     },
     semanticTokens: {
@@ -395,6 +498,17 @@ export default defineConfig({
               _dark: '{colors.dark.green.400}'
             }
           }
+        }
+      },
+      fonts: {
+        heading: {
+          value: '{fonts.sans}'
+        },
+        body: {
+          value: '{fonts.serif}'
+        },
+        code: {
+          value: '{fonts.mono}'
         }
       }
     }

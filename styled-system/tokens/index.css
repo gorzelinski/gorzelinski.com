@@ -54,6 +54,37 @@
   --colors-dark-orange-900: hsl(44, 100%, 9%);
   --colors-dark-green-400: hsl(126, 72%, 39%);
   --colors-dark-green-900: hsl(126, 72%, 9%);
+  --fonts-sans: var(--font-montserrat);
+  --fonts-serif: var(--font-lora);
+  --fonts-mono: var(--font-fira-code);
+  --font-sizes-4xl: 4rem;
+  --font-sizes-3xl: 3rem;
+  --font-sizes-2xl: 2.5rem;
+  --font-sizes-xl: 2rem;
+  --font-sizes-l: 1.75rem;
+  --font-sizes-m: 1.5rem;
+  --font-sizes-s: 1.375rem;
+  --font-sizes-xs: 1.125rem;
+  --font-sizes-2xs: 1rem;
+  --font-sizes-3xs: 0.075rem;
+  --font-sizes-4xs: 0.75rem;
+  --font-weights-regular: 400;
+  --font-weights-medium: 500;
+  --font-weights-bold: 600;
+  --letter-spacings-packed: -0.05em;
+  --letter-spacings-narrow: -0.025em;
+  --letter-spacings-wide: 0.1em;
+  --line-heights-4xl: 5rem;
+  --line-heights-3xl: 3.5rem;
+  --line-heights-2xl: 3rem;
+  --line-heights-xl: 2.5rem;
+  --line-heights-l: 2.25rem;
+  --line-heights-m: 2rem;
+  --line-heights-s: 1.875rem;
+  --line-heights-xs: 1.75rem;
+  --line-heights-2xs: 1.5rem;
+  --line-heights-3xs: 1.25rem;
+  --line-heights-4xs: 1rem;
   --breakpoints-sm: 640px;
   --breakpoints-md: 768px;
   --breakpoints-lg: 1024px;
@@ -89,7 +120,10 @@
   --colors-warning-400: var(--colors-light-orange-400);
   --colors-warning-900: var(--colors-light-orange-900);
   --colors-success-400: var(--colors-light-green-400);
-  --colors-success-900: var(--colors-light-green-900)
+  --colors-success-900: var(--colors-light-green-900);
+  --fonts-heading: var(--fonts-sans);
+  --fonts-body: var(--fonts-serif);
+  --fonts-code: var(--fonts-mono)
 }
 
 .dark {

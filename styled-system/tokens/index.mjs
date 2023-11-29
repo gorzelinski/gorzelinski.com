@@ -215,6 +215,130 @@ const tokens = {
     "value": "hsl(126, 72%, 9%)",
     "variable": "var(--colors-dark-green-900)"
   },
+  "fonts.sans": {
+    "value": "var(--font-montserrat)",
+    "variable": "var(--fonts-sans)"
+  },
+  "fonts.serif": {
+    "value": "var(--font-lora)",
+    "variable": "var(--fonts-serif)"
+  },
+  "fonts.mono": {
+    "value": "var(--font-fira-code)",
+    "variable": "var(--fonts-mono)"
+  },
+  "fontSizes.4xl": {
+    "value": "4rem",
+    "variable": "var(--font-sizes-4xl)"
+  },
+  "fontSizes.3xl": {
+    "value": "3rem",
+    "variable": "var(--font-sizes-3xl)"
+  },
+  "fontSizes.2xl": {
+    "value": "2.5rem",
+    "variable": "var(--font-sizes-2xl)"
+  },
+  "fontSizes.xl": {
+    "value": "2rem",
+    "variable": "var(--font-sizes-xl)"
+  },
+  "fontSizes.l": {
+    "value": "1.75rem",
+    "variable": "var(--font-sizes-l)"
+  },
+  "fontSizes.m": {
+    "value": "1.5rem",
+    "variable": "var(--font-sizes-m)"
+  },
+  "fontSizes.s": {
+    "value": "1.375rem",
+    "variable": "var(--font-sizes-s)"
+  },
+  "fontSizes.xs": {
+    "value": "1.125rem",
+    "variable": "var(--font-sizes-xs)"
+  },
+  "fontSizes.2xs": {
+    "value": "1rem",
+    "variable": "var(--font-sizes-2xs)"
+  },
+  "fontSizes.3xs": {
+    "value": "0.075rem",
+    "variable": "var(--font-sizes-3xs)"
+  },
+  "fontSizes.4xs": {
+    "value": "0.75rem",
+    "variable": "var(--font-sizes-4xs)"
+  },
+  "fontWeights.regular": {
+    "value": "400",
+    "variable": "var(--font-weights-regular)"
+  },
+  "fontWeights.medium": {
+    "value": "500",
+    "variable": "var(--font-weights-medium)"
+  },
+  "fontWeights.bold": {
+    "value": "600",
+    "variable": "var(--font-weights-bold)"
+  },
+  "letterSpacings.packed": {
+    "value": "-0.05em",
+    "variable": "var(--letter-spacings-packed)"
+  },
+  "letterSpacings.narrow": {
+    "value": "-0.025em",
+    "variable": "var(--letter-spacings-narrow)"
+  },
+  "letterSpacings.wide": {
+    "value": "0.1em",
+    "variable": "var(--letter-spacings-wide)"
+  },
+  "lineHeights.4xl": {
+    "value": "5rem",
+    "variable": "var(--line-heights-4xl)"
+  },
+  "lineHeights.3xl": {
+    "value": "3.5rem",
+    "variable": "var(--line-heights-3xl)"
+  },
+  "lineHeights.2xl": {
+    "value": "3rem",
+    "variable": "var(--line-heights-2xl)"
+  },
+  "lineHeights.xl": {
+    "value": "2.5rem",
+    "variable": "var(--line-heights-xl)"
+  },
+  "lineHeights.l": {
+    "value": "2.25rem",
+    "variable": "var(--line-heights-l)"
+  },
+  "lineHeights.m": {
+    "value": "2rem",
+    "variable": "var(--line-heights-m)"
+  },
+  "lineHeights.s": {
+    "value": "1.875rem",
+    "variable": "var(--line-heights-s)"
+  },
+  "lineHeights.xs": {
+    "value": "1.75rem",
+    "variable": "var(--line-heights-xs)"
+  },
+  "lineHeights.2xs": {
+    "value": "1.5rem",
+    "variable": "var(--line-heights-2xs)"
+  },
+  "lineHeights.3xs": {
+    "value": "1.25rem",
+    "variable": "var(--line-heights-3xs)"
+  },
+  "lineHeights.4xs": {
+    "value": "1rem",
+    "variable": "var(--line-heights-4xs)"
+  },
   "breakpoints.sm": {
     "value": "640px",
     "variable": "var(--breakpoints-sm)"
@@ -358,6 +482,18 @@ const tokens = {
   "colors.success.900": {
     "value": "var(--colors-success-900)",
     "variable": "var(--colors-success-900)"
+  },
+  "fonts.heading": {
+    "value": "var(--fonts-heading)",
+    "variable": "var(--fonts-heading)"
+  },
+  "fonts.body": {
+    "value": "var(--fonts-body)",
+    "variable": "var(--fonts-body)"
+  },
+  "fonts.code": {
+    "value": "var(--fonts-code)",
+    "variable": "var(--fonts-code)"
   },
   "colors.colorPalette.blue.50": {
     "value": "var(--colors-color-palette-blue-50)",
