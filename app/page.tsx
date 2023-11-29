@@ -9,7 +9,8 @@ export default function Home() {
         margin: 'xl',
         backgroundColor: 'gray.800',
         borderRadius: 'l',
-        border: 'subtle'
+        border: 'subtle',
+        shadow: 'neumorphism.close'
       })}
     >
       <h1

@@ -107,6 +107,16 @@
   --radii-s: 8px;
   --radii-xs: 4px;
   --borders-subtle: var(--spacing-2xs) solid var(--colors-gray-700);
+  --shadows-light-neumorphism-closest: 1px 1px 2px #d5d5d5, -1px -1px 2px #ffffff;
+  --shadows-light-neumorphism-closer: 2px 2px 4px #d5d5d5, -2px -2px 4px #ffffff;
+  --shadows-light-neumorphism-close: 4px 4px 8px #d5d5d5, -4px -4px 8px #ffffff;
+  --shadows-light-neumorphism-far: 8px 8px 16px #d5d5d5, -8px -8px 16px #ffffff;
+  --shadows-light-neumorphism-farther: 12px 12px 24px #d5d5d5, -12px -12px 24px #ffffff;
+  --shadows-dark-neumorphism-closest: 1px 1px 2px #0a0a0b, -1px -1px 2px #121415;
+  --shadows-dark-neumorphism-closer: 2px 2px 4px #0a0a0b, -2px -2px 4px #121415;
+  --shadows-dark-neumorphism-close: 4px 4px 8px #0a0a0b, -4px -4px 8px #121415;
+  --shadows-dark-neumorphism-far: 8px 8px 16px #0a0a0b, -8px -8px 16px #121415;
+  --shadows-dark-neumorphism-farther: 12px 12px 24px #0a0a0b, -12px -12px 24px #121415;
   --breakpoints-sm: 640px;
   --breakpoints-md: 768px;
   --breakpoints-lg: 1024px;
@@ -140,7 +150,12 @@
   --colors-success-900: var(--colors-light-green-900);
   --fonts-heading: var(--fonts-sans);
   --fonts-body: var(--fonts-serif);
-  --fonts-code: var(--fonts-mono)
+  --fonts-code: var(--fonts-mono);
+  --shadows-neumorphism-closest: var(--shadows-light-neumorphism-closest);
+  --shadows-neumorphism-closer: var(--shadows-light-neumorphism-closer);
+  --shadows-neumorphism-close: var(--shadows-light-neumorphism-close);
+  --shadows-neumorphism-far: var(--shadows-light-neumorphism-far);
+  --shadows-neumorphism-farther: var(--shadows-light-neumorphism-farther)
 }
 
 .dark {
@@ -169,7 +184,12 @@
   --colors-warning-400: var(--colors-dark-orange-400);
   --colors-warning-900: var(--colors-dark-orange-400);
   --colors-success-400: var(--colors-dark-green-400);
-  --colors-success-900: var(--colors-dark-green-900)
+  --colors-success-900: var(--colors-dark-green-900);
+  --shadows-neumorphism-closest: var(--shadows-dark-neumorphism-closest);
+  --shadows-neumorphism-closer: var(--shadows-dark-neumorphism-closer);
+  --shadows-neumorphism-close: var(--shadows-dark-neumorphism-close);
+  --shadows-neumorphism-far: var(--shadows-dark-neumorphism-far);
+  --shadows-neumorphism-farther: var(--shadows-dark-neumorphism-farther)
 }
   }
   

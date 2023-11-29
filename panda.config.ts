@@ -383,6 +383,46 @@ export default defineConfig({
         subtle: {
           value: '{spacing.2xs} solid {colors.gray.700}'
         }
+      },
+      shadows: {
+        light: {
+          neumorphism: {
+            closest: {
+              value: '1px 1px 2px #d5d5d5, -1px -1px 2px #ffffff'
+            },
+            closer: {
+              value: '2px 2px 4px #d5d5d5, -2px -2px 4px #ffffff'
+            },
+            close: {
+              value: '4px 4px 8px #d5d5d5, -4px -4px 8px #ffffff'
+            },
+            far: {
+              value: '8px 8px 16px #d5d5d5, -8px -8px 16px #ffffff'
+            },
+            farther: {
+              value: '12px 12px 24px #d5d5d5, -12px -12px 24px #ffffff'
+            }
+          }
+        },
+        dark: {
+          neumorphism: {
+            closest: {
+              value: '1px 1px 2px #0a0a0b, -1px -1px 2px #121415'
+            },
+            closer: {
+              value: '2px 2px 4px #0a0a0b, -2px -2px 4px #121415'
+            },
+            close: {
+              value: '4px 4px 8px #0a0a0b, -4px -4px 8px #121415'
+            },
+            far: {
+              value: '8px 8px 16px #0a0a0b, -8px -8px 16px #121415'
+            },
+            farther: {
+              value: '12px 12px 24px #0a0a0b, -12px -12px 24px #121415'
+            }
+          }
+        }
       }
     },
     semanticTokens: {
@@ -568,6 +608,40 @@ export default defineConfig({
         },
         code: {
           value: '{fonts.mono}'
+        }
+      },
+      shadows: {
+        neumorphism: {
+          closest: {
+            value: {
+              base: '{shadows.light.neumorphism.closest}',
+              _dark: '{shadows.dark.neumorphism.closest}'
+            }
+          },
+          closer: {
+            value: {
+              base: '{shadows.light.neumorphism.closer}',
+              _dark: '{shadows.dark.neumorphism.closer}'
+            }
+          },
+          close: {
+            value: {
+              base: '{shadows.light.neumorphism.close}',
+              _dark: '{shadows.dark.neumorphism.close}'
+            }
+          },
+          far: {
+            value: {
+              base: '{shadows.light.neumorphism.far}',
+              _dark: '{shadows.dark.neumorphism.far}'
+            }
+          },
+          farther: {
+            value: {
+              base: '{shadows.light.neumorphism.farther}',
+              _dark: '{shadows.dark.neumorphism.farther}'
+            }
+          }
         }
       }
     }

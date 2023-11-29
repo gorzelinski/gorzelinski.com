@@ -427,6 +427,46 @@ const tokens = {
     "value": "var(--spacing-2xs) solid var(--colors-gray-700)",
     "variable": "var(--borders-subtle)"
   },
+  "shadows.light.neumorphism.closest": {
+    "value": "1px 1px 2px #d5d5d5, -1px -1px 2px #ffffff",
+    "variable": "var(--shadows-light-neumorphism-closest)"
+  },
+  "shadows.light.neumorphism.closer": {
+    "value": "2px 2px 4px #d5d5d5, -2px -2px 4px #ffffff",
+    "variable": "var(--shadows-light-neumorphism-closer)"
+  },
+  "shadows.light.neumorphism.close": {
+    "value": "4px 4px 8px #d5d5d5, -4px -4px 8px #ffffff",
+    "variable": "var(--shadows-light-neumorphism-close)"
+  },
+  "shadows.light.neumorphism.far": {
+    "value": "8px 8px 16px #d5d5d5, -8px -8px 16px #ffffff",
+    "variable": "var(--shadows-light-neumorphism-far)"
+  },
+  "shadows.light.neumorphism.farther": {
+    "value": "12px 12px 24px #d5d5d5, -12px -12px 24px #ffffff",
+    "variable": "var(--shadows-light-neumorphism-farther)"
+  },
+  "shadows.dark.neumorphism.closest": {
+    "value": "1px 1px 2px #0a0a0b, -1px -1px 2px #121415",
+    "variable": "var(--shadows-dark-neumorphism-closest)"
+  },
+  "shadows.dark.neumorphism.closer": {
+    "value": "2px 2px 4px #0a0a0b, -2px -2px 4px #121415",
+    "variable": "var(--shadows-dark-neumorphism-closer)"
+  },
+  "shadows.dark.neumorphism.close": {
+    "value": "4px 4px 8px #0a0a0b, -4px -4px 8px #121415",
+    "variable": "var(--shadows-dark-neumorphism-close)"
+  },
+  "shadows.dark.neumorphism.far": {
+    "value": "8px 8px 16px #0a0a0b, -8px -8px 16px #121415",
+    "variable": "var(--shadows-dark-neumorphism-far)"
+  },
+  "shadows.dark.neumorphism.farther": {
+    "value": "12px 12px 24px #0a0a0b, -12px -12px 24px #121415",
+    "variable": "var(--shadows-dark-neumorphism-farther)"
+  },
   "breakpoints.sm": {
     "value": "640px",
     "variable": "var(--breakpoints-sm)"
@@ -562,6 +602,26 @@ const tokens = {
   "fonts.code": {
     "value": "var(--fonts-code)",
     "variable": "var(--fonts-code)"
+  },
+  "shadows.neumorphism.closest": {
+    "value": "var(--shadows-neumorphism-closest)",
+    "variable": "var(--shadows-neumorphism-closest)"
+  },
+  "shadows.neumorphism.closer": {
+    "value": "var(--shadows-neumorphism-closer)",
+    "variable": "var(--shadows-neumorphism-closer)"
+  },
+  "shadows.neumorphism.close": {
+    "value": "var(--shadows-neumorphism-close)",
+    "variable": "var(--shadows-neumorphism-close)"
+  },
+  "shadows.neumorphism.far": {
+    "value": "var(--shadows-neumorphism-far)",
+    "variable": "var(--shadows-neumorphism-far)"
+  },
+  "shadows.neumorphism.farther": {
+    "value": "var(--shadows-neumorphism-farther)",
+    "variable": "var(--shadows-neumorphism-farther)"
   },
   "spacing.-0": {
     "value": "calc(var(--spacing-0) * -1)",
