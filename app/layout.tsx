@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { montserrat, lora, firaCode } from '@/styles/fonts'
+import { montserrat, lora, firaCode } from '@/theme/fonts'
 import './globals.css'
 
 export const metadata: Metadata = {
