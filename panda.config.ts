@@ -378,6 +378,11 @@ export default defineConfig({
         xs: {
           value: '4px'
         }
+      },
+      borders: {
+        subtle: {
+          value: '{spacing.2xs} solid {colors.gray.700}'
+        }
       }
     },
     semanticTokens: {

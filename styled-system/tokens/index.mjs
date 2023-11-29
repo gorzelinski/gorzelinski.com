@@ -423,6 +423,10 @@ const tokens = {
     "value": "4px",
     "variable": "var(--radii-xs)"
   },
+  "borders.subtle": {
+    "value": "var(--spacing-2xs) solid var(--colors-gray-700)",
+    "variable": "var(--borders-subtle)"
+  },
   "breakpoints.sm": {
     "value": "640px",
     "variable": "var(--breakpoints-sm)"

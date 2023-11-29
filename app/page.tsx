@@ -7,8 +7,9 @@ export default function Home() {
         width: 'xl',
         height: 'xl',
         margin: 'xl',
-        backgroundColor: 'light.gray.700',
-        borderRadius: 'l'
+        backgroundColor: 'gray.800',
+        borderRadius: 'l',
+        border: 'subtle'
       })}
     >
       <h1

@@ -106,6 +106,7 @@
   --radii-m: 16px;
   --radii-s: 8px;
   --radii-xs: 4px;
+  --borders-subtle: var(--spacing-2xs) solid var(--colors-gray-700);
   --breakpoints-sm: 640px;
   --breakpoints-md: 768px;
   --breakpoints-lg: 1024px;
