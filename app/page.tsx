@@ -2,8 +2,14 @@ import { css } from '../styled-system/css'
 
 export default function Home() {
   return (
-    <div className={css({ fontSize: '2xl', fontWeight: 'bold' })}>
+    <h1
+      className={css({
+        fontSize: 'xxx-large',
+        fontWeight: 'bold',
+        color: 'primary.400'
+      })}
+    >
       Hello 🐼!
-    </div>
+    </h1>
   )
 }
