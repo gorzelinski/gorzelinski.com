@@ -339,6 +339,22 @@ const tokens = {
     "value": "1rem",
     "variable": "var(--line-heights-4xs)"
   },
+  "radii.l": {
+    "value": "32px",
+    "variable": "var(--radii-l)"
+  },
+  "radii.m": {
+    "value": "16px",
+    "variable": "var(--radii-m)"
+  },
+  "radii.s": {
+    "value": "8px",
+    "variable": "var(--radii-s)"
+  },
+  "radii.xs": {
+    "value": "4px",
+    "variable": "var(--radii-xs)"
+  },
   "breakpoints.sm": {
     "value": "640px",
     "variable": "var(--breakpoints-sm)"

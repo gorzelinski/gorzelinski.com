@@ -85,6 +85,10 @@
   --line-heights-2xs: 1.5rem;
   --line-heights-3xs: 1.25rem;
   --line-heights-4xs: 1rem;
+  --radii-l: 32px;
+  --radii-m: 16px;
+  --radii-s: 8px;
+  --radii-xs: 4px;
   --breakpoints-sm: 640px;
   --breakpoints-md: 768px;
   --breakpoints-lg: 1024px;

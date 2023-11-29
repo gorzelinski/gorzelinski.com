@@ -324,6 +324,20 @@ export default defineConfig({
         '4xs': {
           value: '1rem'
         }
+      },
+      radii: {
+        l: {
+          value: '32px'
+        },
+        m: {
+          value: '16px'
+        },
+        s: {
+          value: '8px'
+        },
+        xs: {
+          value: '4px'
+        }
       }
     },
     semanticTokens: {
