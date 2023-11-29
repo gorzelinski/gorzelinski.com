@@ -222,6 +222,46 @@ export default defineConfig({
           }
         }
       },
+      sizes: {
+        xs: {
+          value: '128px'
+        },
+        s: {
+          value: '192px'
+        },
+        m: {
+          value: '256px'
+        },
+        l: {
+          value: '320px'
+        },
+        xl: {
+          value: '384px'
+        }
+      },
+      spacing: {
+        '0': {
+          value: '0px'
+        },
+        '2xs': {
+          value: '1px'
+        },
+        xs: {
+          value: '2px'
+        },
+        s: {
+          value: '8px'
+        },
+        m: {
+          value: '16px'
+        },
+        l: {
+          value: '32px'
+        },
+        xl: {
+          value: '64px'
+        }
+      },
       fonts: {
         sans: {
           value: ['var(--font-montserrat)']

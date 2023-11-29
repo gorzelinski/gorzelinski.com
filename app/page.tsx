@@ -4,8 +4,9 @@ export default function Home() {
   return (
     <div
       className={css({
-        width: '400px',
-        height: '400px',
+        width: 'xl',
+        height: 'xl',
+        margin: 'xl',
         backgroundColor: 'light.gray.700',
         borderRadius: 'l'
       })}

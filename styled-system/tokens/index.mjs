@@ -215,6 +215,74 @@ const tokens = {
     "value": "hsl(126, 72%, 9%)",
     "variable": "var(--colors-dark-green-900)"
   },
+  "sizes.xs": {
+    "value": "128px",
+    "variable": "var(--sizes-xs)"
+  },
+  "sizes.s": {
+    "value": "192px",
+    "variable": "var(--sizes-s)"
+  },
+  "sizes.m": {
+    "value": "256px",
+    "variable": "var(--sizes-m)"
+  },
+  "sizes.l": {
+    "value": "320px",
+    "variable": "var(--sizes-l)"
+  },
+  "sizes.xl": {
+    "value": "384px",
+    "variable": "var(--sizes-xl)"
+  },
+  "sizes.breakpoint-sm": {
+    "value": "640px",
+    "variable": "var(--sizes-breakpoint-sm)"
+  },
+  "sizes.breakpoint-md": {
+    "value": "768px",
+    "variable": "var(--sizes-breakpoint-md)"
+  },
+  "sizes.breakpoint-lg": {
+    "value": "1024px",
+    "variable": "var(--sizes-breakpoint-lg)"
+  },
+  "sizes.breakpoint-xl": {
+    "value": "1280px",
+    "variable": "var(--sizes-breakpoint-xl)"
+  },
+  "sizes.breakpoint-2xl": {
+    "value": "1536px",
+    "variable": "var(--sizes-breakpoint-2xl)"
+  },
+  "spacing.0": {
+    "value": "0px",
+    "variable": "var(--spacing-0)"
+  },
+  "spacing.2xs": {
+    "value": "1px",
+    "variable": "var(--spacing-2xs)"
+  },
+  "spacing.xs": {
+    "value": "2px",
+    "variable": "var(--spacing-xs)"
+  },
+  "spacing.s": {
+    "value": "8px",
+    "variable": "var(--spacing-s)"
+  },
+  "spacing.m": {
+    "value": "16px",
+    "variable": "var(--spacing-m)"
+  },
+  "spacing.l": {
+    "value": "32px",
+    "variable": "var(--spacing-l)"
+  },
+  "spacing.xl": {
+    "value": "64px",
+    "variable": "var(--spacing-xl)"
+  },
   "fonts.sans": {
     "value": "var(--font-montserrat)",
     "variable": "var(--fonts-sans)"
@@ -375,26 +443,6 @@ const tokens = {
     "value": "1536px",
     "variable": "var(--breakpoints-2xl)"
   },
-  "sizes.breakpoint-sm": {
-    "value": "640px",
-    "variable": "var(--sizes-breakpoint-sm)"
-  },
-  "sizes.breakpoint-md": {
-    "value": "768px",
-    "variable": "var(--sizes-breakpoint-md)"
-  },
-  "sizes.breakpoint-lg": {
-    "value": "1024px",
-    "variable": "var(--sizes-breakpoint-lg)"
-  },
-  "sizes.breakpoint-xl": {
-    "value": "1280px",
-    "variable": "var(--sizes-breakpoint-xl)"
-  },
-  "sizes.breakpoint-2xl": {
-    "value": "1536px",
-    "variable": "var(--sizes-breakpoint-2xl)"
-  },
   "colors.primary.50": {
     "value": "var(--colors-primary-50)",
     "variable": "var(--colors-primary-50)"
@@ -510,6 +558,34 @@ const tokens = {
   "fonts.code": {
     "value": "var(--fonts-code)",
     "variable": "var(--fonts-code)"
+  },
+  "spacing.-0": {
+    "value": "calc(var(--spacing-0) * -1)",
+    "variable": "var(--spacing-0)"
+  },
+  "spacing.-2xs": {
+    "value": "calc(var(--spacing-2xs) * -1)",
+    "variable": "var(--spacing-2xs)"
+  },
+  "spacing.-xs": {
+    "value": "calc(var(--spacing-xs) * -1)",
+    "variable": "var(--spacing-xs)"
+  },
+  "spacing.-s": {
+    "value": "calc(var(--spacing-s) * -1)",
+    "variable": "var(--spacing-s)"
+  },
+  "spacing.-m": {
+    "value": "calc(var(--spacing-m) * -1)",
+    "variable": "var(--spacing-m)"
+  },
+  "spacing.-l": {
+    "value": "calc(var(--spacing-l) * -1)",
+    "variable": "var(--spacing-l)"
+  },
+  "spacing.-xl": {
+    "value": "calc(var(--spacing-xl) * -1)",
+    "variable": "var(--spacing-xl)"
   },
   "colors.colorPalette.blue.50": {
     "value": "var(--colors-color-palette-blue-50)",
