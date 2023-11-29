@@ -423,6 +423,20 @@ export default defineConfig({
             }
           }
         }
+      },
+      durations: {
+        fast: {
+          value: '150ms'
+        },
+        natural: {
+          value: '250ms'
+        },
+        slow: {
+          value: '500ms'
+        },
+        slower: {
+          value: '750ms'
+        }
       }
     },
     semanticTokens: {

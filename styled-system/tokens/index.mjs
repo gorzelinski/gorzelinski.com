@@ -467,6 +467,22 @@ const tokens = {
     "value": "12px 12px 24px #0a0a0b, -12px -12px 24px #121415",
     "variable": "var(--shadows-dark-neumorphism-farther)"
   },
+  "durations.fast": {
+    "value": "150ms",
+    "variable": "var(--durations-fast)"
+  },
+  "durations.natural": {
+    "value": "250ms",
+    "variable": "var(--durations-natural)"
+  },
+  "durations.slow": {
+    "value": "500ms",
+    "variable": "var(--durations-slow)"
+  },
+  "durations.slower": {
+    "value": "750ms",
+    "variable": "var(--durations-slower)"
+  },
   "breakpoints.sm": {
     "value": "640px",
     "variable": "var(--breakpoints-sm)"
