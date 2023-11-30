@@ -336,7 +336,7 @@ const tokens = {
     "variable": "var(--font-sizes-2xs)"
   },
   "fontSizes.3xs": {
-    "value": "0.075rem",
+    "value": "0.875rem",
     "variable": "var(--font-sizes-3xs)"
   },
   "fontSizes.4xs": {

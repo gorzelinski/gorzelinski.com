@@ -292,7 +292,7 @@ export const tokens = defineTokens({
       value: '1rem'
     },
     '3xs': {
-      value: '0.075rem'
+      value: '0.875rem'
     },
     '4xs': {
       value: '0.75rem'

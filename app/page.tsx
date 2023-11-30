@@ -1,10 +1,11 @@
 import { Container, VStack } from '@/styled-system/jsx'
-import { Em, H1, H2, H3, H4, P, Strong } from '@/components'
+import { Em, H1, H2, H3, H4, P, Small, Strong } from '@/components'
 
 export default function Home() {
   return (
     <Container maxWidth="640px">
       <VStack alignItems="start" gap="l">
+        <Small>This is small</Small>
         <H1>Hello 🐼!</H1>
         <H2>Hello 🐼!</H2>
         <H3>Hello 🐼!</H3>
