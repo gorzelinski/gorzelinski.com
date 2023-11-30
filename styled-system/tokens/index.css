@@ -69,8 +69,9 @@
   --spacing-xs: 2px;
   --spacing-s: 8px;
   --spacing-m: 16px;
-  --spacing-l: 32px;
-  --spacing-xl: 64px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 64px;
   --fonts-sans: var(--font-montserrat);
   --fonts-serif: var(--font-lora);
   --fonts-mono: var(--font-fira-code);

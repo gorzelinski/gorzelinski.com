@@ -276,12 +276,16 @@ const tokens = {
     "variable": "var(--spacing-m)"
   },
   "spacing.l": {
-    "value": "32px",
+    "value": "24px",
     "variable": "var(--spacing-l)"
   },
   "spacing.xl": {
-    "value": "64px",
+    "value": "32px",
     "variable": "var(--spacing-xl)"
+  },
+  "spacing.2xl": {
+    "value": "64px",
+    "variable": "var(--spacing-2xl)"
   },
   "fonts.sans": {
     "value": "var(--font-montserrat)",
@@ -666,6 +670,10 @@ const tokens = {
   "spacing.-xl": {
     "value": "calc(var(--spacing-xl) * -1)",
     "variable": "var(--spacing-xl)"
+  },
+  "spacing.-2xl": {
+    "value": "calc(var(--spacing-2xl) * -1)",
+    "variable": "var(--spacing-2xl)"
   },
   "colors.colorPalette.blue.50": {
     "value": "var(--colors-color-palette-blue-50)",

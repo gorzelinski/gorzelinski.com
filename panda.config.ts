@@ -8,6 +8,9 @@ export default defineConfig({
   // Where to look for your css declarations
   include: ['./components/**/*.{ts,tsx,js,jsx}', './app/**/*.{ts,tsx,js,jsx}'],
 
+  // Enable JSX syntax
+  jsxFramework: 'react',
+
   // Files to exclude
   exclude: [],
 

@@ -243,9 +243,12 @@ export const tokens = defineTokens({
       value: '16px'
     },
     l: {
-      value: '32px'
+      value: '24px'
     },
     xl: {
+      value: '32px'
+    },
+    '2xl': {
       value: '64px'
     }
   },
