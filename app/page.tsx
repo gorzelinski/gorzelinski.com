@@ -1,5 +1,5 @@
 import { Container, VStack } from '@/styled-system/jsx'
-import { H1, H2, H3, H4, P } from '@/components'
+import { Em, H1, H2, H3, H4, P, Strong } from '@/components'
 
 export default function Home() {
   return (
@@ -23,10 +23,10 @@ export default function Home() {
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil
           commodi ut itaque non, nemo eius accusamus architecto dignissimos
           quasi quibusdam doloremque perspiciatis repudiandae eaque molestias
-          excepturi? Exercitationem debitis omnis libero, nesciunt repudiandae
-          quaerat? Earum cupiditate doloribus rerum optio ducimus porro
-          consequuntur doloremque magni? Eius sed deleniti veritatis animi amet
-          aliquid.
+          excepturi? <Strong>Exercitationem</Strong> debitis omnis libero,
+          nesciunt repudiandae quaerat? Earum cupiditate doloribus rerum optio
+          ducimus porro <Em>consequuntur</Em> doloremque magni? Eius sed
+          deleniti veritatis animi amet aliquid.
         </P>
       </VStack>
     </Container>
