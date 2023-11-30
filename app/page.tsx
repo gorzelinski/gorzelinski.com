@@ -1,27 +1,34 @@
-import { css } from '../styled-system/css'
-import { H1, H2, H3, H4 } from '@/components'
+import { Container, VStack } from '@/styled-system/jsx'
+import { H1, H2, H3, H4, P } from '@/components'
 
 export default function Home() {
   return (
-    <div
-      className={css({
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 'xl',
-        height: 'xl',
-        margin: 'xl',
-        backgroundColor: 'gray.800',
-        borderRadius: 'l',
-        border: 'subtle',
-        shadow: 'neumorphism.close'
-      })}
-    >
-      <H1>Hello 🐼!</H1>
-      <H2>Hello 🐼!</H2>
-      <H3>Hello 🐼!</H3>
-      <H4>Hello 🐼!</H4>
-    </div>
+    <Container maxWidth="640px">
+      <VStack alignItems="start" gap="l">
+        <H1>Hello 🐼!</H1>
+        <H2>Hello 🐼!</H2>
+        <H3>Hello 🐼!</H3>
+        <H4>Hello 🐼!</H4>
+        <P size="xl" color="subtle" style="italic">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
+          earum odit rem est pariatur sapiente, quidem officiis veniam
+          temporibus ipsum.
+        </P>
+        <P size="l" color="subtle">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus
+          ipsam unde soluta expedita ab ex, eius laborum sint recusandae libero
+          quos dicta commodi provident vero aut quibusdam minus vel dolorum.
+        </P>
+        <P>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil
+          commodi ut itaque non, nemo eius accusamus architecto dignissimos
+          quasi quibusdam doloremque perspiciatis repudiandae eaque molestias
+          excepturi? Exercitationem debitis omnis libero, nesciunt repudiandae
+          quaerat? Earum cupiditate doloribus rerum optio ducimus porro
+          consequuntur doloremque magni? Eius sed deleniti veritatis animi amet
+          aliquid.
+        </P>
+      </VStack>
+    </Container>
   )
 }
