@@ -1,5 +1,16 @@
 import { Container, VStack } from '@/styled-system/jsx'
-import { Blockquote, Em, H1, H2, H3, H4, P, Small, Strong } from '@/components'
+import {
+  A,
+  Blockquote,
+  Em,
+  H1,
+  H2,
+  H3,
+  H4,
+  P,
+  Small,
+  Strong
+} from '@/components'
 
 export default function Home() {
   return (
@@ -9,7 +20,9 @@ export default function Home() {
         <H1>Hello 🐼!</H1>
         <H2>Hello 🐼!</H2>
         <H3>Hello 🐼!</H3>
-        <H4>Hello 🐼!</H4>
+        <A href="#">
+          <H4>Hello 🐼!</H4>
+        </A>
         <P size="xl" color="subtle" style="italic">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
           earum odit rem est pariatur sapiente, quidem officiis veniam
@@ -27,7 +40,7 @@ export default function Home() {
           excepturi? <Strong>Exercitationem</Strong> debitis omnis libero,
           nesciunt repudiandae quaerat? Earum cupiditate doloribus rerum optio
           ducimus porro <Em>consequuntur</Em> doloremque magni? Eius sed
-          deleniti veritatis animi amet aliquid.
+          deleniti <A href="#">veritatis</A> animi amet aliquid.
         </P>
         <Blockquote>
           <P size="xl" color="subtle" style="italic">

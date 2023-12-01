@@ -475,6 +475,14 @@ const tokens = {
     "value": "12px 12px 24px #0a0a0b, -12px -12px 24px #121415",
     "variable": "var(--shadows-dark-neumorphism-farther)"
   },
+  "easings.easeInSine": {
+    "value": "cubic-bezier(0.12, 0, 0.39, 0)",
+    "variable": "var(--easings-ease-in-sine)"
+  },
+  "easings.easeOutSine": {
+    "value": "cubic-bezier(0.61, 1, 0.88, 1)",
+    "variable": "var(--easings-ease-out-sine)"
+  },
   "durations.fast": {
     "value": "150ms",
     "variable": "var(--durations-fast)"

@@ -1,3 +1,4 @@
+export * from './anchor'
 export * from './blockquote'
 export * from './italic'
 export * from './heading'

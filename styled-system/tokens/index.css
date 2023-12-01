@@ -119,6 +119,8 @@
   --shadows-dark-neumorphism-close: 4px 4px 8px #0a0a0b, -4px -4px 8px #121415;
   --shadows-dark-neumorphism-far: 8px 8px 16px #0a0a0b, -8px -8px 16px #121415;
   --shadows-dark-neumorphism-farther: 12px 12px 24px #0a0a0b, -12px -12px 24px #121415;
+  --easings-ease-in-sine: cubic-bezier(0.12, 0, 0.39, 0);
+  --easings-ease-out-sine: cubic-bezier(0.61, 1, 0.88, 1);
   --durations-fast: 150ms;
   --durations-natural: 250ms;
   --durations-slow: 500ms;
