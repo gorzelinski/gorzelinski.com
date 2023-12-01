@@ -107,7 +107,8 @@
   --radii-m: 16px;
   --radii-s: 8px;
   --radii-xs: 4px;
-  --borders-subtle: var(--spacing-2xs) solid var(--colors-gray-700);
+  --borders-primary-regular: var(--spacing-xs) solid var(--colors-primary-400);
+  --borders-gray-subtle: var(--spacing-2xs) solid var(--colors-gray-700);
   --shadows-light-neumorphism-closest: 1px 1px 2px #d5d5d5, -1px -1px 2px #ffffff;
   --shadows-light-neumorphism-closer: 2px 2px 4px #d5d5d5, -2px -2px 4px #ffffff;
   --shadows-light-neumorphism-close: 4px 4px 8px #d5d5d5, -4px -4px 8px #ffffff;

@@ -1,5 +1,5 @@
 import { Container, VStack } from '@/styled-system/jsx'
-import { Em, H1, H2, H3, H4, P, Small, Strong } from '@/components'
+import { Blockquote, Em, H1, H2, H3, H4, P, Small, Strong } from '@/components'
 
 export default function Home() {
   return (
@@ -29,6 +29,12 @@ export default function Home() {
           ducimus porro <Em>consequuntur</Em> doloremque magni? Eius sed
           deleniti veritatis animi amet aliquid.
         </P>
+        <Blockquote>
+          <P size="xl" color="subtle" style="italic">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            provident!
+          </P>
+        </Blockquote>
       </VStack>
     </Container>
   )

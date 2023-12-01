@@ -370,8 +370,15 @@ export const tokens = defineTokens({
     }
   },
   borders: {
-    subtle: {
-      value: '{spacing.2xs} solid {colors.gray.700}'
+    primary: {
+      regular: {
+        value: '{spacing.xs} solid {colors.primary.400}'
+      }
+    },
+    gray: {
+      subtle: {
+        value: '{spacing.2xs} solid {colors.gray.700}'
+      }
     }
   },
   shadows: {

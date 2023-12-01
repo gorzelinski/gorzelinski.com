@@ -427,9 +427,13 @@ const tokens = {
     "value": "4px",
     "variable": "var(--radii-xs)"
   },
-  "borders.subtle": {
+  "borders.primary.regular": {
+    "value": "var(--spacing-xs) solid var(--colors-primary-400)",
+    "variable": "var(--borders-primary-regular)"
+  },
+  "borders.gray.subtle": {
     "value": "var(--spacing-2xs) solid var(--colors-gray-700)",
-    "variable": "var(--borders-subtle)"
+    "variable": "var(--borders-gray-subtle)"
   },
   "shadows.light.neumorphism.closest": {
     "value": "1px 1px 2px #d5d5d5, -1px -1px 2px #ffffff",
