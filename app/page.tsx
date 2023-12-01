@@ -7,9 +7,12 @@ import {
   H2,
   H3,
   H4,
+  Li,
+  Ol,
   P,
   Small,
-  Strong
+  Strong,
+  Ul
 } from '@/components'
 
 export default function Home() {
@@ -48,6 +51,16 @@ export default function Home() {
             provident!
           </P>
         </Blockquote>
+        <Ul>
+          <Li>This is list element</Li>
+          <Li>This is list element</Li>
+          <Li>This is list element</Li>
+        </Ul>
+        <Ol>
+          <Li>This is list element</Li>
+          <Li>This is list element</Li>
+          <Li>This is list element</Li>
+        </Ol>
       </VStack>
     </Container>
   )
