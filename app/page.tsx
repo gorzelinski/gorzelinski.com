@@ -10,6 +10,7 @@ import {
   H2,
   H3,
   H4,
+  Hr,
   InlineCode,
   Li,
   Ol,
@@ -45,6 +46,7 @@ export default function Home() {
           earum odit rem est pariatur sapiente, quidem officiis veniam
           temporibus ipsum.
         </P>
+        <Hr></Hr>
         <P size="l" color="subtle">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus
           ipsam unde soluta expedita ab ex, eius laborum sint recusandae libero
