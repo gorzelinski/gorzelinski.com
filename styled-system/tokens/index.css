@@ -54,6 +54,7 @@
   --colors-dark-orange-900: hsl(44, 100%, 9%);
   --colors-dark-green-400: hsl(126, 72%, 39%);
   --colors-dark-green-900: hsl(126, 72%, 9%);
+  --sizes-2xs: 64px;
   --sizes-xs: 128px;
   --sizes-s: 192px;
   --sizes-m: 256px;
@@ -65,8 +66,9 @@
   --sizes-breakpoint-xl: 1280px;
   --sizes-breakpoint-2xl: 1536px;
   --spacing-0: 0px;
-  --spacing-2xs: 1px;
-  --spacing-xs: 2px;
+  --spacing-3xs: 1px;
+  --spacing-2xs: 2px;
+  --spacing-xs: 4px;
   --spacing-s: 8px;
   --spacing-m: 16px;
   --spacing-l: 24px;
@@ -107,8 +109,8 @@
   --radii-m: 16px;
   --radii-s: 8px;
   --radii-xs: 4px;
-  --borders-primary-regular: var(--spacing-xs) solid var(--colors-primary-400);
-  --borders-gray-subtle: var(--spacing-2xs) solid var(--colors-gray-700);
+  --borders-primary-regular: var(--spacing-2xs) solid var(--colors-primary-400);
+  --borders-gray-subtle: var(--spacing-3xs) solid var(--colors-gray-700);
   --shadows-light-neumorphism-closest: 1px 1px 2px #d5d5d5, -1px -1px 2px #ffffff;
   --shadows-light-neumorphism-closer: 2px 2px 4px #d5d5d5, -2px -2px 4px #ffffff;
   --shadows-light-neumorphism-close: 4px 4px 8px #d5d5d5, -4px -4px 8px #ffffff;

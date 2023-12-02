@@ -210,6 +210,9 @@ export const tokens = defineTokens({
     }
   },
   sizes: {
+    '2xs': {
+      value: '64px'
+    },
     xs: {
       value: '128px'
     },
@@ -230,11 +233,14 @@ export const tokens = defineTokens({
     '0': {
       value: '0px'
     },
-    '2xs': {
+    '3xs': {
       value: '1px'
     },
-    xs: {
+    '2xs': {
       value: '2px'
+    },
+    xs: {
+      value: '4px'
     },
     s: {
       value: '8px'
@@ -372,12 +378,12 @@ export const tokens = defineTokens({
   borders: {
     primary: {
       regular: {
-        value: '{spacing.xs} solid {colors.primary.400}'
+        value: '{spacing.2xs} solid {colors.primary.400}'
       }
     },
     gray: {
       subtle: {
-        value: '{spacing.2xs} solid {colors.gray.700}'
+        value: '{spacing.3xs} solid {colors.gray.700}'
       }
     }
   },

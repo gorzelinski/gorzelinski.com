@@ -16,7 +16,7 @@ export const anchor = cva({
     _focusVisible: {
       textDecorationColor: 'transparent',
       outline: 'primary.regular',
-      outlineOffset: 'xs'
+      outlineOffset: '2xs'
     },
     _visited: {
       color: 'primary.300',

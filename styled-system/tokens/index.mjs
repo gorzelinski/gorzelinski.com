@@ -215,6 +215,10 @@ const tokens = {
     "value": "hsl(126, 72%, 9%)",
     "variable": "var(--colors-dark-green-900)"
   },
+  "sizes.2xs": {
+    "value": "64px",
+    "variable": "var(--sizes-2xs)"
+  },
   "sizes.xs": {
     "value": "128px",
     "variable": "var(--sizes-xs)"
@@ -259,12 +263,16 @@ const tokens = {
     "value": "0px",
     "variable": "var(--spacing-0)"
   },
-  "spacing.2xs": {
+  "spacing.3xs": {
     "value": "1px",
+    "variable": "var(--spacing-3xs)"
+  },
+  "spacing.2xs": {
+    "value": "2px",
     "variable": "var(--spacing-2xs)"
   },
   "spacing.xs": {
-    "value": "2px",
+    "value": "4px",
     "variable": "var(--spacing-xs)"
   },
   "spacing.s": {
@@ -428,11 +436,11 @@ const tokens = {
     "variable": "var(--radii-xs)"
   },
   "borders.primary.regular": {
-    "value": "var(--spacing-xs) solid var(--colors-primary-400)",
+    "value": "var(--spacing-2xs) solid var(--colors-primary-400)",
     "variable": "var(--borders-primary-regular)"
   },
   "borders.gray.subtle": {
-    "value": "var(--spacing-2xs) solid var(--colors-gray-700)",
+    "value": "var(--spacing-3xs) solid var(--colors-gray-700)",
     "variable": "var(--borders-gray-subtle)"
   },
   "shadows.light.neumorphism.closest": {
@@ -658,6 +666,10 @@ const tokens = {
   "spacing.-0": {
     "value": "calc(var(--spacing-0) * -1)",
     "variable": "var(--spacing-0)"
+  },
+  "spacing.-3xs": {
+    "value": "calc(var(--spacing-3xs) * -1)",
+    "variable": "var(--spacing-3xs)"
   },
   "spacing.-2xs": {
     "value": "calc(var(--spacing-2xs) * -1)",

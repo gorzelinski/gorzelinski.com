@@ -10,6 +10,7 @@ import {
   Li,
   Ol,
   P,
+  Pill,
   Small,
   Strong,
   Ul
@@ -22,6 +23,7 @@ export default function Home() {
         <Small>This is small</Small>
         <H1>Hello 🐼!</H1>
         <H2>Hello 🐼!</H2>
+        <Pill>Last Updated July 8, 2022</Pill>
         <H3>Hello 🐼!</H3>
         <A href="#">
           <H4>Hello 🐼!</H4>
