@@ -7,6 +7,7 @@ import {
   H2,
   H3,
   H4,
+  InlineCode,
   Li,
   Ol,
   P,
@@ -39,13 +40,14 @@ export default function Home() {
           quos dicta commodi provident vero aut quibusdam minus vel dolorum.
         </P>
         <P>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil
-          commodi ut itaque non, nemo eius accusamus architecto dignissimos
-          quasi quibusdam doloremque perspiciatis repudiandae eaque molestias
-          excepturi? <Strong>Exercitationem</Strong> debitis omnis libero,
-          nesciunt repudiandae quaerat? Earum cupiditate doloribus rerum optio
-          ducimus porro <Em>consequuntur</Em> doloremque magni? Eius sed
-          deleniti <A href="#">veritatis</A> animi amet aliquid.
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil{' '}
+          commodi <InlineCode>npm run dev</InlineCode> ut itaque non, nemo eius
+          accusamus architecto dignissimos quasi quibusdam doloremque
+          perspiciatis repudiandae eaque molestias excepturi?{' '}
+          <Strong>Exercitationem</Strong> debitis omnis libero, nesciunt
+          repudiandae quaerat? Earum cupiditate doloribus rerum optio ducimus
+          porro <Em>consequuntur</Em> doloremque magni? Eius sed deleniti{' '}
+          <A href="#">veritatis</A> animi amet aliquid.{' '}
         </P>
         <Blockquote>
           <P size="xl" color="subtle" style="italic">

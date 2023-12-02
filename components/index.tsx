@@ -1,5 +1,6 @@
 export { A } from './anchor'
 export { Blockquote } from './blockquote'
+export { InlineCode } from './code'
 export { H1, H2, H3, H4 } from './heading'
 export { Em } from './italic'
 export { Ul, Ol, Li } from './list'
