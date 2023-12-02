@@ -1,5 +1,5 @@
 import { styled } from '@/styled-system/jsx'
-import { list } from './list.recipe'
+import { list } from './list.styles'
 
 export const Ul = styled('ul', list, {
   defaultProps: {

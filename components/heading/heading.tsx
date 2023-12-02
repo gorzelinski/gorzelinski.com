@@ -1,5 +1,5 @@
 import { styled } from '@/styled-system/jsx'
-import { heading } from './heading.recipe'
+import { heading } from './heading.styles'
 
 export const H1 = styled('h1', heading, {
   defaultProps: { size: 'xl', spacing: 'packed' }
