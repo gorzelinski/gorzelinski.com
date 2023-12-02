@@ -3,6 +3,8 @@ import {
   A,
   Blockquote,
   Em,
+  Figcaption,
+  Figure,
   H1,
   H2,
   H3,
@@ -23,12 +25,13 @@ export default function Home() {
       <VStack alignItems="start" gap="l">
         <Small>This is small</Small>
         <H1>Hello 🐼!</H1>
+        <Figcaption>This is figcaption</Figcaption>
         <H2>Hello 🐼!</H2>
-        <Pill>Last Updated July 8, 2022</Pill>
         <H3>Hello 🐼!</H3>
         <A href="#">
           <H4>Hello 🐼!</H4>
         </A>
+        <Pill>Last Updated July 8, 2022</Pill>
         <P size="xl" color="subtle" style="italic">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
           earum odit rem est pariatur sapiente, quidem officiis veniam
@@ -39,6 +42,9 @@ export default function Home() {
           ipsam unde soluta expedita ab ex, eius laborum sint recusandae libero
           quos dicta commodi provident vero aut quibusdam minus vel dolorum.
         </P>
+        <Figure>
+          <Figcaption>This is figcaption</Figcaption>
+        </Figure>
         <P>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil{' '}
           commodi <InlineCode>npm run dev</InlineCode> ut itaque non, nemo eius
