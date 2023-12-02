@@ -2,7 +2,7 @@ import { cva } from '@/styled-system/css'
 
 export const table = cva({
   base: {
-    width: '100%',
+    maxWidth: '100%',
     borderSpacing: 's',
     borderCollapse: 'collapse',
     fontFamily: 'body',

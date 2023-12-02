@@ -71,16 +71,6 @@ export default function Home() {
             provident!
           </P>
         </Blockquote>
-        <Ul>
-          <Li>This is list element</Li>
-          <Li>This is list element</Li>
-          <Li>This is list element</Li>
-        </Ul>
-        <Ol>
-          <Li>This is list element</Li>
-          <Li>This is list element</Li>
-          <Li>This is list element</Li>
-        </Ol>
         <TableWrapper>
           <Table>
             <Thead>
@@ -122,6 +112,16 @@ export default function Home() {
             <Caption>This is table caption</Caption>
           </Table>
         </TableWrapper>
+        <Ul>
+          <Li>This is list element</Li>
+          <Li>This is list element</Li>
+          <Li>This is list element</Li>
+        </Ul>
+        <Ol>
+          <Li>This is list element</Li>
+          <Li>This is list element</Li>
+          <Li>This is list element</Li>
+        </Ol>
       </VStack>
     </Container>
   )
