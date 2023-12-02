@@ -443,6 +443,10 @@ const tokens = {
     "value": "var(--spacing-3xs) solid var(--colors-gray-700)",
     "variable": "var(--borders-gray-subtle)"
   },
+  "borders.gray.regular": {
+    "value": "var(--spacing-2xs) solid var(--colors-gray-700)",
+    "variable": "var(--borders-gray-regular)"
+  },
   "shadows.light.neumorphism.closest": {
     "value": "1px 1px 2px #d5d5d5, -1px -1px 2px #ffffff",
     "variable": "var(--shadows-light-neumorphism-closest)"

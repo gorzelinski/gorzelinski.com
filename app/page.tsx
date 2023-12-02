@@ -2,6 +2,7 @@ import { Container, VStack } from '@/styled-system/jsx'
 import {
   A,
   Blockquote,
+  Caption,
   Em,
   Figcaption,
   Figure,
@@ -16,6 +17,13 @@ import {
   Pill,
   Small,
   Strong,
+  Table,
+  TableWrapper,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
   Ul
 } from '@/components'
 
@@ -71,6 +79,47 @@ export default function Home() {
           <Li>This is list element</Li>
           <Li>This is list element</Li>
         </Ol>
+        <TableWrapper>
+          <Table>
+            <Thead>
+              <Tr>
+                <Th>Header</Th>
+                <Th>Header</Th>
+                <Th>Header</Th>
+                <Th>Header</Th>
+                <Th>Header</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              <Tr>
+                <Td>Table cell</Td>
+                <Td>Table cell</Td>
+                <Td>Table cell</Td>
+                <Td>Table cell</Td>
+                <Td>Table cell</Td>
+              </Tr>
+              <Tr>
+                <Td>Table cell</Td>
+                <Td>Table cell</Td>
+                <Td>Table cell</Td>
+                <Td>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Tempore soluta voluptatum suscipit sit placeat perspiciatis at
+                  vero beatae.
+                </Td>
+                <Td>Table cell</Td>
+              </Tr>
+              <Tr>
+                <Td>Table cell</Td>
+                <Td>Table cell</Td>
+                <Td>Table cell</Td>
+                <Td>Table cell</Td>
+                <Td>Table cell</Td>
+              </Tr>
+            </Tbody>
+            <Caption>This is table caption</Caption>
+          </Table>
+        </TableWrapper>
       </VStack>
     </Container>
   )

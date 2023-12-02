@@ -36,6 +36,14 @@ export const small = cva({
       italic: {
         fontStyle: 'italic'
       }
+    },
+    side: {
+      top: {
+        captionSide: 'top'
+      },
+      bottom: {
+        captionSide: 'bottom'
+      }
     }
   },
   defaultVariants: {

@@ -384,6 +384,9 @@ export const tokens = defineTokens({
     gray: {
       subtle: {
         value: '{spacing.3xs} solid {colors.gray.700}'
+      },
+      regular: {
+        value: '{spacing.2xs} solid {colors.gray.700}'
       }
     }
   },
