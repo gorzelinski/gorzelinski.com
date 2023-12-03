@@ -109,6 +109,7 @@
   --radii-m: 16px;
   --radii-s: 8px;
   --radii-xs: 4px;
+  --radii-none: 0px;
   --borders-primary-regular: var(--spacing-2xs) solid var(--colors-primary-400);
   --borders-gray-subtle: var(--spacing-3xs) solid var(--colors-gray-700);
   --borders-gray-regular: var(--spacing-2xs) solid var(--colors-gray-700);

@@ -373,6 +373,9 @@ export const tokens = defineTokens({
     },
     xs: {
       value: '4px'
+    },
+    none: {
+      value: '0px'
     }
   },
   borders: {

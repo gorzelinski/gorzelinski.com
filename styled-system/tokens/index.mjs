@@ -435,6 +435,10 @@ const tokens = {
     "value": "4px",
     "variable": "var(--radii-xs)"
   },
+  "radii.none": {
+    "value": "0px",
+    "variable": "var(--radii-none)"
+  },
   "borders.primary.regular": {
     "value": "var(--spacing-2xs) solid var(--colors-primary-400)",
     "variable": "var(--borders-primary-regular)"

@@ -1,5 +1,6 @@
 export { A } from './anchor'
 export { Blockquote } from './blockquote'
+export { Button } from './button'
 export { InlineCode } from './code'
 export { Figure, Figcaption } from './figure'
 export { H1, H2, H3, H4 } from './heading'

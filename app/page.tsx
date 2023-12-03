@@ -1,7 +1,8 @@
-import { Container, VStack } from '@/styled-system/jsx'
+import { Container, HStack, VStack, Wrap } from '@/styled-system/jsx'
 import {
   A,
   Blockquote,
+  Button,
   Caption,
   Em,
   Figcaption,
@@ -65,6 +66,45 @@ export default function Home() {
           porro <Em>consequuntur</Em> doloremque magni? Eius sed deleniti{' '}
           <A href="#">veritatis</A> animi amet aliquid.{' '}
         </P>
+        <Wrap>
+          <Button style="text" align="left">
+            Align left
+          </Button>
+          <Button>Primary button</Button>
+          <Button disabled>Primary disabled</Button>
+          <Button style="outline">Outline button</Button>
+          <Button style="outline" disabled>
+            Outline disabled
+          </Button>
+          <Button style="text">Text button</Button>
+          <Button style="text" disabled>
+            Text disabled
+          </Button>
+          <Button style="nav">Nav button</Button>
+          <Button style="nav" disabled>
+            Nav disabled
+          </Button>
+          <Button style="nav" className="active-subtle">
+            Nav active subtle
+          </Button>
+          <Button style="nav" className="active">
+            Nav active
+          </Button>
+        </Wrap>
+        <Wrap alignItems="flex-end">
+          <Button size="l">Big button</Button>
+          <Button size="m">Medium button</Button>
+          <Button size="s">Small button</Button>
+        </Wrap>
+        <Wrap alignItems="baseline" gap="s">
+          <Button width="fixed">
+            Fixed button <span>🐼</span>
+          </Button>
+          <Button width="fixed">Fixed button</Button>
+          <Button width="full">
+            Full button <span>🐼</span>
+          </Button>
+        </Wrap>
         <Blockquote>
           <P size="xl" color="subtle" style="italic">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
