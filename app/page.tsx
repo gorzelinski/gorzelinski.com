@@ -1,8 +1,9 @@
-import { Container, HStack, VStack, Wrap } from '@/styled-system/jsx'
+import { Container, VStack, Wrap } from '@/styled-system/jsx'
 import {
   A,
   Blockquote,
   Button,
+  ButtonLink,
   Caption,
   Em,
   Figcaption,
@@ -14,6 +15,7 @@ import {
   Hr,
   InlineCode,
   Li,
+  Link,
   Ol,
   P,
   Pill,
@@ -101,9 +103,6 @@ export default function Home() {
             Fixed button <span>🐼</span>
           </Button>
           <Button width="fixed">Fixed button</Button>
-          <Button width="full">
-            Full button <span>🐼</span>
-          </Button>
         </Wrap>
         <Blockquote>
           <P size="xl" color="subtle" style="italic">
@@ -111,6 +110,9 @@ export default function Home() {
             provident!
           </P>
         </Blockquote>
+        <ButtonLink style="text" href="/about">
+          About
+        </ButtonLink>
         <TableWrapper>
           <Table>
             <Thead>
@@ -153,7 +155,9 @@ export default function Home() {
           </Table>
         </TableWrapper>
         <Ul>
-          <Li>This is list element</Li>
+          <Li>
+            <Link href="/about">About</Link> This is list element
+          </Li>
           <Li>This is list element</Li>
           <Li>This is list element</Li>
         </Ul>
