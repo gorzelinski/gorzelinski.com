@@ -136,10 +136,58 @@ export const semanticTokens = defineSemanticTokens({
           _dark: '{colors.dark.red.900}'
         }
       },
+      800: {
+        value: {
+          base: '{colors.light.red.800}',
+          _dark: '{colors.dark.red.800}'
+        }
+      },
+      700: {
+        value: {
+          base: '{colors.light.red.700}',
+          _dark: '{colors.dark.red.700}'
+        }
+      },
+      600: {
+        value: {
+          base: '{colors.light.red.600}',
+          _dark: '{colors.dark.red.600}'
+        }
+      },
+      500: {
+        value: {
+          base: '{colors.light.red.500}',
+          _dark: '{colors.dark.red.500}'
+        }
+      },
       400: {
         value: {
           base: '{colors.light.red.400}',
           _dark: '{colors.dark.red.400}'
+        }
+      },
+      300: {
+        value: {
+          base: '{colors.light.red.300}',
+          _dark: '{colors.dark.red.300}'
+        }
+      },
+      200: {
+        value: {
+          base: '{colors.light.red.200}',
+          _dark: '{colors.dark.red.200}'
+        }
+      },
+      100: {
+        value: {
+          base: '{colors.light.red.100}',
+          _dark: '{colors.dark.red.100}'
+        }
+      },
+      50: {
+        value: {
+          base: '{colors.light.red.50}',
+          _dark: '{colors.dark.red.50}'
         }
       }
     },
@@ -148,13 +196,61 @@ export const semanticTokens = defineSemanticTokens({
       900: {
         value: {
           base: '{colors.light.orange.900}',
-          _dark: '{colors.dark.orange.400}'
+          _dark: '{colors.dark.orange.900}'
+        }
+      },
+      800: {
+        value: {
+          base: '{colors.light.orange.800}',
+          _dark: '{colors.dark.orange.800}'
+        }
+      },
+      700: {
+        value: {
+          base: '{colors.light.orange.700}',
+          _dark: '{colors.dark.orange.700}'
+        }
+      },
+      600: {
+        value: {
+          base: '{colors.light.orange.600}',
+          _dark: '{colors.dark.orange.600}'
+        }
+      },
+      500: {
+        value: {
+          base: '{colors.light.orange.500}',
+          _dark: '{colors.dark.orange.500}'
         }
       },
       400: {
         value: {
           base: '{colors.light.orange.400}',
           _dark: '{colors.dark.orange.400}'
+        }
+      },
+      300: {
+        value: {
+          base: '{colors.light.orange.300}',
+          _dark: '{colors.dark.orange.300}'
+        }
+      },
+      200: {
+        value: {
+          base: '{colors.light.orange.200}',
+          _dark: '{colors.dark.orange.200}'
+        }
+      },
+      100: {
+        value: {
+          base: '{colors.light.orange.100}',
+          _dark: '{colors.dark.orange.100}'
+        }
+      },
+      50: {
+        value: {
+          base: '{colors.light.orange.50}',
+          _dark: '{colors.dark.orange.50}'
         }
       }
     },
@@ -166,10 +262,58 @@ export const semanticTokens = defineSemanticTokens({
           _dark: '{colors.dark.green.900}'
         }
       },
+      800: {
+        value: {
+          base: '{colors.light.green.800}',
+          _dark: '{colors.dark.green.800}'
+        }
+      },
+      700: {
+        value: {
+          base: '{colors.light.green.700}',
+          _dark: '{colors.dark.green.700}'
+        }
+      },
+      600: {
+        value: {
+          base: '{colors.light.green.600}',
+          _dark: '{colors.dark.green.600}'
+        }
+      },
+      500: {
+        value: {
+          base: '{colors.light.green.500}',
+          _dark: '{colors.dark.green.500}'
+        }
+      },
       400: {
         value: {
           base: '{colors.light.green.400}',
           _dark: '{colors.dark.green.400}'
+        }
+      },
+      300: {
+        value: {
+          base: '{colors.light.green.300}',
+          _dark: '{colors.dark.green.300}'
+        }
+      },
+      200: {
+        value: {
+          base: '{colors.light.green.200}',
+          _dark: '{colors.dark.green.200}'
+        }
+      },
+      100: {
+        value: {
+          base: '{colors.light.green.100}',
+          _dark: '{colors.dark.green.100}'
+        }
+      },
+      50: {
+        value: {
+          base: '{colors.light.green.50}',
+          _dark: '{colors.dark.green.50}'
         }
       }
     }

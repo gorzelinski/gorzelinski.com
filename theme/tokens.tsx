@@ -79,9 +79,33 @@ export const tokens = defineTokens({
         900: {
           value: 'hsl(347, 64%, 95%)'
         },
+        800: {
+          value: 'hsl(347, 64%, 85%)'
+        },
+        700: {
+          value: 'hsl(347, 64%, 75%)'
+        },
+        600: {
+          value: 'hsl(347, 64%, 65%)'
+        },
+        500: {
+          value: 'hsl(347, 64%, 55%)'
+        },
         400: {
           value: 'hsl(347, 64%, 48%)',
           description: 'Red color. A base for other shades.'
+        },
+        300: {
+          value: 'hsl(347, 64%, 38%)'
+        },
+        200: {
+          value: 'hsl(347, 64%, 28%)'
+        },
+        100: {
+          value: 'hsl(347, 64%, 18%)'
+        },
+        50: {
+          value: 'hsl(347, 64%, 8%)'
         }
       },
       // Orange
@@ -89,9 +113,33 @@ export const tokens = defineTokens({
         900: {
           value: 'hsl(44, 100%, 96%)'
         },
+        800: {
+          value: 'hsl(44, 100%, 86%)'
+        },
+        700: {
+          value: 'hsl(44, 100%, 76%)'
+        },
+        600: {
+          value: 'hsl(44, 100%, 66%)'
+        },
+        500: {
+          value: 'hsl(44, 100%, 56%)'
+        },
         400: {
           value: 'hsl(44, 100%, 27%)',
           description: 'Orange color. A base for other shades.'
+        },
+        300: {
+          value: 'hsl(44, 100%, 22%)'
+        },
+        200: {
+          value: 'hsl(44, 100%, 17%)'
+        },
+        100: {
+          value: 'hsl(44, 100%, 12%)'
+        },
+        50: {
+          value: 'hsl(44, 100%, 6%)'
         }
       },
       // Green
@@ -99,9 +147,33 @@ export const tokens = defineTokens({
         900: {
           value: 'hsl(126, 72%, 95%)'
         },
+        800: {
+          value: 'hsl(126, 72%, 85%)'
+        },
+        700: {
+          value: 'hsl(126, 72%, 75%)'
+        },
+        600: {
+          value: 'hsl(126, 72%, 65%)'
+        },
+        500: {
+          value: 'hsl(126, 72%, 55%)'
+        },
         400: {
           value: 'hsl(126, 72%, 29%)',
           description: 'Green color. A base for other shades.'
+        },
+        300: {
+          value: 'hsl(126, 72%, 24%)'
+        },
+        200: {
+          value: 'hsl(126, 72%, 19%)'
+        },
+        100: {
+          value: 'hsl(126, 72%, 14%)'
+        },
+        50: {
+          value: 'hsl(126, 72%, 9%)'
         }
       }
     },
@@ -182,9 +254,30 @@ export const tokens = defineTokens({
         900: {
           value: 'hsl(347, 64%, 15%)'
         },
+        800: {
+          value: 'hsl(347, 64%, 25%)'
+        },
+        700: {
+          value: 'hsl(347, 64%, 35%)'
+        },
+        600: {
+          value: 'hsl(347, 64%, 45%)'
+        },
+        500: {
+          value: 'hsl(347, 64%, 55%)'
+        },
         400: {
           value: 'hsl(347, 64%, 62%)',
           description: 'Red color (dark mode). A base for other shades.'
+        },
+        300: {
+          value: 'hsl(347, 64%, 72%)'
+        },
+        200: {
+          value: 'hsl(347, 64%, 82%)'
+        },
+        100: {
+          value: 'hsl(347, 64%, 92%)'
         }
       },
       // Orange
@@ -192,9 +285,33 @@ export const tokens = defineTokens({
         900: {
           value: 'hsl(44, 100%, 9%)'
         },
+        800: {
+          value: 'hsl(44, 100%, 19%)'
+        },
+        700: {
+          value: 'hsl(44, 100%, 29%)'
+        },
+        600: {
+          value: 'hsl(44, 100%, 39%)'
+        },
+        500: {
+          value: 'hsl(44, 100%, 45%)'
+        },
         400: {
           value: 'hsl(44, 100%, 52%)',
           description: 'Orange color (dark mode). A base for other shades.'
+        },
+        300: {
+          value: 'hsl(44, 100%, 62%)'
+        },
+        200: {
+          value: 'hsl(44, 100%, 72%)'
+        },
+        100: {
+          value: 'hsl(44, 100%, 82%)'
+        },
+        50: {
+          value: 'hsl(44, 100%, 92%)'
         }
       },
       // Green
@@ -202,9 +319,33 @@ export const tokens = defineTokens({
         900: {
           value: 'hsl(126, 72%, 9%)'
         },
+        800: {
+          value: 'hsl(126, 72%, 15%)'
+        },
+        700: {
+          value: 'hsl(126, 72%, 20%)'
+        },
+        600: {
+          value: 'hsl(126, 72%, 25%)'
+        },
+        500: {
+          value: 'hsl(126, 72%, 30%)'
+        },
         400: {
           value: 'hsl(126, 72%, 39%)',
           description: 'Green color (dark mode). A base for other shades.'
+        },
+        300: {
+          value: 'hsl(126, 72%, 49%)'
+        },
+        200: {
+          value: 'hsl(126, 72%, 59%)'
+        },
+        100: {
+          value: 'hsl(126, 72%, 69%)'
+        },
+        50: {
+          value: 'hsl(126, 72%, 79%)'
         }
       }
     }
@@ -362,6 +503,9 @@ export const tokens = defineTokens({
     }
   },
   radii: {
+    circle: {
+      value: '50%'
+    },
     l: {
       value: '32px'
     },
@@ -380,6 +524,9 @@ export const tokens = defineTokens({
   },
   borders: {
     primary: {
+      subtle: {
+        value: '{spacing.3xs} solid {colors.primary.700}'
+      },
       regular: {
         value: '{spacing.2xs} solid {colors.primary.400}'
       }
@@ -390,6 +537,30 @@ export const tokens = defineTokens({
       },
       regular: {
         value: '{spacing.2xs} solid {colors.gray.700}'
+      }
+    },
+    danger: {
+      subtle: {
+        value: '{spacing.3xs} solid {colors.danger.700}'
+      },
+      regular: {
+        value: '{spacing.2xs} solid {colors.danger.400}'
+      }
+    },
+    warning: {
+      subtle: {
+        value: '{spacing.3xs} solid {colors.warning.700}'
+      },
+      regular: {
+        value: '{spacing.2xs} solid {colors.warning.400}'
+      }
+    },
+    success: {
+      subtle: {
+        value: '{spacing.3xs} solid {colors.success.700}'
+      },
+      regular: {
+        value: '{spacing.2xs} solid {colors.success.400}'
       }
     }
   },
