@@ -1,4 +1,4 @@
-import { cva, type RecipeVariantProps } from '@/styled-system/css'
+import { cva } from '@/styled-system/css'
 
 export const icon = cva({
   base: {
@@ -54,5 +54,3 @@ export const icon = cva({
     size: 'm'
   }
 })
-
-export type IconVariantProps = RecipeVariantProps<typeof icon>

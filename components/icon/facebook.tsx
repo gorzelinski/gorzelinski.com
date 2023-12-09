@@ -1,5 +1,6 @@
 import { styled } from '@/styled-system/jsx'
-import { IconVariantProps, icon } from './icon.styles'
+import { icon } from './icon.styles'
+import { IconVariantProps } from './icon.types'
 
 const FacebookSVG = (props: IconVariantProps) => (
   <span {...props}>
