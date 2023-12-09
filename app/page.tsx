@@ -5,6 +5,7 @@ import {
   Button,
   ButtonLink,
   Caption,
+  Download,
   Em,
   Figcaption,
   Figure,
@@ -91,6 +92,9 @@ export default function Home() {
           </Button>
           <Button style="nav" className="active">
             Nav active
+          </Button>
+          <Button>
+            Button with icon <Download></Download>
           </Button>
         </Wrap>
         <Wrap alignItems="flex-end">

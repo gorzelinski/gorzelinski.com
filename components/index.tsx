@@ -4,6 +4,31 @@ export { Button } from './button'
 export { InlineCode } from './code'
 export { Figure, Figcaption } from './figure'
 export { H1, H2, H3, H4 } from './heading'
+export {
+  AlertCircle,
+  At,
+  Book,
+  CheckmarkCircle,
+  ChevronBack,
+  ChevronForward,
+  Download,
+  Dribbble,
+  Earth,
+  Facebook,
+  GameController,
+  Github,
+  Headset,
+  InformationCircle,
+  Instagram,
+  Linkedin,
+  Mail,
+  Search,
+  Send,
+  Sync,
+  Tv,
+  Twitter,
+  Warning
+} from './icon'
 export { Em } from './italic'
 export { ButtonLink, Link } from './link'
 export { Ul, Ol, Li } from './list'
