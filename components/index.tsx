@@ -1,6 +1,7 @@
 export { A } from './anchor'
 export { Blockquote } from './blockquote'
 export { Button } from './button'
+export { ButtonLink } from './button-link'
 export { InlineCode } from './code'
 export { Figure, Figcaption } from './figure'
 export { H1, H2, H3, H4 } from './heading'
@@ -30,7 +31,7 @@ export {
   Warning
 } from './icon'
 export { Em } from './italic'
-export { ButtonLink, Link } from './link'
+export { Link } from './link'
 export { Ul, Ol, Li } from './list'
 export { P } from './paragraph'
 export { Pill } from './pill'
