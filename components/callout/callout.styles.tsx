@@ -7,8 +7,6 @@ export const callout = cva({
     padding: 'm',
     '& > span:first-child': {
       position: 'absolute',
-      top: 'calc(-1 * var(--spacing-m))',
-      right: 'calc(-1 * var(--spacing-m))',
       backgroundColor: 'gray.900',
       borderRadius: 'circle'
     }
@@ -35,9 +33,24 @@ export const callout = cva({
         color: 'success.400',
         border: 'success.subtle'
       }
+    },
+    alignIcon: {
+      left: {
+        '& > span:first-child': {
+          top: 'calc(-1 * var(--spacing-m))',
+          left: 'calc(-1 * var(--spacing-m))'
+        }
+      },
+      right: {
+        '& > span:first-child': {
+          top: 'calc(-1 * var(--spacing-m))',
+          right: 'calc(-1 * var(--spacing-m))'
+        }
+      }
     }
   },
   defaultVariants: {
-    style: 'info'
+    style: 'info',
+    alignIcon: 'right'
   }
 })
