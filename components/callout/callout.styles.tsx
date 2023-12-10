@@ -1,0 +1,43 @@
+import { cva } from '@/styled-system/css'
+
+export const callout = cva({
+  base: {
+    position: 'relative',
+    borderRadius: 'm',
+    padding: 'm',
+    '& > span:first-child': {
+      position: 'absolute',
+      top: 'calc(-1 * var(--spacing-m))',
+      right: 'calc(-1 * var(--spacing-m))',
+      backgroundColor: 'gray.900',
+      borderRadius: 'circle'
+    }
+  },
+  variants: {
+    style: {
+      info: {
+        backgroundColor: 'primary.900',
+        color: 'primary.400',
+        border: 'primary.subtle'
+      },
+      danger: {
+        backgroundColor: 'danger.900',
+        color: 'danger.400',
+        border: 'danger.subtle'
+      },
+      warning: {
+        backgroundColor: 'warning.900',
+        color: 'warning.400',
+        border: 'warning.subtle'
+      },
+      success: {
+        backgroundColor: 'success.900',
+        color: 'success.400',
+        border: 'success.subtle'
+      }
+    }
+  },
+  defaultVariants: {
+    style: 'info'
+  }
+})

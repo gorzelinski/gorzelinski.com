@@ -4,6 +4,7 @@ import {
   Blockquote,
   Button,
   ButtonLink,
+  Callout,
   Caption,
   Download,
   Em,
@@ -117,6 +118,18 @@ export default function Home() {
         <ButtonLink style="text" href="/about">
           About
         </ButtonLink>
+        <Callout>
+          <P>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil{' '}
+            commodi <InlineCode>npm run dev</InlineCode> ut itaque non, nemo
+            eius accusamus architecto dignissimos quasi quibusdam doloremque
+            perspiciatis repudiandae eaque molestias excepturi?{' '}
+            <Strong>Exercitationem</Strong> debitis omnis libero, nesciunt
+            repudiandae quaerat? Earum cupiditate doloribus rerum optio ducimus
+            porro <Em>consequuntur</Em> doloremque magni? Eius sed deleniti{' '}
+            <A href="#">veritatis</A> animi amet aliquid.{' '}
+          </P>
+        </Callout>
         <TableWrapper>
           <Table>
             <Thead>
