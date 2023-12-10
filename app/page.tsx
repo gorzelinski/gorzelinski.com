@@ -21,6 +21,7 @@ import {
   Ol,
   P,
   Pill,
+  S,
   Small,
   Strong,
   Table,
@@ -123,7 +124,7 @@ export default function Home() {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil{' '}
             commodi <InlineCode>npm run dev</InlineCode> ut itaque non, nemo
             eius accusamus architecto dignissimos quasi quibusdam doloremque
-            perspiciatis repudiandae eaque molestias excepturi?{' '}
+            perspiciatis <S>repudiandae</S> eaque molestias excepturi?{' '}
             <Strong>Exercitationem</Strong> debitis omnis libero, nesciunt
             repudiandae quaerat? Earum cupiditate doloribus rerum optio ducimus
             porro <Em>consequuntur</Em> doloremque magni? Eius sed deleniti{' '}
