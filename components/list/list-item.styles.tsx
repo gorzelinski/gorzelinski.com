@@ -19,7 +19,7 @@ export const listItem = cva({
       xl: 's',
       '2xl': 'm'
     },
-    '&::marker': {
+    _marker: {
       color: 'primary.400'
     }
   }

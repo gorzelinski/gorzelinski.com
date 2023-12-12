@@ -16,12 +16,15 @@ import {
   H4,
   Hr,
   InlineCode,
+  Input,
+  InputWrapper,
   Li,
   Link,
   Ol,
   P,
   Pill,
   S,
+  Search,
   Small,
   Strong,
   Table,
@@ -99,6 +102,13 @@ export default function Home() {
             Button with icon <Download></Download>
           </Button>
         </Wrap>
+        <InputWrapper>
+          <Search color="borderGray"></Search>
+          <Input
+            type="search"
+            placeholder="What do you want to read about?"
+          ></Input>
+        </InputWrapper>
         <Wrap alignItems="flex-end">
           <Button size="l">Big button</Button>
           <Button size="m">Medium button</Button>

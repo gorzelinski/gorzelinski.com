@@ -31,6 +31,7 @@ export {
   Twitter,
   Warning
 } from './icon'
+export { InputWrapper, Input } from './input'
 export { Em } from './italic'
 export { Link } from './link'
 export { Ul, Ol, Li } from './list'
