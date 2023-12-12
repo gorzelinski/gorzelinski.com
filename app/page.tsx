@@ -18,6 +18,7 @@ import {
   InlineCode,
   Input,
   InputWrapper,
+  Label,
   Li,
   Link,
   Ol,
@@ -102,9 +103,11 @@ export default function Home() {
             Button with icon <Download></Download>
           </Button>
         </Wrap>
+        <Label htmlFor="search">Search blog posts</Label>
         <InputWrapper>
           <Search color="borderGray"></Search>
           <Input
+            name="search"
             type="search"
             placeholder="What do you want to read about?"
           ></Input>

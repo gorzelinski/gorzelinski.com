@@ -33,6 +33,7 @@ export {
 } from './icon'
 export { InputWrapper, Input } from './input'
 export { Em } from './italic'
+export { Label } from './label'
 export { Link } from './link'
 export { Ul, Ol, Li } from './list'
 export { P } from './paragraph'
