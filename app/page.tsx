@@ -28,6 +28,8 @@ import {
   Search,
   Small,
   Strong,
+  Sub,
+  Sup,
   Table,
   TableWrapper,
   Tbody,
@@ -67,14 +69,15 @@ export default function Home() {
           <Figcaption>This is figcaption</Figcaption>
         </Figure>
         <P>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil{' '}
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil
           commodi <InlineCode>npm run dev</InlineCode> ut itaque non, nemo eius
           accusamus architecto dignissimos quasi quibusdam doloremque
           perspiciatis <Underline>repudiandae</Underline> eaque molestias
           excepturi? <Strong>Exercitationem</Strong> debitis omnis libero,
           nesciunt repudiandae quaerat? Earum cupiditate doloribus rerum optio
           ducimus porro <Em>consequuntur</Em> doloremque magni? Eius sed
-          deleniti <A href="#">veritatis</A> animi amet aliquid.{' '}
+          deleniti <A href="#">veritatis</A> animi amet aliquid.<Sub>2</Sub>
+          <Sup>2</Sup>
         </P>
         <Wrap>
           <Button style="text" align="left">
