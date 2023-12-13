@@ -35,7 +35,8 @@ import {
   Th,
   Thead,
   Tr,
-  Ul
+  Ul,
+  Underline
 } from '@/components'
 
 export default function Home() {
@@ -69,11 +70,11 @@ export default function Home() {
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil{' '}
           commodi <InlineCode>npm run dev</InlineCode> ut itaque non, nemo eius
           accusamus architecto dignissimos quasi quibusdam doloremque
-          perspiciatis repudiandae eaque molestias excepturi?{' '}
-          <Strong>Exercitationem</Strong> debitis omnis libero, nesciunt
-          repudiandae quaerat? Earum cupiditate doloribus rerum optio ducimus
-          porro <Em>consequuntur</Em> doloremque magni? Eius sed deleniti{' '}
-          <A href="#">veritatis</A> animi amet aliquid.{' '}
+          perspiciatis <Underline>repudiandae</Underline> eaque molestias
+          excepturi? <Strong>Exercitationem</Strong> debitis omnis libero,
+          nesciunt repudiandae quaerat? Earum cupiditate doloribus rerum optio
+          ducimus porro <Em>consequuntur</Em> doloremque magni? Eius sed
+          deleniti <A href="#">veritatis</A> animi amet aliquid.{' '}
         </P>
         <Wrap>
           <Button style="text" align="left">
