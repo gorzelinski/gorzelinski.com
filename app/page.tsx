@@ -6,6 +6,8 @@ import {
   ButtonLink,
   Callout,
   Caption,
+  Card,
+  ChevronForward,
   Download,
   Em,
   Figcaption,
@@ -40,6 +42,7 @@ import {
   Ul,
   Underline
 } from '@/components'
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -53,6 +56,25 @@ export default function Home() {
         <A href="#">
           <H4>Hello 🐼!</H4>
         </A>
+        <Card>
+          <Image
+            className="card-image"
+            width={384}
+            height={216}
+            src="/erda-estremera-sxNt9g77PE0-unsplash.jpg"
+            alt="Dashund"
+          ></Image>
+          <Small>October 21, 2023 • 5 min read</Small>
+          <H3 size="s">Card heading</H3>
+          <P size="s">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, omnis
+            quidem dignissimos cumque eligendi recusandae corrupti nulla tempora
+            dolorum veritatis!
+          </P>
+          <Button style="text" align="left" size="s">
+            Read more<ChevronForward></ChevronForward>
+          </Button>
+        </Card>
         <Pill>Last Updated July 8, 2022</Pill>
         <P size="xl" color="subtle" style="italic">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
