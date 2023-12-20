@@ -47,6 +47,23 @@ export default defineConfig({
           '100%': {
             transform: 'translateX(0)'
           }
+        },
+        bounceIn: {
+          '20%': {
+            transform: 'translateY(-8px)'
+          },
+          '40%': {
+            transform: 'translateY(1px)'
+          },
+          '60%': {
+            transform: 'translateY(-4px)'
+          },
+          '80%': {
+            transform: 'translateY(0.5px)'
+          },
+          '100%': {
+            transform: 'translateY(0px)'
+          }
         }
       }
     }

@@ -719,6 +719,10 @@ const tokens = {
     "value": "ease-in-out",
     "variable": "var(--easings-ease-in-out)"
   },
+  "easings.easeOut": {
+    "value": "ease-out",
+    "variable": "var(--easings-ease-out)"
+  },
   "opacity.95": {
     "value": 0.95,
     "variable": "var(--opacity-95)"
@@ -743,17 +747,17 @@ const tokens = {
     "value": "750ms",
     "variable": "var(--durations-slower)"
   },
-  "durations.slowest": {
-    "value": "1000ms",
-    "variable": "var(--durations-slowest)"
-  },
   "animations.spinning": {
-    "value": "spin var(--durations-slowest) infinite var(--easings-linear)",
+    "value": "spin var(--durations-slower) infinite var(--easings-linear)",
     "variable": "var(--animations-spinning)"
   },
   "animations.wobbling": {
-    "value": "wobble var(--durations-slowest) 1 var(--easings-ease-in-out)",
+    "value": "wobble var(--durations-slower) 1 var(--easings-ease-in-out)",
     "variable": "var(--animations-wobbling)"
+  },
+  "animations.bouncing": {
+    "value": "bounceIn var(--durations-slower) 1 var(--easings-ease-out)",
+    "variable": "var(--animations-bouncing)"
   },
   "breakpoints.sm": {
     "value": "640px",

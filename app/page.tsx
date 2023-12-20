@@ -19,8 +19,25 @@ export default function Home() {
         <ButtonLink href="#contact">
           Contact me <Sync animation="spinning"></Sync>
         </ButtonLink>
-        <ButtonLink href="#contact">
-          Contact me <AlertCircle animation="wobbling"></AlertCircle>
+        <ButtonLink
+          href="#contact"
+          _hover={{
+            '& > span': {
+              animation: 'wobbling'
+            }
+          }}
+        >
+          Contact me <AlertCircle></AlertCircle>
+        </ButtonLink>
+        <ButtonLink
+          href="#contact"
+          _hover={{
+            '& > span': {
+              animation: 'bouncing'
+            }
+          }}
+        >
+          Contact me <Download></Download>
         </ButtonLink>
       </VStack>
     </Container>
