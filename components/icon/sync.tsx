@@ -1,8 +1,8 @@
 import { styled } from '@/styled-system/jsx'
 import { icon } from './icon.styles'
-import { IconVariantProps } from './icon.types'
+import { IconProps } from './icon.types'
 
-const SyncSVG = (props: IconVariantProps) => (
+const SyncSVG = (props: IconProps) => (
   <span {...props}>
     <svg viewBox="0 0 512 512">
       <path
