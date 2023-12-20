@@ -4,7 +4,7 @@ export const card = cva({
   base: {
     padding: 'm',
     position: 'relative',
-    maxWidth: 'xl',
+    minWidth: 'xl',
     display: 'grid',
     gridTemplateColumns: 'auto',
     alignContent: 'start',
