@@ -1,4 +1,12 @@
-import { AlertCircle, ButtonLink, Download, H1, P, Sync } from '@/components'
+import {
+  AlertCircle,
+  ButtonLink,
+  Download,
+  H1,
+  Mail,
+  P,
+  Sync
+} from '@/components'
 import { Container, VStack } from '@/styled-system/jsx'
 
 export default function Home() {
@@ -17,7 +25,7 @@ export default function Home() {
           presence.
         </P>
         <ButtonLink href="#contact">
-          Contact me <Sync animation="spinning"></Sync>
+          Spinning <Sync animation="spinning"></Sync>
         </ButtonLink>
         <ButtonLink
           href="#contact"
@@ -27,7 +35,7 @@ export default function Home() {
             }
           }}
         >
-          Contact me <AlertCircle></AlertCircle>
+          Wobblig <AlertCircle></AlertCircle>
         </ButtonLink>
         <ButtonLink
           href="#contact"
@@ -37,7 +45,17 @@ export default function Home() {
             }
           }}
         >
-          Contact me <Download></Download>
+          Bouncing <Download></Download>
+        </ButtonLink>
+        <ButtonLink
+          href="#contact"
+          _hover={{
+            '& > span': {
+              animation: 'buzzing'
+            }
+          }}
+        >
+          Buzzing<Mail></Mail>
         </ButtonLink>
       </VStack>
     </Container>

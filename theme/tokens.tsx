@@ -646,6 +646,9 @@ export const tokens = defineTokens({
     },
     bouncing: {
       value: 'bounceIn {durations.slower} 1 {easings.easeOut}'
+    },
+    buzzing: {
+      value: 'buzz {durations.slower} 1 {easings.linear}'
     }
   }
 })

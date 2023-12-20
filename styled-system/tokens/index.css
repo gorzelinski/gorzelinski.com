@@ -190,6 +190,7 @@
   --animations-spinning: spin var(--durations-slower) infinite var(--easings-linear);
   --animations-wobbling: wobble var(--durations-slower) 1 var(--easings-ease-in-out);
   --animations-bouncing: bounceIn var(--durations-slower) 1 var(--easings-ease-out);
+  --animations-buzzing: buzz var(--durations-slower) 1 var(--easings-linear);
   --breakpoints-sm: 640px;
   --breakpoints-md: 768px;
   --breakpoints-lg: 1024px;
