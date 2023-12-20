@@ -1,9 +1,4 @@
 @layer tokens {
-    @keyframes spin {
-        to {
-            transform: rotate(360deg)
-        }
-    }
     @keyframes ping {
         75%, 100% {
             transform: scale(2);
@@ -23,6 +18,14 @@
         50% {
             transform: none;
             animation-timing-function: cubic-bezier(0,0,0.2,1)
+        }
+    }
+    @keyframes spin {
+        from {
+            transform: rotate(0deg)
+        }
+        to {
+            transform: rotate(360deg)
         }
     }
 }

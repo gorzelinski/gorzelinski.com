@@ -18,7 +18,18 @@ export default defineConfig({
   theme: {
     tokens,
     semanticTokens,
-    extend: {}
+    extend: {
+      keyframes: {
+        spin: {
+          from: {
+            transform: 'rotate(0deg)'
+          },
+          to: {
+            transform: 'rotate(360deg)'
+          }
+        }
+      }
+    }
   },
 
   // The output directory for your css system

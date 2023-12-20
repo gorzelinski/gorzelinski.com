@@ -612,6 +612,14 @@ export const tokens = defineTokens({
       value: 'cubic-bezier(0.61, 1, 0.88, 1)'
     }
   },
+  opacity: {
+    100: {
+      value: 1
+    },
+    95: {
+      value: 0.95
+    }
+  },
   durations: {
     fast: {
       value: '150ms'
@@ -624,6 +632,11 @@ export const tokens = defineTokens({
     },
     slower: {
       value: '750ms'
+    }
+  },
+  animations: {
+    spinning: {
+      value: 'spin {durations.slower} infinite linear'
     }
   }
 })

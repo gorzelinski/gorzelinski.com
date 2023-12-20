@@ -719,6 +719,14 @@ const tokens = {
     "value": "cubic-bezier(0.61, 1, 0.88, 1)",
     "variable": "var(--easings-ease-out-sine)"
   },
+  "opacity.95": {
+    "value": 0.95,
+    "variable": "var(--opacity-95)"
+  },
+  "opacity.100": {
+    "value": 1,
+    "variable": "var(--opacity-100)"
+  },
   "durations.fast": {
     "value": "150ms",
     "variable": "var(--durations-fast)"
@@ -734,6 +742,10 @@ const tokens = {
   "durations.slower": {
     "value": "750ms",
     "variable": "var(--durations-slower)"
+  },
+  "animations.spinning": {
+    "value": "spin var(--durations-slower) infinite linear",
+    "variable": "var(--animations-spinning)"
   },
   "breakpoints.sm": {
     "value": "640px",

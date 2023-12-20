@@ -180,10 +180,13 @@
   --shadows-dark-neumorphism-farther: 12px 12px 24px #0a0a0b, -12px -12px 24px #121415;
   --easings-ease-in-sine: cubic-bezier(0.12, 0, 0.39, 0);
   --easings-ease-out-sine: cubic-bezier(0.61, 1, 0.88, 1);
+  --opacity-95: 0.95;
+  --opacity-100: 1;
   --durations-fast: 150ms;
   --durations-natural: 250ms;
   --durations-slow: 500ms;
   --durations-slower: 750ms;
+  --animations-spinning: spin var(--durations-slower) infinite linear;
   --breakpoints-sm: 640px;
   --breakpoints-md: 768px;
   --breakpoints-lg: 1024px;
