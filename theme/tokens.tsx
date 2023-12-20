@@ -605,11 +605,11 @@ export const tokens = defineTokens({
     }
   },
   easings: {
-    easeInSine: {
-      value: 'cubic-bezier(0.12, 0, 0.39, 0)'
+    linear: {
+      value: 'linear'
     },
-    easeOutSine: {
-      value: 'cubic-bezier(0.61, 1, 0.88, 1)'
+    easeInOut: {
+      value: 'ease-in-out'
     }
   },
   opacity: {
@@ -632,11 +632,17 @@ export const tokens = defineTokens({
     },
     slower: {
       value: '750ms'
+    },
+    slowest: {
+      value: '1000ms'
     }
   },
   animations: {
     spinning: {
-      value: 'spin {durations.slower} infinite linear'
+      value: 'spin {durations.slowest} infinite {easings.linear}'
+    },
+    wobbling: {
+      value: 'wobble {durations.slowest} 1 {easings.easeInOut}'
     }
   }
 })

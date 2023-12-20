@@ -27,6 +27,26 @@ export default defineConfig({
           to: {
             transform: 'rotate(360deg)'
           }
+        },
+        wobble: {
+          '16%': {
+            transform: 'translateX(6px)'
+          },
+          '33%': {
+            transform: 'translateX(-5px)'
+          },
+          '49%': {
+            transform: 'translateX(4px)'
+          },
+          '66%': {
+            transform: 'translateX(-2px)'
+          },
+          '83%': {
+            transform: 'translateX(1px)'
+          },
+          '100%': {
+            transform: 'translateX(0)'
+          }
         }
       }
     }

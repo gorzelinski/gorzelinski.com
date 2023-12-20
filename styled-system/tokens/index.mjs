@@ -711,13 +711,13 @@ const tokens = {
     "value": "12px 12px 24px #0a0a0b, -12px -12px 24px #121415",
     "variable": "var(--shadows-dark-neumorphism-farther)"
   },
-  "easings.easeInSine": {
-    "value": "cubic-bezier(0.12, 0, 0.39, 0)",
-    "variable": "var(--easings-ease-in-sine)"
+  "easings.linear": {
+    "value": "linear",
+    "variable": "var(--easings-linear)"
   },
-  "easings.easeOutSine": {
-    "value": "cubic-bezier(0.61, 1, 0.88, 1)",
-    "variable": "var(--easings-ease-out-sine)"
+  "easings.easeInOut": {
+    "value": "ease-in-out",
+    "variable": "var(--easings-ease-in-out)"
   },
   "opacity.95": {
     "value": 0.95,
@@ -743,9 +743,17 @@ const tokens = {
     "value": "750ms",
     "variable": "var(--durations-slower)"
   },
+  "durations.slowest": {
+    "value": "1000ms",
+    "variable": "var(--durations-slowest)"
+  },
   "animations.spinning": {
-    "value": "spin var(--durations-slower) infinite linear",
+    "value": "spin var(--durations-slowest) infinite var(--easings-linear)",
     "variable": "var(--animations-spinning)"
+  },
+  "animations.wobbling": {
+    "value": "wobble var(--durations-slowest) 1 var(--easings-ease-in-out)",
+    "variable": "var(--animations-wobbling)"
   },
   "breakpoints.sm": {
     "value": "640px",

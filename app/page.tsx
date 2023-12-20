@@ -1,4 +1,4 @@
-import { ButtonLink, H1, P, Sync } from '@/components'
+import { AlertCircle, ButtonLink, Download, H1, P, Sync } from '@/components'
 import { Container, VStack } from '@/styled-system/jsx'
 
 export default function Home() {
@@ -18,6 +18,9 @@ export default function Home() {
         </P>
         <ButtonLink href="#contact">
           Contact me <Sync animation="spinning"></Sync>
+        </ButtonLink>
+        <ButtonLink href="#contact">
+          Contact me <AlertCircle animation="wobbling"></AlertCircle>
         </ButtonLink>
       </VStack>
     </Container>
