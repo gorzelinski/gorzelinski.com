@@ -9,7 +9,7 @@ export const anchor = cva({
     textDecorationColor: 'transparent',
     transitionProperty: 'text-decoration-color',
     transitionDuration: 'fast',
-    transitionTimingFunction: 'easeInSine',
+    transitionTimingFunction: 'easeIn',
     _hover: {
       textDecorationColor: 'primary.400'
     },

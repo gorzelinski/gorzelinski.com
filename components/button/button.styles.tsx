@@ -25,14 +25,6 @@ export const button = cva({
         marginRight: '-s'
       }
     },
-    borderRadius: {
-      regular: {
-        borderRadius: 's'
-      },
-      none: {
-        borderRadius: 'none'
-      }
-    },
     size: {
       l: {
         fontSize: {
@@ -153,7 +145,7 @@ export const button = cva({
         position: 'relative',
         transitionProperty: 'color',
         transitionDuration: 'natural',
-        transitionTimingFunction: 'easeOutSine',
+        transitionTimingFunction: 'easeOut',
         color: 'gray.400',
         _hover: {
           color: 'gray.200'
@@ -192,7 +184,31 @@ export const button = cva({
           transformOrigin: 'bottom right',
           transitionProperty: 'transform',
           transitionDuration: 'natural',
-          transitionTimingFunction: 'easeOutSine'
+          transitionTimingFunction: 'easeOut'
+        }
+      },
+      icon: {
+        color: 'gray.400',
+        backgroundColor: 'gray.800',
+        _hover: {
+          color: 'gray.300',
+          backgroundColor: 'gray.700'
+        },
+        _focus: {
+          color: 'gray.200',
+          backgroundColor: 'gray.600'
+        },
+        _focusVisible: {
+          outline: 'gray.regular',
+          outlineOffset: '2xs'
+        },
+        _active: {
+          color: 'gray.100',
+          backgroundColor: 'gray.500'
+        },
+        _disabled: {
+          color: 'gray.500',
+          backgroundColor: 'gray.900'
         }
       }
     },
@@ -201,7 +217,7 @@ export const button = cva({
         width: 'auto',
         justifyContent: 'space-between'
       },
-      full: {
+      stretch: {
         width: '100%',
         justifyContent: 'center'
       }
@@ -209,15 +225,26 @@ export const button = cva({
   },
   defaultVariants: {
     style: 'primary',
-    borderRadius: 'regular',
     size: 'm',
     width: 'fixed'
   },
   compoundVariants: [
     {
+      style: ['primary', 'outline', 'text'],
+      css: {
+        borderRadius: 's'
+      }
+    },
+    {
       style: 'nav',
       css: {
         borderRadius: 'none'
+      }
+    },
+    {
+      style: 'icon',
+      css: {
+        borderRadius: 'circle'
       }
     }
   ]

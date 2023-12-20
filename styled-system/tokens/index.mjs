@@ -715,6 +715,10 @@ const tokens = {
     "value": "linear",
     "variable": "var(--easings-linear)"
   },
+  "easings.easeIn": {
+    "value": "ease-in",
+    "variable": "var(--easings-ease-in)"
+  },
   "easings.easeInOut": {
     "value": "ease-in-out",
     "variable": "var(--easings-ease-in-out)"

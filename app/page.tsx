@@ -1,13 +1,19 @@
 import {
   AlertCircle,
   ButtonLink,
+  ChevronForward,
   Download,
+  Dribbble,
+  Facebook,
+  Github,
   H1,
+  Linkedin,
   Mail,
   P,
-  Sync
+  Sync,
+  Twitter
 } from '@/components'
-import { Container, VStack } from '@/styled-system/jsx'
+import { Container, VStack, Wrap } from '@/styled-system/jsx'
 
 export default function Home() {
   return (
@@ -57,6 +63,50 @@ export default function Home() {
         >
           Buzzing<Mail></Mail>
         </ButtonLink>
+        <ButtonLink
+          style="text"
+          align="left"
+          href="#"
+          _hover={{
+            '& > .icon': {
+              transform: 'translateX(var(--spacing-s))'
+            }
+          }}
+        >
+          Move forward
+          <ChevronForward
+            className="icon"
+            transform="translateX(var(--spacing-0))"
+            transitionProperty="transform"
+            transitionDuration="natural"
+            transitionTimingFunction="easeInOut"
+          ></ChevronForward>
+        </ButtonLink>
+        <Wrap>
+          <ButtonLink href="#" style="icon">
+            <Github></Github>
+          </ButtonLink>
+          <ButtonLink href="#" style="icon">
+            <Dribbble></Dribbble>
+          </ButtonLink>
+          <ButtonLink href="#" style="icon">
+            <Twitter></Twitter>
+          </ButtonLink>
+          <ButtonLink href="#" style="icon">
+            <Facebook></Facebook>
+          </ButtonLink>
+          <ButtonLink href="#" style="icon">
+            <Linkedin></Linkedin>
+          </ButtonLink>
+        </Wrap>
+        <Wrap>
+          <ButtonLink href="#" style="nav">
+            Portfolio
+          </ButtonLink>
+          <ButtonLink href="#" style="nav">
+            Blog
+          </ButtonLink>
+        </Wrap>
       </VStack>
     </Container>
   )

@@ -179,6 +179,7 @@
   --shadows-dark-neumorphism-far: 8px 8px 16px #0a0a0b, -8px -8px 16px #121415;
   --shadows-dark-neumorphism-farther: 12px 12px 24px #0a0a0b, -12px -12px 24px #121415;
   --easings-linear: linear;
+  --easings-ease-in: ease-in;
   --easings-ease-in-out: ease-in-out;
   --easings-ease-out: ease-out;
   --opacity-95: 0.95;

@@ -608,6 +608,9 @@ export const tokens = defineTokens({
     linear: {
       value: 'linear'
     },
+    easeIn: {
+      value: 'ease-in'
+    },
     easeInOut: {
       value: 'ease-in-out'
     },
