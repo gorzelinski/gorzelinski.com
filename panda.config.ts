@@ -15,6 +15,10 @@ export default defineConfig({
   exclude: [],
 
   // Useful for theme customization
+  conditions: {
+    light: '[data-color-mode=light] &',
+    dark: '[data-color-mode=dark] &'
+  },
   theme: {
     tokens,
     semanticTokens,

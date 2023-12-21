@@ -61,17 +61,17 @@
   --colors-dark-blue-700: hsl(210, 100%, 24%);
   --colors-dark-blue-800: hsl(210, 100%, 19%);
   --colors-dark-blue-900: hsl(210, 100%, 14%);
-  --colors-dark-gray-25: hsl(208, 7%, 0%);
-  --colors-dark-gray-50: hsl(208, 7%, 6%);
-  --colors-dark-gray-100: hsl(208, 7%, 16%);
-  --colors-dark-gray-200: hsl(208, 7%, 26%);
-  --colors-dark-gray-300: hsl(208, 7%, 36%);
-  --colors-dark-gray-400: hsl(208, 7%, 42%);
-  --colors-dark-gray-500: hsl(208, 7%, 66%);
-  --colors-dark-gray-600: hsl(208, 7%, 76%);
-  --colors-dark-gray-700: hsl(208, 7%, 86%);
-  --colors-dark-gray-800: hsl(208, 7%, 96%);
-  --colors-dark-gray-900: hsl(208, 7%, 98%);
+  --colors-dark-gray-25: hsl(208, 7%, 100%);
+  --colors-dark-gray-50: hsl(208, 7%, 96%);
+  --colors-dark-gray-100: hsl(208, 7%, 86%);
+  --colors-dark-gray-200: hsl(208, 7%, 76%);
+  --colors-dark-gray-300: hsl(208, 7%, 66%);
+  --colors-dark-gray-400: hsl(208, 7%, 58%);
+  --colors-dark-gray-500: hsl(208, 7%, 46%);
+  --colors-dark-gray-600: hsl(208, 7%, 36%);
+  --colors-dark-gray-700: hsl(208, 7%, 26%);
+  --colors-dark-gray-800: hsl(208, 7%, 13%);
+  --colors-dark-gray-900: hsl(208, 7%, 6%);
   --colors-dark-red-100: hsl(347, 64%, 92%);
   --colors-dark-red-200: hsl(347, 64%, 82%);
   --colors-dark-red-300: hsl(347, 64%, 72%);
@@ -258,7 +258,7 @@
   --shadows-neumorphism-farther: var(--shadows-light-neumorphism-farther)
 }
 
-.dark {
+[data-color-mode=dark] {
   --colors-primary-50: var(--colors-dark-blue-50);
   --colors-primary-100: var(--colors-dark-blue-100);
   --colors-primary-200: var(--colors-dark-blue-200);

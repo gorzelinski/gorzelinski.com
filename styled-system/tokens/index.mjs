@@ -244,47 +244,47 @@ const tokens = {
     "variable": "var(--colors-dark-blue-900)"
   },
   "colors.dark.gray.25": {
-    "value": "hsl(208, 7%, 0%)",
+    "value": "hsl(208, 7%, 100%)",
     "variable": "var(--colors-dark-gray-25)"
   },
   "colors.dark.gray.50": {
-    "value": "hsl(208, 7%, 6%)",
+    "value": "hsl(208, 7%, 96%)",
     "variable": "var(--colors-dark-gray-50)"
   },
   "colors.dark.gray.100": {
-    "value": "hsl(208, 7%, 16%)",
+    "value": "hsl(208, 7%, 86%)",
     "variable": "var(--colors-dark-gray-100)"
   },
   "colors.dark.gray.200": {
-    "value": "hsl(208, 7%, 26%)",
+    "value": "hsl(208, 7%, 76%)",
     "variable": "var(--colors-dark-gray-200)"
   },
   "colors.dark.gray.300": {
-    "value": "hsl(208, 7%, 36%)",
+    "value": "hsl(208, 7%, 66%)",
     "variable": "var(--colors-dark-gray-300)"
   },
   "colors.dark.gray.400": {
-    "value": "hsl(208, 7%, 42%)",
+    "value": "hsl(208, 7%, 58%)",
     "variable": "var(--colors-dark-gray-400)"
   },
   "colors.dark.gray.500": {
-    "value": "hsl(208, 7%, 66%)",
+    "value": "hsl(208, 7%, 46%)",
     "variable": "var(--colors-dark-gray-500)"
   },
   "colors.dark.gray.600": {
-    "value": "hsl(208, 7%, 76%)",
+    "value": "hsl(208, 7%, 36%)",
     "variable": "var(--colors-dark-gray-600)"
   },
   "colors.dark.gray.700": {
-    "value": "hsl(208, 7%, 86%)",
+    "value": "hsl(208, 7%, 26%)",
     "variable": "var(--colors-dark-gray-700)"
   },
   "colors.dark.gray.800": {
-    "value": "hsl(208, 7%, 96%)",
+    "value": "hsl(208, 7%, 13%)",
     "variable": "var(--colors-dark-gray-800)"
   },
   "colors.dark.gray.900": {
-    "value": "hsl(208, 7%, 98%)",
+    "value": "hsl(208, 7%, 6%)",
     "variable": "var(--colors-dark-gray-900)"
   },
   "colors.dark.red.100": {

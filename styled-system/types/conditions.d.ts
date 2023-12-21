@@ -2,6 +2,10 @@
 import type { AnySelector, Selectors } from './selectors';
 
 export interface Conditions {
+	/** `[data-color-mode=light] &` */
+	"_light": string
+	/** `[data-color-mode=dark] &` */
+	"_dark": string
 	/** `&:is(:hover, [data-hover])` */
 	"_hover": string
 	/** `&:is(:focus, [data-focus])` */
@@ -150,10 +154,6 @@ export interface Conditions {
 	"_landscape": string
 	/** `@media (orientation: portrait)` */
 	"_portrait": string
-	/** ` &.dark, .dark &` */
-	"_dark": string
-	/** ` &.light, .light &` */
-	"_light": string
 	/** `@media (prefers-color-scheme: dark)` */
 	"_osDark": string
 	/** `@media (prefers-color-scheme: light)` */
