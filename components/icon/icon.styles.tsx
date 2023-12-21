@@ -2,7 +2,10 @@ import { cva } from '@/styled-system/css'
 
 export const icon = cva({
   base: {
-    display: 'inline-block'
+    display: 'inline-block',
+    transitionProperty: 'background-color, color',
+    transitionDuration: 'natural',
+    transitionTimingFunction: 'easeOut'
   },
   variants: {
     color: {

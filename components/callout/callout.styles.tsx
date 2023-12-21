@@ -9,7 +9,10 @@ export const callout = cva({
       position: 'absolute',
       backgroundColor: 'gray.900',
       borderRadius: 'circle'
-    }
+    },
+    transitionProperty: 'background-color, border-color, color',
+    transitionDuration: 'natural',
+    transitionTimingFunction: 'easeOut'
   },
   variants: {
     style: {
