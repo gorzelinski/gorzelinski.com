@@ -215,38 +215,38 @@ export const tokens = defineTokens({
       // Gray
       gray: {
         900: {
-          value: 'hsl(208, 7%, 98%)'
+          value: 'hsl(208, 7%, 6%)'
         },
         800: {
-          value: 'hsl(208, 7%, 96%)'
+          value: 'hsl(208, 7%, 13%)'
         },
         700: {
-          value: 'hsl(208, 7%, 86%)'
+          value: 'hsl(208, 7%, 26%)'
         },
         600: {
-          value: 'hsl(208, 7%, 76%)'
+          value: 'hsl(208, 7%, 36%)'
         },
         500: {
-          value: 'hsl(208, 7%, 66%)'
+          value: 'hsl(208, 7%, 46%)'
         },
         400: {
-          value: 'hsl(208, 7%, 42%)',
+          value: 'hsl(208, 7%, 58%)',
           description: 'Gray color (dark mode). A base for other shades.'
         },
         300: {
-          value: 'hsl(208, 7%, 36%)'
+          value: 'hsl(208, 7%, 66%)'
         },
         200: {
-          value: 'hsl(208, 7%, 26%)'
+          value: 'hsl(208, 7%, 76%)'
         },
         100: {
-          value: 'hsl(208, 7%, 16%)'
+          value: 'hsl(208, 7%, 86%)'
         },
         50: {
-          value: 'hsl(208, 7%, 6%)'
+          value: 'hsl(208, 7%, 96%)'
         },
         25: {
-          value: 'hsl(208, 7%, 0%)'
+          value: 'hsl(208, 7%, 100%)'
         }
       },
       // Red
