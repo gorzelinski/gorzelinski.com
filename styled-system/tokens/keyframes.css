@@ -97,4 +97,9 @@
             transform: translateX(-1px) rotate(0)
         }
     }
+    @keyframes blink {
+        50% {
+            opacity: 0
+        }
+    }
 }

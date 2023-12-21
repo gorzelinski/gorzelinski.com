@@ -96,6 +96,11 @@ export default defineConfig({
           '100%': {
             transform: 'translateX(-1px) rotate(0)'
           }
+        },
+        blink: {
+          '50%': {
+            opacity: 0
+          }
         }
       }
     }

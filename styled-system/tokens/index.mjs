@@ -767,6 +767,10 @@ const tokens = {
     "value": "buzz var(--durations-slower) 1 var(--easings-linear)",
     "variable": "var(--animations-buzzing)"
   },
+  "animations.blinking": {
+    "value": "blink var(--durations-slower) infinite var(--easings-linear)",
+    "variable": "var(--animations-blinking)"
+  },
   "breakpoints.sm": {
     "value": "640px",
     "variable": "var(--breakpoints-sm)"

@@ -652,6 +652,9 @@ export const tokens = defineTokens({
     },
     buzzing: {
       value: 'buzz {durations.slower} 1 {easings.linear}'
+    },
+    blinking: {
+      value: 'blink {durations.slower} infinite {easings.linear}'
     }
   }
 })
