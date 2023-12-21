@@ -1,4 +1,5 @@
 import { cva } from '@/styled-system/css'
+import { sharedTransitionProperties } from '../utils'
 
 export const callout = cva({
   base: {
@@ -11,8 +12,7 @@ export const callout = cva({
       borderRadius: 'circle'
     },
     transitionProperty: 'background-color, border-color, color',
-    transitionDuration: 'natural',
-    transitionTimingFunction: 'easeOut'
+    ...sharedTransitionProperties
   },
   variants: {
     style: {

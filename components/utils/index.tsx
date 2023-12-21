@@ -1,0 +1,1 @@
+export { sharedTransitionProperties } from './transition'

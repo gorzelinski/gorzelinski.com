@@ -1,4 +1,5 @@
 import { cva } from '@/styled-system/css'
+import { sharedTransitionProperties } from '../utils'
 
 export const anchor = cva({
   base: {
@@ -10,8 +11,7 @@ export const anchor = cva({
     textDecorationThickness: 'auto',
     textDecorationColor: 'transparent',
     transitionProperty: 'color, text-decoration-color',
-    transitionDuration: 'natural',
-    transitionTimingFunction: 'easeOut',
+    ...sharedTransitionProperties,
     _hover: {
       textDecorationColor: 'primary.400'
     },

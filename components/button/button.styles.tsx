@@ -1,4 +1,5 @@
 import { cva } from '@/styled-system/css'
+import { sharedTransitionProperties } from '../utils'
 
 export const button = cva({
   base: {
@@ -16,8 +17,7 @@ export const button = cva({
       pointerEvents: 'none'
     },
     transitionProperty: 'background-color, color',
-    transitionDuration: 'natural',
-    transitionTimingFunction: 'easeOut'
+    ...sharedTransitionProperties
   },
   variants: {
     align: {

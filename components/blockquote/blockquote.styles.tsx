@@ -1,4 +1,5 @@
 import { cva } from '@/styled-system/css'
+import { sharedTransitionProperties } from '../utils'
 
 export const blockquote = cva({
   base: {
@@ -10,7 +11,6 @@ export const blockquote = cva({
       xl: 'l'
     },
     transitionProperty: 'border-color',
-    transitionDuration: 'natural',
-    transitionTimingFunction: 'easeOut'
+    ...sharedTransitionProperties
   }
 })
