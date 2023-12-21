@@ -14,7 +14,10 @@ export const button = cva({
     _disabled: {
       cursor: 'not-allowed',
       pointerEvents: 'none'
-    }
+    },
+    transitionProperty: 'background-color, color',
+    transitionDuration: 'natural',
+    transitionTimingFunction: 'easeOut'
   },
   variants: {
     align: {
@@ -143,9 +146,6 @@ export const button = cva({
       },
       nav: {
         position: 'relative',
-        transitionProperty: 'color',
-        transitionDuration: 'natural',
-        transitionTimingFunction: 'easeOut',
         color: 'gray.400',
         _hover: {
           color: 'gray.200'
