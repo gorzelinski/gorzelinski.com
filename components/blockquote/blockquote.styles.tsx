@@ -8,6 +8,9 @@ export const blockquote = cva({
       md: 'm',
       lg: 'l',
       xl: 'l'
-    }
+    },
+    transitionProperty: 'border-color',
+    transitionDuration: 'natural',
+    transitionTimingFunction: 'easeOut'
   }
 })
