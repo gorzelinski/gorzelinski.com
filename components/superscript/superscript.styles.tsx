@@ -1,4 +1,5 @@
 import { cva } from '@/styled-system/css'
+import { sharedTransitionProperties } from '../utils'
 
 export const superscript = cva({
   base: {
@@ -18,6 +19,8 @@ export const superscript = cva({
       lg: '2xs',
       xl: '2xs',
       '2xl': 'xs'
-    }
+    },
+    transitionProperty: 'color',
+    ...sharedTransitionProperties
   }
 })
