@@ -1,4 +1,5 @@
 import { cva } from '@/styled-system/css'
+import { sharedTransitionProperties } from '../utils'
 
 export const card = cva({
   base: {
@@ -14,6 +15,8 @@ export const card = cva({
     border: 'gray.subtle',
     borderRadius: 'l',
     overflow: 'hidden',
+    transitionProperty: 'border-color, box-shadow',
+    ...sharedTransitionProperties,
     '& > .card-image': {
       minWidth: 'calc(100% + (2 * var(--spacing-m)))',
       marginTop: '-m',
