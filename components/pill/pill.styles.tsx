@@ -1,4 +1,5 @@
 import { cva } from '@/styled-system/css'
+import { sharedTransitionProperties } from '../utils'
 
 export const pill = cva({
   base: {
@@ -25,7 +26,9 @@ export const pill = cva({
       lg: '2xs',
       xl: '2xs',
       '2xl': 'xs'
-    }
+    },
+    transitionProperty: 'background-color, color',
+    ...sharedTransitionProperties
   },
   variants: {
     style: {
