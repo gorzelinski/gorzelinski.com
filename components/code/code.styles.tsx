@@ -1,4 +1,5 @@
 import { cva } from '@/styled-system/css'
+import { sharedTransitionProperties } from '../utils'
 
 export const code = cva({
   base: {
@@ -17,7 +18,9 @@ export const code = cva({
       lg: '2xs',
       xl: '2xs',
       '2xl': 'xs'
-    }
+    },
+    transitionProperty: 'background-color, box-shadow, color',
+    ...sharedTransitionProperties
   },
   variants: {
     style: {
