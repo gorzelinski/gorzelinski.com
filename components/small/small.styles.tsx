@@ -1,4 +1,5 @@
 import { cva } from '@/styled-system/css'
+import { sharedTransitionProperties } from '../utils'
 
 export const small = cva({
   base: {
@@ -18,7 +19,9 @@ export const small = cva({
       lg: '2xs',
       xl: '2xs',
       '2xl': 'xs'
-    }
+    },
+    transitionProperty: 'color',
+    ...sharedTransitionProperties
   },
   variants: {
     spacing: {
