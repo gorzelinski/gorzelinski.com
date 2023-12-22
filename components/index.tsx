@@ -44,7 +44,17 @@ export { S } from './strikethrough'
 export { Strong } from './strong'
 export { Sub } from './subscript'
 export { Sup } from './superscript'
-export { TableWrapper, Table, Thead, Tbody, Tr, Th, Td, Caption } from './table'
+export {
+  TableWrapper,
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  Caption
+} from './table'
 export { Hr } from './thematic-break'
 export { Typewriter } from './typewriter'
 export { Underline } from './underline'
