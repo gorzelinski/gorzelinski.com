@@ -1,8 +1,11 @@
 import { cva } from '@/styled-system/css'
+import { sharedTransitionProperties } from '../utils'
 
 export const paragraph = cva({
   base: {
-    fontFamily: 'body'
+    fontFamily: 'body',
+    transitionProperty: 'color',
+    ...sharedTransitionProperties
   },
   variants: {
     color: {
