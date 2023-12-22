@@ -1,4 +1,5 @@
 import { cva } from '@/styled-system/css'
+import { sharedTransitionProperties } from '../utils'
 
 export const table = cva({
   base: {
@@ -9,18 +10,20 @@ export const table = cva({
     fontWeight: 'regular',
     color: 'gray.200',
     fontSize: {
-      base: '2xs',
-      md: 'xs',
-      lg: 's',
-      xl: 's',
-      '2xl': 'm'
+      base: '3xs',
+      md: '2xs',
+      lg: 'xs',
+      xl: 'xs',
+      '2xl': 's'
     },
     lineHeight: {
-      base: '2xs',
-      md: 'xs',
-      lg: 's',
-      xl: 's',
-      '2xl': 'm'
-    }
+      base: '3xs',
+      md: '2xs',
+      lg: 'xs',
+      xl: 'xs',
+      '2xl': 's'
+    },
+    transitionProperty: 'color',
+    ...sharedTransitionProperties
   }
 })
