@@ -21,10 +21,11 @@ export const inputWrapper = cva({
       width: '100%',
       paddingLeft: 'calc(2 * var(--spacing-s) + 1em)'
     },
-    '& > span:first-child': {
+    '& > .icon': {
       position: 'absolute',
       top: 'calc(((1lh + 2 * (var(--spacing-s) + var(--spacing-3xs)) - 1em)) / 2)',
-      left: 's'
+      left: 's',
+      color: 'gray.700'
     }
   }
 })

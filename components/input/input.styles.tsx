@@ -1,4 +1,5 @@
 import { cva } from '@/styled-system/css'
+import { sharedTransitionProperties } from '../utils'
 
 export const input = cva({
   base: {
@@ -26,6 +27,8 @@ export const input = cva({
       xl: 's',
       '2xl': 'm'
     },
+    transitionProperty: 'background-color, border-color, color',
+    ...sharedTransitionProperties,
     _placeholder: {
       color: 'gray.700'
     },
