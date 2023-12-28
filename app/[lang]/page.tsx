@@ -1,7 +1,16 @@
-import { ButtonLink, H1, P, Typewriter } from '@/components'
+import { ButtonLink, H1, P, Small, Typewriter } from '@/components'
+import { Locale } from '@/i18n.config'
+import { getDictionary } from '@/lib/dictionaries'
 import { Container, VStack } from '@/styled-system/jsx'
 
-export default function Home() {
+export default async function Home({
+  params: { lang }
+}: {
+  params: {
+    lang: Locale
+  }
+}) {
+  const { component } = await getDictionary(lang)
   return (
     <Container maxWidth="breakpoint-xl" padding="m">
       <VStack
@@ -11,6 +20,7 @@ export default function Home() {
         height="100svh"
         justifyContent="center"
       >
+        <Small>{component.themeSwitch.ariaLabel}</Small>
         <H1>
           I{' '}
           <Typewriter
