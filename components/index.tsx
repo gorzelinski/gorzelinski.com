@@ -25,6 +25,7 @@ export {
   Instagram,
   Linkedin,
   Mail,
+  Moon,
   Search,
   Send,
   Sync,
@@ -56,5 +57,6 @@ export {
   Caption
 } from './table'
 export { Hr } from './thematic-break'
+export { ThemeSwitch } from './theme-switch'
 export { Typewriter } from './typewriter'
 export { Underline } from './underline'

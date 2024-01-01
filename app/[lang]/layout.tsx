@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { montserrat, lora, firaCode } from '@/theme/fonts'
 import { Locale, i18n } from '@/i18n.config'
+import { setInitialTheme } from '@/lib'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -21,10 +22,19 @@ export default function RootLayout({
 }) {
   return (
     <html
+      suppressHydrationWarning
       className={`${montserrat.variable} ${lora.variable} ${firaCode.variable}`}
       lang={params.lang}
     >
-      <body>{children}</body>
+      <body>
+        <script
+          key="set-initial-theme"
+          dangerouslySetInnerHTML={{
+            __html: setInitialTheme
+          }}
+        ></script>
+        {children}
+      </body>
     </html>
   )
 }
