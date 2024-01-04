@@ -44,7 +44,7 @@ export function middleware(request: NextRequest) {
 
     const locale = isFirstVisit ? getLocale(request, i18n) : defaultLocale
 
-    let newPath = `${locale}${pathname}`
+    let newPath = `/${locale}${pathname}`
     if (request.nextUrl.search) newPath += request.nextUrl.search
 
     response =
