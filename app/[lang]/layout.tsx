@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
-import { montserrat, lora, firaCode } from '@/theme/fonts'
 import { Locale, i18n } from '@/i18n.config'
 import { setInitialTheme } from '@/lib'
+import { getDictionary } from '@/lib/dictionaries'
+import { montserrat, lora, firaCode } from '@/theme/fonts'
+import { Container } from '@/styled-system/jsx'
+import { LanguageSwitch, ThemeSwitch } from '@/components'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -13,18 +16,21 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params
 }: {
   children: React.ReactNode
   params: { lang: Locale }
 }) {
+  const { lang } = params
+  const { component } = await getDictionary(lang)
+
   return (
     <html
       suppressHydrationWarning
       className={`${montserrat.variable} ${lora.variable} ${firaCode.variable}`}
-      lang={params.lang}
+      lang={lang}
     >
       <body>
         <script
@@ -33,7 +39,13 @@ export default function RootLayout({
             __html: setInitialTheme
           }}
         ></script>
-        {children}
+        <Container padding="2xl" backgroundColor="gray.900">
+          <ThemeSwitch
+            ariaLabel={component.themeSwitch.ariaLabel}
+          ></ThemeSwitch>
+          {children}
+          <LanguageSwitch lang={lang}></LanguageSwitch>
+        </Container>
       </body>
     </html>
   )

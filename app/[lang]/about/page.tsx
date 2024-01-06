@@ -1,5 +1,7 @@
-import { ButtonLink, H1 } from '@/components'
 import { Locale } from '@/i18n.config'
+import { localizePath } from '@/lib'
+import { VStack } from '@/styled-system/jsx'
+import { ButtonLink, H1 } from '@/components'
 
 export default function About({
   params: { lang }
@@ -9,11 +11,17 @@ export default function About({
   }
 }) {
   return (
-    <div>
+    <VStack
+      maxWidth="breakpoint-md"
+      alignItems="start"
+      gap="l"
+      height="100svh"
+      justifyContent="center"
+    >
       <H1>About page</H1>
-      <ButtonLink style="text" href={lang === 'en' ? '/' : `/${lang}`}>
-        Home {lang}
+      <ButtonLink style="text" href={localizePath(lang, '/')}>
+        Home
       </ButtonLink>
-    </div>
+    </VStack>
   )
 }

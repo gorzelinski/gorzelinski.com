@@ -1,4 +1,6 @@
+export { isDefaultLocale, localizePath, delocalizePath } from './i18n'
 export { getFromLS, setToLS } from './local-storage'
+export { capitalize } from './string'
 export {
   type Theme,
   THEME_ATTRIBUTE,
