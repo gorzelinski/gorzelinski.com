@@ -1,10 +1,16 @@
 import type { Metadata } from 'next'
 import { Locale, i18n } from '@/i18n.config'
-import { setInitialTheme } from '@/lib'
+import { localizePath, setInitialTheme } from '@/lib'
 import { getDictionary } from '@/lib/dictionaries'
 import { montserrat, lora, firaCode } from '@/theme/fonts'
 import { Container } from '@/styled-system/jsx'
-import { LanguageSwitch, Logo, ThemeSwitch } from '@/components'
+import {
+  ButtonLink,
+  LanguageSwitch,
+  Logo,
+  Nav,
+  ThemeSwitch
+} from '@/components'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -49,10 +55,26 @@ export default async function RootLayout({
               '2xl': '0'
             }}
           >
-            <Logo lang={lang}>{component.logo.text}</Logo>
-            <ThemeSwitch
-              ariaLabel={component.themeSwitch.ariaLabel}
-            ></ThemeSwitch>
+            <Nav>
+              <Logo lang={lang}>{component.logo.text}</Logo>
+              <ThemeSwitch
+                ariaLabel={component.themeSwitch.ariaLabel}
+              ></ThemeSwitch>
+            </Nav>
+            <Nav>
+              <ButtonLink style="nav" href={localizePath(lang, '/portfolio/')}>
+                Portfolio
+              </ButtonLink>
+              <ButtonLink style="nav" href={localizePath(lang, '/about/')}>
+                About
+              </ButtonLink>
+              <ButtonLink style="nav" href={localizePath(lang, '/blog/')}>
+                Blog
+              </ButtonLink>
+              <ButtonLink style="outline" href={localizePath(lang, '#contact')}>
+                Contact
+              </ButtonLink>
+            </Nav>
             <main>{children}</main>
             <LanguageSwitch lang={lang}></LanguageSwitch>
           </Container>
