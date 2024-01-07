@@ -39,12 +39,22 @@ export default async function RootLayout({
             __html: setInitialTheme
           }}
         ></script>
-        <Container padding="2xl" backgroundColor="gray.900">
-          <ThemeSwitch
-            ariaLabel={component.themeSwitch.ariaLabel}
-          ></ThemeSwitch>
-          {children}
-          <LanguageSwitch lang={lang}></LanguageSwitch>
+        <Container minWidth="100vw" backgroundColor="gray.900">
+          <Container
+            maxWidth="breakpoint-xl"
+            paddingX={{
+              base: 'm',
+              sm: 'l',
+              xl: 'xl',
+              '2xl': '0'
+            }}
+          >
+            <ThemeSwitch
+              ariaLabel={component.themeSwitch.ariaLabel}
+            ></ThemeSwitch>
+            <main>{children}</main>
+            <LanguageSwitch lang={lang}></LanguageSwitch>
+          </Container>
         </Container>
       </body>
     </html>
