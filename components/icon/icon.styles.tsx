@@ -39,16 +39,16 @@ export const icon = cva({
     },
     size: {
       l: {
-        width: '2em',
-        height: '2em'
+        width: '1.25lh',
+        height: '1.25lh'
       },
       m: {
-        width: '1em',
-        height: '1em'
+        width: '1lh',
+        height: '1lh'
       },
       s: {
-        width: '0.5em',
-        height: '0.5em'
+        width: '0.75lh',
+        height: '0.75lh'
       }
     }
   },

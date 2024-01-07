@@ -4,7 +4,7 @@ import { setInitialTheme } from '@/lib'
 import { getDictionary } from '@/lib/dictionaries'
 import { montserrat, lora, firaCode } from '@/theme/fonts'
 import { Container } from '@/styled-system/jsx'
-import { LanguageSwitch, ThemeSwitch } from '@/components'
+import { LanguageSwitch, Logo, ThemeSwitch } from '@/components'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -49,6 +49,7 @@ export default async function RootLayout({
               '2xl': '0'
             }}
           >
+            <Logo lang={lang}>{component.logo.text}</Logo>
             <ThemeSwitch
               ariaLabel={component.themeSwitch.ariaLabel}
             ></ThemeSwitch>

@@ -1,5 +1,8 @@
 {
   "component": {
+    "logo": {
+      "text": "Mateusz Gorzeliński"
+    },
     "themeSwitch": {
       "ariaLabel": "Zmień motyw"
     }

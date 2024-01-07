@@ -1,5 +1,8 @@
 {
   "component": {
+    "logo": {
+      "text": "Matthew Gorzelinski"
+    },
     "themeSwitch": {
       "ariaLabel": "Change theme"
     }
