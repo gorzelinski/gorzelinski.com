@@ -1,7 +1,7 @@
 import { Locale } from '@/i18n.config'
 import { localizePath } from '@/lib'
 import { VStack } from '@/styled-system/jsx'
-import { ButtonLink, H1 } from '@/components'
+import { ButtonLink, H1 } from '@/design-system'
 
 export default function About({
   params: { lang }

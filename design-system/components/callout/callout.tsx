@@ -6,7 +6,7 @@ import {
   CheckmarkCircle,
   InformationCircle,
   Warning
-} from '../icon'
+} from '../../elements'
 
 const calloutIcon: CalloutIcons = {
   info: <InformationCircle size="l" className="icon"></InformationCircle>,

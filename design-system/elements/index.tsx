@@ -3,9 +3,8 @@ export { Blockquote } from './blockquote'
 export { Button } from './button'
 export { ButtonAnchor } from './button-anchor'
 export { ButtonLink } from './button-link'
-export { Callout } from './callout'
 export { Card } from './card'
-export { InlineCode } from './code'
+export { InlineCode } from './inline-code'
 export { Figure, Figcaption } from './figure'
 export { H1, H2, H3, H4 } from './heading'
 export {
@@ -29,6 +28,7 @@ export {
   Moon,
   Search,
   Send,
+  Sunny,
   Sync,
   Tv,
   Twitter,
@@ -37,10 +37,8 @@ export {
 export { InputWrapper, Input } from './input'
 export { Em } from './italic'
 export { Label } from './label'
-export { LanguageSwitch } from './language-switch'
 export { Link } from './link'
 export { Ul, Ol, Li } from './list'
-export { Logo } from './logo'
 export { Nav } from './navigation'
 export { P } from './paragraph'
 export { Pill } from './pill'
@@ -61,6 +59,5 @@ export {
   Caption
 } from './table'
 export { Hr } from './thematic-break'
-export { ThemeSwitch } from './theme-switch'
-export { Typewriter } from './typewriter'
 export { Underline } from './underline'
+export { sharedTransitionProperties } from './utils'

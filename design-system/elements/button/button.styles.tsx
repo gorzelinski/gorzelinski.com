@@ -26,6 +26,9 @@ export const button = cva({
       },
       right: {
         marginRight: '-s'
+      },
+      none: {
+        margin: '0'
       }
     },
     size: {

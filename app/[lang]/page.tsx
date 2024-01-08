@@ -1,7 +1,7 @@
 import { Locale } from '@/i18n.config'
 import { localizePath } from '@/lib'
 import { VStack } from '@/styled-system/jsx'
-import { ButtonLink, H1, P, Typewriter } from '@/components'
+import { ButtonLink, H1, P, Typewriter } from '@/design-system'
 
 export default async function Home({
   params: { lang }

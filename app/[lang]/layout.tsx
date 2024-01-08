@@ -10,7 +10,7 @@ import {
   Logo,
   Nav,
   ThemeSwitch
-} from '@/components'
+} from '@/design-system'
 import './globals.css'
 
 export const metadata: Metadata = {

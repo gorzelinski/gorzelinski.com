@@ -1,5 +1,5 @@
 import { cva } from '@/styled-system/css'
-import { sharedTransitionProperties } from '../utils'
+import { sharedTransitionProperties } from '../../elements'
 
 export const callout = cva({
   base: {

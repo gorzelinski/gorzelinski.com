@@ -8,7 +8,7 @@ import {
   localizePath
 } from '@/lib'
 import { Wrap } from '@/styled-system/jsx'
-import { ButtonAnchor } from '../button-anchor'
+import { ButtonAnchor } from '../../elements'
 
 export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
   const { locales } = i18n
