@@ -1,10 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { styled } from '@/styled-system/jsx'
 import { typewriter } from './typewriter.styles'
 import { TypewriterProps, Phase } from './typewriter.types'
-
-const StyledTypewriter = styled('span', typewriter)
 
 export const Typewriter = ({
   words,
@@ -80,5 +77,9 @@ export const Typewriter = ({
     deletingInterval
   ])
 
-  return <StyledTypewriter aria-hidden="true">{typedString}</StyledTypewriter>
+  return (
+    <span className={typewriter()} aria-hidden="true">
+      {typedString}
+    </span>
+  )
 }
