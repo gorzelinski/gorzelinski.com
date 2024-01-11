@@ -6,5 +6,19 @@
     "themeSwitch": {
       "ariaLabel": "Zmień motyw"
     }
+  },
+  "section": {
+    "navbar": {
+      "navigation": {
+        "main": "Główna nawigacja",
+        "helper": "Pomocnicza nawigacja"
+      },
+      "link": {
+        "about": "O mnie",
+        "blog": "Blog",
+        "portfolio": "Portfolio",
+        "contact": "Kontakt"
+      }
+    }
   }
 }

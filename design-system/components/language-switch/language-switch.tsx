@@ -5,7 +5,8 @@ import {
   capitalize,
   delocalizePath,
   isDefaultLocale,
-  localizePath
+  localizePath,
+  selectActiveClass
 } from '@/lib'
 import { Wrap } from '@/styled-system/jsx'
 import { ButtonAnchor } from '../../elements'
@@ -26,15 +27,13 @@ export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
           ? defaultPathname
           : localizePath(locale, defaultPathname)
 
-        const isActive = href === pathname
-
         return (
           <ButtonAnchor
-            key={locale}
-            href={href}
-            className={isActive ? 'active-subtle' : ''}
             style="nav"
             size="s"
+            key={locale}
+            href={href}
+            className={selectActiveClass(pathname, href)}
           >
             {capitalize(language.of(locale)!)}
           </ButtonAnchor>

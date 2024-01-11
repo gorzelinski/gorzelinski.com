@@ -72,3 +72,5 @@ export {
   ThemeSwitch,
   Typewriter
 } from './components'
+
+export { Navbar } from './sections'

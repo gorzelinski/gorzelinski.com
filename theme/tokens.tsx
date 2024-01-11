@@ -656,5 +656,22 @@ export const tokens = defineTokens({
     blinking: {
       value: 'blink {durations.slower} infinite {easings.linear}'
     }
+  },
+  zIndex: {
+    closest: {
+      value: 100
+    },
+    closer: {
+      value: 200
+    },
+    close: {
+      value: 300
+    },
+    far: {
+      value: 400
+    },
+    farther: {
+      value: 500
+    }
   }
 })

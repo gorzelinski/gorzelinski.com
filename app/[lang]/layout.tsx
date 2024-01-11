@@ -1,16 +1,10 @@
 import type { Metadata } from 'next'
 import { Locale, i18n } from '@/i18n.config'
-import { localizePath, setInitialTheme } from '@/lib'
+import { setInitialTheme } from '@/lib'
 import { getDictionary } from '@/lib/dictionaries'
 import { montserrat, lora, firaCode } from '@/theme/fonts'
 import { Container } from '@/styled-system/jsx'
-import {
-  ButtonLink,
-  LanguageSwitch,
-  Logo,
-  Nav,
-  ThemeSwitch
-} from '@/design-system'
+import { LanguageSwitch, Navbar } from '@/design-system'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -30,7 +24,7 @@ export default async function RootLayout({
   params: { lang: Locale }
 }) {
   const { lang } = params
-  const { component } = await getDictionary(lang)
+  const dictionary = await getDictionary(lang)
 
   return (
     <html
@@ -46,6 +40,7 @@ export default async function RootLayout({
           }}
         ></script>
         <Container minWidth="100vw" backgroundColor="gray.900">
+          <Navbar dictionary={dictionary} lang={lang}></Navbar>
           <Container
             maxWidth="breakpoint-xl"
             paddingX={{
@@ -55,26 +50,6 @@ export default async function RootLayout({
               '2xl': '0'
             }}
           >
-            <Nav>
-              <Logo lang={lang}>{component.logo.text}</Logo>
-              <ThemeSwitch
-                ariaLabel={component.themeSwitch.ariaLabel}
-              ></ThemeSwitch>
-            </Nav>
-            <Nav>
-              <ButtonLink style="nav" href={localizePath(lang, '/portfolio/')}>
-                Portfolio
-              </ButtonLink>
-              <ButtonLink style="nav" href={localizePath(lang, '/about/')}>
-                About
-              </ButtonLink>
-              <ButtonLink style="nav" href={localizePath(lang, '/blog/')}>
-                Blog
-              </ButtonLink>
-              <ButtonLink style="outline" href={localizePath(lang, '#contact')}>
-                Contact
-              </ButtonLink>
-            </Nav>
             <main>{children}</main>
             <LanguageSwitch lang={lang}></LanguageSwitch>
           </Container>

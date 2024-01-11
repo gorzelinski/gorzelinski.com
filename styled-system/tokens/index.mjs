@@ -771,6 +771,26 @@ const tokens = {
     "value": "blink var(--durations-slower) infinite var(--easings-linear)",
     "variable": "var(--animations-blinking)"
   },
+  "zIndex.closest": {
+    "value": 100,
+    "variable": "var(--z-index-closest)"
+  },
+  "zIndex.closer": {
+    "value": 200,
+    "variable": "var(--z-index-closer)"
+  },
+  "zIndex.close": {
+    "value": 300,
+    "variable": "var(--z-index-close)"
+  },
+  "zIndex.far": {
+    "value": 400,
+    "variable": "var(--z-index-far)"
+  },
+  "zIndex.farther": {
+    "value": 500,
+    "variable": "var(--z-index-farther)"
+  },
   "breakpoints.sm": {
     "value": "640px",
     "variable": "var(--breakpoints-sm)"

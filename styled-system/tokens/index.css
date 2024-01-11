@@ -193,6 +193,11 @@
   --animations-bouncing: bounceIn var(--durations-slower) 1 var(--easings-ease-out);
   --animations-buzzing: buzz var(--durations-slower) 1 var(--easings-linear);
   --animations-blinking: blink var(--durations-slower) infinite var(--easings-linear);
+  --z-index-closest: 100;
+  --z-index-closer: 200;
+  --z-index-close: 300;
+  --z-index-far: 400;
+  --z-index-farther: 500;
   --breakpoints-sm: 640px;
   --breakpoints-md: 768px;
   --breakpoints-lg: 1024px;
