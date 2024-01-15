@@ -1,5 +1,6 @@
 export { Callout } from './callout'
 export { LanguageSwitch } from './language-switch'
 export { Logo } from './logo'
+export { Socials, createShareLinks } from './socials'
 export { ThemeSwitch } from './theme-switch'
 export { Typewriter } from './typewriter'

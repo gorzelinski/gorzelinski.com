@@ -1,7 +1,7 @@
 import { Locale } from '@/i18n.config'
 import { localizePath } from '@/lib'
 import { VStack } from '@/styled-system/jsx'
-import { ButtonLink, H1, P, Typewriter } from '@/design-system'
+import { ButtonLink, H1, P, Socials, Typewriter } from '@/design-system'
 
 export default async function Home({
   params: { lang }
@@ -30,6 +30,7 @@ export default async function Home({
         presence.
       </P>
       <ButtonLink href={localizePath(lang, '/about/')}>About</ButtonLink>
+      <Socials></Socials>
     </VStack>
   )
 }

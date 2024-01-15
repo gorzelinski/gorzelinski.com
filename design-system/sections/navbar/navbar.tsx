@@ -1,8 +1,8 @@
 'use client'
 import { usePathname } from 'next/navigation'
+import { localizePath, selectActiveClass } from '@/lib'
 import { navbar } from './navbar.styles'
 import { NavbarProps } from './navbar.types'
-import { localizePath, selectActiveClass } from '@/lib'
 import { Logo, ThemeSwitch } from '../../components'
 import { ButtonLink, Nav } from '../../elements'
 
@@ -18,9 +18,7 @@ export const Navbar = ({ lang, dictionary }: NavbarProps) => {
           base: '100%',
           md: 'auto'
         }}
-        justifyContent={{
-          base: 'space-between'
-        }}
+        justifyContent="space-between"
       >
         <Logo lang={lang}>{component.logo.text}</Logo>
         <ThemeSwitch ariaLabel={component.themeSwitch.ariaLabel}></ThemeSwitch>

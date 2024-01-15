@@ -39,6 +39,7 @@ export {
   Mail,
   Moon,
   Nav,
+  navigation,
   Ol,
   P,
   Pill,
@@ -69,6 +70,8 @@ export {
   Callout,
   LanguageSwitch,
   Logo,
+  Socials,
+  createShareLinks,
   ThemeSwitch,
   Typewriter
 } from './components'
