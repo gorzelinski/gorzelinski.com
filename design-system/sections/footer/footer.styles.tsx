@@ -17,7 +17,7 @@ export const footer = cva({
       md: 'xl'
     },
     paddingBottom: {
-      base: 'calc(var(--spacing-2xl) + var(--spacing-m))',
+      base: 'calc(4 * var(--spacing-s) + var(--line-heights-2xs) + var(--spacing-s))',
       md: 'xl'
     }
   }
