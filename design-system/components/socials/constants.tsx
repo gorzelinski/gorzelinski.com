@@ -1,3 +1,4 @@
+import { LINKS } from '@/constants'
 import { Social } from './socials.types'
 import {
   Dribbble,
@@ -12,37 +13,37 @@ import {
 export const SOCIALS: Social[] = [
   {
     name: 'GitHub',
-    url: 'https://github.com/gorzelinski',
+    url: LINKS.github,
     icon: <Github />
   },
   {
     name: 'Twitter',
-    url: 'https://twitter.com/gorzelinski',
+    url: LINKS.twitter,
     icon: <Twitter />
   },
   {
     name: 'Dribbble',
-    url: 'https://dribbble.com/gorzelinski',
+    url: LINKS.dribbble,
     icon: <Dribbble />
   },
   {
     name: 'Facebook',
-    url: 'https://www.facebook.com/gorzelinski',
+    url: LINKS.facebook,
     icon: <Facebook />
   },
   {
     name: 'Instagram',
-    url: 'https://www.instagram.com/gorzelinsky',
+    url: LINKS.instagram,
     icon: <Instagram />
   },
   {
     name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/mateusz-gorzelinski',
+    url: LINKS.linkedin,
     icon: <Linkedin />
   },
   {
     name: 'Email',
-    url: 'hello@gorzelinski.com',
+    url: LINKS.email,
     icon: <Mail />
   }
 ]

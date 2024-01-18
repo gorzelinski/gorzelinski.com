@@ -1,4 +1,14 @@
 {
+  "links": {
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "uses": "Uses",
+    "blog": "Blog",
+    "contact": "Contact",
+    "newsletter": "Newsletter",
+    "rss": "RSS"
+  },
   "component": {
     "logo": {
       "text": "Matthew Gorzelinski"
@@ -8,16 +18,17 @@
     }
   },
   "section": {
+    "footer": {
+      "email": "Write me an email",
+      "socials": "Find me elsewhere",
+      "language": "Change language",
+      "copyright": "Matthew Gorzelinski",
+      "note": "I’ve created this site with love (and coffee)"
+    },
     "navbar": {
       "navigation": {
         "main": "Main navigation",
         "helper": "Helper navigation"
-      },
-      "link": {
-        "about": "About",
-        "blog": "Blog",
-        "portfolio": "Portfolio",
-        "contact": "Contact"
       }
     }
   }

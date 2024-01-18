@@ -4,7 +4,7 @@ import { setInitialTheme } from '@/lib'
 import { getDictionary } from '@/lib/dictionaries'
 import { montserrat, lora, firaCode } from '@/theme/fonts'
 import { Container } from '@/styled-system/jsx'
-import { LanguageSwitch, Navbar } from '@/design-system'
+import { Footer, Navbar } from '@/design-system'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -40,7 +40,7 @@ export default async function RootLayout({
           }}
         ></script>
         <Container minWidth="100vw" backgroundColor="gray.900">
-          <Navbar dictionary={dictionary} lang={lang}></Navbar>
+          <Navbar lang={lang} dictionary={dictionary} />
           <Container
             maxWidth="breakpoint-xl"
             paddingX={{
@@ -51,8 +51,8 @@ export default async function RootLayout({
             }}
           >
             <main>{children}</main>
-            <LanguageSwitch lang={lang}></LanguageSwitch>
           </Container>
+          <Footer lang={lang} dictionary={dictionary} />
         </Container>
       </body>
     </html>

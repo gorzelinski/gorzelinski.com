@@ -9,7 +9,7 @@ import {
   selectActiveClass
 } from '@/lib'
 import { Wrap } from '@/styled-system/jsx'
-import { ButtonAnchor } from '../../elements'
+import { ButtonAnchor, Earth } from '../../elements'
 
 export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
   const { locales } = i18n
@@ -18,6 +18,7 @@ export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
 
   return (
     <Wrap gap="m">
+      <Earth color="gray" alignSelf="center" />
       {locales.map((locale) => {
         const language = new Intl.DisplayNames(locale, {
           type: 'language'
