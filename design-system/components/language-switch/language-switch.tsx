@@ -33,7 +33,9 @@ export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
             style="nav"
             size="s"
             key={locale}
+            lang={locale}
             href={href}
+            hrefLang={locale}
             className={selectActiveClass(pathname, href)}
           >
             {capitalize(language.of(locale)!)}
