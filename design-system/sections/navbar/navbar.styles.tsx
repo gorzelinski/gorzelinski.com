@@ -1,4 +1,5 @@
 import { cva } from '@/styled-system/css'
+import { sharedTransitionProperties } from '../../utils'
 
 export const navbar = cva({
   base: {
@@ -12,7 +13,9 @@ export const navbar = cva({
       base: 's',
       sm: 'm',
       md: 'l'
-    }
+    },
+    transitionProperty: 'background-color, border-color',
+    ...sharedTransitionProperties
   },
   variants: {
     position: {

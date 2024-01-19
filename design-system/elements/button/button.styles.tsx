@@ -185,7 +185,7 @@ export const button = cva({
           backgroundColor: 'gray.50',
           transform: 'scaleX(0)',
           transformOrigin: 'bottom right',
-          transitionProperty: 'transform',
+          transitionProperty: 'transform, background-color',
           transitionDuration: 'natural',
           transitionTimingFunction: 'easeOut'
         }
