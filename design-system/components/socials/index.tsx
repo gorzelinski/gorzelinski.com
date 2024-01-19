@@ -1,2 +1,2 @@
 export { Socials } from './socials'
-export { createShareLinks } from './helpers'
+export { createShareLinks } from './socials.helpers'

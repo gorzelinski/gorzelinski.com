@@ -1,4 +1,4 @@
-import { SOCIALS } from './constants'
+import { SOCIALS } from './socials.constants'
 import { SocialsProps } from './socials.types'
 import { ButtonAnchor, navigation } from '../../elements'
 
