@@ -1,5 +1,5 @@
 import { cva } from '@/styled-system/css'
-import { sharedTransitionProperties } from '../../elements'
+import { sharedTransitionProperties } from '../../utils'
 
 export const typewriter = cva({
   base: {
