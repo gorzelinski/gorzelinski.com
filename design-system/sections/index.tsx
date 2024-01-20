@@ -1,4 +1,5 @@
 export { Background } from './background'
 export { Footer } from './footer'
+export { Hero } from './hero'
 export { Main } from './main'
 export { Navbar } from './navbar'

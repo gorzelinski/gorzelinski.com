@@ -76,4 +76,4 @@ export {
   Typewriter
 } from './components'
 
-export { Background, Footer, Main, Navbar } from './sections'
+export { Background, Footer, Hero, Main, Navbar } from './sections'
