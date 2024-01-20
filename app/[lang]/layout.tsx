@@ -3,8 +3,7 @@ import { Locale, i18n } from '@/i18n.config'
 import { setInitialTheme } from '@/lib'
 import { getDictionary } from '@/lib/dictionaries'
 import { montserrat, lora, firaCode } from '@/theme/fonts'
-import { Container } from '@/styled-system/jsx'
-import { Background, Footer, Navbar } from '@/design-system'
+import { Background, Footer, Main, Navbar } from '@/design-system'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -41,17 +40,7 @@ export default async function RootLayout({
         ></script>
         <Background>
           <Navbar lang={lang} dictionary={dictionary} />
-          <Container
-            maxWidth="breakpoint-xl"
-            paddingX={{
-              base: 'm',
-              sm: 'l',
-              xl: 'xl',
-              '2xl': '0'
-            }}
-          >
-            <main>{children}</main>
-          </Container>
+          <Main>{children}</Main>
           <Footer lang={lang} dictionary={dictionary} />
         </Background>
       </body>
