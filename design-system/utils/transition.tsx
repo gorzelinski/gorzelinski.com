@@ -1,6 +1,6 @@
-import { CssProperties } from '@/styled-system/types'
+import { css } from '@/styled-system/css'
 
-export const sharedTransitionProperties: CssProperties = {
+export const sharedTransitionProperties = css.raw({
   transitionDuration: 'natural',
   transitionTimingFunction: 'easeOut'
-}
+})

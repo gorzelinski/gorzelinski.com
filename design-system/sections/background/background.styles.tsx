@@ -1,5 +1,5 @@
 import { cva } from '@/styled-system/css'
-import { sharedTransitionProperties } from '@/design-system/utils'
+import { sharedTransitionProperties } from '../../utils'
 
 export const background = cva({
   base: {
