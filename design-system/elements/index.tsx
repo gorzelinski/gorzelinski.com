@@ -6,6 +6,7 @@ export { ButtonLink } from './button-link'
 export { Card } from './card'
 export { InlineCode } from './inline-code'
 export { Figure, Figcaption } from './figure'
+export { Header } from './header'
 export { H1, H2, H3, H4 } from './heading'
 export {
   AlertCircle,

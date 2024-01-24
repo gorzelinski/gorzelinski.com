@@ -25,6 +25,7 @@ export {
   H2,
   H3,
   H4,
+  Header,
   Headset,
   Hr,
   InformationCircle,
@@ -76,4 +77,4 @@ export {
   Typewriter
 } from './components'
 
-export { Background, Footer, Hero, Main, Navbar } from './sections'
+export { Background, Featured, Footer, Hero, Main, Navbar } from './sections'

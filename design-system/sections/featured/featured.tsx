@@ -1,21 +1,11 @@
 import { FeaturedProps } from './featured.types'
-import { ButtonLink, ChevronForward, H2 } from '../../elements'
-import { Wrap } from '@/styled-system/jsx'
+import { featured } from './featured.styles'
+import { ButtonLink, ChevronForward, H2, Header } from '../../elements'
 
 export const Featured = ({ children, heading, link }: FeaturedProps) => {
   return (
-    <section>
-      <Wrap
-        width="100%"
-        display="flex"
-        flexDirection={{
-          base: 'column',
-          sm: 'row'
-        }}
-        flexWrap="wrap"
-        justifyContent="space-between"
-        gap="s"
-      >
+    <section className={featured()}>
+      <Header>
         <H2
           alignSelf={{
             base: 'flex-start',
@@ -35,7 +25,7 @@ export const Featured = ({ children, heading, link }: FeaturedProps) => {
         >
           {link.text} <ChevronForward />
         </ButtonLink>
-      </Wrap>
+      </Header>
       {children}
     </section>
   )
