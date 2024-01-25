@@ -10,6 +10,9 @@ export const header = cva({
     },
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    gap: 's'
+    gap: {
+      base: '0',
+      sm: 's'
+    }
   }
 })
