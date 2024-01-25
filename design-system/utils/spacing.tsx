@@ -1,5 +1,10 @@
 import { css } from '@/styled-system/css'
 
 export const verticalRhythm = css.raw({
-  gap: ['s', 'm', 'l', 'xl']
+  gap: {
+    base: 's',
+    sm: 'm',
+    md: 'l',
+    lg: 'xl'
+  }
 })
