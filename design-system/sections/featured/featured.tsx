@@ -21,9 +21,10 @@ export const Featured = ({ children, heading, link }: FeaturedProps) => {
             base: 'flex-end',
             sm: 'baseline'
           }}
+          transition="moveIconForward"
           href={link.href}
         >
-          {link.text} <ChevronForward />
+          {link.text} <ChevronForward className="icon" />
         </ButtonLink>
       </Header>
       {children}

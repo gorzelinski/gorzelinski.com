@@ -224,6 +224,44 @@ export const button = cva({
         width: '100%',
         justifyContent: 'center'
       }
+    },
+    transition: {
+      moveIconForward: {
+        '& > .icon': {
+          transform: 'translateX(0px)',
+          transitionProperty: 'transform',
+          transitionDuration: 'natural',
+          transitionTimingFunction: 'easeInOut'
+        },
+        _hover: {
+          '& > .icon': {
+            transform: 'translateX(var(--spacing-s))'
+          }
+        },
+        _active: {
+          '& > .icon': {
+            transform: 'translateX(calc(2 * var(--spacing-s)))'
+          }
+        }
+      },
+      moveIconBackward: {
+        '& > .icon': {
+          transform: 'translateX(0px)',
+          transitionProperty: 'transform',
+          transitionDuration: 'natural',
+          transitionTimingFunction: 'easeInOut'
+        },
+        _hover: {
+          '& > .icon': {
+            transform: 'translateX(calc(-1 * var(--spacing-s)))'
+          }
+        },
+        _active: {
+          '& > .icon': {
+            transform: 'translateX(calc(-2 * var(--spacing-s)))'
+          }
+        }
+      }
     }
   },
   defaultVariants: {

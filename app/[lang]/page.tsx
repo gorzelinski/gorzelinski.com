@@ -97,8 +97,9 @@ export default async function Home({
             align="left"
             style="text"
             href={localizePath(lang, '/about/')}
+            transition="moveIconForward"
           >
-            Read my story <ChevronForward />
+            Read my story <ChevronForward className="icon" />
           </ButtonLink>
         </Box>
       </Split>
