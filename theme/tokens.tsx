@@ -397,6 +397,12 @@ export const tokens = defineTokens({
     },
     '2xl': {
       value: '64px'
+    },
+    '3xl': {
+      value: '128px'
+    },
+    '4xl': {
+      value: '192px'
     }
   },
   fonts: {

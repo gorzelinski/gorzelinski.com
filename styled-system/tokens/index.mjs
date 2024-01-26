@@ -483,6 +483,14 @@ const tokens = {
     "value": "64px",
     "variable": "var(--spacing-2xl)"
   },
+  "spacing.3xl": {
+    "value": "128px",
+    "variable": "var(--spacing-3xl)"
+  },
+  "spacing.4xl": {
+    "value": "192px",
+    "variable": "var(--spacing-4xl)"
+  },
   "fonts.sans": {
     "value": "var(--font-montserrat)",
     "variable": "var(--fonts-sans)"
@@ -1078,6 +1086,14 @@ const tokens = {
   "spacing.-2xl": {
     "value": "calc(var(--spacing-2xl) * -1)",
     "variable": "var(--spacing-2xl)"
+  },
+  "spacing.-3xl": {
+    "value": "calc(var(--spacing-3xl) * -1)",
+    "variable": "var(--spacing-3xl)"
+  },
+  "spacing.-4xl": {
+    "value": "calc(var(--spacing-4xl) * -1)",
+    "variable": "var(--spacing-4xl)"
   },
   "colors.colorPalette.blue.50": {
     "value": "var(--colors-color-palette-blue-50)",

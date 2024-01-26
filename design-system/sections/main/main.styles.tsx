@@ -9,6 +9,13 @@ export const main = cva({
       sm: 'l',
       xl: 'xl',
       '2xl': '0'
+    },
+    display: 'flex',
+    flexDirection: 'column',
+    gap: {
+      base: '2xl',
+      md: '3xl',
+      xl: '4xl'
     }
   }
 })
