@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { useReducedMotion } from '@/hooks'
 import { typewriter } from './typewriter.styles'
 import { TypewriterProps, Phase } from './typewriter.types'
 
@@ -13,8 +14,13 @@ export const Typewriter = ({
   const [phase, setPhase] = useState<Phase>('typing')
   const [typedString, setTypedString] = useState('')
   const [selectedIndex, setSelectedIndex] = useState(0)
+  const hasReducedMotion = useReducedMotion()
 
   useEffect(() => {
+    if (hasReducedMotion) {
+      return
+    }
+
     switch (phase) {
       case 'typing': {
         const nextTypedString = words[selectedIndex].slice(
@@ -74,12 +80,13 @@ export const Typewriter = ({
     loop,
     pauseInterval,
     typingInterval,
-    deletingInterval
+    deletingInterval,
+    hasReducedMotion
   ])
 
   return (
     <span className={typewriter()} aria-hidden="true">
-      {typedString}
+      {hasReducedMotion ? words.at(-1) : typedString}
     </span>
   )
 }

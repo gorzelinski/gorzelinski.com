@@ -8,7 +8,11 @@ export const typewriter = cva({
       animation: 'blinking',
       color: 'primary.400',
       transitionProperty: 'color',
-      ...sharedTransitionProperties
+      ...sharedTransitionProperties,
+      _motionReduce: {
+        animation: 'none',
+        content: 'none'
+      }
     }
   }
 })
