@@ -69,6 +69,7 @@ export {
 
 export {
   Callout,
+  Image,
   LanguageSwitch,
   Logo,
   Socials,

@@ -1,4 +1,5 @@
 export { Callout } from './callout'
+export { Image } from './image'
 export { LanguageSwitch } from './language-switch'
 export { Logo } from './logo'
 export { Socials, createShareLinks } from './socials'
