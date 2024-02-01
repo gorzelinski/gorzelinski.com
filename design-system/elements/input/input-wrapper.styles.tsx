@@ -23,7 +23,7 @@ export const inputWrapper = cva({
     },
     '& > .icon': {
       position: 'absolute',
-      top: 'calc(((1lh + 2 * (var(--spacing-s) + var(--spacing-3xs)) - 1em)) / 2)',
+      top: 's',
       left: 's',
       color: 'gray.700'
     }

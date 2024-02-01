@@ -3,12 +3,13 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const input = cva({
   base: {
-    minWidth: 'xl',
+    width: '2xl',
+    maxWidth: '100%',
     appearance: 'none',
     fontFamily: 'heading',
     fontWeight: 'medium',
     letterSpacing: 'wide',
-    padding: 's',
+    padding: 'calc(var(--spacing-s) - var(--spacing-3xs))',
     color: 'gray.200',
     backgroundColor: 'gray.900',
     border: 'gray.subtle',
