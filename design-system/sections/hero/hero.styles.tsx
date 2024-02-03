@@ -9,7 +9,6 @@ export const hero = cva({
     },
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'start',
     justifyContent: 'center',
     minHeight: 'breakpoint-md',
     _portrait: {
@@ -19,5 +18,26 @@ export const hero = cva({
       }
     },
     ...verticalRhythm
+  },
+  variants: {
+    align: {
+      start: {
+        alignItems: 'start',
+        textAlign: 'start'
+      },
+      center: {
+        alignItems: 'center',
+        textAlign: 'center',
+        marginX: 'auto'
+      },
+      end: {
+        alignItems: 'end',
+        textAlign: 'end',
+        marginLeft: 'auto'
+      }
+    }
+  },
+  defaultVariants: {
+    align: 'start'
   }
 })
