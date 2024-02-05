@@ -220,6 +220,16 @@ export const button = cva({
         width: 'auto',
         justifyContent: 'space-between'
       },
+      responsive: {
+        base: {
+          width: '100%',
+          justifyContent: 'center'
+        },
+        md: {
+          width: 'auto',
+          justifyContent: 'space-between'
+        }
+      },
       stretch: {
         width: '100%',
         justifyContent: 'center'
