@@ -1,10 +1,9 @@
 import { cva } from '@/styled-system/css'
+import { inputFontSize } from './input.utils'
 import { sharedTransitionProperties } from '../../utils'
 
 export const input = cva({
   base: {
-    width: '2xl',
-    maxWidth: '100%',
     appearance: 'none',
     fontFamily: 'heading',
     fontWeight: 'medium',
@@ -14,21 +13,8 @@ export const input = cva({
     backgroundColor: 'gray.900',
     border: 'gray.subtle',
     borderRadius: 's',
-    fontSize: {
-      base: '2xs',
-      md: 'xs',
-      lg: 's',
-      xl: 's',
-      '2xl': 'm'
-    },
-    lineHeight: {
-      base: '2xs',
-      md: 'xs',
-      lg: 's',
-      xl: 's',
-      '2xl': 'm'
-    },
     transitionProperty: 'background-color, border-color, color',
+    ...inputFontSize,
     ...sharedTransitionProperties,
     _placeholder: {
       color: 'gray.700'
@@ -48,5 +34,26 @@ export const input = cva({
       pointerEvents: 'none',
       backgroundColor: 'gray.800'
     }
+  },
+  variants: {
+    width: {
+      fixed: {
+        width: 'auto'
+      },
+      responsive: {
+        base: {
+          width: '100%'
+        },
+        md: {
+          width: '2xl'
+        }
+      },
+      stretch: {
+        width: '100%'
+      }
+    }
+  },
+  defaultVariants: {
+    width: 'stretch'
   }
 })

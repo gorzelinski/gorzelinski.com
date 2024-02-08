@@ -1,25 +1,13 @@
 import { cva } from '@/styled-system/css'
+import { inputFontSize } from './input.utils'
 
 export const inputWrapper = cva({
   base: {
     position: 'relative',
-    fontSize: {
-      base: '2xs',
-      md: 'xs',
-      lg: 's',
-      xl: 's',
-      '2xl': 'm'
-    },
-    lineHeight: {
-      base: '2xs',
-      md: 'xs',
-      lg: 's',
-      xl: 's',
-      '2xl': 'm'
-    },
+    ...inputFontSize,
     '& > input': {
       width: '100%',
-      paddingLeft: 'calc(2 * var(--spacing-s) + 1em)'
+      paddingLeft: 'calc(2 * var(--spacing-s) + 1lh)'
     },
     '& > .icon': {
       position: 'absolute',
@@ -27,5 +15,26 @@ export const inputWrapper = cva({
       left: 's',
       color: 'gray.700'
     }
+  },
+  variants: {
+    width: {
+      fixed: {
+        width: 'auto'
+      },
+      responsive: {
+        base: {
+          width: '100%'
+        },
+        md: {
+          width: '2xl'
+        }
+      },
+      stretch: {
+        width: '100%'
+      }
+    }
+  },
+  defaultVariants: {
+    width: 'responsive'
   }
 })
