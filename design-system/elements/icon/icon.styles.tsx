@@ -3,7 +3,8 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const icon = cva({
   base: {
-    display: 'inline-block'
+    display: 'inline-block',
+    ...sharedTransitionProperties
   },
   variants: {
     color: {
@@ -53,23 +54,5 @@ export const icon = cva({
   defaultVariants: {
     color: 'inherit',
     size: 'm'
-  },
-  compoundVariants: [
-    {
-      color: [
-        'background',
-        'borderGray',
-        'borderPrimary',
-        'danger',
-        'gray',
-        'primary',
-        'success',
-        'warning'
-      ],
-      css: {
-        transitionProperty: 'color',
-        ...sharedTransitionProperties
-      }
-    }
-  ]
+  }
 })
