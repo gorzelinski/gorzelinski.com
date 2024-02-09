@@ -368,6 +368,9 @@ export const tokens = defineTokens({
     },
     xl: {
       value: '384px'
+    },
+    '2xl': {
+      value: '440px'
     }
   },
   spacing: {

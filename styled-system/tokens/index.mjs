@@ -427,6 +427,10 @@ const tokens = {
     "value": "384px",
     "variable": "var(--sizes-xl)"
   },
+  "sizes.2xl": {
+    "value": "440px",
+    "variable": "var(--sizes-2xl)"
+  },
   "sizes.breakpoint-sm": {
     "value": "640px",
     "variable": "var(--sizes-breakpoint-sm)"
