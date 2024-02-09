@@ -16,7 +16,7 @@ export const card = cva({
     overflow: 'hidden',
     transitionProperty: 'border-color, box-shadow',
     ...sharedTransitionProperties,
-    '& > .card-image': {
+    '& > .image': {
       minWidth: 'calc(100% + (2 * var(--spacing-m)))',
       marginTop: '-m',
       marginX: '-m'
