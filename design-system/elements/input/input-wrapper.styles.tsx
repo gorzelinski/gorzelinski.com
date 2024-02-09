@@ -9,7 +9,7 @@ export const inputWrapper = cva({
       width: '100%',
       paddingLeft: 'calc(2 * var(--spacing-s) + 1lh)'
     },
-    '& > .icon': {
+    '& > span': {
       position: 'absolute',
       top: 's',
       left: 's',

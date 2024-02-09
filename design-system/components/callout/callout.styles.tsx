@@ -6,7 +6,7 @@ export const callout = cva({
     position: 'relative',
     borderRadius: 'm',
     padding: 'm',
-    '& > .icon': {
+    '& > span': {
       position: 'absolute',
       backgroundColor: 'gray.900',
       borderRadius: 'circle'

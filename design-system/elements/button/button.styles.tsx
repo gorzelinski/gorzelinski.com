@@ -237,37 +237,37 @@ export const button = cva({
     },
     transition: {
       moveIconForward: {
-        '& > .icon': {
+        '& > span': {
           transform: 'translateX(0px)',
           transitionProperty: 'transform',
           transitionDuration: 'natural',
           transitionTimingFunction: 'easeInOut'
         },
         _hover: {
-          '& > .icon': {
+          '& > span': {
             transform: 'translateX(var(--spacing-s))'
           }
         },
         _active: {
-          '& > .icon': {
+          '& > span': {
             transform: 'translateX(calc(2 * var(--spacing-s)))'
           }
         }
       },
       moveIconBackward: {
-        '& > .icon': {
+        '& > span': {
           transform: 'translateX(0px)',
           transitionProperty: 'transform',
           transitionDuration: 'natural',
           transitionTimingFunction: 'easeInOut'
         },
         _hover: {
-          '& > .icon': {
+          '& > span': {
             transform: 'translateX(calc(-1 * var(--spacing-s)))'
           }
         },
         _active: {
-          '& > .icon': {
+          '& > span': {
             transform: 'translateX(calc(-2 * var(--spacing-s)))'
           }
         }

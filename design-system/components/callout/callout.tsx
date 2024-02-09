@@ -8,10 +8,10 @@ import {
 } from '../../elements'
 
 const calloutIcon: CalloutIcons = {
-  info: <InformationCircle size="l" className="icon"></InformationCircle>,
-  danger: <AlertCircle size="l" className="icon"></AlertCircle>,
-  warning: <Warning size="l" className="icon"></Warning>,
-  success: <CheckmarkCircle size="l" className="icon"></CheckmarkCircle>
+  info: <InformationCircle size="l"></InformationCircle>,
+  danger: <AlertCircle size="l"></AlertCircle>,
+  warning: <Warning size="l"></Warning>,
+  success: <CheckmarkCircle size="l"></CheckmarkCircle>
 }
 
 export const Callout = (props: CalloutProps) => {
