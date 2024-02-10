@@ -87,3 +87,5 @@ export {
   Navbar,
   Split
 } from './sections'
+
+export { verticalRhythm } from './utils'
