@@ -1,17 +1,17 @@
 import { cva } from '@/styled-system/css'
-import { sharedTransitionProperties } from '../../utils'
+import { sharedTransitionProperties, verticalRhythm } from '../../utils'
 
 export const card = cva({
   base: {
     padding: 'm',
     position: 'relative',
     display: 'grid',
-    gap: 's',
     boxShadow: 'neumorphism.far',
     border: 'gray.subtle',
     borderRadius: 'l',
     overflow: 'hidden',
     transitionProperty: 'border-color, box-shadow',
+    ...verticalRhythm,
     ...sharedTransitionProperties
   },
   variants: {
