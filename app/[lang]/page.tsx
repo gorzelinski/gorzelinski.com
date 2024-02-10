@@ -1,9 +1,11 @@
-import Image from 'next/image'
 import { Locale } from '@/i18n.config'
 import { LINKS } from '@/constants'
 import { localizePath } from '@/lib'
-import { Box } from '@/styled-system/jsx'
+import { getDictionary } from '@/lib/dictionaries'
+import { Box, Grid, HStack } from '@/styled-system/jsx'
 import {
+  At,
+  Button,
   ButtonLink,
   Card,
   ChevronForward,
@@ -12,12 +14,22 @@ import {
   H2,
   H3,
   Hero,
+  Image,
+  Input,
+  InputWrapper,
+  Li,
+  Link,
   P,
+  Send,
   Small,
+  Socials,
   Split,
-  Typewriter
+  Typewriter,
+  Ul,
+  verticalRhythm
 } from '@/design-system'
 import profile from '../../public/gorzelinski.jpg'
+import dog from '../../public/erda-estremera-sxNt9g77PE0-unsplash.jpg'
 
 export default async function Home({
   params: { lang }
@@ -26,6 +38,10 @@ export default async function Home({
     lang: Locale
   }
 }) {
+  const {
+    page: { home }
+  } = await getDictionary(lang)
+
   return (
     <>
       <Hero
@@ -35,74 +51,200 @@ export default async function Home({
           xl: '-4xl'
         }}
       >
-        <H1>
-          I{' '}
+        <H1 aria-label={home.landing.typewriter.create}>
           <Typewriter
-            words={['code', 'design', 'write', 'create']}
-          ></Typewriter>
+            words={[
+              home.landing.typewriter.design,
+              home.landing.typewriter.code,
+              home.landing.typewriter.write,
+              home.landing.typewriter.create
+            ]}
+          />
           <br />
-          things on the Internet
         </H1>
-        <P size="l">
-          I help individuals and small businesses step into the XXI century. I
-          create personalized websites for them, ensuring a professional online
-          presence.
-        </P>
-        <ButtonLink href={localizePath(lang, LINKS.about)}>About</ButtonLink>
+        <P size="l">{home.landing.description}</P>
+        <ButtonLink alignSelf="start" href={localizePath(lang, LINKS.about)}>
+          {home.landing.button}
+        </ButtonLink>
       </Hero>
       <Featured
-        heading="Last projects"
+        heading={home.projects.heading}
         link={{
-          text: 'All projects',
+          text: home.projects.link,
           href: localizePath(lang, LINKS.portfolio)
         }}
       >
-        <Card>
-          <H3>This is heading</H3>
-          <P>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-            praesentium eveniet cum soluta? Perferendis placeat dolore
-            recusandae! Facilis in velit id hic quas earum esse eveniet,
-            similique vitae cum. Labore excepturi culpa, nostrum totam est
-            maxime ipsa dicta incidunt molestias et quia nisi dignissimos ea ex
-            quidem deleniti, obcaecati maiores?
-          </P>
-        </Card>
+        <Grid
+          gridTemplateColumns={{ base: '1fr', sm: '1fr 1fr' }}
+          css={verticalRhythm}
+        >
+          <Card>
+            <Image src={dog} alt="Dog" />
+            <H3>This is heading</H3>
+            <P size="s">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
+              praesentium eveniet cum soluta? Perferendis placeat dolore
+              recusandae!
+            </P>
+            <ButtonLink
+              align="left"
+              style="text"
+              href={localizePath(lang, LINKS.portfolio)}
+              transition="moveIconForward"
+            >
+              Check project <ChevronForward />
+            </ButtonLink>
+          </Card>
+          <Card>
+            <Image src={dog} alt="Dog" />
+            <H3>This is heading</H3>
+            <P>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
+              praesentium eveniet cum soluta? Perferendis placeat dolore
+              recusandae!
+            </P>
+            <ButtonLink
+              align="left"
+              style="text"
+              href={localizePath(lang, LINKS.portfolio)}
+              transition="moveIconForward"
+            >
+              Check project <ChevronForward />
+            </ButtonLink>
+          </Card>
+        </Grid>
       </Featured>
       <Split>
         <Image
           src={profile}
-          alt="Profile picture where I'm in a white t-shirt on gray gradient background."
+          alt={home.bio.image.alt}
+          title={home.bio.image.title}
+          borderRadius="rounded"
         />
         <Box>
-          <Small>Hello, my name is</Small>
-          <H2>Matthew Gorzelinski</H2>
-          <P>I’m an engineer and humanist. In one? Is it legal?</P>
-          <P>
-            I develop my technical skills and humanistic interests by designing,
-            coding, and writing content for websites. I mainly use Figma,
-            JAMstack, pen, and paper as my tools. You can find the effects of
-            that development in my portfolio.
-          </P>
-          <P>
-            If you’re interested in more details about my stuff, you can check
-            what else I use.
-          </P>
-          <P>
-            I learn new things daily, explore different fields of knowledge,
-            rummage around the web, theorize, and analyze too much. I share my
-            findings and thoughts on my blog.
-          </P>
+          <Small marginBottom="1rem">{home.bio.greeting}</Small>
+          <H2 marginBottom="1rem">{home.bio.heading}</H2>
+          <P marginBottom="1rem">{home.bio.brief}</P>
+          {home.bio.activities.map((activity) => (
+            <P key={activity.link} marginBottom="1rem">
+              {activity.mention}{' '}
+              <Link href={activity.href}>{activity.link}</Link>.
+            </P>
+          ))}
           <ButtonLink
             align="left"
             style="text"
-            href={localizePath(lang, '/about/')}
+            href={localizePath(lang, LINKS.about)}
             transition="moveIconForward"
           >
-            Read my story <ChevronForward className="icon" />
+            {home.bio.link} <ChevronForward />
           </ButtonLink>
         </Box>
       </Split>
+      <Featured
+        heading={home.posts.heading}
+        link={{
+          text: home.posts.link,
+          href: localizePath(lang, LINKS.portfolio)
+        }}
+      >
+        <Grid gridTemplateColumns={{ base: '1fr' }} css={verticalRhythm}>
+          <Card orientation="horizontal">
+            <Image src={dog} alt="Dog" />
+            <H3>This is heading</H3>
+            <P>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
+              praesentium eveniet cum soluta? Perferendis placeat dolore
+              recusandae!
+            </P>
+            <ButtonLink
+              align="left"
+              style="text"
+              href={localizePath(lang, LINKS.blog)}
+              transition="moveIconForward"
+            >
+              Read post <ChevronForward />
+            </ButtonLink>
+          </Card>
+          <Card orientation="horizontal">
+            <Image src={dog} alt="Dog" />
+            <H3>This is heading</H3>
+            <P>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
+              praesentium eveniet cum soluta? Perferendis placeat dolore
+              recusandae!
+            </P>
+            <ButtonLink
+              align="left"
+              style="text"
+              href={localizePath(lang, LINKS.blog)}
+              transition="moveIconForward"
+            >
+              Read post <ChevronForward />
+            </ButtonLink>
+          </Card>
+          <Card orientation="horizontal">
+            <Image src={dog} alt="Dog" />
+            <H3>This is heading</H3>
+            <P>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
+              praesentium eveniet cum soluta? Perferendis placeat dolore
+              recusandae!
+            </P>
+            <ButtonLink
+              align="left"
+              style="text"
+              href={localizePath(lang, LINKS.blog)}
+              transition="moveIconForward"
+            >
+              Read post <ChevronForward />
+            </ButtonLink>
+          </Card>
+          <Card>
+            <H3 marginBottom="1rem">{home.subscription.heading}</H3>
+            <P marginBottom="1rem">{home.subscription.description}</P>
+            <Ul marginBottom="1rem">
+              {home.subscription.topics.map((topic, index) => (
+                <Li key={`topic-${index}`}>{topic}</Li>
+              ))}
+            </Ul>
+            <HStack flexWrap="wrap" gap="1rem">
+              <InputWrapper>
+                <Input
+                  className="peer"
+                  placeholder={home.subscription.email}
+                ></Input>
+                <At
+                  _peerHover={{
+                    color: 'gray.500'
+                  }}
+                  _peerFocus={{
+                    color: 'gray.400!'
+                  }}
+                />
+              </InputWrapper>
+              <Button
+                width="responsive"
+                _hover={{
+                  '& > span': {
+                    animation: 'wobbling'
+                  }
+                }}
+              >
+                {home.subscription.button} <Send />
+              </Button>
+            </HStack>
+          </Card>
+        </Grid>
+        <Hero align="center">
+          <H2>{home.contact.heading}</H2>
+          <P>{home.contact.description}</P>
+          <ButtonLink align="left" style="outline" href="#contact">
+            {home.contact.button}
+          </ButtonLink>
+          <Socials />
+        </Hero>
+      </Featured>
     </>
   )
 }

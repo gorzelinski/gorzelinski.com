@@ -31,5 +31,84 @@
         "helper": "Pomocnicza nawigacja"
       }
     }
+  },
+  "page": {
+    "home": {
+      "landing": {
+        "typewriter": {
+          "design": "Projektuję",
+          "code": "Koduję",
+          "write": "Piszę",
+          "create": "Tworzę rzeczy w Internecie"
+        },
+        "description": "Pomagam małym firmom i jednostkom wkroczyć w XXI wiek. Tworzę dla nich spersonalizowane strony internetowe, zapewniając profesjonalny wizerunek online.",
+        "button": "Stwórzmy coś razem"
+      },
+      "projects": {
+        "heading": "Ostatnie projekty",
+        "link": "Wszystkie projekty"
+      },
+      "bio": {
+        "heading": "Mateusz Gorzeliński",
+        "summary": "Inżynier oprogramowania o erudycyjnych aspiracjach.",
+        "image": {
+          "alt": "Moje zdjęcie profilowe, gdzie jestem w białej koszulce na szarym, gradientowym tle. Połowa mojej twarzy jest w cieniu. Druga połowa jest prawidłowo oświetlona.",
+          "title": "W rzeczywistości jestem milszy niż wyglądam na tym zdjęciu. Zapewniam!"
+        },
+        "greeting": "Cześć, mam na imię",
+        "brief": "Jestem inżynierem i humanistą. W jednym? Czy to jest legalne?",
+        "activities": [
+          {
+            "mention": "Swoje techniczne umiejętności i humanistyczne zainteresowania rozwijam projektując, kodując i pisząc treści dla stron internetowych. Do tego celu wykorzystuję głównie Figmę, JAMstack, długopis i kartę papieru. Efekty tego rozwoju możesz znaleźć w moim",
+            "link": "portfolio",
+            "href": "/portfolio/"
+          },
+          {
+            "mention": "Jeżeli jesteś zainteresowany szczegółami moich rzeczy, możesz sprawdzić czego jeszcze",
+            "link": "używam",
+            "href": "/uses/"
+          },
+          {
+            "mention": "Nieustannie uczę się nowych rzeczy, eksploruję różne dziedziny wiedzy, szperam w internecie, nadmiernie teoretyzuję i analizuję. Swoimi znaleziskami i przemyśleniami dzielę się na moim",
+            "link": "blogu",
+            "href": "/blog/"
+          }
+        ],
+        "link": "Moja historia"
+      },
+      "posts": {
+        "heading": "Ostatnie wpisy",
+        "link": "Wszystkie wpisy"
+      },
+      "subscription": {
+        "heading": "Newsletter, który rozpala ciekawość💡",
+        "description": "Subskrybuj mój newsletter, aby otrzymywać comiesięczną dawkę:",
+        "topics": [
+          "Nowości, przykładów, inspiracji ze świata front-end, web development’u i designu",
+          "Teorii naukowych i sceptycyzmu",
+          "Moich ulubionych źródeł, idei, narzędzi i innych interesujących linków"
+        ],
+        "footnote": "Nie jestem nigeryjskim księciem, aby oferować ci okazje. Nie wysyłam spamu. Anuluj kiedy chcesz.",
+        "email": "Twój email",
+        "button": "Subskrybuj",
+        "success": {
+          "heading": "Dzięki za zapisanie się!",
+          "description": "Jeżeli nie otrzymasz emaila potwierdzającego w krótkim czasie, sprawdź różne foldery poczty."
+        },
+        "quarantined": {
+          "heading": "Już prawie!",
+          "description": "Potwierdź, że nie jesteś robotem, a twój email będzie w drodze."
+        },
+        "error": {
+          "heading": "Coś poszło nie tak",
+          "description": "Podczas wysyłania wystąpił problem. Sprawdź email i spróbuj ponownie."
+        }
+      },
+      "contact": {
+        "heading": "Przywitaj się!",
+        "description": "Masz pomysł na projekt? Albo jakieś pytania? Możesz napisać do mnie staroszkolny email lub wiadomość prywatną. Nie krępuj się. Serio.",
+        "button": "Skontaktuj się ze mną"
+      }
+    }
   }
 }

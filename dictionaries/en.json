@@ -31,5 +31,84 @@
         "helper": "Helper navigation"
       }
     }
+  },
+  "page": {
+    "home": {
+      "landing": {
+        "typewriter": {
+          "design": "I design",
+          "code": "I code",
+          "write": "I write",
+          "create": "I create things on the Internet"
+        },
+        "description": "I help individuals and small businesses step into the XXI century. I create personalized websites for them, ensuring a professional online presence.",
+        "button": "Let's create something"
+      },
+      "projects": {
+        "heading": "Last projects",
+        "link": "All projects"
+      },
+      "bio": {
+        "heading": "Matthew Gorzelinski",
+        "summary": "Software engineer with polymath aspirations.",
+        "image": {
+          "alt": "Profile picture where I'm in a white t-shirt on gray gradient background. Half of my face is in the shadow. The other half is correctly illuminated.",
+          "title": "In reality, I'm nicer than I look in this picture. I assure you!"
+        },
+        "greeting": "Hello, my name is",
+        "brief": "I’m an engineer and humanist. In one? Is it legal?",
+        "activities": [
+          {
+            "mention": "I develop my technical skills and humanistic interests by designing, coding, and writing content for websites. I mainly use Figma, JAMstack, pen, and paper as my tools. You can find the effects of that development in my",
+            "link": "portfolio",
+            "href": "/portfolio/"
+          },
+          {
+            "mention": "If you’re interested in more details about my stuff, you can check what else I",
+            "link": "use",
+            "href": "/uses/"
+          },
+          {
+            "mention": "I learn new things daily, explore different fields of knowledge, rummage around the web, theorize, and analyze too much. I share my findings and thoughts on my",
+            "link": "blog",
+            "href": "/blog/"
+          }
+        ],
+        "link": "Read my story"
+      },
+      "posts": {
+        "heading": "Last posts",
+        "link": "All posts"
+      },
+      "subscription": {
+        "heading": "A newsletter that sparks curiosity💡",
+        "description": "Subscribe to my newsletter and get a monthly dose of:",
+        "topics": [
+          "Front-end, web development, and design news, examples, inspiration",
+          "Science theories and skepticism",
+          "My favorite resources, ideas, tools, and other interesting links"
+        ],
+        "footnote": "I’m not a Nigerian prince to offer you opportunities. I don’t send spam. Unsubscribe anytime.",
+        "email": "Your email",
+        "button": "Subscribe",
+        "success": {
+          "heading": "Thank you for signing up!",
+          "description": "If you don't receive a confirmation email shortly, double check different email folders."
+        },
+        "quarantined": {
+          "heading": "Almost there!",
+          "description": "Confirm you’re not a robot, and your email will be on its way."
+        },
+        "error": {
+          "heading": "Something went wrong",
+          "description": "There was an issue trying to submit. Check your email and try again."
+        }
+      },
+      "contact": {
+        "heading": "Say hello!",
+        "description": "Do you have a project idea? Or any questions? You can write me an old-school email or direct message. Don’t hesitate. Seriously.",
+        "button": "Get in touch"
+      }
+    }
   }
 }
