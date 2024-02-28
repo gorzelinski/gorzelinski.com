@@ -25,3 +25,13 @@ export function localizePath(
 export function delocalizePath(locale: Locale, path: string): string {
   return path.replace(`/${locale}/`, '/')
 }
+
+export function localizeFileName(
+  locale: Locale,
+  fileName = 'index',
+  extension = 'mdx'
+) {
+  return `${fileName}${
+    isDefaultLocale(locale) ? '' : `.${locale}`
+  }.${extension}`
+}
