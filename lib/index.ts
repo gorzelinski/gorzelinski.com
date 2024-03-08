@@ -1,3 +1,4 @@
+export { formatDate } from './date'
 export {
   isDefaultLocale,
   localizePath,
