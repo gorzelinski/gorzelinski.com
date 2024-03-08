@@ -9,6 +9,8 @@ export const Image = (props: ImageProps) => {
   return (
     <NextImage
       {...(imageProps as NextImageProps)}
+      width={cssProps.width}
+      height={cssProps.height}
       className={image(cssProps)}
     />
   )
