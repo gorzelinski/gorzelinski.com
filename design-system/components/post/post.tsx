@@ -1,5 +1,5 @@
-import { formatDate, formatReadingTime, localizePath } from '@/lib'
 import { LINKS } from '@/constants'
+import { formatDate, formatReadingTime, localizePath } from '@/lib'
 import { PostProps } from './post.types'
 import { ButtonLink, Card, ChevronForward, H3, P, Small } from '../../elements'
 import { Image } from '../image'
