@@ -21,7 +21,6 @@ export const Post = ({
         height={403}
         src={`/images${LINKS.blog}${slug}/${image.src}`}
         alt={image.alt}
-        aspectRatio="square"
       />
       <Small>
         {formatDate(date, lang)} • {formatReadingTime(readingTime.minutes)}{' '}
