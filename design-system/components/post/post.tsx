@@ -1,4 +1,4 @@
-import { formatDate, localizePath } from '@/lib'
+import { formatDate, formatReadingTime, localizePath } from '@/lib'
 import { LINKS } from '@/constants'
 import { PostProps } from './post.types'
 import { ButtonLink, Card, ChevronForward, H3, P, Small } from '../../elements'
@@ -24,7 +24,7 @@ export const Post = ({
         aspectRatio="square"
       />
       <Small>
-        {formatDate(date, lang)} • {Math.ceil(readingTime.minutes)}{' '}
+        {formatDate(date, lang)} • {formatReadingTime(readingTime.minutes)}{' '}
         {dictionary.min}
       </Small>
       <H3>{title}</H3>

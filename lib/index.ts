@@ -1,4 +1,4 @@
-export { formatDate } from './date'
+export { formatDate, formatReadingTime } from './date'
 export {
   isDefaultLocale,
   localizePath,
