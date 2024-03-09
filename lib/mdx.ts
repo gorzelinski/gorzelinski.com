@@ -3,10 +3,9 @@ import path from 'path'
 import matter from 'gray-matter'
 
 type Frontmatter = {
+  slug: string
   title: string
   description: string
-  date: Date
-  updated: Date
   image: {
     alt: string
     caption: string
@@ -14,8 +13,18 @@ type Frontmatter = {
   }
 }
 
+export type FrontmatterPost = Frontmatter & {
+  date: Date
+  updated: Date
+  categories: string[]
+  tags: string[]
+  type: 'post'
+}
+
+type FrontmatterOptions = FrontmatterPost
+
 type FrontmatterFile = {
-  frontmatter: Frontmatter
+  frontmatter: FrontmatterOptions
   content: string
 }
 
@@ -30,7 +39,7 @@ export function getFileByPath(...paths: string[]): FrontmatterFile {
   const file = fs.readFileSync(filePath, 'utf-8')
   const parsedFile = matter(file)
 
-  const frontmatter = parsedFile.data as Frontmatter
+  const frontmatter = parsedFile.data as FrontmatterOptions
   const content = parsedFile.content
 
   return {

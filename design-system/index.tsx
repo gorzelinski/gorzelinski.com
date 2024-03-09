@@ -72,6 +72,7 @@ export {
   Image,
   LanguageSwitch,
   Logo,
+  Post,
   Socials,
   createShareLinks,
   ThemeSwitch,
