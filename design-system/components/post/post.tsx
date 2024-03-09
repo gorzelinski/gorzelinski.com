@@ -24,7 +24,8 @@ export const Post = ({
         aspectRatio="square"
       />
       <Small>
-        {formatDate(date, lang)} • {readingTime} {dictionary.min}
+        {formatDate(date, lang)} • {Math.ceil(readingTime.minutes)}{' '}
+        {dictionary.min}
       </Small>
       <H3>{title}</H3>
       <P>{description}</P>

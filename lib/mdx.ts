@@ -1,11 +1,20 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import readingTime from 'reading-time'
+
+type ReadingTime = {
+  text: string
+  minutes: number
+  time: number
+  words: number
+}
 
 type Frontmatter = {
   slug: string
   title: string
   description: string
+  readingTime: ReadingTime
   image: {
     alt: string
     caption: string
@@ -41,6 +50,7 @@ export function getFileByPath(...paths: string[]): FrontmatterFile {
 
   const frontmatter = parsedFile.data as FrontmatterOptions
   const content = parsedFile.content
+  frontmatter.readingTime = readingTime(content)
 
   return {
     frontmatter,

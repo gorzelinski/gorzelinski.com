@@ -8,5 +8,4 @@ export type PostProps = Omit<
 > & {
   lang: Locale
   dictionary: Dictionary['component']['post']
-  readingTime: number
 }
