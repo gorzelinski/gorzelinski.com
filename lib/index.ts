@@ -5,6 +5,7 @@ export {
   delocalizePath,
   localizeFileName
 } from './i18n'
+export { isInternal } from './link'
 export { getFromLS, setToLS } from './local-storage'
 export { selectActiveClass } from './navigation'
 export { capitalize } from './string'

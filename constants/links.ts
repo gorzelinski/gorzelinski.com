@@ -8,6 +8,7 @@ export const HANDLES = {
 } as const
 
 export const LINKS = {
+  siteUrl: 'https://gorzelinski.com',
   home: '/',
   portfolio: '/portfolio/',
   about: '/about/',

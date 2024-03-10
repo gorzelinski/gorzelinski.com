@@ -1,6 +1,7 @@
 export { Callout } from './callout'
 export { Image } from './image'
 export { LanguageSwitch } from './language-switch'
+export { LinkOrA } from './link-or-a'
 export { Logo } from './logo'
 export { Post } from './post'
 export { Socials, createShareLinks } from './socials'

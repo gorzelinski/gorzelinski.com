@@ -71,6 +71,7 @@ export {
   Callout,
   Image,
   LanguageSwitch,
+  LinkOrA,
   Logo,
   Post,
   Socials,
