@@ -1,4 +1,4 @@
-export { A } from './anchor'
+export { A, Link } from './anchor'
 export { Blockquote } from './blockquote'
 export { Button } from './button'
 export { ButtonAnchor } from './button-anchor'
@@ -38,7 +38,6 @@ export {
 export { InputWrapper, Input } from './input'
 export { Em } from './italic'
 export { Label } from './label'
-export { Link } from './link'
 export { Ul, Ol, Li } from './list'
 export { Nav, navigation } from './navigation'
 export { P } from './paragraph'
