@@ -8,6 +8,8 @@ type Frontmatter = {
   title: string
   description: string
   readingTime: ReadTimeResults
+  date: Date
+  updated: Date
   image: {
     alt: string
     caption: string
@@ -16,8 +18,6 @@ type Frontmatter = {
 }
 
 export type FrontmatterPost = Frontmatter & {
-  date: Date
-  updated: Date
   categories: string[]
   tags: string[]
   type: 'post'
@@ -49,4 +49,16 @@ export function getFileByPath(...paths: string[]): FrontmatterFile {
     frontmatter,
     content
   }
+}
+
+export function sortFilesByDate(
+  files: FrontmatterFile[],
+  order: 'ascending' | 'descending' = 'descending'
+) {
+  return files.sort((prev, next) => {
+    const prevDate = new Date(prev.frontmatter.date).getTime()
+    const nextDate = new Date(next.frontmatter.date).getTime()
+
+    return order === 'descending' ? nextDate - prevDate : prevDate - nextDate
+  })
 }
