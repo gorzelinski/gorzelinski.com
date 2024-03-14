@@ -3,7 +3,7 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const pill = cva({
   base: {
-    display: 'flex',
+    display: 'inline-flex',
     justifyContent: 'center',
     alignItems: 'center',
     fontFamily: 'heading',
