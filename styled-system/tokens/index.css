@@ -256,6 +256,7 @@
   --colors-success-700: var(--colors-light-green-700);
   --colors-success-800: var(--colors-light-green-800);
   --colors-success-900: var(--colors-light-green-900);
+  --sizes-line-length: 800px;
   --fonts-heading: var(--fonts-sans);
   --fonts-body: var(--fonts-serif);
   --fonts-code: var(--fonts-mono);

@@ -1023,6 +1023,10 @@ const tokens = {
     "value": "var(--colors-success-900)",
     "variable": "var(--colors-success-900)"
   },
+  "sizes.lineLength": {
+    "value": "var(--sizes-line-length)",
+    "variable": "var(--sizes-line-length)"
+  },
   "fonts.heading": {
     "value": "var(--fonts-heading)",
     "variable": "var(--fonts-heading)"

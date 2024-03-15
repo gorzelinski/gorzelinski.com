@@ -81,6 +81,7 @@ export {
 } from './components'
 
 export {
+  Article,
   Background,
   Featured,
   Footer,

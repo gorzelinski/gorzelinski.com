@@ -318,6 +318,11 @@ export const semanticTokens = defineSemanticTokens({
       }
     }
   },
+  sizes: {
+    lineLength: {
+      value: '800px'
+    }
+  },
   fonts: {
     heading: {
       value: '{fonts.sans}'
