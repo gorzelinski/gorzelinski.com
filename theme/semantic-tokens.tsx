@@ -323,6 +323,52 @@ export const semanticTokens = defineSemanticTokens({
       value: '800px'
     }
   },
+  spacing: {
+    verticalRhythm: {
+      l: {
+        base: {
+          value: '{lineHeights.xs}'
+        },
+        md: {
+          value: '{lineHeights.s}'
+        },
+        lg: {
+          value: '{lineHeights.m}'
+        },
+        '2xl': {
+          value: '{lineHeights.l}'
+        }
+      },
+      m: {
+        base: {
+          value: '{lineHeights.2xs}'
+        },
+        md: {
+          value: '{lineHeights.xs}'
+        },
+        lg: {
+          value: '{lineHeights.s}'
+        },
+        '2xl': {
+          value: '{lineHeights.m}'
+        }
+      },
+      s: {
+        base: {
+          value: '{lineHeights.4xs}'
+        },
+        md: {
+          value: '{lineHeights.3xs}'
+        },
+        lg: {
+          value: '{lineHeights.2xs}'
+        },
+        '2xl': {
+          value: '{lineHeights.xs}'
+        }
+      }
+    }
+  },
   fonts: {
     heading: {
       value: '{fonts.sans}'

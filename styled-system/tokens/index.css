@@ -257,6 +257,18 @@
   --colors-success-800: var(--colors-light-green-800);
   --colors-success-900: var(--colors-light-green-900);
   --sizes-line-length: 800px;
+  --spacing-vertical-rhythm-l-base: var(--line-heights-xs);
+  --spacing-vertical-rhythm-l-md: var(--line-heights-s);
+  --spacing-vertical-rhythm-l-lg: var(--line-heights-m);
+  --spacing-vertical-rhythm-l-2xl: var(--line-heights-l);
+  --spacing-vertical-rhythm-m-base: var(--line-heights-2xs);
+  --spacing-vertical-rhythm-m-md: var(--line-heights-xs);
+  --spacing-vertical-rhythm-m-lg: var(--line-heights-s);
+  --spacing-vertical-rhythm-m-2xl: var(--line-heights-m);
+  --spacing-vertical-rhythm-s-base: var(--line-heights-4xs);
+  --spacing-vertical-rhythm-s-md: var(--line-heights-3xs);
+  --spacing-vertical-rhythm-s-lg: var(--line-heights-2xs);
+  --spacing-vertical-rhythm-s-2xl: var(--line-heights-xs);
   --fonts-heading: var(--fonts-sans);
   --fonts-body: var(--fonts-serif);
   --fonts-code: var(--fonts-mono);
