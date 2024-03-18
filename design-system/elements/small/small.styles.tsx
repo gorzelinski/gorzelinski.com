@@ -3,6 +3,7 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const small = cva({
   base: {
+    display: 'inline-block',
     color: 'gray.400',
     fontFamily: 'heading',
     fontWeight: 'medium',
