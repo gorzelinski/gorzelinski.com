@@ -6,9 +6,7 @@ export const blockquote = cva({
     borderLeft: 'primary.regular',
     paddingLeft: {
       base: 'm',
-      md: 'm',
-      lg: 'l',
-      xl: 'l'
+      lg: 'l'
     },
     transitionProperty: 'border-color',
     ...sharedTransitionProperties

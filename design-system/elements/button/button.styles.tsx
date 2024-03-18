@@ -37,14 +37,12 @@ export const button = cva({
           base: 's',
           md: 'm',
           lg: 'l',
-          xl: 'l',
           '2xl': 'xl'
         },
         lineHeight: {
           base: 's',
           md: 'm',
           lg: 'l',
-          xl: 'l',
           '2xl': 'xl'
         }
       },
@@ -53,14 +51,12 @@ export const button = cva({
           base: '2xs',
           md: 'xs',
           lg: 's',
-          xl: 's',
           '2xl': 'm'
         },
         lineHeight: {
           base: '2xs',
           md: 'xs',
           lg: 's',
-          xl: 's',
           '2xl': 'm'
         }
       },
@@ -69,14 +65,12 @@ export const button = cva({
           base: '4xs',
           md: '3xs',
           lg: '2xs',
-          xl: '2xs',
           '2xl': 'xs'
         },
         lineHeight: {
           base: '4xs',
           md: '3xs',
           lg: '2xs',
-          xl: '2xs',
           '2xl': 'xs'
         }
       }

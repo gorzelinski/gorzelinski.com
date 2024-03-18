@@ -13,14 +13,12 @@ export const table = cva({
       base: '3xs',
       md: '2xs',
       lg: 'xs',
-      xl: 'xs',
       '2xl': 's'
     },
     lineHeight: {
       base: '3xs',
       md: '2xs',
       lg: 'xs',
-      xl: 'xs',
       '2xl': 's'
     },
     transitionProperty: 'color',

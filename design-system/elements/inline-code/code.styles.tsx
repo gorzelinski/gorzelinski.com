@@ -9,14 +9,12 @@ export const code = cva({
       base: '4xs',
       md: '3xs',
       lg: '2xs',
-      xl: '2xs',
       '2xl': 'xs'
     },
     lineHeight: {
       base: '4xs',
       md: '3xs',
       lg: '2xs',
-      xl: '2xs',
       '2xl': 'xs'
     },
     transitionProperty: 'background-color, box-shadow, color',
