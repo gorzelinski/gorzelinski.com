@@ -8,7 +8,7 @@ export const split = cva({
       base: '1fr',
       sm: '1fr 1fr'
     },
-    ...verticalRhythm
+    ...verticalRhythm.gap.m
   },
   variants: {
     align: {

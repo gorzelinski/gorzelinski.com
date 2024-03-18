@@ -11,7 +11,7 @@ export const card = cva({
     borderRadius: 'l',
     overflow: 'hidden',
     transitionProperty: 'border-color, box-shadow',
-    ...verticalRhythm,
+    ...verticalRhythm.gap.m,
     ...sharedTransitionProperties
   },
   variants: {

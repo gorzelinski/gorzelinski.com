@@ -17,7 +17,7 @@ export const hero = cva({
         md: 'breakpoint-md'
       }
     },
-    ...verticalRhythm
+    ...verticalRhythm.gap.m
   },
   variants: {
     align: {
