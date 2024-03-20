@@ -265,10 +265,10 @@
   --spacing-vertical-rhythm-m-md: var(--line-heights-xs);
   --spacing-vertical-rhythm-m-lg: var(--line-heights-s);
   --spacing-vertical-rhythm-m-2xl: var(--line-heights-m);
-  --spacing-vertical-rhythm-s-base: var(--line-heights-4xs);
-  --spacing-vertical-rhythm-s-md: var(--line-heights-3xs);
-  --spacing-vertical-rhythm-s-lg: var(--line-heights-2xs);
-  --spacing-vertical-rhythm-s-2xl: var(--line-heights-xs);
+  --spacing-vertical-rhythm-s-base: var(--line-heights-3xs);
+  --spacing-vertical-rhythm-s-md: var(--line-heights-2xs);
+  --spacing-vertical-rhythm-s-lg: var(--line-heights-xs);
+  --spacing-vertical-rhythm-s-2xl: var(--line-heights-s);
   --fonts-heading: var(--fonts-sans);
   --fonts-body: var(--fonts-serif);
   --fonts-code: var(--fonts-mono);
