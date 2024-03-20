@@ -9,6 +9,23 @@ export const blockquote = cva({
       lg: 'l'
     },
     transitionProperty: 'border-color',
-    ...sharedTransitionProperties
+    ...sharedTransitionProperties,
+    '& > p': {
+      fontStyle: 'italic',
+      color: 'gray.400',
+      fontWeight: 'regular',
+      fontSize: {
+        base: 's',
+        md: 'm',
+        lg: 'l',
+        '2xl': 'xl'
+      },
+      lineHeight: {
+        base: 's',
+        md: 'm',
+        lg: 'l',
+        '2xl': 'xl'
+      }
+    }
   }
 })
