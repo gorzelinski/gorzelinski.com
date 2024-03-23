@@ -1,7 +1,12 @@
 import fs from 'fs'
 import path from 'path'
-import matter from 'gray-matter'
+import { compileMDX } from 'next-mdx-remote/rsc'
+import remarkGfm from 'remark-gfm'
 import readingTime, { ReadTimeResults } from 'reading-time'
+import { LINKS } from '@/constants'
+import { getMDXComponents } from '@/mdx-components'
+import { Locale } from '@/i18n.config'
+import { localizeFileName } from './i18n'
 
 type Frontmatter = {
   slug: string
@@ -17,33 +22,47 @@ type Frontmatter = {
   }
 }
 
-export type FrontmatterPost = Frontmatter & {
+type Post = Frontmatter & {
   categories: string[]
   tags: string[]
   type: 'post'
 }
 
-type FrontmatterOptions = FrontmatterPost
+type Options = Post
 
-type FrontmatterFile = {
-  frontmatter: FrontmatterOptions
+type MDX = {
+  frontmatter: Options
   content: string
 }
 
 const root = process.cwd()
 
-export function getFilesByDirectory(...directory: string[]) {
-  return fs.readdirSync(path.join(root, ...directory))
-}
-
-export function getFileByPath(...paths: string[]): FrontmatterFile {
-  const filePath = path.join(root, ...paths)
+export async function getMDX(
+  page: (typeof LINKS)['blog' | 'portfolio'],
+  slug: string,
+  locale: Locale
+) {
+  const filePath = path.join(
+    root,
+    LINKS.content,
+    page,
+    slug,
+    localizeFileName(locale)
+  )
   const file = fs.readFileSync(filePath, 'utf-8')
-  const parsedFile = matter(file)
 
-  const frontmatter = parsedFile.data as FrontmatterOptions
-  const content = parsedFile.content
-  frontmatter.readingTime = readingTime(content)
+  const { frontmatter, content } = await compileMDX<MDX['frontmatter']>({
+    source: file,
+    components: getMDXComponents(page, slug),
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: {
+        remarkPlugins: [remarkGfm]
+      }
+    }
+  })
+  frontmatter.readingTime = readingTime(file)
+  frontmatter.slug = slug
 
   return {
     frontmatter,
@@ -51,14 +70,18 @@ export function getFileByPath(...paths: string[]): FrontmatterFile {
   }
 }
 
-export function sortFilesByDate(
-  files: FrontmatterFile[],
-  order: 'ascending' | 'descending' = 'descending'
+export async function getMDXes(
+  page: (typeof LINKS)['blog' | 'portfolio'],
+  locale: Locale
 ) {
-  return files.sort((prev, next) => {
+  const directories = fs.readdirSync(path.join(root, LINKS.content, page))
+  const mdxes = await Promise.all(
+    directories.map((slug) => getMDX(page, slug, locale))
+  )
+
+  return mdxes.sort((prev, next) => {
     const prevDate = new Date(prev.frontmatter.date).getTime()
     const nextDate = new Date(next.frontmatter.date).getTime()
-
-    return order === 'descending' ? nextDate - prevDate : prevDate - nextDate
+    return nextDate - prevDate
   })
 }
