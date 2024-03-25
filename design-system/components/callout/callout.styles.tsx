@@ -11,6 +11,9 @@ export const callout = cva({
       backgroundColor: 'gray.900',
       borderRadius: 'circle'
     },
+    '& > p': {
+      margin: '0'
+    },
     transitionProperty: 'background-color, border-color, color',
     ...sharedTransitionProperties
   },
