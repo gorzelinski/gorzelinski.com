@@ -1,3 +1,4 @@
+export { Article } from './article'
 export { Background } from './background'
 export { Featured } from './featured'
 export { Footer } from './footer'

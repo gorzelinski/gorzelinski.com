@@ -5,14 +5,12 @@ export const inputFontSize = css.raw({
     base: '2xs',
     md: 'xs',
     lg: 's',
-    xl: 's',
     '2xl': 'm'
   },
   lineHeight: {
     base: '2xs',
     md: 'xs',
     lg: 's',
-    xl: 's',
     '2xl': 'm'
   }
 })

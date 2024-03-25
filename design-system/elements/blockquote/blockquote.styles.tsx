@@ -6,11 +6,26 @@ export const blockquote = cva({
     borderLeft: 'primary.regular',
     paddingLeft: {
       base: 'm',
-      md: 'm',
-      lg: 'l',
-      xl: 'l'
+      lg: 'l'
     },
     transitionProperty: 'border-color',
-    ...sharedTransitionProperties
+    ...sharedTransitionProperties,
+    '& > p': {
+      fontStyle: 'italic',
+      color: 'gray.400',
+      fontWeight: 'regular',
+      fontSize: {
+        base: 's',
+        md: 'm',
+        lg: 'l',
+        '2xl': 'xl'
+      },
+      lineHeight: {
+        base: 's',
+        md: 'm',
+        lg: 'l',
+        '2xl': 'xl'
+      }
+    }
   }
 })

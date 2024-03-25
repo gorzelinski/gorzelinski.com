@@ -3,7 +3,7 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const pill = cva({
   base: {
-    display: 'flex',
+    display: 'inline-flex',
     justifyContent: 'center',
     alignItems: 'center',
     fontFamily: 'heading',
@@ -17,14 +17,12 @@ export const pill = cva({
       base: '4xs',
       md: '3xs',
       lg: '2xs',
-      xl: '2xs',
       '2xl': 'xs'
     },
     lineHeight: {
       base: '4xs',
       md: '3xs',
       lg: '2xs',
-      xl: '2xs',
       '2xl': 'xs'
     },
     transitionProperty: 'background-color, color',

@@ -22,14 +22,12 @@ export const paragraph = cva({
           base: 's',
           md: 'm',
           lg: 'l',
-          xl: 'l',
           '2xl': 'xl'
         },
         lineHeight: {
           base: 's',
           md: 'm',
           lg: 'l',
-          xl: 'l',
           '2xl': 'xl'
         }
       },
@@ -38,14 +36,12 @@ export const paragraph = cva({
           base: 'xs',
           md: 's',
           lg: 'm',
-          xl: 'm',
           '2xl': 'l'
         },
         lineHeight: {
           base: 'xs',
           md: 's',
           lg: 's',
-          xl: 'm',
           '2xl': 'l'
         }
       },
@@ -54,14 +50,12 @@ export const paragraph = cva({
           base: '2xs',
           md: 'xs',
           lg: 's',
-          xl: 's',
           '2xl': 'm'
         },
         lineHeight: {
           base: '2xs',
           md: 'xs',
           lg: 's',
-          xl: 's',
           '2xl': 'm'
         }
       },
@@ -70,14 +64,12 @@ export const paragraph = cva({
           base: '3xs',
           md: '2xs',
           lg: 'xs',
-          xl: 'xs',
           '2xl': 's'
         },
         lineHeight: {
           base: '3xs',
           md: '2xs',
           lg: 'xs',
-          xl: 'xs',
           '2xl': 's'
         }
       }

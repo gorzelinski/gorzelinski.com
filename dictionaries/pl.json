@@ -13,6 +13,10 @@
     "logo": {
       "text": "Mateusz Gorzeliński"
     },
+    "post": {
+      "button": "Czytaj wpis",
+      "min": "min. czytania"
+    },
     "themeSwitch": {
       "ariaLabel": "Zmień motyw"
     }

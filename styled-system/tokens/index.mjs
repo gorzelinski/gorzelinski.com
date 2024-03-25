@@ -1023,6 +1023,58 @@ const tokens = {
     "value": "var(--colors-success-900)",
     "variable": "var(--colors-success-900)"
   },
+  "sizes.lineLength": {
+    "value": "var(--sizes-line-length)",
+    "variable": "var(--sizes-line-length)"
+  },
+  "spacing.verticalRhythm.l.base": {
+    "value": "var(--spacing-vertical-rhythm-l-base)",
+    "variable": "var(--spacing-vertical-rhythm-l-base)"
+  },
+  "spacing.verticalRhythm.l.md": {
+    "value": "var(--spacing-vertical-rhythm-l-md)",
+    "variable": "var(--spacing-vertical-rhythm-l-md)"
+  },
+  "spacing.verticalRhythm.l.lg": {
+    "value": "var(--spacing-vertical-rhythm-l-lg)",
+    "variable": "var(--spacing-vertical-rhythm-l-lg)"
+  },
+  "spacing.verticalRhythm.l.2xl": {
+    "value": "var(--spacing-vertical-rhythm-l-2xl)",
+    "variable": "var(--spacing-vertical-rhythm-l-2xl)"
+  },
+  "spacing.verticalRhythm.m.base": {
+    "value": "var(--spacing-vertical-rhythm-m-base)",
+    "variable": "var(--spacing-vertical-rhythm-m-base)"
+  },
+  "spacing.verticalRhythm.m.md": {
+    "value": "var(--spacing-vertical-rhythm-m-md)",
+    "variable": "var(--spacing-vertical-rhythm-m-md)"
+  },
+  "spacing.verticalRhythm.m.lg": {
+    "value": "var(--spacing-vertical-rhythm-m-lg)",
+    "variable": "var(--spacing-vertical-rhythm-m-lg)"
+  },
+  "spacing.verticalRhythm.m.2xl": {
+    "value": "var(--spacing-vertical-rhythm-m-2xl)",
+    "variable": "var(--spacing-vertical-rhythm-m-2xl)"
+  },
+  "spacing.verticalRhythm.s.base": {
+    "value": "var(--spacing-vertical-rhythm-s-base)",
+    "variable": "var(--spacing-vertical-rhythm-s-base)"
+  },
+  "spacing.verticalRhythm.s.md": {
+    "value": "var(--spacing-vertical-rhythm-s-md)",
+    "variable": "var(--spacing-vertical-rhythm-s-md)"
+  },
+  "spacing.verticalRhythm.s.lg": {
+    "value": "var(--spacing-vertical-rhythm-s-lg)",
+    "variable": "var(--spacing-vertical-rhythm-s-lg)"
+  },
+  "spacing.verticalRhythm.s.2xl": {
+    "value": "var(--spacing-vertical-rhythm-s-2xl)",
+    "variable": "var(--spacing-vertical-rhythm-s-2xl)"
+  },
   "fonts.heading": {
     "value": "var(--fonts-heading)",
     "variable": "var(--fonts-heading)"
@@ -1098,6 +1150,54 @@ const tokens = {
   "spacing.-4xl": {
     "value": "calc(var(--spacing-4xl) * -1)",
     "variable": "var(--spacing-4xl)"
+  },
+  "spacing.verticalRhythm.l.-base": {
+    "value": "var(--spacing-vertical-rhythm-l-base)",
+    "variable": "var(--spacing-vertical-rhythm-l-base)"
+  },
+  "spacing.verticalRhythm.l.-md": {
+    "value": "var(--spacing-vertical-rhythm-l-md)",
+    "variable": "var(--spacing-vertical-rhythm-l-md)"
+  },
+  "spacing.verticalRhythm.l.-lg": {
+    "value": "var(--spacing-vertical-rhythm-l-lg)",
+    "variable": "var(--spacing-vertical-rhythm-l-lg)"
+  },
+  "spacing.verticalRhythm.l.-2xl": {
+    "value": "var(--spacing-vertical-rhythm-l-2xl)",
+    "variable": "var(--spacing-vertical-rhythm-l-2xl)"
+  },
+  "spacing.verticalRhythm.m.-base": {
+    "value": "var(--spacing-vertical-rhythm-m-base)",
+    "variable": "var(--spacing-vertical-rhythm-m-base)"
+  },
+  "spacing.verticalRhythm.m.-md": {
+    "value": "var(--spacing-vertical-rhythm-m-md)",
+    "variable": "var(--spacing-vertical-rhythm-m-md)"
+  },
+  "spacing.verticalRhythm.m.-lg": {
+    "value": "var(--spacing-vertical-rhythm-m-lg)",
+    "variable": "var(--spacing-vertical-rhythm-m-lg)"
+  },
+  "spacing.verticalRhythm.m.-2xl": {
+    "value": "var(--spacing-vertical-rhythm-m-2xl)",
+    "variable": "var(--spacing-vertical-rhythm-m-2xl)"
+  },
+  "spacing.verticalRhythm.s.-base": {
+    "value": "var(--spacing-vertical-rhythm-s-base)",
+    "variable": "var(--spacing-vertical-rhythm-s-base)"
+  },
+  "spacing.verticalRhythm.s.-md": {
+    "value": "var(--spacing-vertical-rhythm-s-md)",
+    "variable": "var(--spacing-vertical-rhythm-s-md)"
+  },
+  "spacing.verticalRhythm.s.-lg": {
+    "value": "var(--spacing-vertical-rhythm-s-lg)",
+    "variable": "var(--spacing-vertical-rhythm-s-lg)"
+  },
+  "spacing.verticalRhythm.s.-2xl": {
+    "value": "var(--spacing-vertical-rhythm-s-2xl)",
+    "variable": "var(--spacing-vertical-rhythm-s-2xl)"
   },
   "colors.colorPalette.blue.50": {
     "value": "var(--colors-color-palette-blue-50)",

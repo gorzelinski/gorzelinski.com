@@ -28,8 +28,8 @@ import {
   Ul,
   verticalRhythm
 } from '@/design-system'
-import profile from '../../public/gorzelinski.jpg'
-import dog from '../../public/erda-estremera-sxNt9g77PE0-unsplash.jpg'
+import profile from '../../public/images/gorzelinski.jpg'
+import dog from '../../public/images/erda-estremera-sxNt9g77PE0-unsplash.jpg'
 
 export default async function Home({
   params: { lang }
@@ -149,40 +149,6 @@ export default async function Home({
         }}
       >
         <Grid gridTemplateColumns={{ base: '1fr' }} css={verticalRhythm}>
-          <Card orientation="horizontal">
-            <Image src={dog} alt="Dog" />
-            <H3>This is heading</H3>
-            <P>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-              praesentium eveniet cum soluta? Perferendis placeat dolore
-              recusandae!
-            </P>
-            <ButtonLink
-              align="left"
-              style="text"
-              href={localizePath(lang, LINKS.blog)}
-              transition="moveIconForward"
-            >
-              Read post <ChevronForward />
-            </ButtonLink>
-          </Card>
-          <Card orientation="horizontal">
-            <Image src={dog} alt="Dog" />
-            <H3>This is heading</H3>
-            <P>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-              praesentium eveniet cum soluta? Perferendis placeat dolore
-              recusandae!
-            </P>
-            <ButtonLink
-              align="left"
-              style="text"
-              href={localizePath(lang, LINKS.blog)}
-              transition="moveIconForward"
-            >
-              Read post <ChevronForward />
-            </ButtonLink>
-          </Card>
           <Card orientation="horizontal">
             <Image src={dog} alt="Dog" />
             <H3>This is heading</H3>

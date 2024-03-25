@@ -71,7 +71,9 @@ export {
   Callout,
   Image,
   LanguageSwitch,
+  LinkOrA,
   Logo,
+  Post,
   Socials,
   createShareLinks,
   ThemeSwitch,
@@ -79,6 +81,7 @@ export {
 } from './components'
 
 export {
+  Article,
   Background,
   Featured,
   Footer,

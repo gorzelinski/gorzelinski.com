@@ -8,6 +8,7 @@ export const HANDLES = {
 } as const
 
 export const LINKS = {
+  siteUrl: 'https://gorzelinski.com',
   home: '/',
   portfolio: '/portfolio/',
   about: '/about/',
@@ -22,5 +23,6 @@ export const LINKS = {
   facebook: `https://www.facebook.com/${HANDLES.facebook}`,
   instagram: `https://www.instagram.com/${HANDLES.instagram}/`,
   linkedin: `https://www.linkedin.com/in/${HANDLES.linkedin}/`,
-  email: 'hello@gorzelinski.com'
+  email: 'hello@gorzelinski.com',
+  content: 'content'
 } as const

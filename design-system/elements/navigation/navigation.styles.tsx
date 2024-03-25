@@ -6,7 +6,6 @@ export const navigation = cva({
     flexWrap: 'wrap',
     gap: {
       base: 's',
-      sm: 's',
       md: 'm',
       lg: 'l',
       xl: 'xl'
