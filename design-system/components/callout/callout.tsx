@@ -19,8 +19,8 @@ export const Callout = (props: CalloutProps) => {
 
   return (
     <div className={callout(calloutVariantProps)}>
-      {calloutVariantProps.style
-        ? calloutIcon[calloutVariantProps.style]
+      {calloutVariantProps.variant
+        ? calloutIcon[calloutVariantProps.variant]
         : calloutIcon.info}
       {children}
     </div>

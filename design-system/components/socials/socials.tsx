@@ -12,7 +12,7 @@ export const Socials = ({
 
         return (
           <ButtonAnchor
-            style="icon"
+            variant="icon"
             size="s"
             key={name}
             href={url}

@@ -5,7 +5,7 @@ import { callout } from './callout.styles'
 type CalloutVariantProps = RecipeVariantProps<typeof callout>
 export type CalloutProps = CalloutVariantProps & { children: React.ReactNode }
 
-type CalloutStyles = NonNullable<NonNullable<CalloutVariantProps>['style']>
+type CalloutVariants = NonNullable<NonNullable<CalloutVariantProps>['variant']>
 export type CalloutIcons = {
-  [style in CalloutStyles]: JSX.Element
+  [variant in CalloutVariants]: JSX.Element
 }

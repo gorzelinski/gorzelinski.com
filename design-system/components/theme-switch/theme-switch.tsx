@@ -9,7 +9,7 @@ export const ThemeSwitch = ({ ariaLabel }: ThemeSwitchProps) => {
 
   return (
     <Button
-      style="icon"
+      variant="icon"
       aria-label={ariaLabel}
       title={ariaLabel}
       onClick={() => toggleTheme(theme)}

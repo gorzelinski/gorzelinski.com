@@ -7,7 +7,7 @@ export const tableCell = cva({
     padding: 's'
   },
   variants: {
-    style: {
+    weight: {
       heading: {
         fontWeight: 'bold'
       },
@@ -17,6 +17,6 @@ export const tableCell = cva({
     }
   },
   defaultVariants: {
-    style: 'body'
+    weight: 'body'
   }
 })

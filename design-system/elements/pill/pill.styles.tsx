@@ -29,7 +29,7 @@ export const pill = cva({
     ...sharedTransitionProperties
   },
   variants: {
-    style: {
+    variant: {
       info: {
         color: 'primary.400',
         backgroundColor: 'primary.900'
@@ -49,6 +49,6 @@ export const pill = cva({
     }
   },
   defaultVariants: {
-    style: 'info'
+    variant: 'info'
   }
 })

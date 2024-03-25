@@ -5,7 +5,7 @@ export const list = cva({
     listStylePosition: 'inside'
   },
   variants: {
-    style: {
+    variant: {
       disc: {
         listStyleType: 'disc'
       },

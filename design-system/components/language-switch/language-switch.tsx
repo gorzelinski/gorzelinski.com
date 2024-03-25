@@ -30,7 +30,7 @@ export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
 
         return (
           <ButtonAnchor
-            style="nav"
+            variant="nav"
             size="s"
             key={locale}
             lang={locale}

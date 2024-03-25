@@ -30,7 +30,7 @@ export const Post = ({
       <P>{description}</P>
       <ButtonLink
         align="left"
-        style="text"
+        variant="text"
         href={localizePath(lang, `${LINKS.blog}${slug}/`)}
         transition="moveIconForward"
         _hover={{

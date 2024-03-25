@@ -3,12 +3,12 @@ import { tableCell } from './table-cell.styles'
 
 export const Td = styled('td', tableCell, {
   defaultProps: {
-    style: 'body'
+    weight: 'body'
   }
 })
 
 export const Th = styled('th', tableCell, {
   defaultProps: {
-    style: 'heading'
+    weight: 'heading'
   }
 })

@@ -21,7 +21,7 @@ export const code = cva({
     ...sharedTransitionProperties
   },
   variants: {
-    style: {
+    variant: {
       inline: {
         display: 'inline-block',
         color: 'primary.400',
@@ -34,6 +34,6 @@ export const code = cva({
     }
   },
   defaultVariants: {
-    style: 'inline'
+    variant: 'inline'
   }
 })

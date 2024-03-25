@@ -15,7 +15,7 @@ export const Featured = ({ children, heading, link }: FeaturedProps) => {
           {heading}
         </H2>
         <ButtonLink
-          style="text"
+          variant="text"
           align="right"
           alignSelf={{
             base: 'flex-end',

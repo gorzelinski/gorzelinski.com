@@ -29,7 +29,7 @@ export const Navbar = ({ lang, dictionary }: NavbarProps) => {
         className={navbar({ position: 'bottom', structure: 'nested' })}
       >
         <ButtonLink
-          style="nav"
+          variant="nav"
           size="s"
           href={localizePath(lang, LINKS.portfolio)}
           className={selectActiveClass(
@@ -41,7 +41,7 @@ export const Navbar = ({ lang, dictionary }: NavbarProps) => {
           {links.portfolio}
         </ButtonLink>
         <ButtonLink
-          style="nav"
+          variant="nav"
           size="s"
           href={localizePath(lang, LINKS.about)}
           className={selectActiveClass(
@@ -52,7 +52,7 @@ export const Navbar = ({ lang, dictionary }: NavbarProps) => {
           {links.about}
         </ButtonLink>
         <ButtonLink
-          style="nav"
+          variant="nav"
           size="s"
           href={localizePath(lang, LINKS.blog)}
           className={selectActiveClass(
@@ -64,7 +64,7 @@ export const Navbar = ({ lang, dictionary }: NavbarProps) => {
           {links.blog}
         </ButtonLink>
         <ButtonLink
-          style="outline"
+          variant="outline"
           size="s"
           href={localizePath(lang, LINKS.contact)}
         >

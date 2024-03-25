@@ -18,7 +18,7 @@ export const callout = cva({
     ...sharedTransitionProperties
   },
   variants: {
-    style: {
+    variant: {
       info: {
         backgroundColor: 'primary.900',
         color: 'primary.400',
@@ -56,7 +56,7 @@ export const callout = cva({
     }
   },
   defaultVariants: {
-    style: 'info',
+    variant: 'info',
     alignIcon: 'right'
   }
 })

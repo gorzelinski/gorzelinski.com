@@ -75,7 +75,7 @@ export const button = cva({
         }
       }
     },
-    style: {
+    variant: {
       primary: {
         backgroundColor: 'primary.400',
         color: 'gray.900',
@@ -269,25 +269,25 @@ export const button = cva({
     }
   },
   defaultVariants: {
-    style: 'primary',
+    variant: 'primary',
     size: 'm',
     width: 'fixed'
   },
   compoundVariants: [
     {
-      style: ['primary', 'outline', 'text'],
+      variant: ['primary', 'outline', 'text'],
       css: {
         borderRadius: 's'
       }
     },
     {
-      style: 'nav',
+      variant: 'nav',
       css: {
         borderRadius: 'none'
       }
     },
     {
-      style: 'icon',
+      variant: 'icon',
       css: {
         borderRadius: 'circle'
       }

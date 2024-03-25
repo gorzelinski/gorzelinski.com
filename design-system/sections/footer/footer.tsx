@@ -21,7 +21,7 @@ export const Footer = ({ lang, dictionary }: FooterProps) => {
         <VStack alignItems="start" gap="xs">
           <Small>{section.footer.email}</Small>
           <ButtonAnchor
-            style="text"
+            variant="text"
             size="s"
             align="left"
             href={`mailto:${LINKS.email}`}
@@ -46,48 +46,52 @@ export const Footer = ({ lang, dictionary }: FooterProps) => {
         </Small>
         <div className={navigation({ align: 'left' })}>
           <ButtonLink
-            style="nav"
+            variant="nav"
             size="s"
             href={localizePath(lang, LINKS.home)}
           >
             {links.home}
           </ButtonLink>
           <ButtonLink
-            style="nav"
+            variant="nav"
             size="s"
             href={localizePath(lang, LINKS.portfolio)}
           >
             {links.portfolio}
           </ButtonLink>
           <ButtonLink
-            style="nav"
+            variant="nav"
             size="s"
             href={localizePath(lang, LINKS.about)}
           >
             {links.about}
           </ButtonLink>
           <ButtonLink
-            style="nav"
+            variant="nav"
             size="s"
             href={localizePath(lang, LINKS.uses)}
           >
             {links.uses}
           </ButtonLink>
           <ButtonLink
-            style="nav"
+            variant="nav"
             size="s"
             href={localizePath(lang, LINKS.blog)}
           >
             {links.blog}
           </ButtonLink>
           <ButtonLink
-            style="nav"
+            variant="nav"
             size="s"
             href={localizePath(lang, LINKS.newsletter)}
           >
             {links.newsletter}
           </ButtonLink>
-          <ButtonLink style="nav" size="s" href={localizePath(lang, LINKS.rss)}>
+          <ButtonLink
+            variant="nav"
+            size="s"
+            href={localizePath(lang, LINKS.rss)}
+          >
             {links.rss}
           </ButtonLink>
         </div>
