@@ -1,3 +1,4 @@
+import { css } from '@/styled-system/css'
 import { callout } from './callout.styles'
 import { CalloutIcons, CalloutProps } from './callout.types'
 import {
@@ -15,10 +16,10 @@ const calloutIcon: CalloutIcons = {
 }
 
 export const Callout = (props: CalloutProps) => {
-  const { children, ...calloutVariantProps } = props
+  const { children, css: cssProp, ...calloutVariantProps } = props
 
   return (
-    <div className={callout(calloutVariantProps)}>
+    <div className={css(callout.raw(calloutVariantProps), cssProp)}>
       {calloutVariantProps.variant
         ? calloutIcon[calloutVariantProps.variant]
         : calloutIcon.info}
