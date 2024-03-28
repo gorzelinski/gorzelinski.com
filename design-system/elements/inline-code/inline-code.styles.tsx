@@ -17,23 +17,14 @@ export const inlineCode = cva({
       lg: '2xs',
       '2xl': 'xs'
     },
+    display: 'inline-block',
+    color: 'primary.400',
+    backgroundColor: 'gray.800',
+    borderRadius: 's',
+    paddingX: 'xs',
+    padding: '2xs',
+    boxShadow: 'neumorphism.closest',
     transitionProperty: 'background-color, box-shadow, color',
     ...sharedTransitionProperties
-  },
-  variants: {
-    variant: {
-      inline: {
-        display: 'inline-block',
-        color: 'primary.400',
-        backgroundColor: 'gray.800',
-        borderRadius: 's',
-        paddingX: 'xs',
-        padding: '2xs',
-        boxShadow: 'neumorphism.closest'
-      }
-    }
-  },
-  defaultVariants: {
-    variant: 'inline'
   }
 })
