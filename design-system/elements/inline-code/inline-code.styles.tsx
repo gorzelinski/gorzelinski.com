@@ -1,7 +1,7 @@
 import { cva } from '@/styled-system/css'
 import { sharedTransitionProperties } from '../../utils'
 
-export const code = cva({
+export const inlineCode = cva({
   base: {
     fontFamily: 'code',
     fontWeight: 'regular',

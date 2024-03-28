@@ -1,1 +1,1 @@
-export { InlineCode } from './code'
+export { InlineCode } from './inline-code'
