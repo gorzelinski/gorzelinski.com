@@ -126,6 +126,12 @@ export const semanticTokens = defineSemanticTokens({
           base: '{colors.light.gray.50}',
           _dark: '{colors.dark.gray.50}'
         }
+      },
+      25: {
+        value: {
+          base: '{colors.light.gray.25}',
+          _dark: '{colors.dark.gray.25}'
+        }
       }
     },
     // Danger

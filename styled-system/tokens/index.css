@@ -216,6 +216,7 @@
   --colors-primary-700: var(--colors-light-blue-700);
   --colors-primary-800: var(--colors-light-blue-800);
   --colors-primary-900: var(--colors-light-blue-900);
+  --colors-gray-25: var(--colors-light-gray-25);
   --colors-gray-50: var(--colors-light-gray-50);
   --colors-gray-100: var(--colors-light-gray-100);
   --colors-gray-200: var(--colors-light-gray-200);
@@ -290,6 +291,7 @@
   --colors-primary-700: var(--colors-dark-blue-700);
   --colors-primary-800: var(--colors-dark-blue-800);
   --colors-primary-900: var(--colors-dark-blue-900);
+  --colors-gray-25: var(--colors-dark-gray-25);
   --colors-gray-50: var(--colors-dark-gray-50);
   --colors-gray-100: var(--colors-dark-gray-100);
   --colors-gray-200: var(--colors-dark-gray-200);

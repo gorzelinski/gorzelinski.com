@@ -863,6 +863,10 @@ const tokens = {
     "value": "var(--colors-primary-900)",
     "variable": "var(--colors-primary-900)"
   },
+  "colors.gray.25": {
+    "value": "var(--colors-gray-25)",
+    "variable": "var(--colors-gray-25)"
+  },
   "colors.gray.50": {
     "value": "var(--colors-gray-50)",
     "variable": "var(--colors-gray-50)"
