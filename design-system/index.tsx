@@ -69,6 +69,7 @@ export {
 
 export {
   Callout,
+  Code,
   Image,
   LanguageSwitch,
   LinkOrA,
@@ -77,7 +78,9 @@ export {
   Socials,
   createShareLinks,
   ThemeSwitch,
-  Typewriter
+  Typewriter,
+  preToCodeProps,
+  type PreProps
 } from './components'
 
 export {
