@@ -8,11 +8,9 @@ export function isTerminal(language: Language) {
 export function preToCodeProps(preProps: PreProps): CodeProps {
   const language = preProps.props.className.replace('language-', '')
   const codeString = preProps.props.children.trim()
-  const metaString = preProps.props.metastring
 
   return {
     language,
-    codeString,
-    metaString
+    codeString
   }
 }

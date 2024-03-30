@@ -2,6 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
+import rehypeMdxCodeProps from 'rehype-mdx-code-props'
+import { Pluggable } from 'unified'
 import readingTime, { ReadTimeResults } from 'reading-time'
 import { LINKS } from '@/constants'
 import { getMDXComponents } from '@/mdx-components'
@@ -57,7 +59,9 @@ export async function getMDX(
     options: {
       parseFrontmatter: true,
       mdxOptions: {
-        remarkPlugins: [remarkGfm]
+        format: 'mdx',
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: [rehypeMdxCodeProps as Pluggable]
       }
     }
   })

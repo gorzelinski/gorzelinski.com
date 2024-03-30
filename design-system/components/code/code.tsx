@@ -11,7 +11,7 @@ import { CodeLine } from './code-line'
 import { CodeLineNumber } from './code-line-number'
 import { CodeToken } from './code-token'
 
-export const Code = ({ css, codeString, language, metaString }: CodeProps) => {
+export const Code = ({ css, codeString, language, title }: CodeProps) => {
   if (!codeString) return null
 
   return (
@@ -19,7 +19,7 @@ export const Code = ({ css, codeString, language, metaString }: CodeProps) => {
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={{ ...style }} css={css}>
           <CodeHeader>
-            {metaString ? <CodeTitle>{metaString}</CodeTitle> : null}
+            {title ? <CodeTitle>{title}</CodeTitle> : null}
             <CodeLanguage>
               {isTerminal(language) ? '🔴  🟡  🟢' : language.toUpperCase()}
             </CodeLanguage>
