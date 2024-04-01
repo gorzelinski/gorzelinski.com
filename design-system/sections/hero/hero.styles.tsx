@@ -13,7 +13,7 @@ export const hero = cva({
     minHeight: 'breakpoint-md',
     _portrait: {
       minHeight: {
-        base: 'calc(100svh - 2 * var(--spacing-xl))',
+        base: 'calc(100svh - 2 * token(spacing.xl))',
         md: 'breakpoint-md'
       }
     },

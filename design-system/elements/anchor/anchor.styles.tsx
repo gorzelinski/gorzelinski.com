@@ -7,7 +7,7 @@ export const anchor = cva({
     cursor: 'pointer',
     color: 'primary.400',
     textDecorationLine: 'underline',
-    textUnderlineOffset: 'var(--spacing-2xs)',
+    textUnderlineOffset: 'token(spacing.2xs)',
     textDecorationThickness: 'auto',
     textDecorationColor: 'transparent',
     transitionProperty: 'color, text-decoration-color',

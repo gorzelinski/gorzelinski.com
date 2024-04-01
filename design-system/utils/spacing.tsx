@@ -39,10 +39,10 @@ export const verticalRhythm = {
   marginTop: {
     '2xmarginBottom': css.raw({
       marginTop: {
-        base: 'calc(2 * var(--spacing-vertical-rhythm-m-base))',
-        md: 'calc(2 * var(--spacing-vertical-rhythm-m-md))',
-        lg: 'calc(2 * var(--spacing-vertical-rhythm-m-lg))',
-        '2xl': 'calc(2 * var(--spacing-vertical-rhythm-m-2xl))'
+        base: 'calc(2 * token(spacing.verticalRhythm.m.base))',
+        md: 'calc(2 * token(spacing.verticalRhythm.m.md))',
+        lg: 'calc(2 * token(spacing.verticalRhythm.m.lg))',
+        '2xl': 'calc(2 * token(spacing.verticalRhythm.m.2xl))'
       }
     }),
     l: css.raw({

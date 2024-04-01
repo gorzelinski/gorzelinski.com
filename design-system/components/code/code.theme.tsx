@@ -1,5 +1,5 @@
-import { token } from '@/styled-system/tokens'
 import { PrismTheme } from 'prism-react-renderer'
+import { token } from '@/styled-system/tokens'
 
 export const codeTheme: PrismTheme = {
   plain: {

@@ -22,7 +22,7 @@ export const card = cva({
         alignContent: 'start',
         justifyItems: 'start',
         '& > img': {
-          minWidth: 'calc(100% + (2 * var(--spacing-m)))',
+          minWidth: 'calc(100% + (2 * token(spacing.m)))',
           marginTop: '-m',
           marginX: '-m'
         }
@@ -43,13 +43,13 @@ export const card = cva({
           aspectRatio: 'auto',
           base: {
             gridRow: 'auto',
-            minWidth: 'calc(100% + (2 * var(--spacing-m)))',
+            minWidth: 'calc(100% + (2 * token(spacing.m)))',
             marginTop: '-m',
             marginX: '-m'
           },
           sm: {
             gridRow: '1 / 5',
-            minWidth: 'calc(100% + var(--spacing-m))',
+            minWidth: `calc(100% + token(spacing.m))`,
             marginY: '-m',
             marginLeft: '-m'
           }

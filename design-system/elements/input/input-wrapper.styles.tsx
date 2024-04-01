@@ -7,7 +7,7 @@ export const inputWrapper = cva({
     ...inputFontSize,
     '& > input': {
       width: '100%',
-      paddingLeft: 'calc(2 * var(--spacing-s) + 1lh)'
+      paddingLeft: 'calc(2 * token(spacing.s) + 1lh)'
     },
     '& > span': {
       position: 'absolute',

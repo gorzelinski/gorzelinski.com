@@ -43,14 +43,14 @@ export const callout = cva({
     alignIcon: {
       left: {
         '& > span:first-child': {
-          top: 'calc(-1 * var(--spacing-m))',
-          left: 'calc(-1 * var(--spacing-m))'
+          top: 'calc(-1 * token(spacing.m))',
+          left: 'calc(-1 * token(spacing.m))'
         }
       },
       right: {
         '& > span:first-child': {
-          top: 'calc(-1 * var(--spacing-m))',
-          right: 'calc(-1 * var(--spacing-m))'
+          top: 'calc(-1 * token(spacing.m))',
+          right: 'calc(-1 * token(spacing.m))'
         }
       }
     }

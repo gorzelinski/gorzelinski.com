@@ -8,7 +8,7 @@ export const input = cva({
     fontFamily: 'heading',
     fontWeight: 'medium',
     letterSpacing: 'wide',
-    padding: 'calc(var(--spacing-s) - var(--spacing-3xs))',
+    padding: 'calc(token(spacing.s) - token(spacing.3xs))',
     color: 'gray.200',
     backgroundColor: 'gray.900',
     border: 'gray.subtle',

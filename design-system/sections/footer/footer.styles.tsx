@@ -18,7 +18,7 @@ export const footer = cva({
       md: 'xl'
     },
     paddingBottom: {
-      base: 'calc(4 * var(--spacing-s) + var(--line-heights-2xs) + var(--spacing-s))',
+      base: 'calc(4 * token(spacing.s) + token(lineHeights.2xs) + token(spacing.s))',
       md: 'xl'
     },
     transitionProperty: 'background-color, border-color',

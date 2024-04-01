@@ -239,12 +239,12 @@ export const button = cva({
         },
         _hover: {
           '& > span': {
-            transform: 'translateX(var(--spacing-s))'
+            transform: 'translateX(token(spacing.s))'
           }
         },
         _active: {
           '& > span': {
-            transform: 'translateX(calc(2 * var(--spacing-s)))'
+            transform: 'translateX(calc(2 * token(spacing.s)))'
           }
         }
       },
@@ -257,12 +257,12 @@ export const button = cva({
         },
         _hover: {
           '& > span': {
-            transform: 'translateX(calc(-1 * var(--spacing-s)))'
+            transform: 'translateX(calc(-1 * token(spacing.s)))'
           }
         },
         _active: {
           '& > span': {
-            transform: 'translateX(calc(-2 * var(--spacing-s)))'
+            transform: 'translateX(calc(-2 * token(spacing.s)))'
           }
         }
       }
