@@ -3,6 +3,7 @@ import { LINKS } from './constants'
 import {
   Blockquote,
   Callout,
+  Code,
   Caption,
   Em,
   Figcaption,
@@ -30,7 +31,9 @@ import {
   Thead,
   Tr,
   Ul,
-  verticalRhythm
+  verticalRhythm,
+  preToCodeProps,
+  PreProps
 } from './design-system'
 
 const components: MDXComponents = {
@@ -102,12 +105,24 @@ const components: MDXComponents = {
   li: ({ children }) => <Li css={verticalRhythm.marginBottom.s}>{children}</Li>,
   ol: ({ children }) => <Ol css={verticalRhythm.marginBottom.m}>{children}</Ol>,
   p: ({ children }) => <P css={verticalRhythm.marginBottom.m}>{children}</P>,
+  pre: ({ children, title }) => {
+    const { codeString, language } = preToCodeProps(children as PreProps)
+
+    return (
+      <Code
+        css={verticalRhythm.marginBottom.m}
+        codeString={codeString}
+        language={language}
+        title={title}
+      />
+    )
+  },
   small: ({ children }) => <Small>{children}</Small>,
   strong: ({ children }) => <Strong>{children}</Strong>,
   sub: ({ children }) => <Sub>{children}</Sub>,
   sup: ({ children }) => <Sup>{children}</Sup>,
   table: ({ children }) => (
-    <TableWrapper>
+    <TableWrapper css={verticalRhythm.marginBottom.m}>
       <Table>{children}</Table>
     </TableWrapper>
   ),
@@ -119,8 +134,12 @@ const components: MDXComponents = {
   ul: ({ children }) => <Ul css={verticalRhythm.marginBottom.m}>{children}</Ul>
 }
 
-const customComponents = {
-  Callout
+const customComponents: MDXComponents = {
+  Callout: ({ children, ...props }) => (
+    <Callout {...props} css={verticalRhythm.marginBottom.m}>
+      {children}
+    </Callout>
+  )
 }
 
 export function getMDXComponents(
