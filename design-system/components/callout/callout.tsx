@@ -1,19 +1,7 @@
 import { css } from '@/styled-system/css'
 import { callout } from './callout.styles'
-import { CalloutIcons, CalloutProps } from './callout.types'
-import {
-  AlertCircle,
-  CheckmarkCircle,
-  InformationCircle,
-  Warning
-} from '../../elements'
-
-const calloutIcon: CalloutIcons = {
-  info: <InformationCircle size="l"></InformationCircle>,
-  danger: <AlertCircle size="l"></AlertCircle>,
-  warning: <Warning size="l"></Warning>,
-  success: <CheckmarkCircle size="l"></CheckmarkCircle>
-}
+import { CalloutProps } from './callout.types'
+import { calloutIcon } from './callout-icon'
 
 export const Callout = (props: CalloutProps) => {
   const { children, css: cssProp, ...calloutVariantProps } = props
