@@ -20,6 +20,9 @@ export const listItem = cva({
     },
     transitionProperty: 'color',
     ...sharedTransitionProperties,
+    _last: {
+      margin: '0'
+    },
     _marker: {
       color: 'primary.400'
     }
