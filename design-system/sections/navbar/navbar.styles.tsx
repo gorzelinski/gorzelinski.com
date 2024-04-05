@@ -10,9 +10,9 @@ export const navbar = cva({
     zIndex: 'farther',
     opacity: '95',
     padding: {
-      base: 's',
-      sm: 'm',
-      md: 'l'
+      base: 'm',
+      sm: 'l',
+      md: 'xl'
     },
     transitionProperty: 'background-color, border-color',
     ...sharedTransitionProperties
@@ -36,7 +36,7 @@ export const navbar = cva({
       nested: {
         padding: {
           base: 's',
-          sm: 's',
+          sm: 'm',
           md: '0'
         },
         md: {
