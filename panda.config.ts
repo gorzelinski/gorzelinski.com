@@ -1,5 +1,5 @@
 import { defineConfig } from '@pandacss/dev'
-import { semanticTokens, tokens } from './theme'
+import { globalCss, semanticTokens, tokens } from './theme'
 
 export default defineConfig({
   // Whether to use css reset
@@ -22,6 +22,7 @@ export default defineConfig({
     light: '[data-color-mode=light] &',
     dark: '[data-color-mode=dark] &'
   },
+  globalCss,
   theme: {
     tokens,
     semanticTokens,
