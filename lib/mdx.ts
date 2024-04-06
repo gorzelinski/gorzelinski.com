@@ -10,6 +10,8 @@ import { getMDXComponents } from '@/mdx-components'
 import { Locale } from '@/i18n.config'
 import { localizeFileName } from './i18n'
 
+type Pages = (typeof LINKS)['blog' | 'portfolio']
+
 type Frontmatter = {
   slug: string
   title: string
@@ -30,17 +32,25 @@ type Post = Frontmatter & {
   type: 'post'
 }
 
-type Options = Post
+type Project = Frontmatter & {
+  client: string
+  services: string[]
+  deliverables: string[]
+  links: [{ text: string; href: string }]
+  type: 'project'
+}
 
 type MDX = {
-  frontmatter: Options
+  frontmatter: Post | Project
   content: string
 }
 
+type MDXTypes = Post['type'] | Project['type']
+
 const root = process.cwd()
 
-export async function getMDX(
-  page: (typeof LINKS)['blog' | 'portfolio'],
+export async function getMDX<Type extends MDXTypes>(
+  page: Pages,
   slug: string,
   locale: Locale
 ) {
@@ -53,7 +63,9 @@ export async function getMDX(
   )
   const file = fs.readFileSync(filePath, 'utf-8')
 
-  const { frontmatter, content } = await compileMDX<MDX['frontmatter']>({
+  const { frontmatter, content } = await compileMDX<
+    Extract<MDX['frontmatter'], { type: Type }>
+  >({
     source: file,
     components: getMDXComponents(page, slug),
     options: {
