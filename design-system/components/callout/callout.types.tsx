@@ -9,6 +9,4 @@ export type CalloutProps = CalloutVariantProps & {
 }
 
 type CalloutVariants = NonNullable<NonNullable<CalloutVariantProps>['variant']>
-export type CalloutIcons = {
-  [variant in CalloutVariants]: JSX.Element
-}
+export type CalloutIcons = Record<CalloutVariants, JSX.Element>
