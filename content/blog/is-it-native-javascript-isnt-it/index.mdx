@@ -1,0 +1,251 @@
+---
+title: Is it native JavaScript? Isn’t it??
+description: "My first encounter with optional chaining and nullish coalescing operator."
+date: 2022-07-23T16:00:00+02:00
+updated: 2022-07-23T16:00:00+02:00
+image:
+  alt: "Question mark composed with dots on yellow background"
+  caption: "Photo by Anna Shvets"
+  src: "pexels-anna-shvets-3683053.jpg"
+categories: ["web development"]
+tags: ["javascript"]
+type: "post"
+---
+
+The first time I used Gatsby, I spotted some strange code snippet.
+
+```jsx title="src/components/seo.js"
+const defaultTitle = site.siteMetadata?.title
+```
+
+I wondered, "what's with that question mark after dot? Is it some special Gatsby syntax?" That didn't make sense to me, so I started looking for more information. After some research and Googling stupid questions, I found the term I was looking for - **optional chaining.** I was surprised - it is a native JavaScript. This syntax was introduced in ES2020 (on the day of writing this post, it is at stage four of the proposal process). First, we look at some errors to see why it's useful.
+
+<Callout variant="info">
+
+**39nth Technical Committee (TC39)** is a group under ECMA International that contain JavaScript developers, implementers, and academics. The committee collaborates with the community to maintain and evolve ECMAScript specification (JavaScript conforms to that specification). The development process has four stages. The fourth stage means the feature is ready to be included in the last draft of the specification.
+
+</Callout>
+
+If you're not a complete JavaScript beginner, you've probably seen a message like this: "Cannot read properties of undefined." It usually means that you want to access a property of a nested object that doesn't exist. Let's reproduce this error, but this time on purpose. Imagine you want to display detailed information about computers - laptops and desktops. They almost consist of the same parts, but some laptops don't have a dedicated graphics card - there is no information about it. If you try to access that information, you'll get our error.
+
+```js
+const desktop = {
+  processor: {
+    manufacturer: "Intel",
+    type: "I7",
+  },
+  graphicsCard: {
+    manufacturer: "Nvidia",
+  },
+  //...more components
+}
+
+const laptop = {
+  processor: {
+    manufacturer: "AMD",
+    type: "Ryzen 5",
+  },
+  //...more components without graphics card
+}
+
+const info = laptop.graphicsCard.manufacturer
+//Uncaught TypeError: Cannot read properties of undefined (reading 'manufacturer')
+```
+
+Let's try to solve that error. First of all, we can fill in that information.
+
+```js
+const laptop = {
+  processor: {
+    manufacturer: "AMD",
+    type: "Ryzen 5",
+  },
+  graphicsCard: {
+    manufacturer: "",
+  },
+}
+
+const info = laptop.graphicsCard.manufacturer //No error. Returns ""
+```
+
+But what, when we couldn't? We don't always have control over API. Another problem is when an object has more properties - every one of them should be an empty `string`, `null`, etc. Not ideal. JavaScript is a dynamic programming language, so there can be `null` or `undefined` values. We need to deal with situations like this. We can use a logical expression to solve this.
+
+```js
+const laptop = {
+  processor: {
+    manufacturer: "AMD",
+    type: "Ryzen 5",
+  },
+}
+
+const info = laptop && laptop.graphicsCard && laptop.graphicsCard.manufacturer //undefined
+```
+
+It works. But it is verbose and clunky. We're only accessing one property, and we need two logical operators. Imagine there were many of them. Maybe conditionals will help.
+
+```js
+const laptop = {
+  processor: {
+    manufacturer: "AMD",
+    type: "Ryzen 5",
+  },
+}
+
+const info = laptop
+  ? undefined
+  : laptop.graphicsCard
+  ? undefined
+  : laptop.graphicsCard.manufacturer //undefined
+```
+
+Was I writing something about clunky code? That looks even worse. Nested ternary operators are rarely a good idea. But JavaScript has syntax for error handling. Let's try...to catch this error.
+
+```js
+const laptop = {
+  processor: {
+    manufacturer: "AMD",
+    type: "Ryzen 5",
+  },
+}
+
+let info
+try {
+  info = laptop.graphicsCard.manufacturer
+} catch (error) {
+  info = undefined //undefined
+}
+```
+
+It is more readable, but it is still verbose. We're defining new scopes between braces and we can't use `const`. It's time to solve this problem like a real, JavaScript developer - let's use a third-party library!
+
+```js
+const R = require("ramda")
+
+const laptop = {
+  processor: {
+    manufacturer: "AMD",
+    type: "Ryzen 5",
+  },
+}
+
+const info = R.path(["graphicsCard", "manufacturer"], laptop) //undefined
+```
+
+This snippet is concise and readable. But do we need to use a third-party library for something basic like this? No, not anymore. Optional chaining comes to the rescue!
+
+```js
+const laptop = {
+  processor: {
+    manufacturer: "AMD",
+    type: "Ryzen 5",
+  },
+}
+
+const info = laptop?.graphicsCard?.manufacturer //undefined
+```
+
+With optional chaining, you can try to access nested properties that may not be available. The above snippet won't throw an error. It will return `undefined`. If a reference is `null` or `undefined`, the expression returns `undefined`. In my opinion, the `?.` operator is concise and intuitive. Is like a question: "Is there a manufacturer (of the graphics card) property on the laptop object?". If so - return it. Otherwise, return `undefined`. This operator is more powerful. You can also use the syntax with function calls.
+
+```js
+const laptop = {
+  processor: {
+    manufacturer: "AMD",
+    type: "Ryzen 5",
+  },
+}
+
+const info = laptop.nonExistingMethod?.() //undefined
+```
+
+The object has not any method. Still, the snippet above doesn't throw an exception. It returns `undefined`. Let's go further - can you use this operator with arrays? Yes, you can.
+
+```js
+const laptop = {
+  ram: ["Kingston 8GB", "Kingston 8GB"],
+}
+
+const info = laptop.ram?.[3] //undefined
+```
+
+Even though there are no four elements in the array, the code doesn't throw an error.
+
+## Nullish coalescing operator
+
+If we "add" another question mark to our operator and remove the dot, we get a new logical operator - **the nullish coalescing operator.**
+
+```js
+const laptop = {
+  processor: {
+    type: "Ryzen 5",
+  },
+}
+
+const info = laptop.graphicsCard?.manufacturer ?? "integrated" //integrated
+```
+
+You can interpret the above snippet like this: "If a graphics card manufacturer in the laptop object exists, assign its value to info variable. Otherwise, assign the integrated string." From the previous section, we know that our optional chaining returns `undefined`. Then interpreter moves to the logical operator. The nullish coalescing operator is a specific case of logical OR. It returns the right-hand side operand when its left-hand side operand is nullish (`null` or `undefined`). Logical OR returns the right-hand side operand if the left-hand side operand is any `falsy` value.
+
+```js
+const a = null ?? "default" //"default"
+const b = undefined ?? "default" //"default"
+const c = "" ?? "default" //""
+const d = NaN ?? "default" //NaN - it returns every other falsy value
+
+const e = "" || "default" //"default"
+const f = NaN || "default" //"default"
+const g = 0 || "default" //"default" - it returns "default" for falsy values
+```
+
+The behavior of logical OR can lead to unexpected errors. For example, if you want a default number, but 0 is a correct, expected value. That's why the nullish coalescing operator is handy. It is stricter and can prevent bugs like this. But it does not replace logical OR. Also, you can't chain the nullish coalescing operator with other logical operators without parenthesis.
+
+<Callout variant="danger">
+
+`null || undefined ?? "default"`
+
+</Callout>
+
+The above code raises a syntax error.
+
+<Callout variant="success">
+
+`(null || undefined) ?? "default"`
+
+</Callout>
+
+The above code is correct and returns "default.”
+
+## Bonus - logical nullish assignment
+
+While researching this post, I found one more operator with a double question mark. If we "add" an equal sign to the nullish coalescing operator, we get **the logical nullish assignment.** It is easy to deduce what it is doing. Instead of returning, it assigns a particular value to x if x is nullish.
+
+```js
+const laptop = {
+  processor: "Intel",
+}
+
+laptop.processor ??= "AMD"
+laptop.graphicsCard ??= "Nvidia"
+
+console.log(laptop.processor) //"Intel"
+console.log(laptop.graphicsCard) //"Nvidia"
+```
+
+It is a shortcut for the expression with the nullish coalescing operator. The two expressions below are equivalents.
+
+```js
+const laptop = {
+  processor: "Intel",
+}
+
+laptop.graphicsCard ??= "Nvidia"
+laptop.graphicsCard ?? (laptop.graphicsCard = "Nvidia")
+//Above two expressions do the same thing
+
+console.log(laptop.graphicsCard) //"Nvidia"
+```
+
+If you want more examples or details, visit MDN Web Docs:
+
+- [Optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+- [Nullish coalescing operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator)
+- [Logical nullish assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_nullish_assignment)
