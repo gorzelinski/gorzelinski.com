@@ -25,6 +25,11 @@ export const listItem = cva({
     },
     _marker: {
       color: 'primary.400'
+    },
+    '& > ul': {
+      marginLeft: 'l',
+      marginTop: 'l',
+      listStyleType: 'circle'
     }
   }
 })
