@@ -1,0 +1,187 @@
+---
+title: Konwertowanie tokenów projektowych na zmienne CSS z Node.js
+description: "Konwertowanie tokenów projektowych jest procesem podatnym na błędy - przekonałem się o tym na własnej skórze. Dlatego stworzyłem prosty skrypt dla środowiska Node.js, który pomoże mi z tym zadaniem."
+date: 2022-09-14T16:00:00+02:00
+updated: 2022-09-14T16:00:00+02:00
+image:
+  alt: "Zdjęcie zmiennych CSS w edytorze Visual Studio Code"
+  caption: "Zdjęcie autorstwa Pankaj Patel"
+  src: "pankaj-patel-4oAFasAPftg-unsplash.jpg"
+categories: ["web development"]
+tags: ["node", "javascript", "css"]
+type: "post"
+---
+
+Ostatnio konwertowałem tokeny projektowe w języku JavaScript do zmiennych CSS. Miałem plik JS z różnymi aspektami strony umieszczonymi we właściwościach obiektu: rozmiary i rodzaje fontów, kolory itp. Wyglądało to podobnie do tego fragmentu kodu.
+
+```js
+//tokens.js
+
+module.exports = {
+  font: {
+    family: {
+      heading: "'Source Sans Pro', sans-serif",
+      body: "'Roboto', sans-serif",
+    },
+    weight: {
+      normal: "400",
+      semibold: "500",
+    },
+  },
+  color: {
+    background: "#ffffff",
+    primary: {
+      light: "#4266b3",
+      base: "#16233f",
+      dark: "#06080f",
+    },
+  },
+  //more tokens
+}
+```
+
+Chciałem mieć zmienne CSS, więc przekopiowałem wszystkie właściwości z pliku JS do CSS. Taki był tego efekt.
+
+```css
+/* tokens.css */
+
+:root {
+  --font-family-heading: "'Source Sans Pro', sans-serif";
+  --font-family-body: "'Roboto', sans-serif";
+  --font-weight-normal: "400";
+  --font-weight-semibold: "500";
+  --color-background: "#ffffff";
+  --color-primary-light: "#4266b3";
+  --color-primary-default: "#16233f";
+  --color-primary-dark: "#06080f";
+  /* more variables */
+}
+```
+
+Nagle, przeniosłem się w czasie do lat 90. Moja strona wyglądała jakby zrobił ją Tim Berners-Lee we własnej osobie. Nie było żadnych stylów. Coś z układem było nie tak. Wprowadziłem także inne zmiany i pomyślałem, że problem leży w fazie budowania albo w styled-components. Debugowałem ten problem przez godzinę. . . żeby odkryć zbędne, podwójne cudzysłowy w pliku CSS. Tak, styled-components nie zadziałają z niepoprawnymi zmiennymi. Przestanę się zawstydzać publicznie i użyję tego błędu, aby nauczyć się czegoś publicznie.
+
+## Cel
+
+Chcę zautomatyzować ten proces konwersji tokenów JS na zmienne CSS. Skrypt będzie przyjmował plik JavaScript z zagnieżdżonymi właściwościami motywu i zwróci plik CSS z poprawnie nazwanymi zmiennymi CSS. Chcę osiągnąć coś jak na przykładach powyżej. Ale bez nadmiarowych podwójnych cudzysłowów. Wiem, że prawdopodobnie istnieje gdzieś taki parser, ale chcę go napisać od zera i pouczyć się node.js. A jeżeli nie ma - poczuję się lepiej nie wymyślając koła na nowo. Możesz uczyć się ze mną. Trochę wiedzy o języku JavaScript i CSS przyda się, aby kontynuować.
+
+## Środowisko Node
+
+Ja już mam zainstalowany Node.js na mojej maszynie. Jeżeli nie posiadasz tego środowiska uruchomieniowego, tu jest [link do pobrania](https://nodejs.org/en/download/). Możesz użyć także [nvm](https://github.com/nvm-sh/nvm), aby zarządzać wieloma wersjami środowiska node. W tym projekcie użyję najnowszą wersję node - 18.3.0. Możesz sprawdzić swoją wersję node wpisując `node -v` lub `nvm ls`.
+
+Mając node'a zainstalowanego, zainicjujmy nowy projekt z `npm init`. Prawdopodobnie nie użyjemy żadnej zewnętrznej paczki, ale inicjacja nowej nie zaszkodzi. Po przedarciu się przez proces konfiguracji, powinniśmy dostać nowy plik package.json.
+
+## Skrypt do konwertowania tokenów projektowych
+
+Ze skonfigurowanym środowiskiem możemy utworzyć nasz pierwszy plik - index.js. Jeżeli wszystko działa poprawnie, ten fragment kodu powinien wypisać “hello” w terminalu.
+
+```js
+console.log("Hello")
+```
+
+Na początek, zaimportujmy moduły, których użyjemy. Wykorzystam składnię `require()` dla dynamicznych importów. Ale możesz także użyć standardowych modułów ES - w tym celu musisz dodać pole `"type": "module"` do pliku package.json.
+
+```js
+//index.js
+
+const { argv } = require("node:process")
+const { parse, format, normalize } = require("node:path")
+const { writeFile } = require("node:fs/promises")
+```
+
+Później musimy także zaimportować tokeny z pliku JS. Możemy ponownie wykorzystać require, ale tym razem z lokalną ścieżką do stylów podaną jako argument.
+
+```js
+const tokens = require("./tokens.js")
+```
+
+Mając zaimportowany obiekt ze stylami, pora na trudniejszą część - konwertowanie ich do zmiennych CSS. Wszystkie style są w (zagnieżdżonych) obiektach. Na przykład standardowy rozmiar fontu jest zagnieżdżony kolejno w: font, size i body. Chcemy przetransformować go do zmiennej, która wygląda tak: `--font-size-body: 1.5rem`. Pomyślmy co musimy zrobić. Musimy konkatenować klucze z obiektów myślnikami, a gdy już nie ma więcej zagnieżdżonych obiektów, musimy dodać wartość do naszej świeżo przygotowanej zmiennej CSS.
+
+```js
+const tokensToCss = (object, base = `-`) =>
+  Object.entries(object).reduce((css, [key, value]) => {
+    let newBase = base + `-${key}`
+    if (typeof value !== "object") {
+      return css + newBase + `: ${value};\n`
+    }
+    return css + tokensToCss(value, newBase)
+  }, ``)
+```
+
+Ten krótki fragment kodu może być trudny do zrozumienia, więc postaraj się za mną podążać. Utworzyliśmy funkcję parsującą z dwoma parametrami: obiektem do sparsowania i aktualną podstawą. Wykorzystując metodę `Object.entries()`, zwracamy pary klucz-wartość wewnątrz tablicy. Na zwróconej tablicy wywołujemy metodę `reduce()`. Metoda ta przyjmuje dwa parametry: funkcję callback, która będzie wywołana dla każdego elementu tablicy i wartość początkową - pusty string. Wymieniony callback sam przyjmuje dwa parametry: poprzednią wartość, gdzie będziemy trzymać zakumulowane zmienne i aktualną wartość - tablicę (zdestrukturyzowaną do klucza i wartości). Wewnątrz funkcji callback, natychmiast tworzymy nową podstawę. To jest stara podstawa połączona z myślnikiem i aktualnym kluczem. Zmienne CSS definiujemy dwoma myślnikami, więc podstawa jest myślnikiem w domyśle. Zawsze chcemy konkatenować klucz w ten sposób. Zastanowić trzeba się nad wartością. Istnieją tylko dwie możliwości: wartość może być kolejnym zagnieżdżonym obiektem, albo prymitywną wartością. Jeżeli wartość jest obiektem, go również chcemy parsować. Dlatego w takim przypadku, zwracamy nasz akumulator plus wynik funkcji wywołującej samą siebie. Jednakże, tym razem, funkcji podajemy wymienioną wcześniej wartość. Zagnieżdżony obiekt może mieć wiele właściwości, dlatego funkcja parsująca potrzebuje nowej podstawy, aby zaaplikować ją do nich wszystkich. Jeżeli nie ma już więcej zagnieżdżonych obiektów, chcemy zakończyć naszą zmienną CSS wartością, średnikiem i nową linią. Wynikiem jest lista zmiennych - jedna pod drugą - utworzonych z podanego obiektu.
+
+```js
+const { name } = parse("./tokens.js")
+const cssVariables = tokensToCss(tokens)
+const cssClass = `:root {\n${cssVariables.replaceAll("--", "  --")}}\n`
+
+writeFile(`${name}.css`, cssClass)
+```
+
+Zmienne CSS powinny być w jakiejś klasie, dlatego umieściłem je w pseudo-klasie `:root`, aby były globalnie dostępne. Dodałem także nowe linie i spacje, aby ją sformatować. Zapisałem klasę do pliku CSS używając metody `writeFile()`. Pierwszym argumentem, który przyjmuje jest nazwa oryginalnego pliku JS, ale z rozszerzeniem `.css`. Drugim argumentem jest nasz, przygotowany wcześniej string. Poniżej jest zawartość tego pliku.
+
+```css
+:root {
+  --font-family-heading: "Source Sans Pro", sans-serif;
+  --font-family-body: "Roboto", sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 500;
+  --color-background: #ffffff;
+  --color-primary-light: #4266b3;
+  --color-primary-default: #16233f;
+  --color-primary-dark: #06080f;
+}
+```
+
+Nasz skrypt działa, ale ścieżka jest zapisana na stałe. Zastąpiłem ją zmienną. Następnie użyłem właściwości `argv`, aby pobrać argumenty z wiersza poleceń. Podzieliłem je, ponieważ pierwszym argumentem jest ścieżka do komendy node, a drugim ścieżka do uruchomionego pliku. Nas interesują kolejne argumenty od użytkownika. Sformatowałem podany argument, ponieważ metoda `require()` wymaga początkowego ukośnika dla lokalnych plików. W ten sposób, nie ma znaczenia czy użytkownik poda nazwę skryptu `tokens.js` czy relatywną ścieżkę `./tokens.js`. Na końcu zdestrukturyzowałem nazwę z oryginalnej ścieżki i użyłem jej w nowym pliku CSS.
+
+```js
+const args = argv.slice(2)
+const tokensPath = format({ root: "./", base: normalize(args[0]) })
+const tokens = require(tokensPath)
+const { name } = parse(tokensPath)
+```
+
+Teraz skrypt można wywoływać w taki sposób: `node index.js tokens.js`.
+
+## Ostateczny skrypt
+
+Zrobiłem małą refaktoryzację ostatecznego skryptu. Dodałem podstawową obsługę błędów z niestandardowymi wiadomościami. Wydobyłem logikę odpowiedzialną za zapisywanie pliku i umieściłem ją w asynchronicznej funkcji, ponieważ metoda `writeFile()` w naszym przykładzie bazuje na obietnicach.
+
+```js
+const { argv } = require("node:process")
+const { parse, format, normalize } = require("node:path")
+const { writeFile } = require("node:fs/promises")
+
+const tokensToCss = (object = {}, base = `-`) =>
+  Object.entries(object).reduce((css, [key, value]) => {
+    let newBase = base + `-${key}`
+    if (typeof value !== "object") {
+      return css + newBase + `: ${value};\n`
+    }
+    return css + tokensToCss(value, newBase)
+  }, ``)
+
+const saveTokens = async (name, tokens) => {
+  try {
+    await writeFile(`${name}.css`, tokens)
+  } catch (e) {
+    console.log("There was an error while saving a file.\n", e)
+  }
+}
+
+try {
+  const args = argv.slice(2)
+  const tokensPath = format({ root: "./", base: normalize(args[0]) })
+  const tokens = require(tokensPath)
+  const { name } = parse(tokensPath)
+
+  const cssVariables = tokensToCss(tokens)
+  const cssClass = `:root {\n${cssVariables.replaceAll("--", "  --")}}\n`
+  saveTokens(name, cssClass)
+} catch (e) {
+  console.log(
+    "Provide a correct argument - a relative path to design tokens.\n",
+    e
+  )
+}
+```
