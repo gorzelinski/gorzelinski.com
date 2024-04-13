@@ -22,7 +22,7 @@ export const inlineCode = cva({
     backgroundColor: 'gray.800',
     borderRadius: 's',
     paddingX: 'xs',
-    padding: '2xs',
+    paddingY: '2xs',
     boxShadow: 'neumorphism.closest',
     transitionProperty: 'background-color, box-shadow, color',
     ...sharedTransitionProperties
