@@ -9,5 +9,18 @@ export const codeLineNumber = cva({
       base: 's',
       md: 'm'
     }
+  },
+  variants: {
+    color: {
+      default: {
+        color: 'inherit'
+      },
+      highlight: {
+        color: 'primary.400'
+      }
+    }
+  },
+  defaultVariants: {
+    color: 'default'
   }
 })

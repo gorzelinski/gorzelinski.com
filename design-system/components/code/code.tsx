@@ -2,7 +2,7 @@
 import { Highlight } from 'prism-react-renderer'
 import { CodeProps } from './code.types'
 import { codeTheme } from './code.theme'
-import { isTerminal } from './code.helpers'
+import { inRange, isTerminal } from './code.helpers'
 import { Pre, Code as CodeElement } from './code.styles'
 import { CodeHeader } from './code-header'
 import { CodeTitle } from './code-title'
@@ -11,7 +11,13 @@ import { CodeLine } from './code-line'
 import { CodeLineNumber } from './code-line-number'
 import { CodeToken } from './code-token'
 
-export const Code = ({ css, codeString, language, title }: CodeProps) => {
+export const Code = ({
+  css,
+  codeString,
+  language,
+  title,
+  highlight
+}: CodeProps) => {
   if (!codeString) return null
 
   return (
@@ -26,9 +32,19 @@ export const Code = ({ css, codeString, language, title }: CodeProps) => {
           </CodeHeader>
           <CodeElement>
             {tokens.map((line, i) => (
-              <CodeLine key={i} {...getLineProps({ line })}>
+              <CodeLine
+                key={i}
+                backgroundColor={
+                  inRange(highlight, i + 1) ? 'highlight' : 'default'
+                }
+                {...getLineProps({ line })}
+              >
                 {isTerminal(language) ? null : (
-                  <CodeLineNumber>{i + 1}</CodeLineNumber>
+                  <CodeLineNumber
+                    color={inRange(highlight, i + 1) ? 'highlight' : 'default'}
+                  >
+                    {i + 1}
+                  </CodeLineNumber>
                 )}
                 {line.map((token, key) => (
                   <CodeToken key={key} {...getTokenProps({ token })} />

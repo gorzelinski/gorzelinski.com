@@ -1,5 +1,10 @@
 export { Callout } from './callout'
-export { Code, preToCodeProps, type PreProps } from './code'
+export {
+  Code,
+  preToCodeProps,
+  type PreChildrenProps,
+  type PreProps
+} from './code'
 export { Image } from './image'
 export { LanguageSwitch } from './language-switch'
 export { LinkOrA } from './link-or-a'

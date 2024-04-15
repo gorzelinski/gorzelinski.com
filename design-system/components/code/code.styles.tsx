@@ -44,7 +44,7 @@ export const Pre = styled('pre', pre)
 const code = cva({
   base: {
     display: 'inline-block',
-    maxWidth: '100%',
+    width: '100%',
     overflowX: 'auto',
     lineHeight: '2xs'
   }

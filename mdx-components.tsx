@@ -33,7 +33,8 @@ import {
   Ul,
   verticalRhythm,
   preToCodeProps,
-  PreProps
+  PreProps,
+  PreChildrenProps
 } from './design-system'
 
 const components: MDXComponents = {
@@ -105,8 +106,10 @@ const components: MDXComponents = {
   li: ({ children }) => <Li css={verticalRhythm.marginBottom.s}>{children}</Li>,
   ol: ({ children }) => <Ol css={verticalRhythm.marginBottom.m}>{children}</Ol>,
   p: ({ children }) => <P css={verticalRhythm.marginBottom.m}>{children}</P>,
-  pre: ({ children, title }) => {
-    const { codeString, language } = preToCodeProps(children as PreProps)
+  pre: ({ children, title, highlight }: PreProps) => {
+    const { codeString, language } = preToCodeProps(
+      children as PreChildrenProps
+    )
 
     return (
       <Code
@@ -114,6 +117,7 @@ const components: MDXComponents = {
         codeString={codeString}
         language={language}
         title={title}
+        highlight={highlight}
       />
     )
   },

@@ -80,6 +80,7 @@ export {
   ThemeSwitch,
   Typewriter,
   preToCodeProps,
+  type PreChildrenProps,
   type PreProps
 } from './components'
 
