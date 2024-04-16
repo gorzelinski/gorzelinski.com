@@ -3,7 +3,7 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const table = cva({
   base: {
-    maxWidth: '100%',
+    width: '100%',
     borderSpacing: 's',
     borderCollapse: 'collapse',
     fontFamily: 'body',
