@@ -1,0 +1,387 @@
+---
+title: TypeScript Decorators
+description: "Let's learn how to decorate our cak... code with TypeScript Decorators. Decorators are a tasty addition to classes and provide meta-programming syntax."
+date: 2023-10-21T17:00:00+02:00
+updated: 2023-10-21T17:00:00+02:00
+image:
+  alt: "Teal icing cupcakes decorated with sprinkles"
+  caption: "Photo by Brooke Lark"
+  src: "brooke-lark-pGM4sjt_BdQ-unsplash.jpg"
+categories: ["web development"]
+tags: ["typescript", "javascript", "decorators", "metaprogramming"]
+type: "post"
+---
+
+Decorators are an experimental feature in TypeScript. They were added in TypeScript 5.0 and can be attached to 5 different things: class declaration, method, accessor, property, and parameter. So basically, they are all about the bass...class, I mean. You can use them for meta-programming - a technique in which a program has knowledge of itself or can manipulate itself. They don't have a direct impact on the end user. It's a well-suited instrument for writing code that is easier to use by other developers. Let's tune our brain instruments to learn some decorators!
+
+<Callout variant="info">
+
+At the time of writing, decorators are an upcoming [ECMAScript feature](https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#decorators). They are at stage 3 and may be added to the native JavaScript. There is a paragraph describing ECMAScript specification in one of my [previous posts](/blog/is-it-native-javascript-isnt-it/).
+
+</Callout>
+
+## Setup
+
+Before learning decorators, we need a little work with the setup. To enable experimental support for decorators, you have two options.
+
+You can add the option for the TypeScript CLI.
+
+```bash
+tsc --target ES6 --experimentalDecorators
+```
+
+Or you can add it to the `tsconfig.json`.
+
+```json
+{
+  "compilerOptions": {
+    "target": "es6",
+    "experimentalDecorators": true
+  }
+}
+```
+
+## Defining Decorators
+
+Having formalities out of the way, we can dive into decorators. A decorator, in the end, is just a standard JavaScript function. A function you apply to something. To apply a decorator, you need the at symbol (@). TypeScript uses this symbol to recognize a decorator.
+
+```typescript
+function Logger(target: Function) {
+  console.log("Logging...")
+  console.log(target)
+}
+
+@Logger
+class Agent {
+  name = "Sam"
+
+  constructor() {
+    console.log("Creating a Third Echelon agent")
+  }
+}
+```
+
+Decorators, similarly to functions, can receive arguments. The arguments depend on the type of decorator. The class decorator gets one, `target` - it's the constructor of the class. If the class decorator returns a value, it will replace the class declaration. We'll go through more types of decorators later.
+
+<Callout variant="warning">
+
+Decorators usually use PascalCase (or UpperCamelCase) - you should capitalize the first letters.
+
+</Callout>
+
+## Decorator Factory
+
+We can nest another function in our decorator, and this way, we're getting the decorator factory. The decorator factory returns a decorator function. We can configure a decorator before attaching it to something using this pattern. If you're getting a higher-order function vibe from this, your intuition is on point.
+
+```typescript
+function Logger(message: string) {
+  return function (constructor: Function) {
+    console.log(message)
+    console.log(constructor)
+  }
+}
+
+@Logger("Logging in agent...")
+class Agent {
+  name = "Sam"
+
+  constructor() {
+    console.log("Creating a Third Echelon agent")
+  }
+}
+
+@Logger("Logging in civilian...")
+class Civilian {
+  name = "Sarah"
+
+  constructor() {
+    console.log("Creating a civilian")
+  }
+}
+```
+
+We can use parameters to pass values used by that inner decorator. It gives us flexibility in configuring what the decorator does internally. This way, we can generate multiple similar yet different decorators.
+
+## Multiple Decorators
+
+“How about attaching more than one decorator to something? Can we do that?” Yes, we can add more than one decorator to a class. Or anywhere decorators apply. The syntax is simple - stack decorators, one on the other, like pancakes in the morning.
+
+```typescript
+function Greeting(constructor: Function) {
+  console.log("Hello!")
+}
+
+function Logger(constructor: Function) {
+  console.log("Logging...")
+}
+
+@Logger
+@Greeting
+class Agent {
+  name = "Sam"
+
+  constructor() {
+    console.log("Creating a Third Echelon agent")
+  }
+}
+```
+
+That raises another question - in which order do they execute? They execute bottom-up. The bottom-most decorator first, then the decorators above it.
+
+```typescript
+function FirstDecorator(constructor: Function) {
+  console.log("This message will be logged first")
+}
+
+function SecondDecorator(constructor: Function) {
+  console.log("This message will be logged second")
+}
+
+@SecondDecorator
+@FirstDecorator
+class Agent {
+  name = "Sam"
+
+  constructor() {
+    console.log("Creating a Third Echelon agent")
+  }
+}
+```
+
+“Okay, and how about factories? Do they also execute bottom-up?” Actually...no. The opposite - they run top to bottom - in standard execution order. It may be misleading, so I wrote a rhyme to help us remember:
+
+> Roses are red, violets are blue,  
+> decorators run bottom-up,  
+> and for factories that's not true.
+
+```typescript
+function FirstDecoratorFactory() {
+  console.log("Message from this factory will be logged first")
+
+  return function (constructor: Function) {
+    console.log("Message from this decorator will be logged second")
+  }
+}
+
+function SecondDecoratorFacotry() {
+  console.log("Message from this factory will be logged second")
+
+  return function (constructor: Function) {
+    console.log("Message from this decorator will be logged first")
+  }
+}
+
+@FirstDecoratorFactory()
+@SecondDecoratorFacotry()
+class Agent {
+  name = "Sam"
+
+  constructor() {
+    console.log("Creating a Third Echelong agent")
+  }
+}
+```
+
+## When do decorators execute?
+
+While we're touching on execution, let's grab the subject and check when decorators run. If you look into previous code snippets, you'll see that none of the above classes were instantiated. Nevertheless, you'll see the messages in the console. It's because all decorators (no matter the type) execute when you **define a class.** **Not when you instantiate it.** They don't run at runtime. They allow you to do additional, behind-the-scenes setup work when the class is defined.
+
+## Types of Decorators
+
+I mentioned different types of decorators. We have options when it comes to attaching decorators. Earlier, we saw class decorators. But we don't have to apply them directly to classes. We can add decorators, for example, to the property. Which arguments a decorator gets depends on where you add it.
+
+A similar story is with return values. Some decorators are capable of returning something. What you can get back depends on which kind of decorator you work with. However, only in some decorators, the return value is respected. Let's go through different decorator types.
+
+### Property Decorators
+
+The property decorator receives two arguments:
+
+1. `target` - it can be either:
+   - The constructor function of the class - for a static member.
+   - The prototype of the class - for a class instance member.
+2. `propertyKey` - the name of the property.
+
+The return value will be ignored.
+
+```typescript
+function Log(target: any, propertyName: string | symbol) {
+  console.log("Property Decorator")
+  console.log(target, propertyName)
+}
+
+class Agent {
+  @Log
+  name: string
+
+  constructor() {
+    console.log("Creating a Third Echelon agent")
+  }
+}
+```
+
+### Accessor Decorators
+
+To access properties, we can use accessors. And we can add decorators to accessors as well. The arguments they receive are:
+
+1. `target` - it can be either:
+   - The constructor function of the class - for a static member.
+   - The prototype of the class - for a class instance member.
+2. `propertyKey` - the name of the property.
+3. `descriptor` - the property [descriptor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) for the member. The descriptor in the accessor decorator has options:
+   - `get`
+   - `set`
+   - `enumerable`
+   - `configurable`
+
+The return value will be used as the descriptor of the member if returned.
+
+```typescript
+function Log(
+  target: any,
+  propertyName: string | symbol,
+  descriptor: PropertyDescriptor
+) {
+  console.log("Accessor Decorator")
+  console.log(target)
+  console.log(name)
+  console.log(descriptor)
+}
+
+class Agent {
+  private _name: string
+
+  @Log
+  set name(value: string) {
+    this._name = value
+  }
+
+  constructor() {
+    console.log("Creating a Third Echelon agent")
+  }
+}
+```
+
+### Method Decorators
+
+Method decorators are very similar to the ones for accessors. The main difference is the options in the descriptor:
+
+1. `target` - it can be either:
+   - The constructor function of the class - for a static member.
+   - The prototype of the class - for a class instance member.
+2. `propertyKey` - the name of the property.
+3. `descriptor` - the property [descriptor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) for the member. We can use this parameter to override the original implementation and inject some logic. The descriptor in the method decorator has options:
+   - `value`
+   - `writable`
+   - `enumerable`
+   - `configurable`
+
+The return value will be used as the descriptor of the member if returned.
+
+```typescript
+function Log(
+  target: any,
+  name: string | symbol,
+  descriptor: PropertyDescriptor
+) {
+  console.log("Method Decorator")
+  console.log(target)
+  console.log(name)
+  console.log(descriptor)
+}
+
+class Agent {
+  name = "Sam"
+
+  @Log
+  getName() {
+    return this.name
+  }
+
+  constructor() {
+    console.log("Creating a Third Echelon agent")
+  }
+}
+```
+
+### Parameter Decorators
+
+You can even add decorators to the individual parameters in a method. This type of decorator also takes three arguments:
+
+1. `target` - it can be either:
+   - The constructor function of the class - for a static member.
+   - The prototype of the class - for a class instance member.
+2. `propertyKey` - the name of the property. But be aware - it's the name of the method. Not the name of the parameter.
+3. `parameterIndex` - the parameter position in the function's parameter list.
+
+The return value will be ignored.
+
+```typescript
+function Log(target: any, name: string | symbol, parameterIndex: number) {
+  console.log("Parameter Decorator")
+  console.log(target)
+  console.log(name)
+  console.log(position)
+}
+
+class Agent {
+  name = "Sam"
+
+  greetings(@Log name: string) {
+    console.log(`Hello ${name}!`)
+  }
+
+  constructor() {
+    console.log("Creating a Third Echelon agent")
+  }
+}
+```
+
+To wrap up decorator types, I prepared a summary table.
+
+| Decorator         | Class                  | Property    | Accessor    | Method      | Parameter      |
+| ----------------- | ---------------------- | ----------- | ----------- | ----------- | -------------- |
+| Argument&nbsp;1   | target                 | target      | target      | target      | target         |
+| Argument&nbsp;2   |                        | propertyKey | propertyKey | propertyKey | propertyKey    |
+| Argument&nbsp;3   |                        |             | descriptor  | descriptor  | parameterIndex |
+| Return&nbsp;value | Class&nbsp;declaration | Ignored     | Descriptor  | Descriptor  | Ignored        |
+
+## Decorator Examples
+
+### Angular
+
+One of the most popular frameworks that uses TypeScript is Angular. Google decided that Angular 2 would be based on TypeScript entirely, citing static typing as one of the reasons. Static types are definitely an advantage, but we'll focus on decorators. Let's see how Angular uses decorators.
+
+```typescript
+@Component({
+  selector: "app-agent",
+  inputs: ["name"],
+  template: ` Agent Name: {{ agentName }} `,
+})
+export class AgentComponent {
+  name: string | null = null
+}
+```
+
+The above example presents a recognizable `Component` decorator. This decorator marks a class as an Angular component. It accepts configuration and metadata that determines how this basic UI block should look and behave at runtime. You can pass there an HTML template, styling, or schemas.
+
+### NestJS
+
+NestJS is a Node.js framework for building scalable, server-side applications with TypeScript. It's popular among Back-end developers. NestJS also relies on decorators. If you've used NestJS, you may have seen decorators in controllers.
+
+```typescript
+import { Controller, Get } from "@nestjs/common"
+
+@Controller("/agents")
+export class AgentController {
+  @Get()
+  findAll(): string {
+    return "This action returns all agents"
+  }
+}
+```
+
+Controllers are responsible for handling incoming requests and returning responses to the client. The Controller decorator will register the class in the metadata as a controller for the specified HTTP route. So, decorators in NestJS are used i.a. for the routing mechanism.
+
+## Summary
+
+Even though decorators don't influence end users, they improve the developer's experience. You can use them to watch property changes, transform parameters, runtime validation, and many other ways. They provide an elegant syntax to modify or extend the behavior of a class. Newly, TypeScript offers this syntax as a part of the language. Check my previous posts to learn more about OOP or TypeScript in general.
