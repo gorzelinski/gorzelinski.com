@@ -1,0 +1,227 @@
+---
+title: Object-Oriented Programming in TypeScript
+description: "Object-oriented programming is a foundation for many programming languages. So, we'll familiarize ourselves with the OOP TypeScript syntax and compare it to JavaScript."
+date: 2023-03-30T23:00:00+02:00
+updated: 2023-03-30T23:00:00+02:00
+image:
+  alt: "Many white pillars in two rows"
+  caption: "Photo by Chris Brignola"
+  src: "chris-brignola-X2CxUXFqKcM-unsplash.jpg"
+categories: ["computer science", "web development"]
+tags: ["oop", "programming", "paradigm", "typescript", "javascript"]
+type: "post"
+---
+
+In the [last post](/blog/typescript-basic-types/), I presented the rationale behind TypeScript. I briefly described it and listed basic types helpful during day-to-day software development. But basic types are not enough for building modern, complex web apps.
+
+<Callout variant="info">
+
+In this post, I assume you understand OOP in vanilla JavaScript. You don't know about it? No worries, I got you covered - [Object-Oriented Programming in JavaScript](/blog/object-oriented-programming-in-javascript/).
+
+</Callout>
+
+To model real-world things, we need objects. And classes. And interfaces. In this post, we'll cover all of that. At the end of this post, we should have a good understanding of OOP in TypeScript. We should know all the syntax and how it compares to the OOP in JavaScript.
+
+## Class
+
+Defining classes in TypeScript is identical to the vanilla language (at least to ECMAScript 6). There is the `class` keyword you can use for this purpose. However, when it comes to class fields, we have more options. TypeScript offers **modifiers** that change the visibility of particular properties.
+
+```typescript title="Classes"
+class Computer {
+  // There are no private or public keywords in vanilla JavaScript.
+  private name: string
+  constructor(name) {
+    this.name = name
+  }
+  // The public modifier is the default, but you can set it explicitly.
+  public info(this: Computer) {
+    console.log(`Name of the computer: ${this.name}`)
+  }
+}
+
+const desktop = new Computer("Mac Studio")
+const laptop = new Computer("Macbook Pro")
+```
+
+<Callout variant="info">
+
+Did you know that [private class features](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields) are available in native JavaScript too? ECMAScript 2022 introduced private instance fields, methods, and accessors. Precede the property name with the hash (#) symbol to use this new syntax. TypeScript 3.8 (and the above versions) also supports this new JavaScript syntax for private fields.
+
+</Callout>
+
+The property is written down twice in the above snippet. TypeScript offers a shortcut to avoid such duplication.
+
+```typescript title="Shortcut for defining properties"
+class Computer {
+  constructor(private name: string) {}
+  // It's a hint to Typescript regarding what "this" should be referred to.
+  public info(this: Computer) {
+    console.log(`Name of the computer: ${this.name}`)
+  }
+}
+```
+
+## Inheritance
+
+If you know how inheritance works in JavaScript, TypeScript won't surprise you (okay, maybe a little). Classes inherit from each other via the `extends` keyword. There is also a modifier connected to the inheritance - `protected`. Fields marked as protected are accessible within the class or any class that extends it. The below table compares TypeScript field modifiers.
+
+| Modifier  | Class      | Inheriting classes | Other code     |
+| --------- | ---------- | ------------------ | -------------- |
+| Public    | Accessible | Accessible         | Accessible     |
+| Protected | Accessible | Accessible         | Not accessible |
+| Private   | Accessible | Not accessible     | Not accessible |
+
+Besides mentioned modifiers, there is another way of protecting fields in TypeScript. The `readonly` keyword does what the name suggests - it marks properties as read-only. You can't change them after initialization.
+
+```typescript title="Classes and inheritance"
+class Computer {
+  constructor(protected name: string, protected readonly id: string) {}
+  public info(this: Computer) {
+    console.log(`Name of the computer: ${this.name}`)
+  }
+}
+
+class Desktop extends Computer {
+  private gpu: string
+  constructor(name: string, id: string, gpu: string) {
+    super(name, id)
+    this.gpu = gpu
+  }
+}
+
+class Laptop extends Computer {
+  private display: string
+  constructor(name: string, id: string, display: string) {
+    super(name, id)
+    this.display = display
+  }
+}
+
+const desktop = new Desktop("Mac Studio", "sdag89", "AMD Radeon Pro W6800X")
+const laptop = new Laptop("Macbook Air", "bzkx32", '13.6"')
+```
+
+## Static Members
+
+We've been talking about instance methods and properties so far. But there is also a way to access properties and methods directly on the class. The `static` keyword defines a static method or field for a class. It works both in JavaScript and TypeScript. Most likely, you've already been using static methods/properties. All properties and methods of the `Math` object - like `Math.PI` or `Math.abs()` - are static.
+
+```typescript title="Static members"
+class Computer {
+  static firstProgrammer = "Ada Lovelace"
+}
+
+console.log(Computer.firstProgrammer) // Ada Lovelace
+```
+
+## Abstract Class
+
+Sometimes you want to be sure that a class has implemented a specific method. Classes inherit methods, but you can't provide a default implementation. You want to enforce developers working with a class to create their version. That's where abstract classes are handy. TypeScript offers the `abstract` keyword you can use with classes and methods.
+
+```typescript title="Abstract classes"
+abstract class Computer {
+  abstract info(): void
+}
+
+class Desktop extends Computer {
+  constructor(private gpu: string) {
+    super()
+  }
+  info(): void {
+    console.log(`Desktop gpu: ${this.gpu}`)
+  }
+}
+
+class Laptop extends Computer {
+  constructor(private display: string) {
+    super()
+  }
+  info(): void {
+    console.log(`Laptop display: ${this.display}`)
+  }
+}
+
+const desktop = new Desktop("AMD Radeon Pro W6800X")
+const laptop = new Laptop('16"')
+
+desktop.info() // Desktop GPU: AMD Radeon Pro W6800X
+laptop.info() // Laptop display: 16"
+```
+
+## Interface
+
+Simply put, an interface describes the structure of an object. In this regard, it's similar to an abstract class but not the same. An abstract class can also define an implementation. An interface defines only the structure. It's not a blueprint like a class. It's more like a custom type. You can use interfaces and custom types interchangeably, but they're not identical. Interfaces are for objects only. Custom types are more flexible and can store other things like union types. So what's the point of an interface? It's clearer. You can be sure that you work with an object using an interface.
+
+```typescript title="Interfaces and types"
+interface Computer {
+  name: string
+  readonly id: string
+  info(): void
+}
+
+// You can replace an interface with a type.
+type ComputerType = {
+  name: string
+  readonly id: string
+  info(): void
+}
+
+let desktop: Computer
+desktop = {
+  name: "Mac Studio",
+  id: "gdd89s",
+  info() {
+    console.log(`Name of the computer: ${this.name}`)
+  },
+}
+
+desktop.info()
+```
+
+A class can implement an interface and use it as a contract. There is the `implements` keyword for this purpose. Unlike inheritance, a class can implement multiple interfaces. Interfaces can also extend themselves. It gives you a lot of flexibility regarding code reusability and composability.
+
+```typescript title="Interfaces and classes"
+interface Named {
+  name: string
+}
+
+interface Informed {
+  info(): void
+}
+
+class Computer implements Named, Informed {
+  name: string
+  constructor(name: string) {
+    this.name = name
+  }
+  info(): void {
+    console.log(`Name of the computer: ${this.name}`)
+  }
+}
+
+const laptop = new Computer("MacBook Pro")
+laptop.info()
+```
+
+You can also use interfaces to define the structure of a function. "Whoah, whoah, haven't you just mentioned that they are only for objects?" Yes, and there is no contradiction because functions are first-class objects in JavaScript. Yeah, JS has its mysteries. Anyway, you can use an interface as a replacement for function types. It's a less common syntax, but you have this alternative.
+
+```typescript title="Interfaces and functions"
+type Info = (name: string) => void
+
+interface InfoInterface {
+  (name: string): void
+}
+
+const info: InfoInterface = (name: string) => {
+  console.log(`Name of the computer: ${name}`)
+}
+```
+
+I've spent some time describing interfaces, but at the end of the day (or compilation, I should say), the interfaces are not present in the JavaScript code. It's a pure development feature brought by TypeScript.
+
+```javascript title="Interfaces after compilation"
+var info = function (name) {
+  console.log("Name of the computer: ".concat(name))
+}
+```
+
+Just like interfaces vanish after compilation, I will vanish after describing them. I want those TypeScript posts to be easily digestible, so I'll end here. Of course, there are more topics when it comes to TypeScript. But I'll touch on the more complex ones, like generics or decorators, in the following posts. If you want to read about less complex concepts, check my last post - [TypeScript basic types](/blog/typescript-basic-types/).

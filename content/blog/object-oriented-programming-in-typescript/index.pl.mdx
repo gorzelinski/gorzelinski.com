@@ -1,0 +1,227 @@
+---
+title: Programowanie obiektowe w języku TypeScript
+description: "Programowanie obiektowe jest podstawą wielu języków programowania. Dlatego zapoznamy się ze składnią OOP w języku TypeScript i porównamy ją z JavaScriptem."
+date: 2023-03-30T23:00:00+02:00
+updated: 2023-03-30T23:00:00+02:00
+image:
+  alt: "Wiele białych filarów w dwóch rzędach"
+  caption: "Zdjęcie autorstwa Chris Brignola"
+  src: "chris-brignola-X2CxUXFqKcM-unsplash.jpg"
+categories: ["computer science", "web development"]
+tags: ["oop", "paradygmat", "programowanie", "typescript", "javascript"]
+type: "post"
+---
+
+W [ostatnim wpisie](/pl/blog/typescript-basic-types/) przedstawiłem przesłanki stojące za używaniem TypeScripta. Krótko go opisałem i wymieniłem podstawowe typy, przydatne podczas codziennej pracy z oprogramowaniem. Ale podstawowe typy to za mało, żeby budować współczesne, złożone aplikacje webowe.
+
+<Callout variant="info">
+
+W tym poście zakładam, że rozumiesz OOP w czystym języku JavaScript. Nie jesteś pewien co do swojej wiedzy? Nie przejmuj się, mam coś dla ciebie - [Programowanie obiektowe w języku JavaScript](/pl/blog/object-oriented-programming-in-javascript/).
+
+</Callout>
+
+Aby modelować rzeczywiste przedmioty, potrzebujemy obiektów. I klas. I interfejsów. W tym wpisie, poznamy je wszystkie. Pod koniec tego wpisu, powinniśmy dobrze rozumieć OOP w języku TypeScript. Powinniśmy poznać najważniejszą składnię i jak wypada w porównaniu do OOP w języku JavaScript.
+
+## Klasa
+
+Definiowanie klas w TypeScripcie jest identycznie jak w “waniliowym” języku (przynajmniej w ECMAScript 6). Dostępne jest słowo kluczowe `class`, które możesz wykorzystać do tego celu. Jednakże, w przypadku pól, mamy więcej opcji. TypeScript oferuje **modyfikatory,** które zmieniają widoczność poszczególnych właściwości.
+
+```typescript title="Klasy"
+class Computer {
+  // W czystym języku JavaScript nie ma słów "private" lub "public".
+  private name: string
+  constructor(name) {
+    this.name = name
+  }
+  // Moyfikator "public" jest domyślny, ale możeszz go jawnie zapisać.
+  public info(this: Computer) {
+    console.log(`Name of the computer: ${this.name}`)
+  }
+}
+
+const desktop = new Computer("Mac Studio")
+const laptop = new Computer("Macbook Pro")
+```
+
+<Callout variant="info">
+
+Czy wiedziałeś, że [prywatne funkcjonalności klas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields) są dostępne także w czystym JavaScripcie? ECMAScript 2022 wprowadził prywatne pola, metody i akcesory. Poprzedź nazwę właściwości znakiem krzyżyka (#), aby użyć tej nowej składni. TypeScript 3.8 (i wyższe wersje) także wspierają tę nową składnię JavaScriptu dla prywatnych pól.
+
+</Callout>
+
+Właściwość jest zapisana dwukrotnie w powyższym fragmencie kodu. TypeScript oferuje skrót, który pozwala unikać takich duplikacji.
+
+```typescript title="Skrót do definiowania właściwości"
+class Computer {
+  constructor(private name: string) {}
+  // Jest to wskazówka dla TypeScripta do czego odnosi się "this".
+  public info(this: Computer) {
+    console.log(`Name of the computer: ${this.name}`)
+  }
+}
+```
+
+## Dziedziczenie
+
+Jeżeli wiesz jak działa dziedziczenie w JavaScripcie, TypeScript nie zaskoczy cię (no dobra, może trochę). Klasy dziedziczą po sobie za pomocą słówka `extends`. Istnieje także modyfikator powiązany z dziedziczeniem - `protected`. Pola oznaczone jako “protected” są dostępne wewnątrz klasy, a także wewnątrz każdej dziedziczącej klasy. Poniższa tabela porównuje modyfikatory pól w TypeScripcie.
+
+| Modyfikator | Klasa    | Dziedziczące klasy | Pozostały kod |
+| ----------- | -------- | ------------------ | ------------- |
+| Public      | Dostępne | Dostępne           | Dostępne      |
+| Protected   | Dostępne | Dostępne           | Niedostępne   |
+| Private     | Dostępne | Niedostępne        | Niedostępne   |
+
+Poza wymienionymi modyfikatorami, istnieje inny sposób zabezpieczania pól w języku TypeScript. Słowo kluczowe `readonly` robi to co nazwa wskazuje - oznacza właściwości jako tylko do odczytu. Nie możesz ich zmienić po inicjalizacji.
+
+```typescript title="Klasy i dziedziczenie"
+class Computer {
+  constructor(protected name: string, protected readonly id: string) {}
+  public info(this: Computer) {
+    console.log(`Name of the computer: ${this.name}`)
+  }
+}
+
+class Desktop extends Computer {
+  private gpu: string
+  constructor(name: string, id: string, gpu: string) {
+    super(name, id)
+    this.gpu = gpu
+  }
+}
+
+class Laptop extends Computer {
+  private display: string
+  constructor(name: string, id: string, display: string) {
+    super(name, id)
+    this.display = display
+  }
+}
+
+const desktop = new Desktop("Mac Studio", "sdag89", "AMD Radeon Pro W6800X")
+const laptop = new Laptop("Macbook Air", "bzkx32", '13.6"')
+```
+
+## Statyczne pola
+
+Do tej pory mówiliśmy o metodach i właściwościach instancji. Ale istnieje także sposób na dostęp do właściwości i metod bezpośrednio na klasie. Słowo kluczowe `static` definiuje statyczną metodę lub pole klasy. Działa zarówno w języku JavaScript jak i TypeScript. Najprawdopodobniej już miałeś okazję używać statycznych metod/właściwości. Wszystkie właściwości i metody obiektu `Math` - jak `Math.PI` lub `Math.abs()` - są statyczne.
+
+```typescript title="Statyczne pola"
+class Computer {
+  static firstProgrammer = "Ada Lovelace"
+}
+
+console.log(Computer.firstProgrammer) // Ada Lovelace
+```
+
+## Abstrakcyjna klasa
+
+Czasami chcesz mieć pewnosć, że klasa zaimplementowała jakąś metodę. Klasy dziedziczą metody, ale nie możesz zapewnić domyślnej implementacji. Chcesz wymusić na programistach pracujących z klasą, stworzenie swojej własnej wersji. W takich wypadkach przydatna jest klasa abstrakcyjna. TypeScript oferuje słowo kluczowe `abstract`, które możesz wykorzystać z klasami i metodami.
+
+```typescript title="Abstrakcyjne klasy"
+abstract class Computer {
+  abstract info(): void
+}
+
+class Desktop extends Computer {
+  constructor(private gpu: string) {
+    super()
+  }
+  info(): void {
+    console.log(`Desktop gpu: ${this.gpu}`)
+  }
+}
+
+class Laptop extends Computer {
+  constructor(private display: string) {
+    super()
+  }
+  info(): void {
+    console.log(`Laptop display: ${this.display}`)
+  }
+}
+
+const desktop = new Desktop("AMD Radeon Pro W6800X")
+const laptop = new Laptop('16"')
+
+desktop.info() // Desktop GPU: AMD Radeon Pro W6800X
+laptop.info() // Laptop display: 16"
+```
+
+## Interfejs
+
+Prosto rzecz ujmując, interfejs opisuje strukturę obiektu. Pod tym względem jest podobny do klasy abstrakcyjnej ale nie taki sam. Klasa abstrakcyjna może zapewnić również implementację. Interfejs definiuje tylko strukturę. Nie jest to schemat jak klasa. Bardziej przypomina niestandardowy typ. Możesz wykorzystywać interfejsy i niestandardowe typy zamiennie, ale one też nie są identyczne. Interfejsy są tylko dla obiektów. Niestandardowe typy są bardziej elastyczne i mogą przechowywać inne rzeczy, takie jak unie. Jaki jest zatem cel interfejsu? Jest jaśniejszy. Możesz być pewien, że pracujesz z obiektem wykorzystując interfejs.
+
+```typescript title="Interfejsy i typy"
+interface Computer {
+  name: string
+  readonly id: string
+  info(): void
+}
+
+// Możesz zastąpić interfejs typem.
+type ComputerType = {
+  name: string
+  readonly id: string
+  info(): void
+}
+
+let desktop: Computer
+desktop = {
+  name: "Mac Studio",
+  id: "gdd89s",
+  info() {
+    console.log(`Name of the computer: ${this.name}`)
+  },
+}
+
+desktop.info()
+```
+
+Klasa może zaimplementować interfejs i wykorzystać go jak kontrakt. Istnieje słowo kluczowe `implements` do tego celu. W przeciwieństwie do dziedziczenia, klasa może implementować wiele interfejsów. Interfejs mogą rozszerzać się wzajemnie. Daje ci to dużo mozliwości podczas kompozycji i ponownego wykorzystania kodu.
+
+```typescript title="Interfejsy i klasy"
+interface Named {
+  name: string
+}
+
+interface Informed {
+  info(): void
+}
+
+class Computer implements Named, Informed {
+  name: string
+  constructor(name: string) {
+    this.name = name
+  }
+  info(): void {
+    console.log(`Name of the computer: ${this.name}`)
+  }
+}
+
+const laptop = new Computer("MacBook Pro")
+laptop.info()
+```
+
+Możesz także użyć interfejsów do zdefiniowania struktury funkcji. “Zaraz, zaraz, czy nie wspominałeś, że można ich tylko użyć z obiektami?”. Tak i nie ma tu sprzeczności, bo funkcje JavaScript są obiektami pierwszej klasy. Tak, JS ma swoje arkana. W każdym razie, możesz użyć interfejsu do zastąpienia typów funkcji. Jest to rzadziej spotykany zapis, ale masz taką alternatywę.
+
+```typescript title="Interfejsy i funkcje"
+type Info = (name: string) => void
+
+interface InfoInterface {
+  (name: string): void
+}
+
+const info: InfoInterface = (name: string) => {
+  console.log(`Name of the computer: ${name}`)
+}
+```
+
+Spędziłem trochę czasu opisując interfejsy, ale na koniec dnia (lub raczej kompilacji), interfejsów nie ma w kodzie JavaScript. Jest to czysto deweloperska funkcjonalność wprowadzona przez TypeScript.
+
+```javascript title="Interfejsy po kompilacji"
+var info = function (name) {
+  console.log("Name of the computer: ".concat(name))
+}
+```
+
+Tak jak interfejsy znikają podczas kompilacji, ja znikam po opisaniu ich. Chcę żeby te posty o TypeScripcie można było łatwo przetrawić, więc tu zakończę. Oczywiście, jest o wiele więcej tematów dotyczących TypeScripta. Bardziej złożonym tematom, jak generyki czy dekoratory, przyjrzymy się w następnych postach. Jeżeli chcesz poczytać o mniej złożonych konceptach, sprawdź mój ostatni wpis - [TypeScript - podstawowe typy](/pl/blog/typescript-basic-types/).
