@@ -1,5 +1,5 @@
 'use client'
-import { Highlight } from 'prism-react-renderer'
+import { Highlight, Prism } from 'prism-react-renderer'
 import { CodeProps } from './code.types'
 import { codeTheme } from './code.theme'
 import { inRange, isTerminal } from './code.helpers'
@@ -10,6 +10,10 @@ import { CodeLanguage } from './code-language'
 import { CodeLine } from './code-line'
 import { CodeLineNumber } from './code-line-number'
 import { CodeToken } from './code-token'
+
+// @ts-ignore
+;(typeof global !== 'undefined' ? global : window).Prism = Prism
+require('prismjs/components/prism-json')
 
 export const Code = ({
   css,
