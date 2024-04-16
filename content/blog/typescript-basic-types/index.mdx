@@ -1,0 +1,355 @@
+---
+title: TypeScript basic types
+description: "With the growing usage of TypeScript, I think it's time to start learning it. What is it? Why use it? We'll try to answer these questions and learn some basic types."
+date: 2023-03-05T11:00:00+02:00
+updated: 2023-03-05T11:00:00+02:00
+image:
+  alt: "A sea-colored padlock closes a blue gate"
+  caption: "Photo by Maxim Zhgulev"
+  src: "maxim-zhgulev-5tmItJfHkIc-unsplash.jpg"
+categories: ["web development"]
+tags: ["typescript", "javascript", "programming"]
+type: "post"
+---
+
+Recently I've started learning TypeScript (technically, I used to code in Angular, so TypeScript is not new to me, but I wasn't using it since then). I was hesitant at first, not gonna lie. The TypeScript code seemed to me bloated and inelegant. But let's be honest - the only real downside of TypeScript is that you need to spend the time to learn it. I'm only human, after all - the change can be frightening. But change is the only constant in life. It can be good. And with the growing usage of TypeScript, that's a good moment to start learning it. Learn with me!
+
+## What is TypeScript?
+
+Fundamentally, TypeScript is a **superset** of JavaScript. What does this mean? Let me explain. You probably remember sets from school - you know, these intersecting circles. It's a Venn diagram - a graphical representation that shows the logical relation between these sets. There is a similar relationship between JavaScript and TypeScript - TypeScript is a superset of JavaScript, or JavaScript is a subset of TypeScript. Every line of JS code is a valid TS code, but not the other way around.
+
+![JavaScript and TypeScript venn diagram](./js-ts-venn-diagram.png)
+
+It means that TypeScript builds up on JavaScript. It adds new features and advantages to the vanilla language. Actually, TypeScript is both **a language** and **a tool**. It's also a powerful compiler which you run to compile your TypeScript code to JavaScript. Why? Because browsers only understand JS code.
+
+## Why use TypeScript?
+
+> Programming is not about typing, it's about thinking.
+
+"Ok, so why bother writing code browsers can't understand?" There are some advantages.
+
+- Above all - TypeScript forces you to think more about your code and goals. All of your intentions are written down - there is no place for guesses.
+- TypeScript adds new features - not available in the base language - like interfaces or generics.
+- It offers meta-programming features like decorators.
+- Because of the compilation step, you can use modern JavaScript syntax without worrying about browser support. It has similar advantages to using Babel.
+- Rich configuration options - you can configure the compiler to your needs.
+- And as the name suggests, it offers many types. We'll focus on the basic types in the following sections.
+- You have better autocompletion in IDEs or code editors.
+
+## TypeScript vs. JavaScript Types
+
+JavaScript is a dynamically typed language. Types are resolved during the runtime. It can be beneficial, but it also causes many runtime errors.
+
+TypeScript is statically typed. We define types during development. They don't change during the runtime.
+
+## TypeScript Types
+
+Let's start by saying that TypeScript provides additional types to JavaScript. So, there are types available both in JavaScript and TypeScript. And there are types provided by our superset.
+
+The core types available both in JS and TS are:
+
+- `number`
+- `string`
+- `boolean`
+- `object`
+- `array`
+
+There are some additional types available in TypeScript like:
+
+- `Tuple`
+- `Enum`
+- `Any`
+- `Union`
+- `Literal`
+- `Custom`
+
+### Type Assignment
+
+JavaScript doesn't understand TypeScript assignments. Types are used by the TS compiler. TypeScript has a built-in feature called **type inference.** TS does its best to understand the type of a particular variable or constant. So, you don't need to assign it explicitly every time. You can use a colon syntax to assign a type to a variable.
+
+```typescript
+let name: string // The name variable has a type of string.
+```
+
+<Callout variant="warning">
+
+The core primitive types in TypeScript are all in **lowercase.**
+
+</Callout>
+
+### Number
+
+Similarly to the vanilla language, TypeScript does not define different types of numbers. JavaScript numbers are always stored as double-precision floating point numbers, following the IEEE 754 standard, or as big integers.
+
+```typescript
+const PI = 3.14 // TypeScript infers it should always be number 3.14.
+let age = 25 // TypeScript infers it should be a number type.
+// In terms of DiCaprio's girlfriend's maximum age, it's also a constant, I know.
+let age: number = 25 // The code works but is redundant, so it's a bad practice.
+let age: number // Here it makes sense because there is no variable initialization.
+```
+
+### String
+
+To define a string, use double or single quotes. Template strings using backticks are also an option.
+
+```typescript
+const maxim = "Medals don't help me sleep at night." // TypeScript infers the string is a constant.
+let name = "Sam" // TypeScript infers it should be a string type.
+let name: string // The variable will hold a string.
+```
+
+### Boolean
+
+The most basic data type - represents the true or false value. In contrast to JavaScript, there are no "truthy" and "falsy" values in TypeScript.
+
+```typescript
+let isDone: boolean
+```
+
+### Object
+
+You define object types similarly to standard JS objects. But, instead of key-value pairs, you write key-type pairs. Look closely at syntax - it's slightly different.
+
+```typescript
+const person = {
+  name: "Sam",
+  age: 66,
+}
+
+// TypeScript infers.
+const person: {
+  name: string
+  age: number
+}
+
+// You can define generic objects like this.
+const person: object = {
+  name: "Sam",
+  age: 66,
+}
+
+// You can also define a more specific object structure.
+const person: { name: string } = {
+  name: "Sam",
+  age: 66, // This property is not in the type, so it causes an error.
+}
+```
+
+### Array
+
+In JavaScript, you can mix different data types - one array can consist of strings and numbers. Every JS array is valid in TypeScript. However, TS arrays can be flexible or strict.
+
+```typescript
+const person = {
+  hobbies: ["Krav maga", "sneaking"],
+}
+
+// TypeScript infers.
+const person: {
+  hobbies: string[]
+}
+
+// You can explicitly define a strict array of strings.
+let hobbies: string[]
+
+// You can also define a flexible array.
+let hobbies: any[]
+```
+
+### Tuple
+
+Tuples are not available in vanilla JavaScript - they are added by TypeScript. Tuple is a fixed length and type array. It can be handy if you know the exact array structure beforehand.
+
+```typescript
+const person = {
+  role: [3, "agent"],
+}
+
+// TypeScript infers.
+const person: {
+  role: (string | number)[]
+}
+
+// You can explicitly define a touple structure.
+const person: {
+  role: [number, string]
+} = {
+  role: [3, "agent"],
+}
+```
+
+### Enum
+
+An enum type is a custom type in TypeScript. It gives you an enumerated list. An enum maps human-readable labels to numbers starting from 0. It is not available in JavaScript, and it compiles down to IIFE.
+
+```typescript
+// Labels are often in uppercase.
+enum Role {
+  AGENT,
+  INTEL,
+}
+
+const person = {
+  role: Role.AGENT,
+}
+
+// You can change the default behavior of an enum.
+enum Role {
+  AGENT = "AGENT",
+  INTEL,
+}
+```
+
+### Union
+
+Sometimes you want to accept more than one kind of value. That's where unions come in handy. You can use a pipe character between different types to define a union.
+
+```typescript
+// Both parameters in this function can be a string or a number.
+function combine(i1: number | string, i2: number | string) {
+  const result = i1 + i2
+  return result
+}
+```
+
+### Literal
+
+I mentioned this in snippets, but it's time to list it distinctly. A literal type not only says what kind of value a variable should hold, but it says: "this variable should hold this exact value.”
+
+```typescript
+const PI = 3.14 // TypeScript expects this specific number, not any number.
+
+function combine(
+	i1: number | string,
+	i2: number | string
+	// A union type combined with literal type - only two possible strings.
+	conversion: "as-text" | "as-number"
+) {
+	const result = i1 + i2
+	return result
+}
+```
+
+### Custom
+
+Besides built-in types, TypeScript also allows you to create custom types (also known as type aliases). There is a keyword - `type` - for this purpose. You can put anything inside a custom type - string, object structure, or union. After defining your custom type, you can use the alias in multiple places in your code. This way, you can avoid code duplication.
+
+```typescript
+// The convention is to define custom types in uppercase.
+type State = "idle" | "loading" | "success"
+
+type Person = {
+  name: string
+  age: number
+}
+```
+
+<Callout variant="warning">
+
+You can use any name for your custom type, but you can't use reserved JavaScript (or TypeScript) keywords like `Date` or `Math`.
+
+</Callout>
+
+### Function Parameter Types
+
+In previous snippets, I set types of function parameters. You can add them after each parameter using standard syntax.
+
+```typescript
+// The function takes two parameters, where each parameter is a number.
+function add(n1: number, n2: number) {
+  return n1 + n2
+}
+```
+
+### Function Return Types
+
+Similarly, you can also set types of function return values. `void` is commonly used with functions that don't return any value. It's like the opposite of `any` - the absence of having any type at all.
+
+```typescript
+function add(n1: number, n2: number) {
+  return n1 + n2
+}
+
+// TypeScript infers.
+function add(n1: number, n2: number): number {
+  return n1 + n2
+}
+
+// You can explicitly set the return type,
+// but in most cases, let TypeScript infer the type.
+function add(n1: number, n2: number): string {
+  return n1.toString() + n2.toString()
+}
+
+// You can use the void return type
+// if a function doesn't return a value.
+function printResult(num): void {
+  console.log("Result: " + num)
+}
+
+// Undefined is a valid type in TypeScript,
+// but not if a function doesn't return anything.
+function printResult(num: number): undefined {
+  console.log("Result: " + num)
+}
+```
+
+### Function Type Expressions
+
+There is also the `Function` type in TypeScript. It describes properties like `bind` and `apply` - present in all functions in JavaScript. However, declaring a non-specific function is not very useful. A better way is to describe it using a function-type expression. If it reminds you of arrow functions - you're right - the syntax is similar.
+
+```typescript
+// Declaring a non-specific function.
+let combineValues: Function
+
+// The function takes two parameters, where each parameter is a number.
+// The function overall returns a number.
+let combineValues: (a: number, b: number) => number
+```
+
+### Unknown
+
+There is another type `unknown` to us (hehe). It is similar to `any`, but it's safer. You can't do anything with the `unknown` type.
+
+```typescript
+let input: unknown
+let name: string
+
+input = 5
+name = "Sam"
+// This won't work because the unknown
+// is not guaranteed to be a string.
+name = input
+```
+
+```typescript
+let input: any
+let name: string
+
+input = 5
+input = "Sam"
+// On the other hand, this will work
+// because any is the most flexible type.
+name = input
+```
+
+### Never
+
+Some functions in JavaScript never return a value. "Wait, wait, how that's different from the void?" We need to dive a little deeper into JavaScript to answer this question.
+A function that doesn't explicitly return a value implicitly returns `undefined` in JavaScript. You might have noticed that behavior with functions that log something to the console. Although we ignore the return value, it is there. That's a good use case for the `void` in TypeScript.
+A function that has the `never` type never returns. It even doesn't return `undefined` implicitly. Such a situation occurs when a JavaScript function throws an error.
+
+```typescript
+// This function never produces a value. It crashes the script.
+function generateError(message: string, code: number): never {
+  throw { message: message, errorCode: code }
+}
+```
+
+Ok. . .I never (hehe) said I'll cover all types in one blog post. I'll end here. TypeScript offers even more primitive and advanced types helping you produce more predictable and maintainable code. I'll cover more advanced concepts like [generics](/blog/typescript-generics/), [interfaces](/blog/object-oriented-programming-in-typescript/), or [decorators](/blog/typescript-decorators/) in the future. In the meantime, you can check the following links.
+
+- [Official TypeScript Website](https://www.typescriptlang.org/)
+- [TypeScript Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
+- [Understanding TypeScript (course)](https://www.udemy.com/course/understanding-typescript/)
+- [The State of JS 2022](https://2022.stateofjs.com/en-US/other-tools/#javascript_flavors)
