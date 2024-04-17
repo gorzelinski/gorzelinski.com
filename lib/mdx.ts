@@ -26,7 +26,7 @@ type Frontmatter = {
   }
 }
 
-type Post = Frontmatter & {
+export type Post = Frontmatter & {
   categories: string[]
   tags: string[]
   type: 'post'
@@ -88,16 +88,19 @@ export async function getMDX<Type extends MDXTypes>(
 
 export async function getMDXes(
   page: (typeof LINKS)['blog' | 'portfolio'],
-  locale: Locale
+  locale: Locale,
+  number = 50
 ) {
   const directories = fs.readdirSync(path.join(root, LINKS.content, page))
   const mdxes = await Promise.all(
     directories.map((slug) => getMDX(page, slug, locale))
   )
 
-  return mdxes.sort((prev, next) => {
-    const prevDate = new Date(prev.frontmatter.date).getTime()
-    const nextDate = new Date(next.frontmatter.date).getTime()
-    return nextDate - prevDate
-  })
+  return mdxes
+    .sort((prev, next) => {
+      const prevDate = new Date(prev.frontmatter.date).getTime()
+      const nextDate = new Date(next.frontmatter.date).getTime()
+      return nextDate - prevDate
+    })
+    .filter((_, index) => index < number)
 }
