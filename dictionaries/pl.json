@@ -17,6 +17,9 @@
       "button": "Czytaj wpis",
       "min": "min. czytania"
     },
+    "project": {
+      "button": "Sprawdź projekt"
+    },
     "themeSwitch": {
       "ariaLabel": "Zmień motyw"
     }

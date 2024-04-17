@@ -75,6 +75,7 @@ export {
   LinkOrA,
   Logo,
   Post,
+  Project,
   Socials,
   createShareLinks,
   ThemeSwitch,

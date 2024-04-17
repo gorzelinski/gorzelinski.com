@@ -17,6 +17,9 @@
       "button": "Read post",
       "min": "min read"
     },
+    "project": {
+      "button": "Check project"
+    },
     "themeSwitch": {
       "ariaLabel": "Change theme"
     }

@@ -32,7 +32,7 @@ export type Post = Frontmatter & {
   type: 'post'
 }
 
-type Project = Frontmatter & {
+export type Project = Frontmatter & {
   client: string
   services: string[]
   deliverables: string[]
@@ -86,14 +86,14 @@ export async function getMDX<Type extends MDXTypes>(
   }
 }
 
-export async function getMDXes(
+export async function getMDXes<Type extends MDXTypes>(
   page: (typeof LINKS)['blog' | 'portfolio'],
   locale: Locale,
-  number = 50
+  number = 8
 ) {
   const directories = fs.readdirSync(path.join(root, LINKS.content, page))
   const mdxes = await Promise.all(
-    directories.map((slug) => getMDX(page, slug, locale))
+    directories.map((slug) => getMDX<Type>(page, slug, locale))
   )
 
   return mdxes
