@@ -26,8 +26,8 @@ export const Post = ({
         {formatDate(date, lang)} • {formatReadingTime(readingTime.minutes)}{' '}
         {dictionary.min}
       </Small>
-      <H3>{title}</H3>
-      <P>{description}</P>
+      <H3 size="s">{title}</H3>
+      <P size="s">{description}</P>
       <ButtonLink
         align="left"
         variant="text"
