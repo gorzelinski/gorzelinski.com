@@ -1,4 +1,5 @@
 'use client'
+import { useEffect, useState } from 'react'
 import {
   Theme,
   THEME_LS_KEY,
@@ -7,7 +8,6 @@ import {
   getThemeAttribute,
   setThemeAttribute
 } from '@/lib'
-import { useEffect, useState } from 'react'
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>('light')
