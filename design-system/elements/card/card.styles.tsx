@@ -3,15 +3,18 @@ import { sharedTransitionProperties, verticalRhythm } from '../../utils'
 
 export const card = cva({
   base: {
-    padding: 'm',
+    '--card-padding': {
+      base: 'spacing.m',
+      sm: 'spacing.l'
+    },
     position: 'relative',
     display: 'grid',
-    boxShadow: 'neumorphism.far',
     border: 'gray.subtle',
     borderRadius: 'l',
     overflow: 'hidden',
+    padding: 'var(--card-padding)',
     transitionProperty: 'border-color, box-shadow',
-    ...verticalRhythm.gap.m,
+    ...verticalRhythm.gap.s,
     ...sharedTransitionProperties
   },
   variants: {
@@ -22,9 +25,9 @@ export const card = cva({
         alignContent: 'start',
         justifyItems: 'start',
         '& > img': {
-          minWidth: 'calc(100% + (2 * token(spacing.m)))',
-          marginTop: '-m',
-          marginX: '-m'
+          minWidth: 'calc(100% + (2 * var(--card-padding)))',
+          marginTop: 'calc(-1 * var(--card-padding))',
+          marginX: 'calc(-1 * var(--card-padding))'
         }
       },
       horizontal: {
@@ -49,9 +52,9 @@ export const card = cva({
           },
           sm: {
             gridRow: '1 / 5',
-            minWidth: `calc(100% + token(spacing.m))`,
-            marginY: '-m',
-            marginLeft: '-m'
+            minWidth: `calc(100% + token(spacing.l))`,
+            marginY: '-l',
+            marginLeft: '-l'
           }
         },
         '& > *': {
@@ -61,9 +64,30 @@ export const card = cva({
           }
         }
       }
+    },
+    justifyContent: {
+      start: {
+        justifyContent: 'start'
+      },
+      center: {
+        justifyContent: 'center'
+      },
+      end: {
+        justifyContent: 'end'
+      }
+    },
+    shadow: {
+      far: {
+        boxShadow: 'neumorphism.far'
+      },
+      farther: {
+        boxShadow: 'neumorphism.farther'
+      }
     }
   },
   defaultVariants: {
-    orientation: 'vertical'
+    orientation: 'vertical',
+    justifyContent: 'start',
+    shadow: 'far'
   }
 })
