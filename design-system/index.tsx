@@ -74,6 +74,7 @@ export {
   LanguageSwitch,
   LinkOrA,
   Logo,
+  Newsletter,
   Post,
   Project,
   Socials,
