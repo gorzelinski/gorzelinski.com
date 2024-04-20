@@ -36,7 +36,7 @@ export const navbar = cva({
       nested: {
         padding: {
           base: 's',
-          sm: 'm',
+          sm: 's',
           md: '0'
         },
         md: {
