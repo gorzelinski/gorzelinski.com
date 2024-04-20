@@ -5,6 +5,6 @@ export const featured = cva({
   base: {
     display: 'flex',
     flexDirection: 'column',
-    ...verticalRhythm.gap.m
+    ...verticalRhythm.gap.l
   }
 })

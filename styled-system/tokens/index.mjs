@@ -484,7 +484,7 @@ const tokens = {
     "variable": "var(--spacing-xl)"
   },
   "spacing.2xl": {
-    "value": "64px",
+    "value": "96px",
     "variable": "var(--spacing-2xl)"
   },
   "spacing.3xl": {

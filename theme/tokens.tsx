@@ -399,7 +399,7 @@ export const tokens = defineTokens({
       value: '32px'
     },
     '2xl': {
-      value: '64px'
+      value: '96px'
     },
     '3xl': {
       value: '128px'
