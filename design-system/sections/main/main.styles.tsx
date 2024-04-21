@@ -7,7 +7,7 @@ export const main = cva({
     paddingX: {
       base: 'm',
       sm: 'l',
-      xl: 'xl',
+      md: 'xl',
       '2xl': '0'
     },
     display: 'flex',
