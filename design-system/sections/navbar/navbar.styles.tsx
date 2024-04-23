@@ -8,13 +8,7 @@ export const navbar = cva({
     justifyContent: 'space-between',
     backgroundColor: 'gray.900',
     zIndex: 'farther',
-    opacity: '95',
-    padding: {
-      base: 'm',
-      sm: 'l',
-      md: 'xl'
-    },
-    transitionProperty: 'background-color, border-color',
+    transitionProperty: 'background-color, border-color, opacity, padding',
     ...sharedTransitionProperties
   },
   variants: {
@@ -22,14 +16,12 @@ export const navbar = cva({
       top: {
         position: 'sticky',
         top: '0',
-        left: '0',
-        borderBottom: 'gray.subtle'
+        left: '0'
       },
       bottom: {
         position: 'fixed',
         bottom: '0',
-        left: '0',
-        borderTop: 'gray.subtle'
+        left: '0'
       }
     },
     structure: {
@@ -45,9 +37,50 @@ export const navbar = cva({
           width: 'auto'
         }
       }
+    },
+    opacity: {
+      visible: {
+        opacity: '95'
+      },
+      hidden: {
+        opacity: '0',
+        pointerEvents: 'none'
+      }
+    },
+    border: {
+      bottom: {
+        borderBottom: 'gray.subtle'
+      },
+      top: {
+        borderTop: 'gray.subtle'
+      },
+      transparent: {
+        borderColor: 'transparent'
+      }
+    },
+    padding: {
+      standard: {
+        padding: {
+          base: 'm',
+          sm: 'l',
+          md: 'xl'
+        }
+      },
+      compact: {
+        paddingX: {
+          base: 'm',
+          sm: 'l',
+          md: 'xl'
+        },
+        paddingY: {
+          base: 'm'
+        }
+      }
     }
   },
   defaultVariants: {
-    position: 'top'
+    position: 'top',
+    opacity: 'visible',
+    padding: 'standard'
   }
 })

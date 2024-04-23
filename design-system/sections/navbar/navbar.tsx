@@ -2,6 +2,7 @@
 import { usePathname } from 'next/navigation'
 import { LINKS } from '@/constants'
 import { localizePath, selectActiveClass } from '@/lib'
+import { useScrollDirection, useScrollProgress } from '@/hooks'
 import { navbar } from './navbar.styles'
 import { NavbarProps } from './navbar.types'
 import { Logo, ThemeSwitch } from '../../components'
@@ -10,9 +11,17 @@ import { ButtonLink, Nav } from '../../elements'
 export const Navbar = ({ lang, dictionary }: NavbarProps) => {
   const { links, component, section } = dictionary
   const pathname = usePathname()
+  const direction = useScrollDirection()
+  const progress = useScrollProgress()
 
   return (
-    <header className={navbar()}>
+    <header
+      className={navbar({
+        opacity: progress > 5 && direction === 'down' ? 'hidden' : 'visible',
+        border: progress < 1 ? 'transparent' : 'bottom',
+        padding: progress < 1 ? 'standard' : 'compact'
+      })}
+    >
       <Nav
         aria-label={section.navbar.navigation.main}
         width={{
@@ -26,7 +35,11 @@ export const Navbar = ({ lang, dictionary }: NavbarProps) => {
       </Nav>
       <Nav
         aria-label={section.navbar.navigation.helper}
-        className={navbar({ position: 'bottom', structure: 'nested' })}
+        className={navbar({
+          position: 'bottom',
+          structure: 'nested',
+          border: 'top'
+        })}
       >
         <ButtonLink
           variant="nav"
