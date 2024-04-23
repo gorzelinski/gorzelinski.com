@@ -76,6 +76,7 @@ export {
   Logo,
   Newsletter,
   Post,
+  Progress,
   Project,
   Socials,
   createShareLinks,
