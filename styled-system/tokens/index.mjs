@@ -739,6 +739,10 @@ const tokens = {
     "value": "ease-out",
     "variable": "var(--easings-ease-out)"
   },
+  "opacity.0": {
+    "value": 0,
+    "variable": "var(--opacity-0)"
+  },
   "opacity.95": {
     "value": 0.95,
     "variable": "var(--opacity-95)"

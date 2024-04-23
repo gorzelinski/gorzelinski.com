@@ -633,6 +633,9 @@ export const tokens = defineTokens({
     },
     95: {
       value: 0.95
+    },
+    0: {
+      value: 0
     }
   },
   durations: {
