@@ -6,6 +6,8 @@ import { HStack, VStack } from '@/styled-system/jsx'
 import {
   ButtonAnchor,
   ButtonLink,
+  Cafe,
+  Heart,
   Mail,
   Small,
   navigation
@@ -41,8 +43,9 @@ export const Footer = ({ lang, dictionary }: FooterProps) => {
       </HStack>
       <HStack justifyContent="space-between" flexWrap="wrap-reverse" gap="l">
         <Small>
-          © {new Date().getFullYear()} {section.footer.copyright} •{' '}
-          {section.footer.note}
+          © {new Date().getFullYear()} {section.footer.copyright}{' '}
+          <Heart color="danger" verticalAlign="bottom" /> {section.footer.note}{' '}
+          <Cafe color="warning" verticalAlign="bottom" />
         </Small>
         <div className={navigation({ align: 'left' })}>
           <ButtonLink
