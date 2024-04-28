@@ -4,7 +4,6 @@ import { verticalRhythm } from '../../utils'
 import {
   At,
   Button,
-  Card,
   H3,
   Input,
   InputWrapper,
@@ -12,12 +11,13 @@ import {
   P,
   Send,
   Small,
-  Ul
+  Ul,
+  card
 } from '../../elements'
 
 export const Newsletter = ({ dictionary }: NewsletterProps) => {
   return (
-    <Card justifyContent="center" shadow="farther">
+    <section className={card({ justifyContent: 'center', shadow: 'farther' })}>
       <H3>{dictionary.heading}</H3>
       <P>{dictionary.description}</P>
       <Ul>
@@ -51,6 +51,6 @@ export const Newsletter = ({ dictionary }: NewsletterProps) => {
         </Button>
       </HStack>
       <Small>{dictionary.footnote}</Small>
-    </Card>
+    </section>
   )
 }

@@ -1,7 +1,7 @@
 export { A, Link } from './anchor'
 export { Blockquote } from './blockquote'
 export { Button, ButtonAnchor, ButtonLink } from './button'
-export { Card } from './card'
+export { Card, card } from './card'
 export { InlineCode } from './inline-code'
 export { Figure, Figcaption } from './figure'
 export { Header } from './header'
