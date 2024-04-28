@@ -1,15 +1,16 @@
 'use client'
 import { useScrollProgress } from '@/hooks'
+import { ProgressProps } from './progress.types'
 import { progress as progressStyles } from './progress.styles'
 import { ProgressBar } from './progress-bar'
 
-export const Progress = () => {
-  const progress = useScrollProgress()
+export const Progress = ({ selector }: ProgressProps) => {
+  const progress = useScrollProgress(selector)
 
   return (
     <div
       className={progressStyles({
-        opacity: progress < 5 || progress > 95 ? 'hidden' : 'visible'
+        opacity: progress < 1 || progress > 99 ? 'hidden' : 'visible'
       })}
     >
       <ProgressBar

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 
-export function useScrollProgress() {
+export type ScrollProgressSelector = 'article' | 'html'
+
+export function useScrollProgress(selector: ScrollProgressSelector = 'html') {
   const [scrollProgress, setScrollProgress] = useState<number>(0)
   const animationFrame = useRef<number>(0)
 
@@ -8,12 +10,15 @@ export function useScrollProgress() {
     let ticking = false
 
     const updateScrollProgress = () => {
-      const scrollableHeight =
-        document.documentElement.scrollHeight - window.innerHeight
-      const currentScrollY = window.scrollY
+      const root = document.documentElement
+      const element = document.querySelector(selector)!
+      const scrollableHeight = element.scrollHeight - window.innerHeight
+      const currentScrollY = root.scrollTop - element.offsetTop
       const scrollProgress = (currentScrollY / scrollableHeight) * 100
 
-      setScrollProgress(scrollProgress)
+      if (scrollProgress < 0) setScrollProgress(0)
+      else if (scrollProgress > 100) setScrollProgress(100)
+      else setScrollProgress(scrollProgress)
 
       ticking = false
     }
@@ -32,7 +37,7 @@ export function useScrollProgress() {
       window.cancelAnimationFrame(animationFrame.current)
       window.removeEventListener('scroll', onScroll)
     }
-  }, [])
+  }, [selector])
 
   return scrollProgress
 }
