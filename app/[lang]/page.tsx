@@ -2,34 +2,29 @@ import { Locale } from '@/i18n.config'
 import { LINKS } from '@/constants'
 import { localizePath } from '@/lib'
 import { getDictionary } from '@/lib/dictionaries'
-import { Box, Grid, HStack } from '@/styled-system/jsx'
+import { getMDXes } from '@/lib/mdx'
+import { Box, Grid } from '@/styled-system/jsx'
 import {
-  At,
-  Button,
+  ButtonAnchor,
   ButtonLink,
-  Card,
   ChevronForward,
   Featured,
   H1,
   H2,
-  H3,
   Hero,
   Image,
-  Input,
-  InputWrapper,
-  Li,
   Link,
+  Newsletter,
   P,
-  Send,
+  Post,
+  Project,
   Small,
   Socials,
   Split,
   Typewriter,
-  Ul,
   verticalRhythm
 } from '@/design-system'
-import profile from '../../public/images/gorzelinski.jpg'
-import dog from '../../public/images/erda-estremera-sxNt9g77PE0-unsplash.jpg'
+import profile from '@/public/images/gorzelinski.jpg'
 
 export default async function Home({
   params: { lang }
@@ -39,8 +34,11 @@ export default async function Home({
   }
 }) {
   const {
-    page: { home }
+    page: { home },
+    component
   } = await getDictionary(lang)
+  const lastProjects = await getMDXes<'project'>('/portfolio/', lang, 2)
+  const lastPosts = await getMDXes<'post'>('/blog/', lang, 4)
 
   return (
     <>
@@ -60,10 +58,11 @@ export default async function Home({
               home.landing.typewriter.create
             ]}
           />
-          <br />
         </H1>
-        <P size="l">{home.landing.description}</P>
-        <ButtonLink alignSelf="start" href={localizePath(lang, LINKS.about)}>
+        <P size="xl" color="subtle">
+          {home.landing.description}
+        </P>
+        <ButtonLink alignSelf="start" href="#contact">
           {home.landing.button}
         </ButtonLink>
       </Hero>
@@ -76,42 +75,20 @@ export default async function Home({
       >
         <Grid
           gridTemplateColumns={{ base: '1fr', sm: '1fr 1fr' }}
-          css={verticalRhythm}
+          css={verticalRhythm.gap.m}
         >
-          <Card>
-            <Image src={dog} alt="Dog" />
-            <H3>This is heading</H3>
-            <P size="s">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-              praesentium eveniet cum soluta? Perferendis placeat dolore
-              recusandae!
-            </P>
-            <ButtonLink
-              align="left"
-              style="text"
-              href={localizePath(lang, LINKS.portfolio)}
-              transition="moveIconForward"
-            >
-              Check project <ChevronForward />
-            </ButtonLink>
-          </Card>
-          <Card>
-            <Image src={dog} alt="Dog" />
-            <H3>This is heading</H3>
-            <P>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-              praesentium eveniet cum soluta? Perferendis placeat dolore
-              recusandae!
-            </P>
-            <ButtonLink
-              align="left"
-              style="text"
-              href={localizePath(lang, LINKS.portfolio)}
-              transition="moveIconForward"
-            >
-              Check project <ChevronForward />
-            </ButtonLink>
-          </Card>
+          {lastProjects.map(({ frontmatter }) => (
+            <Project
+              key={frontmatter.slug}
+              lang={lang}
+              dictionary={component.project}
+              slug={frontmatter.slug}
+              deliverables={frontmatter.deliverables}
+              title={frontmatter.title}
+              description={frontmatter.description}
+              image={frontmatter.image}
+            />
+          ))}
         </Grid>
       </Featured>
       <Split>
@@ -133,7 +110,7 @@ export default async function Home({
           ))}
           <ButtonLink
             align="left"
-            style="text"
+            variant="text"
             href={localizePath(lang, LINKS.about)}
             transition="moveIconForward"
           >
@@ -145,72 +122,46 @@ export default async function Home({
         heading={home.posts.heading}
         link={{
           text: home.posts.link,
-          href: localizePath(lang, LINKS.portfolio)
+          href: localizePath(lang, LINKS.blog)
         }}
       >
-        <Grid gridTemplateColumns={{ base: '1fr' }} css={verticalRhythm}>
-          <Card orientation="horizontal">
-            <Image src={dog} alt="Dog" />
-            <H3>This is heading</H3>
-            <P>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-              praesentium eveniet cum soluta? Perferendis placeat dolore
-              recusandae!
-            </P>
-            <ButtonLink
-              align="left"
-              style="text"
-              href={localizePath(lang, LINKS.blog)}
-              transition="moveIconForward"
-            >
-              Read post <ChevronForward />
-            </ButtonLink>
-          </Card>
-          <Card>
-            <H3 marginBottom="1rem">{home.subscription.heading}</H3>
-            <P marginBottom="1rem">{home.subscription.description}</P>
-            <Ul marginBottom="1rem">
-              {home.subscription.topics.map((topic, index) => (
-                <Li key={`topic-${index}`}>{topic}</Li>
-              ))}
-            </Ul>
-            <HStack flexWrap="wrap" gap="1rem">
-              <InputWrapper>
-                <Input
-                  className="peer"
-                  placeholder={home.subscription.email}
-                ></Input>
-                <At
-                  _peerHover={{
-                    color: 'gray.500'
-                  }}
-                  _peerFocus={{
-                    color: 'gray.400!'
-                  }}
-                />
-              </InputWrapper>
-              <Button
-                width="responsive"
-                _hover={{
-                  '& > span': {
-                    animation: 'wobbling'
-                  }
-                }}
-              >
-                {home.subscription.button} <Send />
-              </Button>
-            </HStack>
-          </Card>
+        <Grid gridTemplateColumns={{ base: '1fr' }} css={verticalRhythm.gap.m}>
+          {lastPosts.map(({ frontmatter }) => (
+            <Post
+              key={frontmatter.slug}
+              lang={lang}
+              dictionary={component.post}
+              slug={frontmatter.slug}
+              date={frontmatter.date}
+              readingTime={frontmatter.readingTime}
+              title={frontmatter.title}
+              description={frontmatter.description}
+              image={frontmatter.image}
+            />
+          ))}
         </Grid>
-        <Hero align="center">
-          <H2>{home.contact.heading}</H2>
-          <P>{home.contact.description}</P>
-          <ButtonLink align="left" style="outline" href="#contact">
-            {home.contact.button}
-          </ButtonLink>
-          <Socials />
-        </Hero>
       </Featured>
+      <Newsletter dictionary={component.newsletter} />
+      <Hero
+        id="contact"
+        align="center"
+        marginTop={{
+          base: '-2xl',
+          md: '-3xl',
+          xl: '-4xl'
+        }}
+      >
+        <H2>{home.contact.heading}</H2>
+        <P>{home.contact.description}</P>
+        <ButtonAnchor
+          align="left"
+          variant="outline"
+          href={`mailto:${LINKS.email}`}
+        >
+          {home.contact.button}
+        </ButtonAnchor>
+        <Socials />
+      </Hero>
     </>
   )
 }

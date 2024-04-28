@@ -17,7 +17,10 @@ import {
 
 export const Newsletter = ({ dictionary }: NewsletterProps) => {
   return (
-    <section className={card({ justifyContent: 'center', shadow: 'farther' })}>
+    <section
+      id="newsletter"
+      className={card({ justifyContent: 'center', shadow: 'farther' })}
+    >
       <H3>{dictionary.heading}</H3>
       <P>{dictionary.description}</P>
       <Ul>
