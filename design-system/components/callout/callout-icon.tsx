@@ -7,8 +7,8 @@ import {
 } from '../../elements'
 
 export const calloutIcon: CalloutIcons = {
-  info: <InformationCircle size="l"></InformationCircle>,
-  danger: <AlertCircle size="l"></AlertCircle>,
-  warning: <Warning size="l"></Warning>,
-  success: <CheckmarkCircle size="l"></CheckmarkCircle>
+  info: <InformationCircle data-testid="information-circle" size="l" />,
+  danger: <AlertCircle data-testid="alert-circle" size="l" />,
+  warning: <Warning data-testid="warning" size="l" />,
+  success: <CheckmarkCircle data-testid="checkmark-circle" size="l" />
 }
