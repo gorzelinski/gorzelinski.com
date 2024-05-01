@@ -1,7 +1,7 @@
 import { Language } from 'prism-react-renderer'
 import { SystemStyleObject } from '@/styled-system/types'
 
-export type Range = [number, number]
+export type Range = [number] | [number, number]
 
 export type CodeProps = {
   codeString: string
