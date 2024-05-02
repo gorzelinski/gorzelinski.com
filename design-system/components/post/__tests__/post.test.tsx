@@ -25,7 +25,7 @@ describe('Post', () => {
     const post = screen.getByRole('article')
     const image = screen.getByRole('img')
     const date = screen.getByText('January 1, 2024 • 1 min read')
-    const title = screen.getByText('Title')
+    const title = screen.getByRole('heading', { level: 3 })
     const description = screen.getByText('Description')
     const button = screen.getByRole('link')
 
