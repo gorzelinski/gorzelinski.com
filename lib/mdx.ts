@@ -21,8 +21,8 @@ type Frontmatter = {
   updated: Date
   image: {
     alt: string
-    caption: string
     src: string
+    caption?: string
   }
 }
 
