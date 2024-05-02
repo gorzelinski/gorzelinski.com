@@ -14,7 +14,11 @@ export const ThemeSwitch = ({ ariaLabel }: ThemeSwitchProps) => {
       title={ariaLabel}
       onClick={() => toggleTheme(theme)}
     >
-      {theme === 'light' ? <Sunny></Sunny> : <Moon></Moon>}
+      {theme === 'light' ? (
+        <Sunny data-testid="sunny" />
+      ) : (
+        <Moon data-testid="moon" />
+      )}
     </Button>
   )
 }
