@@ -1,7 +1,7 @@
 export type TypewriterProps = {
   words: string[]
   typingInterval?: number
-  pauseInterval?: number
+  pausingInterval?: number
   deletingInterval?: number
   loop?: boolean
 }

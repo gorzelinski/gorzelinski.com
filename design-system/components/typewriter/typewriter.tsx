@@ -7,7 +7,7 @@ import { TypewriterProps, Phase } from './typewriter.types'
 export const Typewriter = ({
   words,
   typingInterval = 100,
-  pauseInterval = 500,
+  pausingInterval = 500,
   deletingInterval = 100,
   loop = false
 }: TypewriterProps) => {
@@ -67,7 +67,7 @@ export const Typewriter = ({
       default: {
         const timeout = setTimeout(() => {
           setPhase('deleting')
-        }, pauseInterval)
+        }, pausingInterval)
 
         return () => clearTimeout(timeout)
       }
@@ -78,7 +78,7 @@ export const Typewriter = ({
     selectedIndex,
     phase,
     loop,
-    pauseInterval,
+    pausingInterval,
     typingInterval,
     deletingInterval,
     hasReducedMotion
