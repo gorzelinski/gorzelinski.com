@@ -9,6 +9,8 @@ export const Progress = ({ selector }: ProgressProps) => {
 
   return (
     <div
+      aria-hidden="true"
+      data-testid="progress"
       className={progressStyles({
         opacity: progress < 1 || progress > 99 ? 'hidden' : 'visible'
       })}
