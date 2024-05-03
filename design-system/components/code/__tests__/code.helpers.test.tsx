@@ -39,6 +39,18 @@ describe('Code helpers', () => {
       expect(inRange([1], 1)).toBe(true)
     })
 
+    it('returns false if the number is not the start', () => {
+      expect(inRange([1], 2)).toBe(false)
+    })
+
+    it('returns false if the line is less than the range', () => {
+      expect(inRange([2, 3], 1)).toBe(false)
+    })
+
+    it('returns true if the line is the start of the range', () => {
+      expect(inRange([1, 3], 1)).toBe(true)
+    })
+
     it('returns true if the line is within the range', () => {
       expect(inRange([1, 3], 2)).toBe(true)
     })
@@ -47,7 +59,7 @@ describe('Code helpers', () => {
       expect(inRange([1, 3], 3)).toBe(true)
     })
 
-    it('returns false if the line is outside the range', () => {
+    it('returns false if the line is grater than the range', () => {
       expect(inRange([1, 3], 4)).toBe(false)
     })
   })

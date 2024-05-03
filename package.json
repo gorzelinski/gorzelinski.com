@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:clear": "jest --clearCache"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.2",

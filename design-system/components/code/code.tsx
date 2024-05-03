@@ -12,8 +12,10 @@ import { CodeLineNumber } from './code-line-number'
 import { CodeToken } from './code-token'
 
 // @ts-ignore
+/* c8 ignore start */
 ;(typeof global !== 'undefined' ? global : window).Prism = Prism
 require('prismjs/components/prism-json')
+/* c8 ignore end */
 
 export const Code = ({
   css,
