@@ -21,5 +21,6 @@ export function inRange(range: Range | undefined, line: number) {
   const [start, end] = range
 
   if (!end) return line === start
-  else return line >= start && line <= end
+
+  return line >= start && line <= end
 }
