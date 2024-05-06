@@ -26,8 +26,8 @@ const config: Config = {
   collectCoverageFrom: [
     // 'app/**/*.{ts,tsx}',
     'design-system/**/!(index|*.types|*.styles|*.constants).{ts,tsx}',
-    'hooks/**/*.{ts,tsx}',
-    'lib/**/*.{ts,tsx}'
+    'hooks/**/!(index).{ts,tsx}',
+    'lib/**/!(index).{ts,tsx}'
   ],
 
   // The directory where Jest should output its coverage files
