@@ -3,7 +3,7 @@ export function setToLS(key: string, value: string) {
 }
 
 export function getFromLS(key: string): string | undefined {
-  const value = window.localStorage.getItem(key)
+  const value = localStorage.getItem(key)
 
   if (value) return JSON.parse(value)
 }
