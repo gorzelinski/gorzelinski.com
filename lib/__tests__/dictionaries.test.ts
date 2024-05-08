@@ -1,27 +1,29 @@
 import { getDictionary } from '../dictionaries'
 
-describe('getDictionary()', () => {
-  it('returns a dictionary for the English language', async () => {
-    const dictionary = await getDictionary('en')
+describe('dictionaries', () => {
+  describe('getDictionary()', () => {
+    it('returns a dictionary for the English language', async () => {
+      const dictionary = await getDictionary('en')
 
-    expect(dictionary).toMatchObject({
-      component: {
-        logo: {
-          text: 'Matthew Gorzelinski'
+      expect(dictionary).toMatchObject({
+        component: {
+          logo: {
+            text: 'Matthew Gorzelinski'
+          }
         }
-      }
+      })
     })
-  })
 
-  it('returns a dictionary for the Polish language', async () => {
-    const dictionary = await getDictionary('pl')
+    it('returns a dictionary for the Polish language', async () => {
+      const dictionary = await getDictionary('pl')
 
-    expect(dictionary).toMatchObject({
-      component: {
-        logo: {
-          text: 'Mateusz Gorzeliński'
+      expect(dictionary).toMatchObject({
+        component: {
+          logo: {
+            text: 'Mateusz Gorzeliński'
+          }
         }
-      }
+      })
     })
   })
 })
