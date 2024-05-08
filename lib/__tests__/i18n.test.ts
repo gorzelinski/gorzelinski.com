@@ -1,5 +1,3 @@
-// Create test for i18n
-
 import {
   isDefaultLocale,
   localizePath,
