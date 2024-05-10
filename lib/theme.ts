@@ -4,17 +4,12 @@ export const THEME_ATTRIBUTE = 'data-color-mode'
 export const THEME_LS_KEY = 'theme'
 export const THEME_OS_MEDIA = '(prefers-color-scheme: light)'
 
-export function getThemeAttribute(): Theme {
-  const html = document.documentElement
-
-  if (html) return html.getAttribute(THEME_ATTRIBUTE) as Theme
-  else return 'light'
+export function getThemeAttribute() {
+  return document.documentElement.getAttribute(THEME_ATTRIBUTE) as Theme
 }
 
 export function setThemeAttribute(theme: Theme) {
-  const html = document.documentElement
-
-  if (html) html.setAttribute(THEME_ATTRIBUTE, theme)
+  document.documentElement.setAttribute(THEME_ATTRIBUTE, theme)
 }
 
 export const setInitialTheme = `
