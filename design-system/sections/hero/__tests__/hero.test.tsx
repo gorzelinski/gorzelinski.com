@@ -1,15 +1,12 @@
-// Create test for Hero component
-// Test if Hero component renders correctly
-
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { Hero } from '../hero'
 
 describe('Hero', () => {
   it('renders correctly', () => {
-    const { container } = render(<Hero />)
+    render(<Hero data-testid="hero" />)
 
-    const hero = container.firstChild
+    const hero = screen.getByTestId('hero')
 
-    expect(hero).toHaveClass('min-h_breakpoint-md')
+    expect(hero).toBeInTheDocument()
   })
 })

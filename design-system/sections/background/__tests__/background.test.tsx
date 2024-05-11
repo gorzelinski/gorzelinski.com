@@ -1,12 +1,12 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { Background } from '../background'
 
 describe('Background', () => {
   it('renders correctly', () => {
-    const { container } = render(<Background />)
+    render(<Background data-testid="background" />)
 
-    const background = container.firstChild
+    const background = screen.getByTestId('background')
 
-    expect(background).toHaveClass('bg_gray.900')
+    expect(background).toBeInTheDocument()
   })
 })

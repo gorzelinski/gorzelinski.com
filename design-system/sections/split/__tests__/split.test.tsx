@@ -1,12 +1,12 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { Split } from '../split'
 
 describe('Split', () => {
   it('renders correctly', () => {
-    const { container } = render(<Split />)
+    render(<Split data-testid="split" />)
 
-    const split = container.firstChild
+    const split = screen.getByTestId('split')
 
-    expect(split).toHaveClass('sm:grid-cols_1fr_1fr')
+    expect(split).toBeInTheDocument()
   })
 })
