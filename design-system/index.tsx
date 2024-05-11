@@ -76,7 +76,6 @@ export {
   LanguageSwitch,
   LinkOrA,
   Logo,
-  Newsletter,
   Post,
   Progress,
   Project,
@@ -97,6 +96,7 @@ export {
   Hero,
   Main,
   Navbar,
+  Newsletter,
   Split
 } from './sections'
 

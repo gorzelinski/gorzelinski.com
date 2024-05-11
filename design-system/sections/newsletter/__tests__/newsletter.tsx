@@ -5,7 +5,7 @@ import { Newsletter } from '../newsletter'
 describe('Newsletter', () => {
   it('renders correctly', async () => {
     const {
-      component: { newsletter }
+      section: { newsletter }
     } = await getDictionary('en')
 
     render(<Newsletter dictionary={newsletter} />)
