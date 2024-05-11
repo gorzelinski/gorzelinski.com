@@ -10,6 +10,11 @@ export const main = cva({
       md: 'xl',
       '2xl': '0'
     },
+    paddingY: {
+      base: '2xl',
+      md: '3xl',
+      xl: '4xl'
+    },
     display: 'flex',
     flexDirection: 'column',
     gap: {

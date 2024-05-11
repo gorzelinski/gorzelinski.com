@@ -10,11 +10,11 @@ export const hero = cva({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    minHeight: 'breakpoint-md',
+    minHeight: 'xl',
     _portrait: {
       minHeight: {
-        base: 'calc(100svh - 2 * token(spacing.xl))',
-        md: 'breakpoint-md'
+        base: 'calc(100svh - 7 * token(spacing.xl))',
+        md: 'xl!'
       }
     },
     ...verticalRhythm.gap.m
