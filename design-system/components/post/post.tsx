@@ -27,7 +27,7 @@ export const Post = ({
         {dictionary.min}
       </Small>
       <H3 size="s">{title}</H3>
-      <P size="s">{description}</P>
+      <P>{description}</P>
       <ButtonLink
         align="left"
         variant="text"
