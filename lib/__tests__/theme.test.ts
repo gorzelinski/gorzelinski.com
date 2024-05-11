@@ -11,10 +11,10 @@ describe('theme', () => {
 
   describe('setThemeAttribute()', () => {
     it('sets the theme attribute on the html element', () => {
-      setThemeAttribute('dark')
+      setThemeAttribute('light')
 
       expect(document.documentElement.getAttribute('data-color-mode')).toBe(
-        'dark'
+        'light'
       )
     })
   })
