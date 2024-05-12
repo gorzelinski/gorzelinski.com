@@ -13,4 +13,5 @@ export type Share = {
 
 export type SocialsProps = {
   socials?: Social[]
+  title?: string
 }
