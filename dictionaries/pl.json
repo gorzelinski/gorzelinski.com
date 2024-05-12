@@ -42,7 +42,7 @@
       "heading": "Newsletter, który rozpala ciekawość💡",
       "description": "Subskrybuj mój newsletter, aby otrzymywać comiesięczną dawkę:",
       "topics": [
-        "Nowości, przykładów, inspiracji ze świata front-end, web development’u i designu",
+        "Nowości, przykładów, inspiracji ze świata front-end, programowania i designu",
         "Teorii naukowych i sceptycyzmu",
         "Moich ulubionych źródeł, idei, narzędzi i innych interesujących linków"
       ],
@@ -116,6 +116,14 @@
         "description": "Masz pomysł na projekt? Albo jakieś pytania? Możesz napisać do mnie staroszkolny email lub wiadomość prywatną. Nie krępuj się. Serio.",
         "button": "Skontaktuj się ze mną"
       }
+    },
+    "blog": {
+      "heading": "Blog",
+      "all": "Wszystkie wpisy"
+    },
+    "blogPost": {
+      "updated": "Zaktualizowano",
+      "share": "Udostępnij na"
     }
   }
 }

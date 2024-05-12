@@ -30,7 +30,7 @@
       "socials": "Find me elsewhere",
       "language": "Change language",
       "copyright": "Matthew Gorzelinski",
-      "note": "I’ve created this site with love (and coffee)"
+      "note": "I have created this site with love (and coffee)"
     },
     "navbar": {
       "navigation": {
@@ -46,7 +46,7 @@
         "Science theories and skepticism",
         "My favorite resources, ideas, tools, and other interesting links"
       ],
-      "footnote": "I’m not a Nigerian prince to offer you opportunities. I don’t send spam. Unsubscribe anytime.",
+      "footnote": "I am not a Nigerian prince to offer you opportunities. I do not send spam. Unsubscribe anytime.",
       "email": "Your email",
       "button": "Subscribe",
       "success": {
@@ -55,7 +55,7 @@
       },
       "quarantined": {
         "heading": "Almost there!",
-        "description": "Confirm you’re not a robot, and your email will be on its way."
+        "description": "Confirm you are not a robot, and your email will be on its way."
       },
       "error": {
         "heading": "Something went wrong",
@@ -87,7 +87,7 @@
           "title": "In reality, I'm nicer than I look in this picture. I assure you!"
         },
         "greeting": "Hello, my name is",
-        "brief": "I’m an engineer and humanist. In one? Is it legal?",
+        "brief": "I am an engineer and humanist. In one? Is it legal?",
         "activities": [
           {
             "mention": "I develop my technical skills and humanistic interests by designing, coding, and writing content for websites. I mainly use Figma, JAMstack, pen, and paper as my tools. You can find the effects of that development in my",
@@ -95,7 +95,7 @@
             "href": "/portfolio/"
           },
           {
-            "mention": "If you’re interested in more details about my stuff, you can check what else I",
+            "mention": "If you are interested in more details about my stuff, you can check what else I",
             "link": "use",
             "href": "/uses/"
           },
@@ -116,6 +116,14 @@
         "description": "Do you have a project idea? Or any questions? You can write me an old-school email or direct message. Don’t hesitate. Seriously.",
         "button": "Get in touch"
       }
+    },
+    "blog": {
+      "heading": "Blog",
+      "all": "All posts"
+    },
+    "blogPost": {
+      "updated": "Last updated",
+      "share": "Share via"
     }
   }
 }
