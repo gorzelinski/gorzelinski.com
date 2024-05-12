@@ -35,20 +35,15 @@ export default async function Home({
 }) {
   const {
     page: { home },
-    component
+    component,
+    section
   } = await getDictionary(lang)
   const lastProjects = await getMDXes<'project'>('/portfolio/', lang, 2)
   const lastPosts = await getMDXes<'post'>('/blog/', lang, 4)
 
   return (
     <>
-      <Hero
-        marginBottom={{
-          base: '-2xl',
-          md: '-3xl',
-          xl: '-4xl'
-        }}
-      >
+      <Hero>
         <H1 aria-label={home.landing.typewriter.create}>
           <Typewriter
             words={[
@@ -74,7 +69,7 @@ export default async function Home({
         }}
       >
         <Grid
-          gridTemplateColumns={{ base: '1fr', sm: '1fr 1fr' }}
+          gridTemplateColumns={{ base: '1', sm: '2' }}
           css={verticalRhythm.gap.m}
         >
           {lastProjects.map(({ frontmatter }) => (
@@ -125,7 +120,7 @@ export default async function Home({
           href: localizePath(lang, LINKS.blog)
         }}
       >
-        <Grid gridTemplateColumns={{ base: '1fr' }} css={verticalRhythm.gap.m}>
+        <Grid gridTemplateColumns="1" css={verticalRhythm.gap.m}>
           {lastPosts.map(({ frontmatter }) => (
             <Post
               key={frontmatter.slug}
@@ -141,16 +136,8 @@ export default async function Home({
           ))}
         </Grid>
       </Featured>
-      <Newsletter dictionary={component.newsletter} />
-      <Hero
-        id="contact"
-        align="center"
-        marginTop={{
-          base: '-2xl',
-          md: '-3xl',
-          xl: '-4xl'
-        }}
-      >
+      <Newsletter dictionary={section.newsletter} />
+      <Hero id="contact" align="center">
         <H2>{home.contact.heading}</H2>
         <P>{home.contact.description}</P>
         <ButtonAnchor
