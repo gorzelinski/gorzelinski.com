@@ -1,5 +1,5 @@
 import { Dictionary } from '@/lib/dictionaries'
 
 export type NewsletterProps = {
-  dictionary: Dictionary['component']['newsletter']
+  dictionary: Dictionary['section']['newsletter']
 }
