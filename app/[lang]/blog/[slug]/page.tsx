@@ -1,18 +1,20 @@
 import { Locale } from '@/i18n.config'
 import { LINKS } from '@/constants'
 import { formatDate, formatReadingTime } from '@/lib'
-import { getMDX } from '@/lib/mdx'
+import { getMDX, getRelatedPosts } from '@/lib/mdx'
 import { getDictionary } from '@/lib/dictionaries'
-import { HStack, VStack } from '@/styled-system/jsx'
+import { Grid, HStack, VStack } from '@/styled-system/jsx'
 import {
   Article,
   Figcaption,
   Figure,
   H1,
+  H2,
   Image,
   Newsletter,
   P,
   Pill,
+  Post,
   Progress,
   Small,
   Socials,
@@ -29,6 +31,7 @@ export default async function Blog({
 }) {
   const { component, section, page } = await getDictionary(lang)
   const { content, frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
+  const relatedPosts = await getRelatedPosts(frontmatter, lang, 3)
 
   return (
     <>
@@ -91,6 +94,26 @@ export default async function Blog({
         </footer>
       </Article>
       <Newsletter dictionary={section.newsletter} />
+      {relatedPosts.length > 0 && (
+        <section>
+          <H2 css={verticalRhythm.marginBottom.m}>{page.blogPost.related}</H2>
+          <Grid gridTemplateColumns="1" css={verticalRhythm.gap.m}>
+            {relatedPosts.map(({ frontmatter }) => (
+              <Post
+                key={frontmatter.slug}
+                lang={lang}
+                dictionary={component.post}
+                image={frontmatter.image}
+                date={frontmatter.date}
+                readingTime={frontmatter.readingTime}
+                title={frontmatter.title}
+                description={frontmatter.description}
+                slug={frontmatter.slug}
+              />
+            ))}
+          </Grid>
+        </section>
+      )}
     </>
   )
 }

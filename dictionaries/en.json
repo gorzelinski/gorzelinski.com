@@ -123,7 +123,8 @@
     },
     "blogPost": {
       "updated": "Last updated",
-      "share": "Share via"
+      "share": "Share via",
+      "related": "Stay curious. Read more"
     }
   }
 }

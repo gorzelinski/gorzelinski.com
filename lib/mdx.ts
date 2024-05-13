@@ -52,14 +52,14 @@ const root = process.cwd()
 export async function getMDX<Type extends MDXTypes>(
   page: Pages,
   slug: string,
-  locale: Locale
+  lang: Locale
 ) {
   const filePath = path.join(
     root,
     LINKS.content,
     page,
     slug,
-    localizeFileName(locale)
+    localizeFileName(lang)
   )
   const file = fs.readFileSync(filePath, 'utf-8')
 
@@ -88,12 +88,12 @@ export async function getMDX<Type extends MDXTypes>(
 
 export async function getMDXes<Type extends MDXTypes>(
   page: (typeof LINKS)['blog' | 'portfolio'],
-  locale: Locale,
-  number = 8
+  lang: Locale,
+  number?: number
 ) {
   const directories = fs.readdirSync(path.join(root, LINKS.content, page))
   const mdxes = await Promise.all(
-    directories.map((slug) => getMDX<Type>(page, slug, locale))
+    directories.map((slug) => getMDX<Type>(page, slug, lang))
   )
 
   return mdxes
@@ -102,5 +102,29 @@ export async function getMDXes<Type extends MDXTypes>(
       const nextDate = new Date(next.frontmatter.date).getTime()
       return nextDate - prevDate
     })
-    .filter((_, index) => index < number)
+    .filter((_, index) => index < (number ?? mdxes.length))
+}
+
+export async function getRelatedPosts(
+  post: Post,
+  lang: Locale,
+  number?: number
+) {
+  const allPosts = await getMDXes<'post'>('/blog/', lang)
+
+  const relatedPosts = allPosts.filter((relatedPost) => {
+    const hasRelatedCategory = relatedPost.frontmatter.categories.some(
+      (category) => post.categories.includes(category)
+    )
+    const hasRelatedTag = relatedPost.frontmatter.tags.some((tag) =>
+      post.tags.includes(tag)
+    )
+    const isDuplicate = relatedPost.frontmatter.slug === post.slug
+
+    return !isDuplicate && (hasRelatedCategory || hasRelatedTag)
+  })
+
+  return relatedPosts.filter(
+    (_, index) => index < (number ?? relatedPosts.length)
+  )
 }
