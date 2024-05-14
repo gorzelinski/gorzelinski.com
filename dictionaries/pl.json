@@ -10,6 +10,10 @@
     "rss": "RSS"
   },
   "component": {
+    "avatar": {
+      "name": "Mateusz Gorzeliński",
+      "bio": "Inżynier oprogramowania o erudycyjnych aspiracjach."
+    },
     "logo": {
       "text": "Mateusz Gorzeliński"
     },

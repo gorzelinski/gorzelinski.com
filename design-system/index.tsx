@@ -70,6 +70,7 @@ export {
 } from './elements'
 
 export {
+  Avatar,
   Callout,
   Code,
   Image,

@@ -1,3 +1,4 @@
+export { Avatar } from './avatar'
 export { Callout } from './callout'
 export {
   Code,
