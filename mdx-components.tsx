@@ -19,6 +19,7 @@ import {
   LinkOrA,
   Ol,
   P,
+  S,
   Small,
   Strong,
   Sub,
@@ -48,6 +49,7 @@ const components: MDXComponents = {
     <Caption css={verticalRhythm.marginTop.s}>{children}</Caption>
   ),
   code: ({ children }) => <InlineCode>{children}</InlineCode>,
+  del: ({ children }) => <S>{children}</S>,
   em: ({ children }) => <Em>{children}</Em>,
   figcaption: ({ children }) => (
     <Figcaption css={verticalRhythm.marginTop.s}>{children}</Figcaption>
