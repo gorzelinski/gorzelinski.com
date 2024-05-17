@@ -16,6 +16,9 @@ export const button = cva({
       cursor: 'not-allowed',
       pointerEvents: 'none'
     },
+    '& > span': {
+      flexShrink: 0
+    },
     transitionProperty: 'background-color, color',
     ...sharedTransitionProperties
   },
