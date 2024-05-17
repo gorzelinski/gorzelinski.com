@@ -1,5 +1,4 @@
-import { LINKS } from '@/constants'
-import { formatDate, formatReadingTime, localizePath } from '@/lib'
+import { delocalizePath, formatDate, formatReadingTime } from '@/lib'
 import { PostProps } from './post.types'
 import { ButtonLink, Card, ChevronForward, H3, P, Small } from '../../elements'
 import { Image } from '../image'
@@ -19,7 +18,7 @@ export const Post = ({
       <Image
         width={605}
         height={403}
-        src={`/images${LINKS.blog}${slug}/${image.src}`}
+        src={`/images${delocalizePath(lang, slug)}${image.src}`}
         alt={image.alt}
       />
       <Small>
@@ -31,13 +30,8 @@ export const Post = ({
       <ButtonLink
         align="left"
         variant="text"
-        href={localizePath(lang, `${LINKS.blog}${slug}/`)}
+        href={slug}
         transition="moveIconForward"
-        _hover={{
-          '& > span': {
-            animation: 'forwards'
-          }
-        }}
       >
         {dictionary.button} <ChevronForward />
       </ButtonLink>

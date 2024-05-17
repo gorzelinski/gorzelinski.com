@@ -1,5 +1,4 @@
-import { LINKS } from '@/constants'
-import { localizePath } from '@/lib'
+import { delocalizePath } from '@/lib'
 import { ProjectProps } from './project.types'
 import { ButtonLink, Card, ChevronForward, H3, P, Small } from '../../elements'
 import { Image } from '../image'
@@ -19,7 +18,7 @@ export const Project = ({
         width={622}
         height={384}
         aspectRatio="wide"
-        src={`/images${LINKS.portfolio}${slug}/${image.src}`}
+        src={`/images${delocalizePath(lang, slug)}${image.src}`}
         alt={image.alt}
       />
       <Small>{deliverables.join(', ')}</Small>
@@ -28,13 +27,8 @@ export const Project = ({
       <ButtonLink
         align="left"
         variant="text"
-        href={localizePath(lang, `${LINKS.portfolio}${slug}/`)}
+        href={slug}
         transition="moveIconForward"
-        _hover={{
-          '& > span': {
-            animation: 'forwards'
-          }
-        }}
       >
         {dictionary.button} <ChevronForward />
       </ButtonLink>

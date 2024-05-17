@@ -2,9 +2,9 @@ import { Project } from '@/lib/mdx'
 import { Locale } from '@/i18n.config'
 import { Dictionary } from '@/lib/dictionaries'
 
-export type ProjectProps = Omit<
+export type ProjectProps = Pick<
   Project,
-  'client' | 'services' | 'links' | 'date' | 'updated' | 'readingTime' | 'type'
+  'deliverables' | 'title' | 'description' | 'image' | 'slug'
 > & {
   lang: Locale
   dictionary: Dictionary['component']['project']
