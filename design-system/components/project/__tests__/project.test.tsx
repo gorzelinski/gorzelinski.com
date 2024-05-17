@@ -32,6 +32,6 @@ describe('Project', () => {
     expect(deliverables).toBeInTheDocument()
     expect(title).toBeInTheDocument()
     expect(description).toBeInTheDocument()
-    expect(button).toHaveAttribute('href', `/portfolio/project/`)
+    expect(button).toHaveAttribute('href', `project/`)
   })
 })

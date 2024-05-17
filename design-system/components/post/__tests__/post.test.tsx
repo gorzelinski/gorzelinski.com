@@ -34,6 +34,6 @@ describe('Post', () => {
     expect(date).toBeInTheDocument()
     expect(title).toBeInTheDocument()
     expect(description).toBeInTheDocument()
-    expect(button).toHaveAttribute('href', '/blog/post/')
+    expect(button).toHaveAttribute('href', 'post/')
   })
 })
