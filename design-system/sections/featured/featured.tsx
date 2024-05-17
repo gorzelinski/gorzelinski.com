@@ -6,21 +6,10 @@ export const Featured = ({ children, heading, link }: FeaturedProps) => {
   return (
     <section className={featured()}>
       <Header>
-        <H2
-          alignSelf={{
-            base: 'flex-start',
-            sm: 'baseline'
-          }}
-        >
-          {heading}
-        </H2>
+        <H2>{heading}</H2>
         <ButtonLink
           variant="text"
           align="right"
-          alignSelf={{
-            base: 'flex-end',
-            sm: 'baseline'
-          }}
           transition="moveIconForward"
           href={link.href}
         >

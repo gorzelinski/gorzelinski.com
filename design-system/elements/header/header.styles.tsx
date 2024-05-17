@@ -8,11 +8,21 @@ export const header = cva({
       base: 'column',
       sm: 'row'
     },
-    flexWrap: 'wrap',
     justifyContent: 'space-between',
-    gap: {
-      base: '0',
-      sm: 's'
+    gap: 's',
+    '& > *': {
+      _first: {
+        alignSelf: {
+          base: 'flex-start',
+          md: 'baseline'
+        }
+      },
+      _last: {
+        alignSelf: {
+          base: 'flex-end',
+          md: 'baseline'
+        }
+      }
     }
   }
 })
