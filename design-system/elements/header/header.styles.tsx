@@ -11,13 +11,13 @@ export const header = cva({
     justifyContent: 'space-between',
     gap: 's',
     '& > *': {
-      _first: {
+      '&:nth-child(1)': {
         alignSelf: {
           base: 'flex-start',
           md: 'baseline'
         }
       },
-      _last: {
+      '&:nth-child(2': {
         alignSelf: {
           base: 'flex-end',
           md: 'baseline'
