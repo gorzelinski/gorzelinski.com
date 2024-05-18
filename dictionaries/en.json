@@ -138,6 +138,12 @@
     "portfolio": {
       "heading": "Portfolio",
       "all": "All projects"
+    },
+    "portfolioProject": {
+      "services": "Services",
+      "client": "Client",
+      "deliverables": "Deliverables",
+      "links": "Links"
     }
   }
 }
