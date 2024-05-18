@@ -7,12 +7,12 @@ import {
   H1,
   Header,
   Newsletter,
-  Post,
+  Project,
   Small,
   verticalRhythm
 } from '@/design-system'
 
-export default async function Blog({
+export default async function Portfolio({
   params: { lang }
 }: {
   params: {
@@ -20,27 +20,29 @@ export default async function Blog({
   }
 }) {
   const { component, section, page } = await getDictionary(lang)
-  const posts = await getMDXes<'post'>(LINKS.blog, lang)
+  const projects = await getMDXes<'project'>(LINKS.portfolio, lang)
 
   return (
     <>
       <section>
         <Header alignItems="baseline" css={verticalRhythm.marginBottom.l}>
-          <H1>{page.blog.heading}</H1>
-          <Small>{page.blog.all}</Small>
+          <H1>{page.portfolio.heading}</H1>
+          <Small>{page.portfolio.all}</Small>
         </Header>
 
-        <Grid gridTemplateColumns="1" css={verticalRhythm.gap.m}>
-          {posts.map(({ frontmatter }) => (
-            <Post
+        <Grid
+          gridTemplateColumns={{ base: '1', md: '2' }}
+          css={verticalRhythm.gap.m}
+        >
+          {projects.map(({ frontmatter }) => (
+            <Project
               key={frontmatter.slug}
               lang={lang}
-              dictionary={component.post}
-              image={frontmatter.image}
-              date={frontmatter.date}
-              readingTime={frontmatter.readingTime}
+              dictionary={component.project}
               title={frontmatter.title}
               description={frontmatter.description}
+              image={frontmatter.image}
+              deliverables={frontmatter.deliverables}
               slug={frontmatter.slug}
             />
           ))}
