@@ -134,6 +134,10 @@
       "updated": "Last updated",
       "share": "Share via",
       "related": "Stay curious. Read more"
+    },
+    "portfolio": {
+      "heading": "Portfolio",
+      "all": "All projects"
     }
   }
 }

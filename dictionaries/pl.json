@@ -134,6 +134,10 @@
       "updated": "Zaktualizowano",
       "share": "Udostępnij na",
       "related": "Pozostań ciekawy. Przeczytaj więcej"
+    },
+    "portfolio": {
+      "heading": "Portfolio",
+      "all": "Wszystkie projekty"
     }
   }
 }
