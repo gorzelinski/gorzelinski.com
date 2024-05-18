@@ -17,6 +17,11 @@
     "logo": {
       "text": "Matthew Gorzelinski"
     },
+    "pagination": {
+      "ariaLabel": "Pagination",
+      "prev": "Previous",
+      "next": "Next"
+    },
     "post": {
       "button": "Read post",
       "min": "min read"

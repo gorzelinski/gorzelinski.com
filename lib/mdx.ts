@@ -8,7 +8,7 @@ import readingTime, { ReadTimeResults } from 'reading-time'
 import { LINKS } from '@/constants'
 import { getMDXComponents } from '@/mdx-components'
 import { Locale } from '@/i18n.config'
-import { localizeFileName } from './i18n'
+import { localizeFileName, localizePath } from './i18n'
 
 type Pages = (typeof LINKS)['blog' | 'portfolio']
 
@@ -47,6 +47,11 @@ type MDX = {
 
 type MDXTypes = Post['type'] | Project['type']
 
+export type Pagination = {
+  title: string
+  slug: string
+} | null
+
 const root = process.cwd()
 
 export async function getMDX<Type extends MDXTypes>(
@@ -78,7 +83,7 @@ export async function getMDX<Type extends MDXTypes>(
     }
   })
   frontmatter.readingTime = readingTime(file)
-  frontmatter.slug = slug
+  frontmatter.slug = localizePath(lang, `${page}${slug}/`)
 
   return {
     frontmatter,
@@ -103,6 +108,36 @@ export async function getMDXes<Type extends MDXTypes>(
       return nextDate - prevDate
     })
     .filter((_, index) => index < (number ?? mdxes.length))
+}
+
+export async function createPagination(
+  page: Pages,
+  slug: string,
+  lang: Locale
+) {
+  const mdxes = await getMDXes(page, lang)
+  const currentIndex = mdxes.findIndex(
+    (mdx) => mdx.frontmatter.slug === localizePath(lang, `${page}${slug}/`)
+  )
+
+  const prevMDX =
+    currentIndex === mdxes.length - 1 ? null : mdxes[currentIndex + 1]
+  const nextMDX = currentIndex === 0 ? null : mdxes[currentIndex - 1]
+
+  const prev = prevMDX && {
+    title: prevMDX.frontmatter.title,
+    slug: prevMDX.frontmatter.slug
+  }
+
+  const next = nextMDX && {
+    title: nextMDX.frontmatter.title,
+    slug: nextMDX.frontmatter.slug
+  }
+
+  return {
+    prev,
+    next
+  }
 }
 
 export async function getRelatedPosts(

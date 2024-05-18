@@ -17,6 +17,11 @@
     "logo": {
       "text": "Mateusz Gorzeliński"
     },
+    "pagination": {
+      "ariaLabel": "Paginacja",
+      "prev": "Poprzedni",
+      "next": "Następny"
+    },
     "post": {
       "button": "Czytaj wpis",
       "min": "min. czytania"
