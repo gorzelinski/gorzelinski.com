@@ -1,9 +1,16 @@
+import { LINKS } from '@/constants'
 import { Locale } from '@/i18n.config'
-import { localizeFileName, localizePath } from '@/lib'
 import { getDictionary } from '@/lib/dictionaries'
-import { getFileByPath, getFilesByDirectory } from '@/lib/mdx'
-import { ButtonLink, H1, Post, verticalRhythm } from '@/design-system'
+import { getMDXes } from '@/lib/mdx'
 import { Grid } from '@/styled-system/jsx'
+import {
+  H1,
+  Header,
+  Newsletter,
+  Post,
+  Small,
+  verticalRhythm
+} from '@/design-system'
 
 export default async function Blog({
   params: { lang }
@@ -12,39 +19,34 @@ export default async function Blog({
     lang: Locale
   }
 }) {
-  const directories = getFilesByDirectory('content', 'blog')
-  const posts = directories.map((slug) => {
-    const file = getFileByPath('content', 'blog', slug, localizeFileName(lang))
-    file.frontmatter.slug = slug
-
-    return file
-  })
-  const { component } = await getDictionary(lang)
+  const { component, section, page } = await getDictionary(lang)
+  const posts = await getMDXes<'post'>(LINKS.blog, lang)
 
   return (
     <>
-      <div>
-        <H1>Blog page</H1>
-        <ButtonLink style="text" href={localizePath(lang, '/')}>
-          Home
-        </ButtonLink>
-      </div>
+      <section>
+        <Header alignItems="baseline" css={verticalRhythm.marginBottom.l}>
+          <H1>{page.blog.heading}</H1>
+          <Small>{page.blog.all}</Small>
+        </Header>
 
-      <Grid gridTemplateColumns={{ base: '1fr' }} css={verticalRhythm}>
-        {posts.map(({ frontmatter }) => (
-          <Post
-            key={frontmatter.slug}
-            lang={lang}
-            date={frontmatter.date}
-            readingTime={frontmatter.readingTime}
-            title={frontmatter.title}
-            description={frontmatter.description}
-            image={frontmatter.image}
-            slug={frontmatter.slug}
-            dictionary={component.post}
-          ></Post>
-        ))}
-      </Grid>
+        <Grid gridTemplateColumns="1" css={verticalRhythm.gap.m}>
+          {posts.map(({ frontmatter }) => (
+            <Post
+              key={frontmatter.slug}
+              lang={lang}
+              dictionary={component.post}
+              image={frontmatter.image}
+              date={frontmatter.date}
+              readingTime={frontmatter.readingTime}
+              title={frontmatter.title}
+              description={frontmatter.description}
+              slug={frontmatter.slug}
+            ></Post>
+          ))}
+        </Grid>
+      </section>
+      <Newsletter dictionary={section.newsletter} />
     </>
   )
 }
