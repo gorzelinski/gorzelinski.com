@@ -1,5 +1,5 @@
-import { Locale } from '@/i18n.config'
 import { LINKS } from '@/constants'
+import { Locale } from '@/i18n.config'
 import { localizePath } from '@/lib'
 import { getDictionary } from '@/lib/dictionaries'
 import { getMDXes } from '@/lib/mdx'
@@ -38,8 +38,8 @@ export default async function Home({
     component,
     section
   } = await getDictionary(lang)
-  const lastProjects = await getMDXes<'project'>('/portfolio/', lang, 2)
-  const lastPosts = await getMDXes<'post'>('/blog/', lang, 4)
+  const lastProjects = await getMDXes<'project'>(LINKS.portfolio, lang, 2)
+  const lastPosts = await getMDXes<'post'>(LINKS.blog, lang, 4)
 
   return (
     <>
@@ -77,11 +77,11 @@ export default async function Home({
               key={frontmatter.slug}
               lang={lang}
               dictionary={component.project}
-              slug={frontmatter.slug}
+              image={frontmatter.image}
               deliverables={frontmatter.deliverables}
               title={frontmatter.title}
               description={frontmatter.description}
-              image={frontmatter.image}
+              slug={frontmatter.slug}
             />
           ))}
         </Grid>
