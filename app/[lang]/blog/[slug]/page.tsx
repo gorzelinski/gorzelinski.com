@@ -1,11 +1,12 @@
-import { Locale } from '@/i18n.config'
 import { LINKS } from '@/constants'
-import { formatDate, formatReadingTime } from '@/lib'
-import { getMDX, getRelatedPosts } from '@/lib/mdx'
+import { Locale } from '@/i18n.config'
 import { getDictionary } from '@/lib/dictionaries'
+import { createPagination, getMDX, getRelatedPosts } from '@/lib/mdx'
+import { formatDate, formatReadingTime, localizePath } from '@/lib'
 import { Grid, HStack, VStack } from '@/styled-system/jsx'
 import {
   Article,
+  Avatar,
   Figcaption,
   Figure,
   H1,
@@ -13,6 +14,7 @@ import {
   Image,
   Newsletter,
   P,
+  Pagination,
   Pill,
   Post,
   Progress,
@@ -20,6 +22,7 @@ import {
   Socials,
   verticalRhythm
 } from '@/design-system'
+import avatar from '@/public/images/logo.png'
 
 export default async function Blog({
   params: { lang, slug }
@@ -31,6 +34,7 @@ export default async function Blog({
 }) {
   const { component, section, page } = await getDictionary(lang)
   const { content, frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
+  const { prev, next } = await createPagination(LINKS.blog, slug, lang)
   const relatedPosts = await getRelatedPosts(frontmatter, lang, 3)
 
   return (
@@ -47,6 +51,9 @@ export default async function Blog({
           <P css={verticalRhythm.marginBottom.m} size="l" color="subtle">
             {frontmatter.description}
           </P>
+          <Pill css={verticalRhythm.marginBottom.s}>
+            {page.blogPost.updated}: {formatDate(frontmatter.updated, lang)}
+          </Pill>
           <Figure
             marginX={{
               base: '-m',
@@ -83,16 +90,20 @@ export default async function Blog({
               ...verticalRhythm.marginTop['2xmarginBottom']
             }}
           >
-            <Pill>
-              {page.blogPost.updated} {formatDate(frontmatter.updated, lang)}
-            </Pill>
             <HStack css={verticalRhythm.gap.s}>
               <Small>{page.blogPost.share}</Small>
               <Socials title={frontmatter.title} />
             </HStack>
+            <Avatar
+              image={avatar}
+              name={component.avatar.name}
+              bio={component.avatar.bio}
+              href={localizePath(lang, LINKS.about)}
+            />
           </VStack>
         </footer>
       </Article>
+      <Pagination prev={prev} next={next} dictionary={component.pagination} />
       <Newsletter dictionary={section.newsletter} />
       {relatedPosts.length > 0 && (
         <section>
