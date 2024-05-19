@@ -17,7 +17,7 @@ export const header = cva({
           md: 'baseline'
         }
       },
-      '&:nth-child(2': {
+      '&:nth-child(2)': {
         alignSelf: {
           base: 'flex-end',
           md: 'baseline'
