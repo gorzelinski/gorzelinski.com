@@ -43,8 +43,8 @@ export const Footer = ({ lang, dictionary }: FooterProps) => {
       </HStack>
       <HStack justifyContent="space-between" flexWrap="wrap-reverse" gap="l">
         <Small>
-          © {new Date().getFullYear()} {section.footer.copyright}{' '}
-          <Heart color="danger" verticalAlign="bottom" /> {section.footer.note}{' '}
+          © {new Date().getFullYear()} {section.footer.copyright} •{' '}
+          {section.footer.note} <Heart color="danger" verticalAlign="bottom" />{' '}
           <Cafe color="warning" verticalAlign="bottom" />
         </Small>
         <div className={navigation({ align: 'left' })}>

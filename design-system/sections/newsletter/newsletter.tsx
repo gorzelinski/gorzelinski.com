@@ -22,7 +22,9 @@ export const Newsletter = ({ dictionary }: NewsletterProps) => {
       className={card({ justifyContent: 'center', shadow: 'farther' })}
     >
       <H2>{dictionary.heading}</H2>
-      <P>{dictionary.description}</P>
+      <P size="l" color="subtle">
+        {dictionary.description}
+      </P>
       <Ul>
         {dictionary.topics.map((topic, index) => (
           <Li css={verticalRhythm.marginBottom.s} key={`topic-${index}`}>
