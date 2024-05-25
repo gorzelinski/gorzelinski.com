@@ -73,6 +73,225 @@
     }
   },
   "page": {
+    "about": {
+      "heading": "O mnie",
+      "story": {
+        "gaming": "Moje najwcześniejsze wspomnienia nierozerwalnie związane są z elektroniką. Do dziś pamiętam dreszczyk emocji, towarzyszący mi podczas dźwięku uruchamiania pierwszego PlayStation. Brzmiał on jak przejście przez portal - wejście w inną, cyfrową galaktykę. Ta galaktyka już wtedy mnie pochłonęła. Po niemal 20 latach nadal w niej tkwię.",
+        "technology": "Z biegiem lat, zainteresowanie elektroniką się u mnie pogłębiało. Mając kilkanaście lat dostałem swój pierwszy telefon - używany Sony Ericsson k300i. Nadal pamiętam jego specyfikację: 12MB pamięci, aparat VGA, wyświetlacz o 65 tysiącach kolorów. Wówczas te liczby nie mówiły mi wiele. Lubiłem jednak je analizować i porównywać między modelami. W zasadzie nadal to robię. Wówczas przeglądałem ulotki operatorów telekomunikacyjnych. Dziś przyjmuje to formę śledzenia blogów i vlogów technologicznych.",
+        "math": "Moja pasja do cyfr nie kończyła się na tym. W szkole najbardziej lubiłem matematykę (wiem, byłem dziwnym dzieckiem). Profil matematyczno-fizyczny w LO, a następnie studia na Politechnice Poznańskiej wydały mi się dobrym pomysłem.",
+        "university": "Wybrałem kierunek Elektronika i Telekomunikacja po wielu godzinach poszukiwań i namysłu. Taa... nie do końca. Moja decyzja opierała się na skojarzeniach i przypadku. Szczęśliwym przypadku. Na studiach nadal mogłem kreślić równania matematyczne - w tym logiczne. Konstruować na ich podstawie proste układy elektroniczne. Programować (mikro)procesory. Konfigurować routery i pogłębiać wiedzę na temat sieci. O tych ostatnich uczyłem się nie tylko na studiach.",
+        "internship": "W trakcie studiów pracowałem w Semcore, jako specjalista SEO. Wtedy zacząłem tworzyć strony internetowe. Pierwsze z nich wyglądały okropnie, ale spodobało mi się to. Po kilku miesiącach samodzielnej nauki rozpocząłem pracę jako Front-End Developer w Af Agency. Miałem okazję współpracować nad projektami dla marek takich jak Volkswagen, Skoda czy Develey. Poznałem też koszmar tworzenia newsletterów dla różnych klientów pocztowych. Dobre czasy. Nieironicznie.",
+        "thesis": "Studia - z tytułem inżyniera - skończyłem w 2020 roku. Moja praca dyplomowa dotyczyła analizy technologii i narzędzi do tworzenia stron internetowych. Jednak na tym nie poprzestałem. Wiedzę na ten temat staram się pogłębiać cały czas - oglądając wykłady, słuchając podcastów i czytając książki.",
+        "books": "Choć książki „wujka Boba” i inne klasyki informatyki zajmują sporo miejsca na moim regale - nie ograniczam się tylko do książek technicznych. Mój Kallax ugina się także od książek psychologicznych, naukowych, filozoficznych i grubych biografii. Poza książkami lubię także inne media. Gry, filmy, muzyka - pochłaniam je wszystkie.",
+        "activities": "Jeżeli się nie uczę i nie konsumuję różnych mediów (lub kawy) to najprawdopodobniej ćwiczę, spaceruję, przeglądam memy lub ciężko rozmyślam nad błędami poznawczymi.",
+        "position": "Obecnie współpracuję z CKSource jako Junior Software Engineer / Technical Writer, aby współtworzyć bogate rozwiązania edycyjne dla sieci. Istnieje szansa, że słyszałeś o CKEditor - naszym sztandarowym produkcie."
+      },
+      "facts": {
+        "heading": "Losowe fakty",
+        "list": [
+          {
+            "heading": "🎵 Hałas urządzeń AGD mnie uspokaja",
+            "description": "Dźwięki odkurzacza czy suszarki do włosów nigdy mnie nie irytowały. Lubię je. Wydaje się to dziwne, ale jest coś kojącego w tego typu białym szumie dla wielu ludzi. Wideo „Vacum Cleaner Sound” na Youtube ma miliony wyświetleń. Można nawet kupić specjalne urządzenia, które generują biały szum."
+          },
+          {
+            "heading": "❄️ Jestem INTJ w MBTI",
+            "description": "Myers-Briggs Type Indicator to test osobowości, który określa typ, mocne strony i preferencje danej osoby. Nie traktowałbym go zbyt poważnie, ale jest to ciekawe ćwiczenie. Z opisu mojego typu wynika, że jestem zimym, samotnym złoczyńcom (mogłem to trochę podkolorować)."
+          },
+          {
+            "heading": "☀️ Kicham w jasnym świetle",
+            "description": "To nie tak, że jest to niekontrolowane jakbym miał alergię. Po prostu czuję silną potrzebę kichania, gdy wyjdę na zewnątrz w słoneczny dzień. Poczytałem trochę i to ma nawet nazwę - odruch kichania spowodowany światłem słonecznym. Jest to rzadka przypadłość (dotykająca 10 - 30% populacji) wywoływana genetycznie. Dzięki, tato!"
+          },
+          {
+            "heading": "⏱️ Mógłbym przejść niektóre z testów sprawnościowych Navy SEALs",
+            "description": "Jedna część tego testu wymaga zrobienia minimum 42 pompek w ciągu 2 minut. Ostatnią częścią jest bieg na 1,5 mili (~2,41 km) w czasie poniżej 11 minut. Zrobiłem to kilka razy na siłowni. Mam nadzieję, że nadal jestem w stanie."
+          },
+          {
+            "heading": "📄 Mam nazwisko przez pomyłkę",
+            "description": "Przez literówkę w dokumentach mojego pradziadka moje nazwisko to „Gorzeliński”. Prawdiłowy zapis brzmiał prawdopodobnie „Garzeliński”. Tak czy siak, obie formy są trudne do wymówienia i słyszałem wiele wersji mojego nazwiska."
+          },
+          {
+            "heading": "📘 Jestem molem książkowym",
+            "description": "W zeszłym roku przeczytałem 48 książek. Nie znam żadnych technik szybkiego czytania (większość z nich to pseudonauka). W zasadzie to jestem powolnym czytelnikiem, który często się zatrzymuje i zastanawia. Zwyczjnie czytam średnio ponad godzinę dziennie."
+          }
+        ]
+      },
+      "values": {
+        "heading": "Moje wartości",
+        "list": [
+          {
+            "heading": "Prawda",
+            "description": "Prawdopodobnie jedna z najważniejszych. Jest podstawą wszelkich moich działań. Cały czas poszerzam i weryfikuję moje przekonania. Chcę, aby światopogląd w mojej głowe był jak najbliższy rzeczywistości."
+          },
+          {
+            "heading": "Ciekawość",
+            "description": "„Nie mam żadnych niezwykłych uzdolnień oprócz namiętnej ciekawości” - napisał kiedyś Einstein do przyjaciela (zanim przewrócisz oczami - ten cytat jest autentyczny). Był skromny. Nigdy nie będę tak utalentowany jak on, ale jego ciekawość może stanowić dla mnie inspirację. Odkrywanie i rozumienie nowej wiedzy może być nagrodą samą w sobie."
+          },
+          {
+            "heading": "Empatia",
+            "description": "W mojej podróży w poszukiwaniu prawdy nie jestem sam. Stoję na ramionach gigantów. Większość rzeczy w moim życiu zawdzięczam innym ludziom. Powienienm być wdzięczny, zwracać pomoc i starać się jak najlepiej zrozumieć inne punkty widzenia."
+          },
+          {
+            "heading": "Otwartość umysłu",
+            "description": "Nie da się dochodzić do prawdy, będąc zacietrzewionym w swoich poglądach. Regularnie poszukuję informacji, które mogą podważyć moje przekonania. I czasem je znajduję. Moje ego cierpi, gdy wychodzę na idiotę, ale w ogólnym rozrachunku - warto."
+          }
+        ]
+      },
+      "culturalCorner": {
+        "heading": "Kulturalny kącik",
+        "list": [
+          {
+            "heading": "Co przeczytać?",
+            "type": "read",
+            "list": [
+              {
+                "title": "Pułapki myślenia. O myśleniu szybkim i wolnym",
+                "image": "o-mysleniu-szybkim-i-wolnym.jpeg",
+                "link": "https://lubimyczytac.pl/ksiazka/154212/pulapki-myslenia-o-mysleniu-szybkim-i-wolnym"
+              },
+              {
+                "title": "Zachowuj się",
+                "image": "zachowuj-sie.jpeg",
+                "link": "https://lubimyczytac.pl/ksiazka/4949256/zachowuj-sie-jak-biologia-wydobywa-z-nas-to-co-najgorsze-i-to-co-najlepsze"
+              },
+              {
+                "title": "Sapiens. Od zwierząt do bogów",
+                "image": "sapiens-od-zwierzat-do-bogow.jpeg",
+                "link": "https://lubimyczytac.pl/ksiazka/4988781/sapiens-od-zwierzat-do-bogow"
+              },
+              {
+                "title": "Rozmyślania",
+                "image": "rozmyslania.jpeg",
+                "link": "https://lubimyczytac.pl/ksiazka/4942473/rozmyslania"
+              },
+              {
+                "title": "Bracia Karamazow",
+                "image": "bracia-karamazow.jpeg",
+                "link": "https://lubimyczytac.pl/ksiazka/53781/bracia-karamazow"
+              },
+              {
+                "title": "Kod doskonały",
+                "image": "kod-doskonaly.jpeg",
+                "link": "https://lubimyczytac.pl/ksiazka/125144/kod-doskonaly-jak-tworzyc-oprogramowanie-pozbawione-bledow"
+              }
+            ]
+          },
+          {
+            "heading": "Czego posłuchać?",
+            "type": "listen",
+            "list": [
+              {
+                "title": "The Skeptics Guide to the Universe",
+                "image": "the-skeptics-guide-to-the-universe.jpg",
+                "link": "https://www.theskepticsguide.org/"
+              },
+              {
+                "title": "99% Invisible",
+                "image": "99-invisible.png",
+                "link": "https://99percentinvisible.org/"
+              },
+              {
+                "title": "Philosophize This!",
+                "image": "philosophize-this.jpeg",
+                "link": "https://www.philosophizethis.org/"
+              },
+              {
+                "title": "Syntax",
+                "image": "syntax.webp",
+                "link": "https://syntax.fm/"
+              },
+              {
+                "title": "Bookworm",
+                "image": "bookworm.png",
+                "link": "https://bookworm.fm/"
+              },
+              {
+                "title": "Indie Hackers",
+                "image": "indie-hackers.jpeg",
+                "link": "https://www.indiehackers.com/"
+              }
+            ]
+          },
+          {
+            "heading": "Co obejrzeć?",
+            "type": "watch",
+            "list": [
+              {
+                "title": "Biuro",
+                "image": "the-office.jpeg",
+                "link": "https://www.filmweb.pl/serial/Biuro-2005-202887"
+              },
+              {
+                "title": "Chłopaki z baraków",
+                "image": "trailer-park-boys.jpg",
+                "link": "https://www.filmweb.pl/serial/Ch%C5%82opaki+z+barak%C3%B3w-2001-134084"
+              },
+              {
+                "title": "Mr. Robot",
+                "image": "mr-robot.jpg",
+                "link": "https://www.filmweb.pl/serial/Mr.+Robot-2015-733795"
+              },
+              {
+                "title": "Rick i Morty",
+                "image": "rick-and-morty.jpg",
+                "link": "https://www.filmweb.pl/serial/Rick+i+Morty-2013-671074"
+              },
+              {
+                "title": "Peaky Blinders",
+                "image": "peaky-blinders.jpg",
+                "link": "https://www.filmweb.pl/serial/Peaky+Blinders-2013-680981"
+              },
+              {
+                "title": "Dolina Krzemowa",
+                "image": "silicon-valley.jpg",
+                "link": "https://www.filmweb.pl/serial/Dolina+Krzemowa-2014-684792"
+              }
+            ]
+          },
+          {
+            "heading": "W co zagrać?",
+            "type": "play",
+            "list": [
+              {
+                "title": "Disco Elysium: the Final Cut",
+                "image": "disco-elysium-the-final-cut.jpg",
+                "link": "https://www.gry-online.pl/gry/disco-elysium/"
+              },
+              {
+                "title": "Final Fantasy VII Remake",
+                "image": "final-fantasy-vii-remake.jpg",
+                "link": "https://www.gry-online.pl/gry/final-fantasy-vii-remake/"
+              },
+              {
+                "title": "Bioshock",
+                "image": "bioshock.jpg",
+                "link": "https://www.gry-online.pl/gry/bioshock/"
+              },
+              {
+                "title": "Read Dead Redemption 2",
+                "image": "red-dead-redemption-2.jpg",
+                "link": "https://www.gry-online.pl/gry/red-dead-redemption-ii/"
+              },
+              {
+                "title": "Tom Clancy's Splinter Cell: Chaos Theory",
+                "image": "tom-clancys-splinter-cell-chaos-theory.jpg",
+                "link": "https://www.gry-online.pl/gry/tom-clancys-splinter-cell-chaos-theory/"
+              },
+              {
+                "title": "Resident Evil 4 Remake",
+                "image": "resident-evil-4-remake.jpg",
+                "link": "https://www.gry-online.pl/gry/resident-evil-4-1/"
+              }
+            ]
+          }
+        ]
+      },
+      "uses": {
+        "heading": "Czego używam?",
+        "description": "Zawsze mnie interesuje jakich technologii i gadżetów używają inni ludzie. Stworzyłem tę listę dla geeków takich jak ja. Będę się starał, aby była aktualna.",
+        "button": "Rzeczy, których używam",
+        "image": "Moje biurko z laptopem, kubkiem kawy, notesem, długopisem i telefonem. W tle widać okno z widokiem na drzewa."
+      }
+    },
     "home": {
       "landing": {
         "typewriter": {
@@ -114,7 +333,7 @@
             "href": "/blog/"
           }
         ],
-        "link": "Moja historia"
+        "link": "Więcej o mnie"
       },
       "posts": {
         "heading": "Ostatnie wpisy",

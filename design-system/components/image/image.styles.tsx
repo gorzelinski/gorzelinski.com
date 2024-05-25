@@ -11,7 +11,7 @@ export const image = cva({
         aspectRatio: 'auto'
       },
       portrait: {
-        aspectRatio: 'portrait'
+        aspectRatio: '2 / 3'
       },
       square: {
         aspectRatio: 'square'

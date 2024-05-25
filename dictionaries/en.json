@@ -73,6 +73,226 @@
     }
   },
   "page": {
+    "about": {
+      "heading": "About me",
+      "story": {
+        "gaming": "My earliest memories are bound to electronics. As a kid, I was thrilled every time I turned on PlayStation. Every startup sounded like going through a portal, entering another digital galaxy. That galaxy absorbed me back then. After 20 years, I am still there.",
+        "technology": "Over the years, I have become more and more interested in electronics. When I was a teenager, I got my first phone - a Sony Ericsson k300i. I still remember its specs: 12MB of memory, a VGA camera, and a 65k color display. These numbers were not telling me much back then. But I still liked to analyze them (from mobile phone companies’ flyers) and compare them between different phone models. I am still doing that, to be honest. Nowadays, I follow technological blogs and vlogs.",
+        "math": "My passion for numbers did not end there. Math was my favorite subject in school (I was a strange child, I know). After graduating high school (math and physics extended), I started studying at Poznan University of Technology.",
+        "university": "I have chosen Electronics and Telecommunications course after many hours of research and careful consideration. Yeah, but...not really. I have based my choice on associations and chance. Fortunately, I was lucky. In university, I could chalk out math equations. I was also solving boolean equations and making electronic circuits based on them. I have programmed some (micro)processors. I have also had the opportunity to configure routers and learn more about computer networks. I was learning about networks not only in university.",
+        "internship": "During my studies, I worked at Semcore as SEO Specialist. I started creating websites then. The first of them looked awful, but I liked it. After several months of self-studying, I started working as a Front-end developer at Af Agency. I have had an opportunity to collaborate with brands like Volkswagen or Skoda. I have also experienced the nightmare of creating a newsletter for email clients. Good times. Not ironically.",
+        "thesis": "I graduated in 2020 with an engineer title. Now I legitimately can use phrases like “Trust me, I am an engineer.” My thesis was about tools and technologies used to create apps and websites. But it did not end there. I learn about web dev every day. I watch lectures, listen to podcasts, and read books.",
+        "books": "“Uncle Bob’s” books occupy some space on my bookshelf. However, I am not limiting myself only to computer science books. My Kallax bends from psychology, philosophy, biography, and especially science books. I also like other media. Games, movies, music - you name it.",
+        "activities": "If I do not study and consume media (or coffee), I probably work out, walk, watch memes or think hard about cognitive biases.",
+        "position": "I currently work at CKSource as a Junior Software Engineer / Technical Writer to co-create rich editing solutions for the web. There is a chance you've heard of CKEditor - our flagship product."
+      },
+      "facts": {
+        "heading": "Random facts",
+        "list": [
+          {
+            "heading": "🎵 The noise of home appliances calms me",
+            "description": "Vacuum cleaner or hairdryer sounds have never annoyed me. I like them. It appears odd, but something is soothing in this kind of white noise to many people. “Vacum Cleaner Sound” videos on Youtube have millions of views. You can even buy devices that generate white noise."
+          },
+          {
+            "heading": "❄️ I am an INTJ in MBTI",
+            "description": "Myers-Briggs Type Indicator is a personality test to identify a person’s type, strengths, and preferences. I would not take it too seriously, but it is a fun exercise. The description of my type states that I am a cold, lonely villain (I might have exaggerated that a bit)."
+          },
+          {
+            "heading": "☀️ I sneeze in the bright light",
+            "description": "It is not as uncontrollable as if I am allergic. On a sunny day, I feel the urge to sneeze after I have just gone outside. I have done some reading, and it even has a name - photic sneeze reflex. It is a rare condition (affecting 10 - 30% population) caused by gens. Thanks, dad!"
+          },
+          {
+            "heading": "⏱️ I could pass some of the Navy SEALs Physical Screening Tests",
+            "description": "One part of the test requires doing a minimum of 42 push-ups in 2 minutes. The last part is a 1.5-mile (~2.41 km) run in under 11 minutes. I have done that a few times at the gym. I hope I can still do that."
+          },
+          {
+            "heading": "📄 I have a surname by mistake",
+            "description": "Due to some typo in my grandfather’s documents, my surname is “Gorzeliński” (with polish letters). The correct spelling should probably be “Garzeliński.” Anyway, it is hard to pronounce either way - even for polish people."
+          },
+          {
+            "heading": "📘 I am a bookworm",
+            "description": "Last year I read 48 books. I do not know any fast reading techniques (most of them are pseudoscience, actually). I am a slow reader who pauses and ponders. I just read over an hour on average every day."
+          }
+        ]
+      },
+      "values": {
+        "heading": "My values",
+        "list": [
+          {
+            "heading": "Truth",
+            "description": "Probably one of the most important. It is at the root of most of my endeavors. I constantly expand and verify my views. I want the worldview in my head to be as close as possible to reality."
+          },
+          {
+            "heading": "Curiosity",
+            "description": "“I have no special talents. I am only passionately curious.” - Einstein once wrote to his friend (before you roll your eyes - this quote is authentic). He was humble. I will never be as talented as Einstein was, but his curiosity can be an inspiration for me. Discovering and understanding new knowledge can be a reward for its own sake."
+          },
+          {
+            "heading": "Empathy",
+            "description": "In my truth-seeking journey, I am not alone. I stand on the shoulders of giants. Most of the things in my life I owe to other people. I should be grateful, give some of that help back, and try my best to understand their point of view."
+          },
+          {
+            "heading": "Open-mindedness",
+            "description": "You cannot pursue the truth by being obstinate in your views. I regularly look for information that may contradict my viewpoint. And sometimes I find them. My ego hurts when I look like an idiot, but overall, it is worth it."
+          }
+        ]
+      },
+      "culturalCorner": {
+        "heading": "Cultural corner",
+        "list": [
+          {
+            "heading": "What to read?",
+            "type": "read",
+            "list": [
+              {
+                "title": "Thinking, Fast and Slow",
+                "image": "thinking-fast-and-slow.jpeg",
+                "link": "https://www.goodreads.com/book/show/11468377-thinking-fast-and-slow"
+              },
+              {
+                "title": "Behave: The Biology of Humans at Our Best and Worst",
+                "image": "behave.jpeg",
+                "link": "https://www.goodreads.com/book/show/31170723-behave"
+              },
+              {
+                "title": "Sapiens: A Brief History of Humankind",
+                "image": "sapiens-a-brief-history-of-humankind.jpeg",
+                "link": "https://www.goodreads.com/en/book/show/23692271-sapiens"
+              },
+              {
+                "title": "Meditations",
+                "image": "meditations.jpeg",
+                "link": "https://www.goodreads.com/book/show/30659.Meditations"
+              },
+              {
+                "title": "The Brothers Karamazov",
+                "image": "the-brothers-karamazov.jpeg",
+                "link": "https://www.goodreads.com/book/show/4934.The_Brothers_Karamazov"
+              },
+              {
+                "title": "Code Complete",
+                "image": "code-complete.jpeg",
+                "link": "https://www.goodreads.com/book/show/4845.Code_Complete"
+              }
+            ]
+          },
+          {
+            "heading": "What to listen to?",
+            "type": "listen",
+            "list": [
+              {
+                "title": "The Skeptics Guide to the Universe",
+                "image": "the-skeptics-guide-to-the-universe.jpg",
+                "link": "https://www.theskepticsguide.org/"
+              },
+              {
+                "title": "99% Invisible",
+                "image": "99-invisible.png",
+                "link": "https://99percentinvisible.org/"
+              },
+              {
+                "title": "Philosophize This!",
+                "image": "philosophize-this.jpeg",
+                "link": "https://www.philosophizethis.org/"
+              },
+              {
+                "title": "Syntax",
+                "image": "syntax.webp",
+                "link": "https://syntax.fm/"
+              },
+              {
+                "title": "Bookworm",
+                "image": "bookworm.png",
+                "link": "https://bookworm.fm/"
+              },
+              {
+                "title": "Indie Hackers",
+                "image": "indie-hackers.jpeg",
+                "link": "https://www.indiehackers.com/"
+              }
+            ]
+          },
+          {
+            "heading": "What to watch?",
+            "type": "watch",
+            "list": [
+              {
+                "title": "The Office",
+                "image": "the-office.jpeg",
+                "link": "https://www.imdb.com/title/tt0386676/"
+              },
+              {
+                "title": "Trailer Park Boys",
+                "image": "trailer-park-boys.jpg",
+                "link": "https://www.imdb.com/title/tt0290988/"
+              },
+              {
+                "title": "Mr. Robot",
+                "image": "mr-robot.jpg",
+                "link": "https://www.imdb.com/title/tt4158110/"
+              },
+              {
+                "title": "Rick and Morty",
+                "image": "rick-and-morty.jpg",
+                "link": "https://www.imdb.com/title/tt2861424/"
+              },
+              {
+                "title": "Peaky Blinders",
+                "image": "peaky-blinders.jpg",
+                "link": "https://www.imdb.com/title/tt2442560/"
+              },
+              {
+                "title": "Silicon Valley",
+                "image": "silicon-valley.jpg",
+                "link": "https://www.imdb.com/title/tt2575988/"
+              }
+            ]
+          },
+
+          {
+            "heading": "What to play?",
+            "type": "play",
+            "list": [
+              {
+                "title": "Disco Elysium: the Final Cut",
+                "image": "disco-elysium-the-final-cut.jpg",
+                "link": "https://www.metacritic.com/game/disco-elysium-the-final-cut/"
+              },
+              {
+                "title": "Final Fantasy VII Remake",
+                "image": "final-fantasy-vii-remake.jpg",
+                "link": "https://www.metacritic.com/game/final-fantasy-vii-remake/"
+              },
+              {
+                "title": "Bioshock",
+                "image": "bioshock.jpg",
+                "link": "https://www.metacritic.com/game/bioshock/"
+              },
+              {
+                "title": "Read Dead Redemption 2",
+                "image": "red-dead-redemption-2.jpg",
+                "link": "https://www.metacritic.com/game/red-dead-redemption-2/"
+              },
+              {
+                "title": "Tom Clancy's Splinter Cell: Chaos Theory",
+                "image": "tom-clancys-splinter-cell-chaos-theory.jpg",
+                "link": "https://www.metacritic.com/game/tom-clancys-splinter-cell-chaos-theory/"
+              },
+              {
+                "title": "Resident Evil 4 Remake",
+                "image": "resident-evil-4-remake.jpg",
+                "link": "https://www.metacritic.com/game/resident-evil-4/"
+              }
+            ]
+          }
+        ]
+      },
+      "uses": {
+        "heading": "What I use?",
+        "description": "I am always interested in what tech and gadgets people are using. I created this list for geeks like me. I will try to keep it up to date.",
+        "button": "Stuff I use",
+        "image": "Picture of my desk with a laptop, monitor, keyboard, mouse, and a cup of coffee. There are also some books and a plant on the desk."
+      }
+    },
     "home": {
       "landing": {
         "typewriter": {
@@ -114,7 +334,7 @@
             "href": "/blog/"
           }
         ],
-        "link": "Read my story"
+        "link": "More about me"
       },
       "posts": {
         "heading": "Last posts",
@@ -122,7 +342,7 @@
       },
       "contact": {
         "heading": "Say hello!",
-        "description": "Do you have a project idea? Or any questions? You can write me an old-school email or direct message. Don’t hesitate. Seriously.",
+        "description": "Do you have a project idea? Or any questions? You can write me an old-school email or direct message. Do not hesitate. Seriously.",
         "button": "Get in touch"
       }
     },
