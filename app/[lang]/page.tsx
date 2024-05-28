@@ -3,26 +3,24 @@ import { Locale } from '@/i18n.config'
 import { localizePath } from '@/lib'
 import { getDictionary } from '@/lib/dictionaries'
 import { getMDXes } from '@/lib/mdx'
-import { Box, Grid } from '@/styled-system/jsx'
+import { Box } from '@/styled-system/jsx'
 import {
   ButtonAnchor,
   ButtonLink,
   ChevronForward,
-  Featured,
   H1,
   H2,
-  Hero,
+  Header,
   Image,
   Link,
   Newsletter,
   P,
   Post,
   Project,
+  Section,
   Small,
   Socials,
-  Split,
-  Typewriter,
-  verticalRhythm
+  Typewriter
 } from '@/design-system'
 import profile from '@/public/images/gorzelinski.jpg'
 
@@ -43,7 +41,7 @@ export default async function Home({
 
   return (
     <>
-      <Hero>
+      <Section variant="hero" justifyItems="start">
         <H1 aria-label={home.landing.typewriter.create}>
           <Typewriter
             words={[
@@ -60,33 +58,32 @@ export default async function Home({
         <ButtonLink alignSelf="start" href="#contact">
           {home.landing.button}
         </ButtonLink>
-      </Hero>
-      <Featured
-        heading={home.projects.heading}
-        link={{
-          text: home.projects.link,
-          href: localizePath(lang, LINKS.portfolio)
-        }}
-      >
-        <Grid
-          gridTemplateColumns={{ base: '1', sm: '2' }}
-          css={verticalRhythm.gap.m}
-        >
-          {lastProjects.map(({ frontmatter }) => (
-            <Project
-              key={frontmatter.slug}
-              lang={lang}
-              dictionary={component.project}
-              image={frontmatter.image}
-              deliverables={frontmatter.deliverables}
-              title={frontmatter.title}
-              description={frontmatter.description}
-              slug={frontmatter.slug}
-            />
-          ))}
-        </Grid>
-      </Featured>
-      <Split>
+      </Section>
+      <Section columns="2">
+        <Header>
+          <H2>{home.projects.heading}</H2>
+          <ButtonLink
+            variant="text"
+            href={localizePath(lang, LINKS.portfolio)}
+            transition="moveIconForward"
+          >
+            {home.projects.link} <ChevronForward />
+          </ButtonLink>
+        </Header>
+        {lastProjects.map(({ frontmatter }) => (
+          <Project
+            key={frontmatter.slug}
+            lang={lang}
+            dictionary={component.project}
+            image={frontmatter.image}
+            deliverables={frontmatter.deliverables}
+            title={frontmatter.title}
+            description={frontmatter.description}
+            slug={frontmatter.slug}
+          />
+        ))}
+      </Section>
+      <Section columns="2">
         <Image
           src={profile}
           alt={home.bio.image.alt}
@@ -106,38 +103,46 @@ export default async function Home({
           <ButtonLink
             align="left"
             variant="text"
-            href={localizePath(lang, LINKS.about)}
             transition="moveIconForward"
+            href={localizePath(lang, LINKS.about)}
           >
             {home.bio.link} <ChevronForward />
           </ButtonLink>
         </Box>
-      </Split>
-      <Featured
-        heading={home.posts.heading}
-        link={{
-          text: home.posts.link,
-          href: localizePath(lang, LINKS.blog)
-        }}
-      >
-        <Grid gridTemplateColumns="1" css={verticalRhythm.gap.m}>
-          {lastPosts.map(({ frontmatter }) => (
-            <Post
-              key={frontmatter.slug}
-              lang={lang}
-              dictionary={component.post}
-              slug={frontmatter.slug}
-              date={frontmatter.date}
-              readingTime={frontmatter.readingTime}
-              title={frontmatter.title}
-              description={frontmatter.description}
-              image={frontmatter.image}
-            />
-          ))}
-        </Grid>
-      </Featured>
+      </Section>
+      <Section>
+        <Header>
+          <H2>{home.posts.heading}</H2>
+          <ButtonLink
+            variant="text"
+            transition="moveIconForward"
+            href={localizePath(lang, LINKS.blog)}
+          >
+            {home.posts.link} <ChevronForward />
+          </ButtonLink>
+        </Header>
+        {lastPosts.map(({ frontmatter }) => (
+          <Post
+            key={frontmatter.slug}
+            lang={lang}
+            dictionary={component.post}
+            slug={frontmatter.slug}
+            date={frontmatter.date}
+            readingTime={frontmatter.readingTime}
+            title={frontmatter.title}
+            description={frontmatter.description}
+            image={frontmatter.image}
+          />
+        ))}
+      </Section>
       <Newsletter dictionary={section.newsletter} />
-      <Hero id="contact" align="center">
+      <Section
+        id="contact"
+        variant="hero"
+        justifyItems="center"
+        alignItems="center"
+        textAlign="center"
+      >
         <H2>{home.contact.heading}</H2>
         <P>{home.contact.description}</P>
         <ButtonAnchor
@@ -148,7 +153,7 @@ export default async function Home({
           {home.contact.button}
         </ButtonAnchor>
         <Socials />
-      </Hero>
+      </Section>
     </>
   )
 }

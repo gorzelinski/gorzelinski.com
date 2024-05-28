@@ -93,13 +93,11 @@ export {
 export {
   Article,
   Background,
-  Featured,
   Footer,
-  Hero,
   Main,
   Navbar,
   Newsletter,
-  Split
+  Section
 } from './sections'
 
 export { verticalRhythm } from './utils'

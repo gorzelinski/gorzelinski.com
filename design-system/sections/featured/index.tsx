@@ -1,1 +1,0 @@
-export { Featured } from './featured'
