@@ -26,3 +26,10 @@ export const LINKS = {
   email: 'hello@gorzelinski.com',
   content: 'content'
 } as const
+
+export type Pages = (typeof LINKS)[
+  | 'home'
+  | 'portfolio'
+  | 'about'
+  | 'blog'
+  | 'uses']

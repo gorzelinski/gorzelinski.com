@@ -1,5 +1,5 @@
 import type { MDXComponents } from 'mdx/types'
-import { LINKS } from './constants'
+import { Pages } from './constants'
 import {
   Blockquote,
   Callout,
@@ -148,10 +148,7 @@ const customComponents: MDXComponents = {
   )
 }
 
-export function getMDXComponents(
-  page: (typeof LINKS)['blog' | 'portfolio'],
-  slug: string
-): MDXComponents {
+export function getMDXComponents(page: Pages, slug: string): MDXComponents {
   return {
     ...components,
     ...customComponents,

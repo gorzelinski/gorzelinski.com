@@ -5,12 +5,10 @@ import remarkGfm from 'remark-gfm'
 import rehypeMdxCodeProps from 'rehype-mdx-code-props'
 import { Pluggable } from 'unified'
 import readingTime, { ReadTimeResults } from 'reading-time'
-import { LINKS } from '@/constants'
-import { getMDXComponents } from '@/mdx-components'
+import { LINKS, Pages } from '@/constants'
 import { Locale } from '@/i18n.config'
 import { localizeFileName, localizePath } from './i18n'
-
-type Pages = (typeof LINKS)['blog' | 'portfolio']
+import { getMDXComponents } from '@/mdx-components'
 
 type Frontmatter = {
   slug: string
@@ -24,6 +22,10 @@ type Frontmatter = {
     src: string
     caption?: string
   }
+}
+
+export type Page = Frontmatter & {
+  type: 'page'
 }
 
 export type Post = Frontmatter & {
@@ -41,11 +43,11 @@ export type Project = Frontmatter & {
 }
 
 type MDX = {
-  frontmatter: Post | Project
+  frontmatter: Post | Project | Page
   content: string
 }
 
-type MDXTypes = Post['type'] | Project['type']
+type MDXTypes = Post['type'] | Project['type'] | Page['type']
 
 export type Pagination = {
   title: string
@@ -92,7 +94,7 @@ export async function getMDX<Type extends MDXTypes>(
 }
 
 export async function getMDXes<Type extends MDXTypes>(
-  page: (typeof LINKS)['blog' | 'portfolio'],
+  page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>,
   lang: Locale,
   number?: number
 ) {
@@ -111,7 +113,7 @@ export async function getMDXes<Type extends MDXTypes>(
 }
 
 export async function createPagination(
-  page: Pages,
+  page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>,
   slug: string,
   lang: Locale
 ) {

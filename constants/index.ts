@@ -1,1 +1,1 @@
-export { LINKS } from './links'
+export { LINKS, type Pages } from './links'
