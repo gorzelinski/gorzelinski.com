@@ -1,5 +1,6 @@
+import { Metadata } from 'next'
+import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
-import { Locale } from '@/i18n.config'
 import { getDictionary } from '@/lib/dictionaries'
 import { getMDXes } from '@/lib/mdx'
 import { Grid } from '@/styled-system/jsx'
@@ -12,13 +13,18 @@ import {
   verticalRhythm
 } from '@/design-system'
 
-export default async function Portfolio({
+export async function generateMetadata({
   params: { lang }
-}: {
-  params: {
-    lang: Locale
+}: PageProps): Promise<Metadata> {
+  const { page } = await getDictionary(lang)
+
+  return {
+    title: page.portfolio.metadata.title,
+    description: page.portfolio.metadata.description
   }
-}) {
+}
+
+export default async function Portfolio({ params: { lang } }: PageProps) {
   const { component, section, page } = await getDictionary(lang)
   const projects = await getMDXes<'project'>(LINKS.portfolio, lang)
 

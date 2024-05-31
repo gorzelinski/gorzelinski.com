@@ -1,5 +1,6 @@
+import { Metadata } from 'next'
+import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
-import { Locale } from '@/i18n.config'
 import { getDictionary } from '@/lib/dictionaries'
 import { localizePath } from '@/lib'
 import { VStack } from '@/styled-system/jsx'
@@ -22,17 +23,13 @@ import {
 } from '@/design-system'
 import uses from '@/public/images/about/andras-vas-Bd7gNnWJBkU-unsplash.jpg'
 
-type Props = {
-  params: {
-    lang: Locale
-  }
-}
-
-export async function generateMetadata({ params: { lang } }: Props) {
-  const { layout, page } = await getDictionary(lang)
+export async function generateMetadata({
+  params: { lang }
+}: PageProps): Promise<Metadata> {
+  const { page } = await getDictionary(lang)
 
   return {
-    title: `${page.about.metadata.title} | ${layout.root.metadata.title}`,
+    title: page.about.metadata.title,
     description: page.about.metadata.description
   }
 }
@@ -46,7 +43,7 @@ const mediaIcons: Record<MediaTypes, JSX.Element> = {
   play: <GameController verticalAlign="bottom" />
 }
 
-export default async function About({ params: { lang } }: Props) {
+export default async function About({ params: { lang } }: PageProps) {
   const {
     page: { about }
   } = await getDictionary(lang)

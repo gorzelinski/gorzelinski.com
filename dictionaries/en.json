@@ -305,6 +305,10 @@
       }
     },
     "blog": {
+      "metadata": {
+        "title": "Blog",
+        "description": "I write about design, web development, tech, science, and other nerdy stuff I'm currently interested in."
+      },
       "heading": "Blog",
       "all": "All posts"
     },
@@ -314,6 +318,10 @@
       "related": "Stay curious. Read more"
     },
     "home": {
+      "metadata": {
+        "title": "I create things on the Internet",
+        "description": "I design and code personalized websites, ensuring a professional online presence for individuals and small businesses. I help them step into the XXI century."
+      },
       "landing": {
         "typewriter": {
           "design": "I design",
@@ -367,6 +375,10 @@
       }
     },
     "portfolio": {
+      "metadata": {
+        "title": "Portfolio",
+        "description": "I design and code websites for my clients. Here is a little showcase of my work."
+      },
       "heading": "Portfolio",
       "all": "All projects"
     },
@@ -375,6 +387,12 @@
       "client": "Client",
       "deliverables": "Deliverables",
       "links": "Links"
+    },
+    "uses": {
+      "metadata": {
+        "title": "What I use?",
+        "description": "Anticipating any questions, I have decided to create separate page with the specifics of software and hardware I use."
+      }
     }
   }
 }

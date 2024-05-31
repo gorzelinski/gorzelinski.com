@@ -1,6 +1,7 @@
+import { Metadata } from 'next'
 import { LINKS } from '@/constants'
-import { Locale } from '@/i18n.config'
 import { getMDX } from '@/lib/mdx'
+import { getDictionary } from '@/lib/dictionaries'
 import {
   Article,
   Figcaption,
@@ -10,14 +11,20 @@ import {
   P,
   verticalRhythm
 } from '@/design-system'
+import { PageProps } from '@/types'
 
-export default async function Uses({
+export async function generateMetadata({
   params: { lang }
-}: {
-  params: {
-    lang: Locale
+}: PageProps): Promise<Metadata> {
+  const { page } = await getDictionary(lang)
+
+  return {
+    title: page.uses.metadata.title,
+    description: page.uses.metadata.description
   }
-}) {
+}
+
+export default async function Uses({ params: { lang } }: PageProps) {
   const { frontmatter, content } = await getMDX(LINKS.uses, '', lang)
 
   return (

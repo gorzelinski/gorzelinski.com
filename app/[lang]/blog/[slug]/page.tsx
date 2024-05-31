@@ -1,5 +1,6 @@
+import { Metadata } from 'next'
+import { NestedPageProps } from '@/types'
 import { LINKS } from '@/constants'
-import { Locale } from '@/i18n.config'
 import { getDictionary } from '@/lib/dictionaries'
 import { createPagination, getMDX, getRelatedPosts } from '@/lib/mdx'
 import { formatDate, formatReadingTime, localizePath } from '@/lib'
@@ -24,14 +25,20 @@ import {
 } from '@/design-system'
 import avatar from '@/public/images/logo.png'
 
+export async function generateMetadata({
+  params: { lang, slug }
+}: NestedPageProps): Promise<Metadata> {
+  const { frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
+
+  return {
+    title: frontmatter.title,
+    description: frontmatter.description
+  }
+}
+
 export default async function Blog({
   params: { lang, slug }
-}: {
-  params: {
-    lang: Locale
-    slug: string
-  }
-}) {
+}: NestedPageProps) {
   const { component, section, page } = await getDictionary(lang)
   const { content, frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
   const { prev, next } = await createPagination(LINKS.blog, slug, lang)

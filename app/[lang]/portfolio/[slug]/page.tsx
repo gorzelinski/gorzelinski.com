@@ -1,5 +1,6 @@
+import { Metadata } from 'next'
+import { NestedPageProps } from '@/types'
 import { LINKS } from '@/constants'
-import { Locale } from '@/i18n.config'
 import { getDictionary } from '@/lib/dictionaries'
 import { createPagination, getMDX } from '@/lib/mdx'
 import { Box, Grid, VStack } from '@/styled-system/jsx'
@@ -16,14 +17,20 @@ import {
   verticalRhythm
 } from '@/design-system'
 
+export async function generateMetadata({
+  params: { lang, slug }
+}: NestedPageProps): Promise<Metadata> {
+  const { frontmatter } = await getMDX<'project'>(LINKS.portfolio, slug, lang)
+
+  return {
+    title: frontmatter.title,
+    description: frontmatter.description
+  }
+}
+
 export default async function Portfolio({
   params: { lang, slug }
-}: {
-  params: {
-    lang: Locale
-    slug: string
-  }
-}) {
+}: NestedPageProps) {
   const { component, section, page } = await getDictionary(lang)
   const { content, frontmatter } = await getMDX<'project'>(
     LINKS.portfolio,

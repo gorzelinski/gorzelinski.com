@@ -304,6 +304,10 @@
       }
     },
     "blog": {
+      "metadata": {
+        "title": "Blog",
+        "description": "Piszę o projektowaniu, web developmencie, technologii, nauce i innych nerdowskich rzeczach, które aktualnie mnie interesują."
+      },
       "heading": "Blog",
       "all": "Wszystkie wpisy"
     },
@@ -313,6 +317,10 @@
       "related": "Pozostań ciekawy. Przeczytaj więcej"
     },
     "home": {
+      "metadata": {
+        "title": "Tworzę rzeczy w Internecie",
+        "description": "Projektuję i koduję spersonalizowane strony internetowe, zapewniając profesjonalny wizerunek online - małym firmom i jednostkom. Pomagam im wkroczyć w XXI wiek."
+      },
       "landing": {
         "typewriter": {
           "design": "Projektuję",
@@ -366,6 +374,10 @@
       }
     },
     "portfolio": {
+      "metadata": {
+        "title": "Portfolio",
+        "description": "Projektuję i koduję strony internetowe dla moich klientów. Oto mała wystawa mojej pracy."
+      },
       "heading": "Portfolio",
       "all": "Wszystkie projekty"
     },
@@ -374,6 +386,12 @@
       "client": "Klient",
       "deliverables": "Rezultaty",
       "links": "Linki"
+    },
+    "uses": {
+      "metadata": {
+        "title": "Czego używam?",
+        "description": "Wyprzedzając pytania postanowiłem, że zrobię osobną stronę ze szczegółami technologii i gadżetów, których używam."
+      }
     }
   }
 }

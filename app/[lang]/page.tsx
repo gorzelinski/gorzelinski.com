@@ -1,5 +1,6 @@
+import { Metadata } from 'next'
+import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
-import { Locale } from '@/i18n.config'
 import { localizePath } from '@/lib'
 import { getDictionary } from '@/lib/dictionaries'
 import { getMDXes } from '@/lib/mdx'
@@ -24,13 +25,18 @@ import {
 } from '@/design-system'
 import profile from '@/public/images/gorzelinski.jpg'
 
-export default async function Home({
+export async function generateMetadata({
   params: { lang }
-}: {
-  params: {
-    lang: Locale
+}: PageProps): Promise<Metadata> {
+  const { page } = await getDictionary(lang)
+
+  return {
+    title: page.home.metadata.title,
+    description: page.home.metadata.description
   }
-}) {
+}
+
+export default async function Home({ params: { lang } }: PageProps) {
   const {
     page: { home },
     component,
