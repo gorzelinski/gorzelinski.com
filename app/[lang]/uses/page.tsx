@@ -41,7 +41,6 @@ export default async function Uses({ params: { lang } }: PageProps) {
           lg: '-2xl',
           xl: '-4xl'
         }}
-        css={verticalRhythm.marginBottom.m}
         textAlign="center"
       >
         <Image

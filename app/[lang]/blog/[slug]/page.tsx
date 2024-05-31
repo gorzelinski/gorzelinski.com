@@ -4,7 +4,7 @@ import { LINKS } from '@/constants'
 import { getDictionary } from '@/lib/dictionaries'
 import { createPagination, getMDX, getRelatedPosts } from '@/lib/mdx'
 import { formatDate, formatReadingTime, localizePath } from '@/lib'
-import { Grid, HStack, VStack } from '@/styled-system/jsx'
+import { HStack, VStack } from '@/styled-system/jsx'
 import {
   Article,
   Avatar,
@@ -19,6 +19,7 @@ import {
   Pill,
   Post,
   Progress,
+  Section,
   Small,
   Socials,
   verticalRhythm
@@ -113,24 +114,22 @@ export default async function Blog({
       <Pagination prev={prev} next={next} dictionary={component.pagination} />
       <Newsletter dictionary={section.newsletter} />
       {relatedPosts.length > 0 && (
-        <section>
-          <H2 css={verticalRhythm.marginBottom.m}>{page.blogPost.related}</H2>
-          <Grid gridTemplateColumns="1" css={verticalRhythm.gap.m}>
-            {relatedPosts.map(({ frontmatter }) => (
-              <Post
-                key={frontmatter.slug}
-                lang={lang}
-                dictionary={component.post}
-                image={frontmatter.image}
-                date={frontmatter.date}
-                readingTime={frontmatter.readingTime}
-                title={frontmatter.title}
-                description={frontmatter.description}
-                slug={frontmatter.slug}
-              />
-            ))}
-          </Grid>
-        </section>
+        <Section columns="1">
+          <H2>{page.blogPost.related}</H2>
+          {relatedPosts.map(({ frontmatter }) => (
+            <Post
+              key={frontmatter.slug}
+              lang={lang}
+              dictionary={component.post}
+              image={frontmatter.image}
+              date={frontmatter.date}
+              readingTime={frontmatter.readingTime}
+              title={frontmatter.title}
+              description={frontmatter.description}
+              slug={frontmatter.slug}
+            />
+          ))}
+        </Section>
       )}
     </>
   )

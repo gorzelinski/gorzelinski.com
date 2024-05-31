@@ -3,15 +3,7 @@ import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { getDictionary } from '@/lib/dictionaries'
 import { getMDXes } from '@/lib/mdx'
-import { Grid } from '@/styled-system/jsx'
-import {
-  H1,
-  Header,
-  Newsletter,
-  Post,
-  Small,
-  verticalRhythm
-} from '@/design-system'
+import { H1, Header, Newsletter, Post, Section, Small } from '@/design-system'
 
 export async function generateMetadata({
   params: { lang }
@@ -30,28 +22,25 @@ export default async function Blog({ params: { lang } }: PageProps) {
 
   return (
     <>
-      <section>
-        <Header alignItems="baseline" css={verticalRhythm.marginBottom.l}>
+      <Section columns="1">
+        <Header alignItems="baseline">
           <H1>{page.blog.heading}</H1>
           <Small>{page.blog.all}</Small>
         </Header>
-
-        <Grid gridTemplateColumns="1" css={verticalRhythm.gap.m}>
-          {posts.map(({ frontmatter }) => (
-            <Post
-              key={frontmatter.slug}
-              lang={lang}
-              dictionary={component.post}
-              image={frontmatter.image}
-              date={frontmatter.date}
-              readingTime={frontmatter.readingTime}
-              title={frontmatter.title}
-              description={frontmatter.description}
-              slug={frontmatter.slug}
-            />
-          ))}
-        </Grid>
-      </section>
+        {posts.map(({ frontmatter }) => (
+          <Post
+            key={frontmatter.slug}
+            lang={lang}
+            dictionary={component.post}
+            image={frontmatter.image}
+            date={frontmatter.date}
+            readingTime={frontmatter.readingTime}
+            title={frontmatter.title}
+            description={frontmatter.description}
+            slug={frontmatter.slug}
+          />
+        ))}
+      </Section>
       <Newsletter dictionary={section.newsletter} />
     </>
   )
