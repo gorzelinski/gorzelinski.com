@@ -72,8 +72,19 @@
       }
     }
   },
+  "layout": {
+    "root": {
+      "metadata": {
+        "title": "Mateusz Gorzeliński"
+      }
+    }
+  },
   "page": {
     "about": {
+      "metadata": {
+        "title": "O mnie",
+        "description": "Cześć, jestem Mateusz. Jestem inżynierem oprogramowania o erudycyjnych aspiracjach."
+      },
       "heading": "O mnie",
       "story": {
         "gaming": "Moje najwcześniejsze wspomnienia nierozerwalnie związane są z elektroniką. Do dziś pamiętam dreszczyk emocji, towarzyszący mi podczas dźwięku uruchamiania pierwszego PlayStation. Brzmiał on jak przejście przez portal - wejście w inną, cyfrową galaktykę. Ta galaktyka już wtedy mnie pochłonęła. Po niemal 20 latach nadal w niej tkwię.",
@@ -292,6 +303,15 @@
         "image": "Moje biurko z laptopem, kubkiem kawy, notesem, długopisem i telefonem. W tle widać okno z widokiem na drzewa."
       }
     },
+    "blog": {
+      "heading": "Blog",
+      "all": "Wszystkie wpisy"
+    },
+    "blogPost": {
+      "updated": "Zaktualizowano",
+      "share": "Udostępnij na",
+      "related": "Pozostań ciekawy. Przeczytaj więcej"
+    },
     "home": {
       "landing": {
         "typewriter": {
@@ -344,15 +364,6 @@
         "description": "Masz pomysł na projekt? Albo jakieś pytania? Możesz napisać do mnie staroszkolny email lub wiadomość prywatną. Nie krępuj się. Serio.",
         "button": "Skontaktuj się ze mną"
       }
-    },
-    "blog": {
-      "heading": "Blog",
-      "all": "Wszystkie wpisy"
-    },
-    "blogPost": {
-      "updated": "Zaktualizowano",
-      "share": "Udostępnij na",
-      "related": "Pozostań ciekawy. Przeczytaj więcej"
     },
     "portfolio": {
       "heading": "Portfolio",

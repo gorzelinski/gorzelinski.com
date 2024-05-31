@@ -22,6 +22,21 @@ import {
 } from '@/design-system'
 import uses from '@/public/images/about/andras-vas-Bd7gNnWJBkU-unsplash.jpg'
 
+type Props = {
+  params: {
+    lang: Locale
+  }
+}
+
+export async function generateMetadata({ params: { lang } }: Props) {
+  const { layout, page } = await getDictionary(lang)
+
+  return {
+    title: `${page.about.metadata.title} | ${layout.root.metadata.title}`,
+    description: page.about.metadata.description
+  }
+}
+
 type MediaTypes = 'read' | 'listen' | 'watch' | 'play'
 
 const mediaIcons: Record<MediaTypes, JSX.Element> = {
@@ -31,13 +46,7 @@ const mediaIcons: Record<MediaTypes, JSX.Element> = {
   play: <GameController verticalAlign="bottom" />
 }
 
-export default async function About({
-  params: { lang }
-}: {
-  params: {
-    lang: Locale
-  }
-}) {
+export default async function About({ params: { lang } }: Props) {
   const {
     page: { about }
   } = await getDictionary(lang)

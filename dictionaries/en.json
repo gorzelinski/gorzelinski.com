@@ -72,8 +72,19 @@
       }
     }
   },
+  "layout": {
+    "root": {
+      "metadata": {
+        "title": "Matthew Gorzelinski"
+      }
+    }
+  },
   "page": {
     "about": {
+      "metadata": {
+        "title": "About",
+        "description": "Hi, I am Matthew. I am a software engineer with polymath aspirations."
+      },
       "heading": "About me",
       "story": {
         "gaming": "My earliest memories are bound to electronics. As a kid, I was thrilled every time I turned on PlayStation. Every startup sounded like going through a portal, entering another digital galaxy. That galaxy absorbed me back then. After 20 years, I am still there.",
@@ -293,6 +304,15 @@
         "image": "Picture of my desk with a laptop, monitor, keyboard, mouse, and a cup of coffee. There are also some books and a plant on the desk."
       }
     },
+    "blog": {
+      "heading": "Blog",
+      "all": "All posts"
+    },
+    "blogPost": {
+      "updated": "Last updated",
+      "share": "Share via",
+      "related": "Stay curious. Read more"
+    },
     "home": {
       "landing": {
         "typewriter": {
@@ -345,15 +365,6 @@
         "description": "Do you have a project idea? Or any questions? You can write me an old-school email or direct message. Do not hesitate. Seriously.",
         "button": "Get in touch"
       }
-    },
-    "blog": {
-      "heading": "Blog",
-      "all": "All posts"
-    },
-    "blogPost": {
-      "updated": "Last updated",
-      "share": "Share via",
-      "related": "Stay curious. Read more"
     },
     "portfolio": {
       "heading": "Portfolio",
