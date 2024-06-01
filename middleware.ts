@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { match } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
+import { COOKIES } from './constants'
 import { i18n, I18nConfig } from './i18n.config'
 
 function getLocale(request: NextRequest, i18nConfig: I18nConfig): string {
@@ -40,7 +41,7 @@ export function middleware(request: NextRequest) {
 
     nextLocale = pathLocale
   } else {
-    const isFirstVisit = !request.cookies.has('NEXT_LOCALE')
+    const isFirstVisit = !request.cookies.has(COOKIES.locale)
 
     const locale = isFirstVisit ? getLocale(request, i18n) : defaultLocale
 
@@ -56,7 +57,7 @@ export function middleware(request: NextRequest) {
 
   if (!response) response = NextResponse.next()
 
-  if (nextLocale) response.cookies.set('NEXT_LOCALE', nextLocale)
+  if (nextLocale) response.cookies.set(COOKIES.locale, nextLocale)
 
   return response
 }

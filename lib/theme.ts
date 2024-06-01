@@ -1,15 +1,13 @@
+import { THEME } from '@/constants'
+
 export type Theme = 'light' | 'dark'
 
-export const THEME_ATTRIBUTE = 'data-color-mode'
-export const THEME_LS_KEY = 'theme'
-export const THEME_OS_MEDIA = '(prefers-color-scheme: light)'
-
 export function getThemeAttribute() {
-  return document.documentElement.getAttribute(THEME_ATTRIBUTE) as Theme
+  return document.documentElement.getAttribute(THEME.attribute) as Theme
 }
 
 export function setThemeAttribute(theme: Theme) {
-  document.documentElement.setAttribute(THEME_ATTRIBUTE, theme)
+  document.documentElement.setAttribute(THEME.attribute, theme)
 }
 
 export const setInitialTheme = `
