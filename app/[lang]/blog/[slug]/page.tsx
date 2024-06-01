@@ -1,8 +1,12 @@
 import { Metadata } from 'next'
 import { NestedPageProps } from '@/types'
 import { LINKS } from '@/constants'
-import { getDictionary } from '@/lib/dictionaries'
-import { createPagination, getMDX, getRelatedPosts } from '@/lib/mdx'
+import {
+  createPagination,
+  getDictionary,
+  getMDX,
+  getRelatedPosts
+} from '@/scripts'
 import { formatDate, formatReadingTime, localizePath } from '@/lib'
 import { HStack, VStack } from '@/styled-system/jsx'
 import {

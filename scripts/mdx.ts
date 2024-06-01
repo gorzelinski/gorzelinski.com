@@ -7,7 +7,7 @@ import { Pluggable } from 'unified'
 import readingTime, { ReadTimeResults } from 'reading-time'
 import { LINKS, Pages } from '@/constants'
 import { Locale } from '@/i18n.config'
-import { localizeFileName, localizePath } from './i18n'
+import { localizeFileName, localizePath } from '@/lib'
 import { getMDXComponents } from '@/mdx-components'
 
 type Frontmatter = {

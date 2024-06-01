@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
-import { getDictionary } from '@/lib/dictionaries'
+import { getDictionary } from '@/scripts'
 import { localizePath } from '@/lib'
 import { VStack } from '@/styled-system/jsx'
 import {

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { getDictionary } from '@/lib/dictionaries'
+import { Dictionary } from '@/scripts'
 import { useScrollDirection, useScrollProgress } from '@/hooks'
 import { Navbar } from '../navbar'
 
@@ -19,14 +19,41 @@ jest.mock('../../../../hooks', () => ({
 const useScrollDirectionMock = jest.mocked(useScrollDirection)
 const useScrollProgressMock = jest.mocked(useScrollProgress)
 
+const dictionary = {
+  links: {
+    home: 'Home',
+    portfolio: 'Portfolio',
+    about: 'About',
+    uses: 'Uses',
+    blog: 'Blog',
+    contact: 'Contact',
+    newsletter: 'Newsletter',
+    rss: 'RSS'
+  },
+  component: {
+    logo: {
+      text: 'Matthew Gorzelinski'
+    },
+    themeSwitch: {
+      ariaLabel: 'Change theme'
+    }
+  },
+  section: {
+    navbar: {
+      navigation: {
+        main: 'Main navigation',
+        helper: 'Helper navigation'
+      }
+    }
+  }
+}
+
 describe('Navbar', () => {
   it('renders correctly', async () => {
-    const dictionary = await getDictionary('en')
-
     useScrollDirectionMock.mockReturnValue('up')
     useScrollProgressMock.mockReturnValue(50)
 
-    render(<Navbar lang="en" dictionary={dictionary} />)
+    render(<Navbar lang="en" dictionary={dictionary as Dictionary} />)
 
     const nav = screen.getAllByRole('navigation')
     const logo = screen.getByText('Matthew Gorzelinski')
@@ -46,12 +73,10 @@ describe('Navbar', () => {
   })
 
   it('hides the navbar when scrolling down', async () => {
-    const dictionary = await getDictionary('en')
-
     useScrollDirectionMock.mockReturnValue('down')
     useScrollProgressMock.mockReturnValue(10)
 
-    render(<Navbar lang="en" dictionary={dictionary} />)
+    render(<Navbar lang="en" dictionary={dictionary as Dictionary} />)
 
     const navbar = screen.getByRole('banner')
 
@@ -59,12 +84,10 @@ describe('Navbar', () => {
   })
 
   it('hides the border when progress is less than 1', async () => {
-    const dictionary = await getDictionary('en')
-
     useScrollDirectionMock.mockReturnValue('up')
     useScrollProgressMock.mockReturnValue(0)
 
-    render(<Navbar lang="en" dictionary={dictionary} />)
+    render(<Navbar lang="en" dictionary={dictionary as Dictionary} />)
 
     const navbar = screen.getByRole('banner')
 
@@ -72,12 +95,10 @@ describe('Navbar', () => {
   })
 
   it('shows the border when progress is greater than 1', async () => {
-    const dictionary = await getDictionary('en')
-
     useScrollDirectionMock.mockReturnValue('up')
     useScrollProgressMock.mockReturnValue(2)
 
-    render(<Navbar lang="en" dictionary={dictionary} />)
+    render(<Navbar lang="en" dictionary={dictionary as Dictionary} />)
 
     const navbar = screen.getByRole('banner')
 
@@ -85,12 +106,10 @@ describe('Navbar', () => {
   })
 
   it('makes padding standard when progress is less than 1', async () => {
-    const dictionary = await getDictionary('en')
-
     useScrollDirectionMock.mockReturnValue('up')
     useScrollProgressMock.mockReturnValue(0)
 
-    render(<Navbar lang="en" dictionary={dictionary} />)
+    render(<Navbar lang="en" dictionary={dictionary as Dictionary} />)
 
     const navbar = screen.getByRole('banner')
 
@@ -98,12 +117,10 @@ describe('Navbar', () => {
   })
 
   it('makes padding compact when progress is greater than 1', async () => {
-    const dictionary = await getDictionary('en')
-
     useScrollDirectionMock.mockReturnValue('up')
     useScrollProgressMock.mockReturnValue(2)
 
-    render(<Navbar lang="en" dictionary={dictionary} />)
+    render(<Navbar lang="en" dictionary={dictionary as Dictionary} />)
 
     const navbar = screen.getByRole('banner')
 

@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import { LINKS } from '@/constants'
-import { getMDX } from '@/lib/mdx'
-import { getDictionary } from '@/lib/dictionaries'
+import { getMDX, getDictionary } from '@/scripts'
 import {
   Article,
   Figcaption,

@@ -1,8 +1,7 @@
 import { Metadata } from 'next'
 import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
-import { getDictionary } from '@/lib/dictionaries'
-import { getMDXes } from '@/lib/mdx'
+import { getDictionary, getMDXes } from '@/scripts'
 import { H1, Header, Newsletter, Post, Section, Small } from '@/design-system'
 
 export async function generateMetadata({

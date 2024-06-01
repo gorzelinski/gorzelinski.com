@@ -1,8 +1,7 @@
 import { Metadata } from 'next'
 import { NestedPageProps } from '@/types'
 import { LINKS } from '@/constants'
-import { getDictionary } from '@/lib/dictionaries'
-import { createPagination, getMDX } from '@/lib/mdx'
+import { createPagination, getDictionary, getMDX } from '@/scripts'
 import { Box, Grid, VStack } from '@/styled-system/jsx'
 import {
   Article,

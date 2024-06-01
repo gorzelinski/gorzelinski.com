@@ -1,5 +1,4 @@
-import { Pagination } from '@/lib/mdx'
-import { Dictionary } from '@/lib/dictionaries'
+import { Dictionary, Pagination } from '@/scripts'
 
 export type PaginationProps = {
   prev: Pagination

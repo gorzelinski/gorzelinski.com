@@ -2,8 +2,7 @@ import { Metadata } from 'next'
 import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { localizePath } from '@/lib'
-import { getDictionary } from '@/lib/dictionaries'
-import { getMDXes } from '@/lib/mdx'
+import { getDictionary, getMDXes } from '@/scripts'
 import { Box } from '@/styled-system/jsx'
 import {
   ButtonAnchor,

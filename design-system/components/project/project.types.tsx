@@ -1,6 +1,5 @@
-import { Project } from '@/lib/mdx'
+import { Dictionary, Project } from '@/scripts'
 import { Locale } from '@/i18n.config'
-import { Dictionary } from '@/lib/dictionaries'
 
 export type ProjectProps = Pick<
   Project,
