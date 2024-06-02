@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { PageProps } from '@/types'
-import { LINKS } from '@/constants'
+import { HANDLES, LINKS } from '@/constants'
 import { Locale, i18n } from '@/i18n.config'
 import { setInitialTheme } from '@/lib'
 import { getDictionary } from '@/scripts'
@@ -12,12 +12,36 @@ export async function generateMetadata({
   params: { lang }
 }: PageProps): Promise<Metadata> {
   const { layout } = await getDictionary(lang)
+  const locale = new Intl.Locale(lang, { region: i18n.region[lang] })
 
   return {
-    metadataBase: new URL(LINKS.siteUrl),
     title: {
       template: `%s | ${layout.root.metadata.title}`,
       default: layout.root.metadata.title
+    },
+    generator: 'Next.js',
+    applicationName: 'gorzelinski.com',
+    authors: {
+      name: layout.root.metadata.title,
+      url: LINKS.siteUrl
+    },
+    creator: layout.root.metadata.title,
+    publisher: layout.root.metadata.title,
+    metadataBase: new URL(LINKS.siteUrl),
+    openGraph: {
+      locale: locale.baseName.replace('-', '_'),
+      siteName: layout.root.metadata.title
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: `@${HANDLES.twitter}`,
+      creator: `@${HANDLES.twitter}`
+    },
+    appleWebApp: {
+      title: layout.root.metadata.title,
+      statusBarStyle: 'black',
+      capable: true,
+      startupImage: '/public/images/logo.png'
     }
   }
 }
