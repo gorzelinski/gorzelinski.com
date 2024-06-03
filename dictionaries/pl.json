@@ -14,9 +14,6 @@
       "name": "Mateusz Gorzeliński",
       "bio": "Inżynier oprogramowania o erudycyjnych aspiracjach."
     },
-    "logo": {
-      "text": "Mateusz Gorzeliński"
-    },
     "pagination": {
       "ariaLabel": "Paginacja",
       "prev": "Poprzedni",
@@ -38,7 +35,6 @@
       "email": "Napisz mi maila",
       "socials": "Znajdź mnie także na",
       "language": "Zmień język",
-      "copyright": "Mateusz Gorzeliński",
       "note": "Stworzyłem tę stronę z miłością (i kawą)"
     },
     "navbar": {

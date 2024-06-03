@@ -14,9 +14,6 @@
       "name": "Matthew Gorzelinski",
       "bio": "Software engineer with polymath aspirations."
     },
-    "logo": {
-      "text": "Matthew Gorzelinski"
-    },
     "pagination": {
       "ariaLabel": "Pagination",
       "prev": "Previous",
@@ -38,7 +35,6 @@
       "email": "Write me an email",
       "socials": "Find me elsewhere",
       "language": "Change language",
-      "copyright": "Matthew Gorzelinski",
       "note": "I have created this site with love (and coffee)"
     },
     "navbar": {

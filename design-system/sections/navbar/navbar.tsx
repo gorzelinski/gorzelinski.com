@@ -9,7 +9,7 @@ import { Logo, ThemeSwitch } from '../../components'
 import { ButtonLink, Nav } from '../../elements'
 
 export const Navbar = ({ lang, dictionary }: NavbarProps) => {
-  const { links, component, section } = dictionary
+  const { links, component, section, layout } = dictionary
   const pathname = usePathname()
   const direction = useScrollDirection()
   const progress = useScrollProgress()
@@ -30,7 +30,7 @@ export const Navbar = ({ lang, dictionary }: NavbarProps) => {
         }}
         justifyContent="space-between"
       >
-        <Logo lang={lang}>{component.logo.text}</Logo>
+        <Logo lang={lang}>{layout.root.metadata.title}</Logo>
         <ThemeSwitch ariaLabel={component.themeSwitch.ariaLabel}></ThemeSwitch>
       </Nav>
       <Nav

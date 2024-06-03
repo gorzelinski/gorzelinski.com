@@ -15,7 +15,7 @@ import {
 import { LanguageSwitch, Socials } from '../../components'
 
 export const Footer = ({ lang, dictionary }: FooterProps) => {
-  const { links, section } = dictionary
+  const { links, section, layout } = dictionary
 
   return (
     <footer className={footer()}>
@@ -43,7 +43,7 @@ export const Footer = ({ lang, dictionary }: FooterProps) => {
       </HStack>
       <HStack justifyContent="space-between" flexWrap="wrap-reverse" gap="l">
         <Small>
-          © {new Date().getFullYear()} {section.footer.copyright} •{' '}
+          © {new Date().getFullYear()} {layout.root.metadata.title} •{' '}
           {section.footer.note} <Heart color="danger" verticalAlign="bottom" />{' '}
           <Cafe color="warning" verticalAlign="bottom" />
         </Small>
