@@ -4,6 +4,7 @@ import { HANDLES, LINKS } from '@/constants'
 import { Locale, i18n } from '@/i18n.config'
 import { setInitialTheme } from '@/lib'
 import { getDictionary } from '@/scripts'
+import { openGraph } from '../shared-metadata'
 import { montserrat, lora, firaCode } from '@/theme/fonts'
 import { Background, Footer, Main, Navbar } from '@/design-system'
 import './globals.css'
@@ -12,7 +13,6 @@ export async function generateMetadata({
   params: { lang }
 }: PageProps): Promise<Metadata> {
   const { layout } = await getDictionary(lang)
-  const locale = new Intl.Locale(lang, { region: i18n.region[lang] })
 
   return {
     title: {
@@ -28,10 +28,7 @@ export async function generateMetadata({
     creator: layout.root.metadata.title,
     publisher: layout.root.metadata.title,
     metadataBase: new URL(LINKS.siteUrl),
-    openGraph: {
-      locale: locale.baseName.replace('-', '_'),
-      siteName: layout.root.metadata.title
-    },
+    ...(await openGraph(lang)),
     twitter: {
       card: 'summary_large_image',
       site: `@${HANDLES.twitter}`,

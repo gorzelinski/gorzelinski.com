@@ -8,6 +8,7 @@ import {
   getRelatedPosts
 } from '@/scripts'
 import { formatDate, formatReadingTime, localizePath } from '@/lib'
+import { openGraph } from '@/app/shared-metadata'
 import { HStack, VStack } from '@/styled-system/jsx'
 import {
   Article,
@@ -34,10 +35,18 @@ export async function generateMetadata({
   params: { lang, slug }
 }: NestedPageProps): Promise<Metadata> {
   const { frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
+  const { layout } = await getDictionary(lang)
 
   return {
     title: frontmatter.title,
-    description: frontmatter.description
+    description: frontmatter.description,
+    openGraph: {
+      ...(await openGraph(lang)).openGraph,
+      type: 'article',
+      publishedTime: frontmatter.date.toISOString(),
+      modifiedTime: frontmatter.updated.toISOString(),
+      authors: layout.root.metadata.title
+    }
   }
 }
 

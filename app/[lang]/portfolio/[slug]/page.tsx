@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { NestedPageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { createPagination, getDictionary, getMDX } from '@/scripts'
+import { openGraph } from '@/app/shared-metadata'
 import { Box, Grid, VStack } from '@/styled-system/jsx'
 import {
   Article,
@@ -20,10 +21,18 @@ export async function generateMetadata({
   params: { lang, slug }
 }: NestedPageProps): Promise<Metadata> {
   const { frontmatter } = await getMDX<'project'>(LINKS.portfolio, slug, lang)
+  const { layout } = await getDictionary(lang)
 
   return {
     title: frontmatter.title,
-    description: frontmatter.description
+    description: frontmatter.description,
+    openGraph: {
+      ...(await openGraph(lang)).openGraph,
+      type: 'article',
+      publishedTime: frontmatter.date.toISOString(),
+      modifiedTime: frontmatter.updated.toISOString(),
+      authors: layout.root.metadata.title
+    }
   }
 }
 
