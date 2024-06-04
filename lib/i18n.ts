@@ -35,3 +35,11 @@ export function localizeFileName(
     isDefaultLocale(locale) ? '' : `.${locale}`
   }.${extension}`
 }
+
+export function createLocaleWithTerritory(lang: Locale) {
+  const locale = new Intl.Locale(lang, {
+    region: i18n.region[lang]
+  })
+
+  return locale.baseName.replace('-', '_')
+}

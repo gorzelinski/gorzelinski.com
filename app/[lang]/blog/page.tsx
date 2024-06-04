@@ -2,16 +2,22 @@ import { Metadata } from 'next'
 import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { getDictionary, getMDXes } from '@/scripts'
+import { generateAlternateLinks } from '@/lib'
 import { H1, Header, Newsletter, Post, Section, Small } from '@/design-system'
 
 export async function generateMetadata({
   params: { lang }
 }: PageProps): Promise<Metadata> {
   const { page } = await getDictionary(lang)
+  const languages = generateAlternateLinks(LINKS.blog)
 
   return {
     title: page.blog.metadata.title,
-    description: page.blog.metadata.description
+    description: page.blog.metadata.description,
+    alternates: {
+      canonical: LINKS.blog,
+      languages
+    }
   }
 }
 

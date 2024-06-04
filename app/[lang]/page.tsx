@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
-import { localizePath } from '@/lib'
+import { generateAlternateLinks, localizePath } from '@/lib'
 import { getDictionary, getMDXes } from '@/scripts'
 import { Box } from '@/styled-system/jsx'
 import {
@@ -28,10 +28,15 @@ export async function generateMetadata({
   params: { lang }
 }: PageProps): Promise<Metadata> {
   const { page } = await getDictionary(lang)
+  const languages = generateAlternateLinks(LINKS.home)
 
   return {
     title: page.home.metadata.title,
-    description: page.home.metadata.description
+    description: page.home.metadata.description,
+    alternates: {
+      canonical: LINKS.home,
+      languages
+    }
   }
 }
 

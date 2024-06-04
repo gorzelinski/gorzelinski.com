@@ -7,7 +7,12 @@ import {
   getMDX,
   getRelatedPosts
 } from '@/scripts'
-import { formatDate, formatReadingTime, localizePath } from '@/lib'
+import {
+  formatDate,
+  formatReadingTime,
+  generateAlternateLinks,
+  localizePath
+} from '@/lib'
 import { openGraph } from '@/app/shared-metadata'
 import { HStack, VStack } from '@/styled-system/jsx'
 import {
@@ -36,10 +41,16 @@ export async function generateMetadata({
 }: NestedPageProps): Promise<Metadata> {
   const { frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
   const { layout } = await getDictionary(lang)
+  const canonical = `${LINKS.blog}${slug}/`
+  const languages = generateAlternateLinks(canonical)
 
   return {
     title: frontmatter.title,
     description: frontmatter.description,
+    alternates: {
+      canonical,
+      languages
+    },
     openGraph: {
       ...(await openGraph(lang)).openGraph,
       type: 'article',
