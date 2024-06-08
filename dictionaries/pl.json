@@ -383,6 +383,15 @@
       "deliverables": "Rezultaty",
       "links": "Linki"
     },
+    "subscriptionConfirmed": {
+      "metadata": {
+        "title": "Subskrypcja potwierdzona",
+        "description": "Jeśli widzisz tę stronę, to znaczy, że oficjalnie potwierdziłeś subskrybcję i jesteś na liście mojego newslettera. Gratulajce!"
+      },
+      "heading": "Subskrypcja potwierdzona!",
+      "description": "Oficjalnie potwierdziłeś subskrybcję mojego newslettera i jesteś na liście. Za wysiłek, zasługujesz na konfetti.",
+      "button": "Więcej konfetti 🎉"
+    },
     "uses": {
       "metadata": {
         "title": "Czego używam?",

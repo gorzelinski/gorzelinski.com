@@ -384,6 +384,15 @@
       "deliverables": "Deliverables",
       "links": "Links"
     },
+    "subscriptionConfirmed": {
+      "metadata": {
+        "title": "Subscription confirmed",
+        "description": "If you see this page, it means you have successfully confirmed your subscription to my newsletter. Congratulations!"
+      },
+      "heading": "Subscription confirmed!",
+      "description": "You have officially confirmed a subscription to my newsletter and are on the list. For effort, you deserve some confetti.",
+      "button": "More confetti 🎉"
+    },
     "uses": {
       "metadata": {
         "title": "What I use?",

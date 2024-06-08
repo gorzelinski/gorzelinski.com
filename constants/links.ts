@@ -17,6 +17,7 @@ export const LINKS = {
   contact: '#contact',
   newsletter: '/#newsletter',
   rss: '/rss.xml',
+  subscriptionConfirmed: '/subscription-confirmed/',
   github: `https://github.com/${HANDLES.github}`,
   twitter: `https://twitter.com/${HANDLES.twitter}`,
   dribbble: `https://dribbble.com/${HANDLES.dribbble}`,
@@ -32,4 +33,5 @@ export type Pages = (typeof LINKS)[
   | 'portfolio'
   | 'about'
   | 'blog'
-  | 'uses']
+  | 'uses'
+  | 'subscriptionConfirmed']
