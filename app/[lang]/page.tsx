@@ -107,7 +107,10 @@ export default async function Home({ params: { lang } }: PageProps) {
           {home.bio.activities.map((activity) => (
             <P key={activity.link} marginBottom="1rem">
               {activity.mention}{' '}
-              <Link href={activity.href}>{activity.link}</Link>.
+              <Link href={localizePath(lang, activity.href)}>
+                {activity.link}
+              </Link>
+              .
             </P>
           ))}
           <ButtonLink
