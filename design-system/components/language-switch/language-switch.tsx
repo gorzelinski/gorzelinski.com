@@ -9,7 +9,7 @@ import {
   selectActiveClass
 } from '@/lib'
 import { Wrap } from '@/styled-system/jsx'
-import { ButtonAnchor, Earth } from '../../elements'
+import { ButtonLink, Earth } from '../../elements'
 
 export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
   const { locales } = i18n
@@ -29,7 +29,7 @@ export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
           : localizePath(locale, defaultPathname)
 
         return (
-          <ButtonAnchor
+          <ButtonLink
             variant="nav"
             size="s"
             key={locale}
@@ -39,7 +39,7 @@ export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
             className={selectActiveClass(pathname, href)}
           >
             {capitalize(language.of(locale)!)}
-          </ButtonAnchor>
+          </ButtonLink>
         )
       })}
     </Wrap>
