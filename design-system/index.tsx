@@ -66,6 +66,7 @@ export {
   Twitter,
   Ul,
   Underline,
+  Video,
   Warning
 } from './elements'
 

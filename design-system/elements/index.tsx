@@ -60,3 +60,4 @@ export {
 } from './table'
 export { Hr } from './thematic-break'
 export { Underline } from './underline'
+export { Video } from './video'
