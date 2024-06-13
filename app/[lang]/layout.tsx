@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import { PageProps } from '@/types'
-import { HANDLES, LINKS } from '@/constants'
+import { cookies } from 'next/headers'
+import { PageProps, Theme } from '@/types'
+import { COOKIES, HANDLES, LINKS } from '@/constants'
 import { Locale, i18n } from '@/i18n.config'
 import { setInitialTheme } from '@/lib'
 import { getDictionary } from '@/scripts'
@@ -56,18 +57,19 @@ export default async function RootLayout({
 }) {
   const { lang } = params
   const dictionary = await getDictionary(lang)
+  const theme = cookies().get(COOKIES.theme)?.value as Theme
 
   return (
     <html
-      suppressHydrationWarning
       className={`${montserrat.variable} ${lora.variable} ${firaCode.variable}`}
       lang={lang}
+      data-color-mode={theme}
     >
       <body>
         <script
-          key="set-initial-theme"
+          id="set-initial-theme"
           dangerouslySetInnerHTML={{
-            __html: setInitialTheme
+            __html: `${setInitialTheme} setInitialTheme()`
           }}
         ></script>
         <Background>

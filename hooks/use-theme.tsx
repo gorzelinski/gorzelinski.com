@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
+import { Theme } from '@/types'
 import { THEME } from '@/constants'
-import { Theme, setToLS, getThemeAttribute, setThemeAttribute } from '@/lib'
+import { getThemeAttribute, setThemeAttribute, setThemeCookie } from '@/lib'
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>('light')
@@ -8,7 +9,7 @@ export function useTheme() {
   const saveTheme = (theme: Theme) => {
     setTheme(theme)
     setThemeAttribute(theme)
-    setToLS(THEME.lsKey, theme)
+    setThemeCookie(theme)
   }
 
   const toggleTheme = (theme: Theme): void =>

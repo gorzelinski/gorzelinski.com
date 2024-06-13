@@ -1,6 +1,5 @@
-import { THEME } from '@/constants'
-
-export type Theme = 'light' | 'dark'
+import { Theme } from '@/types'
+import { COOKIES, THEME } from '@/constants'
 
 export function getThemeAttribute() {
   return document.documentElement.getAttribute(THEME.attribute) as Theme
@@ -10,20 +9,29 @@ export function setThemeAttribute(theme: Theme) {
   document.documentElement.setAttribute(THEME.attribute, theme)
 }
 
-export const setInitialTheme = `
-  (function() {
-    try {
-      function getInitialTheme() {
-        const savedTheme = window.localStorage.getItem('theme')
-        const isOsLight = window.matchMedia('(prefers-color-scheme: light)').matches
-  
-        if (savedTheme) return JSON.parse(savedTheme)
-        else if (isOsLight) return 'light'
-        else return 'dark'
-      }
-  
-      const initialTheme = getInitialTheme()
-      document.documentElement.setAttribute('data-color-mode', initialTheme)
-    } catch (_) {}
-  })()
-`
+export function setThemeCookie(theme: Theme) {
+  document.cookie = `${COOKIES.theme}=${theme}; Path=/`
+}
+
+export function setInitialTheme() {
+  try {
+    const isSavedTheme =
+      document.cookie.includes('light') || document.cookie.includes('dark')
+
+    if (isSavedTheme) return
+
+    function getOsTheme() {
+      const isOsLight = window.matchMedia(
+        '(prefers-color-scheme: light)'
+      ).matches
+
+      if (isOsLight) return 'light'
+      else return 'dark'
+    }
+
+    const osTheme = getOsTheme()
+
+    document.documentElement.setAttribute('data-color-mode', osTheme)
+    document.cookie = `theme=${osTheme}; Path=/;`
+  } catch (_) {}
+}
