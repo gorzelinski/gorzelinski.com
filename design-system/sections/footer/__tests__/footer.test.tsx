@@ -24,8 +24,14 @@ describe('Footer', () => {
           email: 'Write me an email',
           socials: 'Find me elsewhere',
           language: 'Change language',
-          copyright: 'Matthew Gorzelinski',
           note: 'I have created this site with love (and coffee)'
+        }
+      },
+      layout: {
+        root: {
+          metadata: {
+            title: 'Matthew Gorzelinski'
+          }
         }
       }
     }

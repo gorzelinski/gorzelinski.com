@@ -31,9 +31,6 @@ const dictionary = {
     rss: 'RSS'
   },
   component: {
-    logo: {
-      text: 'Matthew Gorzelinski'
-    },
     themeSwitch: {
       ariaLabel: 'Change theme'
     }
@@ -43,6 +40,13 @@ const dictionary = {
       navigation: {
         main: 'Main navigation',
         helper: 'Helper navigation'
+      }
+    }
+  },
+  layout: {
+    root: {
+      metadata: {
+        title: 'Matthew Gorzelinski'
       }
     }
   }

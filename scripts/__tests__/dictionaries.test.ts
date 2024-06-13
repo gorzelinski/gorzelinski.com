@@ -5,9 +5,11 @@ describe('dictionaries', () => {
       const dictionary = await getDictionary('en')
 
       expect(dictionary).toMatchObject({
-        component: {
-          logo: {
-            text: 'Matthew Gorzelinski'
+        layout: {
+          root: {
+            metadata: {
+              title: 'Matthew Gorzelinski'
+            }
           }
         }
       })
@@ -17,9 +19,11 @@ describe('dictionaries', () => {
       const dictionary = await getDictionary('pl')
 
       expect(dictionary).toMatchObject({
-        component: {
-          logo: {
-            text: 'Mateusz Gorzeliński'
+        layout: {
+          root: {
+            metadata: {
+              title: 'Mateusz Gorzeliński'
+            }
           }
         }
       })
