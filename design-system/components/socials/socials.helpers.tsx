@@ -1,10 +1,10 @@
-import { SOCIALS } from './socials.constants'
+import { socialLinks } from './socials.constants'
 import { Share, Social } from './socials.types'
 
 export function createShareLinks(
   url: string,
   title: string,
-  socials: Social[] = SOCIALS
+  socials: Social[] = socialLinks
 ) {
   const encodedUrl = encodeURIComponent(url)
   const encodedTitle = encodeURIComponent(title)

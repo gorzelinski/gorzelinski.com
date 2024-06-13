@@ -1,13 +1,13 @@
 'use client'
 import { usePathname } from 'next/navigation'
 import { LINKS } from '@/constants'
-import { SOCIALS } from './socials.constants'
+import { socialLinks } from './socials.constants'
 import { SocialsProps } from './socials.types'
 import { createShareLinks } from './socials.helpers'
 import { ButtonAnchor, navigation } from '../../elements'
 
 export const Socials = ({
-  socials = SOCIALS.filter((social) => !(social.name === 'Email')),
+  socials = socialLinks.slice(0, -1),
   title
 }: SocialsProps) => {
   const url = LINKS.siteUrl + usePathname()

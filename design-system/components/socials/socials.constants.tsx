@@ -1,4 +1,4 @@
-import { LINKS } from '@/constants'
+import { LINKS, SOCIALS } from '@/constants'
 import { Social } from './socials.types'
 import {
   Dribbble,
@@ -10,35 +10,35 @@ import {
   Twitter
 } from '../../elements'
 
-export const SOCIALS: Social[] = [
+export const socialLinks: Social[] = [
   {
     name: 'GitHub',
-    url: LINKS.github,
+    url: SOCIALS.github,
     icon: <Github />
   },
   {
     name: 'Twitter',
-    url: LINKS.twitter,
+    url: SOCIALS.twitter,
     icon: <Twitter />
   },
   {
     name: 'Dribbble',
-    url: LINKS.dribbble,
+    url: SOCIALS.dribbble,
     icon: <Dribbble />
   },
   {
     name: 'Facebook',
-    url: LINKS.facebook,
+    url: SOCIALS.facebook,
     icon: <Facebook />
   },
   {
     name: 'Instagram',
-    url: LINKS.instagram,
+    url: SOCIALS.instagram,
     icon: <Instagram />
   },
   {
     name: 'LinkedIn',
-    url: LINKS.linkedin,
+    url: SOCIALS.linkedin,
     icon: <Linkedin />
   },
   {
