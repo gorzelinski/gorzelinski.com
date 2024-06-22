@@ -10,7 +10,11 @@ export function setThemeAttribute(theme: Theme) {
 }
 
 export function setThemeCookie(theme: Theme) {
-  document.cookie = `${COOKIES.theme}=${theme}; Path=/`
+  document.cookie = `${COOKIES.theme}=${theme}; Path=/;`
+}
+
+export function getThemeCookie() {
+  return document.cookie.match(/theme=(light|dark)/)?.[1] as Theme
 }
 
 export function setInitialTheme() {
@@ -32,6 +36,6 @@ export function setInitialTheme() {
     const osTheme = getOsTheme()
 
     document.documentElement.setAttribute('data-color-mode', osTheme)
-    document.cookie = `theme=${osTheme}; Path=/;`
+    document.cookie = 'theme=' + osTheme + '; Path=/;'
   } catch (_) {}
 }

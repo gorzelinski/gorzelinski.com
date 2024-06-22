@@ -11,6 +11,7 @@ export { selectActiveClass } from './navigation'
 export { capitalize } from './string'
 export {
   getThemeAttribute,
+  getThemeCookie,
   setInitialTheme,
   setThemeAttribute,
   setThemeCookie

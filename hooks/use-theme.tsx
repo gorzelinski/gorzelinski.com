@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Theme } from '@/types'
 import { THEME } from '@/constants'
-import { getThemeAttribute, setThemeAttribute, setThemeCookie } from '@/lib'
+import { getThemeCookie, setThemeAttribute, setThemeCookie } from '@/lib'
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>('light')
@@ -16,7 +16,7 @@ export function useTheme() {
     theme === 'light' ? saveTheme('dark') : saveTheme('light')
 
   useEffect(() => {
-    const savedTheme = getThemeAttribute()
+    const savedTheme = getThemeCookie()
     setTheme(savedTheme)
 
     const listenOsThemeChange = (event: MediaQueryListEvent) => {
@@ -28,7 +28,7 @@ export function useTheme() {
     return () => {
       mediaQueryList.removeEventListener('change', listenOsThemeChange)
     }
-  }, [theme])
+  }, [])
 
   return { theme, toggleTheme }
 }

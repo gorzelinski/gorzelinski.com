@@ -61,6 +61,7 @@ export default async function RootLayout({
 
   return (
     <html
+      suppressHydrationWarning
       className={`${montserrat.variable} ${lora.variable} ${firaCode.variable}`}
       lang={lang}
       data-color-mode={theme}
