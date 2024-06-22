@@ -398,6 +398,15 @@
         "title": "What I use?",
         "description": "Anticipating any questions, I have decided to create separate page with the specifics of software and hardware I use."
       }
+    },
+    "notFound": {
+      "metadata": {
+        "title": "404 - Page not found",
+        "description": "The page you are looking for does not exist. Or I deleted it - it is hard to tell. So sorry."
+      },
+      "heading": "404 - You expected a page, but certainly not the Spanish Inquisition!",
+      "description": "The page you are looking for does not exist. Or I deleted it - it is hard to tell. So sorry.",
+      "button": "Back to home page"
     }
   }
 }

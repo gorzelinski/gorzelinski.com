@@ -397,6 +397,15 @@
         "title": "Czego używam?",
         "description": "Wyprzedzając pytania postanowiłem, że zrobię osobną stronę ze szczegółami technologii i gadżetów, których używam."
       }
+    },
+    "notFound": {
+      "metadata": {
+        "title": "404 - Nie znaleziono strony",
+        "description": "Strona której szukasz nie istnieje. Albo ja ją usunąłem - ciężko powiedzieć. Bardzo przepraszam."
+      },
+      "heading": "404 - Spodziewałeś się strony, ale na pewno nie hiszpańskiej inkwizycji!",
+      "description": "Strona której szukasz nie istnieje. Albo ja ją usunąłem - ciężko powiedzieć. Bardzo przepraszam.",
+      "button": "Wróć na stronę główną"
     }
   }
 }
