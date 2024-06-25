@@ -136,7 +136,7 @@ export default async function Blog({
         </footer>
       </Article>
       <Pagination prev={prev} next={next} dictionary={component.pagination} />
-      <Newsletter dictionary={section.newsletter} />
+      <Newsletter lang={lang} dictionary={section.newsletter} />
       {relatedPosts.length > 0 && (
         <Section columns="1">
           <H2>{page.blogPost.related}</H2>

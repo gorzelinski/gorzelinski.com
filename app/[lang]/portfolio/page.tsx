@@ -52,7 +52,7 @@ export default async function Portfolio({ params: { lang } }: PageProps) {
           />
         ))}
       </Section>
-      <Newsletter dictionary={section.newsletter} />
+      <Newsletter lang={lang} dictionary={section.newsletter} />
     </>
   )
 }

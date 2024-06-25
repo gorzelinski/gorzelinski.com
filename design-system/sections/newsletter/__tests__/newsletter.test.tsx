@@ -32,7 +32,7 @@ const dictionary = {
 
 describe('Newsletter', () => {
   it('renders correctly', async () => {
-    render(<Newsletter dictionary={dictionary} />)
+    render(<Newsletter lang="en" dictionary={dictionary} />)
 
     const heading = screen.getByRole('heading', { level: 2 })
     const input = screen.getByRole('textbox')

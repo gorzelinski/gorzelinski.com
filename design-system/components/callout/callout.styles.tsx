@@ -3,6 +3,7 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const callout = cva({
   base: {
+    width: '100%',
     position: 'relative',
     borderRadius: 'm',
     padding: 'm',

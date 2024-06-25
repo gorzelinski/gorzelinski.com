@@ -46,7 +46,7 @@ export default async function Blog({ params: { lang } }: PageProps) {
           />
         ))}
       </Section>
-      <Newsletter dictionary={section.newsletter} />
+      <Newsletter lang={lang} dictionary={section.newsletter} />
     </>
   )
 }

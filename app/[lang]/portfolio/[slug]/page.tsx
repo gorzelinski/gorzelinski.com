@@ -116,7 +116,7 @@ export default async function Portfolio({
         {content}
       </Article>
       <Pagination prev={prev} next={next} dictionary={component.pagination} />
-      <Newsletter dictionary={section.newsletter} />
+      <Newsletter lang={lang} dictionary={section.newsletter} />
     </>
   )
 }
