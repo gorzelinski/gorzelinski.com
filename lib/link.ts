@@ -1,4 +1,3 @@
-import { Pages } from '@/constants'
 import { Locale, i18n } from '@/i18n.config'
 import { localizePath } from './i18n'
 
@@ -11,7 +10,7 @@ export function isInternal(siteUrl: string, url: string) {
 
 type AlternateLinks = Record<Locale, string>
 
-export function generateAlternateLinks(link: Pages) {
+export function generateAlternateLinks(link: string) {
   return i18n.locales
     .map((locale) => ({
       [locale]: localizePath(locale, link)
