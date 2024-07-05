@@ -9,3 +9,4 @@ export {
   getMDXes,
   getRelatedPosts
 } from './mdx'
+export { getMetaFont } from './meta-font'
