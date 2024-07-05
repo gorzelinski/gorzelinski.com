@@ -21,10 +21,22 @@ function getLocale(request: NextRequest, i18nConfig: I18nConfig): string {
 export function middleware(request: NextRequest) {
   let response
   let nextLocale
-
   const { locales, defaultLocale } = i18n
-
   const pathname = request.nextUrl.pathname
+  const excludedPaths = [
+    '/api',
+    '/_next',
+    '/public',
+    '/fonts',
+    '/images',
+    '/videos',
+    '/opengraph-image',
+    '/favicon.ico'
+  ]
+
+  if (excludedPaths.some((path) => pathname.includes(path))) {
+    return
+  }
 
   const pathLocale = locales.find(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
@@ -60,9 +72,4 @@ export function middleware(request: NextRequest) {
   if (nextLocale) response.cookies.set(COOKIES.locale, nextLocale)
 
   return response
-}
-
-export const config = {
-  matcher:
-    '/((?!api|_next/static|_next/images|videos|image|img/|favicon.ico).*)'
 }
