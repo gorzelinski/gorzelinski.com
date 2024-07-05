@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { cookies } from 'next/headers'
 import { PageProps, Theme } from '@/types'
-import { COOKIES, HANDLES, LINKS } from '@/constants'
+import { COOKIES, HANDLES, LINKS, metadataBase } from '@/constants'
 import { Locale, i18n } from '@/i18n.config'
 import { setInitialTheme } from '@/lib'
 import { getDictionary } from '@/scripts'
@@ -28,7 +28,7 @@ export async function generateMetadata({
     },
     creator: layout.root.metadata.title,
     publisher: layout.root.metadata.title,
-    metadataBase: new URL(LINKS.siteUrl),
+    metadataBase,
     ...(await openGraph(lang)),
     twitter: {
       card: 'summary_large_image',
