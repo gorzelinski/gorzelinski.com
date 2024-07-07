@@ -78,6 +78,7 @@ export {
   LanguageSwitch,
   LinkOrA,
   Logo,
+  MetaImage,
   Pagination,
   Post,
   Progress,
