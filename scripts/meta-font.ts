@@ -4,16 +4,16 @@ import { fileURLToPath } from 'url'
 import { METAFONT } from '@/constants'
 import { MetaFontOptions } from '@/types'
 
-// Use it in the 'nodejs' runtime
-export async function getMetaFont() {
+export async function getMetaFont(
+  slug: string,
+  options?: Pick<MetaFontOptions, 'style' | 'weight'>
+) {
   const font = await fs.promises.readFile(
-    path.join(
-      fileURLToPath(import.meta.url),
-      '../../public/fonts/Montserrat-Medium.ttf'
-    )
+    path.join(fileURLToPath(import.meta.url), slug)
   )
 
   return {
+    ...options,
     ...METAFONT,
     data: font
   } as MetaFontOptions

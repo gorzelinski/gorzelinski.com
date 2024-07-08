@@ -76,7 +76,7 @@ export const MetaImage = ({
             fontSize: '48px',
             lineHeight: '64px',
             letterSpacing: '-0.025em',
-            fontWeight: '500',
+            fontWeight: '600',
             color: colors[theme].color.text
           }}
         >

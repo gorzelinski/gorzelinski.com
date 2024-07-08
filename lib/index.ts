@@ -7,7 +7,6 @@ export {
   localizeFileName
 } from './i18n'
 export { isInternal, generateAlternateLinks } from './link'
-export { getMetaFont } from './meta-font'
 export { selectActiveClass } from './navigation'
 export { capitalize } from './string'
 export {
