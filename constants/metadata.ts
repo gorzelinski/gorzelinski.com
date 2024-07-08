@@ -15,3 +15,8 @@ export const OPENGRAPH = {
   width: 1200,
   height: 630
 }
+
+export const TWITTER = {
+  width: 1200,
+  height: 600
+}
