@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import { cookies } from 'next/headers'
 import { PageProps, Theme } from '@/types'
-import { COOKIES, HANDLES, LINKS, metadataBase } from '@/constants'
+import { COOKIES, LINKS, metadataBase } from '@/constants'
 import { Locale, i18n } from '@/i18n.config'
 import { setInitialTheme } from '@/lib'
 import { getDictionary } from '@/scripts'
-import { openGraph } from '../shared-metadata'
 import { montserrat, lora, firaCode } from '@/theme/fonts'
 import { Background, Footer, Main, Navbar } from '@/design-system'
+import { openGraph, twitter } from '../shared-metadata'
 import './globals.css'
 
 export async function generateMetadata({
@@ -29,11 +29,11 @@ export async function generateMetadata({
     creator: layout.root.metadata.title,
     publisher: layout.root.metadata.title,
     metadataBase,
-    ...(await openGraph(lang)),
+    openGraph: {
+      ...(await openGraph(lang))
+    },
     twitter: {
-      card: 'summary_large_image',
-      site: `@${HANDLES.twitter}`,
-      creator: `@${HANDLES.twitter}`
+      ...twitter()
     },
     appleWebApp: {
       title: layout.root.metadata.title,

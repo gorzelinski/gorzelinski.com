@@ -34,7 +34,7 @@ export async function generateMetadata({
       languages
     },
     openGraph: {
-      ...(await openGraph(lang)).openGraph,
+      ...(await openGraph(lang)),
       type: 'article',
       publishedTime: frontmatter.date.toISOString(),
       modifiedTime: frontmatter.updated.toISOString(),
