@@ -13,7 +13,7 @@ import {
   generateAlternateLinks,
   localizePath
 } from '@/lib'
-import { openGraph } from '@/app/shared-metadata'
+import { openGraph, twitter } from '@/app/shared-metadata'
 import { HStack, VStack } from '@/styled-system/jsx'
 import {
   Article,
@@ -53,10 +53,17 @@ export async function generateMetadata({
     },
     openGraph: {
       ...(await openGraph(lang)),
+      title: frontmatter.title,
+      description: frontmatter.description,
       type: 'article',
       publishedTime: frontmatter.date.toISOString(),
       modifiedTime: frontmatter.updated.toISOString(),
       authors: layout.root.metadata.title
+    },
+    twitter: {
+      ...twitter(),
+      title: frontmatter.title,
+      description: frontmatter.description
     }
   }
 }

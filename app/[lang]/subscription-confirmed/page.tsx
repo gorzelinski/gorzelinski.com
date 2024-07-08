@@ -3,6 +3,7 @@ import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { getDictionary } from '@/scripts'
 import { generateAlternateLinks } from '@/lib'
+import { openGraph, twitter } from '@/app/shared-metadata'
 import { Button, H1, P, Section } from '@/design-system'
 
 export async function generateMetadata({
@@ -17,6 +18,16 @@ export async function generateMetadata({
     alternates: {
       canonical: LINKS.subscriptionConfirmed,
       languages
+    },
+    openGraph: {
+      ...(await openGraph(lang)),
+      title: page.subscriptionConfirmed.metadata.title,
+      description: page.subscriptionConfirmed.metadata.description
+    },
+    twitter: {
+      ...twitter(),
+      title: page.subscriptionConfirmed.metadata.title,
+      description: page.subscriptionConfirmed.metadata.description
     }
   }
 }

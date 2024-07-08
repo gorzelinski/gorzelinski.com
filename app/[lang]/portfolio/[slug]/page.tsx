@@ -3,7 +3,7 @@ import { NestedPageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { createPagination, getDictionary, getMDX } from '@/scripts'
 import { generateAlternateLinks } from '@/lib'
-import { openGraph } from '@/app/shared-metadata'
+import { openGraph, twitter } from '@/app/shared-metadata'
 import { Box, Grid, VStack } from '@/styled-system/jsx'
 import {
   Article,
@@ -35,10 +35,17 @@ export async function generateMetadata({
     },
     openGraph: {
       ...(await openGraph(lang)),
+      title: frontmatter.title,
+      description: frontmatter.description,
       type: 'article',
       publishedTime: frontmatter.date.toISOString(),
       modifiedTime: frontmatter.updated.toISOString(),
       authors: layout.root.metadata.title
+    },
+    twitter: {
+      ...twitter(),
+      title: frontmatter.title,
+      description: frontmatter.description
     }
   }
 }

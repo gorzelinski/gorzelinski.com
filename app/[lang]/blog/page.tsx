@@ -3,6 +3,7 @@ import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { getDictionary, getMDXes } from '@/scripts'
 import { generateAlternateLinks } from '@/lib'
+import { openGraph, twitter } from '@/app/shared-metadata'
 import { H1, Header, Newsletter, Post, Section, Small } from '@/design-system'
 
 export async function generateMetadata({
@@ -17,6 +18,16 @@ export async function generateMetadata({
     alternates: {
       canonical: LINKS.blog,
       languages
+    },
+    openGraph: {
+      ...(await openGraph(lang)),
+      title: page.blog.metadata.title,
+      description: page.blog.metadata.description
+    },
+    twitter: {
+      ...twitter(),
+      title: page.blog.metadata.title,
+      description: page.blog.metadata.description
     }
   }
 }
