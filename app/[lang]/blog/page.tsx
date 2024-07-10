@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { WebPage, WithContext } from 'schema-dts'
 import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { getDictionary, getMDXes } from '@/scripts'
@@ -33,11 +34,26 @@ export async function generateMetadata({
 }
 
 export default async function Blog({ params: { lang } }: PageProps) {
-  const { component, section, page } = await getDictionary(lang)
+  const { component, section, layout, page } = await getDictionary(lang)
   const posts = await getMDXes<'post'>(LINKS.blog, lang)
+  const jsonLd: WithContext<WebPage> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    inLanguage: lang,
+    name: page.blog.metadata.title,
+    description: page.blog.metadata.description,
+    author: {
+      '@type': 'Person',
+      name: layout.root.metadata.author
+    }
+  }
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Section columns="1">
         <Header alignItems="baseline">
           <H1>{page.blog.heading}</H1>

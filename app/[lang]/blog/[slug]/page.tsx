@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { BlogPosting, WithContext } from 'schema-dts'
 import { NestedPageProps } from '@/types'
 import { LINKS } from '@/constants'
 import {
@@ -71,13 +72,33 @@ export async function generateMetadata({
 export default async function Blog({
   params: { lang, slug }
 }: NestedPageProps) {
-  const { component, section, page } = await getDictionary(lang)
+  const { component, section, layout, page } = await getDictionary(lang)
   const { content, frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
   const { prev, next } = await createPagination(LINKS.blog, slug, lang)
   const relatedPosts = await getRelatedPosts(frontmatter, lang, 3)
+  const jsonLd: WithContext<BlogPosting> = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    url: `${LINKS.siteUrl}${localizePath(lang, `${LINKS.blog}${slug}`)}/`,
+    inLanguage: lang,
+    headline: frontmatter.title,
+    description: frontmatter.description,
+    dateCreated: frontmatter.date.toISOString(),
+    datePublished: frontmatter.date.toISOString(),
+    dateModified: frontmatter.updated.toISOString(),
+    keywords: frontmatter.tags,
+    author: {
+      '@type': 'Person',
+      name: layout.root.metadata.author
+    }
+  }
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Article>
         <Progress selector="article" />
         <header>
