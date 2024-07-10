@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { WebPage, WithContext } from 'schema-dts'
 import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { getDictionary, getMDXes } from '@/scripts'
@@ -40,11 +41,26 @@ export async function generateMetadata({
 }
 
 export default async function Portfolio({ params: { lang } }: PageProps) {
-  const { component, section, page } = await getDictionary(lang)
+  const { component, section, layout, page } = await getDictionary(lang)
   const projects = await getMDXes<'project'>(LINKS.portfolio, lang)
+  const jsonLd: WithContext<WebPage> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    inLanguage: lang,
+    name: page.portfolio.metadata.title,
+    description: page.portfolio.metadata.description,
+    author: {
+      '@type': 'Person',
+      name: layout.root.metadata.author
+    }
+  }
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Section columns="2">
         <Header alignItems="baseline">
           <H1>{page.portfolio.heading}</H1>
