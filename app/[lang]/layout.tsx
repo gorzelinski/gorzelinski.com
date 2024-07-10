@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { cookies } from 'next/headers'
+import { WebSite, WithContext } from 'schema-dts'
 import { PageProps, Theme } from '@/types'
 import { COOKIES, LINKS, metadataBase } from '@/constants'
 import { Locale, i18n } from '@/i18n.config'
-import { setInitialTheme } from '@/lib'
+import { localizePath, setInitialTheme } from '@/lib'
 import { getDictionary } from '@/scripts'
 import { montserrat, lora, firaCode } from '@/theme/fonts'
 import { Background, Footer, Main, Navbar } from '@/design-system'
@@ -58,6 +59,17 @@ export default async function RootLayout({
   const { lang } = params
   const dictionary = await getDictionary(lang)
   const theme = cookies().get(COOKIES.theme)?.value as Theme
+  const jsonLd: WithContext<WebSite> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    inLanguage: lang,
+    url: `${LINKS.siteUrl}${localizePath(lang, '/')}`,
+    name: dictionary.layout.root.metadata.name,
+    author: {
+      '@type': 'Person',
+      name: dictionary.layout.root.metadata.author
+    }
+  }
 
   return (
     <html
@@ -72,7 +84,11 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `${setInitialTheme} setInitialTheme()`
           }}
-        ></script>
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Background>
           <Navbar lang={lang} dictionary={dictionary} />
           <Main>{children}</Main>
