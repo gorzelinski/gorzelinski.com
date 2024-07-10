@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { WebPage, WithContext } from 'schema-dts'
 import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { getDictionary } from '@/scripts'
@@ -60,31 +61,44 @@ const mediaIcons: Record<MediaTypes, JSX.Element> = {
 }
 
 export default async function About({ params: { lang } }: PageProps) {
-  const {
-    page: { about }
-  } = await getDictionary(lang)
+  const { layout, page } = await getDictionary(lang)
+  const jsonLd: WithContext<WebPage> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    inLanguage: lang,
+    name: page.about.metadata.title,
+    description: page.about.metadata.description,
+    author: {
+      '@type': 'Person',
+      name: layout.root.metadata.author
+    }
+  }
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Section columns="2">
-        <H1>{about.heading}</H1>
+        <H1>{page.about.heading}</H1>
         <VStack css={verticalRhythm.gap.m}>
-          <P>{about.story.gaming}</P>
-          <P>{about.story.technology}</P>
-          <P>{about.story.math}</P>
-          <P>{about.story.university}</P>
+          <P>{page.about.story.gaming}</P>
+          <P>{page.about.story.technology}</P>
+          <P>{page.about.story.math}</P>
+          <P>{page.about.story.university}</P>
         </VStack>
         <VStack css={verticalRhythm.gap.m}>
-          <P>{about.story.internship}</P>
-          <P>{about.story.thesis}</P>
-          <P>{about.story.books}</P>
-          <P>{about.story.activities}</P>
-          <P>{about.story.position}</P>
+          <P>{page.about.story.internship}</P>
+          <P>{page.about.story.thesis}</P>
+          <P>{page.about.story.books}</P>
+          <P>{page.about.story.activities}</P>
+          <P>{page.about.story.position}</P>
         </VStack>
       </Section>
       <Section columns="3">
-        <H2>{about.facts.heading}</H2>
-        {about.facts.list.map((fact, index) => (
+        <H2>{page.about.facts.heading}</H2>
+        {page.about.facts.list.map((fact, index) => (
           <VStack gap="s" alignItems="start" key={`fact-${index}`}>
             <H3 size="s">{fact.heading}</H3>
             <P>{fact.description}</P>
@@ -92,8 +106,8 @@ export default async function About({ params: { lang } }: PageProps) {
         ))}
       </Section>
       <Section columns="2">
-        <H2>{about.values.heading}</H2>
-        {about.values.list.map((value, index) => (
+        <H2>{page.about.values.heading}</H2>
+        {page.about.values.list.map((value, index) => (
           <VStack gap="s" alignItems="start" key={`value-${index}`}>
             <H3>{value.heading}</H3>
             <P size="l" color="subtle">
@@ -102,7 +116,7 @@ export default async function About({ params: { lang } }: PageProps) {
           </VStack>
         ))}
       </Section>
-      {about.culturalCorner.list.map((media) => (
+      {page.about.culturalCorner.list.map((media) => (
         <Section columns="3" key={media.type}>
           <H2>
             {mediaIcons[media.type as MediaTypes]} {media.heading}
@@ -125,18 +139,18 @@ export default async function About({ params: { lang } }: PageProps) {
       ))}
       <Section columns="2" alignItems="center">
         <VStack alignItems="start" css={verticalRhythm.gap.m}>
-          <H2>{about.uses.heading}</H2>
-          <P>{about.uses.description}</P>
+          <H2>{page.about.uses.heading}</H2>
+          <P>{page.about.uses.description}</P>
           <ButtonLink
             variant="text"
             align="left"
             href={localizePath(lang, LINKS.uses)}
             transition="moveIconForward"
           >
-            {about.uses.button} <ChevronForward />
+            {page.about.uses.button} <ChevronForward />
           </ButtonLink>
         </VStack>
-        <Image src={uses} alt={about.uses.image} borderRadius="rounded" />
+        <Image src={uses} alt={page.about.uses.image} borderRadius="rounded" />
       </Section>
     </>
   )
