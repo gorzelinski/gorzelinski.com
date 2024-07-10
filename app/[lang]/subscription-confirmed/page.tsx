@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { WebPage, WithContext } from 'schema-dts'
 import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { getDictionary } from '@/scripts'
@@ -35,15 +36,32 @@ export async function generateMetadata({
 export default async function SubscriptionConfirmed({
   params: { lang }
 }: PageProps) {
-  const { page } = await getDictionary(lang)
+  const { layout, page } = await getDictionary(lang)
+  const jsonLd: WithContext<WebPage> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    inLanguage: lang,
+    name: page.subscriptionConfirmed.metadata.title,
+    description: page.subscriptionConfirmed.metadata.description,
+    author: {
+      '@type': 'Person',
+      name: layout.root.metadata.author
+    }
+  }
 
   return (
-    <Section variant="hero" justifyItems="start">
-      <H1>{page.subscriptionConfirmed.heading}</H1>
-      <P size="xl" color="subtle">
-        {page.subscriptionConfirmed.description}
-      </P>
-      <Button>{page.subscriptionConfirmed.button}</Button>
-    </Section>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Section variant="hero" justifyItems="start">
+        <H1>{page.subscriptionConfirmed.heading}</H1>
+        <P size="xl" color="subtle">
+          {page.subscriptionConfirmed.description}
+        </P>
+        <Button>{page.subscriptionConfirmed.button}</Button>
+      </Section>
+    </>
   )
 }
