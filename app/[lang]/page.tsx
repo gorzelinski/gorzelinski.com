@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { WebPage, WithContext } from 'schema-dts'
 import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { generateAlternateLinks, localizePath } from '@/lib'
@@ -41,43 +42,54 @@ export async function generateMetadata({
 }
 
 export default async function Home({ params: { lang } }: PageProps) {
-  const {
-    page: { home },
-    component,
-    section
-  } = await getDictionary(lang)
+  const { component, section, layout, page } = await getDictionary(lang)
   const lastProjects = await getMDXes<'project'>(LINKS.portfolio, lang, 2)
   const lastPosts = await getMDXes<'post'>(LINKS.blog, lang, 4)
+  const jsonLd: WithContext<WebPage> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    inLanguage: lang,
+    name: page.home.metadata.title,
+    description: page.home.metadata.description,
+    author: {
+      '@type': 'Person',
+      name: layout.root.metadata.author
+    }
+  }
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Section variant="hero" justifyItems="start">
-        <H1 aria-label={home.landing.typewriter.create}>
+        <H1 aria-label={page.home.landing.typewriter.create}>
           <Typewriter
             words={[
-              home.landing.typewriter.design,
-              home.landing.typewriter.code,
-              home.landing.typewriter.write,
-              home.landing.typewriter.create
+              page.home.landing.typewriter.design,
+              page.home.landing.typewriter.code,
+              page.home.landing.typewriter.write,
+              page.home.landing.typewriter.create
             ]}
           />
         </H1>
         <P size="xl" color="subtle">
-          {home.landing.description}
+          {page.home.landing.description}
         </P>
         <ButtonLink alignSelf="start" href="#contact">
-          {home.landing.button}
+          {page.home.landing.button}
         </ButtonLink>
       </Section>
       <Section columns="2">
         <Header>
-          <H2>{home.projects.heading}</H2>
+          <H2>{page.home.projects.heading}</H2>
           <ButtonLink
             variant="text"
             href={localizePath(lang, LINKS.portfolio)}
             transition="moveIconForward"
           >
-            {home.projects.link} <ChevronForward />
+            {page.home.projects.link} <ChevronForward />
           </ButtonLink>
         </Header>
         {lastProjects.map(({ frontmatter }) => (
@@ -96,15 +108,15 @@ export default async function Home({ params: { lang } }: PageProps) {
       <Section columns="2">
         <Image
           src={profile}
-          alt={home.bio.image.alt}
-          title={home.bio.image.title}
+          alt={page.home.bio.image.alt}
+          title={page.home.bio.image.title}
           borderRadius="rounded"
         />
         <Box>
-          <Small marginBottom="1rem">{home.bio.greeting}</Small>
-          <H2 marginBottom="1rem">{home.bio.heading}</H2>
-          <P marginBottom="1rem">{home.bio.brief}</P>
-          {home.bio.activities.map((activity) => (
+          <Small marginBottom="1rem">{page.home.bio.greeting}</Small>
+          <H2 marginBottom="1rem">{page.home.bio.heading}</H2>
+          <P marginBottom="1rem">{page.home.bio.brief}</P>
+          {page.home.bio.activities.map((activity) => (
             <P key={activity.link} marginBottom="1rem">
               {activity.mention}{' '}
               <Link href={localizePath(lang, activity.href)}>
@@ -119,19 +131,19 @@ export default async function Home({ params: { lang } }: PageProps) {
             transition="moveIconForward"
             href={localizePath(lang, LINKS.about)}
           >
-            {home.bio.link} <ChevronForward />
+            {page.home.bio.link} <ChevronForward />
           </ButtonLink>
         </Box>
       </Section>
       <Section>
         <Header>
-          <H2>{home.posts.heading}</H2>
+          <H2>{page.home.posts.heading}</H2>
           <ButtonLink
             variant="text"
             transition="moveIconForward"
             href={localizePath(lang, LINKS.blog)}
           >
-            {home.posts.link} <ChevronForward />
+            {page.home.posts.link} <ChevronForward />
           </ButtonLink>
         </Header>
         {lastPosts.map(({ frontmatter }) => (
@@ -156,14 +168,14 @@ export default async function Home({ params: { lang } }: PageProps) {
         alignItems="center"
         textAlign="center"
       >
-        <H2>{home.contact.heading}</H2>
-        <P>{home.contact.description}</P>
+        <H2>{page.home.contact.heading}</H2>
+        <P>{page.home.contact.description}</P>
         <ButtonAnchor
           align="left"
           variant="outline"
           href={`mailto:${LINKS.email}`}
         >
-          {home.contact.button}
+          {page.home.contact.button}
         </ButtonAnchor>
         <Socials />
       </Section>
