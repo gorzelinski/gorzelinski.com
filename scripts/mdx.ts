@@ -66,7 +66,7 @@ export async function getMDX<Type extends MDXTypes>(
     LINKS.content,
     page,
     slug,
-    localizeFileName(lang)
+    localizeFileName('index', 'mdx', lang)
   )
   const file = fs.readFileSync(filePath, 'utf-8')
 

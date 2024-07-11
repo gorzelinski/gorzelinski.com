@@ -27,9 +27,9 @@ export function delocalizePath(locale: Locale, path: string): string {
 }
 
 export function localizeFileName(
-  locale: Locale,
-  fileName = 'index',
-  extension = 'mdx'
+  fileName: string,
+  extension: string,
+  locale: Locale
 ) {
   return `${fileName}${
     isDefaultLocale(locale) ? '' : `.${locale}`

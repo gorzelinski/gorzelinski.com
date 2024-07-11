@@ -50,19 +50,19 @@ describe('i18n', () => {
 
   describe('localizeFileName()', () => {
     it('returns "index" file name without locale prefix if locale is default', () => {
-      expect(localizeFileName('en')).toBe('index.mdx')
+      expect(localizeFileName('index', 'mdx', 'en')).toBe('index.mdx')
     })
 
     it('returns "index" file name with locale prefix if locale is not default', () => {
-      expect(localizeFileName('pl')).toBe('index.pl.mdx')
+      expect(localizeFileName('index', 'mdx', 'pl')).toBe('index.pl.mdx')
     })
 
     it('returns file name with locale prefix if locale is not default and file name is provided', () => {
-      expect(localizeFileName('pl', 'about')).toBe('about.pl.mdx')
+      expect(localizeFileName('about', 'mdx', 'pl')).toBe('about.pl.mdx')
     })
 
     it('returns file name with locale prefix if locale is not default and file name and extension are provided', () => {
-      expect(localizeFileName('pl', 'about', 'md')).toBe('about.pl.md')
+      expect(localizeFileName('about', 'md', 'pl')).toBe('about.pl.md')
     })
   })
 })
