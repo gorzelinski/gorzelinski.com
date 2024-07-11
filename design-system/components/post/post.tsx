@@ -18,7 +18,7 @@ export const Post = ({
       <Image
         width={605}
         height={403}
-        src={`/images${delocalizePath(lang, slug)}${image.src}`}
+        src={`/images${delocalizePath(slug, lang)}${image.src}`}
         alt={image.alt}
       />
       <Small>

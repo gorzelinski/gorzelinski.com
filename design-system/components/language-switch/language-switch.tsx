@@ -14,7 +14,7 @@ import { ButtonLink, Earth } from '../../elements'
 export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
   const { locales } = i18n
   const pathname = usePathname()
-  const defaultPathname = delocalizePath(lang, pathname)
+  const defaultPathname = delocalizePath(pathname, lang)
 
   return (
     <Wrap gap="m">

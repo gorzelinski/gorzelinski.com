@@ -44,7 +44,7 @@ describe('i18n', () => {
 
   describe('delocalizePath()', () => {
     it('removes locale prefix from path', () => {
-      expect(delocalizePath('pl', '/pl/')).toBe('/')
+      expect(delocalizePath('/pl/', 'pl')).toBe('/')
     })
   })
 

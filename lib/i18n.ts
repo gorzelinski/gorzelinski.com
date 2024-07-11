@@ -22,7 +22,7 @@ export function localizePath(
   return `/${locale}${path}`
 }
 
-export function delocalizePath(locale: Locale, path: string): string {
+export function delocalizePath(path: string, locale: Locale): string {
   return path.replace(`/${locale}/`, '/')
 }
 

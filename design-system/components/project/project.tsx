@@ -18,7 +18,7 @@ export const Project = ({
         width={622}
         height={384}
         aspectRatio="wide"
-        src={`/images${delocalizePath(lang, slug)}${image.src}`}
+        src={`/images${delocalizePath(slug, lang)}${image.src}`}
         alt={image.alt}
       />
       <Small>{deliverables.join(', ')}</Small>
