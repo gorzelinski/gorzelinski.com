@@ -94,38 +94,6 @@ export default async function Uses({ params: { lang } }: PageProps) {
         </Figure>
         {content}
       </Article>
-      <Article>
-        <H1 css={verticalRhythm.marginBottom.m}>{frontmatter.title}</H1>
-        <P size="l" color="subtle" css={verticalRhythm.marginBottom.m}>
-          {frontmatter.description}
-        </P>
-        <Figure
-          marginX={{
-            base: '-m',
-            sm: '-l',
-            md: '-xl',
-            lg: '-2xl',
-            xl: '-4xl'
-          }}
-          textAlign="center"
-        >
-          <Image
-            aspectRatio="cinema"
-            src={`/images${LINKS.uses}${frontmatter.image.src}`}
-            alt={frontmatter.image.alt}
-            width={1200}
-            height={675}
-          />
-          <Figcaption
-            style="italic"
-            textAlign="center"
-            css={verticalRhythm.marginTop.s}
-          >
-            {frontmatter.image.caption}
-          </Figcaption>
-        </Figure>
-        {content}
-      </Article>
     </>
   )
 }
