@@ -85,7 +85,7 @@ export async function getMDX<Type extends MDXTypes>(
     }
   })
   frontmatter.readingTime = readingTime(file)
-  frontmatter.slug = localizePath(lang, `${page}${slug}/`)
+  frontmatter.slug = localizePath(`${page}${slug}/`, lang)
 
   return {
     frontmatter,
@@ -119,7 +119,7 @@ export async function createPagination(
 ) {
   const mdxes = await getMDXes(page, lang)
   const currentIndex = mdxes.findIndex(
-    (mdx) => mdx.frontmatter.slug === localizePath(lang, `${page}${slug}/`)
+    (mdx) => mdx.frontmatter.slug === localizePath(`${page}${slug}/`, lang)
   )
 
   const prevMDX =

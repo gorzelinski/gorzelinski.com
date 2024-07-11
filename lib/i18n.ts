@@ -8,8 +8,8 @@ export function isDefaultLocale(
 }
 
 export function localizePath(
-  locale: Locale,
   path: string,
+  locale: Locale,
   defaultLocale: Locale = i18n.defaultLocale
 ): string {
   if (isDefaultLocale(defaultLocale, locale)) {

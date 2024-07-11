@@ -13,7 +13,7 @@ type AlternateLinks = Record<Locale, string>
 export function generateAlternateLinks(link: string) {
   return i18n.locales
     .map((locale) => ({
-      [locale]: localizePath(locale, link)
+      [locale]: localizePath(link, locale)
     }))
     .reduce((acc, curr) => ({ ...acc, ...curr }), {}) as AlternateLinks
 }

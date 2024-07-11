@@ -63,7 +63,7 @@ export default async function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     inLanguage: lang,
-    url: `${LINKS.siteUrl}${localizePath(lang, '/')}`,
+    url: `${LINKS.siteUrl}${localizePath('/', lang)}`,
     name: dictionary.layout.root.metadata.name,
     author: {
       '@type': 'Person',

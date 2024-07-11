@@ -26,7 +26,7 @@ export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
 
         const href = isDefaultLocale(locale)
           ? defaultPathname
-          : localizePath(locale, defaultPathname)
+          : localizePath(defaultPathname, locale)
 
         return (
           <ButtonLink

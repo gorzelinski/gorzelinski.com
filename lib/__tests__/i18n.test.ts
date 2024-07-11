@@ -22,23 +22,23 @@ describe('i18n', () => {
 
   describe('localizePath()', () => {
     it('returns only path if locale is default', () => {
-      expect(localizePath('en', '/')).toBe('/')
+      expect(localizePath('/', 'en')).toBe('/')
     })
 
     it('returns only path if locale is default and default locale is provided', () => {
-      expect(localizePath('pl', '/', 'pl')).toBe('/')
+      expect(localizePath('/', 'pl', 'pl')).toBe('/')
     })
 
     it('returns locale + path if locale is not default and is in the path', () => {
-      expect(localizePath('pl', '/pl')).toBe('/pl')
+      expect(localizePath('/pl', 'pl')).toBe('/pl')
     })
 
     it('returns locale + path if locale is not default and is not in the path', () => {
-      expect(localizePath('pl', '/')).toBe('/pl/')
+      expect(localizePath('/', 'pl')).toBe('/pl/')
     })
 
     it('returns locale + path if locale is not default and default locale is provided', () => {
-      expect(localizePath('pl', '/', 'en')).toBe('/pl/')
+      expect(localizePath('/', 'pl', 'en')).toBe('/pl/')
     })
   })
 

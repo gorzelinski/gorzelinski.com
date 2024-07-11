@@ -51,49 +51,49 @@ export const Footer = ({ lang, dictionary }: FooterProps) => {
           <ButtonLink
             variant="nav"
             size="s"
-            href={localizePath(lang, LINKS.home)}
+            href={localizePath(LINKS.home, lang)}
           >
             {links.home}
           </ButtonLink>
           <ButtonLink
             variant="nav"
             size="s"
-            href={localizePath(lang, LINKS.portfolio)}
+            href={localizePath(LINKS.portfolio, lang)}
           >
             {links.portfolio}
           </ButtonLink>
           <ButtonLink
             variant="nav"
             size="s"
-            href={localizePath(lang, LINKS.about)}
+            href={localizePath(LINKS.about, lang)}
           >
             {links.about}
           </ButtonLink>
           <ButtonLink
             variant="nav"
             size="s"
-            href={localizePath(lang, LINKS.uses)}
+            href={localizePath(LINKS.uses, lang)}
           >
             {links.uses}
           </ButtonLink>
           <ButtonLink
             variant="nav"
             size="s"
-            href={localizePath(lang, LINKS.blog)}
+            href={localizePath(LINKS.blog, lang)}
           >
             {links.blog}
           </ButtonLink>
           <ButtonLink
             variant="nav"
             size="s"
-            href={localizePath(lang, LINKS.newsletter)}
+            href={localizePath(LINKS.newsletter, lang)}
           >
             {links.newsletter}
           </ButtonLink>
           <ButtonLink
             variant="nav"
             size="s"
-            href={localizePath(lang, LINKS.rss)}
+            href={localizePath(LINKS.rss, lang)}
           >
             {links.rss}
           </ButtonLink>

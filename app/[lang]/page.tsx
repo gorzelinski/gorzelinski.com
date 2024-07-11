@@ -86,7 +86,7 @@ export default async function Home({ params: { lang } }: PageProps) {
           <H2>{page.home.projects.heading}</H2>
           <ButtonLink
             variant="text"
-            href={localizePath(lang, LINKS.portfolio)}
+            href={localizePath(LINKS.portfolio, lang)}
             transition="moveIconForward"
           >
             {page.home.projects.link} <ChevronForward />
@@ -119,7 +119,7 @@ export default async function Home({ params: { lang } }: PageProps) {
           {page.home.bio.activities.map((activity) => (
             <P key={activity.link} marginBottom="1rem">
               {activity.mention}{' '}
-              <Link href={localizePath(lang, activity.href)}>
+              <Link href={localizePath(activity.href, lang)}>
                 {activity.link}
               </Link>
               .
@@ -129,7 +129,7 @@ export default async function Home({ params: { lang } }: PageProps) {
             align="left"
             variant="text"
             transition="moveIconForward"
-            href={localizePath(lang, LINKS.about)}
+            href={localizePath(LINKS.about, lang)}
           >
             {page.home.bio.link} <ChevronForward />
           </ButtonLink>
@@ -141,7 +141,7 @@ export default async function Home({ params: { lang } }: PageProps) {
           <ButtonLink
             variant="text"
             transition="moveIconForward"
-            href={localizePath(lang, LINKS.blog)}
+            href={localizePath(LINKS.blog, lang)}
           >
             {page.home.posts.link} <ChevronForward />
           </ButtonLink>

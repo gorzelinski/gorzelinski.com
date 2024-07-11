@@ -144,7 +144,7 @@ export default async function About({ params: { lang } }: PageProps) {
           <ButtonLink
             variant="text"
             align="left"
-            href={localizePath(lang, LINKS.uses)}
+            href={localizePath(LINKS.uses, lang)}
             transition="moveIconForward"
           >
             {page.about.uses.button} <ChevronForward />

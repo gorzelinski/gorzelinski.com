@@ -8,7 +8,7 @@ export const Logo = ({ children, lang }: LogoProps) => {
     <ButtonLink
       variant="nav"
       align="left"
-      href={localizePath(lang, LINKS.home)}
+      href={localizePath(LINKS.home, lang)}
     >
       {children}
     </ButtonLink>

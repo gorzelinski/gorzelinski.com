@@ -33,7 +33,7 @@ export default async function NotFound() {
           align="left"
           variant="text"
           transition="moveIconForward"
-          href={localizePath(lang, LINKS.home)}
+          href={localizePath(LINKS.home, lang)}
         >
           {page.notFound.button} <ChevronForward />
         </ButtonLink>

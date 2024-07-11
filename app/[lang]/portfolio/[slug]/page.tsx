@@ -64,7 +64,7 @@ export default async function Portfolio({
   const jsonLd: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    url: `${LINKS.siteUrl}${localizePath(lang, `${LINKS.blog}${slug}`)}/`,
+    url: `${LINKS.siteUrl}${localizePath(`${LINKS.blog}${slug}`, lang)}/`,
     inLanguage: lang,
     headline: frontmatter.title,
     description: frontmatter.description,

@@ -44,10 +44,10 @@ export const Navbar = ({ lang, dictionary }: NavbarProps) => {
         <ButtonLink
           variant="nav"
           size="s"
-          href={localizePath(lang, LINKS.portfolio)}
+          href={localizePath(LINKS.portfolio, lang)}
           className={selectActiveClass(
             pathname,
-            localizePath(lang, LINKS.portfolio),
+            localizePath(LINKS.portfolio, lang),
             true
           )}
         >
@@ -56,10 +56,10 @@ export const Navbar = ({ lang, dictionary }: NavbarProps) => {
         <ButtonLink
           variant="nav"
           size="s"
-          href={localizePath(lang, LINKS.about)}
+          href={localizePath(LINKS.about, lang)}
           className={selectActiveClass(
             pathname,
-            localizePath(lang, LINKS.about)
+            localizePath(LINKS.about, lang)
           )}
         >
           {links.about}
@@ -67,10 +67,10 @@ export const Navbar = ({ lang, dictionary }: NavbarProps) => {
         <ButtonLink
           variant="nav"
           size="s"
-          href={localizePath(lang, LINKS.blog)}
+          href={localizePath(LINKS.blog, lang)}
           className={selectActiveClass(
             pathname,
-            localizePath(lang, LINKS.blog),
+            localizePath(LINKS.blog, lang),
             true
           )}
         >
@@ -79,7 +79,7 @@ export const Navbar = ({ lang, dictionary }: NavbarProps) => {
         <ButtonLink
           variant="outline"
           size="s"
-          href={localizePath(lang, LINKS.contact)}
+          href={localizePath(LINKS.contact, lang)}
         >
           {links.contact}
         </ButtonLink>
