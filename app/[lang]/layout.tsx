@@ -21,7 +21,7 @@ export async function generateMetadata({
       template: `%s | ${layout.root.metadata.title}`,
       default: layout.root.metadata.title
     },
-    generator: 'Next.js',
+    generator: layout.root.metadata.generator,
     applicationName: 'gorzelinski.com',
     authors: {
       name: layout.root.metadata.title,

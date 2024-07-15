@@ -73,7 +73,8 @@
       "metadata": {
         "title": "Mateusz Gorzeliński",
         "name": "Strona internetowa Mateusza Gorzelińskiego",
-        "author": "Mateusz Gorzeliński"
+        "author": "Mateusz Gorzeliński",
+        "generator": "Next.js"
       }
     }
   },

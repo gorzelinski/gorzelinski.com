@@ -73,7 +73,8 @@
       "metadata": {
         "author": "Matthew Gorzelinski",
         "name": "Matthew Gorzelinski's website",
-        "title": "Matthew Gorzelinski"
+        "title": "Matthew Gorzelinski",
+        "generator": "Next.js"
       }
     }
   },
