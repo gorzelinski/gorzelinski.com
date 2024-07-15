@@ -5,8 +5,8 @@ import { getSlugs } from '@/scripts'
 import { localizePath } from '@/lib'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = getSlugs('/blog/').map((slug) => `/blog${slug}`)
-  const projects = getSlugs('/portfolio/').map((slug) => `/portfolio${slug}`)
+  const posts = getSlugs(LINKS.blog).map((slug) => `/blog${slug}`)
+  const projects = getSlugs(LINKS.portfolio).map((slug) => `/portfolio${slug}`)
   const slugs = [...CRAWLABLE, ...posts, ...projects]
   const getUrl = (slug: string, lang: Locale) =>
     `${LINKS.siteUrl}${localizePath(slug, lang)}`
