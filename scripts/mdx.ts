@@ -61,12 +61,14 @@ export async function getMDX<Type extends MDXTypes>(
   slug: string,
   lang: Locale
 ) {
-  const filePath = path.join(
-    root,
-    LINKS.content,
-    page,
-    slug,
-    localizeFileName('index', 'mdx', lang)
+  const filePath = path.normalize(
+    path.join(
+      root,
+      LINKS.content,
+      page,
+      slug,
+      localizeFileName('index', 'mdx', lang)
+    )
   )
   const file = fs.readFileSync(filePath, 'utf-8')
 
@@ -85,7 +87,7 @@ export async function getMDX<Type extends MDXTypes>(
     }
   })
   frontmatter.readingTime = readingTime(file)
-  frontmatter.slug = localizePath(`${page}${slug}/`, lang)
+  frontmatter.slug = path.normalize(localizePath(`${page}${slug}/`, lang))
 
   return {
     frontmatter,
@@ -93,14 +95,24 @@ export async function getMDX<Type extends MDXTypes>(
   }
 }
 
+export function getSlugs(
+  page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>
+) {
+  const slugs = fs
+    .readdirSync(path.join(root, LINKS.content, page))
+    .map((slug) => `/${slug}/`)
+
+  return slugs
+}
+
 export async function getMDXes<Type extends MDXTypes>(
   page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>,
   lang: Locale,
   number?: number
 ) {
-  const directories = fs.readdirSync(path.join(root, LINKS.content, page))
+  const slugs = getSlugs(page)
   const mdxes = await Promise.all(
-    directories.map((slug) => getMDX<Type>(page, slug, lang))
+    slugs.map((slug) => getMDX<Type>(page, slug, lang))
   )
 
   return mdxes
@@ -119,7 +131,9 @@ export async function createPagination(
 ) {
   const mdxes = await getMDXes(page, lang)
   const currentIndex = mdxes.findIndex(
-    (mdx) => mdx.frontmatter.slug === localizePath(`${page}${slug}/`, lang)
+    (mdx) =>
+      mdx.frontmatter.slug ===
+      path.normalize(localizePath(`${page}${slug}/`, lang))
   )
 
   const prevMDX =

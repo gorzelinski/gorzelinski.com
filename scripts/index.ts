@@ -7,6 +7,7 @@ export {
   createPagination,
   getMDX,
   getMDXes,
-  getRelatedPosts
+  getRelatedPosts,
+  getSlugs
 } from './mdx'
 export { getMetaFont } from './meta-font'

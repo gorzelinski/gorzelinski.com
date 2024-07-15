@@ -1,5 +1,5 @@
 export { COOKIES } from './cookies'
-export { type Pages, HANDLES, LINKS, SOCIALS } from './links'
+export { type Pages, CRAWLABLE, HANDLES, LINKS, SOCIALS } from './links'
 export {
   CONTENTTYPE,
   METAFONT,

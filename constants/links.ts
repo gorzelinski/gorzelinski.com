@@ -31,6 +31,14 @@ export const LINKS = {
   content: 'content'
 } as const
 
+export const CRAWLABLE = [
+  LINKS.home,
+  LINKS.portfolio,
+  LINKS.about,
+  LINKS.uses,
+  LINKS.blog
+] as const
+
 export type Pages = (typeof LINKS)[
   | 'home'
   | 'portfolio'
