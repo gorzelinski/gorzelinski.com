@@ -6,7 +6,7 @@ export {
   delocalizePath,
   localizeFileName
 } from './i18n'
-export { isInternal, generateAlternateLinks } from './link'
+export { isInternal, getAbsoluteURL, generateAlternateLinks } from './link'
 export { selectActiveClass } from './navigation'
 export { capitalize } from './string'
 export {
