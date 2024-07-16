@@ -4,7 +4,7 @@ import { WebSite, WithContext } from 'schema-dts'
 import { PageProps, Theme } from '@/types'
 import { COOKIES, LINKS, metadataBase } from '@/constants'
 import { Locale, i18n } from '@/i18n.config'
-import { localizePath, setInitialTheme } from '@/lib'
+import { getAbsoluteURL, setInitialTheme } from '@/lib'
 import { getDictionary } from '@/scripts'
 import { montserrat, lora, firaCode } from '@/theme/fonts'
 import { Background, Footer, Main, Navbar } from '@/design-system'
@@ -25,7 +25,7 @@ export async function generateMetadata({
     applicationName: 'gorzelinski.com',
     authors: {
       name: layout.root.metadata.title,
-      url: LINKS.siteUrl
+      url: getAbsoluteURL('/', lang)
     },
     creator: layout.root.metadata.title,
     publisher: layout.root.metadata.title,
@@ -63,7 +63,7 @@ export default async function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     inLanguage: lang,
-    url: `${LINKS.siteUrl}${localizePath('/', lang)}`,
+    url: getAbsoluteURL('/', lang),
     name: dictionary.layout.root.metadata.name,
     author: {
       '@type': 'Person',
