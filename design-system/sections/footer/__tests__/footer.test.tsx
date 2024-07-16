@@ -58,6 +58,6 @@ describe('Footer', () => {
     expect(about).toHaveAttribute('href', '/about')
     expect(portfolio).toHaveAttribute('href', '/portfolio')
     expect(newsletter).toHaveAttribute('href', '/#newsletter')
-    expect(rss).toHaveAttribute('href', '/rss.xml')
+    expect(rss).toHaveAttribute('href', '/feed.xml')
   })
 })
