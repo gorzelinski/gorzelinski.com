@@ -1,4 +1,4 @@
-import { metadataBase } from '@/constants'
+import { LINKS, metadataBase } from '@/constants'
 import { MetaImageProps } from './meta-image.types'
 
 export const MetaImage = ({
@@ -53,7 +53,7 @@ export const MetaImage = ({
         }}
       >
         <img
-          src={`${metadataBase}/images/logo.png`}
+          src={`${metadataBase}${LINKS.logo}`}
           style={{
             width: '64px',
             height: '64px',

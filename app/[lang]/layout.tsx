@@ -40,7 +40,7 @@ export async function generateMetadata({
       title: layout.root.metadata.title,
       statusBarStyle: 'black',
       capable: true,
-      startupImage: '/public/images/logo.png'
+      startupImage: LINKS.logo
     }
   }
 }

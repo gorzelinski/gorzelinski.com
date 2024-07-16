@@ -25,10 +25,11 @@ export const LINKS = {
   blog: '/blog/',
   contact: '#contact',
   newsletter: '/#newsletter',
-  rss: '/rss.xml',
+  rss: '/feed.xml',
   subscriptionConfirmed: '/subscription-confirmed/',
   email: 'hello@gorzelinski.com',
-  content: 'content'
+  content: 'content',
+  logo: '/images/logo.png'
 } as const
 
 export const CRAWLABLE = [
