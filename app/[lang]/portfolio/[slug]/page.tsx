@@ -3,7 +3,7 @@ import { BlogPosting, WithContext } from 'schema-dts'
 import { NestedPageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { createPagination, getDictionary, getMDX } from '@/scripts'
-import { generateAlternateLinks, localizePath } from '@/lib'
+import { generateAlternateLinks, getAbsoluteURL } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
 import { Box, Grid, VStack } from '@/styled-system/jsx'
 import {
@@ -64,7 +64,7 @@ export default async function Portfolio({
   const jsonLd: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    url: `${LINKS.siteUrl}${localizePath(`${LINKS.blog}${slug}`, lang)}/`,
+    url: getAbsoluteURL(`${LINKS.portfolio}${slug}/`, lang),
     inLanguage: lang,
     headline: frontmatter.title,
     description: frontmatter.description,

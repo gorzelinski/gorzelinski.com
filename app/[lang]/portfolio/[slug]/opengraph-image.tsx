@@ -1,8 +1,9 @@
 import { ImageResponse } from 'next/og'
 import { cookies } from 'next/headers'
-import { CONTENTTYPE, LINKS, OPENGRAPH, metadataBase } from '@/constants'
+import { CONTENTTYPE, LINKS, OPENGRAPH } from '@/constants'
 import { NestedPageProps, Theme } from '@/types'
 import { getDictionary, getMetaFont, getMDX } from '@/scripts'
+import { getAbsoluteURL } from '@/lib'
 import { MetaImage } from '@/design-system'
 
 export const size = OPENGRAPH
@@ -22,7 +23,7 @@ export default async function Image({
         theme={theme as Theme}
         title={frontmatter.title}
         subtitle={layout.root.metadata.title}
-        backgroundURL={`${metadataBase}/images${LINKS.portfolio}${slug}/${frontmatter.image.src}`}
+        backgroundURL={`${getAbsoluteURL(`/images${LINKS.portfolio}${slug}/`)}${frontmatter.image.src}`}
       />
     ),
     {
