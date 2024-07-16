@@ -1,7 +1,8 @@
 import RSS from 'rss'
 import { PageProps } from '@/types'
-import { LINKS, metadataBase } from '@/constants'
+import { LINKS } from '@/constants'
 import { getDictionary, getMDXes } from '@/scripts'
+import { getAbsoluteURL } from '@/lib'
 
 export async function GET(request: Request, { params: { lang } }: PageProps) {
   const { layout, page } = await getDictionary(lang)
@@ -17,9 +18,9 @@ export async function GET(request: Request, { params: { lang } }: PageProps) {
     language: lang,
     title: layout.root.metadata.name,
     description: page.blog.metadata.description,
-    image_url: new URL(LINKS.logo, metadataBase).href,
-    feed_url: new URL(LINKS.rss, metadataBase).href,
-    site_url: metadataBase.href,
+    image_url: getAbsoluteURL(LINKS.logo),
+    feed_url: getAbsoluteURL(LINKS.rss, lang),
+    site_url: getAbsoluteURL(LINKS.home, lang),
     managingEditor: layout.root.metadata.author,
     webMaster: layout.root.metadata.author,
     copyright: `© ${new Date().getFullYear().toString()} ${layout.root.metadata.author}`,
@@ -29,7 +30,7 @@ export async function GET(request: Request, { params: { lang } }: PageProps) {
   })
 
   items.forEach((item) => {
-    const url = new URL(item.frontmatter.slug, metadataBase).href
+    const url = getAbsoluteURL(item.frontmatter.slug, lang)
 
     feed.item({
       url,
