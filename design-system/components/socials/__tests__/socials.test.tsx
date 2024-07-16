@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { LINKS } from '@/constants'
+import { metadataBase } from '@/constants'
 import { Socials } from '../socials'
 
 describe('Socials', () => {
@@ -39,7 +39,7 @@ describe('Socials', () => {
     socialLinks.forEach((social) => {
       expect(social).toHaveAttribute(
         'href',
-        expect.stringContaining(encodeURIComponent(LINKS.siteUrl))
+        expect.stringContaining(encodeURIComponent(metadataBase.href))
       )
     })
   })

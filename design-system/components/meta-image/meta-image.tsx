@@ -1,4 +1,5 @@
-import { LINKS, metadataBase } from '@/constants'
+import { LINKS } from '@/constants'
+import { getAbsoluteURL } from '@/lib'
 import { MetaImageProps } from './meta-image.types'
 
 export const MetaImage = ({
@@ -53,7 +54,7 @@ export const MetaImage = ({
         }}
       >
         <img
-          src={`${metadataBase}${LINKS.logo}`}
+          src={getAbsoluteURL(LINKS.logo)}
           style={{
             width: '64px',
             height: '64px',
