@@ -12,6 +12,7 @@ import {
   formatDate,
   formatReadingTime,
   generateAlternateLinks,
+  getAbsoluteURL,
   localizePath
 } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
@@ -79,7 +80,7 @@ export default async function Blog({
   const jsonLd: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    url: `${LINKS.siteUrl}${localizePath(`${LINKS.blog}${slug}`, lang)}/`,
+    url: getAbsoluteURL(`${LINKS.blog}${slug}/`, lang),
     inLanguage: lang,
     headline: frontmatter.title,
     description: frontmatter.description,
