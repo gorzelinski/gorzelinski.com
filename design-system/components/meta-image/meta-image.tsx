@@ -53,6 +53,7 @@ export const MetaImage = ({
           textAlign: 'center'
         }}
       >
+        {/* eslint-disable-next-line */}
         <img
           src={getAbsoluteURL(LINKS.logo)}
           style={{

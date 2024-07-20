@@ -2,7 +2,8 @@ import {
   isDefaultLocale,
   localizePath,
   delocalizePath,
-  localizeFileName
+  localizeFileName,
+  createLocaleWithTerritory
 } from '../i18n'
 
 describe('i18n', () => {
@@ -29,15 +30,15 @@ describe('i18n', () => {
       expect(localizePath('/', 'pl', 'pl')).toBe('/')
     })
 
-    it('returns locale + path if locale is not default and is in the path', () => {
+    it('returns path + locale if locale is not default and is in the path', () => {
       expect(localizePath('/pl', 'pl')).toBe('/pl')
     })
 
-    it('returns locale + path if locale is not default and is not in the path', () => {
+    it('returns path + locale if locale is not default and is not in the path', () => {
       expect(localizePath('/', 'pl')).toBe('/pl/')
     })
 
-    it('returns locale + path if locale is not default and default locale is provided', () => {
+    it('returns path + locale if locale is not default and default locale is provided', () => {
       expect(localizePath('/', 'pl', 'en')).toBe('/pl/')
     })
   })
@@ -63,6 +64,16 @@ describe('i18n', () => {
 
     it('returns file name with locale prefix if locale is not default and file name and extension are provided', () => {
       expect(localizeFileName('about', 'md', 'pl')).toBe('about.pl.md')
+    })
+  })
+
+  describe('createLocaleWithTerritory()', () => {
+    it('returns english locale with territory', () => {
+      expect(createLocaleWithTerritory('en')).toBe('en_US')
+    })
+
+    it('returns polish locale with territory', () => {
+      expect(createLocaleWithTerritory('pl')).toBe('pl_PL')
     })
   })
 })

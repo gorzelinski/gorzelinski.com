@@ -12,7 +12,7 @@ export function localizePath(
   locale: Locale,
   defaultLocale: Locale = i18n.defaultLocale
 ): string {
-  if (isDefaultLocale(defaultLocale, locale)) {
+  if (isDefaultLocale(locale, defaultLocale)) {
     return path
   }
 

@@ -1,6 +1,6 @@
-import { LogoProps } from './logo.types'
 import { LINKS } from '@/constants'
 import { localizePath } from '@/lib'
+import { LogoProps } from './logo.types'
 import { ButtonLink } from '../../elements'
 
 export const Logo = ({ children, lang }: LogoProps) => {

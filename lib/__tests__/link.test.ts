@@ -1,4 +1,4 @@
-import { getAbsoluteURL, isInternal } from '../link'
+import { generateAlternateLinks, getAbsoluteURL, isInternal } from '../link'
 
 describe('link', () => {
   describe('isInternal()', () => {
@@ -40,6 +40,18 @@ describe('link', () => {
 
     it('returns localized absolute URL with path', () => {
       expect(getAbsoluteURL('/blog/', 'pl')).toBe(`${absoluteURL}pl/blog/`)
+    })
+  })
+
+  describe('generateAlternateLinks()', () => {
+    it('returns alternate links for each locale', () => {
+      const link = '/blog/'
+      const alternateLinks = {
+        en: '/blog/',
+        pl: '/pl/blog/'
+      }
+
+      expect(generateAlternateLinks(link)).toEqual(alternateLinks)
     })
   })
 })
