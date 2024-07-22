@@ -1,7 +1,8 @@
 'use client'
 import { HStack } from '@/styled-system/jsx'
+import { useNewsletter } from '@/hooks'
 import { NewsletterProps } from './newsletter.types'
-import { mapStateToCalloutVariant, useNewsletter } from './newsletter.helpers'
+import { mapStateToCalloutVariant } from './newsletter.helpers'
 import { verticalRhythm } from '../../utils'
 import {
   At,
