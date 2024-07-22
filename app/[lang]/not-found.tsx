@@ -15,7 +15,7 @@ import {
 import { VStack } from '@/styled-system/jsx'
 
 export default async function NotFound() {
-  const lang = cookies().get(COOKIES.locale)?.value as Locale
+  const lang = (cookies().get(COOKIES.locale)?.value || 'en') as Locale
   const { page } = await getDictionary(lang)
 
   return (
