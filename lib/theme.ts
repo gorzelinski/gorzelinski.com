@@ -16,26 +16,3 @@ export function setThemeCookie(theme: Theme) {
 export function getThemeCookie() {
   return document.cookie.match(/theme=(light|dark)/)?.[1] as Theme
 }
-
-export function setInitialTheme() {
-  try {
-    const isSavedTheme =
-      document.cookie.includes('light') || document.cookie.includes('dark')
-
-    if (isSavedTheme) return
-
-    function getOsTheme() {
-      const isOsLight = window.matchMedia(
-        '(prefers-color-scheme: light)'
-      ).matches
-
-      if (isOsLight) return 'light'
-      else return 'dark'
-    }
-
-    const osTheme = getOsTheme()
-
-    document.documentElement.setAttribute('data-color-mode', osTheme)
-    document.cookie = 'theme=' + osTheme + '; Path=/;'
-  } catch (_) {}
-}

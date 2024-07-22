@@ -12,7 +12,6 @@ export { capitalize } from './string'
 export {
   getThemeAttribute,
   getThemeCookie,
-  setInitialTheme,
   setThemeAttribute,
   setThemeCookie
 } from './theme'

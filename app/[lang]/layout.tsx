@@ -82,7 +82,31 @@ export default async function RootLayout({
         <script
           id="set-initial-theme"
           dangerouslySetInnerHTML={{
-            __html: `${setInitialTheme} setInitialTheme()`
+            __html: `
+            function setInitialTheme() {
+              try {
+                const isSavedTheme =
+                  document.cookie.includes('light') || document.cookie.includes('dark')
+
+                if (isSavedTheme) return
+
+                function getOsTheme() {
+                  const isOsLight = window.matchMedia(
+                    '(prefers-color-scheme: light)'
+                  ).matches
+
+                  if (isOsLight) return 'light'
+                  else return 'dark'
+                }
+
+                const osTheme = getOsTheme()
+
+                document.documentElement.setAttribute('data-color-mode', osTheme)
+                document.cookie = 'theme=' + osTheme + '; Path=/;'
+              } catch (_) {}
+            }
+            setInitialTheme()
+            `
           }}
         />
         <script
