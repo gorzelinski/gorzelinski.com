@@ -1,3 +1,4 @@
+import path from 'path'
 import type { MDXComponents } from 'mdx/types'
 import { Pages } from './constants'
 import {
@@ -154,7 +155,7 @@ export function getMDXComponents(page: Pages, slug: string): MDXComponents {
     ...customComponents,
     img: ({ src, alt, title }) => (
       <Image
-        src={`/images${page}${slug}/${src!}`}
+        src={path.normalize(`/images${page}${slug}/${src!}`)}
         alt={alt!}
         title={title}
         width={800}
