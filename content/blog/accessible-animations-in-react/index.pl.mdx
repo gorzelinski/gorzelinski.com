@@ -1,15 +1,15 @@
 ---
 title: Dostępne animacje w React
-description: "Czyli jak nie kręcić swoimi użytkownikami (jak winylem). Niektóre animacje mogą powodować problemy u użytkoników. Zadbamy o nich i sprawimy, że nieistotne animacje będą opcjonalne."
+description: 'Czyli jak nie kręcić swoimi użytkownikami (jak winylem). Niektóre animacje mogą powodować problemy u użytkoników. Zadbamy o nich i sprawimy, że nieistotne animacje będą opcjonalne.'
 date: 2022-09-01T15:00:00+02:00
 updated: 2022-09-01T15:00:00+02:00
 image:
-  alt: "Połowa winyla na białym tle"
-  caption: "Zdjęcie autorstwa Miguel Á. Padriñán"
-  src: "pexels-miguel-a-padrinan-167092.jpg"
-categories: ["web development"]
-tags: ["react", "animacja", "a11y", "css"]
-type: "post"
+  alt: 'Połowa winyla na białym tle'
+  caption: 'Zdjęcie autorstwa Miguel Á. Padriñán'
+  src: 'pexels-miguel-a-padrinan-167092.jpg'
+categories: ['web development']
+tags: ['react', 'animacja', 'a11y', 'css']
+type: 'post'
 ---
 
 Lubię minimalizm. Lubię minimalizm w moim pokoju, na moim ekranie i - jak widzisz - na moim blogu. Ale nawet dla mnie, niektóre wodotryski są fajne. Myślę, że przemyślana animacja może poprawić wrażenia z użytkowania. Możesz znaleźć subtelne przykłady na mojej stronie. Niektórzy projektanci albo programiści mogą się ze mną nie zgodzić. Efektywność może być dla nich najwyższym priorytetem. Ale czasami to nie jest nawet kwestia preferencji.
@@ -34,7 +34,7 @@ Twórcy systemów operacyjnych zatroszczyli się o tych ludzi. Każdy duży, mob
 
 Ta opcja jest także udostępniona użytkownikom sieci. Z wykorzystaniem `prefers-reduced-motion` CSS media query, możesz wykryć czy użytkownik preferuje animacje. Działa to podobnie do `prefers-color-scheme` media query. Ale to nie zadziała, jeżeli wsparcie przeglądarek jest kiepskie. Sprawdźmy:
 
-![Wykres ze strony caniuse.com prezentujący wsparcie przeglądarek dla funkcji prefers-reduced-motion (94,41%)](./caniuse-prefers-reduced-motion.png)
+![Wykres ze strony caniuse.com prezentujący wsparcie przeglądarek dla funkcji prefers-reduced-motion (94,41%)](caniuse-prefers-reduced-motion.png)
 
 Wsparcie jest dobre, dlatego spróbuję uczynić moją stronę bardziej dostępną!
 
@@ -56,7 +56,7 @@ Ten fragment kodu jest odpowiedzialny za migający kursor. Co sekundę, przezroc
 }
 
 .cursor:after {
-  content: "|";
+  content: '|';
   animation: blink 1s step-start infinite;
   color: var(--color-primary-base);
 }
@@ -67,7 +67,7 @@ Możemy wyłączyć tę animację korzystając z naszej funkcji media query.
 ```css
 @media (prefers-reduced-motion: reduce) {
   .cursor:after {
-    content: "";
+    content: '';
     animation-name: none;
   }
 }
@@ -83,30 +83,30 @@ W innej części mojej strony wykorzystuję `window.matchMedia()`, aby wykryć p
 
 ```jsx
 const hasReducedMotionPreference = window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
+  '(prefers-reduced-motion: reduce)'
 ).matches // Wartość Bool - żależy od ustawień systemowych
 ```
 
 Teraz mogę wykorzystać tę informację w niestandardowym haku.
 
 ```jsx
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
 
 export const usePrefersReducedMotion = () => {
   const [hasReducedMotionPreference, setHasReducedMotionPreference] =
     useState(false)
 
   useEffect(() => {
-    const mediaQueryList = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const mediaQueryList = window.matchMedia('(prefers-reduced-motion: reduce)')
     const initialPreference = mediaQueryList.matches
     setHasReducedMotionPreference(initialPreference)
 
-    const listener = event => {
+    const listener = (event) => {
       setHasReducedMotionPreference(event.matches)
     }
-    mediaQueryList.addEventListener("change", listener)
+    mediaQueryList.addEventListener('change', listener)
     return () => {
-      mediaQueryList.removeEventListener("change", listener)
+      mediaQueryList.removeEventListener('change', listener)
     }
   }, [])
 
@@ -119,26 +119,26 @@ Domyślną wartością tego haka jest `false` - nie znamy jeszcze preferencji u�
 Możemy wykorzystywać nasz hak w każdym komponencie, który używa animacji. Wykorzystam go w moim komponencie landing, gdzie zlokalizowany jest efekt maszyny do pisania.
 
 ```jsx
-import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion"
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
 // Pozostałe deklaracje import
 
 const Landing = () => {
-  const { t } = useTranslation("components/landing")
+  const { t } = useTranslation('components/landing')
   const hasReducedMotionPreference = usePrefersReducedMotion()
 
   return (
     <Hero>
       <Tile as="header">
-        <H1 aria-label={t("aria")}>
+        <H1 aria-label={t('aria')}>
           {hasReducedMotionPreference ? (
-            t("typewriter.create")
+            t('typewriter.create')
           ) : (
             <Typewriter
               strings={[
-                t("typewriter.design"),
-                t("typewriter.code"),
-                t("typewriter.write"),
-                t("typewriter.create"),
+                t('typewriter.design'),
+                t('typewriter.code'),
+                t('typewriter.write'),
+                t('typewriter.create')
               ]}
             ></Typewriter>
           )}

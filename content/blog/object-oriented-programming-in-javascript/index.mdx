@@ -4,12 +4,12 @@ description: "Object-oriented programming is a foundation for many programming l
 date: 2022-10-13T12:30:00+02:00
 updated: 2022-10-13T12:30:00+02:00
 image:
-  alt: "Four pillars of the concrete building under the blue sky"
-  caption: "Photo by Mayer Tawfik"
-  src: "mayer-tawfik-Py2V6tUYgqw-unsplash.jpg"
-categories: ["computer science", "web development"]
-tags: ["oop", "fp", "programming", "paradigm", "assembly", "javascript"]
-type: "post"
+  alt: 'Four pillars of the concrete building under the blue sky'
+  caption: 'Photo by Mayer Tawfik'
+  src: 'mayer-tawfik-Py2V6tUYgqw-unsplash.jpg'
+categories: ['computer science', 'web development']
+tags: ['oop', 'fp', 'programming', 'paradigm', 'assembly', 'javascript']
+type: 'post'
 ---
 
 Lately, I've been writing about specific technologies: React, Gatsby, or Netlify CMS. But, in my [first post](/blog/hello-world/), I promised universal knowledge. Ten posts later, I think it's time to fulfill the promise. This post will be more theoretical. But I don't want to make it too abstract, so I'll write about OOP in the context of JavaScript language.
@@ -82,19 +82,19 @@ Let's say we have two computers: a desktop and a laptop, and we want to model th
 
 ```javascript title="Procedural code"
 const desktop = {
-  name: "Mac Studio",
-  gpu: "AMD Radeon Pro W6800X",
+  name: 'Mac Studio',
+  gpu: 'AMD Radeon Pro W6800X',
   info() {
     console.log(`Name of the computer: ${this.name}`)
-  },
+  }
 }
 
 const laptop = {
-  name: "Macbook Air",
+  name: 'Macbook Air',
   display: '13.6"',
   info() {
     console.log(`Name of the computer: ${this.name}`)
-  },
+  }
 }
 ```
 
@@ -110,12 +110,12 @@ function createComputer(name) {
     name,
     info() {
       console.log(`Name of the computer: ${this.name}`)
-    },
+    }
   }
 }
 
-const desktop = createComputer("Mac Studio")
-const laptop = createComputer("Macbook Air")
+const desktop = createComputer('Mac Studio')
+const laptop = createComputer('Macbook Air')
 ```
 
 We can call the function multiple times to create multiple objects. We don't repeat ourselves as much. But, there is another problem. Look at the `info()` function. It stays the same for every computer, yet we copy it each time. It's not very memory-efficient.
@@ -128,7 +128,7 @@ Some time ago, developers added the `create()` method on the built-in `Object`. 
 const computerFunctions = {
   info() {
     console.log(`Name of the computer: ${this.name}`)
-  },
+  }
 }
 
 function createComputer(name) {
@@ -137,8 +137,8 @@ function createComputer(name) {
   return newComputer
 }
 
-const desktop = createComputer("Mac Studio")
-const laptop = createComputer("Macbook Air")
+const desktop = createComputer('Mac Studio')
+const laptop = createComputer('Macbook Air')
 ```
 
 <Callout variant="warning">
@@ -167,8 +167,8 @@ Computer.prototype.info = function () {
   console.log(`Name of the computer: ${this.name}`)
 }
 
-const desktop = new Computer("Mac Studio")
-const laptop = new Computer("Macbook Air")
+const desktop = new Computer('Mac Studio')
+const laptop = new Computer('Macbook Air')
 ```
 
 We can use the prototype to define the shared function once, and it will be available for every object created with the constructor function.
@@ -195,8 +195,8 @@ class Computer {
   }
 }
 
-const desktop = new Computer("Mac Studio")
-const laptop = new Computer("Macbook Air")
+const desktop = new Computer('Mac Studio')
+const laptop = new Computer('Macbook Air')
 ```
 
 The best part is that everything is in one "box." All properties and methods are between curly braces. We don't need to use prototypes explicitly.
@@ -233,8 +233,8 @@ class Laptop extends Computer {
   }
 }
 
-const desktop = new Desktop("Mac Studio", "AMD Radeon Pro W6800X")
-const laptop = new Laptop("Macbook Air", '13.6"')
+const desktop = new Desktop('Mac Studio', 'AMD Radeon Pro W6800X')
+const laptop = new Laptop('Macbook Air', '13.6"')
 ```
 
 `Desktop` and `Laptop` have prototype chains up to the `Computer` class. Subclasses inherit from the base class (also called superclass). To inherit properties, we must invoke the `super()` method inside the constructor. Under this method, we can easily add properties specific to the subclass.
@@ -290,8 +290,8 @@ class Laptop extends Computer {
   }
 }
 
-const desktop = new Desktop("Mac Studio", "AMD Radeon Pro W6800X")
-const laptop = new Laptop("Macbook Air", '13.6"')
+const desktop = new Desktop('Mac Studio', 'AMD Radeon Pro W6800X')
+const laptop = new Laptop('Macbook Air', '13.6"')
 
 desktop.info()
 //Name of the computer: Mac Studio

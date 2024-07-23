@@ -4,12 +4,12 @@ description: "Next.js is one of many static site generators. But it has one feat
 date: 2022-10-24T16:00:00+02:00
 updated: 2023-11-28T16:13:00+02:00
 image:
-  alt: "Next.js logo"
-  caption: "Next.js logo"
-  src: "next-js-logo.png"
-categories: ["web development"]
-tags: ["next.js", "csr", "ssr", "ssg", "isr", "jamstack"]
-type: "post"
+  alt: 'Next.js logo'
+  caption: 'Next.js logo'
+  src: 'next-js-logo.png'
+categories: ['web development']
+tags: ['next.js', 'csr', 'ssr', 'ssg', 'isr', 'jamstack']
+type: 'post'
 ---
 
 "Every day, a new JavaScript framework is born," people say. The sentence is exaggerated and funny, but there is some truth. In the rapidly changing world of JavaScript development, it's easy to pick up a new, shiny tool and ditch the old one. However, it often turns out that the new framework is not the best for our use case. Keeping that in mind, I promised myself I would not hop on any hype train. But with the new release of Next.js and almost 100 000 stars on GitHub, the hype train is REAL. Still, instead of blindly boarding, I'll try to make a brief overview of Next.js. And I'll attempt to make it in 1000 words.
@@ -52,12 +52,12 @@ Why babble so much about rendering methods in the Next.js post? Because I think 
 The team behind Next.js has created a custom React hook for data fetching. It is a recommended way to fetch data on the client side.
 
 ```jsx title="Client-Side Rendering in Next.js"
-import useSWR from "swr"
+import useSWR from 'swr'
 
-const fetcher = (...args) => fetch(...args).then(res => res.json())
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 function Profile() {
-  const { data, error } = useSWR("/api/profile-data", fetcher)
+  const { data, error } = useSWR('/api/profile-data', fetcher)
 }
 ```
 
@@ -68,7 +68,7 @@ Exporting `getServerSideProps` from a page allows rendering the page on each req
 ```jsx title="Server-Side Rendering in Next.js"
 export async function getServerSideProps(context) {
   return {
-    props: {},
+    props: {}
   }
 }
 ```
@@ -80,7 +80,7 @@ You can use static site generation with the `getStaticProps` function. Next.js u
 ```jsx title="Static Site Generation in Next.js"
 export async function getStaticProps(context) {
   return {
-    props: {},
+    props: {}
   }
 }
 ```
@@ -93,7 +93,7 @@ The strategy is specific to Next.js. It attempts to solve static site generation
 export async function getStaticProps(context) {
   return {
     props: {},
-    revalidate: 10,
+    revalidate: 10
   }
 }
 ```

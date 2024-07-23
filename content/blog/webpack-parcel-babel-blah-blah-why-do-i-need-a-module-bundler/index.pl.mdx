@@ -1,15 +1,15 @@
 ---
 title: Webpack, Parcel, Babel, bla, bla… po co mi bundler modułów?
-description: "Bundler modułów jest bazą dla wielu projektów i frameworków. Zazwyczaj nie zwracamy uwagi na te podstawowe narzędzia. Ale może powinniśmy?"
+description: 'Bundler modułów jest bazą dla wielu projektów i frameworków. Zazwyczaj nie zwracamy uwagi na te podstawowe narzędzia. Ale może powinniśmy?'
 date: 2022-11-07T18:00:00+02:00
 updated: 2022-11-07T18:00:00+02:00
 image:
-  alt: "Czarnobrązowy jamnik stojący w pudełku"
-  caption: "Zdjęcie autorstwa Erda Estremera"
-  src: "erda-estremera-sxNt9g77PE0-unsplash.jpg"
-categories: ["web development"]
-tags: ["webpack", "babel", "module", "bundler"]
-type: "post"
+  alt: 'Czarnobrązowy jamnik stojący w pudełku'
+  caption: 'Zdjęcie autorstwa Erda Estremera'
+  src: 'erda-estremera-sxNt9g77PE0-unsplash.jpg'
+categories: ['web development']
+tags: ['webpack', 'babel', 'module', 'bundler']
+type: 'post'
 ---
 
 Wszyscy znamy trzy składniki potrzebne do zbudowania strony internetowej: HTML, CSS, JavaScript. HTML jest jak rzeczowniki w zdaniach, CSS jak przymiotniki, a JavaScript jest jak czasowniki. HTML definiuje strukturę, CSS style, JavaScript funkcjonalność. Ale czy obecnie to wystarcza?
@@ -46,7 +46,7 @@ Potrzebujemy czegoś do “spakowania”, więc dodajmy prosty plik JavaScript.
 
 ```js title="./src/index.js"
 const exampleFunction = () => {
-  console.log("Message")
+  console.log('Message')
 }
 ```
 
@@ -58,7 +58,7 @@ Entry jest jak punkt startowy twojej aplikacji. Ta opcja przyjmuje ścieżkę do
 
 ```js title="webpack.config.js"
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js'
 }
 ```
 
@@ -67,14 +67,14 @@ module.exports = {
 Output ustawia, gdzie webpack powinien umieścić nasz bundle. Ta opcja przyjmuje dwa parametry: `path` i `filename`. Skonfigurujemy webpacka, aby zapisywał bundle w `./public/main.js`.
 
 ```js title="webpack.config.js" highlight={[5, 8]}
-const path = require("path")
+const path = require('path')
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "public"),
-  },
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'public')
+  }
 }
 ```
 
@@ -91,7 +91,7 @@ Powiedzmy, że chcemy także ostylować naszą aplikację. Stwórzmy plik CSS ze
 Następnie zaimportujmy go do naszej aplikacji.
 
 ```js title="./src/index.js"
-import "./style.css"
+import './style.css'
 ```
 
 Być może cię to zaskoczy, jeżeli przywykłeś do frameworków, ale ta składnia nie zadziała. Potrzebujemy sposobu, żeby przekształcić nasz plik CSS w poprawny moduł. A webpack sam w sobie nie robi aż tak wiele. W domyśle wspiera tylko pliki JSON i JavaScript. Dlatego potrzebujemy loadera. Loader konwertuje różne typy plików na poprawne moduły. Potrzebujemy zainstalować dwa z nich, aby użyć naszych stylów.
@@ -108,23 +108,23 @@ Następnie musimy je skonfigurować. Loader przyjmuje dwie właściwości:
 W naszym przypadku, użyjemy wyrażenia regularnego do zidentyfikowania plików CSS i użyjemy powyższych loaderów.
 
 ```js title="webpack.config.js" highlight={[12, 15]}
-const path = require("path")
+const path = require('path')
 
 module.exports = {
-  entry: "./src/index.js",
-  target: ["web", "es5"],
+  entry: './src/index.js',
+  target: ['web', 'es5'],
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "public"),
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'public')
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
-    ],
-  },
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
 }
 ```
 
@@ -143,44 +143,44 @@ npm install react react-dom
 Babel może być używany niezależnie, ale my skonfigurujemy go z webpackiem. W tym celu musimy dodać loader wewnątrz tablicy `rules`. Tym razem musimy wykluczyć folder `node_modules` i dodać presety, dlatego właściwość `use` przyjmuje obiekt.
 
 ```js title="webpack.config.js" highlight={[16,25]}
-const path = require("path")
+const path = require('path')
 
 module.exports = {
-  entry: "./src/index.js",
-  target: ["web", "es5"],
+  entry: './src/index.js',
+  target: ['web', 'es5'],
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "public"),
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'public')
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
-          },
-        },
-      },
-    ],
-  },
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
+      }
+    ]
+  }
 }
 ```
 
 Teraz możemy stworzyć prosty komponent React.
 
 ```jsx title="./src/component.js"
-import React from "react"
+import React from 'react'
 
 const Heading = () => {
   return (
-    <h1 style={{ color: "var(--eiffel-65)" }}>
+    <h1 style={{ color: 'var(--eiffel-65)' }}>
       This is heading with style variables
     </h1>
   )
@@ -192,12 +192,12 @@ export default Heading
 I zaimportować go wraz ze stylami w naszym głównym pliku.
 
 ```jsx title="./src/index.js"
-import React from "react"
-import { createRoot } from "react-dom/client"
-import "./style.css"
-import Heading from "./component"
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import './style.css'
+import Heading from './component'
 
-const root = createRoot(document.getElementById("root"))
+const root = createRoot(document.getElementById('root'))
 root.render(<Heading />)
 ```
 
@@ -214,40 +214,40 @@ npm install -D webpack-bundle-analyzer
 Następnie musimy dodać właściwość `plguins` do naszej konfiguracji. Przyjmuje ona tablicę ze wszystkimi pluginami. W tablicy stworzymy instancję naszego nowego obiektu.
 
 ```js title="webpack.config.js" highlight={[28]}
-const path = require("path")
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer")
+const path = require('path')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "public"),
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'public')
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
-          },
-        },
-      },
-    ],
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
+      }
+    ]
   },
-  plugins: [new BundleAnalyzerPlugin()],
+  plugins: [new BundleAnalyzerPlugin()]
 }
 ```
 
 Po uruchomieniu webpacka, karta przeglądarki powinna się otworzyć. Powinieneś ujrzeć interaktywną mapę z proporcjonalnie przeskalowanymi prostokątami. Symbolizują one zależności i zawierają dodatkowe informacje. W mojej opinii - całkiem fajny plugin.
 
-![Webpack bundle analyzer](./webpack-bundle-analyzer.png)
+![Webpack bundle analyzer](webpack-bundle-analyzer.png)
 
 ## Podsumowanie
 

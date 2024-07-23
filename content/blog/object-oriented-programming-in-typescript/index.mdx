@@ -4,12 +4,12 @@ description: "Object-oriented programming is a foundation for many programming l
 date: 2023-03-30T23:00:00+02:00
 updated: 2023-03-30T23:00:00+02:00
 image:
-  alt: "Many white pillars in two rows"
-  caption: "Photo by Chris Brignola"
-  src: "chris-brignola-X2CxUXFqKcM-unsplash.jpg"
-categories: ["computer science", "web development"]
-tags: ["oop", "programming", "paradigm", "typescript", "javascript"]
-type: "post"
+  alt: 'Many white pillars in two rows'
+  caption: 'Photo by Chris Brignola'
+  src: 'chris-brignola-X2CxUXFqKcM-unsplash.jpg'
+categories: ['computer science', 'web development']
+tags: ['oop', 'programming', 'paradigm', 'typescript', 'javascript']
+type: 'post'
 ---
 
 In the [last post](/blog/typescript-basic-types/), I presented the rationale behind TypeScript. I briefly described it and listed basic types helpful during day-to-day software development. But basic types are not enough for building modern, complex web apps.
@@ -39,8 +39,8 @@ class Computer {
   }
 }
 
-const desktop = new Computer("Mac Studio")
-const laptop = new Computer("Macbook Pro")
+const desktop = new Computer('Mac Studio')
+const laptop = new Computer('Macbook Pro')
 ```
 
 <Callout variant="info">
@@ -75,7 +75,10 @@ Besides mentioned modifiers, there is another way of protecting fields in TypeSc
 
 ```typescript title="Classes and inheritance"
 class Computer {
-  constructor(protected name: string, protected readonly id: string) {}
+  constructor(
+    protected name: string,
+    protected readonly id: string
+  ) {}
   public info(this: Computer) {
     console.log(`Name of the computer: ${this.name}`)
   }
@@ -97,8 +100,8 @@ class Laptop extends Computer {
   }
 }
 
-const desktop = new Desktop("Mac Studio", "sdag89", "AMD Radeon Pro W6800X")
-const laptop = new Laptop("Macbook Air", "bzkx32", '13.6"')
+const desktop = new Desktop('Mac Studio', 'sdag89', 'AMD Radeon Pro W6800X')
+const laptop = new Laptop('Macbook Air', 'bzkx32', '13.6"')
 ```
 
 ## Static Members
@@ -107,7 +110,7 @@ We've been talking about instance methods and properties so far. But there is al
 
 ```typescript title="Static members"
 class Computer {
-  static firstProgrammer = "Ada Lovelace"
+  static firstProgrammer = 'Ada Lovelace'
 }
 
 console.log(Computer.firstProgrammer) // Ada Lovelace
@@ -140,7 +143,7 @@ class Laptop extends Computer {
   }
 }
 
-const desktop = new Desktop("AMD Radeon Pro W6800X")
+const desktop = new Desktop('AMD Radeon Pro W6800X')
 const laptop = new Laptop('16"')
 
 desktop.info() // Desktop GPU: AMD Radeon Pro W6800X
@@ -167,11 +170,11 @@ type ComputerType = {
 
 let desktop: Computer
 desktop = {
-  name: "Mac Studio",
-  id: "gdd89s",
+  name: 'Mac Studio',
+  id: 'gdd89s',
   info() {
     console.log(`Name of the computer: ${this.name}`)
-  },
+  }
 }
 
 desktop.info()
@@ -198,7 +201,7 @@ class Computer implements Named, Informed {
   }
 }
 
-const laptop = new Computer("MacBook Pro")
+const laptop = new Computer('MacBook Pro')
 laptop.info()
 ```
 
@@ -220,7 +223,7 @@ I've spent some time describing interfaces, but at the end of the day (or compil
 
 ```javascript title="Interfaces after compilation"
 var info = function (name) {
-  console.log("Name of the computer: ".concat(name))
+  console.log('Name of the computer: '.concat(name))
 }
 ```
 

@@ -1,18 +1,18 @@
 ---
 title: Programowanie obiektowe w języku JavaScript
-description: "Programowanie obiektowe jest podstawą wielu języków programowania. Dlatego zapoznamy się z tym paradygmatem, umieścimy go w kontekście i wykorzystamy w praktyce."
+description: 'Programowanie obiektowe jest podstawą wielu języków programowania. Dlatego zapoznamy się z tym paradygmatem, umieścimy go w kontekście i wykorzystamy w praktyce.'
 date: 2022-10-13T12:30:00+02:00
 updated: 2022-10-13T12:30:00+02:00
 image:
-  alt: "Cztery filary betonowego budynku pod błękitnym niebem"
-  caption: "Zdjęcie autorstwa Mayer Tawfik"
-  src: "mayer-tawfik-Py2V6tUYgqw-unsplash.jpg"
-categories: ["computer science", "web development"]
-tags: ["oop", "fp", "paradygmat", "programowanie", "assembly", "javascript"]
-type: "post"
+  alt: 'Cztery filary betonowego budynku pod błękitnym niebem'
+  caption: 'Zdjęcie autorstwa Mayer Tawfik'
+  src: 'mayer-tawfik-Py2V6tUYgqw-unsplash.jpg'
+categories: ['computer science', 'web development']
+tags: ['oop', 'fp', 'paradygmat', 'programowanie', 'assembly', 'javascript']
+type: 'post'
 ---
 
-Ostatnio pisałem o konkretnych technologiach: React, Gatsby czy Netlify CMS. W [pierwszym wpisie](/blog/hello-world/), obiecałem jednak bardziej uniwersalną wiedzę. Dziesięć postów później, czas wypełnić obietnicę. Ten wpis będzie bardziej teoretyczny. Ale nie chcę żeby stał się zbyt abstrakcyjny, dlatego napiszę o OOP (Object Oriented Programming) w kontekście języka JavaScript.
+Ostatnio pisałem o konkretnych technologiach: React, Gatsby czy Netlify CMS. W [pierwszym wpisie](/pl/blog/hello-world/), obiecałem jednak bardziej uniwersalną wiedzę. Dziesięć postów później, czas wypełnić obietnicę. Ten wpis będzie bardziej teoretyczny. Ale nie chcę żeby stał się zbyt abstrakcyjny, dlatego napiszę o OOP (Object Oriented Programming) w kontekście języka JavaScript.
 
 ## OOP jest jednym z paradygmatów programowania
 
@@ -82,19 +82,19 @@ Załóżmy, że mamy dwa komputery: stacjonarny i laptop. Chcemy modelować je w
 
 ```javascript title="Kod proceduralny"
 const desktop = {
-  name: "Mac Studio",
-  gpu: "AMD Radeon Pro W6800X",
+  name: 'Mac Studio',
+  gpu: 'AMD Radeon Pro W6800X',
   info() {
     console.log(`Nazwa komputera: ${this.name}`)
-  },
+  }
 }
 
 const laptop = {
-  name: "Macbook Air",
+  name: 'Macbook Air',
   display: '13.6"',
   info() {
     console.log(`Nazwa komputera: ${this.name}`)
-  },
+  }
 }
 ```
 
@@ -110,12 +110,12 @@ function createComputer(name) {
     name,
     info() {
       console.log(`Nazwa komputera: ${this.name}`)
-    },
+    }
   }
 }
 
-const desktop = createComputer("Mac Studio")
-const laptop = createComputer("Macbook Air")
+const desktop = createComputer('Mac Studio')
+const laptop = createComputer('Macbook Air')
 ```
 
 Możemy tę funkcję wywołać wiele razy, aby stworzyć wiele obiektów. Nie powtarzamy się już tak bardzo. Ale istnieje inny problem. Spójrz na funkcję `info()`. Pozostaje ona taka sama dla każdego komputera, a jednak kopiujemy ją za każdym razem. Nie jest to specjalnie oszczędne pod kątem pamięci.
@@ -128,7 +128,7 @@ Jakiś czas temu, programiści dodali metodę `create()` do wbudowanego obiektu 
 const computerFunctions = {
   info() {
     console.log(`Nazwa komputera: ${this.name}`)
-  },
+  }
 }
 
 function createComputer(name) {
@@ -137,8 +137,8 @@ function createComputer(name) {
   return newComputer
 }
 
-const desktop = createComputer("Mac Studio")
-const laptop = createComputer("Macbook Air")
+const desktop = createComputer('Mac Studio')
+const laptop = createComputer('Macbook Air')
 ```
 
 <Callout variant="warning">
@@ -167,8 +167,8 @@ Computer.prototype.info = function () {
   console.log(`Nazwa komputera: ${this.name}`)
 }
 
-const desktop = new Computer("Mac Studio")
-const laptop = new Computer("Macbook Air")
+const desktop = new Computer('Mac Studio')
+const laptop = new Computer('Macbook Air')
 ```
 
 Możemy wykorzystać prototyp do zdefiniowania współdzielonej funkcjonalności raz i będzie ona dostępna dla każdego obiektu stworzonego przy pomocy funkcji konstrukcyjnej.
@@ -195,8 +195,8 @@ class Computer {
   }
 }
 
-const desktop = new Computer("Mac Studio")
-const laptop = new Computer("Macbook Air")
+const desktop = new Computer('Mac Studio')
+const laptop = new Computer('Macbook Air')
 ```
 
 Chyba największą zaletą jest to, że wszystko jest umieszczone w jednym “pudełku”. Wszystkie właściwości i metody są pomiędzy klamrami. Nie musimy używać prototypów bezpośrednio.
@@ -233,8 +233,8 @@ class Laptop extends Computer {
   }
 }
 
-const desktop = new Desktop("Mac Studio", "AMD Radeon Pro W6800X")
-const laptop = new Laptop("Macbook Air", '13.6"')
+const desktop = new Desktop('Mac Studio', 'AMD Radeon Pro W6800X')
+const laptop = new Laptop('Macbook Air', '13.6"')
 ```
 
 Klasy `Desktop` i `Laptop` mają łańcuch prototypowy z klasą `Computer`. Podklasy dziedziczą z klasy bazowej (zwanej także super klasą). Aby odziedziczyć właściwości, musimy wywołać metodę `super()` wewnątrz konstruktora. Poniżej tej metody możemy dodać właściwości specyficzne dla podklasy. Ten typ dziedziczenia nie kopiuje wszystkiego z klasy bazowej jak w klasycznych językach obiektowych. Zamiast tego, poszerzamy łańcuch prototypowy wykorzystując `extends`. Ma to swoje zalety pod kątem optymalizacji pamięci.
@@ -289,8 +289,8 @@ class Laptop extends Computer {
   }
 }
 
-const desktop = new Desktop("Mac Studio", "AMD Radeon Pro W6800X")
-const laptop = new Laptop("Macbook Air", '13.6"')
+const desktop = new Desktop('Mac Studio', 'AMD Radeon Pro W6800X')
+const laptop = new Laptop('Macbook Air', '13.6"')
 
 desktop.info()
 //Nazwa komputera: Mac Studio

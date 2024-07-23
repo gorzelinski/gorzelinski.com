@@ -4,12 +4,12 @@ description: "Generics don't exist in JavaScript but are one of the essential co
 date: 2023-04-19T20:30:00+02:00
 updated: 2023-04-19T20:30:00+02:00
 image:
-  alt: "Joker on top of scattered cards"
-  caption: "Photo by Archana GS"
-  src: "pexels-archana-gs-6042040.jpg"
-categories: ["web development"]
-tags: ["typescript", "javascript", "programming"]
-type: "post"
+  alt: 'Joker on top of scattered cards'
+  caption: 'Photo by Archana GS'
+  src: 'pexels-archana-gs-6042040.jpg'
+categories: ['web development']
+tags: ['typescript', 'javascript', 'programming']
+type: 'post'
 ---
 
 Let's continue our TypeScript series. Today, we will look at a concept that's pretty confusing for me - generics. If you're coming from other languages like C# or Java, you're probably familiar with them. But there is a high chance you're like me - focused mainly on JavaScript (and maybe you're confused too). There is no such concept in the vanilla language and it may cause problems. But it's an essential concept of TypeScript. So, I'll explain generics (to you and myself) like we're eight years old.
@@ -20,9 +20,9 @@ Usually, when we work with types, we define them like this.
 
 ```ts title="Defining Types in TypeScript"
 let person: string
-person = "Sam"
+person = 'Sam'
 
-let surname = "Fisher"
+let surname = 'Fisher'
 ```
 
 You define a variable, initialize it (or not), define a type, or let TypeScript infers it. And it's done. The type won't change. That's why we use TypeScript, right? Yes, but sometimes we want to be more flexible. However, we want to avoid returning to the dynamic types of JavaScript. To achieve balance and type-safety, here comes - generics.
@@ -35,10 +35,10 @@ If you look closely, some basic types like Array or Promise are generics in Type
 ```ts title="Basic Types and Generics"
 let hobbies: string[] // The standard syntax.
 let hobbies: Array<string> // The other syntax using generics.
-hobbies = ["sneaking"]
+hobbies = ['sneaking']
 
 // TypeScript infers it's a string and provides auto-completion.
-hobbies[0].split("")
+hobbies[0].split('')
 ```
 
 …or we can use generics. It's an **array** of **strings.** It's a **type** connected to **another one.** A promise is also a generic type. It works with other types because it eventually returns other ones.
@@ -51,13 +51,13 @@ An alternative syntax for basic types is ok, but now let's write some custom gen
 function merge<T, U>(a: T, b: U) {
   return {
     ...a,
-    ...b,
+    ...b
   }
 }
 
-merge<string, string>("Sam", "Fisher")
-merge<string[], string[]>(["Sam"], ["Fisher"])
-merge({ name: "Sam" }, { hobbies: ["sneaking"] })
+merge<string, string>('Sam', 'Fisher')
+merge<string[], string[]>(['Sam'], ['Fisher'])
+merge({ name: 'Sam' }, { hobbies: ['sneaking'] })
 ```
 
 To define generics, we need additional pair of (pointing) brackets. The convention is to define generics using single letters starting from the "T" letter. The "a" argument is of type "T," and the "b" is of type "U." These types are not static. They are dynamic - set when we call the function. TypeScript can still infer the return value and provide auto-completion. Generics allow you to work with your data in TS optimal way. Look at the above snippet - we can pass objects, arrays, or strings. Generic functions allow you to fill concrete types for different function calls. "So, I can pass other types like numbers too?" Yes, and that is problematic because we use the spread operator.
@@ -70,13 +70,13 @@ Generic constraints come to the rescue. Sometimes we want flexibility, but at th
 function merge<T extends object, U extends object>(a: T, b: U) {
   return {
     ...a,
-    ...b,
+    ...b
   }
 }
 
 // TypeScript error:
 // Argument of type 'string' is not assignable to parameter of type 'object'.
-merge("Sam", "Fisher")
+merge('Sam', 'Fisher')
 ```
 
 Now our function only accepts objects, and it avoids runtime errors. But let's go further with our example. Let's say that later in the code, we want to be sure that there is a specific property. We can define interfaces and tell our parameters to extend them.
@@ -93,11 +93,11 @@ interface AdditionalInfo {
 function merge<T extends BasicInfo, U extends AdditionalInfo>(a: T, b: U) {
   return {
     ...a,
-    ...b,
+    ...b
   }
 }
 
-const person = merge({ name: "Sam" }, { hobbies: ["sneaking"] })
+const person = merge({ name: 'Sam' }, { hobbies: ['sneaking'] })
 person.name // You can be sure there is the name property.
 ```
 
@@ -108,10 +108,10 @@ function extract<T extends object, U extends keyof T>(obj: T, key: U) {
   return obj[key]
 }
 
-extract({ name: "Sam" }, "name")
+extract({ name: 'Sam' }, 'name')
 // TypeScript error:
 // Argument of type '"hobbies"' is not assignable to parameter of type '"name"'.
-extract({ name: "Sam" }, "hobbies")
+extract({ name: 'Sam' }, 'hobbies')
 ```
 
 <Callout variant="info">
@@ -138,7 +138,7 @@ class Data<T extends string | number | boolean> {
 }
 
 const text = new Data<string>()
-text.addItem("Sam")
+text.addItem('Sam')
 text.addItem(50) // TypeScript error
 
 const number = new Data<number>()
@@ -156,9 +156,9 @@ class Data {
   }
 }
 
-const string = new Data(["Sam", "Fisher"])
+const string = new Data(['Sam', 'Fisher'])
 const number = new Data([68])
-const object = new Data([{ name: "Sam" }]) // TypeScript error.
+const object = new Data([{ name: 'Sam' }]) // TypeScript error.
 ```
 
 ## Generic vs. Union Types
@@ -214,13 +214,13 @@ interface Computer {
 function updateComputer(computer: Computer, fieldsToUpdate: Partial<Computer>) {
   return {
     ...computer,
-    ...fieldsToUpdate,
+    ...fieldsToUpdate
   }
 }
 
 const desktop: Computer = {
-  name: "MacBook Pro",
-  description: "It has a dedicated GPU.",
+  name: 'MacBook Pro',
+  description: 'It has a dedicated GPU.'
 }
 
 const laptop = updateComputer(desktop, { description: 'It has a 16" display.' })
@@ -244,13 +244,13 @@ function updateComputer(
 ) {
   return {
     ...computer,
-    ...fieldsToUpdate,
+    ...fieldsToUpdate
   }
 }
 
 const desktop: Required<Computer> = {
-  name: "MacBook Pro",
-  description: "It has a dedicated GPU.",
+  name: 'MacBook Pro',
+  description: 'It has a dedicated GPU.'
 }
 
 const laptop = updateComputer(desktop, { description: 'It has a 16" display.' })
@@ -266,11 +266,11 @@ interface Computer {
 }
 
 const laptop: Readonly<Computer> = {
-  id: "ga6sd798",
+  id: 'ga6sd798'
 }
 
 // Cannot assign to 'id' because it is a read-only property.
-laptop.id = "ags98kd"
+laptop.id = 'ags98kd'
 ```
 
 It wouldn't make much sense to list all utility types and copy the TypeScript documentation, so I'll end here. Grammarly (spell checking tool I use) says that "Your text is likely to be understood by a reader who has at least an 8th-grade education (age 13-14) and should be fairly easy for most adults to read." That's over eight years old, but I hope the post was clear anyway. Generic types are there to make your life easier and give you a combination of flexibility and type safety. I hope this post wasn't too generic, and now you can use generics to your advantage.

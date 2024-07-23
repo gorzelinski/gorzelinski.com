@@ -1,15 +1,15 @@
 ---
 title: Programowanie obiektowe w języku TypeScript
-description: "Programowanie obiektowe jest podstawą wielu języków programowania. Dlatego zapoznamy się ze składnią OOP w języku TypeScript i porównamy ją z JavaScriptem."
+description: 'Programowanie obiektowe jest podstawą wielu języków programowania. Dlatego zapoznamy się ze składnią OOP w języku TypeScript i porównamy ją z JavaScriptem.'
 date: 2023-03-30T23:00:00+02:00
 updated: 2023-03-30T23:00:00+02:00
 image:
-  alt: "Wiele białych filarów w dwóch rzędach"
-  caption: "Zdjęcie autorstwa Chris Brignola"
-  src: "chris-brignola-X2CxUXFqKcM-unsplash.jpg"
-categories: ["computer science", "web development"]
-tags: ["oop", "paradygmat", "programowanie", "typescript", "javascript"]
-type: "post"
+  alt: 'Wiele białych filarów w dwóch rzędach'
+  caption: 'Zdjęcie autorstwa Chris Brignola'
+  src: 'chris-brignola-X2CxUXFqKcM-unsplash.jpg'
+categories: ['computer science', 'web development']
+tags: ['oop', 'paradygmat', 'programowanie', 'typescript', 'javascript']
+type: 'post'
 ---
 
 W [ostatnim wpisie](/pl/blog/typescript-basic-types/) przedstawiłem przesłanki stojące za używaniem TypeScripta. Krótko go opisałem i wymieniłem podstawowe typy, przydatne podczas codziennej pracy z oprogramowaniem. Ale podstawowe typy to za mało, żeby budować współczesne, złożone aplikacje webowe.
@@ -39,8 +39,8 @@ class Computer {
   }
 }
 
-const desktop = new Computer("Mac Studio")
-const laptop = new Computer("Macbook Pro")
+const desktop = new Computer('Mac Studio')
+const laptop = new Computer('Macbook Pro')
 ```
 
 <Callout variant="info">
@@ -75,7 +75,10 @@ Poza wymienionymi modyfikatorami, istnieje inny sposób zabezpieczania pól w j�
 
 ```typescript title="Klasy i dziedziczenie"
 class Computer {
-  constructor(protected name: string, protected readonly id: string) {}
+  constructor(
+    protected name: string,
+    protected readonly id: string
+  ) {}
   public info(this: Computer) {
     console.log(`Name of the computer: ${this.name}`)
   }
@@ -97,8 +100,8 @@ class Laptop extends Computer {
   }
 }
 
-const desktop = new Desktop("Mac Studio", "sdag89", "AMD Radeon Pro W6800X")
-const laptop = new Laptop("Macbook Air", "bzkx32", '13.6"')
+const desktop = new Desktop('Mac Studio', 'sdag89', 'AMD Radeon Pro W6800X')
+const laptop = new Laptop('Macbook Air', 'bzkx32', '13.6"')
 ```
 
 ## Statyczne pola
@@ -107,7 +110,7 @@ Do tej pory mówiliśmy o metodach i właściwościach instancji. Ale istnieje t
 
 ```typescript title="Statyczne pola"
 class Computer {
-  static firstProgrammer = "Ada Lovelace"
+  static firstProgrammer = 'Ada Lovelace'
 }
 
 console.log(Computer.firstProgrammer) // Ada Lovelace
@@ -140,7 +143,7 @@ class Laptop extends Computer {
   }
 }
 
-const desktop = new Desktop("AMD Radeon Pro W6800X")
+const desktop = new Desktop('AMD Radeon Pro W6800X')
 const laptop = new Laptop('16"')
 
 desktop.info() // Desktop GPU: AMD Radeon Pro W6800X
@@ -167,11 +170,11 @@ type ComputerType = {
 
 let desktop: Computer
 desktop = {
-  name: "Mac Studio",
-  id: "gdd89s",
+  name: 'Mac Studio',
+  id: 'gdd89s',
   info() {
     console.log(`Name of the computer: ${this.name}`)
-  },
+  }
 }
 
 desktop.info()
@@ -198,7 +201,7 @@ class Computer implements Named, Informed {
   }
 }
 
-const laptop = new Computer("MacBook Pro")
+const laptop = new Computer('MacBook Pro')
 laptop.info()
 ```
 
@@ -220,7 +223,7 @@ Spędziłem trochę czasu opisując interfejsy, ale na koniec dnia (lub raczej k
 
 ```javascript title="Interfejsy po kompilacji"
 var info = function (name) {
-  console.log("Name of the computer: ".concat(name))
+  console.log('Name of the computer: '.concat(name))
 }
 ```
 

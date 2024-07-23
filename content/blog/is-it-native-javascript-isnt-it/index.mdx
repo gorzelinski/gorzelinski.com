@@ -1,15 +1,15 @@
 ---
-title: Is it native JavaScript? Isn’t it??
-description: "My first encounter with optional chaining and nullish coalescing operator."
+title: Is it native JavaScript? Isn't it??
+description: 'My first encounter with optional chaining and nullish coalescing operator.'
 date: 2022-07-23T16:00:00+02:00
 updated: 2022-07-23T16:00:00+02:00
 image:
-  alt: "Question mark composed with dots on yellow background"
-  caption: "Photo by Anna Shvets"
-  src: "pexels-anna-shvets-3683053.jpg"
-categories: ["web development"]
-tags: ["javascript"]
-type: "post"
+  alt: 'Question mark composed with dots on yellow background'
+  caption: 'Photo by Anna Shvets'
+  src: 'pexels-anna-shvets-3683053.jpg'
+categories: ['web development']
+tags: ['javascript']
+type: 'post'
 ---
 
 The first time I used Gatsby, I spotted some strange code snippet.
@@ -31,20 +31,20 @@ If you're not a complete JavaScript beginner, you've probably seen a message lik
 ```js
 const desktop = {
   processor: {
-    manufacturer: "Intel",
-    type: "I7",
+    manufacturer: 'Intel',
+    type: 'I7'
   },
   graphicsCard: {
-    manufacturer: "Nvidia",
-  },
+    manufacturer: 'Nvidia'
+  }
   //...more components
 }
 
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
-  },
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
+  }
   //...more components without graphics card
 }
 
@@ -57,12 +57,12 @@ Let's try to solve that error. First of all, we can fill in that information.
 ```js
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
   },
   graphicsCard: {
-    manufacturer: "",
-  },
+    manufacturer: ''
+  }
 }
 
 const info = laptop.graphicsCard.manufacturer //No error. Returns ""
@@ -73,9 +73,9 @@ But what, when we couldn't? We don't always have control over API. Another probl
 ```js
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
-  },
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
+  }
 }
 
 const info = laptop && laptop.graphicsCard && laptop.graphicsCard.manufacturer //undefined
@@ -86,16 +86,16 @@ It works. But it is verbose and clunky. We're only accessing one property, and w
 ```js
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
-  },
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
+  }
 }
 
 const info = laptop
   ? undefined
   : laptop.graphicsCard
-  ? undefined
-  : laptop.graphicsCard.manufacturer //undefined
+    ? undefined
+    : laptop.graphicsCard.manufacturer //undefined
 ```
 
 Was I writing something about clunky code? That looks even worse. Nested ternary operators are rarely a good idea. But JavaScript has syntax for error handling. Let's try...to catch this error.
@@ -103,9 +103,9 @@ Was I writing something about clunky code? That looks even worse. Nested ternary
 ```js
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
-  },
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
+  }
 }
 
 let info
@@ -119,16 +119,16 @@ try {
 It is more readable, but it is still verbose. We're defining new scopes between braces and we can't use `const`. It's time to solve this problem like a real, JavaScript developer - let's use a third-party library!
 
 ```js
-const R = require("ramda")
+const R = require('ramda')
 
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
-  },
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
+  }
 }
 
-const info = R.path(["graphicsCard", "manufacturer"], laptop) //undefined
+const info = R.path(['graphicsCard', 'manufacturer'], laptop) //undefined
 ```
 
 This snippet is concise and readable. But do we need to use a third-party library for something basic like this? No, not anymore. Optional chaining comes to the rescue!
@@ -136,9 +136,9 @@ This snippet is concise and readable. But do we need to use a third-party librar
 ```js
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
-  },
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
+  }
 }
 
 const info = laptop?.graphicsCard?.manufacturer //undefined
@@ -149,9 +149,9 @@ With optional chaining, you can try to access nested properties that may not be 
 ```js
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
-  },
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
+  }
 }
 
 const info = laptop.nonExistingMethod?.() //undefined
@@ -161,7 +161,7 @@ The object has not any method. Still, the snippet above doesn't throw an excepti
 
 ```js
 const laptop = {
-  ram: ["Kingston 8GB", "Kingston 8GB"],
+  ram: ['Kingston 8GB', 'Kingston 8GB']
 }
 
 const info = laptop.ram?.[3] //undefined
@@ -176,24 +176,24 @@ If we "add" another question mark to our operator and remove the dot, we get a n
 ```js
 const laptop = {
   processor: {
-    type: "Ryzen 5",
-  },
+    type: 'Ryzen 5'
+  }
 }
 
-const info = laptop.graphicsCard?.manufacturer ?? "integrated" //integrated
+const info = laptop.graphicsCard?.manufacturer ?? 'integrated' //integrated
 ```
 
 You can interpret the above snippet like this: "If a graphics card manufacturer in the laptop object exists, assign its value to info variable. Otherwise, assign the integrated string." From the previous section, we know that our optional chaining returns `undefined`. Then interpreter moves to the logical operator. The nullish coalescing operator is a specific case of logical OR. It returns the right-hand side operand when its left-hand side operand is nullish (`null` or `undefined`). Logical OR returns the right-hand side operand if the left-hand side operand is any `falsy` value.
 
 ```js
-const a = null ?? "default" //"default"
-const b = undefined ?? "default" //"default"
-const c = "" ?? "default" //""
-const d = NaN ?? "default" //NaN - it returns every other falsy value
+const a = null ?? 'default' //"default"
+const b = undefined ?? 'default' //"default"
+const c = '' ?? 'default' //""
+const d = NaN ?? 'default' //NaN - it returns every other falsy value
 
-const e = "" || "default" //"default"
-const f = NaN || "default" //"default"
-const g = 0 || "default" //"default" - it returns "default" for falsy values
+const e = '' || 'default' //"default"
+const f = NaN || 'default' //"default"
+const g = 0 || 'default' //"default" - it returns "default" for falsy values
 ```
 
 The behavior of logical OR can lead to unexpected errors. For example, if you want a default number, but 0 is a correct, expected value. That's why the nullish coalescing operator is handy. It is stricter and can prevent bugs like this. But it does not replace logical OR. Also, you can't chain the nullish coalescing operator with other logical operators without parenthesis.
@@ -220,11 +220,11 @@ While researching this post, I found one more operator with a double question ma
 
 ```js
 const laptop = {
-  processor: "Intel",
+  processor: 'Intel'
 }
 
-laptop.processor ??= "AMD"
-laptop.graphicsCard ??= "Nvidia"
+laptop.processor ??= 'AMD'
+laptop.graphicsCard ??= 'Nvidia'
 
 console.log(laptop.processor) //"Intel"
 console.log(laptop.graphicsCard) //"Nvidia"
@@ -234,11 +234,11 @@ It is a shortcut for the expression with the nullish coalescing operator. The tw
 
 ```js
 const laptop = {
-  processor: "Intel",
+  processor: 'Intel'
 }
 
-laptop.graphicsCard ??= "Nvidia"
-laptop.graphicsCard ?? (laptop.graphicsCard = "Nvidia")
+laptop.graphicsCard ??= 'Nvidia'
+laptop.graphicsCard ?? (laptop.graphicsCard = 'Nvidia')
 //Above two expressions do the same thing
 
 console.log(laptop.graphicsCard) //"Nvidia"

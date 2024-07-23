@@ -1,15 +1,15 @@
 ---
 title: Next.js - przegląd w 1000 słów
-description: "Next.js jest jednym z wielu statycznych generatorów stron. Ale jedna cecha wyróżnia go na tle konkurencji. W tym krótkim przeglądzie postaram się ją opisać."
+description: 'Next.js jest jednym z wielu statycznych generatorów stron. Ale jedna cecha wyróżnia go na tle konkurencji. W tym krótkim przeglądzie postaram się ją opisać.'
 date: 2022-10-24T16:00:00+02:00
 updated: 2023-11-28T16:13:00+02:00
 image:
-  alt: "Logo Next.js"
-  caption: "Logo Next.js"
-  src: "next-js-logo.png"
-categories: ["web development"]
-tags: ["next.js", "csr", "ssr", "ssg", "isr", "jamstack"]
-type: "post"
+  alt: 'Logo Next.js'
+  caption: 'Logo Next.js'
+  src: 'next-js-logo.png'
+categories: ['web development']
+tags: ['next.js', 'csr', 'ssr', 'ssg', 'isr', 'jamstack']
+type: 'post'
 ---
 
 Mówi się, że “każdego dnia rodzi się nowy framework JavaScript”. Ta sentencja jest wyolbrzymiona i zabawna, ale jest w niej trochę prawdy. W szybko zmieniającym się świecie języka JavaScript, łatwo wziąć nowe, lśniące narzędzie i porzucić stare. Jednakże często okazuje się, że nowy framework nie jest najlepszy w przypadku naszego projektu. Mając to w pamięci, postanowiłem sobie, że nie wskoczę na żaden hype train. Ale nowe wydanie Next.js i prawie 100 000 gwiazdek na platformie GitHub sprawia, że hype train jest REALNY. Niemniej, zamiast ślepo wchodzić na pokład, postaram się zrobić krótki przegląd frameworka Next.js. I postaram się to zrobić w 1000 słów.
@@ -52,12 +52,12 @@ Po co tak długo marudzić o strategiach renderowania we wpisie o Next.js? Bo my
 Programiści stojący za Next.js stworzyli niestandardowy hak React do pobierania danych. Jest to rekomendowany sposób pobierania danych po stronie klienta.
 
 ```jsx title="Client-Side Rendering w Next.js"
-import useSWR from "swr"
+import useSWR from 'swr'
 
-const fetcher = (...args) => fetch(...args).then(res => res.json())
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 function Profile() {
-  const { data, error } = useSWR("/api/profile-data", fetcher)
+  const { data, error } = useSWR('/api/profile-data', fetcher)
 }
 ```
 
@@ -68,7 +68,7 @@ Wyeksportowanie funkcji `getServerSideProps` ze strony, pozwala renderować ją 
 ```jsx title="Server-Side Rendering w Next.js"
 export async function getServerSideProps(context) {
   return {
-    props: {},
+    props: {}
   }
 }
 ```
@@ -80,7 +80,7 @@ Możesz wykorzystać generowanie statyczne z funkcją `getStaticProps`. Next.js 
 ```jsx title="Static Site Generation w Next.js"
 export async function getStaticProps(context) {
   return {
-    props: {},
+    props: {}
   }
 }
 ```
@@ -93,7 +93,7 @@ Ta strategia jest charakterystyczna dla Next.js. Próbuje niwelować problemy zw
 export async function getStaticProps(context) {
   return {
     props: {},
-    revalidate: 10,
+    revalidate: 10
   }
 }
 ```

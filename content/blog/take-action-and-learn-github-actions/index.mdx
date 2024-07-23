@@ -1,20 +1,20 @@
 ---
 title: Take action and learn GitHub Actions!
-description: "Programmers love to automate stuff. But automation is beneficial only when it takes less time than it returns. With GitHub Actions, we may achieve that profit."
+description: 'Programmers love to automate stuff. But automation is beneficial only when it takes less time than it returns. With GitHub Actions, we may achieve that profit.'
 date: 2023-06-14T19:00:00+02:00
 updated: 2023-06-14T19:00:00+02:00
 image:
-  alt: "A worn, black-and-white movie clapper board"
-  caption: "Photo by Harald Müller"
-  src: "harald-muller-ACAJGonG8rA-unsplash.jpg"
-categories: ["web development"]
-tags: ["devops", "github", "actions", "ci", "cd"]
-type: "post"
+  alt: 'A worn, black-and-white movie clapper board'
+  caption: 'Photo by Harald Müller'
+  src: 'harald-muller-ACAJGonG8rA-unsplash.jpg'
+categories: ['web development']
+tags: ['devops', 'github', 'actions', 'ci', 'cd']
+type: 'post'
 ---
 
 "Never spend 6 minutes doing something by hand when you can spend 6 hours failing to automate it." - the old joke goes. Even though, as programmers, we tend to overcomplicate things, there are obvious benefits of automation.
 
-![How long can you work on making a routine task more efficient before you're spending more time than you save? - xkcd comic](./xkcd-is-it-worth-the-time-2x.png)
+![How long can you work on making a routine task more efficient before you're spending more time than you save? - xkcd comic](xkcd-is-it-worth-the-time-2x.png)
 
 Think about it - it's not like your whole day is about programming. Other mundane or organizational tasks also need our attention - labeling issues, updating packages, integrating and deploying code, etc. Oh, and we shouldn't forget about everyone's favorite - meetings.
 
@@ -77,10 +77,10 @@ on:
     branches:
       - main
     paths:
-      - "**.js"
-      - "**.jsx"
-      - "**.json"
-      - "**.yml"
+      - '**.js'
+      - '**.jsx'
+      - '**.json'
+      - '**.yml'
 
 concurrency:
   group: ${{ github.ref }}
@@ -186,7 +186,7 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           start: npm run serve
-          wait-on: "http://localhost:8000"
+          wait-on: 'http://localhost:8000'
           browser: chrome
           install: false
   e2e-tests-firefox:
@@ -221,7 +221,7 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           start: npm run serve
-          wait-on: "http://localhost:8000"
+          wait-on: 'http://localhost:8000'
           browser: firefox
           headed: true
           install: false

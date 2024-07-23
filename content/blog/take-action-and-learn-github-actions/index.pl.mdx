@@ -1,20 +1,20 @@
 ---
 title: Podejmij akcję i naucz się GitHub Actions!
-description: "Programiści uwielbiają automatyzować rzeczy. Ale automatyzacja jest korzystna tylko wtedy, gdy zabiera mniej czasu niż zwraca. Dzięki GitHub Actions może osiągniemy ten zysk."
+description: 'Programiści uwielbiają automatyzować rzeczy. Ale automatyzacja jest korzystna tylko wtedy, gdy zabiera mniej czasu niż zwraca. Dzięki GitHub Actions może osiągniemy ten zysk.'
 date: 2023-06-14T19:00:00+02:00
 updated: 2023-06-14T19:00:00+02:00
 image:
-  alt: "Zużyty, czarno-biały klaps filmowy"
-  caption: "Zdjęcie autorstwa Harald Müller"
-  src: "harald-muller-ACAJGonG8rA-unsplash.jpg"
-categories: ["web development"]
-tags: ["devops", "github", "actions", "ci", "cd"]
-type: "post"
+  alt: 'Zużyty, czarno-biały klaps filmowy'
+  caption: 'Zdjęcie autorstwa Harald Müller'
+  src: 'harald-muller-ACAJGonG8rA-unsplash.jpg'
+categories: ['web development']
+tags: ['devops', 'github', 'actions', 'ci', 'cd']
+type: 'post'
 ---
 
 “Nigdy nie poświęcaj 6 minut na zrobienie czegoś ręcznie jeżeli możesz poświęcić 6 godzin na nieudane próby zautomatyzowania tego” - brzmi stary dowcip. Pomimo, że jako programiści mamy tendencję do nadmiernej komplikacji różnych zadań, istnieją oczywiste zalety automatyzacji.
 
-![Jak długo możesz pracować nad zwiększeniem wydajności rutynowych zadań, zanim zainwestujesz więcej czasu niż go uzyskasz? - komiks xkcd](./xkcd-is-it-worth-the-time-2x.png)
+![Jak długo możesz pracować nad zwiększeniem wydajności rutynowych zadań, zanim zainwestujesz więcej czasu niż go uzyskasz? - komiks xkcd](xkcd-is-it-worth-the-time-2x.png)
 
 Pomyśl o tym - to nie jest tak, że cały dzień poświęcasz na programowanie. Inne żmudne lub organizacyjne zadania również potrzebują naszej atencji: etykietowanie issue, aktualizowanie paczek czy wdrażanie kodu itd. Aaa i nie zapomnijmy o ulubieńcu wszystkich - spotkaniach.
 
@@ -77,10 +77,10 @@ on:
     branches:
       - main
     paths:
-      - "**.js"
-      - "**.jsx"
-      - "**.json"
-      - "**.yml"
+      - '**.js'
+      - '**.jsx'
+      - '**.json'
+      - '**.yml'
 
 concurrency:
   group: ${{ github.ref }}
@@ -186,7 +186,7 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           start: npm run serve
-          wait-on: "http://localhost:8000"
+          wait-on: 'http://localhost:8000'
           browser: chrome
           install: false
   e2e-tests-firefox:
@@ -221,7 +221,7 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           start: npm run serve
-          wait-on: "http://localhost:8000"
+          wait-on: 'http://localhost:8000'
           browser: firefox
           headed: true
           install: false

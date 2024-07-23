@@ -1,15 +1,15 @@
 ---
 title: TypeScript - typy generyczne
-description: "Typy generyczne nie istnieją w JavaScripcie, ale są jednym z podstawowych konceptów w TypeScripcie. Oferują to co najlepsze z obu światów: elastyczność i bezpieczeństwo typów."
+description: 'Typy generyczne nie istnieją w JavaScripcie, ale są jednym z podstawowych konceptów w TypeScripcie. Oferują to co najlepsze z obu światów: elastyczność i bezpieczeństwo typów.'
 date: 2023-04-19T20:30:00+02:00
 updated: 2023-04-19T20:30:00+02:00
 image:
-  alt: "Joker na szczycie rozsypanych kart"
-  caption: "Zdjęcie autorstwa Archana GS"
-  src: "pexels-archana-gs-6042040.jpg"
-categories: ["web development"]
-tags: ["typescript", "javascript", "programming"]
-type: "post"
+  alt: 'Joker na szczycie rozsypanych kart'
+  caption: 'Zdjęcie autorstwa Archana GS'
+  src: 'pexels-archana-gs-6042040.jpg'
+categories: ['web development']
+tags: ['typescript', 'javascript', 'programming']
+type: 'post'
 ---
 
 Kontynuujmy naszą TypeScriptową serię. Dziś przyjrzymy się konceptowi, który jest dla mnie trochę niejasny - typy generyczne. Jeżeli znasz inne języki programowania takie jak C# lub Java, najprawdopodobniej zapoznałeś się z nimi. Ale istnieje spora szansa, że podobnie do mnie, skupiasz się głównie na języku JavaScript (i być może jest to dla ciebie również niejasne). Nie ma takiego konceptu w podstawowym języku, więc może powodować problemy. Ale jednocześnie jest do niezbędny koncept języka TypeScript. Dlatego spróbuję wyjaśnić typy generyczne (tobie i sobie) jakbyśmy byli ośmiolatkami.
@@ -20,9 +20,9 @@ Zwykle, gdy pracujemy z typami, definiujemy je tak.
 
 ```ts title="Definiowanie typów w języku TypeScript"
 let person: string
-person = "Sam"
+person = 'Sam'
 
-let surname = "Fisher"
+let surname = 'Fisher'
 ```
 
 Definiujesz zmienną, inicjalizujesz ją (lub nie), definiujesz typ lub pozwalasz TypeScriptowi go wywnioskować. I to tyle. Typ się nie zmienia. Po to używamy języka TypeScript, nie? Tak, ale czasem potrzebujemy więcej elastyczności. Jednakże nie chcemy powracać do dynamicznych typów JavaScriptu. Aby osiągnąć balans i bezpieczeństwo związane z typami nadchodzą one - typy generyczne.
@@ -36,10 +36,10 @@ Jeżeli przyjrzysz się bliżej, podstawowe typy, takie jak Array czy Promise, t
 ```ts title="Podstawowe typy i typy generyczne"
 let hobbies: string[] // Standardowa składnia.
 let hobbies: Array<string> // Inna składnia wykorzystująca typy generyczne.
-hobbies = ["sneaking"]
+hobbies = ['sneaking']
 
 // TypeScript wnosukje, że jest to string i daje podpowiedzi.
-hobbies[0].split("")
+hobbies[0].split('')
 ```
 
 …albo wykorzystać typy generyczne. Jest to **tablica** z **ciągami znaków** Jest to **typ** powiązany z **innym typem.** Promise to również typ generyczny. Działa z innymi typami, bo ostatecznie zwraca inne typy.
@@ -52,13 +52,13 @@ Alternatywna składnia dla podstawowych typów jest ok, ale napiszmy jakieś nie
 function merge<T, U>(a: T, b: U) {
   return {
     ...a,
-    ...b,
+    ...b
   }
 }
 
-merge<string, string>("Sam", "Fisher")
-merge<string[], string[]>(["Sam"], ["Fisher"])
-merge({ name: "Sam" }, { hobbies: ["sneaking"] })
+merge<string, string>('Sam', 'Fisher')
+merge<string[], string[]>(['Sam'], ['Fisher'])
+merge({ name: 'Sam' }, { hobbies: ['sneaking'] })
 ```
 
 Aby zdefiniować typy generyczne, potrzebujemy dodatkową parę (ostrych) nawiasów. Istnieje konwencja mówiąca, żeby zaczynać definiować typy generyczne przy pomocy liter alfabetu, zaczynając od litery “T”. Argument “a” jest typu “T”, a argument “b” jest typu “U”. Te typy nie są statyczne. Są dynamiczne - ustawione, gdy wywołujemy funkcję. TypeScript nadal może wywnioskować zwracaną wartość i zaoferować automatyczne uzupełnianie. Generyki pozwalają ci pracować z danymi w optymalny, TS-owy sposób. Przyjrzyj się powyższemu fragmentowi - możemy podać obiekty, tablice lub łańcuchy znaków. Funkcje generyczne pozwalają ci wypełniać konkretne typy dla różnych wywołań. “Czyli mogę też podać liczby?”. Tak i to jest problematyczne, bo używamy operatora spread.
@@ -71,13 +71,13 @@ Z pomocą przychodzą ograniczenia typów generycznych. Czasami chcemy elastyczn
 function merge<T extends object, U extends object>(a: T, b: U) {
   return {
     ...a,
-    ...b,
+    ...b
   }
 }
 
 // TypeScript error:
 // Argument of type 'string' is not assignable to parameter of type 'object'.
-merge("Sam", "Fisher")
+merge('Sam', 'Fisher')
 ```
 
 Teraz nasza funkcja przyjmuje tylko obiekty i unika błędów w czasie wykonywania programu. Pójdźmy nawet dalej z naszym przykładem. Powiedzmy, że w dalszej części kodu chcemy użyć jakiejś właściwości i chcemy mieć pewność, że będzie ona istniała. Możemy zdefiniować interfejsy i wykorzystać je z naszymi parametrami.
@@ -94,11 +94,11 @@ interface AdditionalInfo {
 function merge<T extends BasicInfo, U extends AdditionalInfo>(a: T, b: U) {
   return {
     ...a,
-    ...b,
+    ...b
   }
 }
 
-const person = merge({ name: "Sam" }, { hobbies: ["sneaking"] })
+const person = merge({ name: 'Sam' }, { hobbies: ['sneaking'] })
 person.name // You can be sure there is the name property.
 ```
 
@@ -109,10 +109,10 @@ function extract<T extends object, U extends keyof T>(obj: T, key: U) {
   return obj[key]
 }
 
-extract({ name: "Sam" }, "name")
+extract({ name: 'Sam' }, 'name')
 // TypeScript error:
 // Argument of type '"hobbies"' is not assignable to parameter of type '"name"'.
-extract({ name: "Sam" }, "hobbies")
+extract({ name: 'Sam' }, 'hobbies')
 ```
 
 <Callout variant="info">
@@ -139,7 +139,7 @@ class Data<T extends string | number | boolean> {
 }
 
 const text = new Data<string>()
-text.addItem("Sam")
+text.addItem('Sam')
 text.addItem(50) // TypeScript error
 
 const number = new Data<number>()
@@ -157,9 +157,9 @@ class Data {
   }
 }
 
-const string = new Data(["Sam", "Fisher"])
+const string = new Data(['Sam', 'Fisher'])
 const number = new Data([68])
-const object = new Data([{ name: "Sam" }]) // TypeScript error.
+const object = new Data([{ name: 'Sam' }]) // TypeScript error.
 ```
 
 ## Typy generyczne, a union types
@@ -215,13 +215,13 @@ interface Computer {
 function updateComputer(computer: Computer, fieldsToUpdate: Partial<Computer>) {
   return {
     ...computer,
-    ...fieldsToUpdate,
+    ...fieldsToUpdate
   }
 }
 
 const desktop: Computer = {
-  name: "MacBook Pro",
-  description: "It has a dedicated GPU.",
+  name: 'MacBook Pro',
+  description: 'It has a dedicated GPU.'
 }
 
 const laptop = updateComputer(desktop, { description: 'It has a 16" display.' })
@@ -245,13 +245,13 @@ function updateComputer(
 ) {
   return {
     ...computer,
-    ...fieldsToUpdate,
+    ...fieldsToUpdate
   }
 }
 
 const desktop: Required<Computer> = {
-  name: "MacBook Pro",
-  description: "It has a dedicated GPU.",
+  name: 'MacBook Pro',
+  description: 'It has a dedicated GPU.'
 }
 
 const laptop = updateComputer(desktop, { description: 'It has a 16" display.' })
@@ -267,12 +267,12 @@ interface Computer {
 }
 
 const laptop: Readonly<Computer> = {
-  id: "ga6sd798",
+  id: 'ga6sd798'
 }
 
 // TypeScript error:
 // Cannot assign to 'id' because it is a read-only property.
-laptop.id = "ags98kd"
+laptop.id = 'ags98kd'
 ```
 
 Nie miałoby to sensu, gdybym zaczął wymieniać wszystkie te typy i zaczął kopiować dokumentację, więc na tym poprzestanę. Sprawdzając trudność tego tekstu, dostałem informację, że powinien być on zrozumiały dla czytelnika z 8 klasy szkoły podstawowej (13 - 14 lat) i dla większości dorosłych. Jest to więcej niż osiem lat, ale mam nadzieję, że ten post tak czy siak był jasny. Generyczne typy istnieją, aby ułatwić ci życie oraz zapewnić kombinację elastyczności i bezpieczeństwa związanego z typami. Mam nadzieję, że ten post nie był zbyt generyczny i że teraz potrafisz użyć typów generycznych na swoją korzyść.
