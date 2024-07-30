@@ -5,14 +5,8 @@ import { LINKS } from '@/constants'
 import { getDictionary, getMDXes } from '@/scripts'
 import { generateAlternateLinks } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
-import {
-  H1,
-  Header,
-  Newsletter,
-  Project,
-  Section,
-  Small
-} from '@/design-system'
+import { H1, Header, Newsletter, Project, Section } from '@/design-system'
+import { small } from '@/design-system/elements/small'
 
 export async function generateMetadata({
   params: { lang }
@@ -64,7 +58,7 @@ export default async function Portfolio({ params: { lang } }: PageProps) {
       <Section columns="2">
         <Header alignItems="baseline">
           <H1>{page.portfolio.heading}</H1>
-          <Small>{page.portfolio.all}</Small>
+          <h2 className={small()}>{page.portfolio.all}</h2>
         </Header>
         {projects.map(({ frontmatter }) => (
           <Project

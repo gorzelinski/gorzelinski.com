@@ -40,7 +40,7 @@ export const navbar = cva({
     },
     opacity: {
       visible: {
-        opacity: '95'
+        opacity: '97'
       },
       hidden: {
         opacity: '0',

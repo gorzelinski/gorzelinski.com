@@ -5,7 +5,8 @@ import { LINKS } from '@/constants'
 import { getDictionary, getMDXes } from '@/scripts'
 import { generateAlternateLinks } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
-import { H1, Header, Newsletter, Post, Section, Small } from '@/design-system'
+import { H1, Header, Newsletter, Post, Section } from '@/design-system'
+import { small } from '@/design-system/elements/small'
 
 export async function generateMetadata({
   params: { lang }
@@ -57,7 +58,7 @@ export default async function Blog({ params: { lang } }: PageProps) {
       <Section columns="1">
         <Header alignItems="baseline">
           <H1>{page.blog.heading}</H1>
-          <Small>{page.blog.all}</Small>
+          <h2 className={small()}>{page.blog.all}</h2>
         </Header>
         {posts.map(({ frontmatter }) => (
           <Post
