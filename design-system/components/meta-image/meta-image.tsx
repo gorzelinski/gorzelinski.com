@@ -1,5 +1,7 @@
 import { LINKS } from '@/constants'
+import { Theme } from '@/types'
 import { getAbsoluteURL } from '@/lib'
+import { token } from '@/styled-system/tokens'
 import { MetaImageProps } from './meta-image.types'
 
 export const MetaImage = ({
@@ -8,19 +10,28 @@ export const MetaImage = ({
   subtitle,
   backgroundURL
 }: MetaImageProps) => {
+  const selectBackgroundTransparency = (
+    theme: Theme,
+    backgroundURL: string | undefined
+  ) => {
+    return backgroundURL
+      ? token(`colors.${theme}.gray.900`).replace(')', ', .8)')
+      : token(`colors.${theme}.gray.900`)
+  }
+
   const colors = {
     light: {
-      background: backgroundURL ? 'hsl(208, 7%, 98%, .8)' : 'hsl(208, 7%, 98%)',
+      background: selectBackgroundTransparency(theme, backgroundURL),
       color: {
-        text: 'hsl(208, 7%, 0%)',
-        subtle: 'hsl(208, 7%, 42%)'
+        text: token('colors.light.gray.25'),
+        subtle: token('colors.light.gray.400')
       }
     },
     dark: {
-      background: backgroundURL ? 'hsl(208, 7%, 6%, .8)' : 'hsl(208, 7%, 6%)',
+      background: selectBackgroundTransparency(theme, backgroundURL),
       color: {
-        text: 'hsl(208, 7%, 100%)',
-        subtle: 'hsl(208, 7%, 58%)'
+        text: token('colors.dark.gray.25'),
+        subtle: token('colors.dark.gray.400')
       }
     }
   }
@@ -36,7 +47,8 @@ export const MetaImage = ({
         height: '100%',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        fontSize: '16px'
       }}
     >
       <div
@@ -47,7 +59,7 @@ export const MetaImage = ({
           padding: '100px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px',
+          gap: token('spacing.m'),
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center'
@@ -57,17 +69,17 @@ export const MetaImage = ({
         <img
           src={getAbsoluteURL(LINKS.logo)}
           style={{
-            width: '64px',
-            height: '64px',
-            borderRadius: '50%'
+            width: token('sizes.2xs'),
+            height: token('sizes.2xs'),
+            borderRadius: token('radii.circle')
           }}
         />
         <div
           style={{
-            fontSize: '24px',
-            lineHeight: '32px',
-            letterSpacing: '0.1em',
-            fontWeight: '500',
+            fontSize: token('fontSizes.l'),
+            lineHeight: token('lineHeights.l'),
+            letterSpacing: token('letterSpacings.wide'),
+            fontWeight: token('fontWeights.medium'),
             color: colors[theme].color.subtle
           }}
         >
@@ -75,10 +87,10 @@ export const MetaImage = ({
         </div>
         <div
           style={{
-            fontSize: '48px',
-            lineHeight: '64px',
-            letterSpacing: '-0.025em',
-            fontWeight: '600',
+            fontSize: token('fontSizes.3xl'),
+            lineHeight: token('lineHeights.3xl'),
+            letterSpacing: token('letterSpacings.narrow'),
+            fontWeight: token('fontWeights.bold'),
             color: colors[theme].color.text
           }}
         >
