@@ -113,7 +113,7 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Background>
+        <Background data-testid="background">
           <Navbar lang={lang} dictionary={dictionary} />
           <Main>{children}</Main>
           <Footer lang={lang} dictionary={dictionary} />
