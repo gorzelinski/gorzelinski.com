@@ -66,7 +66,7 @@ test.describe('Accessibility tests', () => {
   test('blog post page should not have accessibility violations', async ({
     page
   }) => {
-    await page.goto(`${LINKS.blog}hello-world/`)
+    await page.goto(`${LINKS.blog}object-oriented-programming-in-typescript/`)
 
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
 

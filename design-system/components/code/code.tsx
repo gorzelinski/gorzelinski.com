@@ -36,7 +36,7 @@ export const Code = ({
               {isTerminal(language) ? '🔴  🟡  🟢' : language.toUpperCase()}
             </CodeLanguage>
           </CodeHeader>
-          <CodeElement>
+          <CodeElement tabIndex={0}>
             {tokens.map((line, i) => (
               <CodeLine
                 key={i}
