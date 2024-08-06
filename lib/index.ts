@@ -10,6 +10,7 @@ export { isInternal, getAbsoluteURL, generateAlternateLinks } from './link'
 export { selectActiveClass } from './navigation'
 export { capitalize } from './string'
 export {
+  hslToRgb,
   getThemeAttribute,
   getThemeCookie,
   setThemeAttribute,
