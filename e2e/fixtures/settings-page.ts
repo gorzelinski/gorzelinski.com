@@ -2,8 +2,11 @@ import { expect, type Locator, type Page } from '@playwright/test'
 import { Theme } from '@/types'
 import { Dictionary } from '@/scripts'
 import { hslToRgb } from '@/lib'
+import { LINKS, SOCIALS } from '@/constants'
+import { Locale } from '@/i18n.config'
 import { token } from '@/styled-system/tokens'
-import dictionary from '@/dictionaries/en.json'
+import en from '@/dictionaries/en.json'
+import pl from '@/dictionaries/pl.json'
 
 type ThemeSettings = {
   background: string
@@ -11,7 +14,11 @@ type ThemeSettings = {
 }
 
 export class SettingsPage {
-  private readonly dictionary: Dictionary
+  public readonly link: typeof LINKS & typeof SOCIALS
+  private readonly dictionary: {
+    en: Dictionary
+    pl: Dictionary
+  }
   private readonly theme: {
     light: ThemeSettings
     dark: ThemeSettings
@@ -23,7 +30,14 @@ export class SettingsPage {
   private background: Locator
 
   constructor(public readonly page: Page) {
-    this.dictionary = dictionary
+    this.link = {
+      ...LINKS,
+      ...SOCIALS
+    }
+    this.dictionary = {
+      en,
+      pl
+    }
     this.theme = {
       light: {
         background: hslToRgb(token('colors.light.gray.900')),
@@ -35,12 +49,20 @@ export class SettingsPage {
       }
     }
     this.themeButton = this.page.getByRole('button', {
-      name: this.dictionary.component.themeSwitch.ariaLabel
+      name: this.dictionary.en.component.themeSwitch.ariaLabel
     })
     this.sunny = this.page.getByTestId('sunny')
     this.moon = this.page.getByTestId('moon')
     this.heading = this.page.getByRole('heading', { level: 1 })
     this.background = this.page.getByTestId('background')
+  }
+
+  async switchTheme() {
+    await this.themeButton.click()
+  }
+
+  async getDictionary(lang: Locale) {
+    return this.dictionary[lang]
   }
 
   async checkTheme(theme: Theme) {
@@ -56,9 +78,5 @@ export class SettingsPage {
         ? this.theme.light.background
         : this.theme.dark.background
     )
-  }
-
-  async switchTheme() {
-    await this.themeButton.click()
   }
 }
