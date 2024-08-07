@@ -1,4 +1,3 @@
-import { LINKS } from '@/constants'
 import { test } from './fixtures/page'
 
 test.describe('Theme tests', () => {
@@ -6,7 +5,7 @@ test.describe('Theme tests', () => {
     page,
     settingsPage
   }) => {
-    await page.goto(LINKS.home)
+    await page.goto(settingsPage.link.home)
 
     await settingsPage.checkTheme('light')
   })
@@ -16,7 +15,7 @@ test.describe('Theme tests', () => {
     settingsPage
   }) => {
     await page.emulateMedia({ colorScheme: 'dark' })
-    await page.goto(LINKS.home)
+    await page.goto(settingsPage.link.home)
 
     await settingsPage.checkTheme('dark')
   })
@@ -26,14 +25,14 @@ test.describe('Theme tests', () => {
     settingsPage
   }) => {
     await page.emulateMedia({ colorScheme: 'light' })
-    await page.goto(LINKS.home)
+    await page.goto(settingsPage.link.home)
 
     await settingsPage.checkTheme('light')
   })
 
   test('checks the OS theme change ', async ({ page, settingsPage }) => {
     await page.emulateMedia({ colorScheme: 'light' })
-    await page.goto(LINKS.home)
+    await page.goto(settingsPage.link.home)
 
     await settingsPage.checkTheme('light')
 
@@ -43,7 +42,7 @@ test.describe('Theme tests', () => {
   })
 
   test('checks theme switching', async ({ page, settingsPage }) => {
-    await page.goto(LINKS.home)
+    await page.goto(settingsPage.link.home)
 
     await settingsPage.checkTheme('light')
 
