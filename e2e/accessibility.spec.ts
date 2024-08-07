@@ -1,12 +1,12 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from './fixtures/page'
 import AxeBuilder from '@axe-core/playwright'
-import { LINKS } from '@/constants'
 
 test.describe('Accessibility tests', () => {
   test('home page should not have accessibility violations', async ({
-    page
+    page,
+    settingsPage
   }) => {
-    await page.goto(LINKS.home)
+    await page.goto(settingsPage.link.home)
 
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
 
@@ -14,9 +14,10 @@ test.describe('Accessibility tests', () => {
   })
 
   test('portfolio page should not have accessibility violations', async ({
-    page
+    page,
+    settingsPage
   }) => {
-    await page.goto(LINKS.portfolio)
+    await page.goto(settingsPage.link.portfolio)
 
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
 
@@ -24,9 +25,10 @@ test.describe('Accessibility tests', () => {
   })
 
   test('portfolio project page should not have accessibility violations', async ({
-    page
+    page,
+    settingsPage
   }) => {
-    await page.goto(`${LINKS.portfolio}an-lam/`)
+    await page.goto(`${settingsPage.link.portfolio}an-lam/`)
 
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
 
@@ -34,9 +36,10 @@ test.describe('Accessibility tests', () => {
   })
 
   test('about page should not have accessibility violations', async ({
-    page
+    page,
+    settingsPage
   }) => {
-    await page.goto(LINKS.about)
+    await page.goto(settingsPage.link.about)
 
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
 
@@ -44,9 +47,10 @@ test.describe('Accessibility tests', () => {
   })
 
   test('uses page should not have accessibility violations', async ({
-    page
+    page,
+    settingsPage
   }) => {
-    await page.goto(LINKS.uses)
+    await page.goto(settingsPage.link.uses)
 
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
 
@@ -54,9 +58,10 @@ test.describe('Accessibility tests', () => {
   })
 
   test('blog page should not have accessibility violations', async ({
-    page
+    page,
+    settingsPage
   }) => {
-    await page.goto(LINKS.blog)
+    await page.goto(settingsPage.link.blog)
 
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
 
@@ -64,9 +69,12 @@ test.describe('Accessibility tests', () => {
   })
 
   test('blog post page should not have accessibility violations', async ({
-    page
+    page,
+    settingsPage
   }) => {
-    await page.goto(`${LINKS.blog}object-oriented-programming-in-typescript/`)
+    await page.goto(
+      `${settingsPage.link.blog}object-oriented-programming-in-typescript/`
+    )
 
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
 
@@ -74,9 +82,10 @@ test.describe('Accessibility tests', () => {
   })
 
   test('subscription confirmed page should not have accessibility violations', async ({
-    page
+    page,
+    settingsPage
   }) => {
-    await page.goto(LINKS.subscriptionConfirmed)
+    await page.goto(settingsPage.link.subscriptionConfirmed)
 
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
 
