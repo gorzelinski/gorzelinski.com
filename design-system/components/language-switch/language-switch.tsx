@@ -2,8 +2,8 @@
 import { usePathname } from 'next/navigation'
 import { Locale, i18n } from '@/i18n.config'
 import {
-  capitalize,
   delocalizePath,
+  getLocaleDisplayName,
   isDefaultLocale,
   localizePath,
   selectActiveClass
@@ -20,10 +20,6 @@ export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
     <Wrap gap="m">
       <Earth color="gray" alignSelf="center" />
       {locales.map((locale) => {
-        const language = new Intl.DisplayNames(locale, {
-          type: 'language'
-        })
-
         const href = isDefaultLocale(locale)
           ? defaultPathname
           : localizePath(defaultPathname, locale)
@@ -38,7 +34,7 @@ export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
             hrefLang={locale}
             className={selectActiveClass(pathname, href)}
           >
-            {capitalize(language.of(locale)!)}
+            {getLocaleDisplayName(locale)}
           </ButtonLink>
         )
       })}

@@ -1,9 +1,10 @@
 export { formatDate, formatReadingTime } from './date'
 export {
   createLocaleWithTerritory,
+  delocalizePath,
+  getLocaleDisplayName,
   isDefaultLocale,
   localizePath,
-  delocalizePath,
   localizeFileName
 } from './i18n'
 export { isInternal, getAbsoluteURL, generateAlternateLinks } from './link'

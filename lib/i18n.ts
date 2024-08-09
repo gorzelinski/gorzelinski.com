@@ -1,4 +1,5 @@
 import { Locale, i18n } from '@/i18n.config'
+import { capitalize } from './string'
 
 export function isDefaultLocale(
   locale: Locale,
@@ -42,4 +43,12 @@ export function createLocaleWithTerritory(lang: Locale) {
   })
 
   return locale.baseName.replace('-', '_')
+}
+
+export function getLocaleDisplayName(locale: Locale) {
+  return capitalize(
+    new Intl.DisplayNames(locale, {
+      type: 'language'
+    }).of(locale)!
+  )
 }
