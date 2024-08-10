@@ -1,9 +1,13 @@
 import { expect, type Locator, type Page } from '@playwright/test'
 import { Theme } from '@/types'
 import { Dictionary } from '@/scripts'
-import { hslToRgb } from '@/lib'
+import {
+  createLocaleWithTerritory,
+  getLocaleDisplayName,
+  hslToRgb
+} from '@/lib'
 import { LINKS, SOCIALS } from '@/constants'
-import { Locale } from '@/i18n.config'
+import { i18n, Locale } from '@/i18n.config'
 import { token } from '@/styled-system/tokens'
 import en from '@/dictionaries/en.json'
 import pl from '@/dictionaries/pl.json'
@@ -14,22 +18,26 @@ type ThemeSettings = {
 }
 
 export class SettingsPage {
+  public readonly locales: typeof i18n.locales
   public readonly link: typeof LINKS & typeof SOCIALS
   private readonly dictionary: {
-    en: Dictionary
-    pl: Dictionary
+    [key in Locale]: Dictionary
   }
   private readonly theme: {
-    light: ThemeSettings
-    dark: ThemeSettings
+    [key in Theme]: ThemeSettings
   }
+
   private themeButton: Locator
+  private languageButtons: {
+    [key in Locale]: Locator
+  }
   private sunny: Locator
   private moon: Locator
-  private heading: Locator
+  public heading: Locator
   private background: Locator
 
   constructor(public readonly page: Page) {
+    this.locales = i18n.locales
     this.link = {
       ...LINKS,
       ...SOCIALS
@@ -48,9 +56,18 @@ export class SettingsPage {
         text: hslToRgb(token('colors.dark.gray.50'))
       }
     }
+
     this.themeButton = this.page.getByRole('button', {
       name: this.dictionary.en.component.themeSwitch.ariaLabel
     })
+    this.languageButtons = {
+      en: this.page.getByRole('link', {
+        name: getLocaleDisplayName('en')
+      }),
+      pl: this.page.getByRole('link', {
+        name: getLocaleDisplayName('pl')
+      })
+    }
     this.sunny = this.page.getByTestId('sunny')
     this.moon = this.page.getByTestId('moon')
     this.heading = this.page.getByRole('heading', { level: 1 })
@@ -61,8 +78,16 @@ export class SettingsPage {
     await this.themeButton.click()
   }
 
+  async switchLanguage(lang: Locale) {
+    await this.languageButtons[lang].click()
+  }
+
   async getDictionary(lang: Locale) {
     return this.dictionary[lang]
+  }
+
+  async getTemplateTitle(title: string, lang: Locale) {
+    return `${title} | ${this.dictionary[lang].layout.root.metadata.title}`
   }
 
   async checkTheme(theme: Theme) {
@@ -78,5 +103,37 @@ export class SettingsPage {
         ? this.theme.light.background
         : this.theme.dark.background
     )
+  }
+
+  async checkI18nTags(lang: Locale) {
+    const html = this.page.locator('html')
+    const alternateLinks = this.page.locator('link[rel="alternate"]')
+    const ogLocale = this.page.locator('meta[property="og:locale"]')
+    const ogLocaleAlternates = this.page.locator(
+      'meta[property="og:locale:alternate"]'
+    )
+    const filteredLocales = this.locales.filter((locale) => locale !== lang)
+
+    await expect(html).toHaveAttribute('lang', lang)
+    await expect(alternateLinks).toHaveCount(this.locales.length)
+    for (const locale of this.locales) {
+      const alternateLink = alternateLinks.and(
+        this.page.locator(`[hreflang="${locale}"]`)
+      )
+
+      await expect(alternateLink).toHaveCount(1)
+    }
+    await expect(ogLocale).toHaveAttribute(
+      'content',
+      createLocaleWithTerritory(lang)
+    )
+    await expect(ogLocaleAlternates).toHaveCount(this.locales.length - 1)
+    for (const locale of filteredLocales) {
+      const ogLocaleAlternate = ogLocaleAlternates.and(
+        this.page.locator(`[content="${createLocaleWithTerritory(locale)}"]`)
+      )
+
+      await expect(ogLocaleAlternate).toHaveCount(1)
+    }
   }
 }
