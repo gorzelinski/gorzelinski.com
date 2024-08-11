@@ -318,7 +318,10 @@
     "home": {
       "metadata": {
         "title": "Tworzę rzeczy w Internecie",
-        "description": "Projektuję i koduję spersonalizowane strony internetowe, zapewniając profesjonalny wizerunek online - małym firmom i jednostkom. Pomagam im wkroczyć w XXI wiek."
+        "description": "Projektuję i koduję spersonalizowane strony internetowe, zapewniając profesjonalny wizerunek online - małym firmom i jednostkom. Pomagam im wkroczyć w XXI wiek.",
+        "image": {
+          "alt": "Na zdjęciu widać stos złożony z trzech elementów: mojego zdjęcia profilowego jako okrągłego logo, mojego imienia i nazwiska jako tytułu i tekstu 'Tworzę rzeczy w internecie'. Kolory tekstów i tła zależą od wybranego motywu, ale generalnie paleta kolorów jest szarawa i minimalistyczna."
+        }
       },
       "landing": {
         "typewriter": {
