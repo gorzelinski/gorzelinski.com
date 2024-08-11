@@ -5,9 +5,18 @@ import { PageProps, Theme } from '@/types'
 import { getDictionary, getMetaFont } from '@/scripts'
 import { MetaImage } from '@/design-system'
 
-export const size = TWITTER
+export async function generateImageMetadata({ params: { lang } }: PageProps) {
+  const { page } = await getDictionary(lang)
 
-export const contentType = CONTENTTYPE
+  return [
+    {
+      id: 'meta-image-about',
+      alt: page.about.metadata.image.alt,
+      size: TWITTER,
+      contentType: CONTENTTYPE
+    }
+  ]
+}
 
 export default async function Image({ params: { lang } }: PageProps) {
   const { layout, page } = await getDictionary(lang)

@@ -82,7 +82,10 @@
     "about": {
       "metadata": {
         "title": "O mnie",
-        "description": "Cześć, jestem Mateusz. Jestem inżynierem oprogramowania o erudycyjnych aspiracjach."
+        "description": "Cześć, jestem Mateusz. Jestem inżynierem oprogramowania o erudycyjnych aspiracjach.",
+        "image": {
+          "alt": "Na zdjęciu widać stos złożony z trzech elementów: mojego zdjęcia profilowego jako okrągłego logo, mojego imienia i nazwiska jako tytułu i tekstu 'O mnie'. Kolory tekstów i tła zależą od wybranego motywu, ale generalnie paleta kolorów jest szarawa i minimalistyczna."
+        }
       },
       "heading": "O mnie",
       "story": {
