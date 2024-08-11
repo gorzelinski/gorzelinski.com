@@ -379,7 +379,10 @@
     "portfolio": {
       "metadata": {
         "title": "Portfolio",
-        "description": "I design and code websites for my clients. Here is a little showcase of my work."
+        "description": "I design and code websites for my clients. Here is a little showcase of my work.",
+        "image": {
+          "alt": "There is a stack of three elements: my profile picture as a round logo, my full name as a title, and the text 'Portfolio.' The color of the texts and background depends on the theme selected, but the palette is grayish and minimalistic."
+        }
       },
       "heading": "Portfolio",
       "all": "All projects"

@@ -378,7 +378,10 @@
     "portfolio": {
       "metadata": {
         "title": "Portfolio",
-        "description": "Projektuję i koduję strony internetowe dla moich klientów. Oto mała wystawa mojej pracy."
+        "description": "Projektuję i koduję strony internetowe dla moich klientów. Oto mała wystawa mojej pracy.",
+        "image": {
+          "alt": "Na zdjęciu widać stos złożony z trzech elementów: mojego zdjęcia profilowego jako okrągłego logo, mojego imienia i nazwiska jako tytułu i tekstu 'Portfolio'. Kolory tekstów i tła zależą od wybranego motywu, ale generalnie paleta kolorów jest szarawa i minimalistyczna."
+        }
       },
       "heading": "Portfolio",
       "all": "Wszystkie projekty"
