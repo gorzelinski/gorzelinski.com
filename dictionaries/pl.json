@@ -410,7 +410,10 @@
     "uses": {
       "metadata": {
         "title": "Czego używam?",
-        "description": "Wyprzedzając pytania postanowiłem, że zrobię osobną stronę ze szczegółami technologii i gadżetów, których używam."
+        "description": "Wyprzedzając pytania postanowiłem, że zrobię osobną stronę ze szczegółami technologii i gadżetów, których używam.",
+        "image": {
+          "alt": "Na zdjęciu widać stos złożony z trzech elementów: mojego zdjęcia profilowego jako okrągłego logo, mojego imienia i nazwiska jako tytułu i tekstu 'Czego używam?'. Kolory tekstów i tła zależą od wybranego motywu, ale generalnie paleta kolorów jest szarawa i minimalistyczna."
+        }
       }
     },
     "notFound": {

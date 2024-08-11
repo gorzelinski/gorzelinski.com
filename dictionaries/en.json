@@ -411,7 +411,10 @@
     "uses": {
       "metadata": {
         "title": "What I use?",
-        "description": "Anticipating any questions, I have decided to create separate page with the specifics of software and hardware I use."
+        "description": "Anticipating any questions, I have decided to create separate page with the specifics of software and hardware I use.",
+        "image": {
+          "alt": "There is a stack of three elements: my profile picture as a round logo, my full name as a title, and the text 'What I use?' The color of the texts and background depends on the theme selected, but the palette is grayish and minimalistic."
+        }
       }
     },
     "notFound": {
