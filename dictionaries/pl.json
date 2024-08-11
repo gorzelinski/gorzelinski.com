@@ -401,7 +401,10 @@
     "subscriptionConfirmed": {
       "metadata": {
         "title": "Subskrypcja potwierdzona",
-        "description": "Jeśli widzisz tę stronę, to znaczy, że oficjalnie potwierdziłeś subskrybcję i jesteś na liście mojego newslettera. Gratulajce!"
+        "description": "Jeśli widzisz tę stronę, to znaczy, że oficjalnie potwierdziłeś subskrybcję i jesteś na liście mojego newslettera. Gratulajce!",
+        "image": {
+          "alt": "Na zdjęciu widać stos złożony z trzech elementów: mojego zdjęcia profilowego jako okrągłego logo, mojego imienia i nazwiska jako tytułu i tekstu 'Subskrypcja potwierdzona'. Kolory tekstów i tła zależą od wybranego motywu, ale generalnie paleta kolorów jest szarawa i minimalistyczna."
+        }
       },
       "heading": "Subskrypcja potwierdzona!",
       "description": "Oficjalnie potwierdziłeś subskrybcję mojego newslettera i jesteś na liście. Za wysiłek, zasługujesz na konfetti.",

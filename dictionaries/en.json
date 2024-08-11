@@ -402,7 +402,10 @@
     "subscriptionConfirmed": {
       "metadata": {
         "title": "Subscription confirmed",
-        "description": "If you see this page, it means you have successfully confirmed your subscription to my newsletter. Congratulations!"
+        "description": "If you see this page, it means you have successfully confirmed your subscription to my newsletter. Congratulations!",
+        "image": {
+          "alt": "There is a stack of three elements: my profile picture as a round logo, my full name as a title, and the text 'Subscription confirmed.' The color of the texts and background depends on the theme selected, but the palette is grayish and minimalistic."
+        }
       },
       "heading": "Subscription confirmed!",
       "description": "You have officially confirmed a subscription to my newsletter and are on the list. For effort, you deserve some confetti.",
