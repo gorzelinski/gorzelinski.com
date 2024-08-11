@@ -308,7 +308,10 @@
     "blog": {
       "metadata": {
         "title": "Blog",
-        "description": "Piszę o projektowaniu, web developmencie, technologii, nauce i innych nerdowskich rzeczach, które aktualnie mnie interesują."
+        "description": "Piszę o projektowaniu, web developmencie, technologii, nauce i innych nerdowskich rzeczach, które aktualnie mnie interesują.",
+        "image": {
+          "alt": "Na zdjęciu widać stos złożony z trzech elementów: mojego zdjęcia profilowego jako okrągłego logo, mojego imienia i nazwiska jako tytułu i tekstu 'Blog'. Kolory tekstów i tła zależą od wybranego motywu, ale generalnie paleta kolorów jest szarawa i minimalistyczna."
+        }
       },
       "heading": "Blog",
       "all": "Wszystkie wpisy"

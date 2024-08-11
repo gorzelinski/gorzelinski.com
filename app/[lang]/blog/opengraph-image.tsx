@@ -5,9 +5,18 @@ import { PageProps, Theme } from '@/types'
 import { getDictionary, getMetaFont } from '@/scripts'
 import { MetaImage } from '@/design-system'
 
-export const size = OPENGRAPH
+export async function generateImageMetadata({ params: { lang } }: PageProps) {
+  const { page } = await getDictionary(lang)
 
-export const contentType = CONTENTTYPE
+  return [
+    {
+      id: 'meta-image-blog',
+      alt: page.blog.metadata.image.alt,
+      size: OPENGRAPH,
+      contentType: CONTENTTYPE
+    }
+  ]
+}
 
 export default async function Image({ params: { lang } }: PageProps) {
   const { layout, page } = await getDictionary(lang)
@@ -22,7 +31,7 @@ export default async function Image({ params: { lang } }: PageProps) {
       />
     ),
     {
-      ...size,
+      ...OPENGRAPH,
       fonts: [
         await getMetaFont('../../public/fonts/Montserrat-Medium.ttf', {
           weight: 500

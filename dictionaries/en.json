@@ -309,7 +309,10 @@
     "blog": {
       "metadata": {
         "title": "Blog",
-        "description": "I write about design, web development, tech, science, and other nerdy stuff I'm currently interested in."
+        "description": "I write about design, web development, tech, science, and other nerdy stuff I'm currently interested in.",
+        "image": {
+          "alt": "There is a stack of three elements: my profile picture as a round logo, my full name as a title, and the text 'Blog.' The color of the texts and background depends on the theme selected, but the palette is grayish and minimalistic."
+        }
       },
       "heading": "Blog",
       "all": "All posts"
