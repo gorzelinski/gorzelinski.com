@@ -401,7 +401,12 @@
       "services": "Usługi",
       "client": "Klient",
       "deliverables": "Rezultaty",
-      "links": "Linki"
+      "links": "Linki",
+      "metadata": {
+        "image": {
+          "alt": "Na zdjęciu widać stos złożony z trzech elementów: mojego zdjęcia profilowego jako okrągłego logo oraz mojego imienia i nazwiska, które znajdują się ponad tytułem projektu. Paleta kolorów tekstów jest szarawa. Wszystko jest na tle zdjęcia. Co jest na zdjęciu?"
+        }
+      }
     },
     "subscriptionConfirmed": {
       "metadata": {

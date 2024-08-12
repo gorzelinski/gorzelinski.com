@@ -6,9 +6,21 @@ import { getDictionary, getMetaFont, getMDX } from '@/scripts'
 import { getAbsoluteURL } from '@/lib'
 import { MetaImage } from '@/design-system'
 
-export const size = OPENGRAPH
+export async function generateImageMetadata({
+  params: { lang, slug }
+}: NestedPageProps) {
+  const { page } = await getDictionary(lang)
+  const { frontmatter } = await getMDX(LINKS.portfolio, slug, lang)
 
-export const contentType = CONTENTTYPE
+  return [
+    {
+      id: 'meta-image-portfolio-project',
+      alt: `${page.portfolioProject.metadata.image.alt} ${frontmatter.image.alt}`,
+      size: OPENGRAPH,
+      contentType: CONTENTTYPE
+    }
+  ]
+}
 
 export default async function Image({
   params: { lang, slug }
@@ -27,7 +39,7 @@ export default async function Image({
       />
     ),
     {
-      ...size,
+      ...OPENGRAPH,
       fonts: [
         await getMetaFont('../../public/fonts/Montserrat-Medium.ttf', {
           weight: 500

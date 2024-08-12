@@ -402,7 +402,12 @@
       "services": "Services",
       "client": "Client",
       "deliverables": "Deliverables",
-      "links": "Links"
+      "links": "Links",
+      "metadata": {
+        "image": {
+          "alt": "There is a stack of three elements: my profile picture as a round logo and my full name as a subtitle above the portfolio project title. The color palette of the texts is grayish. Everything is on top of an image background. What is on the image?"
+        }
+      }
     },
     "subscriptionConfirmed": {
       "metadata": {
