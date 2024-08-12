@@ -10,7 +10,7 @@ export async function generateImageMetadata({ params: { lang } }: PageProps) {
 
   return [
     {
-      id: 'meta-image-subscriptionConfirmed',
+      id: 'meta-image-subscription-confirmed',
       alt: page.subscriptionConfirmed.metadata.image.alt,
       size: OPENGRAPH,
       contentType: CONTENTTYPE
