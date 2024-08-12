@@ -320,7 +320,12 @@
     "blogPost": {
       "updated": "Last updated",
       "share": "Share via",
-      "related": "Stay curious. Read more"
+      "related": "Stay curious. Read more",
+      "metadata": {
+        "image": {
+          "alt": "There is a stack of three elements: my profile picture as a round logo and my full name as a subtitle above the blog post title. The color palette of the texts is grayish. Everything is on top of an image background. What is on the image?"
+        }
+      }
     },
     "home": {
       "metadata": {

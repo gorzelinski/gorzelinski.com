@@ -319,7 +319,12 @@
     "blogPost": {
       "updated": "Zaktualizowano",
       "share": "Udostępnij na",
-      "related": "Pozostań ciekawy. Przeczytaj więcej"
+      "related": "Pozostań ciekawy. Przeczytaj więcej",
+      "metadata": {
+        "image": {
+          "alt": "Na zdjęciu widać stos złożony z trzech elementów: mojego zdjęcia profilowego jako okrągłego logo oraz mojego imienia i nazwiska, które znajdują się ponad tytułem wpisu. Paleta kolorów tekstów jest szarawa. Wszystko jest na tle zdjęcia. Co jest na zdjęciu?"
+        }
+      }
     },
     "home": {
       "metadata": {

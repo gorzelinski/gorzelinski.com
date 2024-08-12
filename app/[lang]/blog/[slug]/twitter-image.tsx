@@ -6,9 +6,21 @@ import { getDictionary, getMetaFont, getMDX } from '@/scripts'
 import { getAbsoluteURL } from '@/lib'
 import { MetaImage } from '@/design-system'
 
-export const size = TWITTER
+export async function generateImageMetadata({
+  params: { lang, slug }
+}: NestedPageProps) {
+  const { page } = await getDictionary(lang)
+  const { frontmatter } = await getMDX(LINKS.blog, slug, lang)
 
-export const contentType = CONTENTTYPE
+  return [
+    {
+      id: 'meta-image-blog-post',
+      alt: `${page.blogPost.metadata.image.alt} ${frontmatter.image.alt}`,
+      size: TWITTER,
+      contentType: CONTENTTYPE
+    }
+  ]
+}
 
 export default async function Image({
   params: { lang, slug }
