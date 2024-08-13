@@ -1,4 +1,4 @@
-import { test, expect } from './fixtures/page'
+import { test, expect } from './fixtures'
 
 test.describe('I18n tests', () => {
   test('checks language switching on the home page', async ({

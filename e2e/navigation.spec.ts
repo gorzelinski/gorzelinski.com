@@ -1,4 +1,4 @@
-import { expect, test } from './fixtures/page'
+import { expect, test } from './fixtures'
 
 test.describe('Navigation tests', () => {
   test('navigates around pages', async ({ page, settingsPage }) => {

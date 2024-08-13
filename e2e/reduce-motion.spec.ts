@@ -1,4 +1,4 @@
-import { expect, test } from './fixtures/page'
+import { expect, test } from './fixtures'
 
 test.describe('Reduce motion tests', () => {
   test("checks the 'reduce' motion setting", async ({ page, settingsPage }) => {

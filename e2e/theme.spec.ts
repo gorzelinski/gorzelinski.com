@@ -1,4 +1,4 @@
-import { test } from './fixtures/page'
+import { test } from './fixtures'
 
 test.describe('Theme tests', () => {
   test('checks theme on the initial load (OS without preference)', async ({
