@@ -3,10 +3,11 @@ import { Theme } from '@/types'
 import { Dictionary } from '@/scripts'
 import {
   createLocaleWithTerritory,
+  getAbsoluteURL,
   getLocaleDisplayName,
   hslToRgb
 } from '@/lib'
-import { LINKS, SOCIALS } from '@/constants'
+import { CONTENTTYPE, HANDLES, LINKS, SOCIALS } from '@/constants'
 import { i18n, Locale } from '@/i18n.config'
 import { token } from '@/styled-system/tokens'
 import en from '@/dictionaries/en.json'
@@ -20,20 +21,22 @@ type ThemeSettings = {
 export class SettingsPage {
   public readonly locales: typeof i18n.locales
   public readonly link: typeof LINKS & typeof SOCIALS
+  public readonly handle: typeof HANDLES
   private readonly dictionary: {
     [key in Locale]: Dictionary
   }
   private readonly theme: {
     [key in Theme]: ThemeSettings
   }
+  private readonly contentType: string
 
+  public heading: Locator
   private themeButton: Locator
   private languageButtons: {
     [key in Locale]: Locator
   }
   private sunny: Locator
   private moon: Locator
-  public heading: Locator
   private background: Locator
 
   constructor(public readonly page: Page) {
@@ -41,6 +44,9 @@ export class SettingsPage {
     this.link = {
       ...LINKS,
       ...SOCIALS
+    }
+    this.handle = {
+      ...HANDLES
     }
     this.dictionary = {
       en,
@@ -56,6 +62,7 @@ export class SettingsPage {
         text: hslToRgb(token('colors.dark.gray.50'))
       }
     }
+    this.contentType = CONTENTTYPE
 
     this.themeButton = this.page.getByRole('button', {
       name: this.dictionary.en.component.themeSwitch.ariaLabel
@@ -84,6 +91,10 @@ export class SettingsPage {
 
   async getDictionary(lang: Locale) {
     return this.dictionary[lang]
+  }
+
+  async getAbsoluteUrl(slug: string) {
+    return getAbsoluteURL(slug)
   }
 
   async getTemplateTitle(title: string, lang: Locale) {
@@ -135,5 +146,110 @@ export class SettingsPage {
 
       await expect(ogLocaleAlternate).toHaveCount(1)
     }
+  }
+
+  async checkSeoTags({
+    title,
+    description,
+    slug,
+    type
+  }: {
+    title: string
+    description: string
+    slug: string
+    type: 'website' | 'article'
+  }) {
+    const url = await this.getAbsoluteUrl(slug)
+
+    const applicationName = this.page.locator('meta[name="application-name"]')
+    const author = this.page.locator('meta[name="author"]')
+    const generator = this.page.locator('meta[name="generator"]')
+    const creator = this.page.locator('meta[name="creator"]')
+    const publisher = this.page.locator('meta[name="publisher"]')
+    const cannonical = this.page.locator('link[rel="canonical"]')
+    const titleTag = await this.page.title()
+    const descriptionTag = this.page.locator('meta[name="description"]')
+
+    const ogSiteName = this.page.locator('meta[property="og:site_name"]')
+    const ogTitle = this.page.locator('meta[property="og:title"]')
+    const ogDescription = this.page.locator('meta[property="og:description"]')
+    const ogType = this.page.locator('meta[property="og:type"]')
+    const ogImage = this.page.locator('meta[property="og:image"]')
+    const ogImageAlt = this.page.locator('meta[property="og:image:alt"]')
+    const ogImageWidth = this.page.locator('meta[property="og:image:width"]')
+    const ogImageHeight = this.page.locator('meta[property="og:image:height"]')
+    const ogImageType = this.page.locator('meta[property="og:image:type"]')
+
+    const twitterSite = this.page.locator('meta[name="twitter:site"]')
+    const twitterCreator = this.page.locator('meta[name="twitter:creator"]')
+    const twitterTitle = this.page.locator('meta[name="twitter:title"]')
+    const twitterDescription = this.page.locator(
+      'meta[name="twitter:description"]'
+    )
+    const twitterCard = this.page.locator('meta[name="twitter:card"]')
+    const twitterImage = this.page.locator('meta[name="twitter:image"]')
+    const twitterImageAlt = this.page.locator('meta[name="twitter:image:alt"]')
+    const twitterImageWidth = this.page.locator(
+      'meta[name="twitter:image:width"]'
+    )
+    const twitterImageHeight = this.page.locator(
+      'meta[name="twitter:image:height"]'
+    )
+    const twitterImageType = this.page.locator(
+      'meta[name="twitter:image:type"]'
+    )
+
+    await expect(applicationName).toHaveAttribute('content', 'gorzelinski.com')
+    await expect(author).toHaveAttribute(
+      'content',
+      this.dictionary.en.layout.root.metadata.author
+    )
+    await expect(generator).toHaveAttribute(
+      'content',
+      this.dictionary.en.layout.root.metadata.generator
+    )
+    await expect(creator).toHaveAttribute(
+      'content',
+      this.dictionary.en.layout.root.metadata.author
+    )
+    await expect(publisher).toHaveAttribute(
+      'content',
+      this.dictionary.en.layout.root.metadata.author
+    )
+    await expect(cannonical).toHaveAttribute('href', url)
+    await expect(titleTag).toBe(
+      slug === this.link.home ? title : await this.getTemplateTitle(title, 'en')
+    )
+    await expect(descriptionTag).toHaveAttribute('content', description)
+
+    await expect(ogTitle).toHaveAttribute('content', title)
+    await expect(ogDescription).toHaveAttribute('content', description)
+    await expect(ogSiteName).toHaveAttribute(
+      'content',
+      this.dictionary.en.layout.root.metadata.title
+    )
+    await expect(ogType).toHaveAttribute('content', type)
+    await expect(ogImage).toHaveAttribute('content')
+    await expect(ogImageAlt).toHaveAttribute('content')
+    await expect(ogImageWidth).toHaveAttribute('content', '1200')
+    await expect(ogImageHeight).toHaveAttribute('content', '630')
+    await expect(ogImageType).toHaveAttribute('content', this.contentType)
+
+    await expect(twitterSite).toHaveAttribute(
+      'content',
+      `@${this.handle.twitter}`
+    )
+    await expect(twitterCreator).toHaveAttribute(
+      'content',
+      `@${this.handle.twitter}`
+    )
+    await expect(twitterTitle).toHaveAttribute('content', title)
+    await expect(twitterDescription).toHaveAttribute('content', description)
+    await expect(twitterCard).toHaveAttribute('content', 'summary_large_image')
+    await expect(twitterImage).toHaveAttribute('content')
+    await expect(twitterImageAlt).toHaveAttribute('content')
+    await expect(twitterImageWidth).toHaveAttribute('content', '1200')
+    await expect(twitterImageHeight).toHaveAttribute('content', '600')
+    await expect(twitterImageType).toHaveAttribute('content', this.contentType)
   }
 }
