@@ -10,6 +10,7 @@ import {
 import { CONTENTTYPE, HANDLES, LINKS, SOCIALS } from '@/constants'
 import { i18n, Locale } from '@/i18n.config'
 import { token } from '@/styled-system/tokens'
+import { getFormURL } from '@/design-system/sections/newsletter/newsletter.helpers'
 import en from '@/dictionaries/en.json'
 import pl from '@/dictionaries/pl.json'
 
@@ -22,6 +23,10 @@ export class SettingsPage {
   public readonly locales: typeof i18n.locales
   public readonly link: typeof LINKS & typeof SOCIALS
   public readonly handle: typeof HANDLES
+  public readonly example: {
+    email: string
+    url: string
+  }
   private readonly dictionary: {
     [key in Locale]: Dictionary
   }
@@ -47,6 +52,10 @@ export class SettingsPage {
     }
     this.handle = {
       ...HANDLES
+    }
+    this.example = {
+      email: 'example@email.com',
+      url: 'https://example.com'
     }
     this.dictionary = {
       en,
@@ -93,8 +102,12 @@ export class SettingsPage {
     return this.dictionary[lang]
   }
 
-  async getAbsoluteUrl(slug: string) {
+  async getAbsoluteURL(slug: string) {
     return getAbsoluteURL(slug)
+  }
+
+  async getFormURL(lang: Locale) {
+    return getFormURL(lang)
   }
 
   async getTemplateTitle(title: string, lang: Locale) {
@@ -159,7 +172,7 @@ export class SettingsPage {
     slug: string
     type: 'website' | 'article'
   }) {
-    const url = await this.getAbsoluteUrl(slug)
+    const url = await this.getAbsoluteURL(slug)
 
     const applicationName = this.page.locator('meta[name="application-name"]')
     const author = this.page.locator('meta[name="author"]')
