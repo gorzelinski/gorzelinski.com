@@ -265,4 +265,50 @@ export class SettingsPage {
     await expect(twitterImageHeight).toHaveAttribute('content', '600')
     await expect(twitterImageType).toHaveAttribute('content', this.contentType)
   }
+
+  async checkJSONLD({
+    type,
+    lang,
+    author,
+    title,
+    description,
+    date
+  }: {
+    type: 'WebPage' | 'BlogPosting'
+    lang: Locale
+    author: string
+    title: string
+    description: string
+    date?: string
+  }) {
+    const jsonLdTags = this.page.locator('script[type="application/ld+json"]')
+    const jsonLdWebsite = await jsonLdTags.first().textContent()
+    const jsonLdWebPage = await jsonLdTags.last().textContent()
+    const schemaUrl = 'https://schema.org'
+    const person = 'Person'
+
+    await expect(jsonLdTags).toHaveCount(2)
+
+    await expect(jsonLdWebsite).toContain(schemaUrl)
+    await expect(jsonLdWebsite).toContain('WebSite')
+    await expect(jsonLdWebsite).toContain(lang)
+    await expect(jsonLdWebsite).toContain(await this.getAbsoluteURL('/'))
+    await expect(jsonLdWebsite).toContain(person)
+    await expect(jsonLdWebsite).toContain(author)
+    await expect(jsonLdWebsite).toContain(
+      this.dictionary[lang].layout.root.metadata.name
+    )
+
+    await expect(jsonLdWebPage).toContain(schemaUrl)
+    await expect(jsonLdWebPage).toContain(type)
+    await expect(jsonLdWebPage).toContain(lang)
+    await expect(jsonLdWebPage).toContain(person)
+    await expect(jsonLdWebPage).toContain(author)
+    await expect(jsonLdWebPage).toContain(title)
+    await expect(jsonLdWebPage).toContain(description)
+
+    if (type === 'BlogPosting') {
+      await expect(jsonLdWebPage).toContain(date)
+    }
+  }
 }
