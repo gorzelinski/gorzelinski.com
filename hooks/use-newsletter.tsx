@@ -28,15 +28,15 @@ export function useNewsletter(lang: Locale) {
       if (json.status === 'quarantined') {
         setState('quarantined')
 
-        window.open(json.url, '_blank', 'noopener,popup,height=512,width=512')
-
-        return
+        return window.open(
+          json.url,
+          '_blank',
+          'noopener,popup,height=512,width=512'
+        )
       }
 
       if (json.status === 'success') {
-        setState('success')
-
-        return
+        return setState('success')
       }
 
       setState('error')
