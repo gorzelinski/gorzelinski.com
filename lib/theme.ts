@@ -10,7 +10,7 @@ export function setThemeAttribute(theme: Theme) {
 }
 
 export function setThemeCookie(theme: Theme) {
-  document.cookie = `${COOKIES.theme}=${theme}; Path=/;`
+  document.cookie = `${COOKIES.theme}=${theme}; Path=/; SameSite=Strict;`
 }
 
 export function getThemeCookie() {

@@ -102,7 +102,7 @@ export default async function RootLayout({
                 const osTheme = getOsTheme()
 
                 document.documentElement.setAttribute('data-color-mode', osTheme)
-                document.cookie = 'theme=' + osTheme + '; Path=/;'
+                document.cookie = 'theme=' + osTheme + '; Path=/; SameSite=Strict;'
               } catch (_) {}
             }
             setInitialTheme()

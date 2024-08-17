@@ -69,7 +69,10 @@ export function middleware(request: NextRequest) {
 
   if (!response) response = NextResponse.next()
 
-  if (nextLocale) response.cookies.set(COOKIES.locale, nextLocale)
+  if (nextLocale)
+    response.cookies.set(COOKIES.locale, nextLocale, {
+      sameSite: 'strict'
+    })
 
   return response
 }
