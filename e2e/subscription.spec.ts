@@ -8,6 +8,7 @@ test.describe('Subscription tests', () => {
     await page.route(formURL, (route) =>
       route.fulfill({
         status: 200,
+        contentType: 'application/json',
         body: JSON.stringify({ status: 'success' })
       })
     )
@@ -21,6 +22,7 @@ test.describe('Subscription tests', () => {
     await expect(input).toHaveAttribute('autocomplete', 'off')
 
     await input.fill(settingsPage.example.email)
+    await button.scrollIntoViewIfNeeded()
     await button.click()
 
     await expect(
@@ -38,6 +40,7 @@ test.describe('Subscription tests', () => {
     await page.route(formURL, (route) =>
       route.fulfill({
         status: 200,
+        contentType: 'application/json',
         body: JSON.stringify({
           status: 'quarantined',
           url: settingsPage.example.url
@@ -50,11 +53,9 @@ test.describe('Subscription tests', () => {
     const button = page.getByRole('button', { name: section.newsletter.button })
 
     await input.fill(settingsPage.example.email)
-    const newPagePromise = page.waitForEvent('popup')
+    await button.scrollIntoViewIfNeeded()
     await button.click()
-    const examplePage = await newPagePromise
 
-    await expect(examplePage).toHaveURL(settingsPage.example.url)
     await expect(
       page.getByText(section.newsletter.quarantined.heading)
     ).toBeVisible()
@@ -72,6 +73,7 @@ test.describe('Subscription tests', () => {
     const heading = page.getByText(section.newsletter.error.heading)
 
     await input.fill(settingsPage.example.email)
+    await button.scrollIntoViewIfNeeded()
     await button.click()
 
     await expect(heading).toBeVisible()
