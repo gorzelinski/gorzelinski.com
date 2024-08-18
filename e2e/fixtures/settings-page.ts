@@ -102,8 +102,8 @@ export class SettingsPage {
     return this.dictionary[lang]
   }
 
-  async getAbsoluteURL(slug: string) {
-    return getAbsoluteURL(slug)
+  async getAbsoluteURL(slug: string, lang: Locale = 'en') {
+    return getAbsoluteURL(slug, lang)
   }
 
   async getFormURL(lang: Locale) {

@@ -1,6 +1,30 @@
 import { test, expect } from './fixtures'
 
 test.describe('I18n tests', () => {
+  test.describe('initial language (English)', () => {
+    test('checks the initial language when the browser is set to English', async ({
+      page,
+      settingsPage
+    }) => {
+      await page.goto(settingsPage.link.home)
+
+      await expect(page).toHaveURL(await settingsPage.getAbsoluteURL('/'))
+    })
+  })
+
+  test.describe('initial language (Polish)', () => {
+    test.use({ locale: 'pl-PL' })
+
+    test('checks the initial language when the browser is set to Polish', async ({
+      page,
+      settingsPage
+    }) => {
+      await page.goto(settingsPage.link.home)
+
+      await expect(page).toHaveURL(await settingsPage.getAbsoluteURL('/', 'pl'))
+    })
+  })
+
   test('checks language switching on the home page', async ({
     page,
     settingsPage
