@@ -1,14 +1,13 @@
 import { render, screen } from '@testing-library/react'
 import { Project } from '../project'
+import dictionary from '@/dictionaries/en.json'
 
 describe('Project', () => {
   it('renders correctly', () => {
     render(
       <Project
         lang="en"
-        dictionary={{
-          button: 'Button'
-        }}
+        dictionary={dictionary.component.project}
         slug="project/"
         image={{
           src: 'image.jpg',

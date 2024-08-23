@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { Post } from '../post'
+import dictionary from '@/dictionaries/en.json'
 
 describe('Post', () => {
   it('renders correctly', () => {
@@ -7,10 +8,7 @@ describe('Post', () => {
       <Post
         lang="en"
         slug="post/"
-        dictionary={{
-          min: 'min read',
-          button: 'Read more'
-        }}
+        dictionary={dictionary.component.post}
         image={{
           src: 'image.png',
           alt: 'Alt text'

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
-import { Dictionary } from '@/scripts'
 import { Footer } from '../footer'
+import dictionary from '@/dictionaries/en.json'
 
 jest.mock('next/navigation', () => ({
   usePathname: () => '/'
@@ -8,35 +8,7 @@ jest.mock('next/navigation', () => ({
 
 describe('Footer', () => {
   it('renders correctly', async () => {
-    const dictionary = {
-      links: {
-        home: 'Home',
-        portfolio: 'Portfolio',
-        about: 'About',
-        uses: 'Uses',
-        blog: 'Blog',
-        contact: 'Contact',
-        newsletter: 'Newsletter',
-        rss: 'RSS'
-      },
-      section: {
-        footer: {
-          email: 'Write me an email',
-          socials: 'Find me elsewhere',
-          language: 'Change language',
-          note: 'I have created this site with love (and coffee)'
-        }
-      },
-      layout: {
-        root: {
-          metadata: {
-            title: 'Matthew Gorzelinski'
-          }
-        }
-      }
-    }
-
-    render(<Footer lang="en" dictionary={dictionary as Dictionary} />)
+    render(<Footer lang="en" dictionary={dictionary} />)
 
     const email = screen.getByText('hello@gorzelinski.com')
     const twitter = screen.getByTitle('Twitter')

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
-import { Dictionary } from '@/scripts'
 import { useScrollDirection, useScrollProgress } from '@/hooks'
 import { Navbar } from '../navbar'
+import dictionary from '@/dictionaries/en.json'
 
 jest.mock('next/navigation', () => ({
   usePathname: () => '/'
@@ -19,45 +19,12 @@ jest.mock('../../../../hooks', () => ({
 const useScrollDirectionMock = jest.mocked(useScrollDirection)
 const useScrollProgressMock = jest.mocked(useScrollProgress)
 
-const dictionary = {
-  links: {
-    home: 'Home',
-    portfolio: 'Portfolio',
-    about: 'About',
-    uses: 'Uses',
-    blog: 'Blog',
-    contact: 'Contact',
-    newsletter: 'Newsletter',
-    rss: 'RSS'
-  },
-  component: {
-    themeSwitch: {
-      ariaLabel: 'Change theme'
-    }
-  },
-  section: {
-    navbar: {
-      navigation: {
-        main: 'Main navigation',
-        helper: 'Helper navigation'
-      }
-    }
-  },
-  layout: {
-    root: {
-      metadata: {
-        title: 'Matthew Gorzelinski'
-      }
-    }
-  }
-}
-
 describe('Navbar', () => {
   it('renders correctly', async () => {
     useScrollDirectionMock.mockReturnValue('up')
     useScrollProgressMock.mockReturnValue(50)
 
-    render(<Navbar lang="en" dictionary={dictionary as Dictionary} />)
+    render(<Navbar lang="en" dictionary={dictionary} />)
 
     const nav = screen.getAllByRole('navigation')
     const logo = screen.getByText('Matthew Gorzelinski')
@@ -80,7 +47,7 @@ describe('Navbar', () => {
     useScrollDirectionMock.mockReturnValue('down')
     useScrollProgressMock.mockReturnValue(10)
 
-    render(<Navbar lang="en" dictionary={dictionary as Dictionary} />)
+    render(<Navbar lang="en" dictionary={dictionary} />)
 
     const navbar = screen.getByRole('banner')
 
@@ -91,7 +58,7 @@ describe('Navbar', () => {
     useScrollDirectionMock.mockReturnValue('up')
     useScrollProgressMock.mockReturnValue(0)
 
-    render(<Navbar lang="en" dictionary={dictionary as Dictionary} />)
+    render(<Navbar lang="en" dictionary={dictionary} />)
 
     const navbar = screen.getByRole('banner')
 
@@ -102,7 +69,7 @@ describe('Navbar', () => {
     useScrollDirectionMock.mockReturnValue('up')
     useScrollProgressMock.mockReturnValue(2)
 
-    render(<Navbar lang="en" dictionary={dictionary as Dictionary} />)
+    render(<Navbar lang="en" dictionary={dictionary} />)
 
     const navbar = screen.getByRole('banner')
 
@@ -113,7 +80,7 @@ describe('Navbar', () => {
     useScrollDirectionMock.mockReturnValue('up')
     useScrollProgressMock.mockReturnValue(0)
 
-    render(<Navbar lang="en" dictionary={dictionary as Dictionary} />)
+    render(<Navbar lang="en" dictionary={dictionary} />)
 
     const navbar = screen.getByRole('banner')
 
@@ -124,7 +91,7 @@ describe('Navbar', () => {
     useScrollDirectionMock.mockReturnValue('up')
     useScrollProgressMock.mockReturnValue(2)
 
-    render(<Navbar lang="en" dictionary={dictionary as Dictionary} />)
+    render(<Navbar lang="en" dictionary={dictionary} />)
 
     const navbar = screen.getByRole('banner')
 

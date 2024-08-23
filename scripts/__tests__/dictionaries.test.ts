@@ -1,4 +1,5 @@
 import { getDictionary } from '../dictionaries'
+
 describe('dictionaries', () => {
   describe('getDictionary()', () => {
     it('returns a dictionary for the English language', async () => {

@@ -1,11 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { Pagination } from '../pagination'
-
-const dictionary = {
-  ariaLabel: 'Pagination',
-  prev: 'Previous',
-  next: 'Next'
-}
+import dictionary from '@/dictionaries/en.json'
 
 const prev = {
   title: 'Previous',
@@ -19,7 +14,13 @@ const next = {
 
 describe('Pagination', () => {
   it('renders correctly', () => {
-    render(<Pagination prev={null} next={next} dictionary={dictionary} />)
+    render(
+      <Pagination
+        prev={null}
+        next={next}
+        dictionary={dictionary.component.pagination}
+      />
+    )
 
     const navigation = screen.getByRole('navigation')
     const nextButton = screen.getByRole('link', { name: 'Next' })
@@ -29,7 +30,13 @@ describe('Pagination', () => {
   })
 
   it('renders prev button', () => {
-    render(<Pagination dictionary={dictionary} prev={prev} next={null} />)
+    render(
+      <Pagination
+        dictionary={dictionary.component.pagination}
+        prev={prev}
+        next={null}
+      />
+    )
 
     const prevButton = screen.getByRole('link', { name: 'Previous' })
     const nextButton = screen.queryByRole('link', { name: 'Next' })
@@ -40,7 +47,13 @@ describe('Pagination', () => {
   })
 
   it('renders next button', () => {
-    render(<Pagination dictionary={dictionary} prev={null} next={next} />)
+    render(
+      <Pagination
+        dictionary={dictionary.component.pagination}
+        prev={null}
+        next={next}
+      />
+    )
 
     const prevButton = screen.queryByRole('link', { name: 'Previous' })
     const nextButton = screen.getByRole('link', { name: 'Next' })
@@ -51,7 +64,13 @@ describe('Pagination', () => {
   })
 
   it('renders both buttons', () => {
-    render(<Pagination dictionary={dictionary} prev={prev} next={next} />)
+    render(
+      <Pagination
+        dictionary={dictionary.component.pagination}
+        prev={prev}
+        next={next}
+      />
+    )
 
     const prevButton = screen.getByRole('link', { name: 'Previous' })
     const nextButton = screen.getByRole('link', { name: 'Next' })
