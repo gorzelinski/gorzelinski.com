@@ -3,7 +3,8 @@ import {
   localizePath,
   delocalizePath,
   localizeFileName,
-  createLocaleWithTerritory
+  createLocaleWithTerritory,
+  getLocaleDisplayName
 } from '../i18n'
 
 describe('i18n', () => {
@@ -22,23 +23,33 @@ describe('i18n', () => {
   })
 
   describe('localizePath()', () => {
-    it('returns only path if locale is default', () => {
+    it('returns only the root path if the locale is the default', () => {
       expect(localizePath('/', 'en')).toBe('/')
     })
 
-    it('returns only path if locale is default and default locale is provided', () => {
+    it('returns the whole path if the locale is the default', () => {
+      expect(localizePath('/en/path/to/blog/', 'en')).toBe('/en/path/to/blog/')
+    })
+
+    it('returns the whole path if the locale is the default and the default locale is provided', () => {
+      expect(localizePath('/en/path/to/blog/', 'en', 'en')).toBe(
+        '/en/path/to/blog/'
+      )
+    })
+
+    it('returns only the path if the locale is the default and the default locale is provided', () => {
       expect(localizePath('/', 'pl', 'pl')).toBe('/')
     })
 
-    it('returns path + locale if locale is not default and is in the path', () => {
+    it('returns path + locale if the locale is not the default and is in the path', () => {
       expect(localizePath('/pl', 'pl')).toBe('/pl')
     })
 
-    it('returns path + locale if locale is not default and is not in the path', () => {
+    it('returns path + locale if the locale is not the default and is not in the path', () => {
       expect(localizePath('/', 'pl')).toBe('/pl/')
     })
 
-    it('returns path + locale if locale is not default and default locale is provided', () => {
+    it('returns path + locale if the locale is not the default and the default locale is provided', () => {
       expect(localizePath('/', 'pl', 'en')).toBe('/pl/')
     })
   })
@@ -74,6 +85,16 @@ describe('i18n', () => {
 
     it('returns polish locale with territory', () => {
       expect(createLocaleWithTerritory('pl')).toBe('pl_PL')
+    })
+  })
+
+  describe('getLocaleDisplayName()', () => {
+    it('returns a capitalized human-readable locale name (English)', () => {
+      expect(getLocaleDisplayName('en')).toBe('English')
+    })
+
+    it('returns a capitalized human-readable locale name (Polish)', () => {
+      expect(getLocaleDisplayName('pl')).toBe('Polski')
     })
   })
 })

@@ -34,5 +34,9 @@ describe('Newsletter helpers', () => {
     it('returns the info variant', () => {
       expect(mapStateToCalloutVariant('idle')).toBe('info')
     })
+
+    it('returns the default variant', () => {
+      expect(mapStateToCalloutVariant('loading')).toBe('info')
+    })
   })
 })

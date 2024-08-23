@@ -17,7 +17,7 @@ export function localizePath(
     return path
   }
 
-  const [, base] = path.split(`/`)
+  const [_, base] = path.split(`/`)
   if (base === locale) return path
 
   return `/${locale}${path}`
