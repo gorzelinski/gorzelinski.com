@@ -77,7 +77,11 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
                 disabled={state !== 'idle'}
               >
                 {dictionary.button}{' '}
-                {state === 'loading' ? <Sync animation="spinning" /> : <Send />}
+                {state === 'loading' ? (
+                  <Sync data-testid="sync" animation="spinning" />
+                ) : (
+                  <Send data-testid="send" />
+                )}
               </Button>
             </HStack>
           </form>
