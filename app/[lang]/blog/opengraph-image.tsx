@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 import { cookies } from 'next/headers'
-import { CONTENTTYPE, OPENGRAPH } from '@/constants'
 import { PageProps, Theme } from '@/types'
+import { CONTENTTYPE, OPENGRAPH } from '@/constants'
 import { getDictionary, getMetaFont } from '@/scripts'
 import { MetaImage } from '@/design-system'
 

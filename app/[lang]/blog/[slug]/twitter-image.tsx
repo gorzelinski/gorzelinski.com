@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 import { cookies } from 'next/headers'
-import { CONTENTTYPE, LINKS, TWITTER } from '@/constants'
 import { NestedPageProps, Theme } from '@/types'
+import { CONTENTTYPE, LINKS, TWITTER } from '@/constants'
 import { getDictionary, getMetaFont, getMDX } from '@/scripts'
 import { getAbsoluteURL } from '@/lib'
 import { MetaImage } from '@/design-system'

@@ -23,7 +23,7 @@ import {
   Tv,
   verticalRhythm
 } from '@/design-system'
-import uses from '@/public/images/about/andras-vas-Bd7gNnWJBkU-unsplash.jpg'
+import laptop from '@/public/images/about/andras-vas-Bd7gNnWJBkU-unsplash.jpg'
 
 export async function generateMetadata({
   params: { lang }
@@ -150,7 +150,11 @@ export default async function About({ params: { lang } }: PageProps) {
             {page.about.uses.button} <ChevronForward />
           </ButtonLink>
         </VStack>
-        <Image src={uses} alt={page.about.uses.image} borderRadius="rounded" />
+        <Image
+          src={laptop}
+          alt={page.about.uses.image}
+          borderRadius="rounded"
+        />
       </Section>
     </>
   )
