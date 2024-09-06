@@ -5,13 +5,13 @@ export const typewriter = cva({
   base: {
     _after: {
       content: '"|"',
-      animation: 'blinking',
       color: 'primary.400',
       transitionProperty: 'color',
       ...sharedTransitionProperties,
+      animation: 'blinking',
       _motionReduce: {
-        animation: 'none',
-        content: 'none'
+        content: 'none',
+        animation: 'none'
       }
     }
   }

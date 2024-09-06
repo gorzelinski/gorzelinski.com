@@ -3,42 +3,42 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const callout = cva({
   base: {
-    width: '100%',
     position: 'relative',
-    borderRadius: 'm',
+    width: '100%',
     padding: 'm',
+    borderRadius: 'm',
+    transitionProperty: 'background-color, border-color, color',
+    ...sharedTransitionProperties,
     '& > span': {
       position: 'absolute',
-      backgroundColor: 'gray.900',
-      borderRadius: 'circle'
+      borderRadius: 'circle',
+      backgroundColor: 'gray.900'
     },
     '& > *:last-child': {
       margin: '0'
-    },
-    transitionProperty: 'background-color, border-color, color',
-    ...sharedTransitionProperties
+    }
   },
   variants: {
     variant: {
       info: {
+        border: 'primary.subtle',
         backgroundColor: 'primary.900',
-        color: 'primary.400',
-        border: 'primary.subtle'
+        color: 'primary.400'
       },
       danger: {
+        border: 'danger.subtle',
         backgroundColor: 'danger.900',
-        color: 'danger.400',
-        border: 'danger.subtle'
+        color: 'danger.400'
       },
       warning: {
+        border: 'warning.subtle',
         backgroundColor: 'warning.900',
-        color: 'warning.400',
-        border: 'warning.subtle'
+        color: 'warning.400'
       },
       success: {
+        border: 'success.subtle',
         backgroundColor: 'success.900',
-        color: 'success.400',
-        border: 'success.subtle'
+        color: 'success.400'
       }
     },
     alignIcon: {

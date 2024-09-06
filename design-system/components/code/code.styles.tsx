@@ -4,10 +4,13 @@ import { sharedTransitionProperties } from '../../utils'
 
 const pre = cva({
   base: {
-    overflow: 'auto',
     position: 'relative',
     display: 'block',
+    marginX: '-m',
     padding: 'm',
+    borderTop: 'gray.subtle',
+    borderBottom: 'gray.subtle',
+    boxShadow: 'neumorphism.far',
     fontFamily: 'code',
     fontWeight: 'regular',
     fontSize: {
@@ -22,20 +25,17 @@ const pre = cva({
       lg: '2xs',
       '2xl': 'xs'
     },
-    boxShadow: 'neumorphism.far',
-    borderTop: 'gray.subtle',
-    borderBottom: 'gray.subtle',
-    marginX: '-m',
+    transitionProperty: 'background-color, box-shadow, border-color, color',
+    ...sharedTransitionProperties,
+    overflow: 'auto',
     sm: {
       marginX: '-l'
     },
     md: {
+      marginX: '0',
       border: 'gray.subtle',
-      borderRadius: 'm',
-      marginX: '0'
-    },
-    transitionProperty: 'background-color, box-shadow, border-color, color',
-    ...sharedTransitionProperties
+      borderRadius: 'm'
+    }
   }
 })
 
@@ -45,8 +45,8 @@ const code = cva({
   base: {
     display: 'inline-block',
     width: '100%',
-    overflowX: 'auto',
-    lineHeight: '2xs'
+    lineHeight: '2xs',
+    overflowX: 'auto'
   }
 })
 

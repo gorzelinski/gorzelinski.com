@@ -3,8 +3,8 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const codeLine = cva({
   base: {
-    ...sharedTransitionProperties,
     transitionProperty: 'background-color',
+    ...sharedTransitionProperties,
     _first: {
       marginTop: {
         base: 's',

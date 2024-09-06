@@ -39,29 +39,29 @@ export const MetaImage = ({
   return (
     <div
       style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
         ...(backgroundURL && { backgroundImage: `url(${backgroundURL})` }),
         backgroundPosition: 'top left',
         backgroundSize: '1200px 630px',
         backgroundRepeat: 'no-repeat',
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
         fontSize: '16px'
       }}
     >
       <div
         style={{
-          backgroundColor: colors[theme].background,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: token('spacing.m'),
           width: '100%',
           height: '100%',
           padding: '100px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: token('spacing.m'),
-          alignItems: 'center',
-          justifyContent: 'center',
+          backgroundColor: colors[theme].background,
           textAlign: 'center'
         }}
       >
@@ -76,22 +76,22 @@ export const MetaImage = ({
         />
         <div
           style={{
+            color: colors[theme].color.subtle,
             fontSize: token('fontSizes.l'),
-            lineHeight: token('lineHeights.l'),
-            letterSpacing: token('letterSpacings.wide'),
             fontWeight: token('fontWeights.medium'),
-            color: colors[theme].color.subtle
+            lineHeight: token('lineHeights.l'),
+            letterSpacing: token('letterSpacings.wide')
           }}
         >
           {subtitle}
         </div>
         <div
           style={{
+            color: colors[theme].color.text,
             fontSize: token('fontSizes.3xl'),
-            lineHeight: token('lineHeights.3xl'),
-            letterSpacing: token('letterSpacings.narrow'),
             fontWeight: token('fontWeights.bold'),
-            color: colors[theme].color.text
+            lineHeight: token('lineHeights.3xl'),
+            letterSpacing: token('letterSpacings.narrow')
           }}
         >
           {title}
