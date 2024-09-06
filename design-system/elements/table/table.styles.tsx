@@ -6,9 +6,9 @@ export const table = cva({
     width: '100%',
     borderSpacing: 's',
     borderCollapse: 'collapse',
+    color: 'gray.200',
     fontFamily: 'body',
     fontWeight: 'regular',
-    color: 'gray.200',
     fontSize: {
       base: '3xs',
       md: '2xs',

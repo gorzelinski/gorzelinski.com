@@ -2,7 +2,6 @@ import { cva } from '@/styled-system/css'
 
 export const header = cva({
   base: {
-    width: '100%',
     display: 'flex',
     flexDirection: {
       base: 'column',
@@ -10,6 +9,7 @@ export const header = cva({
     },
     justifyContent: 'space-between',
     gap: 's',
+    width: '100%',
     '& > *': {
       '&:nth-child(1)': {
         alignSelf: {

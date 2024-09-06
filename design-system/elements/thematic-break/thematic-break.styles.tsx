@@ -3,12 +3,12 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const thematicBreak = cva({
   base: {
-    backgroundColor: 'primary.400',
-    border: 'none',
-    height: 'token(spacing.xs)',
     width: 'm',
     maxWidth: 'calc(100% / 1.618)',
+    height: 'token(spacing.xs)',
     marginX: 'auto',
+    border: 'none',
+    backgroundColor: 'primary.400',
     transitionProperty: 'background-color',
     ...sharedTransitionProperties
   }

@@ -5,12 +5,12 @@ export const tableBody = cva({
   base: {
     borderTop: 'gray.regular',
     borderBottom: 'gray.regular',
+    transitionProperty: 'border-color',
+    ...sharedTransitionProperties,
     '& tr': {
       _even: {
         backgroundColor: 'primary.900'
       }
-    },
-    transitionProperty: 'border-color',
-    ...sharedTransitionProperties
+    }
   }
 })

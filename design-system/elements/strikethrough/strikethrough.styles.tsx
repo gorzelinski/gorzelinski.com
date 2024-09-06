@@ -3,8 +3,8 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const strikethrough = cva({
   base: {
-    textDecoration: 'line-through',
     color: 'gray.300',
+    textDecoration: 'line-through',
     transitionProperty: 'color',
     ...sharedTransitionProperties
   }

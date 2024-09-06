@@ -4,23 +4,23 @@ import { sharedTransitionProperties } from '../../utils'
 export const button = cva({
   base: {
     display: 'inline-flex',
+    alignItems: 'center',
     gap: 's',
     padding: 's',
-    alignItems: 'center',
     fontFamily: 'heading',
     fontWeight: 'medium',
     letterSpacing: 'wide',
-    cursor: 'pointer',
     textDecoration: 'none',
+    transitionProperty: 'background-color, color',
+    ...sharedTransitionProperties,
+    cursor: 'pointer',
     _disabled: {
       cursor: 'not-allowed',
       pointerEvents: 'none'
     },
     '& > span': {
       flexShrink: 0
-    },
-    transitionProperty: 'background-color, color',
-    ...sharedTransitionProperties
+    }
   },
   variants: {
     align: {
@@ -101,9 +101,9 @@ export const button = cva({
         }
       },
       outline: {
+        border: 'primary.regular',
         backgroundColor: 'gray.900',
         color: 'primary.400',
-        border: 'primary.regular',
         _hover: {
           backgroundColor: 'primary.400',
           color: 'gray.900'
@@ -175,10 +175,10 @@ export const button = cva({
         _after: {
           content: '""',
           position: 'absolute',
+          left: '0',
+          bottom: '0',
           width: '100%',
           height: '2px',
-          bottom: '0',
-          left: '0',
           backgroundColor: 'gray.50',
           transform: 'scaleX(0)',
           transformOrigin: 'bottom right',
@@ -188,48 +188,48 @@ export const button = cva({
         }
       },
       icon: {
-        color: 'gray.400',
         backgroundColor: 'gray.800',
+        color: 'gray.400',
         _hover: {
-          color: 'gray.300',
-          backgroundColor: 'gray.700'
+          backgroundColor: 'gray.700',
+          color: 'gray.300'
         },
         _focus: {
-          color: 'gray.200',
-          backgroundColor: 'gray.600'
+          backgroundColor: 'gray.600',
+          color: 'gray.200'
         },
         _focusVisible: {
           outline: 'gray.regular',
           outlineOffset: '2xs'
         },
         _active: {
-          color: 'gray.100',
-          backgroundColor: 'gray.500'
+          backgroundColor: 'gray.500',
+          color: 'gray.100'
         },
         _disabled: {
-          color: 'gray.500',
-          backgroundColor: 'gray.900'
+          backgroundColor: 'gray.900',
+          color: 'gray.500'
         }
       }
     },
     width: {
       fixed: {
-        width: 'auto',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        width: 'auto'
       },
       responsive: {
         base: {
-          width: '100%',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          width: '100%'
         },
         md: {
-          width: 'auto',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          width: 'auto'
         }
       },
       stretch: {
-        width: '100%',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        width: '100%'
       }
     },
     transition: {

@@ -6,13 +6,12 @@ export const pill = cva({
     display: 'inline-flex',
     justifyContent: 'center',
     alignItems: 'center',
-    fontFamily: 'heading',
-    fontWeight: 'medium',
-    letterSpacing: 'wide',
-    borderRadius: 's',
+    minWidth: '2xs',
     paddingX: 's',
     paddingY: 'xs',
-    minWidth: '2xs',
+    borderRadius: 's',
+    fontFamily: 'heading',
+    fontWeight: 'medium',
     fontSize: {
       base: '4xs',
       md: '3xs',
@@ -25,26 +24,27 @@ export const pill = cva({
       lg: '2xs',
       '2xl': 'xs'
     },
+    letterSpacing: 'wide',
     transitionProperty: 'background-color, color',
     ...sharedTransitionProperties
   },
   variants: {
     variant: {
       info: {
-        color: 'primary.400',
-        backgroundColor: 'primary.900'
+        backgroundColor: 'primary.900',
+        color: 'primary.400'
       },
       success: {
-        color: 'success.400',
-        backgroundColor: 'success.900'
+        backgroundColor: 'success.900',
+        color: 'success.400'
       },
       warning: {
-        color: 'warning.400',
-        backgroundColor: 'warning.900'
+        backgroundColor: 'warning.900',
+        color: 'warning.400'
       },
       danger: {
-        color: 'danger.400',
-        backgroundColor: 'danger.900'
+        backgroundColor: 'danger.900',
+        color: 'danger.400'
       }
     }
   },

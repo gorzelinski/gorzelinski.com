@@ -3,16 +3,16 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const blockquote = cva({
   base: {
-    borderLeft: 'primary.regular',
     paddingLeft: {
       base: 'm',
       lg: 'l'
     },
+    borderLeft: 'primary.regular',
     transitionProperty: 'border-color',
     ...sharedTransitionProperties,
     '& > p': {
-      fontStyle: 'italic',
       color: 'gray.400',
+      fontStyle: 'italic',
       fontWeight: 'regular',
       fontSize: {
         base: 's',

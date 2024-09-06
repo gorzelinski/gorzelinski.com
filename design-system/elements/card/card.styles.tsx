@@ -9,13 +9,13 @@ export const card = cva({
     },
     position: 'relative',
     display: 'grid',
+    ...verticalRhythm.gap.s,
+    padding: 'var(--card-padding)',
     border: 'gray.subtle',
     borderRadius: 'l',
-    overflow: 'hidden',
-    padding: 'var(--card-padding)',
     transitionProperty: 'border-color, box-shadow',
-    ...verticalRhythm.gap.s,
-    ...sharedTransitionProperties
+    ...sharedTransitionProperties,
+    overflow: 'hidden'
   },
   variants: {
     orientation: {

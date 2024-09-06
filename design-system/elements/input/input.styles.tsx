@@ -4,18 +4,18 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const input = cva({
   base: {
-    appearance: 'none',
-    fontFamily: 'heading',
-    fontWeight: 'medium',
-    letterSpacing: 'wide',
     padding: 'calc(token(spacing.s) - token(spacing.3xs))',
-    color: 'gray.200',
-    backgroundColor: 'gray.900',
     border: 'gray.subtle',
     borderRadius: 's',
-    transitionProperty: 'background-color, border-color, color',
+    backgroundColor: 'gray.900',
+    color: 'gray.200',
+    fontFamily: 'heading',
+    fontWeight: 'medium',
     ...inputFontSize,
+    letterSpacing: 'wide',
+    transitionProperty: 'background-color, border-color, color',
     ...sharedTransitionProperties,
+    appearance: 'none',
     _placeholder: {
       color: 'gray.700'
     },
@@ -23,16 +23,16 @@ export const input = cva({
       borderColor: 'gray.500'
     },
     _focus: {
-      outline: 0,
-      borderColor: 'gray.400'
+      borderColor: 'gray.400',
+      outline: 0
     },
     _active: {
       borderColor: 'gray.400'
     },
     _disabled: {
+      backgroundColor: 'gray.800',
       cursor: 'not-allowed',
-      pointerEvents: 'none',
-      backgroundColor: 'gray.800'
+      pointerEvents: 'none'
     }
   },
   variants: {

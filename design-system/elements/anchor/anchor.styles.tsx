@@ -4,14 +4,14 @@ import { sharedTransitionProperties } from '../../utils'
 export const anchor = cva({
   base: {
     borderRadius: 's',
-    cursor: 'pointer',
     color: 'primary.400',
-    textDecorationLine: 'underline',
     textUnderlineOffset: 'token(spacing.2xs)',
-    textDecorationThickness: 'auto',
+    textDecorationLine: 'underline',
     textDecorationColor: 'transparent',
+    textDecorationThickness: 'auto',
     transitionProperty: 'color, text-decoration-color',
     ...sharedTransitionProperties,
+    cursor: 'pointer',
     _hover: {
       textDecorationColor: 'primary.400'
     },
