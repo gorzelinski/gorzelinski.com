@@ -78,11 +78,11 @@ export default async function Uses({ params: { lang } }: PageProps) {
           textAlign="center"
         >
           <Image
-            aspectRatio="cinema"
+            aspectRatio="auto"
             src={`/images${LINKS.uses}${frontmatter.image.src}`}
             alt={frontmatter.image.alt}
             width={1200}
-            height={675}
+            height={888}
           />
           <Figcaption
             style="italic"
