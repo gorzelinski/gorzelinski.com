@@ -3,11 +3,11 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const navbar = cva({
   base: {
-    width: '100%',
+    zIndex: 'farther',
     display: 'flex',
     justifyContent: 'space-between',
+    width: '100%',
     backgroundColor: 'gray.900',
-    zIndex: 'farther',
     transitionProperty: 'background-color, border-color, opacity, padding',
     ...sharedTransitionProperties
   },
@@ -33,8 +33,8 @@ export const navbar = cva({
         },
         md: {
           position: 'static',
-          borderTop: 'none',
-          width: 'auto'
+          width: 'auto',
+          borderTop: 'none'
         }
       }
     },

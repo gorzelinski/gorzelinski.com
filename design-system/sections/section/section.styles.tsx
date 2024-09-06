@@ -13,13 +13,13 @@ export const section = cva({
     variant: {
       hero: {
         alignContent: 'center',
-        marginTop: {
-          base: '-2xl',
-          md: '0'
-        },
         width: {
           base: '100%',
           lg: 'calc(100% / 1.618)'
+        },
+        marginTop: {
+          base: '-2xl',
+          md: '0'
         },
         _portrait: {
           minHeight: {

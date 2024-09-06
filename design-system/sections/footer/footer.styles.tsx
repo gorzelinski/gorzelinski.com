@@ -6,7 +6,6 @@ export const footer = cva({
     display: 'flex',
     flexDirection: 'column',
     gap: 'l',
-    borderTop: 'gray.subtle',
     paddingX: {
       base: 'm',
       sm: 'l',
@@ -21,6 +20,7 @@ export const footer = cva({
       base: 'calc(4 * token(spacing.s) + token(lineHeights.2xs) + token(spacing.s))',
       md: 'xl'
     },
+    borderTop: 'gray.subtle',
     transitionProperty: 'background-color, border-color',
     ...sharedTransitionProperties
   }
