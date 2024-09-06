@@ -45,9 +45,9 @@
     }
 
   html ::-webkit-scrollbar {
-    cursor: pointer;
-    background-color: var(--colors-gray-700);
     width: var(--spacing-m);
+    background-color: var(--colors-gray-700);
+    cursor: pointer;
     }
 
   html ::-webkit-scrollbar:horizontal {
@@ -56,9 +56,9 @@
     }
 
   html ::-webkit-scrollbar-thumb {
-    cursor: pointer;
     background-color: var(--colors-gray-600);
     border-radius: var(--radii-xs);
+    cursor: pointer;
     }
 
   html ::-webkit-scrollbar-thumb:hover {
