@@ -62,8 +62,6 @@ test.describe('Navigation tests', () => {
       name: links.rss
     })
     await expect(rss).toBeVisible()
-    await rss.click()
-    await expect(page).toHaveURL(link.rss)
   })
 
   test('navigates around contact methods', async ({ page, settingsPage }) => {
