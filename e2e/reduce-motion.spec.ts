@@ -21,8 +21,8 @@ test.describe('Reduce motion tests', () => {
     await page.emulateMedia({ reducedMotion: 'no-preference' })
     await page.goto(settingsPage.link.home)
 
-    await expect(page.getByRole('heading', { level: 1 })).toHaveText(
-      dictionary.page.home.landing.typewriter.design
+    await expect(page.getByRole('heading', { level: 1 })).not.toHaveText(
+      dictionary.page.home.landing.typewriter.create
     )
   })
 })

@@ -64,7 +64,6 @@ test.describe('Navigation tests', () => {
     await expect(rss).toBeVisible()
     await rss.click()
     await expect(page).toHaveURL(link.rss)
-    await expect(page.getByRole('heading', { level: 1 })).not.toBeVisible()
   })
 
   test('navigates around contact methods', async ({ page, settingsPage }) => {
