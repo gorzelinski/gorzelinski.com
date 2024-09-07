@@ -18,8 +18,7 @@ export const Navbar = ({ lang, dictionary }: NavbarProps) => {
     <header
       className={navbar({
         opacity: progress > 5 && direction === 'down' ? 'hidden' : 'visible',
-        border: progress < 1 ? 'transparent' : 'bottom',
-        padding: progress < 1 ? 'standard' : 'compact'
+        border: progress < 1 ? 'transparent' : 'bottom'
       })}
     >
       <Nav

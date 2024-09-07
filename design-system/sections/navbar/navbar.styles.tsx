@@ -7,6 +7,11 @@ export const navbar = cva({
     display: 'flex',
     justifyContent: 'space-between',
     width: '100%',
+    padding: {
+      base: 'm',
+      sm: 'l',
+      md: 'xl'
+    },
     backgroundColor: 'gray.900',
     transitionProperty: 'background-color, border-color, opacity, padding',
     ...sharedTransitionProperties
@@ -57,30 +62,10 @@ export const navbar = cva({
       transparent: {
         borderColor: 'transparent'
       }
-    },
-    padding: {
-      standard: {
-        padding: {
-          base: 'm',
-          sm: 'l',
-          md: 'xl'
-        }
-      },
-      compact: {
-        paddingX: {
-          base: 'm',
-          sm: 'l',
-          md: 'xl'
-        },
-        paddingY: {
-          base: 'm'
-        }
-      }
     }
   },
   defaultVariants: {
     position: 'top',
-    opacity: 'visible',
-    padding: 'standard'
+    opacity: 'visible'
   }
 })

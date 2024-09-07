@@ -75,26 +75,4 @@ describe('Navbar', () => {
 
     expect(navbar).toHaveClass('border-b_gray.subtle')
   })
-
-  it('makes padding standard when progress is less than 1', async () => {
-    useScrollDirectionMock.mockReturnValue('up')
-    useScrollProgressMock.mockReturnValue(0)
-
-    render(<Navbar lang="en" dictionary={dictionary} />)
-
-    const navbar = screen.getByRole('banner')
-
-    expect(navbar).toHaveClass('md:p_xl')
-  })
-
-  it('makes padding compact when progress is greater than 1', async () => {
-    useScrollDirectionMock.mockReturnValue('up')
-    useScrollProgressMock.mockReturnValue(2)
-
-    render(<Navbar lang="en" dictionary={dictionary} />)
-
-    const navbar = screen.getByRole('banner')
-
-    expect(navbar).toHaveClass('py_m')
-  })
 })
