@@ -7,11 +7,12 @@ export const navbar = cva({
     display: 'flex',
     justifyContent: 'space-between',
     width: '100%',
-    padding: {
+    paddingX: {
       base: 'm',
       sm: 'l',
       md: 'xl'
     },
+    paddingY: 'm',
     backgroundColor: 'gray.900',
     transitionProperty: 'background-color, border-color, opacity, padding',
     ...sharedTransitionProperties
