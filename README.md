@@ -1,4 +1,4 @@
-# gorzelinski.com
+# <img src="public/images/logo.png" width="48" height="48" style="vertical-align:middle"/> gorzelinski.com
 
 A codebase for my [website](https://gorzelinski.com), [blog](https://gorzelinski.com/blog/), and [portfolio](https://gorzelinski.com/portfolio/). They are designed, coded, and written by me - [Matthew Gorzelinski](https://gorzelinski.com/about/).
 
