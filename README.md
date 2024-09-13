@@ -6,21 +6,7 @@ A codebase for my [website](https://gorzelinski.com), [blog](https://gorzelinski
 
 ## 🛠️ Built with
 
-<div style="display: flex; gap: 16px;">
-
-![TypeScript logo](https://img.shields.io/badge/typescript-grey?style=for-the-badge&logo=typescript)
-
-![Next.js logo](https://img.shields.io/badge/next.js-grey?style=for-the-badge&logo=next.js)
-
-![Panda CSS](https://img.shields.io/badge/pandacss-grey?style=for-the-badge&logo=pandacss)
-
-![Playwright](https://img.shields.io/badge/playwright-grey?style=for-the-badge&logo=playwright)
-
-![Jest logo](https://img.shields.io/badge/jest-grey?style=for-the-badge&logo=jest)
-
-![Vercel logo](https://img.shields.io/badge/vercel-grey?style=for-the-badge&logo=vercel)
-
-</div>
+![TypeScript logo](https://img.shields.io/badge/typescript-grey?style=for-the-badge&logo=typescript) ![Next.js logo](https://img.shields.io/badge/next.js-grey?style=for-the-badge&logo=next.js) ![Panda CSS](https://img.shields.io/badge/pandacss-grey?style=for-the-badge&logo=pandacss) ![Playwright](https://img.shields.io/badge/playwright-grey?style=for-the-badge&logo=playwright) ![Jest logo](https://img.shields.io/badge/jest-grey?style=for-the-badge&logo=jest) ![Vercel logo](https://img.shields.io/badge/vercel-grey?style=for-the-badge&logo=vercel)
 
 "If it ain't broke, don't fix it," people say. Even though my previous website was working pretty well, working _on it_ became harder and harder. That's why I migrated to a new tech stack.
 
