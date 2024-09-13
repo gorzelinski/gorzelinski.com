@@ -109,6 +109,7 @@ test.describe('Reading tests', () => {
     await expect(next).toBeVisible()
     await expect(newsletter).toBeVisible()
 
+    await next.scrollIntoViewIfNeeded()
     await next.click()
 
     await expect(prev).toBeVisible()
