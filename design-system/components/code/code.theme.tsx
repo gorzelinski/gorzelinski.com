@@ -10,7 +10,7 @@ export const codeTheme: PrismTheme = {
     {
       types: ['punctuation', 'constant', 'deleted'],
       style: {
-        color: token('colors.primary.500')
+        color: token('colors.primary.300')
       }
     },
     {
