@@ -1,17 +1,17 @@
 ---
 title: Kulisy powstawania mojej strony
-description: "Po kilku miesiącach projektowania, kodowania i pisania, w końcu opublikowałem moją stronę."
+description: 'Po kilku miesiącach projektowania, kodowania i pisania, w końcu opublikowałem moją stronę.'
 date: 2022-07-07T16:00:00+02:00
 updated: 2022-07-07T16:00:00+02:00
 image:
-  alt: "Kolaż makiet z moją stroną internetową"
-  src: "./gorzelinski-cover.png"
+  alt: 'Kolaż makiet z moją stroną internetową'
+  src: 'gorzelinski-cover.png'
 client: Ja
-services: ["UI/UX Design", "Frontend Development", "Tworzenie treści", "DevOps"]
+services: ['UI/UX Design', 'Frontend Development', 'Tworzenie treści', 'DevOps']
 deliverables:
-  ["Design system", "Strona internetowa", "Portfolio", "Blog", "Newsletter"]
-links: [{ text: "Rekurencja", href: "/portfolio/gorzelinski/" }]
-type: "project"
+  ['Design system', 'Strona internetowa', 'Portfolio', 'Blog', 'Newsletter']
+links: [{ text: 'Rekurencja', href: '/portfolio/gorzelinski/' }]
+type: 'project'
 ---
 
 ## Problem
@@ -24,7 +24,7 @@ type: "project"
 
 Mając to w pamięci, zacząłem generować pomysły. Zrobiłem zgrubne szkice każdej ze stron.
 
-![Szkice różnych sekcji mojej strony](./sketches.png)
+![Szkice różnych sekcji mojej strony](sketches.png)
 
 Nie jest to poziom szkiców Da Vinciego, ale były przydatne zanim zabrałem się za robienie makiet.
 
@@ -32,64 +32,64 @@ Nie jest to poziom szkiców Da Vinciego, ale były przydatne zanim zabrałem si�
 
 Wireframes powinny być pomiędzy szkicami, a prototypami o wysokiej szczegółowości. Nie przejmując się za bardzo fontami i kolorami, zrobiłem wiele takich makiet.
 
-![Makiety sekcji landing](./wireframes-landing.png)
+![Makiety sekcji landing](wireframes-landing.png)
 
-![Makiety strony portfolio](./wireframes-portfolio.png)
+![Makiety strony portfolio](wireframes-portfolio.png)
 
-![Makiety strony o mnie](./wireframes-about.png)
+![Makiety strony o mnie](wireframes-about.png)
 
-![Makiety strony blog](./wireframes-blog.png)
+![Makiety strony blog](wireframes-blog.png)
 
 ## Kolory
 
 Na wyborze kolorów spędziłem więcej czasu niż chciałbym przyznać. Ale po wielu godzinach poszukiwań (i testowania dostępności) doszedłem do porozumienia sam ze sobą. Paleta kolorów powinna być minimalistyczna, prosta, składać się z odcieni bieli i szarości. I oczywiście powinna zawierać niebieski akcent. Nie stoi za tym jakaś filozofia - po prostu lubię niebieski.
 
-![Palety kolorów mojej strony internetowej](./colors.png)
+![Palety kolorów mojej strony internetowej](colors.png)
 
 ## Typografia
 
 Chciałem, aby strona była zorientowana na typografię, więc kolejny kawał czasu spędziłem poszukując krojów pisma. Moim celem było zestawienie nowoczesnego fontu bezszeryfowego z bardziej klasycznym szeryfowym. Potrzebowałem także fontu do fragmentów kodu.
 
-![Montserrat - font dla nagłówków](./montserrat.png)
+![Montserrat - font dla nagłówków](montserrat.png)
 
-![Lora - font dla tekstu](./lora.png)
+![Lora - font dla tekstu](lora.png)
 
-![Fira Code - font dla fragmentów kodu](./fira-code.png)
+![Fira Code - font dla fragmentów kodu](fira-code.png)
 
 ## Design system
 
 Mając podstawy i trochę treści, zacząłem tworzyć system projektowania. Chciałem aby był elastyczny, spójny i łatwo skalowalny. Stworzyłem małe, abstrakcyjne elementy jak przyciski i nagłówki.
 
-![Elementy projektowe - przyciski](./buttons.png)
+![Elementy projektowe - przyciski](buttons.png)
 
 Używałem tych elementów w wielu różnych kontekstach, aby stworzyć bardziej konkretne komponenty, jak ten - pierwsza sekcja na stronie głównej.
 
 ```jsx
-import React from "react"
-import { useTranslation } from "react-i18next"
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 
-import { Hero, H1, P, Button, Tile } from "../elements"
-import Typewriter from "./typewriter"
+import { Hero, H1, P, Button, Tile } from '../elements'
+import Typewriter from './typewriter'
 
 const Landing = () => {
-  const { t } = useTranslation("components/landing")
+  const { t } = useTranslation('components/landing')
 
   return (
     <Hero>
       <Tile as="header">
-        <H1 $decorative aria-label={t("aria")}>
+        <H1 $decorative aria-label={t('aria')}>
           <Typewriter
             strings={[
-              t("typewriter.design"),
-              t("typewriter.code"),
-              t("typewriter.write"),
-              t("typewriter.create"),
+              t('typewriter.design'),
+              t('typewriter.code'),
+              t('typewriter.write'),
+              t('typewriter.create')
             ]}
           ></Typewriter>
         </H1>
-        <P $type="lead">{t("description")}</P>
+        <P $type="lead">{t('description')}</P>
         <Button as="a" $type="primary" $grow href="#say-hello">
-          {t("cta")}
+          {t('cta')}
         </Button>
       </Tile>
     </Hero>
@@ -101,11 +101,11 @@ export default Landing
 
 Mając elementy, komponenty i sekcje, stworzyłem responsywne szablony dla każdej strony.
 
-![Szablony strony głównej i portfolio](./templates-home-portfolio.png)
+![Szablony strony głównej i portfolio](templates-home-portfolio.png)
 
 Mój design nie jest skończony i bardziej przypomina proces. Cały czas go rozwijam. W związku z tym możesz zagrać w "znajdź różnicę" pomiędzy tym pokazem, a aktualną wersją mojej strony.
 
-![Szablony strony o mnie i bloga](./templates-about-blog.png)
+![Szablony strony o mnie i bloga](templates-about-blog.png)
 
 Zauważyłem, że elastyczność jest pożądana podczas całego procesu. Podobnie jak przerwy - dają nową perspektywę. Nowe pomysły przychodziły do mnie w różnych etapach procesu i w nieoczekiwanych momentach. Jak pomysł na pasek postępu - znalazłem go przeglądając internet. Tak, ukradłem go i się tego nie wstydzę!
 
@@ -119,12 +119,6 @@ Do zaimplementowania mojej strony użyłem generatora stron statycznych - Gatsby
 
 Jeżeli strony są generowane wcześniej, skąd wiedzieć jaki motyw wybrał użytkownik? Zaimplementowanie funkcjonalności zmieniania motywów było dla mnie niespodziewanym wyzwaniem. Ale po przeczytaniu o procesie budowania i testach udało mi się zrobić, aby działało to gładko.
 
-<img
-  style="max-width: 100%; border: 1px var(--color-gray-80) solid;"
-  alt="Zmiana motywu na mojej stronie internetowej"
-  src="./theme-switch.gif"
-></img>
-
 ## Testowanie
 
 Poza manualnymi testami, napisałem zautomatyzowane testy. Użyłem frameworka `Jest` do testowania komponentów. Do testowania integracji pomiędzy komponentami i bardziej złożonych zachowań użytkownika, wykorzystałem framework `Cypress` wraz z `cypress-axe`. Te testy pokrywały różne aspekty strony - dostępność, internacjonalizację, SEO i więcej.
@@ -133,12 +127,12 @@ Poza manualnymi testami, napisałem zautomatyzowane testy. Użyłem frameworka `
 
 Będę się starał dodawać treści i funkcjonalności regularnie, dlatego długotrwała konserwacja była celem od początku. Uruchomiłem ciągłą integrację wykorzystując akcje GitHub, aby zminimalizować liczbę błędów i zyskać więcej pewności co do mojego projektu. Każda zmiana w kodzie uruchamia serię weryfikacji i testów.
 
-![Graf zadań w ciągłej integracji](./ci.png)
+![Graf zadań w ciągłej integracji](ci.png)
 
 Używam konwencji Conventional Commits do formatowania wiadomości i GitHub Flow jako strategię rozgałęziania.
 
-<Callout type="info">
+<Callout variant="info">
 
-W momencie pisania, używam języka JavaScript w tym projekcie. Ale być może przejdę na Typescript dla dodatkowych testów typów. Będę się starał, aby opis tego projektu był aktualny.
+Niedawno uaktualniłem moją stronę do nowego stosu technologicznego wykorzystując TypeScript i Next.js. Dotknąłem każdej części mojej strony, więc jest wiele do napisania. Wkrótce zaktualizuję ten projekt. Bądźcie czujni!
 
 </Callout>

@@ -1,16 +1,16 @@
 ---
 title: An-lam - strona firmowa
-description: "An-lam to mała, lokalna firma zajmująca się naprawą łodzi i jachtów. Jej niszowy charakter sprawia, że obsługuje także odległych klientów."
+description: 'An-lam to mała, lokalna firma zajmująca się naprawą łodzi i jachtów. Jej niszowy charakter sprawia, że obsługuje także odległych klientów.'
 date: 2021-05-19T16:00:00+02:00
 updated: 2021-05-19T16:00:00+02:00
 image:
-  alt: "Makieta laptopa i smartfona zawierająca stronę An-lam"
-  src: "./an-lam-cover.png"
+  alt: 'Makieta laptopa i smartfona zawierająca stronę An-lam'
+  src: 'an-lam-cover.png'
 client: An-lam
-services: ["UI/UX Design", "Frontend Development", "Tworzenie treści", "DevOps"]
-deliverables: ["Design system, Strona internetowa"]
-links: [{ text: "an-lam.pl", href: "https://an-lam.pl" }]
-type: "project"
+services: ['UI/UX Design', 'Frontend Development', 'Tworzenie treści', 'DevOps']
+deliverables: ['Design system, Strona internetowa']
+links: [{ text: 'an-lam.pl', href: 'https://an-lam.pl' }]
+type: 'project'
 ---
 
 ## Problem
@@ -22,7 +22,7 @@ Zanim zacząłem pracę, spotkałem się z właścicielem firmy, aby zrozumieć 
 Przed przystąpieniem do projektowania zrobiłem gruntowny research. Przejrzałem mnóstwo stron konkurencji - od lokalnych szkutników po czartery jachtów. Podesłałem kilka linków właścicielowi, aby zorientować się w jego guście estetycznym.
 Przydatne także okazały się projekty marynistyczne na _dribble_ i _behance_. Z ich pomocą stworzyłem moodboard, do którego wracałem podczas projektowania.
 
-![Moodboard dla strony an-lam](./moodboard.png)
+![Moodboard dla strony an-lam](moodboard.png)
 
 ## Sitemap
 
@@ -32,7 +32,7 @@ Witryna z założenia miała być prosta, dlatego mapa strony nie jest złożona
 
 Projektowanie zacząłem od przygotowania kilku, zgrubnych szkiców sekcji i podstrony realizacje. Następnie szybko przeszedłem do eksperymentowania z róznymi fontami i kolorami. Na podstawie szkiców i eksperymentów przygotowałem kilka próbnych układów, które podesłałem właścicielowi. Jego decyzje wpłynęły na dalsze prace.
 
-![Testowe układy sekcji na stronie głównej](./wireframes.png)
+![Testowe układy sekcji na stronie głównej](wireframes.png)
 
 ## Treści
 
@@ -46,17 +46,17 @@ Na potrzeby projektu stworzyłem prosty, ale formalny design system. Podzieliłe
 Podstawą każdego, takiego systemu są fonty i kolory.
 Zarówno mi jak i właścicielowi spodobał się klasyczny font - [Old Standard TT](https://fonts.google.com/specimen/Old+Standard+TT). Sparowałem go z prostym, geometrycznym fontem [Questrial](https://fonts.google.com/specimen/Questrial), dla uzyskania kontrastu. Myślę, że to połączenie dobrze podkreśla zamiłowanie właściciela do klasycznych rzeczy, jego wieloletnie doświadczenie i lokalny charakter firmy.
 
-![Old Standard TT - nagłówki](./old-standard-tt.png)
+![Old Standard TT - nagłówki](old-standard-tt.png)
 
-![Questrial - tekst](./questrial.png)
+![Questrial - tekst](questrial.png)
 
 Paleta kolorów składa się z odcieni granatu, bieli i szarości. Nawiązuje do morza, jachtów i minimalizmu. Dostępność strony była dla mnie również istotna, dlatego przetestowałem kontrast kolorów.
 
-![Design system - kolory](./design-system-colors.png)
+![Design system - kolory](design-system-colors.png)
 
 ## Architektura
 
-Mając projekt graficzny i treści mogłem przystąpić do kodowania (w zasadzie, poszczególne etapy przeplatały się ze sobą, ale dla uproszczenia przedstawiam wszystko sekwencyjnie). Biorąc pod uwagę fakt, że treści na stronie nie będą często aktualizowane, strona nie będzie szczególnie interaktywna, a wydajność jest istotna, zdecydowałem się na architekturę [Jamstack](/blog/jamstack-what-why-how/).
+Mając projekt graficzny i treści mogłem przystąpić do kodowania (w zasadzie, poszczególne etapy przeplatały się ze sobą, ale dla uproszczenia przedstawiam wszystko sekwencyjnie). Biorąc pod uwagę fakt, że treści na stronie nie będą często aktualizowane, strona nie będzie szczególnie interaktywna, a wydajność jest istotna, zdecydowałem się na architekturę [Jamstack](/pl/blog/jamstack-what-why-how/).
 
 ## Gatsby
 
@@ -79,15 +79,15 @@ W projekcie wykorzystałem framework `Jest` wraz z biblioteką `React Testing Li
 Tworzona strona nie posiadała zbyt wiele logiki, którą zazwyczaj obejmują takie testy. Mimo to, były one całkiem przydatne - wykorzystałem je do sprawdzenia niezbędnej treści na stronie.
 
 ```jsx
-import React from "react"
-import { render } from "@testing-library/react"
-import { ThemeProvider } from "styled-components"
+import React from 'react'
+import { render } from '@testing-library/react'
+import { ThemeProvider } from 'styled-components'
 
-import Light from "../../themes/light"
-import { Services } from "../Services"
+import Light from '../../themes/light'
+import { Services } from '../Services'
 
-describe("Services", () => {
-  it("has caption", () => {
+describe('Services', () => {
+  it('has caption', () => {
     const { getByText } = render(
       <ThemeProvider theme={Light}>
         <Services></Services>
@@ -95,23 +95,23 @@ describe("Services", () => {
     )
     expect(getByText(/oferta/i)).toBeDefined()
   })
-  it("has title", () => {
+  it('has title', () => {
     const { getByRole } = render(
       <ThemeProvider theme={Light}>
         <Services></Services>
       </ThemeProvider>
     )
-    expect(getByRole("heading", { level: 2 })).toBeDefined()
+    expect(getByRole('heading', { level: 2 })).toBeDefined()
   })
-  it("has categories and corresponding lists of services", () => {
+  it('has categories and corresponding lists of services', () => {
     const { getAllByRole } = render(
       <ThemeProvider theme={Light}>
         <Services></Services>
       </ThemeProvider>
     )
-    const categories = getAllByRole("heading", { level: 3 })
-    const services = getAllByRole("list")
-    services.forEach(service => {
+    const categories = getAllByRole('heading', { level: 3 })
+    const services = getAllByRole('list')
+    services.forEach((service) => {
       expect(service.children.length).toBeGreaterThan(1)
     })
     expect(categories.length).toBeGreaterThan(1)
@@ -123,12 +123,6 @@ describe("Services", () => {
 
 Poza testami jednostkowymi stworzyłem także kilka testów E2E. W tym celu, dodałem do projektu framework `Cypress` wraz z biblioteką `Cypress Testing Library`. Ujednoliciłem w ten sposób składnię wyszukiwania elementów DOM. Testy E2E wykorzystałem do symulacji zachowań użytkownika: przeglądania sekcji i podstron, klikania w poszczególne linki itp.
 Bardzo przydatna okazała się także biblioteka `cypress-axe`. Wykryła kilka problemów związanych z dostępnością strony i pomogła mi w ich usunięciu.
-
-<img
-  style="width: 100%;"
-  alt="Prezentacja testów e2e"
-  src="./e2e-tests.gif"
-></img>
 
 ## Github
 
@@ -143,6 +137,6 @@ Po połączeniu z repozytorium, w projekcie uruchomiłem ciągłą integrację. 
 
 Efektem mojej pracy jest minimalistyczna, responsywna, estetyczna i wydajna strona internetowa, która uzyskuje najwyższe wyniki w audycie lighthouse.
 
-![Sekcja O nas - komputer stacjonarny](./about-us.png)
+![Sekcja O nas - komputer stacjonarny](about-us.png)
 
-![Różne sekcje na urządzeniach mobilnych](./sections-mobile.png)
+![Różne sekcje na urządzeniach mobilnych](sections-mobile.png)

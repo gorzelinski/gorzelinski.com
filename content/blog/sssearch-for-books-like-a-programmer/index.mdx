@@ -1,15 +1,15 @@
 ---
 title: Sssearch for books like a programmer
-description: "I like to read books, and I spend many hours searching for them. So, I automated this process with a Python script that would scrape books from the web."
+description: 'I like to read books, and I spend many hours searching for them. So, I automated this process with a Python script that would scrape books from the web.'
 date: 2022-08-22T20:00:00+02:00
 updated: 2022-08-22T20:00:00+02:00
 image:
-  alt: "Hand with a magnifying glass inspecting the laptop keyboard"
-  caption: "Photo by Agence Olloweb"
-  src: "./agence-olloweb-d9ILr-dbEdg-unsplash.jpg"
-categories: ["data science", "computer science"]
-tags: ["python", "web", "scraping", "books"]
-type: "post"
+  alt: 'Hand with a magnifying glass inspecting the laptop keyboard'
+  caption: 'Photo by Agence Olloweb'
+  src: 'agence-olloweb-d9ILr-dbEdg-unsplash.jpg'
+categories: ['data science', 'computer science']
+tags: ['python', 'web', 'scraping', 'books']
+type: 'post'
 ---
 
 I like to read books. Different genres fill my bookshelf: economy, psychology, philosophy, biographies, nonfiction, and especially - science. Bonobo from Frans de Waal's book cover looks at Einstein's prominent face. Before I put anything there, I search. I can spend an hour before I click “buy” in an online bookstore. I look for recommendations everywhere: asking friends, and strangers, browsing through Quora, Medium, and of course - Goodreads. Browsing the web is fun, but every hour spent searching is taking time from actual reading. So, like a real programmer, let's spend other hours automating this process!
@@ -248,18 +248,18 @@ print(best_books)  # List of best books from 10 pages
 I modified the URL to consist current page. I iterated over pages with the `range` function. After scraping books, the last step has left - saving them to a file. Below the scraping loop, I added another snippet that writes down the best books to a markdown file.
 
 ```python
-...
+# ...
 from operator import itemgetter
 
-...
+# ...
 
 subject = "science"
 
-...
+# ...
 
 best_books = [] # Here are scraped books
 
-...
+# ...
 
 file = open(f"best-books-{subject}.md", "w")
 file.write(f"## Best books about {subject}\n")
@@ -272,7 +272,7 @@ for book in best_books:
 file.close()
 ```
 
-I used Python's built-in functions: `open`, `write`, and `close` to save the best books into a file. The first line in a file is an `h2` header with the subject. `itemgetter` is a function to extract data from a dictionary neatly. Then, I used the data to create a list item for every book. There is some custom HTML markup to make it prettier. And that's it - we have the best books in a file. Here's the output and how it is displayed:
+I used Python's built-in functions: `open`, `write`, and `close` to save the best books into a file. The first line in a file is an `h2` header with the subject. `itemgetter` is a function to extract data from a dictionary neatly. Then, I used the data to create a list item for every book. There is some custom HTML markup to make it prettier. And that's it - we have the best books in a file. Here's the output...
 
 ```markdown
 ## Best books about science
@@ -281,6 +281,8 @@ I used Python's built-in functions: `open`, `write`, and `close` to save the bes
 - [How to Change Your Mind: What the New Science of Psychedelics Teaches Us About Consciousness, Dying, Addiction, Depression, and Transcendence](https://www.goodreads.com/book/show/36613747-how-to-change-your-mind?from_search=true&from_srp=true&qid=E5tgn4SYZ5&rank=3)<br />by Michael Pollan | <small title="Average rating">4.24⭐</small> <small>62,544 ratings</small>
 - [Why We Sleep: The New Science of Sleep and Dreams](https://www.goodreads.com/book/show/36303871-why-we-sleep?from_search=true&from_srp=true&qid=E5tgn4SYZ5&rank=129)<br />by Matthew Walker | <small title="Average rating">4.38⭐</small> <small>140,971 ratings</small>
 ```
+
+...and how it is displayed:
 
 ## Best books about science
 
@@ -358,7 +360,7 @@ I've refactored it a bit. I've put the logic for scraping and saving books into 
 I thought running the script directly from the terminal without modifying it would be cool. So, I used custom line arguments to provide the necessary data. We can capture info passed to the script with the `argv` module. The first argument is a script name, and the others are custom.
 
 ```python
-...
+# ...
 from sys import argv
 
 subject = argv[1]
@@ -367,7 +369,7 @@ stop_page = int(argv[3])
 average_rating_threshold = float(argv[4])
 rating_threshold = int(argv[5])
 
-...
+# ...
 
 best_books = scrape_books(subject, start_page, stop_page,
                           average_rating_threshold, rating_threshold)

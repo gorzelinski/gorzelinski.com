@@ -4,12 +4,12 @@ description: "With the growing usage of TypeScript, I think it's time to start l
 date: 2023-03-05T11:00:00+02:00
 updated: 2023-03-05T11:00:00+02:00
 image:
-  alt: "A sea-colored padlock closes a blue gate"
-  caption: "Photo by Maxim Zhgulev"
-  src: "./maxim-zhgulev-5tmItJfHkIc-unsplash.jpg"
-categories: ["web development"]
-tags: ["typescript", "javascript", "programming"]
-type: "post"
+  alt: 'A sea-colored padlock closes a blue gate'
+  caption: 'Photo by Maxim Zhgulev'
+  src: 'maxim-zhgulev-5tmItJfHkIc-unsplash.jpg'
+categories: ['web development']
+tags: ['typescript', 'javascript', 'programming']
+type: 'post'
 ---
 
 Recently I've started learning TypeScript (technically, I used to code in Angular, so TypeScript is not new to me, but I wasn't using it since then). I was hesitant at first, not gonna lie. The TypeScript code seemed to me bloated and inelegant. But let's be honest - the only real downside of TypeScript is that you need to spend the time to learn it. I'm only human, after all - the change can be frightening. But change is the only constant in life. It can be good. And with the growing usage of TypeScript, that's a good moment to start learning it. Learn with me!
@@ -18,7 +18,7 @@ Recently I've started learning TypeScript (technically, I used to code in Angula
 
 Fundamentally, TypeScript is a **superset** of JavaScript. What does this mean? Let me explain. You probably remember sets from school - you know, these intersecting circles. It's a Venn diagram - a graphical representation that shows the logical relation between these sets. There is a similar relationship between JavaScript and TypeScript - TypeScript is a superset of JavaScript, or JavaScript is a subset of TypeScript. Every line of JS code is a valid TS code, but not the other way around.
 
-![JavaScript and TypeScript venn diagram](./js-ts-venn-diagram.png)
+![JavaScript and TypeScript venn diagram](js-ts-venn-diagram.png)
 
 It means that TypeScript builds up on JavaScript. It adds new features and advantages to the vanilla language. Actually, TypeScript is both **a language** and **a tool**. It's also a powerful compiler which you run to compile your TypeScript code to JavaScript. Why? Because browsers only understand JS code.
 
@@ -71,7 +71,7 @@ JavaScript doesn't understand TypeScript assignments. Types are used by the TS c
 let name: string // The name variable has a type of string.
 ```
 
-<Callout type="warning">
+<Callout variant="warning">
 
 The core primitive types in TypeScript are all in **lowercase.**
 
@@ -95,7 +95,7 @@ To define a string, use double or single quotes. Template strings using backtick
 
 ```typescript
 const maxim = "Medals don't help me sleep at night." // TypeScript infers the string is a constant.
-let name = "Sam" // TypeScript infers it should be a string type.
+let name = 'Sam' // TypeScript infers it should be a string type.
 let name: string // The variable will hold a string.
 ```
 
@@ -113,8 +113,8 @@ You define object types similarly to standard JS objects. But, instead of key-va
 
 ```typescript
 const person = {
-  name: "Sam",
-  age: 66,
+  name: 'Sam',
+  age: 66
 }
 
 // TypeScript infers.
@@ -125,14 +125,14 @@ const person: {
 
 // You can define generic objects like this.
 const person: object = {
-  name: "Sam",
-  age: 66,
+  name: 'Sam',
+  age: 66
 }
 
 // You can also define a more specific object structure.
 const person: { name: string } = {
-  name: "Sam",
-  age: 66, // This property is not in the type, so it causes an error.
+  name: 'Sam',
+  age: 66 // This property is not in the type, so it causes an error.
 }
 ```
 
@@ -142,7 +142,7 @@ In JavaScript, you can mix different data types - one array can consist of strin
 
 ```typescript
 const person = {
-  hobbies: ["Krav maga", "sneaking"],
+  hobbies: ['Krav maga', 'sneaking']
 }
 
 // TypeScript infers.
@@ -163,7 +163,7 @@ Tuples are not available in vanilla JavaScript - they are added by TypeScript. T
 
 ```typescript
 const person = {
-  role: [3, "agent"],
+  role: [3, 'agent']
 }
 
 // TypeScript infers.
@@ -175,7 +175,7 @@ const person: {
 const person: {
   role: [number, string]
 } = {
-  role: [3, "agent"],
+  role: [3, 'agent']
 }
 ```
 
@@ -187,17 +187,17 @@ An enum type is a custom type in TypeScript. It gives you an enumerated list. An
 // Labels are often in uppercase.
 enum Role {
   AGENT,
-  INTEL,
+  INTEL
 }
 
 const person = {
-  role: Role.AGENT,
+  role: Role.AGENT
 }
 
 // You can change the default behavior of an enum.
 enum Role {
-  AGENT = "AGENT",
-  INTEL,
+  AGENT = 'AGENT',
+  INTEL
 }
 ```
 
@@ -237,7 +237,7 @@ Besides built-in types, TypeScript also allows you to create custom types (also 
 
 ```typescript
 // The convention is to define custom types in uppercase.
-type State = "idle" | "loading" | "success"
+type State = 'idle' | 'loading' | 'success'
 
 type Person = {
   name: string
@@ -245,7 +245,7 @@ type Person = {
 }
 ```
 
-<Callout type="warning">
+<Callout variant="warning">
 
 You can use any name for your custom type, but you can't use reserved JavaScript (or TypeScript) keywords like `Date` or `Math`.
 
@@ -285,13 +285,13 @@ function add(n1: number, n2: number): string {
 // You can use the void return type
 // if a function doesn't return a value.
 function printResult(num): void {
-  console.log("Result: " + num)
+  console.log('Result: ' + num)
 }
 
 // Undefined is a valid type in TypeScript,
 // but not if a function doesn't return anything.
 function printResult(num: number): undefined {
-  console.log("Result: " + num)
+  console.log('Result: ' + num)
 }
 ```
 
@@ -317,7 +317,7 @@ let input: unknown
 let name: string
 
 input = 5
-name = "Sam"
+name = 'Sam'
 // This won't work because the unknown
 // is not guaranteed to be a string.
 name = input
@@ -328,7 +328,7 @@ let input: any
 let name: string
 
 input = 5
-input = "Sam"
+input = 'Sam'
 // On the other hand, this will work
 // because any is the most flexible type.
 name = input

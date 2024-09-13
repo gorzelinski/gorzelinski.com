@@ -1,15 +1,15 @@
-﻿---
+---
 title: Converting design tokens to CSS variables with Node.js
-description: "Converting design tokens is an error-prone process - I found about it the hard way. So, I made a simple Node.js script that will help me with that task."
+description: 'Converting design tokens is an error-prone process - I found about it the hard way. So, I made a simple Node.js script that will help me with that task.'
 date: 2022-09-14T16:00:00+02:00
 updated: 2022-09-14T16:00:00+02:00
 image:
-  alt: "List of CSS variables in Visual Studio Code."
-  caption: "Photo by Pankaj Patel"
-  src: "./pankaj-patel-4oAFasAPftg-unsplash.jpg"
-categories: ["web development"]
-tags: ["node", "javascript", "css"]
-type: "post"
+  alt: 'List of CSS variables in Visual Studio Code.'
+  caption: 'Photo by Pankaj Patel'
+  src: 'pankaj-patel-4oAFasAPftg-unsplash.jpg'
+categories: ['web development']
+tags: ['node', 'javascript', 'css']
+type: 'post'
 ---
 
 Recently, I was converting JavaScript design tokens into CSS variables. I had the JS file with different website aspects stored in object properties: font sizes, spaces, colors, etc. It looked similar to this snippet.
@@ -21,21 +21,21 @@ module.exports = {
   font: {
     family: {
       heading: "'Source Sans Pro', sans-serif",
-      body: "'Roboto', sans-serif",
+      body: "'Roboto', sans-serif"
     },
     weight: {
-      normal: "400",
-      semibold: "500",
-    },
+      normal: '400',
+      semibold: '500'
+    }
   },
   color: {
-    background: "#ffffff",
+    background: '#ffffff',
     primary: {
-      light: "#4266b3",
-      default: "#16233f",
-      dark: "#06080f",
-    },
-  },
+      light: '#4266b3',
+      default: '#16233f',
+      dark: '#06080f'
+    }
+  }
   //more tokens
 }
 ```
@@ -48,12 +48,12 @@ I wanted to use CSS variables, so I copy-pasted properties from the JS file into
 :root {
   --font-family-heading: "'Source Sans Pro', sans-serif";
   --font-family-body: "'Roboto', sans-serif";
-  --font-weight-normal: "400";
-  --font-weight-semibold: "500";
-  --color-background: "#ffffff";
-  --color-primary-light: "#4266b3";
-  --color-primary-default: "#16233f";
-  --color-primary-dark: "#06080f";
+  --font-weight-normal: '400';
+  --font-weight-semibold: '500';
+  --color-background: '#ffffff';
+  --color-primary-light: '#4266b3';
+  --color-primary-default: '#16233f';
+  --color-primary-dark: '#06080f';
   /* more variables */
 }
 ```
@@ -75,7 +75,7 @@ Having node installed, let's init new project with `npm init`. We probably won't
 With the environment set up, let's create our first file - index.js. If everything works, running the script should print "hello" in our terminal.
 
 ```js
-console.log("Hello")
+console.log('Hello')
 ```
 
 First, let's import the node modules we will use. I'll use the `require()` syntax for dynamic imports. But you can also use standard ES modules - add the `"type": "module"` field to package.json for that purpose.
@@ -83,15 +83,15 @@ First, let's import the node modules we will use. I'll use the `require()` synta
 ```js
 //index.js
 
-const { argv } = require("node:process")
-const { parse, format, normalize } = require("node:path")
-const { writeFile } = require("node:fs/promises")
+const { argv } = require('node:process')
+const { parse, format, normalize } = require('node:path')
+const { writeFile } = require('node:fs/promises')
 ```
 
 Then we need to import style tokens from the JS file. We can use require again, but this time with a local path to styles as an argument.
 
 ```js
-const tokens = require("./tokens.js")
+const tokens = require('./tokens.js')
 ```
 
 Having object with styles imported, it's time for a more complex part - converting them into CSS styles. All tokens are in (nested) objects. For example, the body font size is sequentially nested in font, size, and body. We want to transform it into a CSS variable that looks like this: `--font-size-body: 1.5rem`. So, let's think about what we need to do. We need to concatenate keys from objects with hyphens, and when there are no more nested objects, we need to add a string value to our freshly constructed CSS variable.
@@ -100,7 +100,7 @@ Having object with styles imported, it's time for a more complex part - converti
 const tokensToCss = (object, base = `-`) =>
   Object.entries(object).reduce((css, [key, value]) => {
     let newBase = base + `-${key}`
-    if (typeof value !== "object") {
+    if (typeof value !== 'object') {
       return css + newBase + `: ${value};\n`
     }
     return css + tokensToCss(value, newBase)
@@ -110,9 +110,9 @@ const tokensToCss = (object, base = `-`) =>
 This short snippet can be a little mind-bending, so bear with me. We created a parse function with two parameters: object to parse and current base. With `Object.entries()` method, we return key-value pairs inside an array. On the returned array, we use the `reduce()` method. It takes two parameters: the callback function to execute with each array element and the initial value - an empty string. The mentioned callback takes two parameters: the previous value, where we will store accumulated variables, and the current value - array (destructured to key and value). Inside the callback, we immediately create a new base. It is an old base concatenated with a hyphen and the current key. We define CSS variables with two hyphens, so the base is a hyphen by default. We always want to concatenate the object key. The thinking goes to the value. There are only two possibilities: the value can be another nested object or primitive. If the value is an object, we also want to parse it. So, in that case, we return the accumulator plus the result of the function invoking itself. But, this time, the parsing function takes the value as an object. The nested object can have multiple properties, so the parsing function needs to take a new base and apply it to them all. If there are no more nested objects, we want to wrap up our CSS variable with the value, semicolon, and a new line. The result is a list of CSS variables - one under the other - created from a passed object.
 
 ```js
-const { name } = parse("./tokens.js")
+const { name } = parse('./tokens.js')
 const cssVariables = tokensToCss(tokens)
-const cssClass = `:root {\n${cssVariables.replaceAll("--", "  --")}}\n`
+const cssClass = `:root {\n${cssVariables.replaceAll('--', '  --')}}\n`
 
 writeFile(`${name}.css`, cssClass)
 ```
@@ -121,8 +121,8 @@ CSS variables need to be in some class, so I put them inside the `:root` pseudo-
 
 ```css
 :root {
-  --font-family-heading: "Source Sans Pro", sans-serif;
-  --font-family-body: "Roboto", sans-serif;
+  --font-family-heading: 'Source Sans Pro', sans-serif;
+  --font-family-body: 'Roboto', sans-serif;
   --font-weight-normal: 400;
   --font-weight-semibold: 500;
   --color-background: #ffffff;
@@ -136,7 +136,7 @@ Our script works, but the path is hard-coded. I changed it to a variable. Then I
 
 ```js
 const args = argv.slice(2)
-const tokensPath = format({ root: "./", base: normalize(args[0]) })
+const tokensPath = format({ root: './', base: normalize(args[0]) })
 const tokens = require(tokensPath)
 const { name } = parse(tokensPath)
 ```
@@ -148,14 +148,14 @@ Now the script can be executed like this: `node index.js tokens.js`.
 I refactored the final script a bit. I added some basic error handling with custom messages. I also extracted saving logic to an asynchronous function because the `writeFile()` method in our example is promise based.
 
 ```js
-const { argv } = require("node:process")
-const { parse, format, normalize } = require("node:path")
-const { writeFile } = require("node:fs/promises")
+const { argv } = require('node:process')
+const { parse, format, normalize } = require('node:path')
+const { writeFile } = require('node:fs/promises')
 
 const tokensToCss = (object = {}, base = `-`) =>
   Object.entries(object).reduce((css, [key, value]) => {
     let newBase = base + `-${key}`
-    if (typeof value !== "object") {
+    if (typeof value !== 'object') {
       return css + newBase + `: ${value};\n`
     }
     return css + tokensToCss(value, newBase)
@@ -165,22 +165,22 @@ const saveTokens = async (name, tokens) => {
   try {
     await writeFile(`${name}.css`, tokens)
   } catch (e) {
-    console.log("There was an error while saving a file.\n", e)
+    console.log('There was an error while saving a file.\n', e)
   }
 }
 
 try {
   const args = argv.slice(2)
-  const tokensPath = format({ root: "./", base: normalize(args[0]) })
+  const tokensPath = format({ root: './', base: normalize(args[0]) })
   const tokens = require(tokensPath)
   const { name } = parse(tokensPath)
 
   const cssVariables = tokensToCss(tokens)
-  const cssClass = `:root {\n${cssVariables.replaceAll("--", "  --")}}\n`
+  const cssClass = `:root {\n${cssVariables.replaceAll('--', '  --')}}\n`
   saveTokens(name, cssClass)
 } catch (e) {
   console.log(
-    "Provide a correct argument - a relative path to design tokens.\n",
+    'Provide a correct argument - a relative path to design tokens.\n',
     e
   )
 }

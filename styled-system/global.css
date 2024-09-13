@@ -1,0 +1,71 @@
+@layer base {
+  :root {
+    --made-with-panda: '🐼';
+    }
+
+  *, *::before, *::after, ::backdrop {
+    --blur:   ;
+    --brightness:   ;
+    --contrast:   ;
+    --grayscale:   ;
+    --hue-rotate:   ;
+    --invert:   ;
+    --saturate:   ;
+    --sepia:   ;
+    --drop-shadow:   ;
+    --backdrop-blur:   ;
+    --backdrop-brightness:   ;
+    --backdrop-contrast:   ;
+    --backdrop-grayscale:   ;
+    --backdrop-hue-rotate:   ;
+    --backdrop-invert:   ;
+    --backdrop-opacity:   ;
+    --backdrop-saturate:   ;
+    --backdrop-sepia:   ;
+    --scroll-snap-strictness: proximity;
+    --border-spacing-x: 0;
+    --border-spacing-y: 0;
+    --translate-x: 0;
+    --translate-y: 0;
+    --rotate: 0;
+    --skew-x: 0;
+    --skew-y: 0;
+    --scale-x: 1;
+    --scale-y: 1;
+    }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+
+  html ::selection {
+    background-color: var(--colors-primary-800);
+    color: var(--colors-primary-300);
+    }
+
+  html ::-webkit-scrollbar {
+    width: var(--spacing-m);
+    background-color: var(--colors-gray-700);
+    cursor: pointer;
+    }
+
+  html ::-webkit-scrollbar:horizontal {
+    border-radius: var(--radii-xs);
+    height: var(--spacing-s);
+    }
+
+  html ::-webkit-scrollbar-thumb {
+    background-color: var(--colors-gray-600);
+    border-radius: var(--radii-xs);
+    cursor: pointer;
+    }
+
+  html ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--colors-gray-500);
+    }
+
+  html ::-webkit-scrollbar-thumb:active {
+    background-color: var(--colors-gray-400);
+    }
+}

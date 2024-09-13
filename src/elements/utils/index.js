@@ -1,5 +1,0 @@
-export * from "./border"
-export * from "./hidden"
-export * from "./icons"
-export * from "./margin"
-export * from "./media"

@@ -1,15 +1,15 @@
-﻿---
+---
 title: Next.js overview in 1000 words
 description: "Next.js is one of many static site generators. But it has one feature that stands out from the competition. In this brief overview, I'll try to describe it."
 date: 2022-10-24T16:00:00+02:00
 updated: 2023-11-28T16:13:00+02:00
 image:
-  alt: "Next.js logo"
-  caption: "Next.js logo"
-  src: "./next-js-logo.png"
-categories: ["web development"]
-tags: ["next.js", "csr", "ssr", "ssg", "isr", "jamstack"]
-type: "post"
+  alt: 'Next.js logo'
+  caption: 'Next.js logo'
+  src: 'next-js-logo.png'
+categories: ['web development']
+tags: ['next.js', 'csr', 'ssr', 'ssg', 'isr', 'jamstack']
+type: 'post'
 ---
 
 "Every day, a new JavaScript framework is born," people say. The sentence is exaggerated and funny, but there is some truth. In the rapidly changing world of JavaScript development, it's easy to pick up a new, shiny tool and ditch the old one. However, it often turns out that the new framework is not the best for our use case. Keeping that in mind, I promised myself I would not hop on any hype train. But with the new release of Next.js and almost 100 000 stars on GitHub, the hype train is REAL. Still, instead of blindly boarding, I'll try to make a brief overview of Next.js. And I'll attempt to make it in 1000 words.
@@ -18,7 +18,7 @@ type: "post"
 
 First, let's clear some misconceptions I saw. Next.js is **not** an alternative to frameworks like Vue, Angular, or React. It's more of an alternative to static site generators like Gatsby or Hugo (it's not 100% accurate, but we'll get to that). You don't use React or Next.js. Of course, you can choose between them, but you use React either way. Next builds on top of React. So, we can say it's a framework<sup>2</sup> or meta-framework.
 
-<Callout type="info">
+<Callout variant="info">
 
 If you want to see static site generators in context, I wrote a post about the whole [Jamstack architecture](/blog/jamstack-what-why-how/).
 
@@ -51,13 +51,13 @@ Why babble so much about rendering methods in the Next.js post? Because I think 
 
 The team behind Next.js has created a custom React hook for data fetching. It is a recommended way to fetch data on the client side.
 
-```jsx #Client-Side Rendering in Next.js
-import useSWR from "swr"
+```jsx title="Client-Side Rendering in Next.js"
+import useSWR from 'swr'
 
-const fetcher = (...args) => fetch(...args).then(res => res.json())
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 function Profile() {
-  const { data, error } = useSWR("/api/profile-data", fetcher)
+  const { data, error } = useSWR('/api/profile-data', fetcher)
 }
 ```
 
@@ -65,10 +65,10 @@ function Profile() {
 
 Exporting `getServerSideProps` from a page allows rendering the page on each request. The page will use the data returned from this function.
 
-```jsx #Server-Side Rendering in Next.js
+```jsx title="Server-Side Rendering in Next.js"
 export async function getServerSideProps(context) {
   return {
-    props: {},
+    props: {}
   }
 }
 ```
@@ -77,10 +77,10 @@ export async function getServerSideProps(context) {
 
 You can use static site generation with the `getStaticProps` function. Next.js uses returned data to pre-render a page at build time. This function works with `getStaticPaths` to generate paths dynamically from the delivered content.
 
-```jsx #Static Site Generation in Next.js
+```jsx title="Static Site Generation in Next.js"
 export async function getStaticProps(context) {
   return {
-    props: {},
+    props: {}
   }
 }
 ```
@@ -89,11 +89,11 @@ export async function getStaticProps(context) {
 
 The strategy is specific to Next.js. It attempts to solve static site generation issues. It allows you to update static pages after you've built your website. So you no longer need to rebuild the entire thing. To use it, you need to add the `revalidate` prop to `getStaticProps`.
 
-```jsx #Incremental Static Regeneration in Next.js
+```jsx title="Incremental Static Regeneration in Next.js"
 export async function getStaticProps(context) {
   return {
     props: {},
-    revalidate: 10,
+    revalidate: 10
   }
 }
 ```
@@ -104,7 +104,7 @@ The best thing is you can pick a rendering strategy on a per-route basis. You ca
 
 Besides multiple data fetching methods, Next.js offers solutions for routing (and transitions between routes with `next/link`), redirects, and image/font optimization, including meta tags or other scripts. It supports Typescript out of the box and multiple options for styling and testing (Jest and Cypress). There is also Next.js CLI that allows managing your app. This post was supposed to be a brief overview of Next.js, and I'm closing to 1000 words, so I'll end here. But the framework seems interesting to me, and I may learn it. I feel switching between static generators won't be so hard. I may add more detailed posts about its different features.
 
-<Callout type="info">
+<Callout variant="info">
 
 Next.js 13 introduced the app router. Besides switching to a new routing strategy, this version introduced more changes like server components. My post refers to the previous pages router. But all the information in this post is still relevant. You can still use the pages router. Rendering strategies didn't change, but their implementation may differ. See the [Next.js docs](https://nextjs.org/docs/app) for more details.
 

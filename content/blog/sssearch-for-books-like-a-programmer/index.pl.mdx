@@ -1,15 +1,15 @@
 ---
 title: Ssszukaj książek jak programista
-description: "Lubię czytać książki i spędzam sporo czasu na ich poszukiwaniu. Dlatego zautomatyzowałem ten proces ze skryptem w języku Python do web scrapingu."
+description: 'Lubię czytać książki i spędzam sporo czasu na ich poszukiwaniu. Dlatego zautomatyzowałem ten proces ze skryptem w języku Python do web scrapingu.'
 date: 2022-08-22T20:00:00+02:00
 updated: 2022-08-22T20:00:00+02:00
 image:
-  alt: "Ręka z lupą sprawdzająca klawiaturę laptopa"
-  caption: "Zdjęcie autorstwa Agence Olloweb"
-  src: "./agence-olloweb-d9ILr-dbEdg-unsplash.jpg"
-categories: ["data science", "computer science"]
-tags: ["python", "web", "scraping", "książki"]
-type: "post"
+  alt: 'Ręka z lupą sprawdzająca klawiaturę laptopa'
+  caption: 'Zdjęcie autorstwa Agence Olloweb'
+  src: 'agence-olloweb-d9ILr-dbEdg-unsplash.jpg'
+categories: ['data science', 'computer science']
+tags: ['python', 'web', 'scraping', 'książki']
+type: 'post'
 ---
 
 Lubię czytać książki. Różne gatunki wypełniają mój regał: ekonomia, psychologia, filozofia, biografie, literatura faktu, a w szczególności książki naukowe. Bonobo z okładki książki Fransa de Walla spogląda na wybitną twarz Einsteina. Zanim jednak cokolwiek tam postawię, dużo szukam. Potrafię spędzić dosłownie godzinę, zanim kliknę “kup” w księgarni internetowej. Poleceń szukam wszędzie: pytając znajomych, nieznajomych, przeglądając forum Quora, Medium i oczywiście - Lubimyczytać. Przeszukiwanie sieci jest fajne, ale każda godzina spędzona na szukaniu, zabiera czas od właściwego czytania. Dlatego, jak prawdziwy programista, spędźmy kolejne godziny automatyzując ten proces!
@@ -265,18 +265,18 @@ print(best_books)
 Zmodyfikowałem adres URL aby zawierał aktualną stronę. Iterowałem przez strony używając funkcji `range`. Po znalezieniu książek pozostał ostatni krok - zapisanie ich do pliku. Poniżej pętli iterującej przez strony, dodałem fragment kodu, który zapisuje najlepsze książki do pliku markdown.
 
 ```python
-...
+# ...
 from operator import itemgetter
 
-...
+# ...
 
 subject = "popularnonaukowe"
 
-...
+# ...
 
 best_books = [] # Tu śą najlepsze książki
 
-...
+# ...
 
 file = open(f"najlepsze-ksiazki-{subject}.md", "w")
 file.write(f"## Najlepsze książki z kategorii: {subject}\n")
@@ -289,7 +289,7 @@ for book in best_books:
 file.close()
 ```
 
-Wykorzystałem wbudowane funkcje języka Python: `open`, `write` i `close`, aby zapisać najlepsze książki do pliku. Pierwsza linia w pliku to nagłówek `h2` z informacją o kategorii. `itemgetter` to funkcja, która pozwala w elegancki sposób wydobyć dane ze słownika. Następnie użyłem tych danych, aby stworzyć element listy dla każdej książki. Znajduję się tam trochę znaczników HTML, aby wyglądało to ładniej. No i to wszystko - mamy najlepsze książki w pliku. Tu jest jego zawartość i to jak się wyświetla:
+Wykorzystałem wbudowane funkcje języka Python: `open`, `write` i `close`, aby zapisać najlepsze książki do pliku. Pierwsza linia w pliku to nagłówek `h2` z informacją o kategorii. `itemgetter` to funkcja, która pozwala w elegancki sposób wydobyć dane ze słownika. Następnie użyłem tych danych, aby stworzyć element listy dla każdej książki. Znajduję się tam trochę znaczników HTML, aby wyglądało to ładniej. No i to wszystko - mamy najlepsze książki w pliku. Tu jest jego zawartość...
 
 ```markdown
 ## Najlepsze książki z kategorii: popularnonaukowe
@@ -298,6 +298,8 @@ Wykorzystałem wbudowane funkcje języka Python: `open`, `write` i `close`, aby 
 - [Sztuka obsługi penisa](https://lubimyczytac.pl/ksiazka/4818570/sztuka-obslugi-penisa)<br />autorstwa Przemysław Pilarski,Andrzej Gryżewski | <small title="Średnia ocen">8.5⭐</small> <small>3333 ocen</small>
 - [Krótka historia prawie wszystkiego](https://lubimyczytac.pl/ksiazka/3749344/krotka-historia-prawie-wszystkiego)<br />autorstwa Bill Bryson | <small title="Średnia ocen">8.2⭐</small> <small>2123 ocen</small>
 ```
+
+...i to jak się wyświetla:
 
 # Najlepsze książki z kategorii: popularnonaukowe
 

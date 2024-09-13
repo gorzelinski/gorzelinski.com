@@ -1,15 +1,15 @@
 ---
 title: TypeScript - podstawowe typy
-description: "Wraz z rosnącym wykorzystaniem TypeScripta, myślę, że nadszedł czas, aby zacząć się go uczyć. Czym jest? Po co go używać? Postaramy się odpowiedzieć na te pytania i nauczyć się kilkunastu podstawowych typów."
+description: 'Wraz z rosnącym wykorzystaniem TypeScripta, myślę, że nadszedł czas, aby zacząć się go uczyć. Czym jest? Po co go używać? Postaramy się odpowiedzieć na te pytania i nauczyć się kilkunastu podstawowych typów.'
 date: 2023-03-05T11:00:00+02:00
 updated: 2023-03-05T11:00:00+02:00
 image:
-  alt: "Kłódka w kolorze morskim zamykająca niebieską bramkę"
-  caption: "Zdjęcie autorstwa Maxim Zhgulev"
-  src: "./maxim-zhgulev-5tmItJfHkIc-unsplash.jpg"
-categories: ["web development"]
-tags: ["typescript", "javascript", "programming"]
-type: "post"
+  alt: 'Kłódka w kolorze morskim zamykająca niebieską bramkę'
+  caption: 'Zdjęcie autorstwa Maxim Zhgulev'
+  src: 'maxim-zhgulev-5tmItJfHkIc-unsplash.jpg'
+categories: ['web development']
+tags: ['typescript', 'javascript', 'programming']
+type: 'post'
 ---
 
 Niedawno zacząłem uczyć się TypeScripta (w zasadzie kodowałem wcześniej w Angularze, więc TypeScript nie jest dla mnie zupełnie nowy, ale od tamtej pory nie używałem go często). Na początku miałem wątpliwości, nie będę kłamał. Kod w tym języku wydawał mi się opasły i nieelegancki. Ale bądźmy szczerzy - jedynym minusem TypeScripta jest to, że musisz poświęcić czas na naukę. Jestem tylko człowiekiem, więc zmiana może być przerażająca. Ale jedyną stałą życiu jest zmiana. Zmiany mogą być dobre. A wraz z rosnącym wykorzystaniem TypeScripta, to jest dobry moment żeby zacząć się go uczyć. Ucz się ze mną!
@@ -18,7 +18,7 @@ Niedawno zacząłem uczyć się TypeScripta (w zasadzie kodowałem wcześniej w 
 
 U podstaw, TypeScript jest **nadzbiorem** JavaScriptu. Co to znaczy? Już wyjaśniam zagadnienie. Pewnie pamiętasz zbiory ze szkoły - wiesz, te przecinające się kółka. Jest to diagram Venna - graficzna reprezentacja, która pokazuje logiczne relacje pomiędzy tymi zbiorami. Podobna relacja zachodzi pomiędzy językiem JavaScript i TypeScript - TypeScript to nadzbiór JavaScriptu lub JavaScript to podzbiór TypeScripta. Każda linia kodu JS jest poprawnym kodem TS, ale nie odwrotnie.
 
-![JavaScript i TypeScript diagram venna](./js-ts-venn-diagram.png)
+![JavaScript i TypeScript diagram venna](js-ts-venn-diagram.png)
 
 To znaczy, że TypeScript rozbudowuje JavaScript. Dodaje nowe funkcjonalności i zalety względem “waniliowego” języka. W zasadzie, TypeScript to zarówno **język** jak i **narzędzie.** Jest to potężny kompilator, który uruchamiasz, żeby skompilować kod TS do JS. Dlaczego? Bo przeglądarki rozpoznają tylko kod JS.
 
@@ -71,7 +71,7 @@ JavaScript nie rozumie składni przypisywania TypeScripta. Typy są używane prz
 let name: string // Zmienna name ma typ string.
 ```
 
-<Callout type="warning">
+<Callout variant="warning">
 
 Wszystkie podstawowe typy w TypeScripcie są zapisane z **małej litery.**
 
@@ -95,7 +95,7 @@ Aby zdefiniować string, użyj cudzysłowów podwójnych lub pojedynczych. Templ
 
 ```typescript
 const maxim = "Medals don't help me sleep at night." // TypeScript wnioskuje, że ten string jest stały.
-let name = "Sam" // TypeScript wnioskuje, że powinien być to typ string.
+let name = 'Sam' // TypeScript wnioskuje, że powinien być to typ string.
 let name: string // Tej zmiennej będzie przypisany string.
 ```
 
@@ -113,8 +113,8 @@ Typ obiektu definiujesz podobnie do standardowych obiektów JS. Jednakże zamias
 
 ```typescript
 const person = {
-  name: "Sam",
-  age: 66,
+  name: 'Sam',
+  age: 66
 }
 
 // TypeScript wnioskuje.
@@ -125,14 +125,14 @@ const person: {
 
 // Tak możesz definiować generyczne obiekty.
 const person: object = {
-  name: "Sam",
-  age: 66,
+  name: 'Sam',
+  age: 66
 }
 
 // Możesz także zdefiniować bardziej konkretną strukturę obiektu.
 const person: { name: string } = {
-  name: "Sam",
-  age: 66, // Tej właściwości nie ma w typie, więc powoduje błędy.
+  name: 'Sam',
+  age: 66 // Tej właściwości nie ma w typie, więc powoduje błędy.
 }
 ```
 
@@ -142,7 +142,7 @@ W języku JavaScript, możesz mieszać różne typy danych - jedna tablica może
 
 ```typescript
 const person = {
-  hobbies: ["Krav maga", "sneaking"],
+  hobbies: ['Krav maga', 'sneaking']
 }
 
 // TypeScript wnioskuje.
@@ -163,7 +163,7 @@ Typ tuple nie jest dostępny w języku JavaScript - jest dodany przez TypeScript
 
 ```typescript
 const person = {
-  role: [3, "agent"],
+  role: [3, 'agent']
 }
 
 // TypeScript wnioskuje.
@@ -175,7 +175,7 @@ const person: {
 const person: {
   role: [number, string]
 } = {
-  role: [3, "agent"],
+  role: [3, 'agent']
 }
 ```
 
@@ -187,17 +187,17 @@ Enum to niestandardowy typ w języku TypeScript. Daje ci wyliczoną listę. Typ 
 // Etykiety są często zapisane wielkimi literami.
 enum Role {
   AGENT,
-  INTEL,
+  INTEL
 }
 
 const person = {
-  role: Role.AGENT,
+  role: Role.AGENT
 }
 
 // Możesz zmienić domyślne zachowanie typu enum.
 enum Role {
-  AGENT = "AGENT",
-  INTEL,
+  AGENT = 'AGENT',
+  INTEL
 }
 ```
 
@@ -237,7 +237,7 @@ Poza wbudowanymi typami, TypeScript pozwala ci także definiować niestandardowe
 
 ```typescript
 // Konwencja mówi, żeby definować niestadardowe typy z wielkiej litery.
-type State = "idle" | "loading" | "success"
+type State = 'idle' | 'loading' | 'success'
 
 type Person = {
   name: string
@@ -245,7 +245,7 @@ type Person = {
 }
 ```
 
-<Callout type="warning">
+<Callout variant="warning">
 
 Możesz wykorzystać dowolną nazwę dla niestandardowego typu, ale nie możesz wykorzystać zarezerwowanych słów kluczowych języka JavaScript (lub TypeScript) jak `Date` czy `Math`.
 
@@ -285,13 +285,13 @@ function add(n1: number, n2: number): string {
 // Możesz użyć typu void
 // jeżeli funkcja nie zwaraca wartości.
 function printResult(num): void {
-  console.log("Result: " + num)
+  console.log('Result: ' + num)
 }
 
 // Undefined to poprawny typ w TypeScript,
 // ale nie gdy funkcja niczego nie zwraca.
 function printResult(num: number): undefined {
-  console.log("Result: " + num)
+  console.log('Result: ' + num)
 }
 ```
 
@@ -317,7 +317,7 @@ let input: unknown
 let name: string
 
 input = 5
-name = "Sam"
+name = 'Sam'
 // To nie zadziała, ponieważ nie ma gwarancji,
 // że typ unknown będzie stringiem.
 name = input
@@ -328,7 +328,7 @@ let input: any
 let name: string
 
 input = 5
-input = "Sam"
+input = 'Sam'
 // Z drugiej strony, to zadziała, ponieważ
 // typ any jest najbardziej elastyczny.
 name = input

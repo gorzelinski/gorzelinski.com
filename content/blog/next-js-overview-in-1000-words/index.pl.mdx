@@ -1,15 +1,15 @@
-﻿---
+---
 title: Next.js - przegląd w 1000 słów
-description: "Next.js jest jednym z wielu statycznych generatorów stron. Ale jedna cecha wyróżnia go na tle konkurencji. W tym krótkim przeglądzie postaram się ją opisać."
+description: 'Next.js jest jednym z wielu statycznych generatorów stron. Ale jedna cecha wyróżnia go na tle konkurencji. W tym krótkim przeglądzie postaram się ją opisać.'
 date: 2022-10-24T16:00:00+02:00
 updated: 2023-11-28T16:13:00+02:00
 image:
-  alt: "Logo Next.js"
-  caption: "Logo Next.js"
-  src: "./next-js-logo.png"
-categories: ["web development"]
-tags: ["next.js", "csr", "ssr", "ssg", "isr", "jamstack"]
-type: "post"
+  alt: 'Logo Next.js'
+  caption: 'Logo Next.js'
+  src: 'next-js-logo.png'
+categories: ['web development']
+tags: ['next.js', 'csr', 'ssr', 'ssg', 'isr', 'jamstack']
+type: 'post'
 ---
 
 Mówi się, że “każdego dnia rodzi się nowy framework JavaScript”. Ta sentencja jest wyolbrzymiona i zabawna, ale jest w niej trochę prawdy. W szybko zmieniającym się świecie języka JavaScript, łatwo wziąć nowe, lśniące narzędzie i porzucić stare. Jednakże często okazuje się, że nowy framework nie jest najlepszy w przypadku naszego projektu. Mając to w pamięci, postanowiłem sobie, że nie wskoczę na żaden hype train. Ale nowe wydanie Next.js i prawie 100 000 gwiazdek na platformie GitHub sprawia, że hype train jest REALNY. Niemniej, zamiast ślepo wchodzić na pokład, postaram się zrobić krótki przegląd frameworka Next.js. I postaram się to zrobić w 1000 słów.
@@ -18,9 +18,9 @@ Mówi się, że “każdego dnia rodzi się nowy framework JavaScript”. Ta sen
 
 Na początek rozwiejmy nieporozumienia, które zauważyłem przeglądając sieć. Next.js to **nie** jest alternatywa dla platform takich jak Vue, Angular czy React. To jest bardziej alternatywa dla statycznych generatorów stron takich jak Gatsby, Hugo czy Nuxt (to porównanie nie jest w 100% dokładne, ale dojedziemy do tego). Nie używasz React'a zamiast Next.js. Oczywiście możesz wybierać pomiędzy nimi, ale React'a używasz w obu przypadkach. Next buduje na fundamentach React'a. Dlatego możemy powiedzieć, że to jest framework<sup>2</sup> lub meta-framework.
 
-<Callout type="info">
+<Callout variant="info">
 
-Jeżeli chcesz zobaczyć statyczne generatory treści w szerszym kontekście, wcześniej napisałem post o całej [architekturze Jamstack](/blog/jamstack-what-why-how/).
+Jeżeli chcesz zobaczyć statyczne generatory treści w szerszym kontekście, wcześniej napisałem post o całej [architekturze Jamstack](/pl/blog/jamstack-what-why-how/).
 
 </Callout>
 
@@ -51,13 +51,13 @@ Po co tak długo marudzić o strategiach renderowania we wpisie o Next.js? Bo my
 
 Programiści stojący za Next.js stworzyli niestandardowy hak React do pobierania danych. Jest to rekomendowany sposób pobierania danych po stronie klienta.
 
-```jsx #Client-Side Rendering w Next.js
-import useSWR from "swr"
+```jsx title="Client-Side Rendering w Next.js"
+import useSWR from 'swr'
 
-const fetcher = (...args) => fetch(...args).then(res => res.json())
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 function Profile() {
-  const { data, error } = useSWR("/api/profile-data", fetcher)
+  const { data, error } = useSWR('/api/profile-data', fetcher)
 }
 ```
 
@@ -65,10 +65,10 @@ function Profile() {
 
 Wyeksportowanie funkcji `getServerSideProps` ze strony, pozwala renderować ją na każde zapytanie. Strona użyje danych zwróconych przez tę funkcję.
 
-```jsx #Server-Side Rendering w Next.js
+```jsx title="Server-Side Rendering w Next.js"
 export async function getServerSideProps(context) {
   return {
-    props: {},
+    props: {}
   }
 }
 ```
@@ -77,10 +77,10 @@ export async function getServerSideProps(context) {
 
 Możesz wykorzystać generowanie statyczne z funkcją `getStaticProps`. Next.js użyje zwróconych danych, aby renderować stronę w trakcie fazy budowania. Ta funkcja współpracuje z `getStaticPaths`, aby dynamicznie generować ścieżki na podstawie dostarczonych treści.
 
-```jsx #Static Site Generation w Next.js
+```jsx title="Static Site Generation w Next.js"
 export async function getStaticProps(context) {
   return {
-    props: {},
+    props: {}
   }
 }
 ```
@@ -89,11 +89,11 @@ export async function getStaticProps(context) {
 
 Ta strategia jest charakterystyczna dla Next.js. Próbuje niwelować problemy związane ze statyczną generacją. Pozwala ona na aktualizowanie stron, po fazie budowania aplikacji. W ten sposób nie musisz budować wszystkiego na nowo. Aby ją wykorzystać, musisz dodać parametr `revalidate` do `getStaticProps`.
 
-```jsx #Incremental Static Regeneration w Next.js
+```jsx title="Incremental Static Regeneration w Next.js"
 export async function getStaticProps(context) {
   return {
     props: {},
-    revalidate: 10,
+    revalidate: 10
   }
 }
 ```
@@ -104,7 +104,7 @@ Najlepsze jest to, że możesz wybrać różne strategie renderowania dla różn
 
 Poza wieloma sposobami pobierania danych, Next.js oferuje rozwiązania dla problemów związanych z nawigacją (z wbudowanym modułem `next/link`), przekierowaniami, optymalizacją zdjęć/fontów, dołączaniem meta tagów i innych skryptów. W domyśle wspiera Typescript, a także wiele sposobów stylowania (CSS modules, CSS-in-JS) i testowania (Jest, Cypress). Istnieje także Next CLI, które pomaga w zarządzaniu aplikacją. Ten wpis miał być krótkim przeglądem i zbliżam się do 1000 słów, dlatego tu zakończę. Jednakże ten framework zainteresował mnie i być może się go nauczę. Wydaje mi się, że przesiadka z jednego statycznego generatora stron na inny, nie powinna być trudna. Być może dodam bardziej szczegółowe wpisy na temat jego konkretnych funkcjonalności.
 
-<Callout type="info">
+<Callout variant="info">
 
 Next.js 13 wprowadził app router. Poza zmianą do nowej strategi rutowania, nowa wersja wprowadziła więcej zmian, takich jak server components. Mój post odnosił się do poprzedniego rutera - pages. Jednakże wszystkie informacje zawarte w tym poście są nadal aktualne. Nadal możesz korzystać z rutera pages. Strategie renderowania się nie zmieniły, ale implementacje mogą się różnić. Więcej detali znajdziesz w [dokumentacji Next.js](https://nextjs.org/docs/app).
 

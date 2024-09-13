@@ -1,20 +1,20 @@
 ---
 title: TypeScript - dekoratory
-description: "Udekorujmy nasz tor... kod używając dekoratorów TypeScript. Dekoratory są smacznym dodatkiem do klas i zapewniają składnię do metaprogramowania."
+description: 'Udekorujmy nasz tor... kod używając dekoratorów TypeScript. Dekoratory są smacznym dodatkiem do klas i zapewniają składnię do metaprogramowania.'
 date: 2023-10-21T17:00:00+02:00
 updated: 2023-10-21T17:00:00+02:00
 image:
-  alt: "Babeczki z turkusowym lukrem udekorowane posypką"
-  caption: "Zdjęcie autorstwa Brooke Lark"
-  src: "./brooke-lark-pGM4sjt_BdQ-unsplash.jpg"
-categories: ["web development"]
-tags: ["typescript", "javascript", "decorators", "metaprogramowanie"]
-type: "post"
+  alt: 'Babeczki z turkusowym lukrem udekorowane posypką'
+  caption: 'Zdjęcie autorstwa Brooke Lark'
+  src: 'brooke-lark-pGM4sjt_BdQ-unsplash.jpg'
+categories: ['web development']
+tags: ['typescript', 'javascript', 'decorators', 'metaprogramowanie']
+type: 'post'
 ---
 
 Dekoratory to eksperymentalna funkcjonalność w TypeScripcie. Zostały dodane w TypeScript 5.0 i mogą być dołączone do 5 różnych rzeczy: deklaracji klasy, metody, akcesora, właściwości i parametru. Zatem dotyczą głównie klasy. Możesz je wykorzystywać w metaprogramowaniu - technice, w której program ma wiedzę o samym sobie, albo może sobą manipulować. Nie mają one bezpośredniego wpływu na końcowego użytkownika. Jest to dobrze dostrojony instrument do pisania kodu, który jest łatwy do użycia przez innych programistów. Dostrójmy nasze instrumenty mózgowe, aby nauczyć się dekoratorów!
 
-<Callout type="info">
+<Callout variant="info">
 
 W momencie pisania, dekoratory są nadchodzącą [funkcjonalnością w ECMAScript](https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#decorators). Są na etapie 3 i mogą zostać dodane do natywnego JavaScriptu. Istnieje paragraf opisujący specyfikację ECMAScript w jednym z moich [poprzednich postów](/pl/blog/is-it-native-javascript-isnt-it/).
 
@@ -47,23 +47,23 @@ Mając formalności za sobą, możemy przejść do dekoratorów. Dekorator, w za
 
 ```typescript
 function Logger(target: Function) {
-  console.log("Logging...")
+  console.log('Logging...')
   console.log(target)
 }
 
 @Logger
 class Agent {
-  name = "Sam"
+  name = 'Sam'
 
   constructor() {
-    console.log("Creating a Third Echelon agent")
+    console.log('Creating a Third Echelon agent')
   }
 }
 ```
 
 Dekoratory, tak jak funkcje, mogą otrzymywać argumenty. Argumenty zależą od typu dekoratora. Dekorator klasy otrzymuje jeden, `target` - jest to konstruktor klasy. Jeżeli dekorator zwraca wartość, zastępuje ona deklarację klasy. Później przejdziemy przez pozostałe typy dekoratorów.
 
-<Callout type="warning">
+<Callout variant="warning">
 
 Dekoratory zwykle wykorzystują PascalCase (lub UpperCamelCase) - powinny rozpoczynać się wielką literą.
 
@@ -81,21 +81,21 @@ function Logger(message: string) {
   }
 }
 
-@Logger("Logging in agent...")
+@Logger('Logging in agent...')
 class Agent {
-  name = "Sam"
+  name = 'Sam'
 
   constructor() {
-    console.log("Creating a Third Echelon agent")
+    console.log('Creating a Third Echelon agent')
   }
 }
 
-@Logger("Logging in civilian...")
+@Logger('Logging in civilian...')
 class Civilian {
-  name = "Sarah"
+  name = 'Sarah'
 
   constructor() {
-    console.log("Creating a civilian")
+    console.log('Creating a civilian')
   }
 }
 ```
@@ -108,20 +108,20 @@ Możemy wykorzystać parametry, aby posyłać wartości do tego wewnętrznego de
 
 ```typescript
 function Greeting(constructor: Function) {
-  console.log("Hello!")
+  console.log('Hello!')
 }
 
 function Logger(constructor: Function) {
-  console.log("Logging...")
+  console.log('Logging...')
 }
 
 @Logger
 @Greeting
 class Agent {
-  name = "Sam"
+  name = 'Sam'
 
   constructor() {
-    console.log("Creating a Third Echelon agent")
+    console.log('Creating a Third Echelon agent')
   }
 }
 ```
@@ -130,20 +130,20 @@ To rodzi kolejne pytanie - w jakiej kolejności są uruchamiane? Uruchamiane są
 
 ```typescript
 function FirstDecorator(constructor: Function) {
-  console.log("This message will be logged first")
+  console.log('This message will be logged first')
 }
 
 function SecondDecorator(constructor: Function) {
-  console.log("This message will be logged second")
+  console.log('This message will be logged second')
 }
 
 @SecondDecorator
 @FirstDecorator
 class Agent {
-  name = "Sam"
+  name = 'Sam'
 
   constructor() {
-    console.log("Creating a Third Echelon agent")
+    console.log('Creating a Third Echelon agent')
   }
 }
 ```
@@ -156,28 +156,28 @@ class Agent {
 
 ```typescript
 function FirstDecoratorFactory() {
-  console.log("Message from this factory will be logged first")
+  console.log('Message from this factory will be logged first')
 
   return function (constructor: Function) {
-    console.log("Message from this decorator will be logged second")
+    console.log('Message from this decorator will be logged second')
   }
 }
 
 function SecondDecoratorFacotry() {
-  console.log("Message from this factory will be logged second")
+  console.log('Message from this factory will be logged second')
 
   return function (constructor: Function) {
-    console.log("Message from this decorator will be logged first")
+    console.log('Message from this decorator will be logged first')
   }
 }
 
 @FirstDecoratorFactory()
 @SecondDecoratorFacotry()
 class Agent {
-  name = "Sam"
+  name = 'Sam'
 
   constructor() {
-    console.log("Creating a Third Echelong agent")
+    console.log('Creating a Third Echelong agent')
   }
 }
 ```
@@ -205,7 +205,7 @@ Zwracana wartość będzie ignorowana.
 
 ```typescript
 function Log(target: any, propertyName: string | symbol) {
-  console.log("Property Decorator")
+  console.log('Property Decorator')
   console.log(target, propertyName)
 }
 
@@ -214,7 +214,7 @@ class Agent {
   name: string
 
   constructor() {
-    console.log("Creating a Third Echelon agent")
+    console.log('Creating a Third Echelon agent')
   }
 }
 ```
@@ -241,7 +241,7 @@ function Log(
   propertyName: string | symbol,
   descriptor: PropertyDescriptor
 ) {
-  console.log("Accessor Decorator")
+  console.log('Accessor Decorator')
   console.log(target)
   console.log(name)
   console.log(descriptor)
@@ -256,7 +256,7 @@ class Agent {
   }
 
   constructor() {
-    console.log("Creating a Third Echelon agent")
+    console.log('Creating a Third Echelon agent')
   }
 }
 ```
@@ -283,14 +283,14 @@ function Log(
   name: string | symbol,
   descriptor: PropertyDescriptor
 ) {
-  console.log("Method Decorator")
+  console.log('Method Decorator')
   console.log(target)
   console.log(name)
   console.log(descriptor)
 }
 
 class Agent {
-  name = "Sam"
+  name = 'Sam'
 
   @Log
   getName() {
@@ -298,7 +298,7 @@ class Agent {
   }
 
   constructor() {
-    console.log("Creating a Third Echelon agent")
+    console.log('Creating a Third Echelon agent')
   }
 }
 ```
@@ -317,21 +317,21 @@ Zwracana wartość będzie ignorowana.
 
 ```typescript
 function Log(target: any, name: string | symbol, parameterIndex: number) {
-  console.log("Parameter Decorator")
+  console.log('Parameter Decorator')
   console.log(target)
   console.log(name)
   console.log(position)
 }
 
 class Agent {
-  name = "Sam"
+  name = 'Sam'
 
   greetings(@Log name: string) {
     console.log(`Hello ${name}!`)
   }
 
   constructor() {
-    console.log("Creating a Third Echelon agent")
+    console.log('Creating a Third Echelon agent')
   }
 }
 ```
@@ -353,9 +353,9 @@ Jednym z popularniejszych frameworków, który wykorzystuje TypeScript jest Angu
 
 ```typescript
 @Component({
-  selector: "app-agent",
-  inputs: ["name"],
-  template: ` Agent Name: {{ agentName }} `,
+  selector: 'app-agent',
+  inputs: ['name'],
+  template: ` Agent Name: {{ agentName }} `
 })
 export class AgentComponent {
   name: string | null = null
@@ -369,13 +369,13 @@ Powyższy przykład reprezentuje rozpoznawalny dekorator `Component`. Dekorator 
 NestJS to framework Node.js do budowania skalowalnych aplikacji po stronie serwera z wykorzystaniem języka TypeScript. Jest popularny pośród Back-end deweloperów. NestJS również polega na dekoratorach. Korzystając z NestJS, możesz zauważyć dekoratory w kontrolerach.
 
 ```typescript
-import { Controller, Get } from "@nestjs/common"
+import { Controller, Get } from '@nestjs/common'
 
-@Controller("/agents")
+@Controller('/agents')
 export class AgentController {
   @Get()
   findAll(): string {
-    return "This action returns all agents"
+    return 'This action returns all agents'
   }
 }
 ```

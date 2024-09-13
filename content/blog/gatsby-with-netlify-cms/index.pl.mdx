@@ -1,20 +1,20 @@
-﻿---
+---
 title: Gatsby z Netlify CMS
-description: "W tym wpisie przyjrzymy się bliżej Netlify CMS. Jest to przykład CMSa nowego typu, który jest oparty o Git. Zintegrujemy go z przykładowym projektem Gatsby."
+description: 'W tym wpisie przyjrzymy się bliżej Netlify CMS. Jest to przykład CMSa nowego typu, który jest oparty o Git. Zintegrujemy go z przykładowym projektem Gatsby.'
 date: 2022-09-23T16:00:00+02:00
 updated: 2022-09-23T16:00:00+02:00
 image:
-  alt: "Pięć metalowych kół zębatych na czarnym tle"
-  caption: "Zdjęcie autorstwa Miguel Á. Padriñán"
-  src: "./pexels-miguel-á-padriñán-3785933.jpg"
-categories: ["web development"]
-tags: ["gatsby", "netlify", "cms"]
-type: "post"
+  alt: 'Pięć metalowych kół zębatych na czarnym tle'
+  caption: 'Zdjęcie autorstwa Miguel Á. Padriñán'
+  src: 'pexels-miguel-á-padriñán-3785933.jpg'
+categories: ['web development']
+tags: ['gatsby', 'netlify', 'cms']
+type: 'post'
 ---
 
 Jeżeli jesteś web developerem, prawdopodobnie rozpoznajesz to zdjęcie. Nawet jeżeli nie jesteś - prawdopodobnie wiesz co to jest.
 
-![Panel WordPress](./wordpress-cms.png)
+![Panel WordPress](wordpress-cms.png)
 
 Panel WordPress - prosty i intuicyjny sposób zarządzania treściami na twojej stronie. Nie musisz znać PHP, MySQL lub HTML, żeby stworzyć coś jak wpis na blogu. Zawiera wiele zakładek, pól i przycisków, które pomagają w tworzeniu treści. Wrażenia z użytkownika muszą być dobre, bo jest to nadal najpopularniejszy CMS na rynku. Ale ta popularność wiąże się z ogromnym kosztem - jest to główny cel dla hakerów i spamerów. Potencjalne luki w zabezpieczeniach to nie jedyne minusy, ale ten post nie jest o tym.
 
@@ -24,9 +24,9 @@ Ostatecznie, twoje treści muszą znajdować się w składni HTML, aby zostały 
 
 Netlify CMS jest przykładem systemu zarządzania treści, bazującym na systemie kontroli wersji GIt. Ten CMS używa Git'a pod maską. Pozwala to na trzymanie wszystkiego w repozytorium Git - treści obok kodu. Ma on trochę zalet w porównaniu do standardowych CMS'ów takich jak WordPress. Jednocześnie nie poświęca łatwości użytkowania. U samych podstaw, Netlify CMS to jest aplikacja React, która owija Git workflow. Dlatego nie musisz uczyć się narzędzi takich jak Git, Yaml czy Markdown, aby go używać. Oferuje on bogaty interfejs użytkownika dostępny z poziomu przeglądarki, podobnie jak WordPress. Jest przyjazny dla nie-technicznych użytkowników. Ale potrzeba trochę wiedzy, aby go skonfigurować. Dlatego zintegruje Netlify CMS z przykładowym projektem Gatsby w tym wpisie. Postaram się odtworzyć strukturę posta z mojego bloga.
 
-<Callout type="info">
+<Callout variant="info">
 
-Jeżeli chcesz poznać szerszy obraz jak Gatsby lub Netlify CMS wpisuje się w [architekturę Jamstack](/blog/jamstack-what-why-how/), napisałem o tym post.
+Jeżeli chcesz poznać szerszy obraz jak Gatsby lub Netlify CMS wpisuje się w [architekturę Jamstack](/pl/blog/jamstack-what-why-how/), napisałem o tym post.
 
 </Callout>
 
@@ -50,7 +50,7 @@ Wtyczki Gatsby muszą być zarejestrowane, aby działać. Musimy dodać nową za
 //gatsby-config.js
 
 module.exports = {
-  plugins: [`gatsby-plugin-netlify-cms`],
+  plugins: [`gatsby-plugin-netlify-cms`]
 }
 ```
 
@@ -78,7 +78,7 @@ collections:
 
 Teraz możemy wpisać `gatsby develop` w terminalu. Jeżeli skonfigurowałeś wszystko poprawnie, podobny interfejs powinien powitać cię pod adresem `http://localhost:8000/admin/`:
 
-![Netlify CMS z domyślną konfiguracją](./netlify-cms-default-config.png)
+![Netlify CMS z domyślną konfiguracją](netlify-cms-default-config.png)
 
 ## Konfiguracja Netlify CMS
 
@@ -124,7 +124,7 @@ Istnieją specjalne opcje dla kolekcji. Kolekcja to lista obiektów tego samego 
 
 Każdy element kolekcji może zawierać wiele pól. Kiedy klikniesz, aby stworzyć nowy element kolekcji (”New Blog” w naszym przypadku), zobaczysz elementy interfejsu jak te.
 
-![Domyślne pola w Netlify CMS](./netlify-cms-default-fields.png)
+![Domyślne pola w Netlify CMS](netlify-cms-default-fields.png)
 
 Wygląda to podobnie do standardowego systemu zarządzania treściami. Jeżeli przyjrzysz się dokładnie poprzedniej konfiguracji i porównasz ją z tym zrzutem ekranu, zauważysz, że opcje pól odpowiadają elementom interfejsu. Opcja `fields` mapuje widgety i wartości zapisane w pliku. Przyjmuje listę obiektów z następującymi opcjami:
 
@@ -151,8 +151,8 @@ collections:
     delete: true
     extension: markdown
     format: frontmatter
-    slug: "{{slug}}"
-    preview_path: "blog/{{filename}}"
+    slug: '{{slug}}'
+    preview_path: 'blog/{{filename}}'
     fields:
     # Below
 ```
@@ -168,7 +168,7 @@ fields:
   - name: image
     label: Featured Image
     widget: object
-    summary: "{{fields.src}}"
+    summary: '{{fields.src}}'
     fields:
       - { name: src, label: Image source, widget: image }
       - { name: alt, label: Alt text, widget: string }
@@ -176,7 +176,7 @@ fields:
           name: credit,
           label: Author of the image,
           widget: string,
-          required: false,
+          required: false
         }
   - {
       name: tags,
@@ -185,23 +185,23 @@ fields:
       multiple: true,
       options:
         [
-          "Web Development",
-          "Design",
-          "Computer Science",
-          "Data Science",
-          "Mathematics",
+          'Web Development',
+          'Design',
+          'Computer Science',
+          'Data Science',
+          'Mathematics'
         ],
-      default: ["Computer Science"],
+      default: ['Computer Science'],
       min: 1,
       max: 4,
-      required: false,
+      required: false
     }
   - { name: body, label: Body, widget: markdown }
 ```
 
 Użytkownik może wybierać daty z widgetem `datetime`. Wyróżnione zdjęcie powinno być obiektem i zawierać pola, aby było dostępne. Po wybraniu zdjęcia używając widgetu `image`, użytkownik powinien dodać alternatywny tekst i dodać informacje o autorze zdjęcia. Dodałem także kilka tagów z elementem `select`dla organizacji bloga. Użytkownik może tworzyć zawartość wpisu wykorzystując element `markdown`. Po tej konfiguracji, nasz CMS powinien wyglądać tak:
 
-![Netlify CMS z niestandardową konfiguracją](./netlify-cms-custom-config.png)
+![Netlify CMS z niestandardową konfiguracją](netlify-cms-custom-config.png)
 
 ## Łączenie Netlify CMS z repozytorium Git
 
@@ -217,6 +217,6 @@ backend:
 
 Odwiedź `https://twoja-strona.netlify.app/admin/`, a twoja przeglądarka powinna wyświetlić stronę uwierzytelniającą jak ta poniżej.
 
-![Uwierzytelnianie w Netlify CMS](./netlify-cms-authentication.png)
+![Uwierzytelnianie w Netlify CMS](netlify-cms-authentication.png)
 
 Po zalogowaniu możesz stworzyć wpis, wypełnić wszystkie jego pola i kliknąć “publish now”. Po kilku sekundach twoje zmiany zostaną zapisane do repozytorium. Hura! Udało nam się. “Ale… nasze posty nie wyświetlają się na stronie”, możesz dodać. Odpowiedziałbym - tak, słuszna uwaga. Jednakże, celem tego wpisu była integracja pomiędzy Netlify CMS i Gatsby. Wszystko inne chciałem uczynić tak prostym jak to możliwe, dlatego zacząłem z minimalną konfiguracją. Jeżeli zacząłeś mając bloga, to masz już tę część. Ten wpis staje się długi, więc na tym zakończę. Być może dodam drugą część, w której wyświetlimy nasze wpisy.

@@ -1,16 +1,16 @@
 ---
 title: An-lam - business website
-description: "An-lam is a small polish local business repairing boats and yachts. Its niche character makes it interesting also for distant clients."
+description: 'An-lam is a small polish local business repairing boats and yachts. Its niche character makes it interesting also for distant clients.'
 date: 2021-05-19T16:00:00+02:00
 updated: 2021-05-19T16:00:00+02:00
 image:
-  alt: "A mock-up of a laptop and smartphone with the An-lam website"
-  src: "./an-lam-cover.png"
+  alt: 'A mock-up of a laptop and smartphone with the An-lam website'
+  src: 'an-lam-cover.png'
 client: An-lam
-services: ["UI/UX Design", "Frontend Development", "Content Creation", "DevOps"]
-deliverables: ["Design System", "Website"]
-links: [{ text: "an-lam.pl", href: "https://an-lam.pl" }]
-type: "project"
+services: ['UI/UX Design', 'Frontend Development', 'Content Creation', 'DevOps']
+deliverables: ['Design System', 'Website']
+links: [{ text: 'an-lam.pl', href: 'https://an-lam.pl' }]
+type: 'project'
 ---
 
 ## Problem
@@ -21,13 +21,13 @@ Before I started work, I met with a business owner to understand his needs. Afte
 
 Before I started designing, I had done some research. I visited many competitors' websites - from local boatbuilders to yacht charters. I shared some links with the owner to recognize his aesthetic taste. Marine projects on _Behance_ and _Dribbble_ were also helpful. Using them, I've created an extensive mood board that I've been using during designing.
 
-![Moodboard for an-lam website](./moodboard.png)
+![Moodboard for an-lam website](moodboard.png)
 
 ## Wireframes
 
 I started the design process by creating several drafts of sections and the renovations subpage. Then I fastly moved on to experimenting with fonts and colors. Based on drafts and experiments, I created some wireframes. I shared them with the entrepreneur. His decisions influenced the following work.
 
-![Wireframes of landing section](./wireframes.png)
+![Wireframes of landing section](wireframes.png)
 
 ## Content
 
@@ -39,13 +39,13 @@ Knowing the structure of the pages, I started creating content. For every sectio
 
 For this project, I created a simple but formal design system. I divided it into five levels of [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/). The base of every design system is typography and colors. I and the owner both liked classical font - [Old Standard TT](https://fonts.google.com/specimen/Old+Standard+TT). I paired it with the simple, geometrical font - [Questrial](https://fonts.google.com/specimen/Questrial) - for contrast. I think this combination emphasizes the owner's love for classical items, his long-term experience, and the local character of the business.
 
-![Old Standard TT - headings](./old-standard-tt.png)
+![Old Standard TT - headings](old-standard-tt.png)
 
-![Questrial - body text](./questrial.png)
+![Questrial - body text](questrial.png)
 
 The color palette consisted of grays, whites, and navy blue. It refers to the sea, yachts, and minimalism. The accessibility of a website is significant, so I tested the color contrast ratios.
 
-![Design system - colors](./design-system-colors.png)
+![Design system - colors](design-system-colors.png)
 
 ## Architecture
 
@@ -71,15 +71,15 @@ Gatsby doesn't support unit tests out of the box. I've added a config to be able
 In the project, I used the framework `Jest` with `React Testing Library`. It enforces good practices like finding elements by ARIA roles. There was not too much logic - usually covered by unit tests. But they were still helpful - I used them to test if the components rendered everything correctly.
 
 ```jsx
-import React from "react"
-import { render } from "@testing-library/react"
-import { ThemeProvider } from "styled-components"
+import React from 'react'
+import { render } from '@testing-library/react'
+import { ThemeProvider } from 'styled-components'
 
-import Light from "../../themes/light"
-import { Services } from "../Services"
+import Light from '../../themes/light'
+import { Services } from '../Services'
 
-describe("Services", () => {
-  it("has caption", () => {
+describe('Services', () => {
+  it('has caption', () => {
     const { getByText } = render(
       <ThemeProvider theme={Light}>
         <Services></Services>
@@ -87,23 +87,23 @@ describe("Services", () => {
     )
     expect(getByText(/oferta/i)).toBeDefined()
   })
-  it("has title", () => {
+  it('has title', () => {
     const { getByRole } = render(
       <ThemeProvider theme={Light}>
         <Services></Services>
       </ThemeProvider>
     )
-    expect(getByRole("heading", { level: 2 })).toBeDefined()
+    expect(getByRole('heading', { level: 2 })).toBeDefined()
   })
-  it("has categories and corresponding lists of services", () => {
+  it('has categories and corresponding lists of services', () => {
     const { getAllByRole } = render(
       <ThemeProvider theme={Light}>
         <Services></Services>
       </ThemeProvider>
     )
-    const categories = getAllByRole("heading", { level: 3 })
-    const services = getAllByRole("list")
-    services.forEach(service => {
+    const categories = getAllByRole('heading', { level: 3 })
+    const services = getAllByRole('list')
+    services.forEach((service) => {
       expect(service.children.length).toBeGreaterThan(1)
     })
     expect(categories.length).toBeGreaterThan(1)
@@ -114,8 +114,6 @@ describe("Services", () => {
 ```
 
 Besides unit tests, I also created some e2e tests. To achieve that, I added `Cypress` with `Cypress Testing Library`. In this way, I unified searching for DOM elements. I simulated users' behavior with e2e tests: scrolling through sections, clicking links, etc. `Cypress-axe` library turned out to be very handy. It detected some problems with accessibility and helped me fix them.
-
-<img style="width: 100%;" alt="E2e test showcase" src="./e2e-tests.gif"></img>
 
 ## GitHub
 
@@ -129,6 +127,6 @@ Netlify is a platform that combines CDN, serverless functions, and build automat
 
 The effect of my work is a minimalistic, responsive, aesthetic, and performant website that scores high in lighthouse audits.
 
-![Section About us - desktop](./about-us.png)
+![Section About us - desktop](about-us.png)
 
-![Different sections on mobile devices](./sections-mobile.png)
+![Different sections on mobile devices](sections-mobile.png)

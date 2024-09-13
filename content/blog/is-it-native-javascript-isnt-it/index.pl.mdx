@@ -1,28 +1,26 @@
 ---
 title: To jest natywny JavaScript? Prawda??
-description: "Moje pierwsze spotkanie z optional chaining i nullish coalescing operator."
+description: 'Moje pierwsze spotkanie z optional chaining i nullish coalescing operator.'
 date: 2022-07-23T16:00:00+02:00
 updated: 2022-07-23T16:00:00+02:00
 image:
-  alt: "Znak zapytania ułożony z kropek na żółtym tle"
-  caption: "Zdjęcie autorstwa Anna Shvets"
-  src: "./pexels-anna-shvets-3683053.jpg"
-categories: ["web development"]
-tags: ["javascript"]
-type: "post"
+  alt: 'Znak zapytania ułożony z kropek na żółtym tle'
+  caption: 'Zdjęcie autorstwa Anna Shvets'
+  src: 'pexels-anna-shvets-3683053.jpg'
+categories: ['web development']
+tags: ['javascript']
+type: 'post'
 ---
 
 Pierwszy raz, gdy użyłem frameworka Gatsby, zauważyłem dziwny fragment kodu.
 
-```jsx
-// src/components/seo.js
-
+```jsx title="src/components/seo.js"
 const defaultTitle = site.siteMetadata?.title
 ```
 
 Zastanawiałem się: “O co chodzi z tym znakiem zapytania po kropce? To jest jakaś specjalna składnia Gatsby?”. Wątpiłem w to, więc zacząłem szukać informacji. Po krótkich poszukiwaniach i googlowaniu głupich pytań, znalazłem termin, którego szukałem - **optional chaining.** Byłem zaskoczony - to jest natywny JavaScript. Składnia ta została zaprezentowana w ES2020 (w dniu, w którym piszę ten post jest na czwartym etapie procesu wdrażania). Najpierw przyjrzymy się kilku błędom, aby zobaczyć dlaczego jest użyteczna.
 
-<Callout type="info">
+<Callout variant="info">
 
 **39nth Technical Committee (TC39)** jest to grupa będąca częścią ECMA International, która zrzesza deweloperów, wdrożeniowców i akademików zajmujących się językiem JavaScript. Komitet ten współpracuje ze społecznością w utrzymywaniu i rozwijaniu specyfikacji ECMAScript (JavaScript jest zgodny z tą specyfikacją). Proces rozwoju specyfikacji ma cztery etapy. Czwarty etap oznacza, że funkcjonalność jest gotowa do umieszczenia w najbliższym projekcie specyfikacji.
 
@@ -33,20 +31,20 @@ Jeżeli nie jesteś kompletnym nowicjuszem JavaScript, prawdopodobnie widziałe�
 ```js
 const desktop = {
   processor: {
-    manufacturer: "Intel",
-    type: "I7",
+    manufacturer: 'Intel',
+    type: 'I7'
   },
   graphicsCard: {
-    manufacturer: "Nvidia",
-  },
+    manufacturer: 'Nvidia'
+  }
   //...więcej komponentów
 }
 
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
-  },
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
+  }
   //...więcej komponentów bez karty graficznej
 }
 
@@ -59,12 +57,12 @@ Spróbujmy rozwiązać ten problem. Na początek dodajmy brakujące informacje.
 ```js
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
   },
   graphicsCard: {
-    manufacturer: "",
-  },
+    manufacturer: ''
+  }
 }
 
 const info = laptop.graphicsCard.manufacturer //Brak błędu. Zwraca ""
@@ -75,9 +73,9 @@ A co gdybyśmy nie mogli? Nie zawsze mamy kontrolę nad API. Innym problemem jes
 ```js
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
-  },
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
+  }
 }
 
 const info = laptop && laptop.graphicsCard && laptop.graphicsCard.manufacturer //undefined
@@ -88,16 +86,16 @@ Ten kod działa. Ale jest rozwlekły i niezgrabny. Chcemy się dostać do jednej
 ```js
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
-  },
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
+  }
 }
 
 const info = laptop
   ? undefined
   : laptop.graphicsCard
-  ? undefined
-  : laptop.graphicsCard.manufacturer //undefined
+    ? undefined
+    : laptop.graphicsCard.manufacturer //undefined
 ```
 
 Pisałem coś o niezgrabnym kodzie? To wygląda nawet gorzej. Zagnieżdżony operator trójskładnikowy to rzadko jest dobry pomysł. Ale JavaScript ma przecież składnię do obsługi błędów. Spróbujmy złapać ten błąd.
@@ -105,9 +103,9 @@ Pisałem coś o niezgrabnym kodzie? To wygląda nawet gorzej. Zagnieżdżony ope
 ```js
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
-  },
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
+  }
 }
 
 let info
@@ -121,16 +119,16 @@ try {
 To jest bardziej czytelne, ale nadal rozwlekłe. Definiujemy nowe zakresy pomiędzy klamrami i nie możemy użyć `const`. Pora rozwiązać ten problem jak prawdziwy programista JavaScript - użyjmy zewnętrznej biblioteki!
 
 ```js
-const R = require("ramda")
+const R = require('ramda')
 
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
-  },
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
+  }
 }
 
-const info = R.path(["graphicsCard", "manufacturer"], laptop) //undefined
+const info = R.path(['graphicsCard', 'manufacturer'], laptop) //undefined
 ```
 
 Ten fragment jest zwięzły i czytelny. Ale czy naprawdę potrzebujemy zewnętrznej biblioteki do czegoś tak podstawowego? Nie, już nie. Optional chaining przychodzi na ratunek!
@@ -138,9 +136,9 @@ Ten fragment jest zwięzły i czytelny. Ale czy naprawdę potrzebujemy zewnętrz
 ```js
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
-  },
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
+  }
 }
 
 const info = laptop?.graphicsCard?.manufacturer //undefined
@@ -151,9 +149,9 @@ Używając tego zapisu możesz próbować uzyskać dostęp do wartości, które 
 ```js
 const laptop = {
   processor: {
-    manufacturer: "AMD",
-    type: "Ryzen 5",
-  },
+    manufacturer: 'AMD',
+    type: 'Ryzen 5'
+  }
 }
 
 const info = laptop.nonExistingMethod?.() //undefined
@@ -163,7 +161,7 @@ Obiekt nie ma żadnej metody. Mimo to fragment powyżej nie wyrzuca wyjątku. Zw
 
 ```js
 const laptop = {
-  ram: ["Kingston 8GB", "Kingston 8GB"],
+  ram: ['Kingston 8GB', 'Kingston 8GB']
 }
 
 const info = laptop.ram?.[3] //undefined
@@ -178,29 +176,29 @@ Jeżeli “dodamy” kolejny znak zapytania do naszego operatora i usuniemy krop
 ```js
 const laptop = {
   processor: {
-    type: "Ryzen 5",
-  },
+    type: 'Ryzen 5'
+  }
 }
 
-const info = laptop.graphicsCard?.manufacturer ?? "integrated" //integrated
+const info = laptop.graphicsCard?.manufacturer ?? 'integrated' //integrated
 ```
 
 Możesz interpretować powyższy fragment w ten sposób: "Jeżeli istnieje producent karty graficznej w obiekcie laptop, przypisz tę wartość do zmiennej info. W innym wypadku przypisz wyraz 'integrated'". Z poprzedniej sekcji wiemy, że optional chaining zwraca `undefined`. Następnie interpreter przechodzi do logicznego operatora. Nullish coalescing operator to specjalny przypadek logicznego OR. Zwraca prawą część wyrażenia, gdy lewa część jest `null`lub `undefined`. Logiczne OR zwraca prawą część jeżeli po lewej stronie jest dowolna wartość `falsy`.
 
 ```js
-const a = null ?? "default" //"default"
-const b = undefined ?? "default" //"default"
-const c = "" ?? "default" //""
-const d = NaN ?? "default" //NaN - zwraca każdą wartość falsy
+const a = null ?? 'default' //"default"
+const b = undefined ?? 'default' //"default"
+const c = '' ?? 'default' //""
+const d = NaN ?? 'default' //NaN - zwraca każdą wartość falsy
 
-const e = "" || "default" //"default"
-const f = NaN || "default" //"default"
-const g = 0 || "default" //"default" - zwraca "default" dla każdego falsy
+const e = '' || 'default' //"default"
+const f = NaN || 'default' //"default"
+const g = 0 || 'default' //"default" - zwraca "default" dla każdego falsy
 ```
 
 Takie zachowanie logicznego OR może prowadzić to niespodziewanych błędów. Na przykład, gdy chcemy domyślną liczbę, ale 0 też jest poprawną, spodziewaną wartością. Dlatego nullish coalescing operator jest przydatny. Jest bardziej restrykcyjny i pomaga uniknąć takich błędów. Ale nie zastępuje on logicznego OR. Nie możesz także łączyć go z innymi operatorami logicznymi bez nawiasów.
 
-<Callout type="danger">
+<Callout variant="danger">
 
 `null || undefined ?? "default"`
 
@@ -208,7 +206,7 @@ Takie zachowanie logicznego OR może prowadzić to niespodziewanych błędów. N
 
 Powyższy kod zwraca błąd składni.
 
-<Callout type="success">
+<Callout variant="success">
 
 `(null || undefined) ?? "default”`
 
@@ -222,11 +220,11 @@ Zbierając informację do tego posta, znalazłem jeszcze jeden operator z podwó
 
 ```js
 const laptop = {
-  processor: "Intel",
+  processor: 'Intel'
 }
 
-laptop.processor ??= "AMD"
-laptop.graphicsCard ??= "Nvidia"
+laptop.processor ??= 'AMD'
+laptop.graphicsCard ??= 'Nvidia'
 
 console.log(laptop.processor) //"Intel"
 console.log(laptop.graphicsCard) //"Nvidia"
@@ -236,11 +234,11 @@ To jest skrót wyrażenia z nullish coalescing operator. Te dwa wyrażenia są r
 
 ```js
 const laptop = {
-  processor: "Intel",
+  processor: 'Intel'
 }
 
-laptop.graphicsCard ??= "Nvidia"
-laptop.graphicsCard ?? (laptop.graphicsCard = "Nvidia")
+laptop.graphicsCard ??= 'Nvidia'
+laptop.graphicsCard ?? (laptop.graphicsCard = 'Nvidia')
 //Powyższe dwa wyrażenia robią to samo
 
 console.log(laptop.graphicsCard) //"Nvidia"

@@ -4,12 +4,12 @@ description: "Or how not to spin your users round (like a record). Some animatio
 date: 2022-09-01T15:00:00+02:00
 updated: 2022-09-01T15:00:00+02:00
 image:
-  alt: "Half of a record on white background"
-  caption: "Photo by Miguel Á. Padriñán"
-  src: "./pexels-miguel-a-padrinan-167092.jpg"
-categories: ["web development"]
-tags: ["react", "animation", "a11y", "css"]
-type: "post"
+  alt: 'Half of a record on white background'
+  caption: 'Photo by Miguel Á. Padriñán'
+  src: 'pexels-miguel-a-padrinan-167092.jpg'
+categories: ['web development']
+tags: ['react', 'animation', 'a11y', 'css']
+type: 'post'
 ---
 
 I like minimalism. I like minimalism in my room, on my screen, and - as you can see - on my blog. But, even for me, some bells and whistles are cool. I think thoughtful animation can improve user experience. You can spot subtle examples on my website. Some designers or developers may not agree with me. Efficiency may be a top priority for them. But, sometimes, it's not even about preferences.
@@ -32,7 +32,7 @@ OS manufacturers took care of that people. Every big desktop and mobile OS (macO
 
 This option is also exposed to web users. With the `prefers-reduced-motion` media query, you can detect if the user prefers animations. It works similarly to the `prefers-color-scheme` media query. But, it would not work if the browser support is poor. So, let's check it out:
 
-![Chart from caniuse.com with prefers-reduced-motion browser support (94.41%)](./caniuse-prefers-reduced-motion.png)
+![Chart from caniuse.com with prefers-reduced-motion browser support (94.41%)](caniuse-prefers-reduced-motion.png)
 
 Browser support is good, so I'll try to make my website more accessible!
 
@@ -54,7 +54,7 @@ This CSS snippet in a styled component is responsible for cursor blinking. Every
 }
 
 .cursor:after {
-  content: "|";
+  content: '|';
   animation: blink 1s step-start infinite;
   color: var(--color-primary-base);
 }
@@ -65,7 +65,7 @@ We can disable this animation using our media query.
 ```css
 @media (prefers-reduced-motion: reduce) {
   .cursor:after {
-    content: "";
+    content: '';
     animation-name: none;
   }
 }
@@ -81,30 +81,30 @@ In another part of the website, I use `window.matchMedia()` to detect if the use
 
 ```jsx
 const hasReducedMotionPreference = window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
+  '(prefers-reduced-motion: reduce)'
 ).matches // Bool value which depends on system settings
 ```
 
 Now, we can use this information inside the custom hook.
 
 ```jsx
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
 
 export const usePrefersReducedMotion = () => {
   const [hasReducedMotionPreference, setHasReducedMotionPreference] =
     useState(false)
 
   useEffect(() => {
-    const mediaQueryList = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const mediaQueryList = window.matchMedia('(prefers-reduced-motion: reduce)')
     const initialPreference = mediaQueryList.matches
     setHasReducedMotionPreference(initialPreference)
 
-    const listener = event => {
+    const listener = (event) => {
       setHasReducedMotionPreference(event.matches)
     }
-    mediaQueryList.addEventListener("change", listener)
+    mediaQueryList.addEventListener('change', listener)
     return () => {
-      mediaQueryList.removeEventListener("change", listener)
+      mediaQueryList.removeEventListener('change', listener)
     }
   }, [])
 
@@ -117,26 +117,26 @@ The default value of that hook is `false` - we don't know user preferences yet. 
 We can reuse the hook in every component that uses animation. I will use it in my landing component, where the typewriter effect is located.
 
 ```jsx
-import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion"
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
 // Other imports
 
 const Landing = () => {
-  const { t } = useTranslation("components/landing")
+  const { t } = useTranslation('components/landing')
   const hasReducedMotionPreference = usePrefersReducedMotion()
 
   return (
     <Hero>
       <Tile as="header">
-        <H1 aria-label={t("aria")}>
+        <H1 aria-label={t('aria')}>
           {hasReducedMotionPreference ? (
-            t("typewriter.create")
+            t('typewriter.create')
           ) : (
             <Typewriter
               strings={[
-                t("typewriter.design"),
-                t("typewriter.code"),
-                t("typewriter.write"),
-                t("typewriter.create"),
+                t('typewriter.design'),
+                t('typewriter.code'),
+                t('typewriter.write'),
+                t('typewriter.create')
               ]}
             ></Typewriter>
           )}

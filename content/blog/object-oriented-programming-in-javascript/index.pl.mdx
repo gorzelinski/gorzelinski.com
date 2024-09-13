@@ -1,18 +1,18 @@
-﻿---
+---
 title: Programowanie obiektowe w języku JavaScript
-description: "Programowanie obiektowe jest podstawą wielu języków programowania. Dlatego zapoznamy się z tym paradygmatem, umieścimy go w kontekście i wykorzystamy w praktyce."
+description: 'Programowanie obiektowe jest podstawą wielu języków programowania. Dlatego zapoznamy się z tym paradygmatem, umieścimy go w kontekście i wykorzystamy w praktyce.'
 date: 2022-10-13T12:30:00+02:00
 updated: 2022-10-13T12:30:00+02:00
 image:
-  alt: "Cztery filary betonowego budynku pod błękitnym niebem"
-  caption: "Zdjęcie autorstwa Mayer Tawfik"
-  src: "./mayer-tawfik-Py2V6tUYgqw-unsplash.jpg"
-categories: ["computer science", "web development"]
-tags: ["oop", "fp", "paradygmat", "programowanie", "assembly", "javascript"]
-type: "post"
+  alt: 'Cztery filary betonowego budynku pod błękitnym niebem'
+  caption: 'Zdjęcie autorstwa Mayer Tawfik'
+  src: 'mayer-tawfik-Py2V6tUYgqw-unsplash.jpg'
+categories: ['computer science', 'web development']
+tags: ['oop', 'fp', 'paradygmat', 'programowanie', 'assembly', 'javascript']
+type: 'post'
 ---
 
-Ostatnio pisałem o konkretnych technologiach: React, Gatsby czy Netlify CMS. W [pierwszym wpisie](/blog/hello-world/), obiecałem jednak bardziej uniwersalną wiedzę. Dziesięć postów później, czas wypełnić obietnicę. Ten wpis będzie bardziej teoretyczny. Ale nie chcę żeby stał się zbyt abstrakcyjny, dlatego napiszę o OOP (Object Oriented Programming) w kontekście języka JavaScript.
+Ostatnio pisałem o konkretnych technologiach: React, Gatsby czy Netlify CMS. W [pierwszym wpisie](/pl/blog/hello-world/), obiecałem jednak bardziej uniwersalną wiedzę. Dziesięć postów później, czas wypełnić obietnicę. Ten wpis będzie bardziej teoretyczny. Ale nie chcę żeby stał się zbyt abstrakcyjny, dlatego napiszę o OOP (Object Oriented Programming) w kontekście języka JavaScript.
 
 ## OOP jest jednym z paradygmatów programowania
 
@@ -80,21 +80,21 @@ Przeszliśmy przez krótką historię paradygmatów programowania wymieniając r
 
 Załóżmy, że mamy dwa komputery: stacjonarny i laptop. Chcemy modelować je w kodzie. Pierwszym, naiwnym podejściem będzie podejście proceduralne, które może wyglądać tak:
 
-```javascript #Kod proceduralny
+```javascript title="Kod proceduralny"
 const desktop = {
-  name: "Mac Studio",
-  gpu: "AMD Radeon Pro W6800X",
+  name: 'Mac Studio',
+  gpu: 'AMD Radeon Pro W6800X',
   info() {
     console.log(`Nazwa komputera: ${this.name}`)
-  },
+  }
 }
 
 const laptop = {
-  name: "Macbook Air",
+  name: 'Macbook Air',
   display: '13.6"',
   info() {
     console.log(`Nazwa komputera: ${this.name}`)
-  },
+  }
 }
 ```
 
@@ -104,18 +104,18 @@ Możemy tworzyć odrębne obiekty dla każdej maszyny. Ale wyobraź sobie, że c
 
 Aby ograniczyć powtarzanie, możemy napisać funkcję, która stworzy obiekty dla nas - funkcję fabryczną.
 
-```javascript #Funkcja fabryczna
+```javascript title="Funkcja fabryczna"
 function createComputer(name) {
   return {
     name,
     info() {
       console.log(`Nazwa komputera: ${this.name}`)
-    },
+    }
   }
 }
 
-const desktop = createComputer("Mac Studio")
-const laptop = createComputer("Macbook Air")
+const desktop = createComputer('Mac Studio')
+const laptop = createComputer('Macbook Air')
 ```
 
 Możemy tę funkcję wywołać wiele razy, aby stworzyć wiele obiektów. Nie powtarzamy się już tak bardzo. Ale istnieje inny problem. Spójrz na funkcję `info()`. Pozostaje ona taka sama dla każdego komputera, a jednak kopiujemy ją za każdym razem. Nie jest to specjalnie oszczędne pod kątem pamięci.
@@ -124,11 +124,11 @@ Możemy tę funkcję wywołać wiele razy, aby stworzyć wiele obiektów. Nie po
 
 Jakiś czas temu, programiści dodali metodę `create()` do wbudowanego obiektu `Object`. Wykorzystuje ona istniejący obiekt jako prototyp, dla nowo stworzonego obiektu. W ten sposób możemy zdefiniować funkcję raz i odziedziczyć ją wykorzystując dziedziczenie prototypowe.
 
-```javascript #Object.create()
+```javascript title="Object.create()"
 const computerFunctions = {
   info() {
     console.log(`Nazwa komputera: ${this.name}`)
-  },
+  }
 }
 
 function createComputer(name) {
@@ -137,11 +137,11 @@ function createComputer(name) {
   return newComputer
 }
 
-const desktop = createComputer("Mac Studio")
-const laptop = createComputer("Macbook Air")
+const desktop = createComputer('Mac Studio')
+const laptop = createComputer('Macbook Air')
 ```
 
-<Callout type="warning">
+<Callout variant="warning">
 
 Język JavaScript nie posiada klasycznego dziedziczenia znanego z języków takich jak Java czy C++. Posiada on tylko jedną konstrukcję - obiekt. Ale to nie jest bug - to jest feature! Każdy obiekt ma link do innego, który nazwany jest jego **prototypem.** Te powiązane obiekty tworzą **łańcuch prototypowy.**
 
@@ -158,7 +158,7 @@ Każda funkcja wywołana używając słowa `new` to funkcja konstruktora. Wbudow
 3. Wiąże `this` do zwróconego obiektu.
 4. Wiąże prototyp obiektu do funkcji konstruktora.
 
-```javascript #Funkcja konstruktora
+```javascript title="Funkcja konstruktora"
 function Computer(name) {
   this.name = name
 }
@@ -167,13 +167,13 @@ Computer.prototype.info = function () {
   console.log(`Nazwa komputera: ${this.name}`)
 }
 
-const desktop = new Computer("Mac Studio")
-const laptop = new Computer("Macbook Air")
+const desktop = new Computer('Mac Studio')
+const laptop = new Computer('Macbook Air')
 ```
 
 Możemy wykorzystać prototyp do zdefiniowania współdzielonej funkcjonalności raz i będzie ona dostępna dla każdego obiektu stworzonego przy pomocy funkcji konstrukcyjnej.
 
-<Callout type="warning">
+<Callout variant="warning">
 
 Ale uważaj - to nie zadziała z funkcjami strzałkowymi. Funkcje strzałkowe używają zasięgu leksykalnego - definiują `this` na podstawie swojego miejsca w kodzie. Jeżeli zdefiniowalibyśmy funkcję `info()` jako strzałkową w naszym fragmencie, `this` wskazywałoby na obiekt `window`.
 
@@ -185,7 +185,7 @@ Programiści JavaScript pisali w ten sposób przez długi czas. Prawdopodobnie z
 
 Nowa składnia została wprowadzona (wraz z wieloma innymi funkcjonalnościami) w specyfikacji ECMAScript 6. Poniższy fragment może wyglądać znajomo dla programistów, którzy używali wcześniej C++ albo inny, obiektowy język.
 
-```javascript #Klasy
+```javascript title="Klasy"
 class Computer {
   constructor(name) {
     this.name = name
@@ -195,13 +195,13 @@ class Computer {
   }
 }
 
-const desktop = new Computer("Mac Studio")
-const laptop = new Computer("Macbook Air")
+const desktop = new Computer('Mac Studio')
+const laptop = new Computer('Macbook Air')
 ```
 
 Chyba największą zaletą jest to, że wszystko jest umieszczone w jednym “pudełku”. Wszystkie właściwości i metody są pomiędzy klamrami. Nie musimy używać prototypów bezpośrednio.
 
-<Callout type="warning">
+<Callout variant="warning">
 
 Ale pamiętaj - pomimo tego, że istnieje słowo `class`, to jest to tak zwany lukier składniowy. Pod spodem, cały czas używamy dziedziczenia prototypowego. W innych językach klasy są realną rzeczą. W przeciwieństwie do języka JavaScript, gdzie istnieją tylko obiekty.
 
@@ -209,7 +209,7 @@ Ale pamiętaj - pomimo tego, że istnieje słowo `class`, to jest to tak zwany l
 
 Możesz argumentować, że używanie słowa `class` wraz z dziedziczeniem prototypowym jest zwodnicze. I trochę jest. Ale w mojej opinii, korzyści wynikające z czytelności przeważają nad tą wadą. Myślę, że ten kod jest łatwy do zrozumienia i wygląda jak OOP. Szczególnie, gdy dodamy dziedziczenie.
 
-```javascript #Klasy i dziedziczenie
+```javascript title="Klasy i dziedziczenie"
 class Computer {
   constructor(name) {
     this.name = name
@@ -233,8 +233,8 @@ class Laptop extends Computer {
   }
 }
 
-const desktop = new Desktop("Mac Studio", "AMD Radeon Pro W6800X")
-const laptop = new Laptop("Macbook Air", '13.6"')
+const desktop = new Desktop('Mac Studio', 'AMD Radeon Pro W6800X')
+const laptop = new Laptop('Macbook Air', '13.6"')
 ```
 
 Klasy `Desktop` i `Laptop` mają łańcuch prototypowy z klasą `Computer`. Podklasy dziedziczą z klasy bazowej (zwanej także super klasą). Aby odziedziczyć właściwości, musimy wywołać metodę `super()` wewnątrz konstruktora. Poniżej tej metody możemy dodać właściwości specyficzne dla podklasy. Ten typ dziedziczenia nie kopiuje wszystkiego z klasy bazowej jak w klasycznych językach obiektowych. Zamiast tego, poszerzamy łańcuch prototypowy wykorzystując `extends`. Ma to swoje zalety pod kątem optymalizacji pamięci.
@@ -259,7 +259,7 @@ Nasze klasy **dziedziczą** część funkcjonalności od siebie. Unikamy przepis
 
 Dobra, skłamałem. Nie poznaliśmy jeszcze jednego z filarów. Ale odkupuję swoje winy w tym momencie. Słowo “polimorfizm” pochodzi od greckiego słowa “polymorphos”, które dosłownie oznacza “wiele postaci”. Etymologia dobrze opisuje to co chcemy osiągnąć polimorfizmem w OOP. Nie wiem czy istnieje jedna, konkretna definicja polimorfizmu. Nie chcę kłócić się z ludźmi mądrzejszymi ode mnie, dlatego nie twierdzę, że przytaczam precyzyjną definicję. Ale pomysł jest taki, że wywołujemy tę samą metodę na różnych obiektach i każdy z nich reaguje inaczej. JavaScript jest typowany dynamicznie i ogranicza polimorfizm. Ale możemy napisać coś takiego:
 
-```javascript #Klasy i polimorfizm
+```javascript title="Klasy i polimorfizm"
 class Computer {
   constructor(name) {
     this.name = name
@@ -289,8 +289,8 @@ class Laptop extends Computer {
   }
 }
 
-const desktop = new Desktop("Mac Studio", "AMD Radeon Pro W6800X")
-const laptop = new Laptop("Macbook Air", '13.6"')
+const desktop = new Desktop('Mac Studio', 'AMD Radeon Pro W6800X')
+const laptop = new Laptop('Macbook Air', '13.6"')
 
 desktop.info()
 //Nazwa komputera: Mac Studio

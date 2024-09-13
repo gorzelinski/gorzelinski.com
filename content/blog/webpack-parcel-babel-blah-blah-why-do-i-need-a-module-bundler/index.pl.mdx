@@ -1,15 +1,15 @@
-﻿---
+---
 title: Webpack, Parcel, Babel, bla, bla… po co mi bundler modułów?
-description: "Bundler modułów jest bazą dla wielu projektów i frameworków. Zazwyczaj nie zwracamy uwagi na te podstawowe narzędzia. Ale może powinniśmy?"
+description: 'Bundler modułów jest bazą dla wielu projektów i frameworków. Zazwyczaj nie zwracamy uwagi na te podstawowe narzędzia. Ale może powinniśmy?'
 date: 2022-11-07T18:00:00+02:00
 updated: 2022-11-07T18:00:00+02:00
 image:
-  alt: "Czarnobrązowy jamnik stojący w pudełku"
-  caption: "Zdjęcie autorstwa Erda Estremera"
-  src: "./erda-estremera-sxNt9g77PE0-unsplash.jpg"
-categories: ["web development"]
-tags: ["webpack", "babel", "module", "bundler"]
-type: "post"
+  alt: 'Czarnobrązowy jamnik stojący w pudełku'
+  caption: 'Zdjęcie autorstwa Erda Estremera'
+  src: 'erda-estremera-sxNt9g77PE0-unsplash.jpg'
+categories: ['web development']
+tags: ['webpack', 'babel', 'module', 'bundler']
+type: 'post'
 ---
 
 Wszyscy znamy trzy składniki potrzebne do zbudowania strony internetowej: HTML, CSS, JavaScript. HTML jest jak rzeczowniki w zdaniach, CSS jak przymiotniki, a JavaScript jest jak czasowniki. HTML definiuje strukturę, CSS style, JavaScript funkcjonalność. Ale czy obecnie to wystarcza?
@@ -22,7 +22,7 @@ Jednakże, współczesne aplikacje internetowe są o wiele bardziej złożone. S
 
 Module bundler rozwiązuje wymienione problemy. U podstaw, taki bundler bierze wiele plików js (moduły) i łączy je w jeden plik (bundle), który buduje twoją aplikację w przeglądarce. Poza lokalnymi modułami, wszystkie zewnętrzne zależności także zostaną scalone. Te zależności mogą posiadać swoje zależności itd. Bundler modułów, taki jak webpack, tworzy graf zależności, aby je śledzić. Oczywiście to jest uproszczenie. Skonfigurujemy projekt wraz narzędziem webpack, aby się zagłębić i poznać więcej funkcjonalności.
 
-<Callout type="info">
+<Callout variant="info">
 
 W narzędziach CLI jak `create-react-app` lub frameworkach jak Gatsby, webpack jest już skonfigurowany. Nadal jednak uważam, że dobrze wiedzieć co się dzieje "pod maską".
 
@@ -44,9 +44,9 @@ npm install -D webpack webpack-cli
 
 Potrzebujemy czegoś do “spakowania”, więc dodajmy prosty plik JavaScript.
 
-```js #./src/index.js
+```js title="./src/index.js"
 const exampleFunction = () => {
-  console.log("Message")
+  console.log('Message')
 }
 ```
 
@@ -56,9 +56,9 @@ Webpack zadziała bez wcześniejszej konfiguracji. Po wpisaniu w terminalu `webp
 
 Entry jest jak punkt startowy twojej aplikacji. Ta opcja przyjmuje ścieżkę do modułu. Webpack wykorzysta ten moduł, aby zacząć budować graf zależności. Ustawimy tę wartość na `./src/index.js`, która jest też domyślną wartością. Może ona także przyjąć obiekt dla wielu ścieżek i podziału kodu (code splitting).
 
-```js #webpack.config.js
+```js title="webpack.config.js"
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js'
 }
 ```
 
@@ -66,15 +66,15 @@ module.exports = {
 
 Output ustawia, gdzie webpack powinien umieścić nasz bundle. Ta opcja przyjmuje dwa parametry: `path` i `filename`. Skonfigurujemy webpacka, aby zapisywał bundle w `./public/main.js`.
 
-```js {5-8} #webpack.config.js
-const path = require("path")
+```js title="webpack.config.js" highlight={[5, 8]}
+const path = require('path')
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "public"),
-  },
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'public')
+  }
 }
 ```
 
@@ -82,7 +82,7 @@ module.exports = {
 
 Powiedzmy, że chcemy także ostylować naszą aplikację. Stwórzmy plik CSS ze zmienną.
 
-```css #./src/style.css
+```css title="./src/style.css"
 :root {
   --eiffel-65: blue;
 }
@@ -90,8 +90,8 @@ Powiedzmy, że chcemy także ostylować naszą aplikację. Stwórzmy plik CSS ze
 
 Następnie zaimportujmy go do naszej aplikacji.
 
-```js #./src/index.js
-import "./style.css"
+```js title="./src/index.js"
+import './style.css'
 ```
 
 Być może cię to zaskoczy, jeżeli przywykłeś do frameworków, ale ta składnia nie zadziała. Potrzebujemy sposobu, żeby przekształcić nasz plik CSS w poprawny moduł. A webpack sam w sobie nie robi aż tak wiele. W domyśle wspiera tylko pliki JSON i JavaScript. Dlatego potrzebujemy loadera. Loader konwertuje różne typy plików na poprawne moduły. Potrzebujemy zainstalować dwa z nich, aby użyć naszych stylów.
@@ -107,30 +107,30 @@ Następnie musimy je skonfigurować. Loader przyjmuje dwie właściwości:
 
 W naszym przypadku, użyjemy wyrażenia regularnego do zidentyfikowania plików CSS i użyjemy powyższych loaderów.
 
-```js {12-15} #webpack.config.js
-const path = require("path")
+```js title="webpack.config.js" highlight={[12, 15]}
+const path = require('path')
 
 module.exports = {
-  entry: "./src/index.js",
-  target: ["web", "es5"],
+  entry: './src/index.js',
+  target: ['web', 'es5'],
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "public"),
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'public')
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
-    ],
-  },
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
 }
 ```
 
 ### Babel
 
-Pora na małą dygresję. Z naszym plikiem może być inny problem - konkretnie, funkcja strzałkowa. Podobnie jak Jahwe pomieszał ludziom języki, bogowie przeglądarek mieszają implementacje JavaScript. Pomimo że przeglądarki obsługują większość funkcjonalności specyfikacji ES6, wsparcie nie jest stuprocentowe. Powiedzmy, że chcemy wspierać Internet Explorera z jakiegoś powodu. Potrzebujemy sposobu na przekształcenie naszej składni. Moglibyśmy wykorzystać polyfill, ale wraz z nowym kodem i funkcjonalnościami, szybko stałoby się to kłopotliwe. JavaScript szybko się rozwija i nowa składnia pojawia się regularnie: async/await, operator spread, klasy itp. Kilka postów temu, sam napisałem o nowej, przydatnej funkcjonalności - [optional chaining](/blog/is-it-native-javascript-isnt-it/). W tym momencie, jak dar glosolalii od Boga, przychodzi Babel. Babel bierze współczesną składnię języka JavaScript i kompiluje ją do formy zrozumiałej przez różne przeglądarki. Babel wykorzystuje pluginy, aby przekształcać różne funkcjonalności języka takie jak `plugin-proposal-optional-chaining`. Pluginy są małe i nie chcemy ich instalować oddzielnie. Zamiast tego, zdefiniujemy preset z wieloma funkcjonalnościami. Wykorzystamy `babel-preset-env`. Pozwala on na definiowanie poziomu kompatybilności z przeglądarkami, które chcemy wspierać. Dodamy także preset dla biblioteki React.
+Pora na małą dygresję. Z naszym plikiem może być inny problem - konkretnie, funkcja strzałkowa. Podobnie jak Jahwe pomieszał ludziom języki, bogowie przeglądarek mieszają implementacje JavaScript. Pomimo że przeglądarki obsługują większość funkcjonalności specyfikacji ES6, wsparcie nie jest stuprocentowe. Powiedzmy, że chcemy wspierać Internet Explorera z jakiegoś powodu. Potrzebujemy sposobu na przekształcenie naszej składni. Moglibyśmy wykorzystać polyfill, ale wraz z nowym kodem i funkcjonalnościami, szybko stałoby się to kłopotliwe. JavaScript szybko się rozwija i nowa składnia pojawia się regularnie: async/await, operator spread, klasy itp. Kilka postów temu, sam napisałem o nowej, przydatnej funkcjonalności - [optional chaining](/pl/blog/is-it-native-javascript-isnt-it/). W tym momencie, jak dar glosolalii od Boga, przychodzi Babel. Babel bierze współczesną składnię języka JavaScript i kompiluje ją do formy zrozumiałej przez różne przeglądarki. Babel wykorzystuje pluginy, aby przekształcać różne funkcjonalności języka takie jak `plugin-proposal-optional-chaining`. Pluginy są małe i nie chcemy ich instalować oddzielnie. Zamiast tego, zdefiniujemy preset z wieloma funkcjonalnościami. Wykorzystamy `babel-preset-env`. Pozwala on na definiowanie poziomu kompatybilności z przeglądarkami, które chcemy wspierać. Dodamy także preset dla biblioteki React.
 
 ```bash
 npm install -D @babel/core @babel/preset-env @babel/preset-react babel-loader
@@ -142,45 +142,45 @@ npm install react react-dom
 
 Babel może być używany niezależnie, ale my skonfigurujemy go z webpackiem. W tym celu musimy dodać loader wewnątrz tablicy `rules`. Tym razem musimy wykluczyć folder `node_modules` i dodać presety, dlatego właściwość `use` przyjmuje obiekt.
 
-```js {16-25} #webpack.config.js
-const path = require("path")
+```js title="webpack.config.js" highlight={[16,25]}
+const path = require('path')
 
 module.exports = {
-  entry: "./src/index.js",
-  target: ["web", "es5"],
+  entry: './src/index.js',
+  target: ['web', 'es5'],
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "public"),
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'public')
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
-          },
-        },
-      },
-    ],
-  },
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
+      }
+    ]
+  }
 }
 ```
 
 Teraz możemy stworzyć prosty komponent React.
 
-```jsx #./src/component.js
-import React from "react"
+```jsx title="./src/component.js"
+import React from 'react'
 
 const Heading = () => {
   return (
-    <h1 style={{ color: "var(--eiffel-65)" }}>
+    <h1 style={{ color: 'var(--eiffel-65)' }}>
       This is heading with style variables
     </h1>
   )
@@ -191,13 +191,13 @@ export default Heading
 
 I zaimportować go wraz ze stylami w naszym głównym pliku.
 
-```jsx #./src/index.js
-import React from "react"
-import { createRoot } from "react-dom/client"
-import "./style.css"
-import Heading from "./component"
+```jsx title="./src/index.js"
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import './style.css'
+import Heading from './component'
 
-const root = createRoot(document.getElementById("root"))
+const root = createRoot(document.getElementById('root'))
 root.render(<Heading />)
 ```
 
@@ -213,41 +213,41 @@ npm install -D webpack-bundle-analyzer
 
 Następnie musimy dodać właściwość `plguins` do naszej konfiguracji. Przyjmuje ona tablicę ze wszystkimi pluginami. W tablicy stworzymy instancję naszego nowego obiektu.
 
-```js {2|28} #webpack.config.js
-const path = require("path")
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer")
+```js title="webpack.config.js" highlight={[28]}
+const path = require('path')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "public"),
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'public')
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
-          },
-        },
-      },
-    ],
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
+      }
+    ]
   },
-  plugins: [new BundleAnalyzerPlugin()],
+  plugins: [new BundleAnalyzerPlugin()]
 }
 ```
 
 Po uruchomieniu webpacka, karta przeglądarki powinna się otworzyć. Powinieneś ujrzeć interaktywną mapę z proporcjonalnie przeskalowanymi prostokątami. Symbolizują one zależności i zawierają dodatkowe informacje. W mojej opinii - całkiem fajny plugin.
 
-![Webpack bundle analyzer](./webpack-bundle-analyzer.png)
+![Webpack bundle analyzer](webpack-bundle-analyzer.png)
 
 ## Podsumowanie
 

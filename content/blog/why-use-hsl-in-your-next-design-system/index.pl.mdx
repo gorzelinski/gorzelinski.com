@@ -1,20 +1,20 @@
-﻿---
+---
 title: Dlaczego użyć HSL w następnym systemie projektowania?
-description: "W tym wpisie przyjrzymy się różnym formatom kolorów. Porównamy najpopularniejsze dostępne w języku CSS: wartości hex, RGB i HSL. Dlaczego używać tego ostatniego?"
+description: 'W tym wpisie przyjrzymy się różnym formatom kolorów. Porównamy najpopularniejsze dostępne w języku CSS: wartości hex, RGB i HSL. Dlaczego używać tego ostatniego?'
 date: 2022-12-21T18:00:00+02:00
 updated: 2022-12-21T18:00:00+02:00
 image:
-  alt: "Wielokolorowe światła bokeh"
-  caption: "Zdjęcie autorstwa Thomas M. Evans"
-  src: "./thomas-m-evans-ofEZVY3nzus-unsplash.jpg"
-categories: ["design"]
-tags: ["css", "kolory", "hex", "rgb", "hsl"]
-type: "post"
+  alt: 'Wielokolorowe światła bokeh'
+  caption: 'Zdjęcie autorstwa Thomas M. Evans'
+  src: 'thomas-m-evans-ofEZVY3nzus-unsplash.jpg'
+categories: ['design']
+tags: ['css', 'kolory', 'hex', 'rgb', 'hsl']
+type: 'post'
 ---
 
 Nie wiem czy wiesz, ale większość twojego mózgu odpowiedzialna jest za przetwarzanie wizualnych informacji. Mojego też. Większość naczelnych jest wzrokowcami. Połowa mózgu makaka królewskiego jest poświęcona widzeniu. Nasze oczy i mózgi tworzą wyrafinowane narzędzie, które pozwala wykrywać głębię, ruch i kolor. Kolor jest zaskakująco istotny dla naszego zrozumienia rzeczywistości. Spójrz na ten przykład.
 
-![Kropka w innym kolorze natychmiast wyróżnia się spośród innych](./dots-and-colors.png)
+![Kropka w innym kolorze natychmiast wyróżnia się spośród innych](dots-and-colors.png)
 
 Który element się wyróżnia? Ten o innym kolorze. Kolory mogą dzielić i łączyć, wyróżniać i ukrywać. Kontrastujące wartości mają tendencję do przyciągania uwagi, a kombinacja pobliskich odcieni zmiękcza poróżnienie elementów.
 
@@ -30,7 +30,7 @@ Tak jak przetwarzanie wizualne jest dużą częścią naszych mózgów, kolory s
 
 Aby lepiej to zrozumieć, cofnijmy się na chwilę. Prawdopodobnie wiesz, że ekran na który patrzysz składa się z pikseli. Standardowy ekran Full HD (1920x1080) ma ich 2 073 600. Każdy piksel składa się z trzech mini diod LED: czerwonej, zielonej i niebieskiej. Tak, jest to uproszczenie, ale wystarczające.
 
-![Piksele widziane z bliska](./umberto-deb2EnbWPr8-unsplash.jpg)
+![Piksele widziane z bliska](umberto-deb2EnbWPr8-unsplash.jpg)
 
 W Internecie możemy je kontrolować za pomocą języka CSS. CSS wspiera wiele różnych formatów kolorów: wartości hex, `rgb()`, `hsl()`, `rgba()`, `hsla()`, nazwane kolory - lista jest długa. Ja skupię się na pierwszych trzech.
 
@@ -87,7 +87,7 @@ W języku CSS również istnieje funkcja dla formatu HSL. Możemy odtworzyć kol
 
 Kolory w naszych przykładach są “czyste” dla uproszczenia, więc nasycenie wynosi 100%. Jednakże, zwykle chcemy je trochę zmiękczyć, bo mogą się wydawać nieprzyjemne dla oka.
 
-<Callout type="info">
+<Callout variant="info">
 
 Kombinacja zielonego i czerwonego (lub niebieskiego i czerwonego) jest szczególnie nieprzyjemna. Gdy coś projektujesz, staraj się jej unikać. Te kolory umieszczone obok siebie mogą powodować [chromastorepsję](https://www.ritsumei.ac.jp/~akitaoka/scolor-e.html). Jest to iluzja, która pojawia się, gdy konkretne kolory są umieszczone obok siebie, utrudniając koncentrację na nich obu.
 
@@ -97,7 +97,7 @@ Kombinacja zielonego i czerwonego (lub niebieskiego i czerwonego) jest szczegól
 
 Zmiękczanie koloru wykorzystując HSL jest proste - wystarczy, że zmniejszysz nasycenie. Zmienianie jasności koloru jest porównywalnie proste. Wyobraź sobie typowy scenariusz - masz przycisk z kilkoma stanami: domyślny, hover, focus. Chcesz, aby jego kolor był ciemniejszy dla hover i focus. Osiągnięcie takiego efektu wykorzystując wartości hex wymagałoby ręcznego łączenia i testowania lub generowania odcieni koloru. Wykorzystując wartości hex, nadal nie byłoby jednak jasne, jak bardzo kolory się różnią. Wykorzystując HSL, możesz ustawić odcień i nasycenie, a następnie możesz nim manipulować procentami jasności. Różnica pomiędzy kolorami jest dostrzegalna na pierwszy rzut oka.
 
-![Przyciski o różnych stanach i kolorach - stworzone przy pomocy HSL](./hsl-button-states.png)
+![Przyciski o różnych stanach i kolorach - stworzone przy pomocy HSL](hsl-button-states.png)
 
 Jest to kolejna zaleta formatu HSL. Możesz z łatwością stopniować kolory. Wyobraź sobie sytuację, że twój design system się rozrasta i potrzebujesz więcej odcieni - dodanie ich jest proste. W moim przykładzie, zmienne CSS reprezentują kolejne warianty koloru.
 
@@ -116,11 +116,11 @@ Jest to kolejna zaleta formatu HSL. Możesz z łatwością stopniować kolory. W
 
 Zdjęcie poniżej pokazuje jak te kolory się wyświetlają.
 
-![Niebieska paleta kolorów - stworzona przy pomocy HSL](./hsl-primary-blue.png)
+![Niebieska paleta kolorów - stworzona przy pomocy HSL](hsl-primary-blue.png)
 
 Powyższy fragment kodu pokazuje siłę deklarowania zmiennych wykorzystując HSL - kompozycję. Możesz ustawić odcień i nasycenie jako zmienne i użyć ich ponownie w wielu miejscach. I to jest kod zgodny z zasadą DRY! Jestem zaskoczony, że to napiszę, ale powiedzmy, że nie lubimy już niebieskiego. Posłuchaliśmy Amy Winehouse i [wracamy do czerni](https://www.youtube.com/watch?v=TJAfLE39ZZ8). Zmiana kolorów w naszym fragmencie kodu jest tak prosta, jak zmiana jednej liczby - nasycenia (na 0%)!
 
-![Czarna paleta kolorów - stworzona przy pomocy HSL](./hsl-primary-black.png)
+![Czarna paleta kolorów - stworzona przy pomocy HSL](hsl-primary-black.png)
 
 ## Podsumowanie
 
