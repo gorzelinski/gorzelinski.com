@@ -33,10 +33,10 @@ export default async function Image({ params: { lang } }: PageProps) {
     {
       ...TWITTER,
       fonts: [
-        await getMetaFont('../../public/fonts/Montserrat-Medium.ttf', {
+        await getMetaFont('/public/fonts/Montserrat-Medium.ttf', {
           weight: 500
         }),
-        await getMetaFont('../../public/fonts/Montserrat-SemiBold.ttf', {
+        await getMetaFont('/public/fonts/Montserrat-SemiBold.ttf', {
           weight: 600
         })
       ]
