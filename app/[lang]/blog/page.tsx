@@ -3,7 +3,7 @@ import { WebPage, WithContext } from 'schema-dts'
 import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { getDictionary, getMDXes } from '@/scripts'
-import { generateAlternateLinks } from '@/lib'
+import { generateAlternateLinks, getMetaImage } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
 import { H1, Header, Newsletter, Post, Section } from '@/design-system'
 import { small } from '@/design-system/elements/small'
@@ -11,8 +11,13 @@ import { small } from '@/design-system/elements/small'
 export async function generateMetadata({
   params: { lang }
 }: PageProps): Promise<Metadata> {
-  const { page } = await getDictionary(lang)
+  const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.blog)
+  const metaImageParams = {
+    title: page.blog.metadata.title,
+    subtitle: layout.root.metadata.title,
+    alt: page.blog.metadata.image.alt
+  }
 
   return {
     title: page.blog.metadata.title,
@@ -24,12 +29,14 @@ export async function generateMetadata({
     openGraph: {
       ...(await openGraph(lang)),
       title: page.blog.metadata.title,
-      description: page.blog.metadata.description
+      description: page.blog.metadata.description,
+      images: getMetaImage('og', lang, metaImageParams)
     },
     twitter: {
       ...twitter(),
       title: page.blog.metadata.title,
-      description: page.blog.metadata.description
+      description: page.blog.metadata.description,
+      images: getMetaImage('twitter', lang, metaImageParams)
     }
   }
 }
