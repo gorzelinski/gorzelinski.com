@@ -3,7 +3,7 @@ import { BlogPosting, WithContext } from 'schema-dts'
 import { NestedPageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { createPagination, getDictionary, getMDX } from '@/scripts'
-import { generateAlternateLinks, getAbsoluteURL } from '@/lib'
+import { generateAlternateLinks, getAbsoluteURL, getMetaImage } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
 import { Box, Grid, VStack } from '@/styled-system/jsx'
 import {
@@ -23,9 +23,18 @@ export async function generateMetadata({
   params: { lang, slug }
 }: NestedPageProps): Promise<Metadata> {
   const { frontmatter } = await getMDX<'project'>(LINKS.portfolio, slug, lang)
-  const { layout } = await getDictionary(lang)
+  const { layout, page } = await getDictionary(lang)
   const canonical = `${LINKS.portfolio}${slug}/`
   const languages = generateAlternateLinks(canonical)
+  const metaImageParams = {
+    title: frontmatter.title,
+    subtitle: layout.root.metadata.title,
+    alt: `${page.portfolioProject.metadata.image.alt} ${frontmatter.image.alt}`,
+    backgroundURL: getAbsoluteURL(
+      `/images${LINKS.portfolio}${slug}/${frontmatter.image.src}`,
+      'en'
+    )
+  }
 
   return {
     title: frontmatter.title,
@@ -38,6 +47,7 @@ export async function generateMetadata({
       ...(await openGraph(lang)),
       title: frontmatter.title,
       description: frontmatter.description,
+      images: getMetaImage('og', lang, metaImageParams),
       type: 'article',
       publishedTime: frontmatter.date.toISOString(),
       modifiedTime: frontmatter.updated.toISOString(),
@@ -46,7 +56,8 @@ export async function generateMetadata({
     twitter: {
       ...twitter(),
       title: frontmatter.title,
-      description: frontmatter.description
+      description: frontmatter.description,
+      images: getMetaImage('twitter', lang, metaImageParams)
     }
   }
 }
