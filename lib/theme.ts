@@ -1,5 +1,5 @@
 import { Theme } from '@/types'
-import { COOKIES, THEME } from '@/constants'
+import { THEME } from '@/constants'
 
 export function getThemeAttribute() {
   return document.documentElement.getAttribute(THEME.attribute) as Theme
@@ -9,12 +9,12 @@ export function setThemeAttribute(theme: Theme) {
   document.documentElement.setAttribute(THEME.attribute, theme)
 }
 
-export function setThemeCookie(theme: Theme) {
-  document.cookie = `${COOKIES.theme}=${theme}; Path=/; SameSite=Strict;`
+export function setThemeToLs(theme: Theme) {
+  window.localStorage.setItem(THEME.lsKey, theme)
 }
 
-export function getThemeCookie() {
-  return document.cookie.match(/theme=(light|dark)/)?.[1] as Theme
+export function getThemeFromLs() {
+  return window.localStorage.getItem(THEME.lsKey) as Theme | null
 }
 
 export function hslToRgb(hsl: string) {

@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
-import { cookies } from 'next/headers'
 import { WebSite, WithContext } from 'schema-dts'
-import { PageProps, Theme } from '@/types'
-import { COOKIES, LINKS, metadataBase } from '@/constants'
+import { PageProps } from '@/types'
+import { LINKS, metadataBase } from '@/constants'
 import { Locale, i18n } from '@/i18n.config'
 import { getDictionary } from '@/scripts'
 import { getAbsoluteURL, getMetaImage } from '@/lib'
@@ -65,7 +64,6 @@ export default async function RootLayout({
 }) {
   const { lang } = params
   const dictionary = await getDictionary(lang)
-  const theme = cookies().get(COOKIES.theme)?.value as Theme
   const jsonLd: WithContext<WebSite> = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
@@ -83,19 +81,19 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={`${montserrat.variable} ${lora.variable} ${firaCode.variable}`}
       lang={lang}
-      data-color-mode={theme}
     >
       <body>
         <script
           id="set-initial-theme"
           dangerouslySetInnerHTML={{
             __html: `
-            function setInitialTheme() {
+            function getInitialTheme() {
               try {
-                const isSavedTheme =
-                  document.cookie.includes('light') || document.cookie.includes('dark')
+                const savedTheme = window.localStorage.getItem('theme')
 
-                if (isSavedTheme) return
+                if (savedTheme) {
+                  return savedTheme
+                }
 
                 function getOsTheme() {
                   const isOsLight = window.matchMedia(
@@ -108,11 +106,12 @@ export default async function RootLayout({
 
                 const osTheme = getOsTheme()
 
-                document.documentElement.setAttribute('data-color-mode', osTheme)
-                document.cookie = 'theme=' + osTheme + '; Path=/; SameSite=Strict;'
+                return osTheme
               } catch (_) {}
             }
-            setInitialTheme()
+
+            const preferredTheme = getInitialTheme()
+            document.documentElement.setAttribute('data-color-mode', preferredTheme)
             `
           }}
         />

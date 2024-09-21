@@ -54,4 +54,17 @@ test.describe('Theme tests', () => {
 
     await settingsPage.checkTheme('dark')
   })
+
+  test('checks if the theme persist after switching the language ', async ({
+    page,
+    settingsPage
+  }) => {
+    await page.goto(settingsPage.link.home)
+
+    await settingsPage.checkTheme('light')
+
+    await settingsPage.switchLanguage('pl')
+
+    await settingsPage.checkTheme('light', 'pl')
+  })
 })

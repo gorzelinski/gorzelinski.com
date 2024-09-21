@@ -14,7 +14,7 @@ export { capitalize } from './string'
 export {
   hslToRgb,
   getThemeAttribute,
-  getThemeCookie,
+  getThemeFromLs,
   setThemeAttribute,
-  setThemeCookie
+  setThemeToLs
 } from './theme'

@@ -36,7 +36,9 @@ export class SettingsPage {
   private readonly contentType: string
 
   public heading: Locator
-  private themeButton: Locator
+  private themeButtons: {
+    [key in Locale]: Locator
+  }
   private languageButtons: {
     [key in Locale]: Locator
   }
@@ -73,9 +75,14 @@ export class SettingsPage {
     }
     this.contentType = CONTENTTYPE
 
-    this.themeButton = this.page.getByRole('button', {
-      name: this.dictionary.en.component.themeSwitch.ariaLabel
-    })
+    this.themeButtons = {
+      en: this.page.getByRole('button', {
+        name: this.dictionary.en.component.themeSwitch.ariaLabel
+      }),
+      pl: this.page.getByRole('button', {
+        name: this.dictionary.pl.component.themeSwitch.ariaLabel
+      })
+    }
     this.languageButtons = {
       en: this.page.getByRole('link', {
         name: getLocaleDisplayName('en')
@@ -90,8 +97,8 @@ export class SettingsPage {
     this.background = this.page.getByTestId('background')
   }
 
-  async switchTheme() {
-    await this.themeButton.click()
+  async switchTheme(lang: Locale = 'en') {
+    await this.themeButtons[lang].click()
   }
 
   async switchLanguage(lang: Locale) {
@@ -114,8 +121,8 @@ export class SettingsPage {
     return `${title} | ${this.dictionary[lang].layout.root.metadata.title}`
   }
 
-  async checkTheme(theme: Theme) {
-    await expect(this.themeButton).toBeVisible()
+  async checkTheme(theme: Theme, lang: Locale = 'en') {
+    await expect(this.themeButtons[lang]).toBeVisible()
     await expect(theme === 'light' ? this.sunny : this.moon).toBeVisible()
     await expect(this.heading).toHaveCSS(
       'color',

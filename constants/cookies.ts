@@ -1,4 +1,3 @@
 export const COOKIES = {
-  locale: 'locale',
-  theme: 'theme'
+  locale: 'locale'
 } as const
