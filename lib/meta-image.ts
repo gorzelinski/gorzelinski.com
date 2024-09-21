@@ -7,7 +7,10 @@ type MetaImage =
   | NonNullable<Metadata['openGraph']>['images']
   | NonNullable<Metadata['twitter']>['images']
 
-type Params = Pick<MetaImageProps, 'title' | 'subtitle' | 'backgroundURL'> & {
+type Params = Pick<
+  MetaImageProps,
+  'title' | 'subtitle' | Partial<'backgroundURL'>
+> & {
   alt: string
 }
 
