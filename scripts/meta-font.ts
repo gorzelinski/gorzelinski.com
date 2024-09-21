@@ -3,10 +3,12 @@ import { METAFONT } from '@/constants'
 import { MetaFontOptions } from '@/types'
 
 export async function getMetaFont(
-  slug: string,
+  file: string,
   options?: Pick<MetaFontOptions, 'style' | 'weight'>
 ) {
-  const font = await fs.promises.readFile(new URL(`..${slug}`, import.meta.url))
+  const font = await fs.promises.readFile(
+    new URL(`../assets/${file}`, import.meta.url)
+  )
 
   return {
     ...options,

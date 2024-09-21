@@ -26,11 +26,11 @@ export async function GET(request: Request) {
       {
         ...OPENGRAPH,
         fonts: [
-          await getMetaFont('/public/fonts/Montserrat-Medium.ttf', {
+          await getMetaFont('Montserrat-Medium.ttf', {
             weight: 500,
             style: 'normal'
           }),
-          await getMetaFont('/public/fonts/Montserrat-SemiBold.ttf', {
+          await getMetaFont('Montserrat-SemiBold.ttf', {
             weight: 600,
             style: 'normal'
           })
