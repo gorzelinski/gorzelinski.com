@@ -3,15 +3,20 @@ import { WebPage, WithContext } from 'schema-dts'
 import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { getDictionary } from '@/scripts'
-import { generateAlternateLinks } from '@/lib'
+import { generateAlternateLinks, getMetaImage } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
 import { Button, H1, P, Section } from '@/design-system'
 
 export async function generateMetadata({
   params: { lang }
 }: PageProps): Promise<Metadata> {
-  const { page } = await getDictionary(lang)
+  const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.subscriptionConfirmed)
+  const metaImageParams = {
+    title: page.subscriptionConfirmed.metadata.title,
+    subtitle: layout.root.metadata.title,
+    alt: page.subscriptionConfirmed.metadata.image.alt
+  }
 
   return {
     title: page.subscriptionConfirmed.metadata.title,
@@ -23,12 +28,14 @@ export async function generateMetadata({
     openGraph: {
       ...(await openGraph(lang)),
       title: page.subscriptionConfirmed.metadata.title,
-      description: page.subscriptionConfirmed.metadata.description
+      description: page.subscriptionConfirmed.metadata.description,
+      images: getMetaImage('og', lang, metaImageParams)
     },
     twitter: {
       ...twitter(),
       title: page.subscriptionConfirmed.metadata.title,
-      description: page.subscriptionConfirmed.metadata.description
+      description: page.subscriptionConfirmed.metadata.description,
+      images: getMetaImage('twitter', lang, metaImageParams)
     }
   }
 }

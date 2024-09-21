@@ -13,6 +13,7 @@ import {
   formatReadingTime,
   generateAlternateLinks,
   getAbsoluteURL,
+  getMetaImage,
   localizePath
 } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
@@ -42,9 +43,18 @@ export async function generateMetadata({
   params: { lang, slug }
 }: NestedPageProps): Promise<Metadata> {
   const { frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
-  const { layout } = await getDictionary(lang)
+  const { layout, page } = await getDictionary(lang)
   const canonical = `${LINKS.blog}${slug}/`
   const languages = generateAlternateLinks(canonical)
+  const metaImageParams = {
+    title: frontmatter.title,
+    subtitle: layout.root.metadata.title,
+    alt: `${page.blogPost.metadata.image.alt} ${frontmatter.image.alt}`,
+    backgroundURL: getAbsoluteURL(
+      `/images${LINKS.blog}${slug}/${frontmatter.image.src}`,
+      'en'
+    )
+  }
 
   return {
     title: frontmatter.title,
@@ -57,6 +67,7 @@ export async function generateMetadata({
       ...(await openGraph(lang)),
       title: frontmatter.title,
       description: frontmatter.description,
+      images: getMetaImage('og', lang, metaImageParams),
       type: 'article',
       publishedTime: frontmatter.date.toISOString(),
       modifiedTime: frontmatter.updated.toISOString(),
@@ -65,7 +76,8 @@ export async function generateMetadata({
     twitter: {
       ...twitter(),
       title: frontmatter.title,
-      description: frontmatter.description
+      description: frontmatter.description,
+      images: getMetaImage('twitter', lang, metaImageParams)
     }
   }
 }

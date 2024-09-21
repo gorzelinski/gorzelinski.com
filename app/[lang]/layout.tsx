@@ -5,7 +5,7 @@ import { PageProps, Theme } from '@/types'
 import { COOKIES, LINKS, metadataBase } from '@/constants'
 import { Locale, i18n } from '@/i18n.config'
 import { getDictionary } from '@/scripts'
-import { getAbsoluteURL } from '@/lib'
+import { getAbsoluteURL, getMetaImage } from '@/lib'
 import { montserrat, lora, firaCode } from '@/theme/fonts'
 import { Background, Footer, Main, Navbar } from '@/design-system'
 import { openGraph, twitter } from '../shared-metadata'
@@ -14,7 +14,12 @@ import './globals.css'
 export async function generateMetadata({
   params: { lang }
 }: PageProps): Promise<Metadata> {
-  const { layout } = await getDictionary(lang)
+  const { layout, page } = await getDictionary(lang)
+  const metaImageParams = {
+    title: page.home.metadata.title,
+    subtitle: layout.root.metadata.title,
+    alt: page.home.metadata.image.alt
+  }
 
   return {
     title: {
@@ -31,10 +36,12 @@ export async function generateMetadata({
     publisher: layout.root.metadata.title,
     metadataBase,
     openGraph: {
-      ...(await openGraph(lang))
+      ...(await openGraph(lang)),
+      images: getMetaImage('og', lang, metaImageParams)
     },
     twitter: {
-      ...twitter()
+      ...twitter(),
+      images: getMetaImage('twitter', lang, metaImageParams)
     },
     appleWebApp: {
       title: layout.root.metadata.title,

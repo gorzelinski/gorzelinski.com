@@ -3,7 +3,7 @@ import { WebPage, WithContext } from 'schema-dts'
 import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
 import { getDictionary } from '@/scripts'
-import { generateAlternateLinks, localizePath } from '@/lib'
+import { generateAlternateLinks, getMetaImage, localizePath } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
 import { VStack } from '@/styled-system/jsx'
 import {
@@ -28,8 +28,13 @@ import laptop from '@/public/images/about/andras-vas-Bd7gNnWJBkU-unsplash.jpg'
 export async function generateMetadata({
   params: { lang }
 }: PageProps): Promise<Metadata> {
-  const { page } = await getDictionary(lang)
+  const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.about)
+  const metaImageParams = {
+    title: page.about.metadata.title,
+    subtitle: layout.root.metadata.title,
+    alt: page.about.metadata.image.alt
+  }
 
   return {
     title: page.about.metadata.title,
@@ -41,12 +46,14 @@ export async function generateMetadata({
     openGraph: {
       ...(await openGraph(lang)),
       title: page.about.metadata.title,
-      description: page.about.metadata.description
+      description: page.about.metadata.description,
+      images: getMetaImage('og', lang, metaImageParams)
     },
     twitter: {
       ...twitter(),
       title: page.about.metadata.title,
-      description: page.about.metadata.description
+      description: page.about.metadata.description,
+      images: getMetaImage('twitter', lang, metaImageParams)
     }
   }
 }
