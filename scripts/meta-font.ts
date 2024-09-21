@@ -7,7 +7,7 @@ export async function getMetaFont(
   options?: Pick<MetaFontOptions, 'style' | 'weight'>
 ) {
   const font = await fs.promises.readFile(
-    new URL(`../assets/${file}`, import.meta.url)
+    new URL(`../fonts/${file}`, import.meta.url)
   )
 
   return {
