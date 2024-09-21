@@ -1,9 +1,9 @@
 import {
   getThemeAttribute,
-  getThemeCookie,
+  getThemeFromLs,
   hslToRgb,
   setThemeAttribute,
-  setThemeCookie
+  setThemeToLs
 } from '../theme'
 
 describe('theme', () => {
@@ -25,19 +25,25 @@ describe('theme', () => {
     })
   })
 
-  describe('getThemeCookie()', () => {
-    it('returns the theme cookie', () => {
-      document.cookie = 'theme=dark'
+  describe('getThemeFromLs()', () => {
+    it('returns theme from local storage', () => {
+      window.localStorage.setItem('theme', 'dark')
 
-      expect(getThemeCookie()).toBe('dark')
+      expect(getThemeFromLs()).toBe('dark')
+    })
+
+    it('returns null if there is no theme in local storage', () => {
+      window.localStorage.removeItem('theme')
+
+      expect(getThemeFromLs()).toBe(null)
     })
   })
 
-  describe('setThemeCookie()', () => {
-    it('sets the theme cookie', () => {
-      setThemeCookie('light')
+  describe('setThemeToLs()', () => {
+    it('sets ', () => {
+      setThemeToLs('light')
 
-      expect(document.cookie).toBe('theme=light')
+      expect(window.localStorage.getItem('theme')).toBe('light')
     })
   })
 
