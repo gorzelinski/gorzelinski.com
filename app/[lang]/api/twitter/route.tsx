@@ -1,5 +1,4 @@
 import React from 'react'
-import { cookies } from 'next/headers'
 import { ImageResponse } from 'next/og'
 import { Theme } from '@/types'
 import { TWITTER } from '@/constants'
@@ -9,10 +8,18 @@ import { MetaImage } from '@/design-system'
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
-    const theme = cookies().get('theme')?.value || 'light'
+    const theme = 'light'
     const title = searchParams.get('title')!
     const subtitle = searchParams.get('subtitle')!
     const backgroundURL = searchParams.get('backgroundURL') || undefined
+    const fontMedium = await getMetaFont('Montserrat-Medium.ttf', {
+      weight: 500,
+      style: 'normal'
+    })
+    const fontBold = await getMetaFont('Montserrat-SemiBold.ttf', {
+      weight: 600,
+      style: 'normal'
+    })
 
     return new ImageResponse(
       (
@@ -25,16 +32,7 @@ export async function GET(request: Request) {
       ),
       {
         ...TWITTER,
-        fonts: [
-          await getMetaFont('Montserrat-Medium.ttf', {
-            weight: 500,
-            style: 'normal'
-          }),
-          await getMetaFont('Montserrat-SemiBold.ttf', {
-            weight: 600,
-            style: 'normal'
-          })
-        ]
+        fonts: [fontMedium, fontBold]
       }
     )
   } catch (e: any) {
