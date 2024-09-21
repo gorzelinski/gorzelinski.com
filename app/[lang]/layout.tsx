@@ -89,7 +89,7 @@ export default async function RootLayout({
             __html: `
             function getInitialTheme() {
               try {
-                const savedTheme = window.localStorage.getItem("theme")
+                const savedTheme = window.localStorage.getItem('theme')
 
                 if (savedTheme) {
                   return savedTheme
@@ -111,8 +111,7 @@ export default async function RootLayout({
             }
 
             const preferredTheme = getInitialTheme()
-
-            document.documentElement.setAttribute("data-color-mode", preferredTheme)
+            document.documentElement.setAttribute('data-color-mode', preferredTheme)
             `
           }}
         />

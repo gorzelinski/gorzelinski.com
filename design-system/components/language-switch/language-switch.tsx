@@ -9,7 +9,7 @@ import {
   selectActiveClass
 } from '@/lib'
 import { Wrap } from '@/styled-system/jsx'
-import { ButtonLink, Earth } from '../../elements'
+import { ButtonAnchor, Earth } from '../../elements'
 
 export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
   const { locales } = i18n
@@ -25,7 +25,7 @@ export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
           : localizePath(defaultPathname, locale)
 
         return (
-          <ButtonLink
+          <ButtonAnchor
             variant="nav"
             size="s"
             key={locale}
@@ -35,7 +35,7 @@ export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
             className={selectActiveClass(pathname, href)}
           >
             {getLocaleDisplayName(locale)}
-          </ButtonLink>
+          </ButtonAnchor>
         )
       })}
     </Wrap>
