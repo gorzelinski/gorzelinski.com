@@ -5,9 +5,9 @@ import { getSlugs } from '@/scripts'
 import { getAbsoluteURL } from '@/lib'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = (await getSlugs(LINKS.blog)).map((slug) => `/blog${slug}`)
+  const posts = (await getSlugs(LINKS.blog)).map((slug) => `/blog/${slug}/`)
   const projects = (await getSlugs(LINKS.portfolio)).map(
-    (slug) => `/portfolio${slug}`
+    (slug) => `/portfolio/${slug}/`
   )
   const slugs = [...CRAWLABLE, ...posts, ...projects]
 

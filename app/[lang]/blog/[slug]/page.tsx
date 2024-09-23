@@ -2,11 +2,13 @@ import { Metadata } from 'next'
 import { BlogPosting, WithContext } from 'schema-dts'
 import { NestedPageProps } from '@/types'
 import { LINKS } from '@/constants'
+import { i18n } from '@/i18n.config'
 import {
   createPagination,
   getDictionary,
   getMDX,
-  getRelatedPosts
+  getRelatedPosts,
+  getSlugs
 } from '@/scripts'
 import {
   formatDate,
@@ -38,6 +40,18 @@ import {
   verticalRhythm
 } from '@/design-system'
 import avatar from '@/public/images/logo.png'
+
+export async function generateStaticParams() {
+  const slugs = await getSlugs(LINKS.blog)
+  const params = slugs.flatMap((slug) => {
+    return i18n.locales.map((lang) => ({
+      lang,
+      slug
+    }))
+  })
+
+  return params
+}
 
 export async function generateMetadata({
   params: { lang, slug }

@@ -66,7 +66,7 @@ export async function getMDX<Type extends MDXTypes>(
       root,
       LINKS.content,
       page,
-      slug,
+      `${slug}/`,
       localizeFileName('index', 'mdx', lang)
     )
   )
@@ -98,9 +98,7 @@ export async function getMDX<Type extends MDXTypes>(
 export async function getSlugs(
   page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>
 ) {
-  const slugs = (await fs.readdir(path.join(root, LINKS.content, page))).map(
-    (slug) => `/${slug}/`
-  )
+  const slugs = await fs.readdir(path.join(root, LINKS.content, page))
 
   return slugs
 }
