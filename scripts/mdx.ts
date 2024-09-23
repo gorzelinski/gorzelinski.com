@@ -1,4 +1,4 @@
-import fs from 'fs'
+import { promises as fs } from 'fs'
 import path from 'path'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
@@ -70,7 +70,7 @@ export async function getMDX<Type extends MDXTypes>(
       localizeFileName('index', 'mdx', lang)
     )
   )
-  const file = fs.readFileSync(filePath, 'utf-8')
+  const file = await fs.readFile(filePath, 'utf-8')
 
   const { frontmatter, content } = await compileMDX<
     Extract<MDX['frontmatter'], { type: Type }>
@@ -95,12 +95,12 @@ export async function getMDX<Type extends MDXTypes>(
   }
 }
 
-export function getSlugs(
+export async function getSlugs(
   page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>
 ) {
-  const slugs = fs
-    .readdirSync(path.join(root, LINKS.content, page))
-    .map((slug) => `/${slug}/`)
+  const slugs = (await fs.readdir(path.join(root, LINKS.content, page))).map(
+    (slug) => `/${slug}/`
+  )
 
   return slugs
 }
@@ -110,7 +110,7 @@ export async function getMDXes<Type extends MDXTypes>(
   lang: Locale,
   number?: number
 ) {
-  const slugs = getSlugs(page)
+  const slugs = await getSlugs(page)
   const mdxes = await Promise.all(
     slugs.map((slug) => getMDX<Type>(page, slug, lang))
   )
