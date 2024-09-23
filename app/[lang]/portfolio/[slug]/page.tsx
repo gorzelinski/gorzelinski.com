@@ -2,7 +2,8 @@ import { Metadata } from 'next'
 import { BlogPosting, WithContext } from 'schema-dts'
 import { NestedPageProps } from '@/types'
 import { LINKS } from '@/constants'
-import { createPagination, getDictionary, getMDX } from '@/scripts'
+import { i18n } from '@/i18n.config'
+import { createPagination, getDictionary, getMDX, getSlugs } from '@/scripts'
 import { generateAlternateLinks, getAbsoluteURL, getMetaImage } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
 import { Box, Grid, VStack } from '@/styled-system/jsx'
@@ -18,6 +19,18 @@ import {
   Small,
   verticalRhythm
 } from '@/design-system'
+
+export async function generateStaticParams() {
+  const slugs = await getSlugs(LINKS.portfolio)
+  const params = slugs.flatMap((slug) => {
+    return i18n.locales.map((lang) => ({
+      lang,
+      slug
+    }))
+  })
+
+  return params
+}
 
 export async function generateMetadata({
   params: { lang, slug }
