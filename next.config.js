@@ -3,7 +3,7 @@ const nextConfig = {
   trailingSlash: true,
   experimental: {
     outputFileTracingExcludes: {
-      '/*': ['./node_modules', './public']
+      '/*': ['./public']
     }
   }
 }
