@@ -6,7 +6,7 @@ export async function getMetaFont(
   file: string,
   options?: Pick<MetaFontOptions, 'style' | 'weight'>
 ) {
-  const font = await fs.readFile(process.cwd() + `/fonts/${file}`)
+  const font = await fs.readFile(process.cwd() + `/assets/fonts/${file}`)
 
   return {
     ...options,
