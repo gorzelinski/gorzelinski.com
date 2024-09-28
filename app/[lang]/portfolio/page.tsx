@@ -43,7 +43,12 @@ export async function generateMetadata({
 
 export default async function Portfolio({ params: { lang } }: PageProps) {
   const { component, section, layout, page } = await getDictionary(lang)
-  const projects = await getMDXes<'project'>(LINKS.portfolio, lang)
+  const projects = await getMDXes<'project'>(
+    LINKS.portfolio,
+    lang,
+    'all',
+    'desc'
+  )
   const jsonLd: WithContext<WebPage> = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',

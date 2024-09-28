@@ -43,8 +43,13 @@ export async function generateMetadata({
 
 export default async function Home({ params: { lang } }: PageProps) {
   const { component, section, layout, page } = await getDictionary(lang)
-  const lastProjects = await getMDXes<'project'>(LINKS.portfolio, lang, 2)
-  const lastPosts = await getMDXes<'post'>(LINKS.blog, lang, 4)
+  const lastProjects = await getMDXes<'project'>(
+    LINKS.portfolio,
+    lang,
+    2,
+    'desc'
+  )
+  const lastPosts = await getMDXes<'post'>(LINKS.blog, lang, 4, 'desc')
   const jsonLd: WithContext<WebPage> = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',

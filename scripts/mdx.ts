@@ -1,5 +1,6 @@
 import fs from 'fs/promises'
 import path from 'path'
+import { JSXElementConstructor, ReactElement } from 'react'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import rehypeMdxCodeProps from 'rehype-mdx-code-props'
@@ -44,7 +45,7 @@ export type Project = Frontmatter & {
 
 type MDX = {
   frontmatter: Post | Project | Page
-  content: string
+  content: ReactElement<any, string | JSXElementConstructor<any>>
 }
 
 type MDXTypes = Post['type'] | Project['type'] | Page['type']
@@ -103,23 +104,50 @@ export async function getSlugs(
   return slugs
 }
 
+function sortMDXes<Type extends MDXTypes>(
+  mdxes: {
+    frontmatter: Extract<MDX['frontmatter'], { type: Type }>
+    content: ReactElement<any, string | JSXElementConstructor<any>>
+  }[],
+  sort: 'asc' | 'desc'
+) {
+  switch (sort) {
+    case 'desc':
+      return mdxes.sort((prev, next) => {
+        const prevDate = new Date(prev.frontmatter.date).getTime()
+        const nextDate = new Date(next.frontmatter.date).getTime()
+        return nextDate - prevDate
+      })
+    case 'asc':
+      return mdxes.sort((prev, next) => {
+        const prevDate = new Date(prev.frontmatter.date).getTime()
+        const nextDate = new Date(next.frontmatter.date).getTime()
+        return prevDate - nextDate
+      })
+    default:
+      return mdxes.sort((prev, next) => {
+        const prevDate = new Date(prev.frontmatter.date).getTime()
+        const nextDate = new Date(next.frontmatter.date).getTime()
+        return nextDate - prevDate
+      })
+  }
+}
+
 export async function getMDXes<Type extends MDXTypes>(
   page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>,
   lang: Locale,
-  number?: number
+  number: number | 'all' = 'all',
+  sort: 'asc' | 'desc' | 'none' = 'none'
 ) {
   const slugs = await getSlugs(page)
   const mdxes = await Promise.all(
     slugs.map((slug) => getMDX<Type>(page, slug, lang))
   )
+  const sorted = sort === 'none' ? mdxes : sortMDXes<Type>(mdxes, sort)
+  const filtered =
+    number === 'all' ? sorted : sorted.filter((_, index) => index < number)
 
-  return mdxes
-    .sort((prev, next) => {
-      const prevDate = new Date(prev.frontmatter.date).getTime()
-      const nextDate = new Date(next.frontmatter.date).getTime()
-      return nextDate - prevDate
-    })
-    .filter((_, index) => index < (number ?? mdxes.length))
+  return filtered
 }
 
 export async function createPagination(
@@ -127,7 +155,7 @@ export async function createPagination(
   slug: string,
   lang: Locale
 ) {
-  const mdxes = await getMDXes(page, lang)
+  const mdxes = await getMDXes(page, lang, 'all', 'desc')
   const currentIndex = mdxes.findIndex(
     (mdx) =>
       mdx.frontmatter.slug ===
@@ -157,11 +185,11 @@ export async function createPagination(
 export async function getRelatedPosts(
   post: Post,
   lang: Locale,
-  number?: number
+  number: number | 'all' = 'all'
 ) {
-  const allPosts = await getMDXes<'post'>('/blog/', lang)
+  const posts = await getMDXes<'post'>('/blog/', lang)
 
-  const relatedPosts = allPosts.filter((relatedPost) => {
+  const related = posts.filter((relatedPost) => {
     const hasRelatedCategory = relatedPost.frontmatter.categories.some(
       (category) => post.categories.includes(category)
     )
@@ -173,7 +201,8 @@ export async function getRelatedPosts(
     return !isDuplicate && (hasRelatedCategory || hasRelatedTag)
   })
 
-  return relatedPosts.filter(
-    (_, index) => index < (number ?? relatedPosts.length)
-  )
+  const filtered =
+    number === 'all' ? related : related.filter((_, index) => index < number)
+
+  return filtered
 }
