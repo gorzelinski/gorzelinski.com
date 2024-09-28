@@ -43,7 +43,7 @@ export async function generateMetadata({
 
 export default async function Blog({ params: { lang } }: PageProps) {
   const { component, section, layout, page } = await getDictionary(lang)
-  const posts = await getMDXes<'post'>(LINKS.blog, lang)
+  const posts = await getMDXes<'post'>(LINKS.blog, lang, 'all', 'desc')
   const jsonLd: WithContext<WebPage> = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
