@@ -10,6 +10,7 @@ import { LINKS, Pages } from '@/constants'
 import { Locale } from '@/i18n.config'
 import { localizeFileName, localizePath } from '@/lib'
 import { getMDXComponents } from '@/mdx-components'
+import { unstable_cache } from 'next/cache'
 
 type Frontmatter = {
   slug: string
@@ -96,6 +97,11 @@ export async function getMDX<Type extends MDXTypes>(
   }
 }
 
+export const getCachedMDX = unstable_cache(
+  async <Type extends MDXTypes>(page: Pages, slug: string, lang: Locale) =>
+    getMDX<Type>(page, slug, lang)
+)
+
 export async function getSlugs(
   page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>
 ) {
@@ -141,7 +147,7 @@ export async function getMDXes<Type extends MDXTypes>(
 ) {
   const slugs = await getSlugs(page)
   const mdxes = await Promise.all(
-    slugs.map((slug) => getMDX<Type>(page, slug, lang))
+    slugs.map((slug) => getCachedMDX<Type>(page, slug, lang))
   )
   const sorted = sort === 'none' ? mdxes : sortMDXes<Type>(mdxes, sort)
   const filtered =
