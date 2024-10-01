@@ -18,7 +18,7 @@ export const Footer = ({ lang, dictionary }: FooterProps) => {
   const { links, section, layout } = dictionary
 
   return (
-    <footer className={footer()}>
+    <footer id="contact" className={footer()}>
       <HStack justifyContent="space-between" flexWrap="wrap" gap="l">
         <VStack alignItems="start" gap="xs">
           <Small>{section.footer.email}</Small>

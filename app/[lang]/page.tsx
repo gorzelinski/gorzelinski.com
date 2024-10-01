@@ -167,7 +167,6 @@ export default async function Home({ params: { lang } }: PageProps) {
       </Section>
       <Newsletter lang={lang} dictionary={section.newsletter} />
       <Section
-        id="contact"
         variant="hero"
         justifyItems="center"
         alignItems="center"
