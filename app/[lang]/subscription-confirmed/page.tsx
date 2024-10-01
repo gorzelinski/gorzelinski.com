@@ -5,7 +5,7 @@ import { LINKS } from '@/constants'
 import { getDictionary } from '@/scripts'
 import { generateAlternateLinks, getMetaImage } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
-import { Button, H1, P, Section } from '@/design-system'
+import { Confetti, H1, P, Section } from '@/design-system'
 
 export async function generateMetadata({
   params: { lang }
@@ -67,7 +67,11 @@ export default async function SubscriptionConfirmed({
         <P size="xl" color="subtle">
           {page.subscriptionConfirmed.description}
         </P>
-        <Button>{page.subscriptionConfirmed.button}</Button>
+        <Confetti
+          start={page.subscriptionConfirmed.button.start}
+          stop={page.subscriptionConfirmed.button.stop}
+          more={page.subscriptionConfirmed.button.more}
+        />
       </Section>
     </>
   )

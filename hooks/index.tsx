@@ -6,3 +6,4 @@ export {
   type ScrollProgressSelector
 } from './use-scroll-progress'
 export { useTheme } from './use-theme'
+export { useDocumentDimensions } from './use-window-dimensions'
