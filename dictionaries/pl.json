@@ -418,7 +418,11 @@
       },
       "heading": "Subskrypcja potwierdzona!",
       "description": "Oficjalnie potwierdziłeś subskrybcję mojego newslettera i jesteś na liście. Za wysiłek, zasługujesz na konfetti.",
-      "button": "Więcej konfetti 🎉"
+      "button": {
+        "start": "Więcej konfetti 🎉",
+        "stop": "Już wystarczy 🎉",
+        "more": "WIĘCEJ!"
+      }
     },
     "uses": {
       "metadata": {

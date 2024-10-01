@@ -6,6 +6,7 @@ export {
   type PreChildrenProps,
   type PreProps
 } from './code'
+export { Confetti } from './confetti'
 export { Image } from './image'
 export { LanguageSwitch } from './language-switch'
 export { LinkOrA } from './link-or-a'

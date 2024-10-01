@@ -74,6 +74,7 @@ export {
   Avatar,
   Callout,
   Code,
+  Confetti,
   Image,
   LanguageSwitch,
   LinkOrA,
