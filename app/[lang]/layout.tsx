@@ -41,12 +41,6 @@ export async function generateMetadata({
     twitter: {
       ...twitter(),
       images: getMetaImage('twitter', lang, metaImageParams)
-    },
-    appleWebApp: {
-      title: layout.root.metadata.title,
-      statusBarStyle: 'black',
-      capable: true,
-      startupImage: LINKS.logo
     }
   }
 }
