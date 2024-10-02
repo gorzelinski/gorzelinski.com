@@ -72,7 +72,7 @@ export default async function Portfolio({ params: { lang } }: PageProps) {
           <H1>{page.portfolio.heading}</H1>
           <h2 className={small()}>{page.portfolio.all}</h2>
         </Header>
-        {projects.map(({ frontmatter }) => (
+        {projects.map(({ frontmatter }, index) => (
           <Project
             key={frontmatter.slug}
             lang={lang}
@@ -82,6 +82,7 @@ export default async function Portfolio({ params: { lang } }: PageProps) {
             image={frontmatter.image}
             deliverables={frontmatter.deliverables}
             slug={frontmatter.slug}
+            priority={index < 2}
           />
         ))}
       </Section>

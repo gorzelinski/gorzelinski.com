@@ -11,7 +11,8 @@ export const Post = ({
   title,
   description,
   date,
-  readingTime
+  readingTime,
+  priority = false
 }: PostProps) => {
   return (
     <Card orientation="horizontal">
@@ -20,6 +21,7 @@ export const Post = ({
         height={403}
         src={`/images${delocalizePath(slug, lang)}${image.src}`}
         alt={image.alt}
+        priority={priority}
       />
       <Small>
         {formatDate(date, lang)} • {formatReadingTime(readingTime.minutes)}{' '}

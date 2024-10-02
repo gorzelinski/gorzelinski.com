@@ -7,4 +7,5 @@ export type PostProps = Pick<
 > & {
   lang: Locale
   dictionary: Dictionary['component']['post']
+  priority?: boolean
 }

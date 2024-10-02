@@ -10,7 +10,8 @@ export const Project = ({
   image,
   title,
   description,
-  deliverables
+  deliverables,
+  priority = false
 }: ProjectProps) => {
   return (
     <Card orientation="vertical">
@@ -20,6 +21,7 @@ export const Project = ({
         aspectRatio="wide"
         src={`/images${delocalizePath(slug, lang)}${image.src}`}
         alt={image.alt}
+        priority={priority}
       />
       <Small>{deliverables.join(', ')}</Small>
       <H3 size="s">{title}</H3>

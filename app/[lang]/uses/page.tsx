@@ -90,6 +90,7 @@ export default async function Uses({ params: { lang } }: PageProps) {
             alt={frontmatter.image.alt}
             width={1200}
             height={888}
+            priority={true}
           />
           <Figcaption
             style="italic"

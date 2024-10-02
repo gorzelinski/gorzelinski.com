@@ -158,6 +158,7 @@ export default async function Blog({
               alt={frontmatter.image.alt}
               width={1200}
               height={675}
+              priority={true}
             />
             <Figcaption
               style="italic"

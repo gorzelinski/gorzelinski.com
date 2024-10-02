@@ -7,4 +7,5 @@ export type ProjectProps = Pick<
 > & {
   lang: Locale
   dictionary: Dictionary['component']['project']
+  priority?: boolean
 }

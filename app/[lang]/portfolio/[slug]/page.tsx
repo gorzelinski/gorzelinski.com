@@ -125,6 +125,7 @@ export default async function Portfolio({
               alt={frontmatter.image.alt}
               width={1200}
               height={675}
+              priority={true}
             />
           </Box>
           <H1

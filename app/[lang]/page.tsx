@@ -107,6 +107,7 @@ export default async function Home({ params: { lang } }: PageProps) {
             title={frontmatter.title}
             description={frontmatter.description}
             slug={frontmatter.slug}
+            priority={true}
           />
         ))}
       </Section>
