@@ -67,7 +67,7 @@ export default async function Blog({ params: { lang } }: PageProps) {
           <H1>{page.blog.heading}</H1>
           <h2 className={small()}>{page.blog.all}</h2>
         </Header>
-        {posts.map(({ frontmatter }) => (
+        {posts.map(({ frontmatter }, index) => (
           <Post
             key={frontmatter.slug}
             lang={lang}
@@ -78,6 +78,7 @@ export default async function Blog({ params: { lang } }: PageProps) {
             title={frontmatter.title}
             description={frontmatter.description}
             slug={frontmatter.slug}
+            priority={index < 3}
           />
         ))}
       </Section>
