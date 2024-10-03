@@ -12,7 +12,7 @@ export async function generatePlaiceholder(
   const imagePath = path.normalize(
     path.join(
       process.cwd(),
-      'public/',
+      process.env.VERCEL_ENV ? '' : 'public/',
       'images/',
       `${page}`,
       `${slug}/`,
