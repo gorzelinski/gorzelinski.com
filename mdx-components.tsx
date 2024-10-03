@@ -1,6 +1,7 @@
 import path from 'path'
 import type { MDXComponents } from 'mdx/types'
 import { Pages } from './constants'
+import { getCachedPlaiceholder } from './scripts'
 import {
   Blockquote,
   Callout,
@@ -153,14 +154,20 @@ export function getMDXComponents(page: Pages, slug: string): MDXComponents {
   return {
     ...components,
     ...customComponents,
-    img: ({ src, alt, title }) => (
-      <Image
-        src={path.normalize(`/images${page}${slug}/${src!}`)}
-        alt={alt!}
-        title={title}
-        width={800}
-        height={500}
-      />
-    )
+    img: async ({ src, alt, title }) => {
+      const blur = await getCachedPlaiceholder(page, slug, src!)
+
+      return (
+        <Image
+          src={path.normalize(`/images${page}${slug}/${src!}`)}
+          alt={alt!}
+          title={title}
+          width={800}
+          height={500}
+          placeholder="blur"
+          blurDataURL={blur}
+        />
+      )
+    }
   }
 }

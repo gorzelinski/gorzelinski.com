@@ -1,4 +1,5 @@
 export { type Dictionary, getDictionary } from './dictionaries'
+export { generatePlaiceholder, getCachedPlaiceholder } from './image'
 export {
   type Page,
   type Pagination,

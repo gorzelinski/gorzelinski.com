@@ -159,6 +159,8 @@ export default async function Blog({
               width={1200}
               height={675}
               priority={true}
+              placeholder="blur"
+              blurDataURL={frontmatter.image.blur}
             />
             <Figcaption
               style="italic"

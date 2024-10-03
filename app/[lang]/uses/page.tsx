@@ -91,6 +91,8 @@ export default async function Uses({ params: { lang } }: PageProps) {
             width={1200}
             height={888}
             priority={true}
+            placeholder="blur"
+            blurDataURL={frontmatter.image.blur}
           />
           <Figcaption
             style="italic"

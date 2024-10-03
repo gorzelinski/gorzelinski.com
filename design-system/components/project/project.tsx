@@ -22,6 +22,8 @@ export const Project = ({
         src={`/images${delocalizePath(slug, lang)}${image.src}`}
         alt={image.alt}
         priority={priority}
+        placeholder="blur"
+        blurDataURL={image.blur}
       />
       <Small>{deliverables.join(', ')}</Small>
       <H3 size="s">{title}</H3>

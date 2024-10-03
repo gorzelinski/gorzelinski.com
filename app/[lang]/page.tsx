@@ -23,7 +23,7 @@ import {
   Socials,
   Typewriter
 } from '@/design-system'
-import profile from '@/public/images/gorzelinski.jpg'
+import portrait from '@/public/images/gorzelinski.jpg'
 
 export async function generateMetadata({
   params: { lang }
@@ -113,10 +113,11 @@ export default async function Home({ params: { lang } }: PageProps) {
       </Section>
       <Section columns="2">
         <Image
-          src={profile}
+          src={portrait}
           alt={page.home.bio.image.alt}
           title={page.home.bio.image.title}
           borderRadius="rounded"
+          placeholder="blur"
         />
         <Box>
           <Small marginBottom="1rem">{page.home.bio.greeting}</Small>

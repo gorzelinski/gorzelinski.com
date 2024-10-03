@@ -1,3 +1,6 @@
+// @ts-check
+import withPlaiceholder from '@plaiceholder/next'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: true,
@@ -15,4 +18,4 @@ const nextConfig = {
   }
 }
 
-module.exports = nextConfig
+export default withPlaiceholder(nextConfig)

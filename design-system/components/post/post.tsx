@@ -22,6 +22,8 @@ export const Post = ({
         src={`/images${delocalizePath(slug, lang)}${image.src}`}
         alt={image.alt}
         priority={priority}
+        placeholder="blur"
+        blurDataURL={image.blur}
       />
       <Small>
         {formatDate(date, lang)} • {formatReadingTime(readingTime.minutes)}{' '}

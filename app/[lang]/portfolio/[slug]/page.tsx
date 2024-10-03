@@ -126,6 +126,8 @@ export default async function Portfolio({
               width={1200}
               height={675}
               priority={true}
+              placeholder="blur"
+              blurDataURL={frontmatter.image.blur}
             />
           </Box>
           <H1

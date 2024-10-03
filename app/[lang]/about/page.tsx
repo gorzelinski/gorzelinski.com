@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { WebPage, WithContext } from 'schema-dts'
 import { PageProps } from '@/types'
 import { LINKS } from '@/constants'
-import { getDictionary } from '@/scripts'
+import { getCachedPlaiceholder, getDictionary } from '@/scripts'
 import { generateAlternateLinks, getMetaImage, localizePath } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
 import { VStack } from '@/styled-system/jsx'
@@ -128,20 +128,30 @@ export default async function About({ params: { lang } }: PageProps) {
           <H2>
             {mediaIcons[media.type as MediaTypes]} {media.heading}
           </H2>
-          {media.list.map((medium, index) => (
-            <Card key={`${media.type}-${index}`}>
-              <Image
-                aspectRatio={media.type === 'listen' ? 'square' : 'portrait'}
-                width={702}
-                height={1053}
-                src={`/images${LINKS.about}${media.type}/${medium.image}`}
-                alt={medium.title}
-              />
-              <H3 size="s">
-                <LinkOrA href={medium.link}>{medium.title}</LinkOrA>
-              </H3>
-            </Card>
-          ))}
+          {media.list.map(async (medium, index) => {
+            const blur = await getCachedPlaiceholder(
+              LINKS.about,
+              media.type,
+              medium.image
+            )
+
+            return (
+              <Card key={`${media.type}-${index}`}>
+                <Image
+                  aspectRatio={media.type === 'listen' ? 'square' : 'portrait'}
+                  width={702}
+                  height={1053}
+                  src={`/images${LINKS.about}${media.type}/${medium.image}`}
+                  alt={medium.title}
+                  placeholder="blur"
+                  blurDataURL={blur}
+                />
+                <H3 size="s">
+                  <LinkOrA href={medium.link}>{medium.title}</LinkOrA>
+                </H3>
+              </Card>
+            )
+          })}
         </Section>
       ))}
       <Section columns="2" alignItems="center">
@@ -161,6 +171,7 @@ export default async function About({ params: { lang } }: PageProps) {
           src={laptop}
           alt={page.about.uses.image}
           borderRadius="rounded"
+          placeholder="blur"
         />
       </Section>
     </>

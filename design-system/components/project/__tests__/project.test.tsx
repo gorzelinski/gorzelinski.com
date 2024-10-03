@@ -11,7 +11,8 @@ describe('Project', () => {
         slug="project/"
         image={{
           src: 'image.jpg',
-          alt: 'Image alt'
+          alt: 'Image alt',
+          blur: 'data:image/png;base64,base64encodedstring'
         }}
         title="Title"
         description="Description"

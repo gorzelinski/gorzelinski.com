@@ -11,7 +11,8 @@ describe('Post', () => {
         dictionary={dictionary.component.post}
         image={{
           src: 'image.png',
-          alt: 'Alt text'
+          alt: 'Alt text',
+          blur: 'data:image/png;base64,base64encodedstring'
         }}
         title="Title"
         description="Description"

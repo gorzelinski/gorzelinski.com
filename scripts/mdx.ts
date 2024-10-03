@@ -1,5 +1,6 @@
 import fs from 'fs/promises'
 import path from 'path'
+import { unstable_cache } from 'next/cache'
 import { JSXElementConstructor, ReactElement } from 'react'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
@@ -10,7 +11,7 @@ import { LINKS, Pages } from '@/constants'
 import { Locale } from '@/i18n.config'
 import { localizeFileName, localizePath } from '@/lib'
 import { getMDXComponents } from '@/mdx-components'
-import { unstable_cache } from 'next/cache'
+import { generatePlaiceholder } from './image'
 
 type Frontmatter = {
   slug: string
@@ -22,6 +23,7 @@ type Frontmatter = {
   image: {
     alt: string
     src: string
+    blur: string
     caption?: string
   }
 }
@@ -88,8 +90,14 @@ export async function getMDX<Type extends MDXTypes>(
       }
     }
   })
+
   frontmatter.readingTime = readingTime(file)
   frontmatter.slug = path.normalize(localizePath(`${page}${slug}/`, lang))
+  frontmatter.image.blur = await generatePlaiceholder(
+    page,
+    slug,
+    frontmatter.image.src
+  )
 
   return {
     frontmatter,
