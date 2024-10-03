@@ -7,7 +7,6 @@ const nextConfig = {
   experimental: {
     outputFileTracingExcludes: {
       '/*': [
-        './public',
         './.git',
         './.next/cache/webpack',
         './node_modules/@swc/core-linux-x64-gnu',
