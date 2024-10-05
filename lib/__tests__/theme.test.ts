@@ -1,6 +1,26 @@
-import { getThemeAttribute, hslToRgb, setThemeAttribute } from '../theme'
+import {
+  getCorrectTheme,
+  getThemeAttribute,
+  hslToRgb,
+  setThemeAttribute
+} from '../theme'
 
 describe('theme', () => {
+  describe('getCorrectTheme()', () => {
+    it('returns the light theme', () => {
+      expect(getCorrectTheme('light')).toBe('light')
+    })
+
+    it('returns the dark theme', () => {
+      expect(getCorrectTheme('dark')).toBe('dark')
+    })
+
+    it('returns the default theme', () => {
+      expect(getCorrectTheme(null)).toBe('light')
+      expect(getCorrectTheme('wrong')).toBe('light')
+    })
+  })
+
   describe('getThemeAttribute()', () => {
     it('returns the theme attribute from the html element', () => {
       document.documentElement.setAttribute('data-color-mode', 'dark')

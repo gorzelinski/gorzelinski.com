@@ -1,7 +1,9 @@
 import { Metadata } from 'next'
+import { cookies } from 'next/headers'
+import { getCookie } from 'cookies-next'
 import { WebPage, WithContext } from 'schema-dts'
-import { PageProps } from '@/types'
-import { LINKS } from '@/constants'
+import { PageProps, Theme } from '@/types'
+import { COOKIES, LINKS } from '@/constants'
 import { getDictionary } from '@/scripts'
 import { generateAlternateLinks, getMetaImage, localizePath } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
@@ -31,6 +33,7 @@ export async function generateMetadata({
   const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.about)
   const metaImageParams = {
+    theme: getCookie(COOKIES.theme, { cookies }) as Theme,
     title: page.about.metadata.title,
     subtitle: layout.root.metadata.title,
     alt: page.about.metadata.image.alt

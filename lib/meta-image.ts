@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { Locale } from '@/i18n.config'
 import { CONTENTTYPE, OPENGRAPH, TWITTER } from '@/constants'
 import { MetaImageProps } from '@/design-system/components/meta-image/meta-image.types'
+import { getCorrectTheme } from './theme'
 
 type MetaImage =
   | NonNullable<Metadata['openGraph']>['images']
@@ -25,7 +26,8 @@ export function getMetaImage(
 
   searchParams.set('title', title)
   searchParams.set('subtitle', subtitle)
-  theme ? searchParams.set('theme', theme) : searchParams.set('theme', 'light')
+  searchParams.set('theme', getCorrectTheme(theme))
+
   if (backgroundURL) searchParams.set('backgroundURL', backgroundURL)
 
   const sizes = {

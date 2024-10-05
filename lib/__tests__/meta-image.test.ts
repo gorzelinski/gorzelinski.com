@@ -7,6 +7,7 @@ describe('meta-image', () => {
         alt: 'alt',
         title: 'title',
         subtitle: 'subtitle',
+        theme: 'light',
         backgroundURL: 'backgroundURL'
       })
 
@@ -23,7 +24,8 @@ describe('meta-image', () => {
       const metaImage = getMetaImage('twitter', 'pl', {
         alt: 'alt',
         title: 'title',
-        subtitle: 'subtitle'
+        subtitle: 'subtitle',
+        theme: 'light'
       })
 
       expect(metaImage).toEqual({
@@ -39,7 +41,8 @@ describe('meta-image', () => {
       const metaImage = getMetaImage('og', 'en', {
         alt: 'alt',
         title: 'title',
-        subtitle: 'subtitle'
+        subtitle: 'subtitle',
+        theme: 'light'
       })
 
       expect(metaImage).toEqual({
@@ -51,11 +54,12 @@ describe('meta-image', () => {
       })
     })
 
-    it('returns meta image with the default theme', () => {
+    it('returns meta image with the light theme', () => {
       const metaImage = getMetaImage('og', 'en', {
         alt: 'alt',
         title: 'title',
-        subtitle: 'subtitle'
+        subtitle: 'subtitle',
+        theme: 'light'
       })
 
       expect(metaImage).toEqual({
@@ -69,14 +73,32 @@ describe('meta-image', () => {
 
     it('returns meta image with the dark theme', () => {
       const metaImage = getMetaImage('og', 'en', {
-        theme: 'dark',
         alt: 'alt',
         title: 'title',
-        subtitle: 'subtitle'
+        subtitle: 'subtitle',
+        theme: 'dark'
       })
 
       expect(metaImage).toEqual({
         url: '/en/api/og/?title=title&subtitle=subtitle&theme=dark',
+        alt: 'alt',
+        type: 'image/png',
+        width: 1200,
+        height: 630
+      })
+    })
+
+    it('returns meta image with the default theme if the passed theme is wrong', () => {
+      const metaImage = getMetaImage('og', 'en', {
+        alt: 'alt',
+        title: 'title',
+        subtitle: 'subtitle',
+        // @ts-expect-error
+        theme: 'wrong'
+      })
+
+      expect(metaImage).toEqual({
+        url: '/en/api/og/?title=title&subtitle=subtitle&theme=light',
         alt: 'alt',
         type: 'image/png',
         width: 1200,

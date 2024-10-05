@@ -1,6 +1,10 @@
 import { Theme } from '@/types'
 import { THEME } from '@/constants'
 
+export function getCorrectTheme(theme: string | null) {
+  return theme === 'light' || theme === 'dark' ? theme : 'light'
+}
+
 export function getThemeAttribute() {
   return document.documentElement.getAttribute(THEME.attribute) as Theme
 }

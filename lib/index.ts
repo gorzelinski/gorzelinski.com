@@ -11,4 +11,9 @@ export { isInternal, getAbsoluteURL, generateAlternateLinks } from './link'
 export { getMetaImage } from './meta-image'
 export { selectActiveClass } from './navigation'
 export { capitalize } from './string'
-export { hslToRgb, getThemeAttribute, setThemeAttribute } from './theme'
+export {
+  hslToRgb,
+  getCorrectTheme,
+  getThemeAttribute,
+  setThemeAttribute
+} from './theme'
