@@ -1,17 +1,19 @@
 import React from 'react'
 import { ImageResponse } from 'next/og'
-import { Theme } from '@/types'
 import { OPENGRAPH } from '@/constants'
 import { getMetaFont } from '@/scripts'
+import { getCorrectTheme } from '@/lib'
 import { MetaImage } from '@/design-system'
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
-    const theme = 'light'
+
+    const theme = getCorrectTheme(searchParams.get('theme'))
     const title = searchParams.get('title')!
     const subtitle = searchParams.get('subtitle')!
     const backgroundURL = searchParams.get('backgroundURL') || undefined
+
     const fontMedium = await getMetaFont('Montserrat-Medium.ttf', {
       weight: 500,
       style: 'normal'
@@ -24,7 +26,7 @@ export async function GET(request: Request) {
     return new ImageResponse(
       (
         <MetaImage
-          theme={theme as Theme}
+          theme={theme}
           title={title}
           subtitle={subtitle}
           backgroundURL={backgroundURL}

@@ -1,7 +1,9 @@
 import { Metadata } from 'next'
+import { cookies } from 'next/headers'
+import { getCookie } from 'cookies-next'
 import { BlogPosting, WithContext } from 'schema-dts'
-import { NestedPageProps } from '@/types'
-import { LINKS } from '@/constants'
+import { NestedPageProps, Theme } from '@/types'
+import { COOKIES, LINKS } from '@/constants'
 import { i18n } from '@/i18n.config'
 import {
   createPagination,
@@ -61,6 +63,7 @@ export async function generateMetadata({
   const canonical = `${LINKS.blog}${slug}/`
   const languages = generateAlternateLinks(canonical)
   const metaImageParams = {
+    theme: getCookie(COOKIES.theme, { cookies }) as Theme,
     title: frontmatter.title,
     subtitle: layout.root.metadata.title,
     alt: `${page.blogPost.metadata.image.alt} ${frontmatter.image.alt}`,
