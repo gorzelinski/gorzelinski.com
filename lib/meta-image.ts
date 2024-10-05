@@ -9,7 +9,7 @@ type MetaImage =
 
 type Params = Pick<
   MetaImageProps,
-  'title' | 'subtitle' | Partial<'backgroundURL'>
+  'title' | 'subtitle' | Partial<'theme'> | Partial<'backgroundURL'>
 > & {
   alt: string
 }
@@ -19,12 +19,13 @@ export function getMetaImage(
   lang: Locale,
   params: Params
 ): MetaImage {
-  const { alt, title, subtitle, backgroundURL } = params
+  const { theme, title, subtitle, backgroundURL, alt } = params
 
   const searchParams = new URLSearchParams()
 
   searchParams.set('title', title)
   searchParams.set('subtitle', subtitle)
+  theme ? searchParams.set('theme', theme) : searchParams.set('theme', 'light')
   if (backgroundURL) searchParams.set('backgroundURL', backgroundURL)
 
   const sizes = {

@@ -1,10 +1,4 @@
-import {
-  getThemeAttribute,
-  getThemeFromLs,
-  hslToRgb,
-  setThemeAttribute,
-  setThemeToLs
-} from '../theme'
+import { getThemeAttribute, hslToRgb, setThemeAttribute } from '../theme'
 
 describe('theme', () => {
   describe('getThemeAttribute()', () => {
@@ -22,28 +16,6 @@ describe('theme', () => {
       expect(document.documentElement.getAttribute('data-color-mode')).toBe(
         'light'
       )
-    })
-  })
-
-  describe('getThemeFromLs()', () => {
-    it('returns theme from local storage', () => {
-      window.localStorage.setItem('theme', 'dark')
-
-      expect(getThemeFromLs()).toBe('dark')
-    })
-
-    it('returns null if there is no theme in local storage', () => {
-      window.localStorage.removeItem('theme')
-
-      expect(getThemeFromLs()).toBe(null)
-    })
-  })
-
-  describe('setThemeToLs()', () => {
-    it('sets ', () => {
-      setThemeToLs('light')
-
-      expect(window.localStorage.getItem('theme')).toBe('light')
     })
   })
 

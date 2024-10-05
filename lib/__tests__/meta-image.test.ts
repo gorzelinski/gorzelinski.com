@@ -11,7 +11,7 @@ describe('meta-image', () => {
       })
 
       expect(metaImage).toEqual({
-        url: '/en/api/og/?title=title&subtitle=subtitle&backgroundURL=backgroundURL',
+        url: '/en/api/og/?title=title&subtitle=subtitle&theme=light&backgroundURL=backgroundURL',
         alt: 'alt',
         type: 'image/png',
         width: 1200,
@@ -27,11 +27,60 @@ describe('meta-image', () => {
       })
 
       expect(metaImage).toEqual({
-        url: '/pl/api/twitter/?title=title&subtitle=subtitle',
+        url: '/pl/api/twitter/?title=title&subtitle=subtitle&theme=light',
         alt: 'alt',
         type: 'image/png',
         width: 1200,
         height: 600
+      })
+    })
+
+    it('returns meta image with the default theme', () => {
+      const metaImage = getMetaImage('og', 'en', {
+        alt: 'alt',
+        title: 'title',
+        subtitle: 'subtitle'
+      })
+
+      expect(metaImage).toEqual({
+        url: '/en/api/og/?title=title&subtitle=subtitle&theme=light',
+        alt: 'alt',
+        type: 'image/png',
+        width: 1200,
+        height: 630
+      })
+    })
+
+    it('returns meta image with the default theme', () => {
+      const metaImage = getMetaImage('og', 'en', {
+        alt: 'alt',
+        title: 'title',
+        subtitle: 'subtitle'
+      })
+
+      expect(metaImage).toEqual({
+        url: '/en/api/og/?title=title&subtitle=subtitle&theme=light',
+        alt: 'alt',
+        type: 'image/png',
+        width: 1200,
+        height: 630
+      })
+    })
+
+    it('returns meta image with the dark theme', () => {
+      const metaImage = getMetaImage('og', 'en', {
+        theme: 'dark',
+        alt: 'alt',
+        title: 'title',
+        subtitle: 'subtitle'
+      })
+
+      expect(metaImage).toEqual({
+        url: '/en/api/og/?title=title&subtitle=subtitle&theme=dark',
+        alt: 'alt',
+        type: 'image/png',
+        width: 1200,
+        height: 630
       })
     })
   })

@@ -9,14 +9,6 @@ export function setThemeAttribute(theme: Theme) {
   document.documentElement.setAttribute(THEME.attribute, theme)
 }
 
-export function setThemeToLs(theme: Theme) {
-  window.localStorage.setItem(THEME.lsKey, theme)
-}
-
-export function getThemeFromLs() {
-  return window.localStorage.getItem(THEME.lsKey) as Theme | null
-}
-
 export function hslToRgb(hsl: string) {
   let [h, s, l] = hsl
     .replace('hsl(', '')
