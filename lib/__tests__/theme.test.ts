@@ -1,12 +1,26 @@
 import {
+  getCorrectTheme,
   getThemeAttribute,
-  getThemeFromLs,
   hslToRgb,
-  setThemeAttribute,
-  setThemeToLs
+  setThemeAttribute
 } from '../theme'
 
 describe('theme', () => {
+  describe('getCorrectTheme()', () => {
+    it('returns the light theme', () => {
+      expect(getCorrectTheme('light')).toBe('light')
+    })
+
+    it('returns the dark theme', () => {
+      expect(getCorrectTheme('dark')).toBe('dark')
+    })
+
+    it('returns the default theme', () => {
+      expect(getCorrectTheme(null)).toBe('light')
+      expect(getCorrectTheme('wrong')).toBe('light')
+    })
+  })
+
   describe('getThemeAttribute()', () => {
     it('returns the theme attribute from the html element', () => {
       document.documentElement.setAttribute('data-color-mode', 'dark')
@@ -22,28 +36,6 @@ describe('theme', () => {
       expect(document.documentElement.getAttribute('data-color-mode')).toBe(
         'light'
       )
-    })
-  })
-
-  describe('getThemeFromLs()', () => {
-    it('returns theme from local storage', () => {
-      window.localStorage.setItem('theme', 'dark')
-
-      expect(getThemeFromLs()).toBe('dark')
-    })
-
-    it('returns null if there is no theme in local storage', () => {
-      window.localStorage.removeItem('theme')
-
-      expect(getThemeFromLs()).toBe(null)
-    })
-  })
-
-  describe('setThemeToLs()', () => {
-    it('sets ', () => {
-      setThemeToLs('light')
-
-      expect(window.localStorage.getItem('theme')).toBe('light')
     })
   })
 

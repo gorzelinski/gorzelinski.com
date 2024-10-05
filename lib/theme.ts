@@ -1,20 +1,16 @@
 import { Theme } from '@/types'
 import { THEME } from '@/constants'
 
+export function getCorrectTheme(theme: string | null) {
+  return theme === 'light' || theme === 'dark' ? theme : 'light'
+}
+
 export function getThemeAttribute() {
   return document.documentElement.getAttribute(THEME.attribute) as Theme
 }
 
 export function setThemeAttribute(theme: Theme) {
   document.documentElement.setAttribute(THEME.attribute, theme)
-}
-
-export function setThemeToLs(theme: Theme) {
-  window.localStorage.setItem(THEME.lsKey, theme)
-}
-
-export function getThemeFromLs() {
-  return window.localStorage.getItem(THEME.lsKey) as Theme | null
 }
 
 export function hslToRgb(hsl: string) {

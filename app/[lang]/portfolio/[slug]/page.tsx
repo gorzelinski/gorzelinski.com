@@ -1,7 +1,9 @@
 import { Metadata } from 'next'
+import { cookies } from 'next/headers'
+import { getCookie } from 'cookies-next'
 import { BlogPosting, WithContext } from 'schema-dts'
-import { NestedPageProps } from '@/types'
-import { LINKS } from '@/constants'
+import { NestedPageProps, Theme } from '@/types'
+import { COOKIES, LINKS } from '@/constants'
 import { i18n } from '@/i18n.config'
 import { createPagination, getDictionary, getMDX, getSlugs } from '@/scripts'
 import { generateAlternateLinks, getAbsoluteURL, getMetaImage } from '@/lib'
@@ -40,6 +42,7 @@ export async function generateMetadata({
   const canonical = `${LINKS.portfolio}${slug}/`
   const languages = generateAlternateLinks(canonical)
   const metaImageParams = {
+    theme: getCookie(COOKIES.theme, { cookies }) as Theme,
     title: frontmatter.title,
     subtitle: layout.root.metadata.title,
     alt: `${page.portfolioProject.metadata.image.alt} ${frontmatter.image.alt}`,

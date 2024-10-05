@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
+import { cookies } from 'next/headers'
+import { getCookie } from 'cookies-next'
 import { WebSite, WithContext } from 'schema-dts'
-import { PageProps } from '@/types'
-import { LINKS, metadataBase } from '@/constants'
+import { PageProps, Theme } from '@/types'
+import { COOKIES, metadataBase } from '@/constants'
 import { Locale, i18n } from '@/i18n.config'
 import { getDictionary } from '@/scripts'
 import { getAbsoluteURL, getMetaImage } from '@/lib'
@@ -15,6 +17,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { layout, page } = await getDictionary(lang)
   const metaImageParams = {
+    theme: getCookie(COOKIES.theme, { cookies }) as Theme,
     title: page.home.metadata.title,
     subtitle: layout.root.metadata.title,
     alt: page.home.metadata.image.alt
@@ -57,6 +60,7 @@ export default async function RootLayout({
   params: { lang: Locale }
 }) {
   const { lang } = params
+  const theme = getCookie(COOKIES.theme, { cookies })
   const dictionary = await getDictionary(lang)
   const jsonLd: WithContext<WebSite> = {
     '@context': 'https://schema.org',
@@ -75,37 +79,30 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={`${montserrat.variable} ${lora.variable} ${firaCode.variable}`}
       lang={lang}
+      data-color-mode={theme}
     >
       <body>
         <script
           id="set-initial-theme"
           dangerouslySetInnerHTML={{
             __html: `
-            function getInitialTheme() {
-              try {
-                const savedTheme = window.localStorage.getItem('theme')
+            try {
+              const isSavedTheme = document.cookie.includes('light') || document.cookie.includes('dark')
 
-                if (savedTheme) {
-                  return savedTheme
-                }
+              function getOsTheme() {
+                const isOsLight = window.matchMedia(
+                  '(prefers-color-scheme: light)'
+                ).matches
 
-                function getOsTheme() {
-                  const isOsLight = window.matchMedia(
-                    '(prefers-color-scheme: light)'
-                  ).matches
+                if (isOsLight) return 'light'
+                else return 'dark'
+              }
 
-                  if (isOsLight) return 'light'
-                  else return 'dark'
-                }
-
+              if (!isSavedTheme) {
                 const osTheme = getOsTheme()
-
-                return osTheme
-              } catch (_) {}
-            }
-
-            const preferredTheme = getInitialTheme()
-            document.documentElement.setAttribute('data-color-mode', preferredTheme)
+                document.documentElement.setAttribute('data-color-mode', osTheme)
+              }
+            } catch (_) {}
             `
           }}
         />

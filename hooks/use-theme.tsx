@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
+import { setCookie, hasCookie } from 'cookies-next'
 import { Theme } from '@/types'
-import { THEME } from '@/constants'
-import { getThemeAttribute, setThemeAttribute, setThemeToLs } from '@/lib'
+import { COOKIES, THEME } from '@/constants'
+import { getThemeAttribute, setThemeAttribute } from '@/lib'
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>('light')
@@ -9,7 +10,7 @@ export function useTheme() {
   const saveTheme = (theme: Theme) => {
     setTheme(theme)
     setThemeAttribute(theme)
-    setThemeToLs(theme)
+    setCookie(COOKIES.theme, theme)
   }
 
   const toggleTheme = (theme: Theme): void =>
@@ -18,6 +19,8 @@ export function useTheme() {
   useEffect(() => {
     const savedTheme = getThemeAttribute()
     setTheme(savedTheme)
+
+    if (!hasCookie(COOKIES.theme)) setCookie(COOKIES.theme, savedTheme)
 
     const listenOsThemeChange = (event: MediaQueryListEvent) => {
       saveTheme(event.matches ? 'light' : 'dark')

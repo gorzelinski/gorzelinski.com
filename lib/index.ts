@@ -13,8 +13,7 @@ export { selectActiveClass } from './navigation'
 export { capitalize } from './string'
 export {
   hslToRgb,
+  getCorrectTheme,
   getThemeAttribute,
-  getThemeFromLs,
-  setThemeAttribute,
-  setThemeToLs
+  setThemeAttribute
 } from './theme'
