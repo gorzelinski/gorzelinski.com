@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { cookies } from 'next/headers'
 import { getCookie } from 'cookies-next'
 import { WebSite, WithContext } from 'schema-dts'
+import { Analytics } from '@vercel/analytics/react'
 import { PageProps, Theme } from '@/types'
 import { COOKIES, metadataBase } from '@/constants'
 import { Locale, i18n } from '@/i18n.config'
@@ -115,6 +116,7 @@ export default async function RootLayout({
           <Main>{children}</Main>
           <Footer lang={lang} dictionary={dictionary} />
         </Background>
+        <Analytics />
       </body>
     </html>
   )
