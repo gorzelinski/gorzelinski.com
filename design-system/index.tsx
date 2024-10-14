@@ -35,6 +35,7 @@ export {
   Input,
   InputWrapper,
   Instagram,
+  Kbd,
   Label,
   Li,
   Link,
