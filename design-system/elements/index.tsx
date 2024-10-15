@@ -37,6 +37,7 @@ export {
 } from './icon'
 export { InputWrapper, Input } from './input'
 export { Em } from './italic'
+export { Kbd } from './kbd'
 export { Label } from './label'
 export { Ul, Ol, Li } from './list'
 export { Nav, navigation } from './navigation'

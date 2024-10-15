@@ -16,6 +16,7 @@ import {
   Hr,
   Image,
   InlineCode,
+  Kbd,
   Li,
   LinkOrA,
   Ol,
@@ -146,7 +147,8 @@ const customComponents: MDXComponents = {
     <Callout {...props} css={verticalRhythm.marginBottom.m}>
       {children}
     </Callout>
-  )
+  ),
+  Kbd: ({ children }) => <Kbd>{children}</Kbd>
 }
 
 export function getMDXComponents(page: Pages, slug: string): MDXComponents {
