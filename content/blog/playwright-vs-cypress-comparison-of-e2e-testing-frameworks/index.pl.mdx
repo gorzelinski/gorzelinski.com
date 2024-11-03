@@ -1,0 +1,336 @@
+---
+title: Playwright vs. Cypress -  porównanie frameworków do testowania E2E
+description: 'Szczegółowe porównanie dwóch popularnych frameworków do testowania E2E: Playwright i Cypress. Które z funkcji są porównywalne i który z nich oferuje więcej?'
+date: 2024-11-03T11:30:00+02:00
+updated: 2024-11-03T11:30:00+02:00
+image:
+  alt: 'Złoto-niebieska maska teatralna na czarnym tle'
+  caption: 'Zdjęcie autorstwa Erdei Richárd'
+  src: 'erdei-richard-YDg-4RgkmH8-unsplash.jpg'
+categories: ['web development']
+tags: ['testowanie', 'framework', 'e2e']
+type: 'post'
+---
+
+Ostatnio przeniosłem moją stronę na nowy stos technologiczny. Porzuciłem moją starą stronę opartą na Gatsbym i stworzyłem nowy projekt wykorzystując Next.js. Był to spory wysiłek sam w sobie. Zastanawiałem się, czy jest to dobry moment, aby przepisać testy. Testy E2E są abstrakcyjne, więc po migracji musiałbym je dostosować w małym stopniu (albo wcale). Jednakże, zamiast zmieniać rzeczy stopniowo - jak normalny człowiek - zmieniłem wszystko jednocześnie, włączając testy. Zajęło mi to sporo czasu, ale skończyłem mając dwa zestawy testów E2E - w Cypress'ie i Playwright'cie. Postanowiłem, że wykorzystam tę okazję i porównam te dwa frameworki.
+
+## Playwright
+
+Playwright to współczesna biblioteka do testowania rozwijana przez Microsoft i wydana w 2020 roku. Zespół. który początkowo pracował nad innym narzędziem do automatyzacji, Puppeteer'em, stworzył Playwright'a. "Chwila, moment, czy Puppeteer nie jest od Google?". Jest, ale ten zespół przeniósł się z Google do Microsoftu. Także jest to kolejne narzędzie od Microsoftu do twojego stosu technologicznego, gdybyś jeszcze nie miał ich wystarczająco wiele.
+
+Playwright składa się z dwóch części:
+
+1. Playwright Library, która udostępnia zunifikowane API do uruchamiania i interakcji z przeglądarkami.
+2. Playwright Test, który dostarcza to API wraz z test runnerem, którym możesz w pełni zarządzać.
+
+Pomimo, że Playwright istnieje na rynku krócej niż Cypress, to zgromadził już ponad 66k gwiazdek na GitHub'ie (w porównaniu do 47 tysięcy Cypress'a). Myślę, że istnieje dobry powód stojący za tą popularnością. Playwright oferuję pełny parytet funkcji z Cypress'em, a nawet więcej.
+
+## Cypress
+
+Cypress, framework do testowania E2E aplikacji internetowych, został pierwszy raz wydany we wrześniu 2017 roku. Od czasu wydania zdobył znaczącą popularność wśród społeczności deweloperów, gromadząc ponad 40 000 gwiazdek na GitHub'ie. Framework ten jest rozwijany i utrzymywany przez doświadczonych deweloperów i inżynierów, włączając Gleba Bahamutova. Wielokrotnie wpadałem na [jego posty](glebbahmutov) dotyczące testowania - dobre rzeczy. Cypress jest nadal głównym wyborem dla wielu deweloperów szukających frameworka E2E.
+
+## Playwright vs. Cypress
+
+Przejdźmy do mięsa tego posta - porównania. Stworzyłem tabelę wyróżniającą wiele funkcjonalności, których możesz się spodziewać po współczesnym narzędziu do testowania E2E. Tabela może być przydatna per se, ale przyjrzę się każdej funkcjonalności z osobna i dodam kontekst. Zacznę od "więcej", gdzie Playwright oferuje ekstra funkcjonalności, a później przejdę do parytetu funkcji.
+
+| Funkcjonalność          | Playwright         | Cypress               |
+| ----------------------- | ------------------ | --------------------- |
+| Język programowania     | JS/TS              | JS/TS                 |
+| Inne języki             | Wspierane          | Nie wspierane         |
+| Paralelizacja           | Darmowa            | Płatna                |
+| Przeglądarki            | Wsparcie dla wielu | Wsparcie dla wielu    |
+| Inne test runnery       | Wspierane          | Nie wspierane         |
+| Wiele kart              | Wspierane          | Nie wspierane         |
+| Generacja kodu          | Wspierane          | Nie wspierane         |
+| Design                  | Headless           | GUI                   |
+| Wydajność               | Szybsza            | Wolniejsza            |
+| `<iframe>`              | Wspierane          | Wspierane             |
+| Interakcje z dialogami  | Wspierane          | Wspierane             |
+| Plugin do VSC           | Oficjalny          | Społeczności          |
+| Składnia                | Przypominająca ES6 | Przypominająca jQuery |
+| Interakcje z elementami | Wspierane          | Wspierane             |
+| Auto-wait               | Wspierane          | Wspierane             |
+| Shadow DOM              | Wspierane          | Wspierane             |
+| Testowanie API          | Wspierane          | Wspierane             |
+| Dokumentacja            | Dobra              | Dobra                 |
+
+### Języki programowania
+
+[Playwright wspiera TypeScripta](https://playwright.dev/docs/test-typescript) "prosto z pudełka". Możesz go zainstalować i od razu pisać testy zabezpieczone typami. JavaScript też jest oczywiście wspierany. Jeżeli używasz Cypress'a, to w domyśle piszesz testy używając języka JavaScript. Jednakże możesz używać Cypress'a wraz z TypeScriptem, gdy dostarczysz odpowiednią konfigurację.
+
+### Inne języki
+
+Poza JavaScriptem, [Playwright wspiera inne języki programowania](https://playwright.dev/docs/languages), takie jak Python, C# lub Java. Dla mnie nie ma to większego znaczenia, bo i tak tworzę tę stronę w ekosystemie JavaScript. Ale wyobrażam sobie, że wykorzystywanie jednego frameworka do testowania przez cały zespół - front-end i back-end - może być plusem. Będąc przy temacie - poważnie rozważałem, czy powinienem zakwalifikować wsparcie dla Javy jako plus (JavaScript deweloper srający na Javę - o ironio). [Cypress nie wspiera](https://www.cypress.io/how-it-works) (i prawdopodobnie tak pozostanie) innych języków programowania.
+
+### Paralelizacja
+
+W domyśle, Playwright uruchamia pliki testowe [równolegle](https://playwright.dev/docs/test-parallel). Odpala kilka procesów, które działają jednocześnie. Testy w pojedynczym pliku są uruchamiane po kolei, ale możesz nawet zrównoleglić testy w jednym pliku. [Paralelizacja](https://docs.cypress.io/cloud/features/smart-orchestration/parallelization) jest płatną funkcjonalnością w usłudze Cypress Cloud.
+
+### Przeglądarki
+
+Paralelizacja pomaga w testach wielu przeglądarek. Playwright wprowadza koncept "projektów", gdze każdy z nich może służyć jako odrębna [przeglądarka](https://playwright.dev/docs/browsers), włączając Safari.
+
+```ts title="Definiowanie projektów w Playwright"
+projects: [
+  {
+    name: 'chromium',
+    use: { ...devices['Desktop Chrome'] }
+  },
+  {
+    name: 'firefox',
+    use: { ...devices['Desktop Firefox'] }
+  },
+  {
+    name: 'webkit',
+    use: { ...devices['Desktop Safari'] }
+  },
+  {
+    name: 'Mobile Chrome',
+    use: { ...devices['Pixel 5'] }
+  },
+  {
+    name: 'Mobile Safari',
+    use: { ...devices['iPhone 12'] }
+  }
+]
+```
+
+Współczesny Internet Explorer może wprowadzać egzotyczne problemy, więc istotne jest, aby go wspierać. Playwright umożliwia bardzo łatwą, globalną konfigurację różnych projektów. Z drugiej strony, Cypress sprawia trochę kłopotów. Poniżej jest fragment mojej akcji GitHub, która uruchamia wiele [przeglądarek](https://docs.cypress.io/app/references/launching-browsers).
+
+```yaml title="GitHub action uruchamiająca wiele przeglądarek w Cypress"
+e2e-test-chrome:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16]
+    needs: build
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@v3
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+      - name: Restore Cypress binary
+        uses: actions/cache@v3
+        id: cache-cypress
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-binary-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            cypress-binary-
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-output
+      - name: Run Cypress
+        uses: cypress-io/github-action@v4
+        with:
+          start: npm run serve
+          wait-on: 'http://localhost:8000'
+          browser: chrome
+          install: false
+  e2e-tests-firefox:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16]
+    needs: build
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@v3
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+      - name: Restore Cypress binary
+        uses: actions/cache@v3
+        id: cache-cypress
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-binary-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            cypress-binary-
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-output
+      - name: Run Cypress
+        uses: cypress-io/github-action@v4
+        with:
+          start: npm run serve
+          wait-on: 'http://localhost:8000'
+          browser: firefox
+          headed: true
+          install: false
+```
+
+Nie ma tu Safari, ponieważ Cypress przez długi czas nie wspierał Safari. Dopiero niedawno otrzymał eksperymentalne wsparcie dla Webkit'a (silnik Safari).
+
+### Inne test runnery
+
+Playwright Test to dedykowany test runner dla tego frameworka. Jednakże, dodając kilka lini kodu, możesz podpiąć Playwright'a do innych, istniejących runnerów, takich jak Jest, Mocha czy AVA. Cypress nie wspiera zewnętrznych test runnerów.
+
+### Wiele kart
+
+Playwright wykorzystuje [`BrowserContext`](https://playwright.dev/docs/pages), który umożliwia operowanie wieloma, niezależnymi sesjami przeglądarek. Możesz w łatwy sposób pisać testy, które wchodzą w interakcję z wieloma kartami. Cypress uruchamiany jest wewnątrz przeglądarki, dlatego nie wspiera [wielu kart](https://docs.cypress.io/app/references/trade-offs).
+
+### Generacja kodu
+
+Nie nazwałbym tego najistotniejszą funkcjonalnością, ale jest fajna. [Playwright pozwala generować kod](https://playwright.dev/docs/codegen). Rozpoczynasz nagrywanie, klikasz w swojej aplikacji i, dla przykładu, Playwright generuje dla ciebie odpowiednie lokatory (jest to sposób na odnalezienie elementu na stronie, podobny do JavaScriptowych selektorów). Raczej nie wygeneruje ci produkcyjnego kodu, ale jest to dobry punkt startowy. Cypress nie oferuje analogicznej funkcjonalności.
+
+### Wydajność
+
+Z drugiej strony, wydajność jest istotna dla większości ludzi. Playwright bezpośrednio wchodzi w interakcję z przeglądarką wykorzystując protokół Chrome dev tools, co przekłada się na lepszą wydajność. Wykorzystałem mój zestaw bliźniaczych testów i przetestowałem wydajność. Testowałem wykorzystując UI i przeglądarkę Chromium w obu frameworkach. Aby uniknąć odstających wyników, każdy z testów uruchomiłem wielokrotnie i wziąłem średni czas. Dla Cypress'a, jest to całkowity czas, a dla Playwright'a wziąłem czas najdłuższego testu, ponieważ są one uruchamiane równolegle.
+
+| Testy               | Playwright | Cypress |
+| ------------------- | ---------- | ------- |
+| Internacjonalizacja | ~1.425s    | ~4.5s   |
+| Dostępność          | ~2.1s      | ~5.5s   |
+| Subskrypcja         | ~870ms     | ~4.25s  |
+| Nawigacja           | ~1.2s      | ~4s     |
+
+Oczywiście zależy to od wielu czynników, ale możemy przyjąć, że Playwright jest z grubsza 3-4 razy szybszy niż Cypress.
+
+### Wsparcie dla iframe
+
+Strona w Playwright wystawia aktualny [frame](https://playwright.dev/docs/api/class-frame) tree poprzez odpowiednie metody. Masz dostęp do elementów iframe prosto po wyjęciu z cyfrowego pudełka. Cypress także wspiera elementy [iframe](https://www.cypress.io/blog/working-with-iframes-in-cypress), ale wymaga dodatkowego pluginu.
+
+### Okna dialogowe
+
+Podobna historia dotyczy natywnych, przeglądarkowych [okien dialogowych](https://playwright.dev/docs/dialogs). Playwright automatycznie je pomija, ale możesz zarejestrować handler i je łatwo zaakceptować. Cypress także może je obsłużyć wykorzystując eventy, ale kod wtedy zależy od rodzaju [okna dialogowego](https://docs.cypress.io/api/cypress-api/catalog-of-events).
+
+### Plugin do VSC
+
+Oba frameowrki oferują wspierające pluginy do edytora Visual Studio Code. Microsoft rozwija [oficjalny plugin do Playwright'a](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright). Używając Cypress'a, musisz się zadowolić [pluginami od społeczności](https://docs.cypress.io/app/tooling/ide-integration).
+
+### Składnia
+
+Preferencje składniowe są subiektywne, więc ciężko wskazać tutaj zwycięzcę. Playwright oferuje składnię podobną do współczesnego, asynchronicznego JavaScriptu ES6, z wieloma słowami kluczowymi `async` i `await`. Testy Cypress'a przypominają składnią jQuery, z łańcuchami metod. Poniżej prezentuję test E2E napisany dla obu frameworków.
+
+```ts title="Test subskrypcji w Playwright"
+import { test, expect } from './fixtures'
+
+test.describe('Subscription tests', () => {
+  test('checks the successful flow', async ({ page, settingsPage }) => {
+    const { section } = await settingsPage.getDictionary('en')
+    const formURL = await settingsPage.getFormURL('en')
+
+    await page.route(formURL, (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ status: 'success' })
+      })
+    )
+    await page.goto(settingsPage.link.home)
+
+    const input = page.getByLabel(section.newsletter.email)
+    const button = page.getByRole('button', { name: section.newsletter.button })
+
+    await expect(input).toHaveAttribute('required')
+    await expect(input).toHaveAttribute('type', 'email')
+    await expect(input).toHaveAttribute('autocomplete', 'off')
+
+    await input.fill(settingsPage.example.email)
+    await button.scrollIntoViewIfNeeded()
+    await button.click()
+
+    await expect(
+      page.getByText(section.newsletter.success.heading)
+    ).toBeVisible()
+  })
+
+  // More test cases
+})
+```
+
+```js title="Test subskrypcji w Cypress"
+/// <reference types="Cypress" />
+import { icon } from '../fixtures/theme.json'
+import { form, user } from '../fixtures/subscription.json'
+
+describe('Subscription tests', () => {
+  beforeEach(() => {
+    cy.visit('/blog/hello-world/')
+    cy.findByTestId(icon).should('exist')
+    cy.findByPlaceholderText(form.email)
+      .as('email')
+      .should('have.prop', 'type', 'email')
+      .and('have.prop', 'required')
+    cy.findByRole('button', { name: form.button }).as('button')
+  })
+
+  it('Tests success flow', () => {
+    cy.intercept(form.url, (req) => {
+      expect(req.body).to.include('email_address')
+      expect(req.body).to.include(user.email)
+      req.reply({
+        statusCode: 200,
+        body: {
+          status: 'success'
+        }
+      })
+    })
+    cy.get('@email').type(user.email, { delay: 50 })
+    cy.get('@button').click()
+    cy.findByText(form.success, { exact: false }).should('be.visible')
+  })
+
+  // More test cases
+})
+```
+
+### Design
+
+W tej sekcji, odnoszę się do ogólnego projektu frameworka. Playwright zaprojektowany jest "bez głowy" - graficzny interfejs użytkownika to tylko dodatek. Nie musisz nic konfigurować, żeby uruchomić Playwright'a na serwerze CI. Istnieje flaga, aby uruchomić go w trybie GUI.
+
+```bash
+npx playwright test --ui
+```
+
+Cypress jest zaprojektowany w myśl przeciwnej filozofii. Graficzny interfejs jest w centrum doświadczenia. Możesz dostosować konfigurację, aby uruchomić Cypress'a na serwerze CI.
+
+### Interakcja z elementami
+
+Zarówno Playwright jak i Cypress oferują dobre API do interakcji z elementami DOM. Playwright wprowadza [lokatory](https://playwright.dev/docs/locators). Jest to sposób, aby w dowolnym momencie znaleźć elementy na stronie. Każdy kto kiedykolwiek używał Testing Library, będzie się tu czuł jak w domu.
+
+```ts title="Interakcja z elementami w Playwright"
+await page.getByRole('button', { name: 'Submit' }).click()
+```
+
+W Cypress'ie, do łapania za elementy służy [funkcja get](https://docs.cypress.io/api/commands/get). Istnieje też sposób, aby dodawać znaczące nazwy do elementów wykorzystując aliasy.
+
+```js title="Interakcja z elementami w Cypress"
+cy.get('button[type=submit]').as('submitBtn')
+
+cy.get('@submitBtn').click()
+```
+
+### Auto-wait
+
+Odnosząc się do poprzedniej sekcji, oba frameworki automatycznie zaczekają na te elementy (w przeciwieństwie do Selenium). Funkcja ta pomaga w testowaniu współczesnych, dynamicznych interfejsów użytkownika, gdzie komponenty są często dołączane i odłączane od DOM-u. Dzięki temu, testy mają tendencję do bycia mniej "flaky".
+
+![Mem w którym mama ignoruje tonące dziecko. Playwright jest wybrany. Cypress tonie. Selenium utonął już dawno temu.](wybieranie-wspolczesnego-frameworka-e2e.jpg)
+
+### Shadow DOM
+
+Będąc przy komponentach, lokatory Playwright'a domyślnie będą działały z elementami w [shadow DOM](https://playwright.dev/docs/locators#locate-in-shadow-dom). Jest to konieczne, jeżeli twoja aplikacja wykorzystuje te natywne, niestandardowe komponenty. Cypress także może wchodzić w interakcję z tymi elementami ["cieniowego" DOM-u](https://docs.cypress.io/api/commands/shadow). Jednakże, w tym celu, musisz wywoływać dodatkową metodę.
+
+### Testowanie API
+
+Poza testowaniem interfejsów użytkownika, oba frameworki umożliwiają testowanie interfejsów API. [Playwright](https://playwright.dev/docs/api-testing) może uzyskać dostęp do twojego REST API. Jest to pomocne, jeżeli chcesz przetestować serwer API albo przygotować odpowiedź serwera przez odwiedzeniem aplikacji. [Cypress](https://learn.cypress.io/advanced-cypress-concepts/integration-and-api-tests) także dostarcza dobre doświadczenie jeżeli chodzi o testowanie API.
+
+### Dokumentacja
+
+Oba frameworki posiadają dogłębną i szeroką dokumentację techniczną. Podczas pracy z nimi, rzadko czułem potrzebę zaglądania do innych źródeł. Ciężko wskazać konkretny powód, ale preferuję dokumentację Cypress'a. Może to przez estetykę? I nie zrozum mnie źle - Playwright ma dobrą dokumentację. Szybko zacząłem i przepisałem moje testy z jej wykorzystaniem. Ale ma ona twardą konkurencję - dokumentacja Cypress'a jest po prostu bardzo dobra.
+
+## Podsumowanie
+
+Nie będzie tu żadnych zwrotów akcji, bo już na początku napisałem, że przepisałem moje testy do Playwright'a. Dlatego znasz już mój wybór. Mam nadzieję, że po przeczytaniu tego posta znasz także powody stojące za tą decyzją. Playwright oferuje pełny parytet funkcjonalności względem Cypress'a i dodatkowe funkcjonalności, jak paralelizacja czy wsparcie dla wielu kart, które są dla mnie przydatne. Jednakże, po napisaniu tego wszystkiego, nadal uważam, że Cypress to bardzo dobry wybór. Jego popularność to nie przypadek. A co z tobą - który z frameworków wybierasz?
