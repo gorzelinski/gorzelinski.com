@@ -508,7 +508,7 @@ const tokens = {
     "variable": "var(--fonts-mono)"
   },
   "fontSizes.4xl": {
-    "value": "4rem",
+    "value": "3.5rem",
     "variable": "var(--font-sizes-4xl)"
   },
   "fontSizes.3xl": {
@@ -576,7 +576,7 @@ const tokens = {
     "variable": "var(--letter-spacings-wide)"
   },
   "lineHeights.4xl": {
-    "value": "5rem",
+    "value": "4rem",
     "variable": "var(--line-heights-4xl)"
   },
   "lineHeights.3xl": {

@@ -421,7 +421,7 @@ export const tokens = defineTokens({
   },
   fontSizes: {
     '4xl': {
-      value: '4rem'
+      value: '3.5rem'
     },
     '3xl': {
       value: '3rem'
@@ -478,7 +478,7 @@ export const tokens = defineTokens({
   },
   lineHeights: {
     '4xl': {
-      value: '5rem'
+      value: '4rem'
     },
     '3xl': {
       value: '3.5rem'

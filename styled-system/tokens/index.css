@@ -127,7 +127,7 @@
   --fonts-sans: var(--font-montserrat);
   --fonts-serif: var(--font-lora);
   --fonts-mono: var(--font-fira-code);
-  --font-sizes-4xl: 4rem;
+  --font-sizes-4xl: 3.5rem;
   --font-sizes-3xl: 3rem;
   --font-sizes-2xl: 2.5rem;
   --font-sizes-xl: 2rem;
@@ -144,7 +144,7 @@
   --letter-spacings-packed: -0.05em;
   --letter-spacings-narrow: -0.025em;
   --letter-spacings-wide: 0.1em;
-  --line-heights-4xl: 5rem;
+  --line-heights-4xl: 4rem;
   --line-heights-3xl: 3.5rem;
   --line-heights-2xl: 3rem;
   --line-heights-xl: 2.5rem;
