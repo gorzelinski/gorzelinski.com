@@ -186,7 +186,7 @@ export class SettingsPage {
     const generator = this.page.locator('meta[name="generator"]')
     const creator = this.page.locator('meta[name="creator"]')
     const publisher = this.page.locator('meta[name="publisher"]')
-    const cannonical = this.page.locator('link[rel="canonical"]')
+    const canonical = this.page.locator('link[rel="canonical"]')
     const titleTag = await this.page.title()
     const descriptionTag = this.page.locator('meta[name="description"]')
 
@@ -236,7 +236,7 @@ export class SettingsPage {
       'content',
       this.dictionary.en.layout.root.metadata.author
     )
-    await expect(cannonical).toHaveAttribute('href', url)
+    await expect(canonical).toHaveAttribute('href', url)
     await expect(titleTag).toBe(
       slug === this.link.home ? title : await this.getTemplateTitle(title, 'en')
     )
