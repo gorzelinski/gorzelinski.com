@@ -5,7 +5,7 @@ import { WebPage, WithContext } from 'schema-dts'
 import { PageProps, Theme } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
 import { getDictionary, getMDXes } from '@/scripts'
-import { generateAlternateLinks, getMetaImage } from '@/lib'
+import { generateAlternateLinks, getMetaImage, localizePath } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
 import { H1, Header, Newsletter, Project, Section } from '@/design-system'
 import { small } from '@/design-system/elements/small'
@@ -15,6 +15,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.portfolio)
+  const canonical = localizePath(LINKS.portfolio, lang)
   const metaImageParams = {
     theme: getCookie(COOKIES.theme, { cookies }) as Theme,
     title: page.portfolio.metadata.title,
@@ -26,7 +27,7 @@ export async function generateMetadata({
     title: page.portfolio.metadata.title,
     description: page.portfolio.metadata.description,
     alternates: {
-      canonical: LINKS.portfolio,
+      canonical,
       languages
     },
     openGraph: {

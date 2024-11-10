@@ -5,7 +5,7 @@ import { WebPage, WithContext } from 'schema-dts'
 import { PageProps, Theme } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
 import { getMDX, getDictionary } from '@/scripts'
-import { generateAlternateLinks, getMetaImage } from '@/lib'
+import { generateAlternateLinks, getMetaImage, localizePath } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
 import {
   Article,
@@ -22,6 +22,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.uses)
+  const canonical = localizePath(LINKS.uses, lang)
   const metaImageParams = {
     theme: getCookie(COOKIES.theme, { cookies }) as Theme,
     title: page.uses.metadata.title,
@@ -33,7 +34,7 @@ export async function generateMetadata({
     title: page.uses.metadata.title,
     description: page.uses.metadata.description,
     alternates: {
-      canonical: LINKS.uses,
+      canonical,
       languages
     },
     openGraph: {

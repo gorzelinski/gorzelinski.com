@@ -32,6 +32,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.about)
+  const canonical = localizePath(LINKS.about, lang)
   const metaImageParams = {
     theme: getCookie(COOKIES.theme, { cookies }) as Theme,
     title: page.about.metadata.title,
@@ -43,7 +44,7 @@ export async function generateMetadata({
     title: page.about.metadata.title,
     description: page.about.metadata.description,
     alternates: {
-      canonical: LINKS.about,
+      canonical,
       languages
     },
     openGraph: {

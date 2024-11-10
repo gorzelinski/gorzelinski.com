@@ -6,7 +6,12 @@ import { NestedPageProps, Theme } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
 import { i18n } from '@/i18n.config'
 import { createPagination, getDictionary, getMDX, getSlugs } from '@/scripts'
-import { generateAlternateLinks, getAbsoluteURL, getMetaImage } from '@/lib'
+import {
+  generateAlternateLinks,
+  getAbsoluteURL,
+  getMetaImage,
+  localizePath
+} from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
 import { Box, Grid, VStack } from '@/styled-system/jsx'
 import {
@@ -39,7 +44,7 @@ export async function generateMetadata({
 }: NestedPageProps): Promise<Metadata> {
   const { frontmatter } = await getMDX<'project'>(LINKS.portfolio, slug, lang)
   const { layout, page } = await getDictionary(lang)
-  const canonical = `${LINKS.portfolio}${slug}/`
+  const canonical = localizePath(`${LINKS.portfolio}${slug}/`, lang)
   const languages = generateAlternateLinks(canonical)
   const metaImageParams = {
     theme: getCookie(COOKIES.theme, { cookies }) as Theme,

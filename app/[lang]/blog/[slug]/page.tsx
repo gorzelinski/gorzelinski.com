@@ -60,7 +60,7 @@ export async function generateMetadata({
 }: NestedPageProps): Promise<Metadata> {
   const { frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
   const { layout, page } = await getDictionary(lang)
-  const canonical = `${LINKS.blog}${slug}/`
+  const canonical = localizePath(`${LINKS.blog}${slug}/`, lang)
   const languages = generateAlternateLinks(canonical)
   const metaImageParams = {
     theme: getCookie(COOKIES.theme, { cookies }) as Theme,

@@ -30,12 +30,13 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.home)
+  const canonical = localizePath(LINKS.home, lang)
 
   return {
     title: page.home.metadata.title,
     description: page.home.metadata.description,
     alternates: {
-      canonical: LINKS.home,
+      canonical,
       languages
     }
   }
