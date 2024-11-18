@@ -2,7 +2,7 @@
 title: Behind the scenes of my website
 description: 'After several months of designing, coding, and writing, I have finally published my website.'
 date: 2022-07-07T16:00:00+02:00
-updated: 2022-07-07T16:00:00+02:00
+updated: 2024-11-18T15:30:00+02:00
 image:
   alt: 'Collage of mockups with my website'
   src: 'gorzelinski-cover.png'
@@ -57,47 +57,50 @@ I wanted this site to be typography-oriented, so I spent another chunk of time l
 
 ## Design System
 
-Having essentials and some content, I started to create a design system. I wanted it to be flexible, consistent, and easily scalable. I made abstract design primitives (elements) like buttons and headings.
+Having essentials and some content, I started to create a design system. I wanted it to be flexible, consistent, and easily scalable. I made abstract design primitives (elements) like buttons and headings. I used them in many different contexts to build more complex and concrete components and sections.
 
 ![Design primitives - buttons](buttons.png)
 
-I used them in many different contexts to build more concrete components like this one - landing section of home page.
+[Panda CSS](https://panda-css.com/) is a CSS-in-JS library that allows us to define some base styles alongside multiple variants of a particular component. This way, we define a library of components that is very convenient to use. Here's how the above button component looks in code (I showed only the base styles because the original code is 300 lines long).
 
-```jsx
-import React from 'react'
-import { useTranslation } from 'react-i18next'
+```tsx title="Defining a recipie for a button in Panda CSS"
+import { cva } from '@/styled-system/css'
+import { sharedTransitionProperties } from '../../utils'
 
-import { Hero, H1, P, Button, Tile } from '../elements'
-import Typewriter from './typewriter'
-
-const Landing = () => {
-  const { t } = useTranslation('components/landing')
-
-  return (
-    <Hero>
-      <Tile as="header">
-        <H1 $decorative aria-label={t('aria')}>
-          <Typewriter
-            strings={[
-              t('typewriter.design'),
-              t('typewriter.code'),
-              t('typewriter.write'),
-              t('typewriter.create')
-            ]}
-          ></Typewriter>
-        </H1>
-        <P $type="lead">{t('description')}</P>
-        <Button as="a" $type="primary" $grow href="#say-hello">
-          {t('cta')}
-        </Button>
-      </Tile>
-    </Hero>
-  )
-}
-
-export default Landing
+export const button = cva({
+  base: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 's',
+    padding: 's',
+    fontFamily: 'heading',
+    fontWeight: 'medium',
+    letterSpacing: 'wide',
+    textDecoration: 'none',
+    transitionProperty: 'background-color, color',
+    ...sharedTransitionProperties,
+    cursor: 'pointer',
+    _disabled: {
+      cursor: 'not-allowed',
+      pointerEvents: 'none'
+    },
+    '& > span': {
+      flexShrink: 0
+    }
+  }
+  variants: {
+    // Button variants like primary, outline, etc.
+  },
+  defaultVariants: {
+    // Chose default variants when button is used without any
+  },
+  compoundVariants: [
+    // Compound variants allow for more complex logic
+  ]
+})
 ```
 
+And yes - styles are written in TypeScript. It's unusual, but it's really convenient. You don't even need to remember your design tokens - autocompletion has you covered.
 With design primitives, components, and sections, I created responsive templates for every page.
 
 ![Templates of home and portfolio pages](templates-home-portfolio.png)
@@ -112,15 +115,23 @@ I found that flexibility is desirable during the whole process. Same as breaks -
 >
 > &mdash;<cite> David Bowie</cite>
 
-## Gatsby
+## ~~Gatsby~~
 
-To implement my website, I used Static Site Generator - Gatsby. Pages are built and optimized in the generation process, even before the user requests them. Websites created with this approach are usually more efficient than traditional solutions like WordPress.
+~~To implement my website, I used Static Site Generator - Gatsby. Pages are built and optimized in the generation process, even before the user requests them. Websites created with this approach are usually more efficient than traditional solutions like WordPress.~~
 
-But if pages are prebuilt, how to know which theme the user chose? Implementing the theme-switching feature was an unexpected challenge for me. But, after reading about Gatsby's build process and testing, I managed to make it work smoothly.
+~~But if pages are prebuilt, how to know which theme the user chose? Implementing the theme-switching feature was an unexpected challenge for me. But, after reading about Gatsby's build process and testing, I managed to make it work smoothly.~~
+
+## Next.js
+
+"If it ain't broke, don't fix it," people say. Even though my previous website was working pretty well, working on it became harder and harder. That's why I migrated to a new tech stack. Mostly. It was also an opportunity to learn something new, so [Next.js](/blog/next-js-overview-in-1000-words/) became my new framework. It's also based on React, so I didn't need to learn everything from scratch.
+
+However, both of those tools differ significantly. Gatsby has a rich ecosystem of plugins. You're thinking about functionality, and there is probably a plugin providing it. This system is a double-edged sword, however. You can effortlessly implement a new functionality but may have a problem when a plugin is no longer supported. In Next.js, you need to implement more things manually. You need to know better what you're doing, but it's more flexible and easier to maintain in the future.
 
 ## Testing
 
-Besides manual testing, I wrote automated tests. I used `Jest` for component testing. To test integration between components and more complex user behavior, I used `Cypress` with `cypress-axe`. Those tests cover different website aspects - accessibility, internationalization, SEO, and more.
+Besides manual testing, I wrote automated tests. I used Jest for component testing. ~~To test integration between components and more complex user behavior, I used Cypress with cypress-axe. Those tests cover different website aspects - accessibility, internationalization, SEO, and more.~~
+
+I also migrated my E2E test suites to Playwright. It offers full parity with Cypress and more. I won't spend much time explaining the differences between these two frameworks because I wrote a blog post comparing them - [Playwright vs. Cypress - comparison of E2E testing frameworks](/blog/playwright-vs-cypress-comparison-of-e2e-testing-frameworks/).
 
 ## GitHub
 
@@ -128,10 +139,8 @@ I'll try to add content and features to my website regularly, so long-term maint
 
 ![Graph of tasks in continuous integration](ci.png)
 
+Playwright runs tests in parallel by default, so I could significantly simplify my CI GitHub Action. Now, it's just one job with a configuration similar to Playwright's default.
+
+![Graph of tasks in continuous integration v2](ci-v2.png)
+
 I use Conventional Commits to format messages and GitHub Flow as a branching strategy.
-
-<Callout variant="info">
-
-I recently updated my website to a new technological stack with TypeScript and Next.js. I touched every part of my website, so there is much to write about. I'll update this project soon. Stay tuned!
-
-</Callout>
