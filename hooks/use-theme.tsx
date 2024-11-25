@@ -10,7 +10,9 @@ export function useTheme() {
   const saveTheme = (theme: Theme) => {
     setTheme(theme)
     setThemeAttribute(theme)
-    setCookie(COOKIES.theme, theme)
+    setCookie(COOKIES.theme, theme, {
+      sameSite: 'lax'
+    })
   }
 
   const toggleTheme = (theme: Theme): void =>
@@ -20,7 +22,11 @@ export function useTheme() {
     const savedTheme = getThemeAttribute()
     setTheme(savedTheme)
 
-    if (!hasCookie(COOKIES.theme)) setCookie(COOKIES.theme, savedTheme)
+    if (!hasCookie(COOKIES.theme)) {
+      setCookie(COOKIES.theme, savedTheme, {
+        sameSite: 'lax'
+      })
+    }
 
     const listenOsThemeChange = (event: MediaQueryListEvent) => {
       saveTheme(event.matches ? 'light' : 'dark')
