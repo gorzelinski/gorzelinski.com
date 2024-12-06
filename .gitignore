@@ -40,3 +40,7 @@ next-env.d.ts
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Panda
+styled-system
+styled-system-static

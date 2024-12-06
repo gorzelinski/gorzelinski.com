@@ -2,22 +2,13 @@ import { defineConfig } from '@pandacss/dev'
 import { globalCss, semanticTokens, tokens } from './theme'
 
 export default defineConfig({
-  // Whether to use css reset
   preflight: true,
-
-  // Where to look for your css declarations
   include: [
     './design-system/**/*.{ts,tsx,js,jsx}',
     './app/**/*.{ts,tsx,js,jsx}'
   ],
-
-  // Enable JSX syntax
   jsxFramework: 'react',
-
-  // Files to exclude
   exclude: [],
-
-  // Useful for theme customization
   conditions: {
     light: '[data-color-mode=light] &',
     dark: '[data-color-mode=dark] &'
@@ -113,7 +104,5 @@ export default defineConfig({
       }
     }
   },
-
-  // The output directory for your css system
   outdir: 'styled-system'
 })
