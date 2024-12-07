@@ -92,6 +92,15 @@ test.describe('Navigation tests', () => {
     await expect(github).toHaveAttribute('target', '_blank')
     await expect(github).toHaveAttribute('href', link.github)
 
+    const bluesky = page
+      .getByRole('link', {
+        name: 'Bluesky'
+      })
+      .last()
+    await expect(bluesky).toBeVisible()
+    await expect(bluesky).toHaveAttribute('target', '_blank')
+    await expect(bluesky).toHaveAttribute('href', link.bluesky)
+
     const twitter = page
       .getByRole('link', {
         name: 'Twitter'

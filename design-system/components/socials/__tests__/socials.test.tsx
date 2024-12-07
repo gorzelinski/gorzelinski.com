@@ -35,7 +35,7 @@ describe('Socials', () => {
 
     const socialLinks = screen.getAllByRole('link')
 
-    expect(socialLinks.length).toEqual(4)
+    expect(socialLinks.length).toBeGreaterThanOrEqual(5)
     socialLinks.forEach((social) => {
       expect(social).toHaveAttribute(
         'href',

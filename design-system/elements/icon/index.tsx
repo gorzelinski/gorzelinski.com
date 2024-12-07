@@ -1,5 +1,6 @@
 export { AlertCircle } from './alert-circle'
 export { At } from './at'
+export { Bluesky } from './bluesky'
 export { Book } from './book'
 export { Cafe } from './cafe'
 export { CheckmarkCircle } from './checkmark-circle'

@@ -1,6 +1,7 @@
 import { LINKS, SOCIALS } from '@/constants'
 import { Social } from './socials.types'
 import {
+  Bluesky,
   Dribbble,
   Facebook,
   Github,
@@ -15,6 +16,11 @@ export const socialLinks: Social[] = [
     name: 'GitHub',
     url: SOCIALS.github,
     icon: <Github />
+  },
+  {
+    name: 'Bluesky',
+    url: SOCIALS.bluesky,
+    icon: <Bluesky />
   },
   {
     name: 'Twitter',
