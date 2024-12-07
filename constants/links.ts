@@ -1,5 +1,6 @@
 export const HANDLES = {
   github: 'gorzelinski',
+  bluesky: 'gorzelinski.com',
   twitter: 'gorzelinski',
   dribbble: 'gorzelinski',
   facebook: 'gorzelinski',
@@ -9,6 +10,7 @@ export const HANDLES = {
 
 export const SOCIALS = {
   github: `https://github.com/${HANDLES.github}`,
+  bluesky: `https://bsky.app/profile/${HANDLES.bluesky}`,
   twitter: `https://twitter.com/${HANDLES.twitter}`,
   dribbble: `https://dribbble.com/${HANDLES.dribbble}`,
   facebook: `https://www.facebook.com/${HANDLES.facebook}`,

@@ -10,6 +10,7 @@ export function createShareLinks(
   const encodedTitle = encodeURIComponent(title)
 
   const shareLinks: Share = {
+    bluesky: `https://bsky.app/intent/compose?text=${encodedUrl}`,
     twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
     facebook: `https://www.facebook.com/sharer.php?u=${encodedUrl}&quote=${encodedTitle}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,

@@ -5,6 +5,7 @@ export type Social = {
 }
 
 export type Share = {
+  bluesky: string
   twitter: string
   facebook: string
   linkedin: string
