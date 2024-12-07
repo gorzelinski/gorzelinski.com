@@ -7,6 +7,7 @@ import {
   Code,
   Caption,
   Em,
+  Equation,
   Figcaption,
   Figure,
   H1,
@@ -124,6 +125,14 @@ const components: MDXComponents = {
         highlight={highlight}
       />
     )
+  },
+  span: (props) => {
+    const { className, children } = props
+
+    if (className?.includes('katex-display')) {
+      return <Equation>{children}</Equation>
+    }
+    return <span {...props}>{children}</span>
   },
   small: ({ children }) => <Small>{children}</Small>,
   strong: ({ children }) => <Strong>{children}</Strong>,

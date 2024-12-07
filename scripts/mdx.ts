@@ -3,6 +3,8 @@ import path from 'path'
 import { JSXElementConstructor, ReactElement } from 'react'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
 import rehypeMdxCodeProps from 'rehype-mdx-code-props'
 import { Pluggable } from 'unified'
 import readingTime, { ReadTimeResults } from 'reading-time'
@@ -83,8 +85,11 @@ export async function getMDX<Type extends MDXTypes>(
       parseFrontmatter: true,
       mdxOptions: {
         format: 'mdx',
-        remarkPlugins: [remarkGfm],
-        rehypePlugins: [rehypeMdxCodeProps as Pluggable]
+        remarkPlugins: [remarkGfm, remarkMath],
+        rehypePlugins: [
+          rehypeKatex as Pluggable,
+          rehypeMdxCodeProps as Pluggable
+        ]
       }
     }
   })

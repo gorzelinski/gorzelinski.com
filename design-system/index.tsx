@@ -18,6 +18,7 @@ export {
   Dribbble,
   Earth,
   Em,
+  Equation,
   Facebook,
   Figcaption,
   Figure,
