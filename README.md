@@ -57,6 +57,7 @@ Do you have a project idea? Or any questions? You can write me an old-school ema
 
 - <a href="mailto:hello@gorzelinski.com">Email</a>
 - [GitHub](https://github.com/gorzelinski)
+- [Bluesky](https://bsky.app/profile/gorzelinski.com)
 - [Twitter](https://x.com/gorzelinski)
 - [LinkedIn](https://www.linkedin.com/in/mateusz-gorzelinski)
 - [Facebook](https://www.facebook.com/gorzelinski)
