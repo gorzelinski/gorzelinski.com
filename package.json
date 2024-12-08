@@ -27,8 +27,10 @@
     "react-confetti": "^6.1.0",
     "react-dom": "^18",
     "reading-time": "^1.5.0",
+    "rehype-katex": "^7.0.1",
     "rehype-mdx-code-props": "^3.0.0",
     "remark-gfm": "^3.0.1",
+    "remark-math": "^6.0.0",
     "rss": "^1.2.2",
     "schema-dts": "^1.1.2",
     "sharp": "^0.33.4"
