@@ -69,7 +69,6 @@ export {
   Twitter,
   Ul,
   Underline,
-  Video,
   Warning
 } from './elements'
 
@@ -88,9 +87,10 @@ export {
   Progress,
   Project,
   Socials,
-  createShareLinks,
   ThemeSwitch,
   Typewriter,
+  Video,
+  createShareLinks,
   preToCodeProps,
   type PreChildrenProps,
   type PreProps
