@@ -53,7 +53,7 @@ Let me know if something is broken or doesn't work as expected. New ideas for im
 
 ## ✉️ Contact
 
-Do you have a project idea? Or any questions? You can write me an old-school email or direct message. Don’t hesitate. Seriously. You can find me here:
+Do you have a project idea? Or any questions? You can write me an old-school email or direct message. Don't hesitate. Seriously. You can find me here:
 
 - <a href="mailto:hello@gorzelinski.com">Email</a>
 - [GitHub](https://github.com/gorzelinski)
