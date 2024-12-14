@@ -9,7 +9,8 @@ import {
   selectActiveClass
 } from '@/lib'
 import { Wrap } from '@/styled-system/jsx'
-import { ButtonAnchor, Earth } from '../../elements'
+import { ButtonAnchor } from '../../elements'
+import { Earth } from '../../icons'
 
 export const LanguageSwitch = ({ lang }: { lang: Locale }) => {
   const { locales } = i18n

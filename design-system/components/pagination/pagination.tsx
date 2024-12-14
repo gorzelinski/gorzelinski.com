@@ -1,12 +1,7 @@
 import { VStack } from '@/styled-system/jsx'
 import { PaginationProps } from './pagination.types'
-import {
-  ButtonLink,
-  ChevronBack,
-  ChevronForward,
-  Small,
-  header
-} from '../../elements'
+import { ButtonLink, Small, header } from '../../elements'
+import { ChevronBack, ChevronForward } from '../../icons'
 
 export const Pagination = ({ prev, next, dictionary }: PaginationProps) => {
   return (

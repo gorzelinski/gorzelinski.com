@@ -1,7 +1,8 @@
 import { delocalizePath, formatDate, formatReadingTime } from '@/lib'
 import { PostProps } from './post.types'
-import { ButtonLink, Card, ChevronForward, H3, P, Small } from '../../elements'
 import { Image } from '../image'
+import { ButtonLink, Card, H3, P, Small } from '../../elements'
+import { ChevronForward } from '../../icons'
 
 export const Post = ({
   lang,

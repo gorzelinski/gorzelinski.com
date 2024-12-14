@@ -7,36 +7,6 @@ export { InlineCode } from './inline-code'
 export { Figure, Figcaption } from './figure'
 export { Header, header } from './header'
 export { H1, H2, H3, H4 } from './heading'
-export {
-  AlertCircle,
-  At,
-  Bluesky,
-  Book,
-  Cafe,
-  CheckmarkCircle,
-  ChevronBack,
-  ChevronForward,
-  Download,
-  Dribbble,
-  Earth,
-  Facebook,
-  GameController,
-  Github,
-  Headset,
-  Heart,
-  InformationCircle,
-  Instagram,
-  Linkedin,
-  Mail,
-  Moon,
-  Search,
-  Send,
-  Sunny,
-  Sync,
-  Tv,
-  Twitter,
-  Warning
-} from './icon'
 export { InputWrapper, Input } from './input'
 export { Em } from './italic'
 export { Kbd } from './kbd'

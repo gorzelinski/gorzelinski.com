@@ -4,7 +4,7 @@ import {
   CheckmarkCircle,
   InformationCircle,
   Warning
-} from '../../elements'
+} from '../../icons'
 
 export const calloutIcon: CalloutIcons = {
   info: <InformationCircle data-testid="information-circle" size="l" />,

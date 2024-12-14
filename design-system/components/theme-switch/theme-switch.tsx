@@ -2,7 +2,7 @@
 import { ThemeSwitchProps } from './theme-switch.types'
 import { useTheme } from '@/hooks'
 import { Button } from '../../elements'
-import { Moon, Sunny } from '../../elements'
+import { Moon, Sunny } from '../../icons'
 
 export const ThemeSwitch = ({ ariaLabel }: ThemeSwitchProps) => {
   const { theme, toggleTheme } = useTheme()

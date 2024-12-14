@@ -1,7 +1,8 @@
 import { delocalizePath } from '@/lib'
 import { ProjectProps } from './project.types'
-import { ButtonLink, Card, ChevronForward, H3, P, Small } from '../../elements'
 import { Image } from '../image'
+import { ButtonLink, Card, H3, P, Small } from '../../elements'
+import { ChevronForward } from '../../icons'
 
 export const Project = ({
   lang,

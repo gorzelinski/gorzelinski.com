@@ -9,7 +9,7 @@ import {
   Linkedin,
   Mail,
   Twitter
-} from '../../elements'
+} from '../../icons'
 
 export const socialLinks: Social[] = [
   {

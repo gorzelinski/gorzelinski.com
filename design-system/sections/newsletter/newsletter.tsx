@@ -5,7 +5,6 @@ import { NewsletterProps } from './newsletter.types'
 import { mapStateToCalloutVariant } from './newsletter.helpers'
 import { verticalRhythm } from '../../utils'
 import {
-  At,
   Button,
   H2,
   H3,
@@ -13,12 +12,11 @@ import {
   InputWrapper,
   Li,
   P,
-  Send,
   Small,
-  Sync,
   Ul,
   card
 } from '../../elements'
+import { At, Send, Sync } from '../../icons'
 import { Callout } from '../../components'
 
 export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {

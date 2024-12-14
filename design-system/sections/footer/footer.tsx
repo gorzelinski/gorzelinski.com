@@ -3,15 +3,8 @@ import { localizePath } from '@/lib'
 import { footer } from './footer.styles'
 import { FooterProps } from './footer.types'
 import { HStack, VStack } from '@/styled-system/jsx'
-import {
-  ButtonAnchor,
-  ButtonLink,
-  Cafe,
-  Heart,
-  Mail,
-  Small,
-  navigation
-} from '../../elements'
+import { ButtonAnchor, ButtonLink, Small, navigation } from '../../elements'
+import { Cafe, Heart, Mail } from '../../icons'
 import { LanguageSwitch, Socials } from '../../components'
 
 export const Footer = ({ lang, dictionary }: FooterProps) => {
