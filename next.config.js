@@ -1,6 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: true,
+  async redirects() {
+    return [
+      {
+        source:
+          '/:lang/blog/converting-design-tokens-to-css-variables-with-node.js',
+        destination:
+          '/:lang/blog/converting-design-tokens-to-css-variables-with-node-js',
+        permanent: true
+      }
+    ]
+  },
   experimental: {
     outputFileTracingExcludes: {
       '/*': [
