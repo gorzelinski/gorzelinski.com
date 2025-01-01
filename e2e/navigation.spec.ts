@@ -146,7 +146,7 @@ test.describe('Navigation tests', () => {
     await expect(linkedin).toHaveAttribute('target', '_blank')
     await expect(linkedin).toHaveAttribute('href', link.linkedin)
 
-    const coffee = page.getByRole('link', { name: 'Buy me a coffee' })
+    const coffee = page.getByRole('link', { name: links.coffee })
     await expect(coffee).toBeVisible()
     await expect(coffee).toHaveAttribute('target', '_blank')
     await expect(coffee).toHaveAttribute('href', link.buyMeACoffee)
