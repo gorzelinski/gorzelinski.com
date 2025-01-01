@@ -1,5 +1,5 @@
 import { Locale, i18n } from '@/i18n.config'
-import { metadataBase } from '@/constants'
+import { LINKS, metadataBase } from '@/constants'
 import { localizePath } from './i18n'
 
 export function isInternal(url: string, siteUrl: string = metadataBase.href) {
@@ -21,4 +21,8 @@ export function generateAlternateLinks(link: string) {
       [locale]: localizePath(link, locale)
     }))
     .reduce((acc, curr) => ({ ...acc, ...curr }), {}) as AlternateLinks
+}
+
+export function getCoffeeURL(lang: Locale) {
+  return lang === 'pl' ? LINKS.buyCoffeeTo : LINKS.buyMeACoffee
 }

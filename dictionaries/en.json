@@ -7,7 +7,8 @@
     "blog": "Blog",
     "contact": "Contact",
     "newsletter": "Newsletter",
-    "rss": "RSS"
+    "rss": "RSS",
+    "coffee": "Buy me a coffee"
   },
   "component": {
     "avatar": {
@@ -35,7 +36,7 @@
       "email": "Write me an email",
       "socials": "Find me elsewhere",
       "language": "Change language",
-      "note": "I have created this site with love (and coffee)"
+      "note": "I've created this site with love (and coffee)"
     },
     "navbar": {
       "navigation": {

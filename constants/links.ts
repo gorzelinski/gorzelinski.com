@@ -31,7 +31,9 @@ export const LINKS = {
   subscriptionConfirmed: '/subscription-confirmed/',
   email: 'hello@gorzelinski.com',
   content: 'content',
-  logo: '/images/logo.png'
+  logo: '/images/logo.png',
+  buyMeACoffee: 'https://buymeacoffee.com/gorzelinski',
+  buyCoffeeTo: 'https://buycoffee.to/gorzelinski/'
 } as const
 
 export const CRAWLABLE = [
