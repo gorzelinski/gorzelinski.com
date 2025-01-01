@@ -1,25 +1,25 @@
-import { generateAlternateLinks, getAbsoluteURL, isInternal } from '../link'
+import { generateAlternateLinks, getAbsoluteURL, isInternalURL } from '../link'
 
 describe('link', () => {
-  describe('isInternal()', () => {
+  describe('isInternalURL()', () => {
     it('returns true if link is relative', () => {
-      expect(isInternal('/blog')).toBe(true)
+      expect(isInternalURL('/blog')).toBe(true)
     })
 
     it('returns true if link is a hash', () => {
-      expect(isInternal('#contact')).toBe(true)
+      expect(isInternalURL('#contact')).toBe(true)
     })
 
     it('returns true if link is absolute', () => {
       expect(
-        isInternal('https://gorzelinski.com', 'https://gorzelinski.com/blog')
+        isInternalURL('https://gorzelinski.com', 'https://gorzelinski.com/blog')
       ).toBe(true)
     })
 
     it('returns false if link is external', () => {
-      expect(isInternal('https://gorzelinski.com', 'https://google.com')).toBe(
-        false
-      )
+      expect(
+        isInternalURL('https://gorzelinski.com', 'https://google.com')
+      ).toBe(false)
     })
   })
 

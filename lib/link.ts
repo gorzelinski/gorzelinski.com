@@ -2,7 +2,10 @@ import { Locale, i18n } from '@/i18n.config'
 import { LINKS, metadataBase } from '@/constants'
 import { localizePath } from './i18n'
 
-export function isInternal(url: string, siteUrl: string = metadataBase.href) {
+export function isInternalURL(
+  url: string,
+  siteUrl: string = metadataBase.href
+) {
   const pageUrl = new URL(siteUrl)
   const linkUrl = new URL(url, siteUrl)
 

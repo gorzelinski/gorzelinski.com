@@ -11,7 +11,7 @@ export {
   generateAlternateLinks,
   getAbsoluteURL,
   getCoffeeURL,
-  isInternal
+  isInternalURL
 } from './link'
 export { getMetaImage } from './meta-image'
 export { selectActiveClass } from './navigation'
