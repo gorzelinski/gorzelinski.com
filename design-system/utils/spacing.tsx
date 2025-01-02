@@ -86,5 +86,31 @@ export const verticalRhythm = {
         '2xl': 'verticalRhythm.s.2xl'
       }
     })
+  },
+  paddingY: {
+    l: css.raw({
+      paddingY: {
+        base: 'verticalRhythm.l.base',
+        md: 'verticalRhythm.l.md',
+        lg: 'verticalRhythm.l.lg',
+        '2xl': 'verticalRhythm.l.2xl'
+      }
+    }),
+    m: css.raw({
+      paddingY: {
+        base: 'verticalRhythm.m.base',
+        md: 'verticalRhythm.m.md',
+        lg: 'verticalRhythm.m.lg',
+        '2xl': 'verticalRhythm.m.2xl'
+      }
+    }),
+    s: css.raw({
+      paddingY: {
+        base: 'verticalRhythm.s.base',
+        md: 'verticalRhythm.s.md',
+        lg: 'verticalRhythm.s.lg',
+        '2xl': 'verticalRhythm.s.2xl'
+      }
+    })
   }
 }
