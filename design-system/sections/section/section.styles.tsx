@@ -29,7 +29,10 @@ export const section = cva({
         }
       },
       bleed: {
-        marginX: 'calc(-50vw + 100% / 2)',
+        marginX: {
+          base: 'calc(-50vw + 100% / 2)',
+          xl: 'calc((-50vw + 100% / 2) + token(spacing.s))'
+        },
         paddingX: 'm',
         ...verticalRhythm.paddingY.m,
         borderTop: 'gray.subtle',
