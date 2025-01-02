@@ -7,6 +7,7 @@ export const background = cva({
     minHeight: '100svh',
     backgroundColor: 'gray.900',
     transitionProperty: 'background-color',
-    ...sharedTransitionProperties
+    ...sharedTransitionProperties,
+    overflowX: 'hidden'
   }
 })
