@@ -107,7 +107,8 @@ export {
   Main,
   Navbar,
   Newsletter,
-  Section
+  Section,
+  SupportMe
 } from './sections'
 
 export { verticalRhythm } from './utils'

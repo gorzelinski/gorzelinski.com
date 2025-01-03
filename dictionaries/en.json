@@ -67,6 +67,11 @@
         "heading": "Something went wrong",
         "description": "There was an issue trying to submit. Check your email and try again."
       }
+    },
+    "supportMe": {
+      "heading": "Support me",
+      "description": "My website is powered by Next.js, and I'm powered by coffee. You can buy me one to keep this carbon-silicon system working. But don't feel obliged to. Thanks!",
+      "button": "Buy me a coffee"
     }
   },
   "layout": {

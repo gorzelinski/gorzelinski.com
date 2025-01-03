@@ -67,6 +67,11 @@
         "heading": "Coś poszło nie tak",
         "description": "Podczas wysyłania wystąpił problem. Sprawdź email i spróbuj ponownie."
       }
+    },
+    "supportMe": {
+      "heading": "Wesprzyj mnie",
+      "description": "Moją stronę napędza Next.js, a mnie napędza kawa. Możesz mi postawić jedną, jeżeli chcesz utrzymać ten węglowo-krzemowy system w działaniu. Ale nie czuj się do tego zobligowany. Dzięki!",
+      "button": "Postaw mi kawę"
     }
   },
   "layout": {
