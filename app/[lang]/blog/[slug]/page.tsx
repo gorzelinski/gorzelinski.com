@@ -39,6 +39,7 @@ import {
   Section,
   Small,
   Socials,
+  SupportMe,
   verticalRhythm
 } from '@/design-system'
 import avatar from '@/public/images/logo.png'
@@ -195,6 +196,7 @@ export default async function Blog({
         </footer>
       </Article>
       <Pagination prev={prev} next={next} dictionary={component.pagination} />
+      <SupportMe lang={lang} dictionary={section.supportMe} />
       <Newsletter lang={lang} dictionary={section.newsletter} />
       {relatedPosts.length > 0 && (
         <Section columns="1">

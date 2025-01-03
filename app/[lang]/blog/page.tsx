@@ -7,7 +7,14 @@ import { COOKIES, LINKS } from '@/constants'
 import { getDictionary, getMDXes } from '@/scripts'
 import { generateAlternateLinks, getMetaImage, localizePath } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
-import { H1, Header, Newsletter, Post, Section } from '@/design-system'
+import {
+  H1,
+  Header,
+  Newsletter,
+  Post,
+  Section,
+  SupportMe
+} from '@/design-system'
 import { small } from '@/design-system/elements/small'
 
 export async function generateMetadata({
@@ -86,6 +93,7 @@ export default async function Blog({ params: { lang } }: PageProps) {
           />
         ))}
       </Section>
+      <SupportMe lang={lang} dictionary={section.supportMe} />
       <Newsletter lang={lang} dictionary={section.newsletter} />
     </>
   )
