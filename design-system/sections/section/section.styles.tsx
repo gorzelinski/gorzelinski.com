@@ -31,7 +31,7 @@ export const section = cva({
       bleed: {
         marginX: {
           base: 'calc(-50vw + 100% / 2)',
-          xl: 'calc((-50vw + 100% / 2) + token(spacing.s))'
+          xl: 'calc((-50vw + 100% / 2) + token(sizes.scrollbar.width) / 2)'
         },
         paddingX: 'm',
         ...verticalRhythm.paddingY.m,
