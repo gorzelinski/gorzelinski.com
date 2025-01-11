@@ -1,4 +1,5 @@
-import { capitalize, slugify } from '../string'
+import { ReactNode } from 'react'
+import { capitalize, getTextFromChildren, slugify } from '../string'
 
 describe('string', () => {
   describe('capitalize()', () => {
@@ -8,6 +9,38 @@ describe('string', () => {
 
     it('capitalizes the first letter of a string', () => {
       expect(capitalize('hello')).toBe('Hello')
+    })
+  })
+
+  describe('getTextFromChildren()', () => {
+    const text = 'hello'
+    const textInObject = {
+      type: [],
+      key: null,
+      ref: null,
+      props: { children: ' world' },
+      _owner: null,
+      _store: {}
+    } as never as ReactNode
+
+    it('returns a string', () => {
+      expect(getTextFromChildren(text)).toBe('hello')
+    })
+
+    it('returns a string from an object', () => {
+      expect(getTextFromChildren(textInObject)).toBe(' world')
+    })
+
+    it('returns a string from an array', () => {
+      expect(getTextFromChildren([text])).toBe('hello')
+    })
+
+    it('returns a string from an array of objects', () => {
+      expect(getTextFromChildren([textInObject])).toBe(' world')
+    })
+
+    it('returns a string from an array of objects and strings', () => {
+      expect(getTextFromChildren([text, textInObject])).toBe('hello world')
     })
   })
 
