@@ -15,7 +15,7 @@ export {
 } from './link'
 export { getMetaImage } from './meta-image'
 export { selectActiveClass } from './navigation'
-export { capitalize, slugify } from './string'
+export { capitalize, getTextFromChildren, slugify } from './string'
 export {
   hslToRgb,
   getCorrectTheme,

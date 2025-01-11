@@ -1,5 +1,31 @@
+import { ReactNode } from 'react'
+
 export function capitalize(string: string): string {
   return string[0].toUpperCase() + string.slice(1)
+}
+
+export function getTextFromChildren(children: ReactNode): string {
+  let text = ''
+
+  if (typeof children === 'string') {
+    text += children
+  }
+
+  if (
+    typeof children === 'object' &&
+    children !== null &&
+    'props' in children
+  ) {
+    text += getTextFromChildren(children.props.children)
+  }
+
+  if (Array.isArray(children)) {
+    children.forEach((child) => {
+      text += getTextFromChildren(child)
+    })
+  }
+
+  return text
 }
 
 export function slugify(string: string): string {
