@@ -9,12 +9,12 @@ export const globalCss = defineGlobalStyles({
       color: 'primary.300'
     },
     '::-webkit-scrollbar': {
-      width: 'token(spacing.m)',
+      width: 'scrollbar.width',
       backgroundColor: 'gray.700',
       cursor: 'pointer',
       '&:horizontal': {
         borderRadius: 'xs',
-        height: 'token(spacing.s)'
+        height: 'scrollbar.height'
       }
     },
     '::-webkit-scrollbar-thumb': {

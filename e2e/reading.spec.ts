@@ -16,6 +16,7 @@ test.describe('Reading tests', () => {
     const internalLink = page.getByText("I'm an engineer")
 
     const share = page.getByText('Share via')
+    const bluesky = page.getByRole('link', { name: 'Bluesky' }).first()
     const twitter = page.getByRole('link', { name: 'Twitter' }).first()
     const facebook = page.getByRole('link', { name: 'Facebook' }).first()
     const linkedin = page.getByRole('link', { name: 'LinkedIn' }).first()
@@ -23,6 +24,10 @@ test.describe('Reading tests', () => {
 
     const prev = page.locator('a[rel="prev"]')
     const next = page.locator('a[rel="next"]')
+
+    const coffee = page
+      .getByRole('link', { name: section.supportMe.button })
+      .first()
 
     const newsletter = page.getByText(section.newsletter.heading)
 
@@ -44,6 +49,8 @@ test.describe('Reading tests', () => {
     await expect(internalLink).not.toHaveAttribute('target')
 
     await expect(share).toBeVisible()
+    await expect(bluesky).toBeVisible()
+    await expect(bluesky).toHaveAttribute('target', '_blank')
     await expect(twitter).toBeVisible()
     await expect(twitter).toHaveAttribute('target', '_blank')
     await expect(facebook).toBeVisible()
@@ -54,7 +61,12 @@ test.describe('Reading tests', () => {
     await expect(email).toHaveAttribute('target', '_blank')
 
     await expect(next).toBeVisible()
+
+    await expect(coffee).toBeVisible()
+    await expect(coffee).toHaveAttribute('target', '_blank')
+
     await expect(newsletter).toBeVisible()
+
     await expect(await related.count()).toBeGreaterThan(0)
 
     await next.scrollIntoViewIfNeeded()

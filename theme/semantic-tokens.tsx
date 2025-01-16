@@ -327,6 +327,14 @@ export const semanticTokens = defineSemanticTokens({
   sizes: {
     lineLength: {
       value: '800px'
+    },
+    scrollbar: {
+      width: {
+        value: '{spacing.m}'
+      },
+      height: {
+        value: '{spacing.s}'
+      }
     }
   },
   spacing: {

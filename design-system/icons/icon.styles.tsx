@@ -1,10 +1,8 @@
 import { cva } from '@/styled-system/css'
-import { sharedTransitionProperties } from '../utils'
 
 export const icon = cva({
   base: {
-    display: 'inline-block',
-    ...sharedTransitionProperties
+    display: 'inline-block'
   },
   variants: {
     color: {

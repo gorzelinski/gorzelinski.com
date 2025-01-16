@@ -1,5 +1,5 @@
 import { cva } from '@/styled-system/css'
-import { verticalRhythm } from '../../utils'
+import { verticalRhythm, sharedTransitionProperties } from '../../utils'
 
 export const section = cva({
   base: {
@@ -26,6 +26,22 @@ export const section = cva({
             base: 'calc(100svh - token(spacing.3xl))',
             md: 'auto'
           }
+        }
+      },
+      bleed: {
+        marginX: {
+          base: 'calc(-50vw + 100% / 2)',
+          xl: 'calc((-50vw + 100% / 2) + token(sizes.scrollbar.width) / 2)'
+        },
+        paddingX: 'm',
+        ...verticalRhythm.paddingY.m,
+        borderTop: 'gray.subtle',
+        borderBottom: 'gray.subtle',
+        backgroundColor: 'gray.800',
+        ...sharedTransitionProperties,
+        transitionProperty: 'background-color, border-color',
+        '& > *': {
+          maxWidth: 'breakpoint-xl'
         }
       }
     },
@@ -82,15 +98,5 @@ export const section = cva({
         justifyItems: 'end'
       }
     }
-  },
-  compoundVariants: [
-    {
-      alignItems: 'center',
-      justifyItems: 'center',
-      textAlign: 'center',
-      css: {
-        marginX: 'auto'
-      }
-    }
-  ]
+  }
 })

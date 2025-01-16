@@ -1,10 +1,10 @@
 import { LINKS } from '@/constants'
-import { localizePath } from '@/lib'
+import { getCoffeeURL, localizePath } from '@/lib'
 import { footer } from './footer.styles'
 import { FooterProps } from './footer.types'
 import { HStack, VStack } from '@/styled-system/jsx'
 import { ButtonAnchor, ButtonLink, Small, navigation } from '../../elements'
-import { Cafe, Heart, Mail } from '../../icons'
+import { Cafe, Mail } from '../../icons'
 import { LanguageSwitch, Socials } from '../../components'
 
 export const Footer = ({ lang, dictionary }: FooterProps) => {
@@ -35,11 +35,21 @@ export const Footer = ({ lang, dictionary }: FooterProps) => {
         </VStack>
       </HStack>
       <HStack justifyContent="space-between" flexWrap="wrap-reverse" gap="l">
-        <Small>
-          © {new Date().getFullYear()} {layout.root.metadata.author} •{' '}
-          {section.footer.note} <Heart color="danger" verticalAlign="bottom" />{' '}
-          <Cafe color="warning" verticalAlign="bottom" />
-        </Small>
+        <HStack flexWrap="wrap-reverse" gap="s">
+          <Small>
+            © {new Date().getFullYear()} {layout.root.metadata.author} •{' '}
+            {section.footer.note}{' '}
+          </Small>
+          <ButtonAnchor
+            variant="text"
+            align="left"
+            size="s"
+            target="_blank"
+            href={getCoffeeURL(lang)}
+          >
+            <Cafe verticalAlign="bottom" /> {links.coffee}
+          </ButtonAnchor>
+        </HStack>
         <div className={navigation({ align: 'left' })}>
           <ButtonLink
             variant="nav"

@@ -7,7 +7,8 @@
     "blog": "Blog",
     "contact": "Contact",
     "newsletter": "Newsletter",
-    "rss": "RSS"
+    "rss": "RSS",
+    "coffee": "Buy me a coffee"
   },
   "component": {
     "avatar": {
@@ -35,7 +36,7 @@
       "email": "Write me an email",
       "socials": "Find me elsewhere",
       "language": "Change language",
-      "note": "I have created this site with love (and coffee)"
+      "note": "I've created this site with love (and coffee)"
     },
     "navbar": {
       "navigation": {
@@ -66,6 +67,11 @@
         "heading": "Something went wrong",
         "description": "There was an issue trying to submit. Check your email and try again."
       }
+    },
+    "supportMe": {
+      "heading": "Support me",
+      "description": "My website is powered by Next.js, and I'm powered by coffee. You can buy me one to keep this carbon-silicon system working. But don't feel obliged to. Thanks!",
+      "button": "Buy me a coffee"
     }
   },
   "layout": {

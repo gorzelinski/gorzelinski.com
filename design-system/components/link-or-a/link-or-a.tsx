@@ -1,11 +1,11 @@
-import { isInternal } from '@/lib'
+import { isInternalURL } from '@/lib'
 import { LinkOrAProps } from './link-or-a.types'
 import { A, Link } from '../../elements'
 
 export const LinkOrA = (props: LinkOrAProps) => {
   const { children, href, ...linkOrAVariantProps } = props
 
-  return isInternal(href) ? (
+  return isInternalURL(href) ? (
     <Link href={href} {...linkOrAVariantProps}>
       {children}
     </Link>

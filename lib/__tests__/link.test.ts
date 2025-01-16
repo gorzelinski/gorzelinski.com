@@ -1,25 +1,20 @@
-import { generateAlternateLinks, getAbsoluteURL, isInternal } from '../link'
+import {
+  generateAlternateLinks,
+  getAbsoluteURL,
+  getCoffeeURL,
+  isInternalURL
+} from '../link'
 
 describe('link', () => {
-  describe('isInternal()', () => {
-    it('returns true if link is relative', () => {
-      expect(isInternal('/blog')).toBe(true)
-    })
+  describe('generateAlternateLinks()', () => {
+    it('returns alternate links for each locale', () => {
+      const link = '/blog/'
+      const alternateLinks = {
+        en: '/blog/',
+        pl: '/pl/blog/'
+      }
 
-    it('returns true if link is a hash', () => {
-      expect(isInternal('#contact')).toBe(true)
-    })
-
-    it('returns true if link is absolute', () => {
-      expect(
-        isInternal('https://gorzelinski.com', 'https://gorzelinski.com/blog')
-      ).toBe(true)
-    })
-
-    it('returns false if link is external', () => {
-      expect(isInternal('https://gorzelinski.com', 'https://google.com')).toBe(
-        false
-      )
+      expect(generateAlternateLinks(link)).toEqual(alternateLinks)
     })
   })
 
@@ -43,15 +38,35 @@ describe('link', () => {
     })
   })
 
-  describe('generateAlternateLinks()', () => {
-    it('returns alternate links for each locale', () => {
-      const link = '/blog/'
-      const alternateLinks = {
-        en: '/blog/',
-        pl: '/pl/blog/'
-      }
+  describe('getCoffeeURL', () => {
+    it('returns the BuyCoffeeTo link for the Polish language', () => {
+      expect(getCoffeeURL('pl')).toBe('https://buycoffee.to/gorzelinski/')
+    })
 
-      expect(generateAlternateLinks(link)).toEqual(alternateLinks)
+    it('returns the BuyMeACoffee link fo the English language', () => {
+      expect(getCoffeeURL('en')).toBe('https://buymeacoffee.com/gorzelinski')
+    })
+  })
+
+  describe('isInternalURL()', () => {
+    it('returns true if link is relative', () => {
+      expect(isInternalURL('/blog')).toBe(true)
+    })
+
+    it('returns true if link is a hash', () => {
+      expect(isInternalURL('#contact')).toBe(true)
+    })
+
+    it('returns true if link is absolute', () => {
+      expect(
+        isInternalURL('https://gorzelinski.com', 'https://gorzelinski.com/blog')
+      ).toBe(true)
+    })
+
+    it('returns false if link is external', () => {
+      expect(
+        isInternalURL('https://gorzelinski.com', 'https://google.com')
+      ).toBe(false)
     })
   })
 })

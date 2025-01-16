@@ -173,6 +173,7 @@ export default async function Home({ params: { lang } }: PageProps) {
         justifyItems="center"
         alignItems="center"
         textAlign="center"
+        marginX="auto"
       >
         <H2>{page.home.contact.heading}</H2>
         <P>{page.home.contact.description}</P>
