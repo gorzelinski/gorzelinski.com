@@ -29,6 +29,9 @@
     },
     "themeSwitch": {
       "ariaLabel": "Change theme"
+    },
+    "toc": {
+      "ariaLabel": "Table of contents"
     }
   },
   "section": {

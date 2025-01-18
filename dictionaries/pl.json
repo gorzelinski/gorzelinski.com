@@ -29,6 +29,9 @@
     },
     "themeSwitch": {
       "ariaLabel": "Zmień motyw"
+    },
+    "toc": {
+      "ariaLabel": "Spis treści"
     }
   },
   "section": {
