@@ -2,20 +2,13 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { useScrollProgress } from '@/hooks'
 import { Toc } from '../toc'
+import { createHeading } from './toc-element.test'
 import dictionary from '@/dictionaries/en.json'
 
 const ariaLabel = dictionary.component.toc.ariaLabel
 const headings = [
-  {
-    id: 'heading-1',
-    tagName: 'h2',
-    textContent: 'Heading 1'
-  },
-  {
-    id: 'heading-2',
-    tagName: 'h3',
-    textContent: 'Heading 2'
-  }
+  createHeading('h2', 'heading-1', 'Heading 1'),
+  createHeading('h3', 'heading-2', 'Heading 2')
 ]
 
 jest
