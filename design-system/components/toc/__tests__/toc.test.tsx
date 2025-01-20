@@ -11,10 +11,6 @@ const headings = [
   createHeading('h3', 'heading-2', 'Heading 2')
 ]
 
-jest
-  .spyOn(React, 'useState')
-  .mockImplementationOnce(() => [headings, () => null])
-
 jest.mock('../../../../hooks', () => ({
   useScrollProgress: jest.fn()
 }))
@@ -22,8 +18,19 @@ jest.mock('../../../../hooks', () => ({
 const useScrollProgressMock = jest.mocked(useScrollProgress)
 
 describe('Toc', () => {
+  it("doesn't render without headings", () => {
+    jest.spyOn(React, 'useState').mockReturnValueOnce([[], jest.fn()])
+
+    render(<Toc ariaLabel={ariaLabel} />)
+
+    const toc = screen.queryByRole('navigation')
+
+    expect(toc).not.toBeInTheDocument()
+  })
+
   it('renders correctly', async () => {
     useScrollProgressMock.mockReturnValue(50)
+    jest.spyOn(React, 'useState').mockReturnValueOnce([headings, jest.fn()])
 
     render(<Toc ariaLabel={ariaLabel} />)
 
@@ -41,6 +48,7 @@ describe('Toc', () => {
 
   it('hides the toc when progress is less than 5', async () => {
     useScrollProgressMock.mockReturnValue(4)
+    jest.spyOn(React, 'useState').mockReturnValueOnce([headings, jest.fn()])
 
     render(<Toc ariaLabel={ariaLabel} />)
 

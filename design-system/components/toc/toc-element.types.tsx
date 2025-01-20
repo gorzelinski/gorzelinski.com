@@ -1,1 +1,1 @@
-export type TocElementProps = { heading: Element }
+export type TocElementProps = { heading: Element; activeID: string | null }
