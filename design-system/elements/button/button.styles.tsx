@@ -156,14 +156,17 @@ export const button = cva({
         _focusVisible: {
           outline: 'none'
         },
-        '&.active-subtle': {
-          color: 'gray.50'
-        },
         _active: {
-          color: 'gray.50'
+          color: 'gray.50',
+          fontWeight: 'bold'
+        },
+        '&.active-subtle': {
+          color: 'gray.50',
+          fontWeight: 'bold'
         },
         '&.active': {
-          color: 'gray.50'
+          color: 'gray.50',
+          fontWeight: 'bold'
         },
         '&:is(:hover, :focus, .active):after': {
           transform: 'scaleX(1)',
