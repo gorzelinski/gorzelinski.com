@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { useScrollProgress } from '@/hooks'
+import { useHeadings, useScrollProgress } from '@/hooks'
 import { Toc } from '../toc'
 import { createHeading } from './toc-element.test'
 import dictionary from '@/dictionaries/en.json'
@@ -12,14 +12,17 @@ const headings = [
 ]
 
 jest.mock('../../../../hooks', () => ({
+  useHeadings: jest.fn(),
   useScrollProgress: jest.fn()
 }))
 
 const useScrollProgressMock = jest.mocked(useScrollProgress)
+const useHeadingsMock = jest.mocked(useHeadings)
 
 describe('Toc', () => {
   it("doesn't render without headings", () => {
-    jest.spyOn(React, 'useState').mockReturnValueOnce([[], jest.fn()])
+    useHeadingsMock.mockReturnValue({ headings: [], activeID: 'heading-1' })
+    useScrollProgressMock.mockReturnValue(50)
 
     render(<Toc ariaLabel={ariaLabel} />)
 
@@ -29,8 +32,8 @@ describe('Toc', () => {
   })
 
   it('renders correctly', async () => {
+    useHeadingsMock.mockReturnValue({ headings, activeID: 'heading-1' })
     useScrollProgressMock.mockReturnValue(50)
-    jest.spyOn(React, 'useState').mockReturnValueOnce([headings, jest.fn()])
 
     render(<Toc ariaLabel={ariaLabel} />)
 
@@ -40,6 +43,7 @@ describe('Toc', () => {
 
     expect(toc).toBeInTheDocument()
     expect(toc).toHaveAttribute('aria-label', ariaLabel)
+    expect(toc).toHaveClass('opacity_100')
     expect(h2).toBeInTheDocument()
     expect(h2).toHaveAttribute('href', '#heading-1')
     expect(h3).toBeInTheDocument()
@@ -47,8 +51,8 @@ describe('Toc', () => {
   })
 
   it('hides the toc when progress is less than 5', async () => {
+    useHeadingsMock.mockReturnValue({ headings, activeID: 'heading-1' })
     useScrollProgressMock.mockReturnValue(4)
-    jest.spyOn(React, 'useState').mockReturnValueOnce([headings, jest.fn()])
 
     render(<Toc ariaLabel={ariaLabel} />)
 
