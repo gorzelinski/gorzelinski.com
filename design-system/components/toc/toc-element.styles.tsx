@@ -5,8 +5,9 @@ export const tocElement = cva({
     display: 'inline-block',
     maxWidth: {
       xl: 's',
-      '2xl': 'xl'
+      '2xl': 'm'
     },
+    marginRight: 'xs',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     overflow: 'hidden'

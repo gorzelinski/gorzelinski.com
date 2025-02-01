@@ -13,7 +13,7 @@ export const toc = cva({
       left: 'l',
       height: '2xl',
       zIndex: 'farther',
-      overflowY: 'hidden'
+      overflowY: 'auto'
     }
   },
   variants: {
