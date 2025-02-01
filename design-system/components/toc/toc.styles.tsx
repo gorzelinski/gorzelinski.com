@@ -12,7 +12,7 @@ export const toc = cva({
       top: 'calc((100% - token(sizes.2xl)) / 2)',
       left: 'l',
       height: '2xl',
-      zIndex: 'farther',
+      zIndex: 'closer',
       overflowY: 'auto'
     }
   },

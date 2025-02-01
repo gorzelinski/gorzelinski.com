@@ -3,7 +3,7 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const navbar = cva({
   base: {
-    zIndex: 'farther',
+    zIndex: 'closest',
     display: 'flex',
     justifyContent: 'space-between',
     width: '100%',
