@@ -671,19 +671,19 @@ export const tokens = defineTokens({
   },
   zIndex: {
     closest: {
-      value: 100
+      value: 500
     },
     closer: {
-      value: 200
+      value: 400
     },
     close: {
       value: 300
     },
     far: {
-      value: 400
+      value: 200
     },
     farther: {
-      value: 500
+      value: 100
     }
   }
 })

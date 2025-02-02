@@ -1,3 +1,4 @@
+export { useHeadings } from './use-headings'
 export { useNewsletter } from './use-newsletter'
 export { useReducedMotion } from './use-reduced-motion'
 export { useScrollDirection } from './use-scroll-direction'

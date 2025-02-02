@@ -40,6 +40,7 @@ import {
   Small,
   Socials,
   SupportMe,
+  Toc,
   verticalRhythm
 } from '@/design-system'
 import avatar from '@/public/images/logo.png'
@@ -132,6 +133,7 @@ export default async function Blog({
       />
       <Article>
         <Progress selector="article" />
+        <Toc ariaLabel={component.toc.ariaLabel} />
         <header>
           <Small css={verticalRhythm.marginBottom.s}>
             {formatDate(frontmatter.date, lang)} •{' '}

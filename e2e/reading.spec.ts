@@ -3,7 +3,8 @@ import { test, expect } from './fixtures'
 test.describe('Reading tests', () => {
   test('checks the reading experience of a blog post', async ({
     page,
-    settingsPage
+    settingsPage,
+    isMobile
   }) => {
     const url = `${settingsPage.link.blog}hello-world/`
     const { component, section } = await settingsPage.getDictionary('en')
@@ -11,6 +12,9 @@ test.describe('Reading tests', () => {
     await page.goto(url)
 
     const progress = page.getByTestId('progress')
+
+    const toc = page.getByRole('navigation', { name: 'Table of contents' })
+    const tocLink = page.getByRole('link', { name: 'Computer Science' })
 
     const externalLink = page.getByText('flow state')
     const internalLink = page.getByText("I'm an engineer")
@@ -38,6 +42,20 @@ test.describe('Reading tests', () => {
     await externalLink.scrollIntoViewIfNeeded()
 
     await expect(progress).toHaveCSS('opacity', '1')
+
+    if (isMobile) {
+      await expect(toc).not.toBeVisible()
+      await expect(tocLink).not.toBeVisible()
+    }
+
+    if (!isMobile) {
+      await expect(toc).toBeVisible()
+      await expect(tocLink).toBeVisible()
+
+      await tocLink.click()
+
+      await expect(page.url()).toContain('#computer-science')
+    }
 
     await expect(externalLink).toHaveAttribute(
       'rel',

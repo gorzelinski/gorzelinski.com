@@ -1,6 +1,7 @@
 import path from 'path'
 import type { MDXComponents } from 'mdx/types'
 import { Pages } from './constants'
+import { getTextFromChildren, slugify } from './lib'
 import {
   Blockquote,
   Callout,
@@ -72,6 +73,7 @@ const components: MDXComponents = {
   ),
   h2: ({ children }) => (
     <H2
+      id={slugify(getTextFromChildren(children))}
       css={{
         ...verticalRhythm.marginBottom.m,
         ...verticalRhythm.marginTop['2xmarginBottom']
@@ -82,6 +84,7 @@ const components: MDXComponents = {
   ),
   h3: ({ children }) => (
     <H3
+      id={slugify(getTextFromChildren(children))}
       css={{
         ...verticalRhythm.marginBottom.m,
         ...verticalRhythm.marginTop['2xmarginBottom']
@@ -92,6 +95,7 @@ const components: MDXComponents = {
   ),
   h4: ({ children }) => (
     <H4
+      id={slugify(getTextFromChildren(children))}
       css={{
         ...verticalRhythm.marginBottom.m,
         ...verticalRhythm.marginTop['2xmarginBottom']

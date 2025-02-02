@@ -29,6 +29,9 @@
     },
     "themeSwitch": {
       "ariaLabel": "Zmień motyw"
+    },
+    "toc": {
+      "ariaLabel": "Spis treści"
     }
   },
   "section": {
@@ -114,7 +117,7 @@
           },
           {
             "heading": "❄️ Jestem INTJ w MBTI",
-            "description": "Myers-Briggs Type Indicator to test osobowości, który określa typ, mocne strony i preferencje danej osoby. Nie traktowałbym go zbyt poważnie, ale jest to ciekawe ćwiczenie. Z opisu mojego typu wynika, że jestem zimym, samotnym złoczyńcom (mogłem to trochę podkolorować)."
+            "description": "Myers-Briggs Type Indicator to test osobowości, który określa typ, mocne strony i preferencje danej osoby. Nie traktowałbym go poważnie, ale jest to ciekawe ćwiczenie. Z opisu mojego typu wynika, że jestem zimym, samotnym złoczyńcom (mogłem to trochę podkolorować)."
           },
           {
             "heading": "☀️ Kicham w jasnym świetle",
@@ -126,7 +129,7 @@
           },
           {
             "heading": "📄 Mam nazwisko przez pomyłkę",
-            "description": "Przez literówkę w dokumentach mojego pradziadka moje nazwisko to „Gorzeliński”. Prawdiłowy zapis brzmiał prawdopodobnie „Garzeliński”. Tak czy siak, obie formy są trudne do wymówienia i słyszałem wiele wersji mojego nazwiska."
+            "description": "Przez literówkę w dokumentach mojego pradziadka moje nazwisko to „Gorzeliński”. Prawidłowy zapis brzmiał prawdopodobnie „Garzeliński”. Tak czy siak, obie formy są trudne do wymówienia i słyszałem wiele wersji mojego nazwiska."
           },
           {
             "heading": "📘 Jestem molem książkowym",
@@ -224,9 +227,9 @@
                 "link": "https://bookworm.fm/"
               },
               {
-                "title": "Indie Hackers",
-                "image": "indie-hackers.jpeg",
-                "link": "https://www.indiehackers.com/"
+                "title": "Money for the Rest of Us",
+                "image": "money-for-the-rest-of-us.jpeg",
+                "link": "https://moneyfortherestofus.com/"
               }
             ]
           },

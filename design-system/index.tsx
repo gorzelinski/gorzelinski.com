@@ -92,6 +92,7 @@ export {
   Project,
   Socials,
   ThemeSwitch,
+  Toc,
   Typewriter,
   Video,
   createShareLinks,
