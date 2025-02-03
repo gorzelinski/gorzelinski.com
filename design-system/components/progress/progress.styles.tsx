@@ -3,7 +3,7 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const progress = cva({
   base: {
-    zIndex: 'closer',
+    zIndex: 'closest',
     position: 'fixed',
     top: 0,
     left: 0,
