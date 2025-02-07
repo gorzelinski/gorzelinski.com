@@ -13,7 +13,7 @@ export const tocElement = cva({
     overflow: 'hidden'
   },
   variants: {
-    nesting: {
+    nest: {
       h2: {
         marginLeft: '0'
       },

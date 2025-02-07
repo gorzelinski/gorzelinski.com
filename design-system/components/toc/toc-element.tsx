@@ -14,7 +14,7 @@ export const TocElement = ({ heading, activeID }: TocElementProps) => {
         href={`#${heading.id}`}
         className={
           tocElement({
-            nesting: tagName.toLowerCase() as 'h2' | 'h3' | 'h4'
+            nest: tagName.toLowerCase() as 'h2' | 'h3' | 'h4'
           }) + (activeID === heading.id ? ' active-subtle' : '')
         }
       >
