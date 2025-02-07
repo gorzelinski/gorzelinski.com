@@ -3,7 +3,7 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const heading = cva({
   base: {
-    scrollMarginTop: '10vh',
+    scrollMarginTop: '9vh',
     color: 'gray.50',
     fontFamily: 'heading',
     fontWeight: 'bold',
