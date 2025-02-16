@@ -11,6 +11,7 @@ import {
   Equation,
   Figcaption,
   Figure,
+  Highlight,
   H1,
   H2,
   H3,
@@ -161,6 +162,7 @@ const customComponents: MDXComponents = {
       {children}
     </Callout>
   ),
+  Highlight: ({ children }) => <Highlight>{children}</Highlight>,
   Kbd: ({ children }) => <Kbd>{children}</Kbd>
 }
 

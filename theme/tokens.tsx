@@ -283,13 +283,13 @@ export const tokens = defineTokens({
       // Orange
       orange: {
         900: {
-          value: 'hsl(44, 100%, 9%)'
+          value: 'hsl(44, 100%, 8%)'
         },
         800: {
-          value: 'hsl(44, 100%, 19%)'
+          value: 'hsl(44, 100%, 11%)'
         },
         700: {
-          value: 'hsl(44, 100%, 29%)'
+          value: 'hsl(44, 100%, 25%)'
         },
         600: {
           value: 'hsl(44, 100%, 39%)'

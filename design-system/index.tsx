@@ -15,6 +15,7 @@ export {
   H3,
   H4,
   Header,
+  Highlight,
   Hr,
   InlineCode,
   Input,
