@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { preToCodeProps, isTerminal, inRange } from '../code.helpers'
 
 describe('Code helpers', () => {

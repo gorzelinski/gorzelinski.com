@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { Post } from '../post'
 import dictionary from '@/dictionaries/en.json'
