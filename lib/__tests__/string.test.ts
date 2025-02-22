@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { ReactNode } from 'react'
 import { capitalize, getTextFromChildren, slugify } from '../string'
 
