@@ -1,8 +1,13 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { cleanup, render, screen } from '@testing-library/react'
 import { Avatar } from '../avatar'
+import { afterEach } from 'node:test'
 
 describe('Avatar', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders correctly', () => {
     render(
       <Avatar

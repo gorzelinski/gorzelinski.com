@@ -1,8 +1,12 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { describe, it, expect, afterEach } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { LinkOrA } from '../link-or-a'
 
 describe('LinkOrA', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders the Next link when the href is internal', () => {
     render(<LinkOrA href="/internal">Internal Link</LinkOrA>)
 

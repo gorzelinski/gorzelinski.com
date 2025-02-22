@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { describe, it, expect, afterEach } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { Pagination } from '../pagination'
 import dictionary from '@/dictionaries/en.json'
 
@@ -14,6 +14,10 @@ const next = {
 }
 
 describe('Pagination', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders correctly', () => {
     render(
       <Pagination

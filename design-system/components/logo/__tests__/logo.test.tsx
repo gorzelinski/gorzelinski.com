@@ -1,8 +1,12 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { describe, it, expect, afterEach } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { Logo } from '../logo'
 
 describe('Logo', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders correctly', () => {
     render(<Logo lang="pl">Logo</Logo>)
 

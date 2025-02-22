@@ -1,9 +1,13 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { describe, it, expect, afterEach } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { Project } from '../project'
 import dictionary from '@/dictionaries/en.json'
 
 describe('Project', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders correctly', () => {
     render(
       <Project

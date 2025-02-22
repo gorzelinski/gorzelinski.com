@@ -1,8 +1,13 @@
-import { render, screen } from '@testing-library/react'
+import { describe, it, expect, afterEach } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { metadataBase } from '@/constants'
 import { Socials } from '../socials'
 
 describe('Socials', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders social media links', () => {
     render(
       <Socials

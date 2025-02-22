@@ -1,8 +1,12 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { describe, it, expect, afterEach } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { Callout } from '../callout'
 
 describe('Callout', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders the default variant', () => {
     render(<Callout />)
 

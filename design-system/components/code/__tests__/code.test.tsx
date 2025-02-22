@@ -1,8 +1,12 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { describe, it, expect, afterEach } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { Code } from '../code'
 
 describe('Code', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('does not render if there is no code string', () => {
     render(<Code codeString="" language="js" />)
 
