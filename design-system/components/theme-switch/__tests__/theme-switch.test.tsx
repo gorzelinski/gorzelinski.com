@@ -1,16 +1,21 @@
-import { render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { useTheme } from '@/hooks'
 import { ThemeSwitch } from '../theme-switch'
 
-jest.mock('../../../../hooks', () => ({
-  useTheme: jest.fn()
+vi.mock('../../../../hooks', () => ({
+  useTheme: vi.fn()
 }))
 
-const useThemeMock = jest.mocked(useTheme)
+const useThemeMock = vi.mocked(useTheme)
 
 describe('ThemeSwitch', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders correctly', () => {
-    useThemeMock.mockReturnValue({ theme: 'light', toggleTheme: jest.fn() })
+    useThemeMock.mockReturnValue({ theme: 'light', toggleTheme: vi.fn() })
 
     render(<ThemeSwitch ariaLabel="theme switch" />)
 
@@ -24,7 +29,7 @@ describe('ThemeSwitch', () => {
   })
 
   it('renders the Sunny icon for the light theme', () => {
-    useThemeMock.mockReturnValue({ theme: 'light', toggleTheme: jest.fn() })
+    useThemeMock.mockReturnValue({ theme: 'light', toggleTheme: vi.fn() })
 
     render(<ThemeSwitch ariaLabel="theme switch" />)
 
@@ -34,7 +39,7 @@ describe('ThemeSwitch', () => {
   })
 
   it('renders the Moon icon for the dark theme', () => {
-    useThemeMock.mockReturnValue({ theme: 'dark', toggleTheme: jest.fn() })
+    useThemeMock.mockReturnValue({ theme: 'dark', toggleTheme: vi.fn() })
 
     render(<ThemeSwitch ariaLabel="theme switch" />)
 
@@ -44,7 +49,7 @@ describe('ThemeSwitch', () => {
   })
 
   it('toggles the theme when clicked', () => {
-    const toggleTheme = jest.fn()
+    const toggleTheme = vi.fn()
     useThemeMock.mockReturnValue({ theme: 'light', toggleTheme })
 
     render(<ThemeSwitch ariaLabel="theme switch" />)
