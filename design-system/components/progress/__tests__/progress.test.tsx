@@ -1,14 +1,19 @@
-import { render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { useScrollProgress } from '@/hooks'
 import { Progress } from '../progress'
 
-jest.mock('../../../../hooks', () => ({
-  useScrollProgress: jest.fn()
+vi.mock('../../../../hooks', () => ({
+  useScrollProgress: vi.fn()
 }))
 
-const useScrollProgressMock = jest.mocked(useScrollProgress)
+const useScrollProgressMock = vi.mocked(useScrollProgress)
 
 describe('Progress', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders correctly', () => {
     useScrollProgressMock.mockReturnValue(50)
 
