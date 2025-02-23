@@ -1,7 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { act, cleanup, render, screen } from '@testing-library/react'
 import { Confetti } from '../confetti'
-import 'vitest-canvas-mock'
 
 const text = {
   start: 'More confetti',
