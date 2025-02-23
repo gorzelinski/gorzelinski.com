@@ -1,9 +1,13 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { SupportMe } from '../support-me'
 import dictionary from '@/dictionaries/en.json'
 
 describe('SupportMe', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders correctly', () => {
     render(<SupportMe lang={'en'} dictionary={dictionary.section.supportMe} />)
 
