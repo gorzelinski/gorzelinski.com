@@ -1,5 +1,5 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { useHeadings, useScrollProgress } from '@/hooks'
 import { Toc } from '../toc'
 import { createHeading } from './toc-element.test'
@@ -11,15 +11,19 @@ const headings = [
   createHeading('h3', 'heading-2', 'Heading 2')
 ]
 
-jest.mock('../../../../hooks', () => ({
-  useHeadings: jest.fn(),
-  useScrollProgress: jest.fn()
+vi.mock('../../../../hooks', () => ({
+  useHeadings: vi.fn(),
+  useScrollProgress: vi.fn()
 }))
 
-const useScrollProgressMock = jest.mocked(useScrollProgress)
-const useHeadingsMock = jest.mocked(useHeadings)
+const useScrollProgressMock = vi.mocked(useScrollProgress)
+const useHeadingsMock = vi.mocked(useHeadings)
 
 describe('Toc', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it("doesn't render without headings", () => {
     useHeadingsMock.mockReturnValue({ headings: [], activeID: 'heading-1' })
     useScrollProgressMock.mockReturnValue(50)
