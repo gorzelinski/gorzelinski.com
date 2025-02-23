@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest'
 import { ReactNode } from 'react'
+import { describe, expect, it } from 'vitest'
 import { capitalize, getTextFromChildren, slugify } from '../string'
 
 describe('string', () => {

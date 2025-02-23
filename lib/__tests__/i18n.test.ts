@@ -1,11 +1,11 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import {
-  isDefaultLocale,
-  localizePath,
-  delocalizePath,
-  localizeFileName,
   createLocaleWithTerritory,
-  getLocaleDisplayName
+  delocalizePath,
+  getLocaleDisplayName,
+  isDefaultLocale,
+  localizeFileName,
+  localizePath
 } from '../i18n'
 
 describe('i18n', () => {
