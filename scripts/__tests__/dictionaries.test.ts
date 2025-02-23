@@ -1,5 +1,7 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { getDictionary } from '../dictionaries'
+
+vi.mock('server-only', () => ({}))
 
 describe('dictionaries', () => {
   describe('getDictionary()', () => {
