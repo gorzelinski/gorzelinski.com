@@ -1,7 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
 import { Avatar } from '../avatar'
-import { afterEach } from 'node:test'
 
 describe('Avatar', () => {
   afterEach(() => {

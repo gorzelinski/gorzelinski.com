@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
-import { i18n } from '@/i18n.config'
 import { LanguageSwitch } from '../language-switch'
+import { i18n } from '@/i18n.config'
 
 vi.mock('next/navigation', () => ({
   usePathname: () => '/about'
