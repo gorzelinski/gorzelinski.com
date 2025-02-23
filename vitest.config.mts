@@ -11,6 +11,13 @@ export default defineConfig({
       'design-system/**/*.{test,spec}.?(c|m)[jt]s?(x)',
       'lib/**/*.{test,spec}.?(c|m)[jt]s?(x)',
       'scripts/**/*.{test,spec}.?(c|m)[jt]s?(x)'
-    ]
+    ],
+    deps: {
+      optimizer: {
+        web: {
+          include: ['vitest-canvas-mock']
+        }
+      }
+    }
   }
 })

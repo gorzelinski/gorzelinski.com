@@ -1,6 +1,7 @@
-import { act, render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it } from 'vitest'
+import { act, cleanup, render, screen } from '@testing-library/react'
 import { Confetti } from '../confetti'
-import 'jest-canvas-mock'
+import 'vitest-canvas-mock'
 
 const text = {
   start: 'More confetti',
@@ -9,6 +10,10 @@ const text = {
 }
 
 describe('Confetti', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders correctly', () => {
     render(<Confetti start={text.start} stop={text.stop} more={text.more} />)
 
