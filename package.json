@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
+    "test:run": "vitest --watch=false",
     "test:watch": "jest --watch",
     "test:clear": "jest --clearCache"
   },
