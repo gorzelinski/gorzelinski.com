@@ -15,6 +15,11 @@
       "name": "Matthew Gorzelinski",
       "bio": "Software engineer with polymath aspirations."
     },
+    "confetti": {
+      "start": "More confetti 🎉",
+      "stop": "That's  enough 🎉",
+      "more": "MORE!"
+    },
     "pagination": {
       "ariaLabel": "Pagination",
       "prev": "Previous",
@@ -427,12 +432,7 @@
         }
       },
       "heading": "Subscription confirmed!",
-      "description": "You have officially confirmed a subscription to my newsletter and are on the list. For effort, you deserve some confetti.",
-      "button": {
-        "start": "More confetti 🎉",
-        "stop": "That's  enough 🎉",
-        "more": "MORE!"
-      }
+      "description": "You have officially confirmed a subscription to my newsletter and are on the list. For effort, you deserve some confetti."
     },
     "uses": {
       "metadata": {
