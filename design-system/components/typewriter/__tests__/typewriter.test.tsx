@@ -1,16 +1,21 @@
-import { render, screen, act } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { act, cleanup, render, screen } from '@testing-library/react'
 import { useReducedMotion } from '@/hooks'
 import { Typewriter } from '../typewriter'
 
-jest.mock('../../../../hooks', () => ({
-  useReducedMotion: jest.fn()
+vi.mock('../../../../hooks', () => ({
+  useReducedMotion: vi.fn()
 }))
 
-const useReducedMotionMock = jest.mocked(useReducedMotion)
+const useReducedMotionMock = vi.mocked(useReducedMotion)
 
-jest.useFakeTimers()
+vi.useFakeTimers()
 
 describe('Typewriter', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders correctly', () => {
     useReducedMotionMock.mockReturnValue(false)
 
@@ -18,7 +23,7 @@ describe('Typewriter', () => {
     render(<Typewriter words={words} />)
 
     words[0].split('').forEach(() => {
-      act(() => jest.advanceTimersToNextTimer())
+      act(() => vi.advanceTimersToNextTimer())
     })
 
     const text = screen.getByText('Hello')
@@ -31,7 +36,7 @@ describe('Typewriter', () => {
 
     render(<Typewriter words={['Hello', 'World']} />)
 
-    act(() => jest.advanceTimersToNextTimer())
+    act(() => vi.advanceTimersToNextTimer())
 
     const text = screen.getByText('World')
 
@@ -46,23 +51,23 @@ describe('Typewriter', () => {
 
     // Writing 'Hello'
     words[0].split('').forEach(() => {
-      act(() => jest.advanceTimersToNextTimer())
+      act(() => vi.advanceTimersToNextTimer())
     })
 
     expect(screen.getByText('Hello')).toBeInTheDocument()
 
     // Setting the phase to 'deleting'
-    act(() => jest.advanceTimersToNextTimer())
+    act(() => vi.advanceTimersToNextTimer())
     // Deleting 'Hello'
     words[0].split('').forEach(() => {
-      act(() => jest.advanceTimersToNextTimer())
+      act(() => vi.advanceTimersToNextTimer())
     })
 
     expect(screen.queryByText('Hello')).not.toBeInTheDocument()
 
     // Writing 'World'
     words[1].split('').forEach(() => {
-      act(() => jest.advanceTimersToNextTimer())
+      act(() => vi.advanceTimersToNextTimer())
     })
 
     expect(screen.getByText('World')).toBeInTheDocument()
@@ -76,23 +81,23 @@ describe('Typewriter', () => {
 
     // Writing 'Hello'
     words[0].split('').forEach(() => {
-      act(() => jest.advanceTimersToNextTimer())
+      act(() => vi.advanceTimersToNextTimer())
     })
 
     expect(screen.getByText('Hello')).toBeInTheDocument()
 
     // Setting the phase to 'deleting'
-    act(() => jest.advanceTimersToNextTimer())
+    act(() => vi.advanceTimersToNextTimer())
     // Deleting 'Hello'
     words[0].split('').forEach(() => {
-      act(() => jest.advanceTimersToNextTimer())
+      act(() => vi.advanceTimersToNextTimer())
     })
 
     expect(screen.queryByText('Hello')).not.toBeInTheDocument()
 
     // Writing 'Hello' again
     words[0].split('').forEach(() => {
-      act(() => jest.advanceTimersToNextTimer())
+      act(() => vi.advanceTimersToNextTimer())
     })
 
     expect(screen.getByText('Hello')).toBeInTheDocument()

@@ -15,6 +15,11 @@
       "name": "Mateusz Gorzeliński",
       "bio": "Inżynier oprogramowania o erudycyjnych aspiracjach."
     },
+    "confetti": {
+      "start": "Więcej konfetti 🎉",
+      "stop": "Już wystarczy 🎉",
+      "more": "WIĘCEJ!"
+    },
     "pagination": {
       "ariaLabel": "Paginacja",
       "prev": "Poprzedni",
@@ -426,12 +431,7 @@
         }
       },
       "heading": "Subskrypcja potwierdzona!",
-      "description": "Oficjalnie potwierdziłeś subskrybcję mojego newslettera i jesteś na liście. Za wysiłek, zasługujesz na konfetti.",
-      "button": {
-        "start": "Więcej konfetti 🎉",
-        "stop": "Już wystarczy 🎉",
-        "more": "WIĘCEJ!"
-      }
+      "description": "Oficjalnie potwierdziłeś subskrybcję mojego newslettera i jesteś na liście. Za wysiłek, zasługujesz na konfetti."
     },
     "uses": {
       "metadata": {

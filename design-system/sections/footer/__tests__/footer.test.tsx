@@ -1,12 +1,17 @@
-import { render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { Footer } from '../footer'
 import dictionary from '@/dictionaries/en.json'
 
-jest.mock('next/navigation', () => ({
+vi.mock('next/navigation', () => ({
   usePathname: () => '/'
 }))
 
 describe('Footer', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders correctly', async () => {
     render(<Footer lang="en" dictionary={dictionary} />)
 

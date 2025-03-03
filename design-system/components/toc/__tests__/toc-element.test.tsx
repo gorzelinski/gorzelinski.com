@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { TocElement } from '../toc-element'
 
 export const createHeading = (
@@ -14,6 +15,10 @@ export const createHeading = (
 }
 
 describe('TocElement', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders correctly', () => {
     const heading = createHeading('h2', 'heading-1', 'Heading 1')
 

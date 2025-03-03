@@ -1,25 +1,30 @@
-import { render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { useScrollDirection, useScrollProgress } from '@/hooks'
 import { Navbar } from '../navbar'
 import dictionary from '@/dictionaries/en.json'
 
-jest.mock('next/navigation', () => ({
+vi.mock('next/navigation', () => ({
   usePathname: () => '/'
 }))
 
-jest.mock('../../../../hooks', () => ({
+vi.mock('../../../../hooks', () => ({
   useTheme: () => ({
     theme: 'light',
-    toggleTheme: jest.fn()
+    toggleTheme: vi.fn()
   }),
-  useScrollDirection: jest.fn(),
-  useScrollProgress: jest.fn()
+  useScrollDirection: vi.fn(),
+  useScrollProgress: vi.fn()
 }))
 
-const useScrollDirectionMock = jest.mocked(useScrollDirection)
-const useScrollProgressMock = jest.mocked(useScrollProgress)
+const useScrollDirectionMock = vi.mocked(useScrollDirection)
+const useScrollProgressMock = vi.mocked(useScrollProgress)
 
 describe('Navbar', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders correctly', async () => {
     useScrollDirectionMock.mockReturnValue('up')
     useScrollProgressMock.mockReturnValue(50)

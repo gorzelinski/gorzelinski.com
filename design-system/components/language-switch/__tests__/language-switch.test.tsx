@@ -1,12 +1,17 @@
-import { render, screen } from '@testing-library/react'
-import { i18n } from '@/i18n.config'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { LanguageSwitch } from '../language-switch'
+import { i18n } from '@/i18n.config'
 
-jest.mock('next/navigation', () => ({
+vi.mock('next/navigation', () => ({
   usePathname: () => '/about'
 }))
 
 describe('LanguageSwitch', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders the correct number of buttons', () => {
     render(<LanguageSwitch lang="en" />)
 

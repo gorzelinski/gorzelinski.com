@@ -1,21 +1,26 @@
-import { render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import { useNewsletter } from '@/hooks'
 import { Newsletter } from '../newsletter'
 import dictionary from '@/dictionaries/en.json'
 
-jest.mock('../../../../hooks', () => ({
-  useNewsletter: jest.fn()
+vi.mock('../../../../hooks', () => ({
+  useNewsletter: vi.fn()
 }))
 
-const useNewsletterMock = jest.mocked(useNewsletter)
+const useNewsletterMock = vi.mocked(useNewsletter)
 
 describe('Newsletter', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders correctly', async () => {
     useNewsletterMock.mockReturnValue({
       FORM_URL: 'https://example.com',
       state: 'idle',
-      setState: jest.fn(),
-      handleSubmit: jest.fn()
+      setState: vi.fn(),
+      handleSubmit: vi.fn()
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)
@@ -52,8 +57,8 @@ describe('Newsletter', () => {
     useNewsletterMock.mockReturnValue({
       FORM_URL: 'https://example.com',
       state: 'loading',
-      setState: jest.fn(),
-      handleSubmit: jest.fn()
+      setState: vi.fn(),
+      handleSubmit: vi.fn()
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)
@@ -73,8 +78,8 @@ describe('Newsletter', () => {
     useNewsletterMock.mockReturnValue({
       FORM_URL: 'https://example.com',
       state: 'quarantined',
-      setState: jest.fn(),
-      handleSubmit: jest.fn()
+      setState: vi.fn(),
+      handleSubmit: vi.fn()
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)
@@ -94,8 +99,8 @@ describe('Newsletter', () => {
     useNewsletterMock.mockReturnValue({
       FORM_URL: 'https://example.com',
       state: 'error',
-      setState: jest.fn(),
-      handleSubmit: jest.fn()
+      setState: vi.fn(),
+      handleSubmit: vi.fn()
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)
@@ -116,7 +121,7 @@ describe('Newsletter', () => {
 
     input?.click()
 
-    const spy = jest.spyOn(useNewsletterMock('en'), 'setState')
+    const spy = vi.spyOn(useNewsletterMock('en'), 'setState')
     expect(spy).toHaveBeenCalledWith('idle')
   })
 
@@ -124,8 +129,8 @@ describe('Newsletter', () => {
     useNewsletterMock.mockReturnValue({
       FORM_URL: 'https://example.com',
       state: 'success',
-      setState: jest.fn(),
-      handleSubmit: jest.fn()
+      setState: vi.fn(),
+      handleSubmit: vi.fn()
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)

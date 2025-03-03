@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest'
 import { createShareLinks } from '../socials.helpers'
 
 describe('createShareLinks()', () => {

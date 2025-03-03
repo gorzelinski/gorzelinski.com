@@ -1,36 +1,57 @@
-import { act, render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { act, cleanup, render, screen } from '@testing-library/react'
 import { Confetti } from '../confetti'
-import 'jest-canvas-mock'
+import dictionary from '@/dictionaries/en.json'
 
-const text = {
-  start: 'More confetti',
-  stop: "That's enough",
-  more: 'MORE!'
-}
+vi.mock('react-confetti', () => ({
+  default: () => null
+}))
 
 describe('Confetti', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('renders correctly', () => {
-    render(<Confetti start={text.start} stop={text.stop} more={text.more} />)
+    render(
+      <Confetti
+        start={dictionary.component.confetti.start}
+        stop={dictionary.component.confetti.stop}
+        more={dictionary.component.confetti.more}
+      />
+    )
 
     const button = screen.getByRole('button')
 
     expect(button).toBeVisible()
-    expect(button).toHaveTextContent(text.start)
+    expect(button).toHaveTextContent(dictionary.component.confetti.start)
   })
 
   it('renders stop text after click', () => {
-    render(<Confetti start={text.start} stop={text.stop} more={text.more} />)
+    render(
+      <Confetti
+        start={dictionary.component.confetti.start}
+        stop={dictionary.component.confetti.stop}
+        more={dictionary.component.confetti.more}
+      />
+    )
 
     const button = screen.getByRole('button')
     act(() => {
       button.click()
     })
 
-    expect(button).toHaveTextContent(text.stop)
+    expect(button).toHaveTextContent(dictionary.component.confetti.stop)
   })
 
   it('renders more text after rage-clicking', () => {
-    render(<Confetti start={text.start} stop={text.stop} more={text.more} />)
+    render(
+      <Confetti
+        start={dictionary.component.confetti.start}
+        stop={dictionary.component.confetti.stop}
+        more={dictionary.component.confetti.more}
+      />
+    )
 
     const button = screen.getByRole('button')
     for (let i = 0; i < 12; i++) {
@@ -39,6 +60,6 @@ describe('Confetti', () => {
       })
     }
 
-    expect(button).toHaveTextContent(text.more)
+    expect(button).toHaveTextContent(dictionary.component.confetti.more)
   })
 })

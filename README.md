@@ -6,7 +6,7 @@ A codebase for my [website](https://gorzelinski.com), [blog](https://gorzelinski
 
 ## 🛠️ Built with
 
-![TypeScript](https://img.shields.io/badge/typescript-grey?style=for-the-badge&logo=typescript) ![Next.js](https://img.shields.io/badge/next.js-grey?style=for-the-badge&logo=next.js) ![Panda CSS](https://img.shields.io/badge/panda%20css-grey?style=for-the-badge&logo=pandacss) ![MDX](https://img.shields.io/badge/mdx-grey?style=for-the-badge&logo=mdx) ![Playwright](https://img.shields.io/badge/playwright-grey?style=for-the-badge&logo=playwright) ![Jest](https://img.shields.io/badge/jest-grey?style=for-the-badge&logo=jest) ![Vercel](https://img.shields.io/badge/vercel-grey?style=for-the-badge&logo=vercel)
+![TypeScript](https://img.shields.io/badge/typescript-grey?style=for-the-badge&logo=typescript) ![Next.js](https://img.shields.io/badge/next.js-grey?style=for-the-badge&logo=next.js) ![Panda CSS](https://img.shields.io/badge/panda%20css-grey?style=for-the-badge&logo=pandacss) ![MDX](https://img.shields.io/badge/mdx-grey?style=for-the-badge&logo=mdx) ![Playwright](https://img.shields.io/badge/playwright-grey?style=for-the-badge&logo=playwright) ![Vitest](https://img.shields.io/badge/vitest-grey?style=for-the-badge&logo=vitest) ![Vercel](https://img.shields.io/badge/vercel-grey?style=for-the-badge&logo=vercel)
 
 "If it ain't broke, don't fix it," people say. Even though my previous website was working pretty well, working _on it_ became harder and harder. That's why I migrated to a new tech stack.
 
@@ -15,7 +15,7 @@ A codebase for my [website](https://gorzelinski.com), [blog](https://gorzelinski
 - [Panda CSS](https://panda-css.com/)
 - [MDX](https://mdxjs.com/)
 - [Playwright](https://playwright.dev/)
-- [Jest](https://jestjs.io/)
+- [Vitest](https://vitest.dev/)
 - [Vercel](https://vercel.com/)
 
 ## 🚀 Getting started

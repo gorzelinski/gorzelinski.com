@@ -12,5 +12,5 @@ export async function getMetaFont(
     ...options,
     ...METAFONT,
     data: font
-  } as MetaFontOptions
+  } as unknown as MetaFontOptions
 }

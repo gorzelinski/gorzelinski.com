@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest'
 import { getMetaImage } from '../meta-image'
 
 describe('meta-image', () => {

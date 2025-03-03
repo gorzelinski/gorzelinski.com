@@ -47,7 +47,7 @@ export async function generateMetadata({
 export default async function SubscriptionConfirmed({
   params: { lang }
 }: PageProps) {
-  const { layout, page } = await getDictionary(lang)
+  const { layout, page, component } = await getDictionary(lang)
   const jsonLd: WithContext<WebPage> = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -72,9 +72,9 @@ export default async function SubscriptionConfirmed({
           {page.subscriptionConfirmed.description}
         </P>
         <Confetti
-          start={page.subscriptionConfirmed.button.start}
-          stop={page.subscriptionConfirmed.button.stop}
-          more={page.subscriptionConfirmed.button.more}
+          start={component.confetti.start}
+          stop={component.confetti.stop}
+          more={component.confetti.more}
         />
       </Section>
     </>
