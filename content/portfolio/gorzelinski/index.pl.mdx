@@ -129,7 +129,7 @@ Słyszy się, że "jeżeli coś działa, to nie ruszaj". Pomimo, że poprzednia 
 
 ## Testowanie
 
-Poza manualnymi testami, napisałem zautomatyzowane testy. Użyłem frameworka Jest do testowania komponentów. ~~Do testowania integracji pomiędzy komponentami i bardziej złożonych zachowań użytkownika, wykorzystałem framework Cypress wraz z cypress-axe. Te testy pokrywały różne aspekty strony - dostępność, internacjonalizację, SEO i więcej.~~
+Poza manualnymi testami, napisałem zautomatyzowane testy. ~~Użyłem frameworka Jest do testowania komponentów.~~ Vitest jest zauważalnie szybszy od Jesta, więc zmieniłem go. Migracja była całkiem prosta, bo API jest podobne. ~~Do testowania integracji pomiędzy komponentami i bardziej złożonych zachowań użytkownika, wykorzystałem framework Cypress wraz z cypress-axe. Te testy pokrywały różne aspekty strony - dostępność, internacjonalizację, SEO i więcej.~~
 
 Przemigrowałem także zestawy moich testów E2E, wykorzystując Playwright. Oferuje on parytet funkcjonalności w stosunku do Cypressa, a nawet więcej. Nie będę może poświęcał tu wiele czasu na wyjaśnianie różnic pomiędzy nimi, bo napisałem post, który je porównuje - [Playwright vs. Cypress - porównanie frameworków do testowania E2E](/blog/playwright-vs-cypress-comparison-of-e2e-testing-frameworks/).
 

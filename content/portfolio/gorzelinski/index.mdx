@@ -129,7 +129,7 @@ However, both of those tools differ significantly. Gatsby has a rich ecosystem o
 
 ## Testing
 
-Besides manual testing, I wrote automated tests. I used Jest for component testing. ~~To test integration between components and more complex user behavior, I used Cypress with cypress-axe. Those tests cover different website aspects - accessibility, internationalization, SEO, and more.~~
+Besides manual testing, I wrote automated tests. ~~I used Jest for component testing.~~ Vitest is noticeably faster than Jest, so I switched it. The migration was pretty easy because the API is similar. ~~To test integration between components and more complex user behavior, I used Cypress with cypress-axe. Those tests cover different website aspects - accessibility, internationalization, SEO, and more.~~
 
 I also migrated my E2E test suites to Playwright. It offers full parity with Cypress and more. I won't spend much time explaining the differences between these two frameworks because I wrote a blog post comparing them - [Playwright vs. Cypress - comparison of E2E testing frameworks](/blog/playwright-vs-cypress-comparison-of-e2e-testing-frameworks/).
 
