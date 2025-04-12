@@ -6,11 +6,11 @@ import { NestedPageProps, Theme } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
 import { i18n } from '@/i18n.config'
 import {
-  createPagination,
+  createMDXPagination,
   getDictionary,
   getMDX,
-  getRelatedPosts,
-  getSlugs
+  getRelatedMDXes,
+  getMDXSlugs
 } from '@/scripts'
 import {
   formatDate,
@@ -46,7 +46,7 @@ import {
 import avatar from '@/public/images/logo.png'
 
 export async function generateStaticParams() {
-  const slugs = await getSlugs(LINKS.blog)
+  const slugs = await getMDXSlugs(LINKS.blog)
   const params = slugs.flatMap((slug) => {
     return i18n.locales.map((lang) => ({
       lang,
@@ -106,8 +106,8 @@ export default async function Blog({
 }: NestedPageProps) {
   const { component, section, layout, page } = await getDictionary(lang)
   const { content, frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
-  const { prev, next } = await createPagination(LINKS.blog, slug, lang)
-  const relatedPosts = await getRelatedPosts(frontmatter, lang, 3)
+  const { prev, next } = await createMDXPagination(LINKS.blog, slug, lang)
+  const relatedPosts = await getRelatedMDXes(frontmatter, LINKS.blog, lang, 3)
   const jsonLd: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',

@@ -4,11 +4,11 @@ export {
   type Pagination,
   type Post,
   type Project,
-  createPagination,
+  createMDXPagination,
   getMDX,
   getMDXes,
-  getRelatedPosts,
-  getSlugs,
+  getRelatedMDXes,
+  getMDXSlugs,
   searchMDXes
 } from './mdx'
 export { getMetaFont } from './meta-font'

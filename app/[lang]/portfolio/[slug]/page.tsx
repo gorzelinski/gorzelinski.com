@@ -5,7 +5,7 @@ import { BlogPosting, WithContext } from 'schema-dts'
 import { NestedPageProps, Theme } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
 import { i18n } from '@/i18n.config'
-import { createPagination, getDictionary, getMDX, getSlugs } from '@/scripts'
+import { createMDXPagination, getDictionary, getMDX, getMDXSlugs } from '@/scripts'
 import {
   generateAlternateLinks,
   getAbsoluteURL,
@@ -28,7 +28,7 @@ import {
 } from '@/design-system'
 
 export async function generateStaticParams() {
-  const slugs = await getSlugs(LINKS.portfolio)
+  const slugs = await getMDXSlugs(LINKS.portfolio)
   const params = slugs.flatMap((slug) => {
     return i18n.locales.map((lang) => ({
       lang,
@@ -92,7 +92,7 @@ export default async function Portfolio({
     slug,
     lang
   )
-  const { prev, next } = await createPagination(LINKS.portfolio, slug, lang)
+  const { prev, next } = await createMDXPagination(LINKS.portfolio, slug, lang)
   const jsonLd: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',

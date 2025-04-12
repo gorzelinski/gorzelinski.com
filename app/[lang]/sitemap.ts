@@ -1,12 +1,12 @@
 import { MetadataRoute } from 'next'
 import { i18n } from '@/i18n.config'
 import { CRAWLABLE, LINKS } from '@/constants'
-import { getSlugs } from '@/scripts'
+import { getMDXSlugs } from '@/scripts'
 import { getAbsoluteURL } from '@/lib'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = (await getSlugs(LINKS.blog)).map((slug) => `/blog/${slug}/`)
-  const projects = (await getSlugs(LINKS.portfolio)).map(
+  const posts = (await getMDXSlugs(LINKS.blog)).map((slug) => `/blog/${slug}/`)
+  const projects = (await getMDXSlugs(LINKS.portfolio)).map(
     (slug) => `/portfolio/${slug}/`
   )
   const slugs = [...CRAWLABLE, ...posts, ...projects]
