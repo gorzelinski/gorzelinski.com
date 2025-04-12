@@ -8,6 +8,7 @@ export {
   getMDX,
   getMDXes,
   getRelatedPosts,
-  getSlugs
+  getSlugs,
+  searchMDXes
 } from './mdx'
 export { getMetaFont } from './meta-font'

@@ -217,3 +217,28 @@ export async function getRelatedPosts(
 
   return filtered
 }
+
+export async function searchMDXes<Type extends MDXTypes>(
+  page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>,
+  lang: Locale,
+  query: string
+) {
+  const mdxes = await getMDXes<Type>(page, lang, 'all', 'desc')
+
+  if (!query) return mdxes
+
+  const searchTerms = query.toLowerCase().split(' ').filter(Boolean)
+
+  return mdxes.filter(({ frontmatter }) => {
+    const searchableText = [
+      frontmatter.title,
+      frontmatter.description,
+      ...('categories' in frontmatter ? frontmatter.categories : []),
+      ...('tags' in frontmatter ? frontmatter.tags : [])
+    ]
+      .join(' ')
+      .toLowerCase()
+
+    return searchTerms.every((term) => searchableText.includes(term))
+  })
+}
