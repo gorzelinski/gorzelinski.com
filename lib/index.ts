@@ -22,3 +22,4 @@ export {
   getThemeAttribute,
   setThemeAttribute
 } from './theme'
+export { debounce } from './timing'
