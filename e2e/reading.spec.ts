@@ -1,6 +1,33 @@
 import { test, expect } from './fixtures'
 
 test.describe('Reading tests', () => {
+  test('checks the search experience of the blog page', async ({ page, settingsPage }) => {
+    const { component } = await settingsPage.getDictionary('en')
+
+    await page.goto(settingsPage.link.blog)
+
+    const searchBar = page.getByRole('searchbox', { name: component.searchBar.placeholder })
+    await searchBar.fill('hello... world?')
+
+    await expect(page.url()).not.toContain('hello')
+
+    await page.waitForURL(`${settingsPage.link.blog}?query=hello...+world%3F`)
+
+    await expect(page.url()).toContain('hello')
+
+    const posts = page.getByRole('article')
+
+    await expect(posts).toHaveCount(1)
+
+    await searchBar.clear()
+
+    await page.waitForURL(settingsPage.link.blog)
+
+    await expect(page.url()).not.toContain('?query=hello')
+
+    await expect(await posts.count()).toBeGreaterThan(5)
+  })
+
   test('checks the reading experience of a blog post', async ({
     page,
     settingsPage,
