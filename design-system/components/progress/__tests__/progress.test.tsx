@@ -3,7 +3,7 @@ import { cleanup, render, screen } from '@testing-library/react'
 import { useScrollProgress } from '@/hooks'
 import { Progress } from '../progress'
 
-vi.mock('../../../../hooks', () => ({
+vi.mock('@/hooks', () => ({
   useScrollProgress: vi.fn()
 }))
 
@@ -12,6 +12,7 @@ const useScrollProgressMock = vi.mocked(useScrollProgress)
 describe('Progress', () => {
   afterEach(() => {
     cleanup()
+    vi.clearAllMocks()
   })
 
   it('renders correctly', () => {

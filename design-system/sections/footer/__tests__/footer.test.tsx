@@ -10,6 +10,7 @@ vi.mock('next/navigation', () => ({
 describe('Footer', () => {
   afterEach(() => {
     cleanup()
+    vi.clearAllMocks()
   })
 
   it('renders correctly', async () => {

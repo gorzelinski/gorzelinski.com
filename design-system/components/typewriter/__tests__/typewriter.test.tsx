@@ -3,7 +3,7 @@ import { act, cleanup, render, screen } from '@testing-library/react'
 import { useReducedMotion } from '@/hooks'
 import { Typewriter } from '../typewriter'
 
-vi.mock('../../../../hooks', () => ({
+vi.mock('@/hooks', () => ({
   useReducedMotion: vi.fn()
 }))
 
@@ -14,6 +14,7 @@ vi.useFakeTimers()
 describe('Typewriter', () => {
   afterEach(() => {
     cleanup()
+    vi.clearAllMocks()
   })
 
   it('renders correctly', () => {

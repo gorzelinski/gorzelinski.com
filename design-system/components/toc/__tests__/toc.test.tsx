@@ -11,7 +11,7 @@ const headings = [
   createHeading('h3', 'heading-2', 'Heading 2')
 ]
 
-vi.mock('../../../../hooks', () => ({
+vi.mock('@/hooks', () => ({
   useHeadings: vi.fn(),
   useScrollProgress: vi.fn()
 }))
@@ -22,6 +22,7 @@ const useHeadingsMock = vi.mocked(useHeadings)
 describe('Toc', () => {
   afterEach(() => {
     cleanup()
+    vi.clearAllMocks()
   })
 
   it("doesn't render without headings", () => {

@@ -4,7 +4,7 @@ import { useNewsletter } from '@/hooks'
 import { Newsletter } from '../newsletter'
 import dictionary from '@/dictionaries/en.json'
 
-vi.mock('../../../../hooks', () => ({
+vi.mock('@/hooks', () => ({
   useNewsletter: vi.fn()
 }))
 
@@ -13,6 +13,7 @@ const useNewsletterMock = vi.mocked(useNewsletter)
 describe('Newsletter', () => {
   afterEach(() => {
     cleanup()
+    vi.clearAllMocks()
   })
 
   it('renders correctly', async () => {

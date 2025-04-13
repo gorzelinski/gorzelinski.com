@@ -3,7 +3,7 @@ import { cleanup, render, screen } from '@testing-library/react'
 import { useTheme } from '@/hooks'
 import { ThemeSwitch } from '../theme-switch'
 
-vi.mock('../../../../hooks', () => ({
+vi.mock('@/hooks', () => ({
   useTheme: vi.fn()
 }))
 
@@ -12,6 +12,7 @@ const useThemeMock = vi.mocked(useTheme)
 describe('ThemeSwitch', () => {
   afterEach(() => {
     cleanup()
+    vi.clearAllMocks()
   })
 
   it('renders correctly', () => {
