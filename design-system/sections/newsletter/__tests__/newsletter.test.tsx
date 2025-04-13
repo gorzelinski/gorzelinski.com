@@ -46,6 +46,7 @@ describe('Newsletter', () => {
       dictionary.section.newsletter.email
     )
     expect(input).toBeEnabled()
+    expect(input.className).toContain('peer')
 
     expect(button).toBeInTheDocument()
     expect(button).toBeEnabled()
