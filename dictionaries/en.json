@@ -32,6 +32,9 @@
     "project": {
       "button": "Check project"
     },
+    "searchBar": {
+      "placeholder": "Curious about something?"
+    },
     "themeSwitch": {
       "ariaLabel": "Change theme"
     },
@@ -329,7 +332,9 @@
         }
       },
       "heading": "Blog",
-      "all": "All posts"
+      "all": "All posts",
+      "some": "Posts found:",
+      "none": "This search came up empty, but it piqued my interest."
     },
     "blogPost": {
       "updated": "Last updated",

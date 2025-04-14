@@ -6,9 +6,14 @@ export type PageProps = {
   }
 }
 
-export type NestedPageProps = {
+export type NestedPageProps = PageProps & {
   params: {
-    lang: Locale
     slug: string
+  }
+}
+
+export type SearchPageProps = PageProps & {
+  searchParams?: { 
+    query?: string 
   }
 }
