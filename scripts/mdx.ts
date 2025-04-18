@@ -202,14 +202,16 @@ export async function getRelatedMDXes<Type extends MDXTypes>(
   const mdxes = await getMDXes<Type>(page, lang)
 
   const related = mdxes.filter((relatedMDX) => {
-    const hasRelatedCategory = 'categories' in relatedMDX.frontmatter && 'categories' in mdx &&
-      relatedMDX.frontmatter.categories.some(
-        (category) => mdx.categories.includes(category)
+    const hasRelatedCategory =
+      'categories' in relatedMDX.frontmatter &&
+      'categories' in mdx &&
+      relatedMDX.frontmatter.categories.some((category) =>
+        mdx.categories.includes(category)
       )
-    const hasRelatedTag = 'tags' in relatedMDX.frontmatter && 'tags' in mdx &&
-      relatedMDX.frontmatter.tags.some((tag) =>
-        mdx.tags.includes(tag)
-      )
+    const hasRelatedTag =
+      'tags' in relatedMDX.frontmatter &&
+      'tags' in mdx &&
+      relatedMDX.frontmatter.tags.some((tag) => mdx.tags.includes(tag))
     const isDuplicate = relatedMDX.frontmatter.slug === mdx.slug
 
     return !isDuplicate && (hasRelatedCategory || hasRelatedTag)

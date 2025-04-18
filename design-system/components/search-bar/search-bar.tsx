@@ -33,7 +33,9 @@ export const SearchBar = ({ placeholder }: SearchBarProps) => {
         type="search"
         aria-label={placeholder}
         placeholder={placeholder}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => handleSearch(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          handleSearch(e.target.value)
+        }
         defaultValue={searchParams.get('query')?.toString()}
       />
       <Search
@@ -46,4 +48,4 @@ export const SearchBar = ({ placeholder }: SearchBarProps) => {
       />
     </InputWrapper>
   )
-} 
+}

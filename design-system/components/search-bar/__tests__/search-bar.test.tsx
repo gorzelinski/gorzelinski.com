@@ -61,4 +61,4 @@ describe('SearchBar', () => {
 
     expect(mockReplace).toHaveBeenCalledWith('/blog?')
   })
-}) 
+})

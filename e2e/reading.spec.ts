@@ -1,12 +1,17 @@
 import { test, expect } from './fixtures'
 
 test.describe('Reading tests', () => {
-  test('checks the search experience of the blog page', async ({ page, settingsPage }) => {
+  test('checks the search experience of the blog page', async ({
+    page,
+    settingsPage
+  }) => {
     const { component } = await settingsPage.getDictionary('en')
 
     await page.goto(settingsPage.link.blog)
 
-    const searchBar = page.getByRole('searchbox', { name: component.searchBar.placeholder })
+    const searchBar = page.getByRole('searchbox', {
+      name: component.searchBar.placeholder
+    })
     await searchBar.fill('hello... world?')
 
     await expect(page.url()).not.toContain('hello')

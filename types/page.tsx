@@ -13,7 +13,7 @@ export type NestedPageProps = PageProps & {
 }
 
 export type SearchPageProps = PageProps & {
-  searchParams?: { 
-    query?: string 
+  searchParams?: {
+    query?: string
   }
 }

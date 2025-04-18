@@ -5,7 +5,12 @@ import { BlogPosting, WithContext } from 'schema-dts'
 import { NestedPageProps, Theme } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
 import { i18n } from '@/i18n.config'
-import { createMDXPagination, getDictionary, getMDX, getMDXSlugs } from '@/scripts'
+import {
+  createMDXPagination,
+  getDictionary,
+  getMDX,
+  getMDXSlugs
+} from '@/scripts'
 import {
   generateAlternateLinks,
   getAbsoluteURL,

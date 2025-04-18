@@ -52,7 +52,7 @@ describe('timing', () => {
 
       debouncedFn()
       vi.advanceTimersByTime(50)
-      
+
       debouncedFn()
       vi.advanceTimersByTime(50)
       expect(fn).not.toBeCalled()
@@ -61,4 +61,4 @@ describe('timing', () => {
       expect(fn).toBeCalledTimes(1)
     })
   })
-}) 
+})
