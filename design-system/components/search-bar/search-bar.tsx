@@ -1,7 +1,7 @@
 'use client'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
-import { useCallback, ChangeEvent } from 'react'
-import { debounce } from '@/lib'
+import { ChangeEvent } from 'react'
+import { useDebouncedCallback } from '@/hooks'
 import { Search, Input, InputWrapper } from '@/design-system'
 import { SearchBarProps } from './search-bar.types'
 
@@ -10,20 +10,17 @@ export const SearchBar = ({ placeholder }: SearchBarProps) => {
   const pathname = usePathname()
   const { replace } = useRouter()
 
-  const handleSearch = useCallback(
-    debounce((term: string) => {
-      const params = new URLSearchParams(searchParams)
+  const handleSearch = useDebouncedCallback((term: string) => {
+    const params = new URLSearchParams(searchParams)
 
-      if (term) {
-        params.set('query', term)
-      } else {
-        params.delete('query')
-      }
+    if (term) {
+      params.set('query', term)
+    } else {
+      params.delete('query')
+    }
 
-      replace(`${pathname}?${params.toString()}`)
-    }, 300),
-    [searchParams, pathname, replace]
-  )
+    replace(`${pathname}?${params.toString()}`)
+  })
 
   return (
     <InputWrapper width="stretch">

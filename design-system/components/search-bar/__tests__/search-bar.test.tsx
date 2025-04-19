@@ -11,8 +11,8 @@ vi.mock('next/navigation', () => ({
   })
 }))
 
-vi.mock('@/lib', () => ({
-  debounce: (fn: Function) => fn
+vi.mock('@/hooks', () => ({
+  useDebouncedCallback: (fn: Function) => fn
 }))
 
 describe('SearchBar', () => {
