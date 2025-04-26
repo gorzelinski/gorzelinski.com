@@ -1,10 +1,10 @@
 ---
 title: Dostępne animacje w React
-description: 'Czyli jak nie kręcić swoimi użytkownikami (jak winylem). Niektóre animacje mogą powodować problemy u użytkoników. Zadbamy o nich i sprawimy, że nieistotne animacje będą opcjonalne.'
+description: 'Czyli jak nie kręcić swoimi użytkownikami (jak winylem). Niektóre animacje mogą powodować problemy u użytkowników. Zadbamy o nich i sprawimy, że nieistotne animacje będą opcjonalne.'
 date: 2022-09-01T15:00:00+02:00
 updated: 2022-09-01T15:00:00+02:00
 image:
-  alt: 'Połowa winyla na białym tle'
+  alt: 'Połowa płyty winylowej na białym tle'
   caption: 'Zdjęcie autorstwa Miguel Á. Padriñán'
   src: 'pexels-miguel-a-padrinan-167092.jpg'
 categories: ['web development']
@@ -84,7 +84,7 @@ W innej części mojej strony wykorzystuję `window.matchMedia()`, aby wykryć p
 ```jsx
 const hasReducedMotionPreference = window.matchMedia(
   '(prefers-reduced-motion: reduce)'
-).matches // Wartość Bool - żależy od ustawień systemowych
+).matches // Wartość Bool - zależy od ustawień systemowych
 ```
 
 Teraz mogę wykorzystać tę informację w niestandardowym haku.

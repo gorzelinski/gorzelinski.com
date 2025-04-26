@@ -90,7 +90,7 @@ const desktop = {
 }
 
 const laptop = {
-  name: 'Macbook Air',
+  name: 'MacBook Air',
   display: '13.6"',
   info() {
     console.log(`Name of the computer: ${this.name}`)
@@ -115,7 +115,7 @@ function createComputer(name) {
 }
 
 const desktop = createComputer('Mac Studio')
-const laptop = createComputer('Macbook Air')
+const laptop = createComputer('MacBook Air')
 ```
 
 We can call the function multiple times to create multiple objects. We don't repeat ourselves as much. But, there is another problem. Look at the `info()` function. It stays the same for every computer, yet we copy it each time. It's not very memory-efficient.
@@ -138,7 +138,7 @@ function createComputer(name) {
 }
 
 const desktop = createComputer('Mac Studio')
-const laptop = createComputer('Macbook Air')
+const laptop = createComputer('MacBook Air')
 ```
 
 <Callout variant="warning">
@@ -168,7 +168,7 @@ Computer.prototype.info = function () {
 }
 
 const desktop = new Computer('Mac Studio')
-const laptop = new Computer('Macbook Air')
+const laptop = new Computer('MacBook Air')
 ```
 
 We can use the prototype to define the shared function once, and it will be available for every object created with the constructor function.
@@ -196,7 +196,7 @@ class Computer {
 }
 
 const desktop = new Computer('Mac Studio')
-const laptop = new Computer('Macbook Air')
+const laptop = new Computer('MacBook Air')
 ```
 
 The best part is that everything is in one "box." All properties and methods are between curly braces. We don't need to use prototypes explicitly.
@@ -234,7 +234,7 @@ class Laptop extends Computer {
 }
 
 const desktop = new Desktop('Mac Studio', 'AMD Radeon Pro W6800X')
-const laptop = new Laptop('Macbook Air', '13.6"')
+const laptop = new Laptop('MacBook Air', '13.6"')
 ```
 
 `Desktop` and `Laptop` have prototype chains up to the `Computer` class. Subclasses inherit from the base class (also called superclass). To inherit properties, we must invoke the `super()` method inside the constructor. Under this method, we can easily add properties specific to the subclass.
@@ -291,13 +291,13 @@ class Laptop extends Computer {
 }
 
 const desktop = new Desktop('Mac Studio', 'AMD Radeon Pro W6800X')
-const laptop = new Laptop('Macbook Air', '13.6"')
+const laptop = new Laptop('MacBook Air', '13.6"')
 
 desktop.info()
 //Name of the computer: Mac Studio
-//GPU: AMD Readeon Pro W6800X
+//GPU: AMD Radeon Pro W6800X
 laptop.info()
-//Name of the computer: Macbook Air
+//Name of the computer: MacBook Air
 //Display: 13.6"
 ```
 

@@ -34,14 +34,14 @@ class Computer {
   constructor(name) {
     this.name = name
   }
-  // Moyfikator "public" jest domyślny, ale możeszz go jawnie zapisać.
+  // Modyfikator "public" jest domyślny, ale możesz go jawnie zapisać.
   public info(this: Computer) {
     console.log(`Name of the computer: ${this.name}`)
   }
 }
 
 const desktop = new Computer('Mac Studio')
-const laptop = new Computer('Macbook Pro')
+const laptop = new Computer('MacBook Pro')
 ```
 
 <Callout variant="info">
@@ -102,7 +102,7 @@ class Laptop extends Computer {
 }
 
 const desktop = new Desktop('Mac Studio', 'sdag89', 'AMD Radeon Pro W6800X')
-const laptop = new Laptop('Macbook Air', 'bzkx32', '13.6"')
+const laptop = new Laptop('MacBook Air', 'bzkx32', '13.6"')
 ```
 
 ## Statyczne pola
@@ -119,7 +119,7 @@ console.log(Computer.firstProgrammer) // Ada Lovelace
 
 ## Abstrakcyjna klasa
 
-Czasami chcesz mieć pewnosć, że klasa zaimplementowała jakąś metodę. Klasy dziedziczą metody, ale nie możesz zapewnić domyślnej implementacji. Chcesz wymusić na programistach pracujących z klasą, stworzenie swojej własnej wersji. W takich wypadkach przydatna jest klasa abstrakcyjna. TypeScript oferuje słowo kluczowe `abstract`, które możesz wykorzystać z klasami i metodami.
+Czasami chcesz mieć pewność, że klasa zaimplementowała jakąś metodę. Klasy dziedziczą metody, ale nie możesz zapewnić domyślnej implementacji. Chcesz wymusić na programistach pracujących z klasą, stworzenie swojej własnej wersji. W takich wypadkach przydatna jest klasa abstrakcyjna. TypeScript oferuje słowo kluczowe `abstract`, które możesz wykorzystać z klasami i metodami.
 
 ```typescript title="Abstrakcyjne klasy"
 abstract class Computer {
@@ -181,7 +181,7 @@ desktop = {
 desktop.info()
 ```
 
-Klasa może zaimplementować interfejs i wykorzystać go jak kontrakt. Istnieje słowo kluczowe `implements` do tego celu. W przeciwieństwie do dziedziczenia, klasa może implementować wiele interfejsów. Interfejs mogą rozszerzać się wzajemnie. Daje ci to dużo mozliwości podczas kompozycji i ponownego wykorzystania kodu.
+Klasa może zaimplementować interfejs i wykorzystać go jak kontrakt. Istnieje słowo kluczowe `implements` do tego celu. W przeciwieństwie do dziedziczenia, klasa może implementować wiele interfejsów. Interfejs mogą rozszerzać się wzajemnie. Daje ci to dużo możliwości podczas kompozycji i ponownego wykorzystania kodu.
 
 ```typescript title="Interfejsy i klasy"
 interface Named {

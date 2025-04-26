@@ -40,7 +40,7 @@ class Computer {
 }
 
 const desktop = new Computer('Mac Studio')
-const laptop = new Computer('Macbook Pro')
+const laptop = new Computer('MacBook Pro')
 ```
 
 <Callout variant="info">
@@ -101,7 +101,7 @@ class Laptop extends Computer {
 }
 
 const desktop = new Desktop('Mac Studio', 'sdag89', 'AMD Radeon Pro W6800X')
-const laptop = new Laptop('Macbook Air', 'bzkx32', '13.6"')
+const laptop = new Laptop('MacBook Air', 'bzkx32', '13.6"')
 ```
 
 ## Static Members
@@ -205,7 +205,7 @@ const laptop = new Computer('MacBook Pro')
 laptop.info()
 ```
 
-You can also use interfaces to define the structure of a function. "Whoah, whoah, haven't you just mentioned that they are only for objects?" Yes, and there is no contradiction because functions are first-class objects in JavaScript. Yeah, JS has its mysteries. Anyway, you can use an interface as a replacement for function types. It's a less common syntax, but you have this alternative.
+You can also use interfaces to define the structure of a function. "Whoa, whoa, haven't you just mentioned that they are only for objects?" Yes, and there is no contradiction because functions are first-class objects in JavaScript. Yeah, JS has its mysteries. Anyway, you can use an interface as a replacement for function types. It's a less common syntax, but you have this alternative.
 
 ```typescript title="Interfaces and functions"
 type Info = (name: string) => void

@@ -14,7 +14,7 @@ type: 'post'
 
 If you're a web developer, you probably recognize this image. Even if you're not, you probably know what it is.
 
-![Wordpress Dahsboard](wordpress-cms.png)
+![Wordpress Dashboard](wordpress-cms.png)
 
 A WordPress dashboard - it's an easy and intuitive way to manage content on your website. You don't need to know PHP, MySQL, or HTML to create something like a blog post. There are multiple tabs, inputs, and buttons that help with creating content. The content creation experience must be good because it's the most used CMS on the market. But, the popularity comes with a huge disadvantage - it's a primary target for hackers and spammers. Security vulnerabilities are not the only cons, but this post is not about that.
 
@@ -22,7 +22,7 @@ Eventually, your content needs to be in HTML markup to be interpreted by a brows
 
 ## Netlify CMS
 
-Netlify CMS is an example of a Git-based CMS. The CMS uses the Git version control system under the hood. It allows you to keep everything in a Git repository - content alongside code. It has some advantages over standard CMSes like Worpdress. And it doesn't compromise on ease of use. At its core, Netlify CMS is a React app that wraps Git workflow. So, you don't need to learn Git, Yaml, or Markdown to use it. It offers a rich web UI, just like WordPress. It's friendly for non-technical editors. But, you need some knowledge to configure it. So, I'll integrate Netlify CMS with a Gatsby example project in this post. I'll try to recreate a post from my blog.
+Netlify CMS is an example of a Git-based CMS. The CMS uses the Git version control system under the hood. It allows you to keep everything in a Git repository - content alongside code. It has some advantages over standard CMSes like Wordpress. And it doesn't compromise on ease of use. At its core, Netlify CMS is a React app that wraps Git workflow. So, you don't need to learn Git, Yaml, or Markdown to use it. It offers a rich web UI, just like WordPress. It's friendly for non-technical editors. But, you need some knowledge to configure it. So, I'll integrate Netlify CMS with a Gatsby example project in this post. I'll try to recreate a post from my blog.
 
 <Callout variant="info">
 
@@ -219,4 +219,4 @@ Visit `https://your-website.netlify.app/admin/` and your browser should display 
 
 ![Authentication in Netlify CMS](netlify-cms-authentication.png)
 
-After logging in, you can create a blog post, populate its fields and click "publish now." It will save your changes in the repository after a few seconds. Woohoo! We made it. "But. . .posts aren't displayed on the website", you may say pessimistically. I would respond - yeah, good point. However, the goal of this post was to integrate Netlify CMS with Gatsby. I wanted to keep everything else as simple as possible, so I started with a minimal setup. And if you started with a blog, you have this part already. This post is getting long, so I'll end here. I may add a second part where we will display our posts.
+After logging in, you can create a blog post, populate its fields and click "publish now." It will save your changes in the repository after a few seconds. Yay! We made it. "But. . .posts aren't displayed on the website", you may say pessimistically. I would respond - yeah, good point. However, the goal of this post was to integrate Netlify CMS with Gatsby. I wanted to keep everything else as simple as possible, so I started with a minimal setup. And if you started with a blog, you have this part already. This post is getting long, so I'll end here. I may add a second part where we will display our posts.

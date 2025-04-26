@@ -91,7 +91,7 @@ const desktop = {
 }
 
 const laptop = {
-  name: 'Macbook Air',
+  name: 'MacBook Air',
   display: '13.6"',
   info() {
     console.log(`Nazwa komputera: ${this.name}`)
@@ -116,7 +116,7 @@ function createComputer(name) {
 }
 
 const desktop = createComputer('Mac Studio')
-const laptop = createComputer('Macbook Air')
+const laptop = createComputer('MacBook Air')
 ```
 
 Możemy tę funkcję wywołać wiele razy, aby stworzyć wiele obiektów. Nie powtarzamy się już tak bardzo. Ale istnieje inny problem. Spójrz na funkcję `info()`. Pozostaje ona taka sama dla każdego komputera, a jednak kopiujemy ją za każdym razem. Nie jest to specjalnie oszczędne pod kątem pamięci.
@@ -139,7 +139,7 @@ function createComputer(name) {
 }
 
 const desktop = createComputer('Mac Studio')
-const laptop = createComputer('Macbook Air')
+const laptop = createComputer('MacBook Air')
 ```
 
 <Callout variant="warning">
@@ -169,7 +169,7 @@ Computer.prototype.info = function () {
 }
 
 const desktop = new Computer('Mac Studio')
-const laptop = new Computer('Macbook Air')
+const laptop = new Computer('MacBook Air')
 ```
 
 Możemy wykorzystać prototyp do zdefiniowania współdzielonej funkcjonalności raz i będzie ona dostępna dla każdego obiektu stworzonego przy pomocy funkcji konstrukcyjnej.
@@ -197,7 +197,7 @@ class Computer {
 }
 
 const desktop = new Computer('Mac Studio')
-const laptop = new Computer('Macbook Air')
+const laptop = new Computer('MacBook Air')
 ```
 
 Chyba największą zaletą jest to, że wszystko jest umieszczone w jednym “pudełku”. Wszystkie właściwości i metody są pomiędzy klamrami. Nie musimy używać prototypów bezpośrednio.
@@ -235,7 +235,7 @@ class Laptop extends Computer {
 }
 
 const desktop = new Desktop('Mac Studio', 'AMD Radeon Pro W6800X')
-const laptop = new Laptop('Macbook Air', '13.6"')
+const laptop = new Laptop('MacBook Air', '13.6"')
 ```
 
 Klasy `Desktop` i `Laptop` mają łańcuch prototypowy z klasą `Computer`. Podklasy dziedziczą z klasy bazowej (zwanej także super klasą). Aby odziedziczyć właściwości, musimy wywołać metodę `super()` wewnątrz konstruktora. Poniżej tej metody możemy dodać właściwości specyficzne dla podklasy. Ten typ dziedziczenia nie kopiuje wszystkiego z klasy bazowej jak w klasycznych językach obiektowych. Zamiast tego, poszerzamy łańcuch prototypowy wykorzystując `extends`. Ma to swoje zalety pod kątem optymalizacji pamięci.
@@ -291,13 +291,13 @@ class Laptop extends Computer {
 }
 
 const desktop = new Desktop('Mac Studio', 'AMD Radeon Pro W6800X')
-const laptop = new Laptop('Macbook Air', '13.6"')
+const laptop = new Laptop('MacBook Air', '13.6"')
 
 desktop.info()
 //Nazwa komputera: Mac Studio
 //GPU: AMD Readeon Pro W6800X
 laptop.info()
-//Nazwa komputera: Macbook Air
+//Nazwa komputera: MacBook Air
 //Wyświetlacz: 13.6"
 ```
 
