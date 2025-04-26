@@ -107,7 +107,7 @@ export const getCachedMDX = unstable_cache(
     getMDX<Type>(page, slug, lang)
 )
 
-export async function getSlugs(
+export async function getMDXSlugs(
   page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>
 ) {
   const slugs = await fs.readdir(path.join(root, LINKS.content, page))
@@ -150,7 +150,7 @@ export async function getMDXes<Type extends MDXTypes>(
   number: number | 'all' = 'all',
   sort: 'asc' | 'desc' | 'none' = 'none'
 ) {
-  const slugs = await getSlugs(page)
+  const slugs = await getMDXSlugs(page)
   const mdxes = await Promise.all(
     slugs.map((slug) => getCachedMDX<Type>(page, slug, lang))
   )
@@ -161,7 +161,7 @@ export async function getMDXes<Type extends MDXTypes>(
   return filtered
 }
 
-export async function createPagination(
+export async function createMDXPagination(
   page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>,
   slug: string,
   lang: Locale
@@ -193,21 +193,26 @@ export async function createPagination(
   }
 }
 
-export async function getRelatedPosts(
-  post: Post,
+export async function getRelatedMDXes<Type extends MDXTypes>(
+  mdx: Type extends 'post' ? Post : Project,
+  page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>,
   lang: Locale,
   number: number | 'all' = 'all'
 ) {
-  const posts = await getMDXes<'post'>('/blog/', lang)
+  const mdxes = await getMDXes<Type>(page, lang)
 
-  const related = posts.filter((relatedPost) => {
-    const hasRelatedCategory = relatedPost.frontmatter.categories.some(
-      (category) => post.categories.includes(category)
-    )
-    const hasRelatedTag = relatedPost.frontmatter.tags.some((tag) =>
-      post.tags.includes(tag)
-    )
-    const isDuplicate = relatedPost.frontmatter.slug === post.slug
+  const related = mdxes.filter((relatedMDX) => {
+    const hasRelatedCategory =
+      'categories' in relatedMDX.frontmatter &&
+      'categories' in mdx &&
+      relatedMDX.frontmatter.categories.some((category) =>
+        mdx.categories.includes(category)
+      )
+    const hasRelatedTag =
+      'tags' in relatedMDX.frontmatter &&
+      'tags' in mdx &&
+      relatedMDX.frontmatter.tags.some((tag) => mdx.tags.includes(tag))
+    const isDuplicate = relatedMDX.frontmatter.slug === mdx.slug
 
     return !isDuplicate && (hasRelatedCategory || hasRelatedTag)
   })
@@ -216,4 +221,29 @@ export async function getRelatedPosts(
     number === 'all' ? related : related.filter((_, index) => index < number)
 
   return filtered
+}
+
+export async function searchMDXes<Type extends MDXTypes>(
+  page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>,
+  lang: Locale,
+  query: string
+) {
+  const mdxes = await getMDXes<Type>(page, lang, 'all', 'desc')
+
+  if (!query) return mdxes
+
+  const searchTerms = query.toLowerCase().split(' ').filter(Boolean)
+
+  return mdxes.filter(({ frontmatter }) => {
+    const searchableText = [
+      frontmatter.title,
+      frontmatter.description,
+      ...('categories' in frontmatter ? frontmatter.categories : []),
+      ...('tags' in frontmatter ? frontmatter.tags : [])
+    ]
+      .join(' ')
+      .toLowerCase()
+
+    return searchTerms.every((term) => searchableText.includes(term))
+  })
 }

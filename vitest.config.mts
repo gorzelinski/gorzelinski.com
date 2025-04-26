@@ -11,6 +11,27 @@ export default defineConfig({
       'design-system/**/*.{test,spec}.?(c|m)[jt]s?(x)',
       'lib/**/*.{test,spec}.?(c|m)[jt]s?(x)',
       'scripts/**/*.{test,spec}.?(c|m)[jt]s?(x)'
-    ]
+    ],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+      include: [
+        'design-system/**/*.{js,jsx,ts,tsx}',
+        'lib/**/*.{js,jsx,ts,tsx}'
+      ],
+      exclude: [
+        'design-system/elements/**',
+        'design-system/icons/**',
+        '**/*.styles.tsx',
+        '**/*.types.tsx',
+        '**/index.tsx'
+      ],
+      thresholds: {
+        branches: 80,
+        functions: 80,
+        lines: 80,
+        statements: 80
+      }
+    }
   }
 })

@@ -10,6 +10,7 @@ vi.mock('react-confetti', () => ({
 describe('Confetti', () => {
   afterEach(() => {
     cleanup()
+    vi.clearAllMocks()
   })
 
   it('renders correctly', () => {

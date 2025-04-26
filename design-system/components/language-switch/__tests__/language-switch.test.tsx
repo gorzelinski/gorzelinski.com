@@ -10,6 +10,7 @@ vi.mock('next/navigation', () => ({
 describe('LanguageSwitch', () => {
   afterEach(() => {
     cleanup()
+    vi.clearAllMocks()
   })
 
   it('renders the correct number of buttons', () => {

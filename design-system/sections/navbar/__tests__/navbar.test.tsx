@@ -8,7 +8,7 @@ vi.mock('next/navigation', () => ({
   usePathname: () => '/'
 }))
 
-vi.mock('../../../../hooks', () => ({
+vi.mock('@/hooks', () => ({
   useTheme: () => ({
     theme: 'light',
     toggleTheme: vi.fn()
@@ -23,6 +23,7 @@ const useScrollProgressMock = vi.mocked(useScrollProgress)
 describe('Navbar', () => {
   afterEach(() => {
     cleanup()
+    vi.clearAllMocks()
   })
 
   it('renders correctly', async () => {

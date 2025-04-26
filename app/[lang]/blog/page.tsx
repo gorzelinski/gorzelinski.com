@@ -2,9 +2,9 @@ import { Metadata } from 'next'
 import { cookies } from 'next/headers'
 import { getCookie } from 'cookies-next'
 import { WebPage, WithContext } from 'schema-dts'
-import { PageProps, Theme } from '@/types'
+import { PageProps, Theme, SearchPageProps } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
-import { getDictionary, getMDXes } from '@/scripts'
+import { getDictionary, searchMDXes } from '@/scripts'
 import { generateAlternateLinks, getMetaImage, localizePath } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
 import {
@@ -13,9 +13,11 @@ import {
   Newsletter,
   Post,
   Section,
-  SupportMe
+  SupportMe,
+  Small,
+  small,
+  SearchBar
 } from '@/design-system'
-import { small } from '@/design-system/elements/small'
 
 export async function generateMetadata({
   params: { lang }
@@ -52,9 +54,10 @@ export async function generateMetadata({
   }
 }
 
-export default async function Blog({ params: { lang } }: PageProps) {
+export default async function Blog({ params: { lang }, searchParams }: SearchPageProps) {
   const { component, section, layout, page } = await getDictionary(lang)
-  const posts = await getMDXes<'post'>(LINKS.blog, lang, 'all', 'desc')
+  const query = searchParams?.query || ''
+  const posts = await searchMDXes<'post'>(LINKS.blog, lang, query)
   const jsonLd: WithContext<WebPage> = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -76,22 +79,29 @@ export default async function Blog({ params: { lang } }: PageProps) {
       <Section columns="1">
         <Header alignItems="baseline">
           <H1>{page.blog.heading}</H1>
-          <h2 className={small()}>{page.blog.all}</h2>
+          <h2 className={small()}>
+            {query ? `${page.blog.some} ${posts.length}` : page.blog.all}
+          </h2>
         </Header>
-        {posts.map(({ frontmatter }, index) => (
-          <Post
-            key={frontmatter.slug}
-            lang={lang}
-            dictionary={component.post}
-            image={frontmatter.image}
-            date={frontmatter.date}
-            readingTime={frontmatter.readingTime}
-            title={frontmatter.title}
-            description={frontmatter.description}
-            slug={frontmatter.slug}
-            priority={index < 3}
-          />
-        ))}
+        <SearchBar placeholder={component.searchBar.placeholder} />
+        {posts.length === 0 ? (
+          <Small>{page.blog.none}</Small>
+        ) : (
+          posts.map(({ frontmatter }, index) => (
+            <Post
+              key={frontmatter.slug}
+              lang={lang}
+              dictionary={component.post}
+              image={frontmatter.image}
+              date={frontmatter.date}
+              readingTime={frontmatter.readingTime}
+              title={frontmatter.title}
+              description={frontmatter.description}
+              slug={frontmatter.slug}
+              priority={index < 3}
+            />
+          ))
+        )}
       </Section>
       <SupportMe lang={lang} dictionary={section.supportMe} />
       <Newsletter lang={lang} dictionary={section.newsletter} />

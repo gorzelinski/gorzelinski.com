@@ -4,7 +4,7 @@ import { useNewsletter } from '@/hooks'
 import { Newsletter } from '../newsletter'
 import dictionary from '@/dictionaries/en.json'
 
-vi.mock('../../../../hooks', () => ({
+vi.mock('@/hooks', () => ({
   useNewsletter: vi.fn()
 }))
 
@@ -13,6 +13,7 @@ const useNewsletterMock = vi.mocked(useNewsletter)
 describe('Newsletter', () => {
   afterEach(() => {
     cleanup()
+    vi.clearAllMocks()
   })
 
   it('renders correctly', async () => {
@@ -46,6 +47,7 @@ describe('Newsletter', () => {
       dictionary.section.newsletter.email
     )
     expect(input).toBeEnabled()
+    expect(input.className).toContain('peer')
 
     expect(button).toBeInTheDocument()
     expect(button).toBeEnabled()
@@ -96,10 +98,11 @@ describe('Newsletter', () => {
   })
 
   it('renders the "error" state correctly', () => {
+    const setStateMock = vi.fn()
     useNewsletterMock.mockReturnValue({
       FORM_URL: 'https://example.com',
       state: 'error',
-      setState: vi.fn(),
+      setState: setStateMock,
       handleSubmit: vi.fn()
     })
 
@@ -108,21 +111,18 @@ describe('Newsletter', () => {
     const heading = screen.getByText(
       dictionary.section.newsletter.error.heading
     )
-    const input = screen.queryByRole('textbox')
-    const button = screen.queryByRole('button')
+    const input = screen.getByRole('textbox')
+    const button = screen.getByRole('button')
 
     expect(heading).toBeInTheDocument()
-
     expect(input).toBeInTheDocument()
     expect(input).toBeEnabled()
-
     expect(button).toBeInTheDocument()
     expect(button).toBeDisabled()
 
-    input?.click()
+    input.click()
 
-    const spy = vi.spyOn(useNewsletterMock('en'), 'setState')
-    expect(spy).toHaveBeenCalledWith('idle')
+    expect(setStateMock).toHaveBeenCalledWith('idle')
   })
 
   it('renders the "success" state correctly', () => {
