@@ -58,11 +58,11 @@ Chciałem, aby strona była zorientowana na typografię, więc kolejny kawał cz
 
 ## Design system
 
-Mając podstawy i część treści, zacząłem tworzyć system projektowania. Chciałem, aby był elastyczny, spójny i łatwo skalowalny. Stworzyłem abstrakcyjne, prymitywne elementy takie jak przciski i nagłówki. Wykorzystałem je w wielu różnych kontekstach do zbudowania bardziej złożonych komponentów i sekcji.
+Mając podstawy i część treści, zacząłem tworzyć system projektowania. Chciałem, aby był elastyczny, spójny i łatwo skalowalny. Stworzyłem abstrakcyjne, prymitywne elementy takie jak przyciski i nagłówki. Wykorzystałem je w wielu różnych kontekstach do zbudowania bardziej złożonych komponentów i sekcji.
 
 ![Elementy projektowe - przyciski](buttons.png)
 
-[Panda CSS](https://panda-css.com/) to biblioteka CSS-in-JS, która pozwala na definiowanie bazowych stylów wraz z wieloma wariantami konkretnego komponentu. W ten sposób, definiujemy bibliotekę komponentów, z której przyjemnie się korzysta. Poniżej pokazalem jak powyższy przycisk wygląda w kodzie (ograniczyłem style do tych bazowych, ponieważ oryginalny kod jest długi na 300 linii).
+[Panda CSS](https://panda-css.com/) to biblioteka CSS-in-JS, która pozwala na definiowanie bazowych stylów wraz z wieloma wariantami konkretnego komponentu. W ten sposób, definiujemy bibliotekę komponentów, z której przyjemnie się korzysta. Poniżej pokazałem jak powyższy przycisk wygląda w kodzie (ograniczyłem style do tych bazowych, ponieważ oryginalny kod jest długi na 300 linii).
 
 ```tsx title="Definiowanie przepisu na przycisk w Panda CSS"
 import { cva } from '@/styled-system/css'
@@ -125,7 +125,7 @@ Zauważyłem, że elastyczność jest pożądana podczas całego procesu. Podobn
 
 ## Next.js
 
-Słyszy się, że "jeżeli coś działa, to nie ruszaj". Pomimo, że poprzednia wersja mojej strony działała całkiem nieźle, to działanie _nad nią_ stawało się coraz trudniejsze. Dlatego przemigrowałem mój stos technologiczny. Głównie dlatego. Była to też niezła okazja do nauki czegoś nowego, dlatego [Next.js](/pl/blog/next-js-overview-in-1000-words/) stał się moim nowym frameworkiem. On także bazuje na Reac'ie, więc nie musiałem uczyć się wszystkiego od zera. Jednakże, oba te narzędzia różnią się znacznie. Gatsby oferuje bogaty ekosystem pluginów. Myślisz o jakiejś funkcjonalności i najprawdopodobniej istenie na to wtyczka. Jest to jednak broń obosieczna. W łatwy sposób możesz dodać funkcjonalność, ale zaczynasz mieć problem, gdy któryś z pluginów przestaje być wspierany. W Next.js, więcej rzeczy musisz implementować ręcznie. Musisz mieć lepsze pojęcie o tym co robisz, ale daje ci to elastyczność i łatwiejsze zarządzanie w przyszłości.
+Słyszy się, że "jeżeli coś działa, to nie ruszaj". Pomimo, że poprzednia wersja mojej strony działała całkiem nieźle, to działanie _nad nią_ stawało się coraz trudniejsze. Dlatego przemigrowałem mój stos technologiczny. Głównie dlatego. Była to też niezła okazja do nauki czegoś nowego, dlatego [Next.js](/pl/blog/next-js-overview-in-1000-words/) stał się moim nowym frameworkiem. On także bazuje na Reac'ie, więc nie musiałem uczyć się wszystkiego od zera. Jednakże, oba te narzędzia różnią się znacznie. Gatsby oferuje bogaty ekosystem pluginów. Myślisz o jakiejś funkcjonalności i najprawdopodobniej istnieje na to wtyczka. Jest to jednak broń obosieczna. W łatwy sposób możesz dodać funkcjonalność, ale zaczynasz mieć problem, gdy któryś z pluginów przestaje być wspierany. W Next.js, więcej rzeczy musisz implementować ręcznie. Musisz mieć lepsze pojęcie o tym co robisz, ale daje ci to elastyczność i łatwiejsze zarządzanie w przyszłości.
 
 ## Testowanie
 
