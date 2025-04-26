@@ -231,7 +231,7 @@ O panie, jaki długi plik! Ale nie bądź przytłoczony - spróbujemy go rozszyf
 
 Sekcja `concurrency` pozwala na anulowanie zadań w trakcie pracy, jeżeli należą do tej samej grupy. Np. kontynuowanie procesu budowania projektu nie ma sensu, jeżeli testy nie przeszły.
 
-Praca `install-cache` rozpoczyna się typowo - od uzyskania dostępu do repozytorium. Do tego celu istnieje zdefiniowana funkcja, nazwana `checkout`. Później musimy skonfigurować środowisko node. W naszym przykładzie użyjemy node 16, pobierając liczbę z sekcji matrix. Mając node możemy zainstalować paczki. Komenda `npm ci` działa podobnie do `npm install`, ale jest przeznaczona do zautomatyzowanych środowisk. W końcu sprawdzamy czy istnieją jakieś pliki binarne narzędzia Cypress. Pózniej się dowiemy po co.
+Praca `install-cache` rozpoczyna się typowo - od uzyskania dostępu do repozytorium. Do tego celu istnieje zdefiniowana funkcja, nazwana `checkout`. Później musimy skonfigurować środowisko node. W naszym przykładzie użyjemy node 16, pobierając liczbę z sekcji matrix. Mając node możemy zainstalować paczki. Komenda `npm ci` działa podobnie do `npm install`, ale jest przeznaczona do zautomatyzowanych środowisk. W końcu sprawdzamy czy istnieją jakieś pliki binarne narzędzia Cypress. Później się dowiemy po co.
 
 Praca `unit-test`, bez niespodzianek, uruchamia testy jednostkowe. Zaczyna się podobnie do poprzedniej pracy - od sprawdzenia plików w cache. Nie musimy instalować zależności z każdym uruchomieniem workflow. Ostatni krok rzeczywiście uruchamia testy.
 

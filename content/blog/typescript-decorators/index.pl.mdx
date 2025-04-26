@@ -164,7 +164,7 @@ function FirstDecoratorFactory() {
   }
 }
 
-function SecondDecoratorFacotry() {
+function SecondDecoratorFactory() {
   console.log('Message from this factory will be logged second')
 
   return function (constructor: Function) {
@@ -173,12 +173,12 @@ function SecondDecoratorFacotry() {
 }
 
 @FirstDecoratorFactory()
-@SecondDecoratorFacotry()
+@SecondDecoratorFactory()
 class Agent {
   name = 'Sam'
 
   constructor() {
-    console.log('Creating a Third Echelong agent')
+    console.log('Creating a Third Echelon agent')
   }
 }
 ```

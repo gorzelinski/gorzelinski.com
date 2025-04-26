@@ -84,7 +84,7 @@ Podobnie do bazowego języka, TypeScript nie definiuje różnych typów liczb. L
 ```typescript
 const PI = 3.14 // TypeScript wnioskuje, że ta liczba zawsze powinna równać się 3.14.
 let age = 25 // TypeScript wnioskuje, że to ma być liczba.
-// W przypadku maksymalnego wieku dziewczyny DiCaprio to równiez jest stała - wiem.
+// W przypadku maksymalnego wieku dziewczyny DiCaprio to również jest stała - wiem.
 let age: number = 25 // Ten kod działa ale jest redundantny - zła praktyka.
 let age: number // Tu ma to sens, ponieważ nie ma inicjalizacji zmiennej.
 ```
@@ -206,7 +206,7 @@ enum Role {
 Czasami chcesz akceptować więcej niż jeden rodzaj wartości. W takiej sytuacji przydaje się typ union. Możesz zdefiniować unie wykorzystując znak poziomej kreski pomiędzy różnymi typami.
 
 ```typescript
-// Oba parametry tej funkcji mogą być zrówno liczbą jak i ciągiem znaków.
+// Oba parametry tej funkcji mogą być zarówno liczbą jak i ciągiem znaków.
 function combine(i1: number | string, i2: number | string) {
   const result = i1 + i2
   return result
@@ -236,7 +236,7 @@ function combine(
 Poza wbudowanymi typami, TypeScript pozwala ci także definiować niestandardowe typy (znane także jako aliasy typów). Istnieje specjalne słowo kluczowe - `type` - do tego celu. Możesz wrzucić cokolwiek do niestandardowego typu: sting, obiekt czy unie. Po zdefiniowaniu niestandardowego typu, możesz użyć tego aliasu w wielu miejscach w kodzie. W ten sposób unikasz duplikacji kodu.
 
 ```typescript
-// Konwencja mówi, żeby definować niestadardowe typy z wielkiej litery.
+// Konwencja mówi, żeby zdefiniować niestandardowe typy z wielkiej litery.
 type State = 'idle' | 'loading' | 'success'
 
 type Person = {
@@ -304,7 +304,7 @@ Istnieje także typ `Function` w języku TypeScript. Opisuje on właściwości t
 let combineValues: Function
 
 // Ta funkcja przyjmuje dwa parametry, gdzie każdy z nich to liczba.
-// Funcja ogólnie zwaraca liczbę.
+// Funkcja ogólnie zwraca liczbę.
 let combineValues: (a: number, b: number) => number
 ```
 

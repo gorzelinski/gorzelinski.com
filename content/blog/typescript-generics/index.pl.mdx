@@ -38,7 +38,7 @@ let hobbies: string[] // Standardowa składnia.
 let hobbies: Array<string> // Inna składnia wykorzystująca typy generyczne.
 hobbies = ['sneaking']
 
-// TypeScript wnosukje, że jest to string i daje podpowiedzi.
+// TypeScript wnioskuje, że jest to string i daje podpowiedzi.
 hobbies[0].split('')
 ```
 
@@ -259,7 +259,7 @@ const laptop = updateComputer(desktop, { description: 'It has a 16" display.' })
 
 ### Readonly
 
-Działa podobnie do dwóch pozostałych. Różnica polega na tym, że zmienia wszystkie właściwości na takie tylko do odczytu. Nie możesz im póżniej ponownie przypisać wartości.
+Działa podobnie do dwóch pozostałych. Różnica polega na tym, że zmienia wszystkie właściwości na takie tylko do odczytu. Nie możesz im później ponownie przypisać wartości.
 
 ```ts title="Typ użytkowy Readonly"
 interface Computer {
