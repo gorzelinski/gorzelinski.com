@@ -1,5 +1,5 @@
 import { cva } from '@/styled-system/css'
-import { sharedTransitionProperties } from '../../utils'
+import { sharedTransitionProperties, verticalRhythm } from '../../utils'
 import 'katex/dist/katex.min.css'
 
 export const equation = cva({
@@ -9,6 +9,8 @@ export const equation = cva({
     justifyContent: 'center',
     alignItems: 'center',
     marginX: '-m',
+    ...verticalRhythm.marginBottom.m,
+    ...verticalRhythm.marginTop['2xmarginBottom'],
     padding: 'm',
     borderTop: 'gray.subtle',
     borderBottom: 'gray.subtle',
@@ -39,10 +41,6 @@ export const equation = cva({
       borderRadius: 'm'
     },
     '& .katex': {
-      paddingBottom: {
-        base: 's',
-        md: 'm'
-      },
       width: '100%',
       overflowX: 'auto',
       overflowY: 'hidden'
