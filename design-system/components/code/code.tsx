@@ -14,7 +14,7 @@ import { CodeToken } from './code-token'
 // @ts-ignore
 /* c8 ignore start */
 ;(typeof global !== 'undefined' ? global : window).Prism = Prism
-require('prismjs/components/prism-json')
+require('prismjs/components/prism-java')
 /* c8 ignore end */
 
 export const Code = ({
