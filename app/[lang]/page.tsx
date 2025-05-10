@@ -20,7 +20,6 @@ import {
   Project,
   Section,
   Small,
-  Socials,
   Typewriter
 } from '@/design-system'
 import profile from '@/public/images/gorzelinski.jpg'
@@ -184,7 +183,6 @@ export default async function Home({ params: { lang } }: PageProps) {
         >
           {page.home.contact.button}
         </ButtonAnchor>
-        <Socials />
       </Section>
     </>
   )
