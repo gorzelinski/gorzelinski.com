@@ -160,10 +160,12 @@ export const button = cva({
           color: 'gray.50'
         },
         '&.active-subtle': {
-          color: 'gray.50'
+          color: 'gray.50',
+          '-webkit-text-stroke-width': 'thin'
         },
         '&.active': {
-          color: 'gray.50'
+          color: 'gray.50',
+          '-webkit-text-stroke-width': 'thin'
         },
         '&:is(:hover, :focus, .active):after': {
           transform: 'scaleX(1)',

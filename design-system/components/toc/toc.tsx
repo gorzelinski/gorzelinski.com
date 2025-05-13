@@ -16,7 +16,7 @@ export const Toc = ({ ariaLabel }: TocProps) => {
           opacity: progress < 5 || progress > 99 ? 'hidden' : 'visible'
         })}
       >
-        <ul>
+        <ol>
           {Array.from(headings).map((heading) => (
             <TocElement
               key={heading.id}
@@ -24,7 +24,7 @@ export const Toc = ({ ariaLabel }: TocProps) => {
               activeID={activeID}
             />
           ))}
-        </ul>
+        </ol>
       </nav>
     )
   )
