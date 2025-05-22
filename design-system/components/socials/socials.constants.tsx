@@ -18,6 +18,11 @@ export const socialLinks: Social[] = [
     icon: <Github />
   },
   {
+    name: 'Dribbble',
+    url: SOCIALS.dribbble,
+    icon: <Dribbble />
+  },
+  {
     name: 'Bluesky',
     url: SOCIALS.bluesky,
     icon: <Bluesky />
@@ -26,11 +31,6 @@ export const socialLinks: Social[] = [
     name: 'Twitter',
     url: SOCIALS.twitter,
     icon: <Twitter />
-  },
-  {
-    name: 'Dribbble',
-    url: SOCIALS.dribbble,
-    icon: <Dribbble />
   },
   {
     name: 'Facebook',
