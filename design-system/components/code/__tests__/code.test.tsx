@@ -37,6 +37,13 @@ describe('Code', () => {
     )
 
     expect(screen.getByText('JAVASCRIPT')).toBeInTheDocument()
+    expect(screen.getByRole('code')).not.toHaveClass('terminal')
+  })
+
+  it('renders the terminal variant', async () => {
+    render(await Code({ codeString: 'npm install react', language: 'bash' }))
+
+    expect(screen.getByRole('code')).toHaveClass('terminal')
   })
 
   // it('highlights the correct line', async () => {

@@ -41,7 +41,12 @@ export async function Code(props: CodeProps) {
         </Pre>
       ),
       code: ({ children, ...codeProps }: CodeElementProps) => (
-        <CodeElement {...codeProps}>{children}</CodeElement>
+        <CodeElement
+          className={isTerminal(language) ? 'terminal' : undefined}
+          {...codeProps}
+        >
+          {children}
+        </CodeElement>
       )
     }
   })

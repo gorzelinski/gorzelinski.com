@@ -51,28 +51,30 @@ const code = cva({
     },
     lineHeight: '2xs',
     overflowX: 'auto',
-    counterReset: 'line',
-    '& .line': {
-      display: 'inline-block',
-      counterIncrement: 'line',
-      '&:before': {
-        content: 'counter(line)',
+    '&:not(.terminal)': {
+      counterReset: 'line',
+      '& .line': {
         display: 'inline-block',
-        minWidth: '2ch',
-        marginRight: {
-          base: 's',
-          md: 'm'
+        counterIncrement: 'line',
+        '&:before': {
+          content: 'counter(line)',
+          display: 'inline-block',
+          minWidth: '2ch',
+          marginRight: {
+            base: 's',
+            md: 'm'
+          },
+          color: 'gray.500',
+          textAlign: 'left',
+          fontVariantNumeric: 'tabular-nums',
+          fontSize: 'inherit',
+          lineHeight: 'inherit',
+          verticalAlign: 'top'
         },
-        color: 'gray.500',
-        textAlign: 'left',
-        fontVariantNumeric: 'tabular-nums',
-        fontSize: 'inherit',
-        lineHeight: 'inherit',
-        verticalAlign: 'top'
-      },
-      '& span': {
-        display: 'inline',
-        lineHeight: 'inherit'
+        '& span': {
+          display: 'inline',
+          lineHeight: 'inherit'
+        }
       }
     }
   }
