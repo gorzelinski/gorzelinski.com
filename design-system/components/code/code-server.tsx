@@ -9,17 +9,19 @@ import { Pre, Code as CodeElement } from './code.styles'
 import { CodeHeader } from './code-header'
 import { CodeTitle } from './code-title'
 import { CodeLanguage } from './code-language'
+import { codeTheme } from './code-server.theme'
 
 type PreElementProps = ComponentPropsWithoutRef<'pre'>
 type CodeElementProps = ComponentPropsWithoutRef<'code'>
 
 export async function CodeServer(props: CodeProps) {
   const { css, codeString, language, title } = props
+
   if (!codeString) return null
 
   const hast = await codeToHast(codeString, {
     lang: language,
-    theme: 'github-light'
+    theme: codeTheme
   })
 
   return toJsxRuntime(hast, {
