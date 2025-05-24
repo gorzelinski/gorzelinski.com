@@ -1,65 +1,48 @@
-'use client'
-import { Highlight, Prism } from 'prism-react-renderer'
+'use server'
+import { codeToHast } from 'shiki'
+import { toJsxRuntime } from 'hast-util-to-jsx-runtime'
+import { Fragment, jsx, jsxs } from 'react/jsx-runtime'
+import type { ComponentPropsWithoutRef } from 'react'
 import { CodeProps } from './code.types'
-import { codeTheme } from './code.theme'
-import { inRange, isTerminal } from './code.helpers'
+import { isTerminal } from './code.helpers'
 import { Pre, Code as CodeElement } from './code.styles'
 import { CodeHeader } from './code-header'
 import { CodeTitle } from './code-title'
 import { CodeLanguage } from './code-language'
-import { CodeLine } from './code-line'
-import { CodeLineNumber } from './code-line-number'
-import { CodeToken } from './code-token'
+import { codeTheme } from './code.theme'
 
-// @ts-ignore
-/* c8 ignore start */
-;(typeof global !== 'undefined' ? global : window).Prism = Prism
-require('prismjs/components/prism-java')
-/* c8 ignore end */
+type PreElementProps = ComponentPropsWithoutRef<'pre'>
+type CodeElementProps = ComponentPropsWithoutRef<'code'>
 
-export const Code = ({
-  css,
-  codeString,
-  language,
-  title,
-  highlight
-}: CodeProps) => {
+export async function Code(props: CodeProps) {
+  const { css, codeString, language, title } = props
+
   if (!codeString) return null
 
-  return (
-    <Highlight theme={codeTheme} code={codeString} language={language}>
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <Pre className={className} style={{ ...style }} css={css}>
+  const hast = await codeToHast(codeString, {
+    lang: language,
+    theme: codeTheme
+  })
+
+  return toJsxRuntime(hast, {
+    Fragment,
+    jsx,
+    jsxs,
+    components: {
+      pre: ({ children, ...preProps }: PreElementProps) => (
+        <Pre className={preProps.className} style={preProps.style} css={css}>
           <CodeHeader>
             {title ? <CodeTitle>{title}</CodeTitle> : null}
             <CodeLanguage>
               {isTerminal(language) ? '🔴  🟡  🟢' : language.toUpperCase()}
             </CodeLanguage>
           </CodeHeader>
-          <CodeElement tabIndex={0}>
-            {tokens.map((line, i) => (
-              <CodeLine
-                key={i}
-                backgroundColor={
-                  inRange(highlight, i + 1) ? 'highlight' : 'default'
-                }
-                {...getLineProps({ line })}
-              >
-                {isTerminal(language) ? null : (
-                  <CodeLineNumber
-                    color={inRange(highlight, i + 1) ? 'highlight' : 'default'}
-                  >
-                    {i + 1}
-                  </CodeLineNumber>
-                )}
-                {line.map((token, key) => (
-                  <CodeToken key={key} {...getTokenProps({ token })} />
-                ))}
-              </CodeLine>
-            ))}
-          </CodeElement>
+          {children}
         </Pre>
-      )}
-    </Highlight>
-  )
+      ),
+      code: ({ children, ...codeProps }: CodeElementProps) => (
+        <CodeElement {...codeProps}>{children}</CodeElement>
+      )
+    }
+  })
 }

@@ -6,7 +6,6 @@ import {
   Blockquote,
   Callout,
   Code,
-  CodeServer,
   Caption,
   Em,
   Equation,
@@ -123,7 +122,7 @@ const components: MDXComponents = {
     )
 
     return (
-      <CodeServer
+      <Code
         css={verticalRhythm.marginBottom.m}
         codeString={codeString}
         language={language}

@@ -82,7 +82,6 @@ export {
   Avatar,
   Callout,
   Code,
-  CodeServer,
   Confetti,
   Image,
   LanguageSwitch,

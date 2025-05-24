@@ -2,7 +2,6 @@ export { Avatar } from './avatar'
 export { Callout } from './callout'
 export {
   Code,
-  CodeServer,
   preToCodeProps,
   type PreChildrenProps,
   type PreProps
