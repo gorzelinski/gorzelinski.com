@@ -45,8 +45,36 @@ const code = cva({
   base: {
     display: 'inline-block',
     width: '100%',
+    paddingY: {
+      base: 's',
+      md: 'm'
+    },
     lineHeight: '2xs',
-    overflowX: 'auto'
+    overflowX: 'auto',
+    counterReset: 'line',
+    '& .line': {
+      display: 'inline-block',
+      counterIncrement: 'line',
+      '&:before': {
+        content: 'counter(line)',
+        display: 'inline-block',
+        minWidth: '2ch',
+        marginRight: {
+          base: 's',
+          md: 'm'
+        },
+        color: 'gray.500',
+        textAlign: 'left',
+        fontVariantNumeric: 'tabular-nums',
+        fontSize: 'inherit',
+        lineHeight: 'inherit',
+        verticalAlign: 'top'
+      },
+      '& span': {
+        display: 'inline',
+        lineHeight: 'inherit'
+      }
+    }
   }
 })
 
