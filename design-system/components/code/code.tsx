@@ -2,17 +2,13 @@
 import { codeToHast } from 'shiki'
 import { toJsxRuntime } from 'hast-util-to-jsx-runtime'
 import { Fragment, jsx, jsxs } from 'react/jsx-runtime'
-import type { ComponentPropsWithoutRef } from 'react'
-import { CodeProps } from './code.types'
+import { CodeProps, PreElementProps, CodeElementProps } from './code.types'
 import { isTerminal } from './code.helpers'
 import { Pre, Code as CodeElement } from './code.styles'
 import { CodeHeader } from './code-header'
 import { CodeTitle } from './code-title'
 import { CodeLanguage } from './code-language'
 import { codeTheme } from './code.theme'
-
-type PreElementProps = ComponentPropsWithoutRef<'pre'>
-type CodeElementProps = ComponentPropsWithoutRef<'code'>
 
 export async function Code(props: CodeProps) {
   const { css, codeString, language, title } = props
