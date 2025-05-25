@@ -41,6 +41,7 @@ export async function Code(props: CodeProps) {
       ),
       code: ({ children, ...codeProps }: CodeElementProps) => (
         <CodeElement
+          tabIndex={0}
           className={isTerminal(language) ? 'terminal' : undefined}
           {...codeProps}
         >
