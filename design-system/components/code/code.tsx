@@ -1,5 +1,6 @@
 'use server'
 import { codeToHast } from 'shiki'
+import { transformerMetaHighlight } from '@shikijs/transformers'
 import { toJsxRuntime } from 'hast-util-to-jsx-runtime'
 import { Fragment, jsx, jsxs } from 'react/jsx-runtime'
 import { CodeProps, PreElementProps, CodeElementProps } from './code.types'
@@ -11,13 +12,15 @@ import { CodeLanguage } from './code-language'
 import { codeTheme } from './code.theme'
 
 export async function Code(props: CodeProps) {
-  const { css, codeString, language, title } = props
+  const { css, codeString, highlight, language, title } = props
 
   if (!codeString) return null
 
   const hast = await codeToHast(codeString, {
     lang: language,
-    theme: codeTheme
+    theme: codeTheme,
+    transformers: [transformerMetaHighlight()],
+    meta: { __raw: highlight }
   })
 
   return toJsxRuntime(hast, {

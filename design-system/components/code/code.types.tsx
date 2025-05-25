@@ -2,14 +2,25 @@ import { Language } from 'prism-react-renderer'
 import { SystemStyleObject } from '@/styled-system/types'
 import type { ComponentPropsWithoutRef } from 'react'
 
-export type Range = [number] | [number, number]
-
 export type CodeProps = {
   codeString: string
   language: Language
   title?: string
-  highlight?: Range
+  highlight?: string | undefined
   css?: SystemStyleObject
+}
+
+export type PreChildrenProps = {
+  props: {
+    className: string
+    children: string
+  }
+}
+
+export type PreProps = {
+  children?: React.ReactNode
+  title?: string
+  highlight?: string | undefined
 }
 
 export type PreElementProps = ComponentPropsWithoutRef<'pre'>

@@ -55,6 +55,7 @@ const code = cva({
       counterReset: 'line',
       '& .line': {
         display: 'inline-block',
+        minWidth: '100%',
         counterIncrement: 'line',
         '&:before': {
           content: 'counter(line)',
@@ -75,6 +76,12 @@ const code = cva({
           display: 'inline',
           lineHeight: 'inherit'
         }
+      }
+    },
+    '& .line.highlighted': {
+      backgroundColor: 'primary.900',
+      '&:before': {
+        color: 'primary.400'
       }
     }
   }
