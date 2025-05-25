@@ -46,16 +46,86 @@ describe('Code', () => {
     expect(screen.getByRole('code')).toHaveClass('terminal')
   })
 
-  // it('highlights the correct line', async () => {
-  //   render(
-  //     await Code({
-  //       codeString: `"const foo = 'bar'
-  //       const bar = 'bas'"`,
-  //       language: 'js',
-  //       highlight: [2]
-  //     })
-  //   )
+  it('highlights the correct line', async () => {
+    render(
+      await Code({
+        codeString: `"const foo = 'line 1'
+        const bar = 'line 2'"`,
+        language: 'js',
+        highlight: '{2}'
+      })
+    )
 
-  //   expect(screen.getByText('2').parentElement).toHaveClass('bg_primary.900')
-  // })
+    const line1 = screen.getByText('line 1', { exact: false }).parentElement
+    const line2 = screen.getByText('line 2', { exact: false }).parentElement
+
+    expect(line1).not.toHaveClass('highlighted')
+    expect(line2).toHaveClass('highlighted')
+  })
+
+  it('highlights the correct lines (range)', async () => {
+    render(
+      await Code({
+        codeString: `"const foo = 'line 1'
+        const bar = 'line 2'
+        const baz = 'line 3'"`,
+        language: 'js',
+        highlight: '{2-3}'
+      })
+    )
+
+    const line1 = screen.getByText('line 1', { exact: false }).parentElement
+    const line2 = screen.getByText('line 2', { exact: false }).parentElement
+    const line3 = screen.getByText('line 3', { exact: false }).parentElement
+
+    expect(line1).not.toHaveClass('highlighted')
+    expect(line2).toHaveClass('highlighted')
+    expect(line3).toHaveClass('highlighted')
+  })
+
+  it('highlights the correct lines (multiple)', async () => {
+    render(
+      await Code({
+        codeString: `"const foo = 'line 1'
+        const bar = 'line 2'
+        const baz = 'line 3'"`,
+        language: 'js',
+        highlight: '{1,3}'
+      })
+    )
+
+    const line1 = screen.getByText('line 1', { exact: false }).parentElement
+    const line2 = screen.getByText('line 2', { exact: false }).parentElement
+    const line3 = screen.getByText('line 3', { exact: false }).parentElement
+
+    expect(line1).toHaveClass('highlighted')
+    expect(line2).not.toHaveClass('highlighted')
+    expect(line3).toHaveClass('highlighted')
+  })
+
+  it('highlights the correct lines (multiple ranges)', async () => {
+    render(
+      await Code({
+        codeString: `"const foo = 'line 1'
+        const bar = 'line 2'
+        const baz = 'line 3'
+        const qux = 'line 4'
+        const quux = 'line 5'"`,
+        language: 'js',
+        highlight: '{1-2,4-5}'
+      })
+    )
+
+    const line1 = screen.getByText('line 1', { exact: false }).parentElement
+    const line2 = screen.getByText('line 2', { exact: false }).parentElement
+    const line3 = screen.getByText('line 3', { exact: false }).parentElement
+    const line4 = screen.getByText('line 4', { exact: false }).parentElement
+    const line5 = screen.getByText('line 5', { exact: false }).parentElement
+
+    expect(line1).toHaveClass('highlighted')
+    expect(line2).toHaveClass('highlighted')
+    expect(line3).not.toHaveClass('highlighted')
+    expect(line4).toHaveClass('highlighted')
+    expect(line5).toHaveClass('highlighted')
+  })
 })
