@@ -1,6 +1,7 @@
 import { token } from '@/styled-system/tokens'
+import { ThemeRegistration } from 'shiki'
 
-export const codeTheme = {
+export const codeTheme: ThemeRegistration = {
   name: 'code-theme',
   settings: [
     // Comments
