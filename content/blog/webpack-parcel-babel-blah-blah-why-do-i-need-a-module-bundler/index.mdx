@@ -67,7 +67,7 @@ module.exports = {
 
 Output customizes where webpack will put our bundle. It takes an object with two parameters: `path` and `filename`. We'll customize the webpack to emit our bundle to `./public/main.js`.
 
-```js title="webpack.config.js" highlight={[5, 8]}
+```js title="webpack.config.js" highlight='{5-8}'
 const path = require('path')
 
 module.exports = {
@@ -108,7 +108,7 @@ Then we need to configure them. A loader needs two properties to work:
 
 In our case, we'll use a regular expression to identify all CSS files, and we'll use installed earlier loaders.
 
-```js title="webpack.config.js" highlight={[12, 15]}
+```js title="webpack.config.js" highlight='{12-15}'
 const path = require('path')
 
 module.exports = {
@@ -143,7 +143,7 @@ npm install react react-dom
 
 You can use Babel independently, but we'll configure it with webpack. We need to add another loader inside the `rules` array. This time we need to exclude `node_modules` and add presets, so the `use` property takes an object.
 
-```js title="webpack.config.js" highlight={[16, 25]}
+```js title="webpack.config.js" highlight='{16-25}'
 const path = require('path')
 
 module.exports = {
@@ -214,7 +214,7 @@ npm install -D webpack-bundle-analyzer
 
 Then we need to add the `plugins` property to our config. It takes an array with all the plugins. We will create an instance of our plugin object there.
 
-```js title="webpack.config.js" highlight={[8]}
+```js title="webpack.config.js" highlight='{8}'
 const path = require('path')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 

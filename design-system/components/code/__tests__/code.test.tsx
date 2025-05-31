@@ -7,52 +7,125 @@ describe('Code', () => {
     cleanup()
   })
 
-  it('does not render if there is no code string', () => {
-    render(<Code codeString="" language="js" />)
+  it('does not render if there is no code string', async () => {
+    render(await Code({ codeString: '', language: 'js' }))
 
     expect(screen.queryByRole('code')).not.toBeInTheDocument()
   })
 
-  it('renders correctly', () => {
-    render(<Code codeString="const foo = 'bar'" language="js" />)
+  it('renders correctly', async () => {
+    render(await Code({ codeString: 'const foo = "bar"', language: 'js' }))
 
     expect(screen.getByRole('code')).toBeInTheDocument()
   })
 
-  it('renders the title if it is passed', () => {
-    render(<Code codeString="const foo = 'bar'" language="js" title="Title" />)
+  it('renders the title if it is passed', async () => {
+    render(
+      await Code({
+        codeString: 'const foo = "bar"',
+        language: 'js',
+        title: 'Title'
+      })
+    )
 
     expect(screen.getByText('Title')).toBeInTheDocument()
   })
 
-  it('renders the correct language', () => {
-    render(<Code codeString="const foo = 'bar'" language="javascript" />)
-
-    expect(screen.getByText('JAVASCRIPT')).toBeInTheDocument()
-  })
-
-  it('does not render line numbers for the terminal variant', () => {
-    render(<Code codeString="npm install react" language="bash" />)
-
-    expect(screen.queryByText('1')).not.toBeInTheDocument()
-  })
-
-  it('renders line numbers', () => {
-    render(<Code codeString="const foo = 'bar'" language="js" />)
-
-    expect(screen.getByText('1')).toBeInTheDocument()
-  })
-
-  it('highlights the correct line', () => {
+  it('renders the correct language', async () => {
     render(
-      <Code
-        codeString={`"const foo = 'bar'
-        const bar = 'bas'"`}
-        language="js"
-        highlight={[2]}
-      />
+      await Code({ codeString: 'const foo = "bar"', language: 'javascript' })
     )
 
-    expect(screen.getByText('2').parentElement).toHaveClass('bg_primary.900')
+    expect(screen.getByText('JAVASCRIPT')).toBeInTheDocument()
+    expect(screen.getByRole('code')).not.toHaveClass('terminal')
+  })
+
+  it('renders the terminal variant', async () => {
+    render(await Code({ codeString: 'npm install react', language: 'bash' }))
+
+    expect(screen.getByRole('code')).toHaveClass('terminal')
+  })
+
+  it('highlights the correct line', async () => {
+    render(
+      await Code({
+        codeString: `"const foo = 'line 1'
+        const bar = 'line 2'"`,
+        language: 'js',
+        highlight: '{2}'
+      })
+    )
+
+    const line1 = screen.getByText('line 1', { exact: false }).parentElement
+    const line2 = screen.getByText('line 2', { exact: false }).parentElement
+
+    expect(line1).not.toHaveClass('highlighted')
+    expect(line2).toHaveClass('highlighted')
+  })
+
+  it('highlights the correct lines (range)', async () => {
+    render(
+      await Code({
+        codeString: `"const foo = 'line 1'
+        const bar = 'line 2'
+        const baz = 'line 3'"`,
+        language: 'js',
+        highlight: '{2-3}'
+      })
+    )
+
+    const line1 = screen.getByText('line 1', { exact: false }).parentElement
+    const line2 = screen.getByText('line 2', { exact: false }).parentElement
+    const line3 = screen.getByText('line 3', { exact: false }).parentElement
+
+    expect(line1).not.toHaveClass('highlighted')
+    expect(line2).toHaveClass('highlighted')
+    expect(line3).toHaveClass('highlighted')
+  })
+
+  it('highlights the correct lines (multiple)', async () => {
+    render(
+      await Code({
+        codeString: `"const foo = 'line 1'
+        const bar = 'line 2'
+        const baz = 'line 3'"`,
+        language: 'js',
+        highlight: '{1,3}'
+      })
+    )
+
+    const line1 = screen.getByText('line 1', { exact: false }).parentElement
+    const line2 = screen.getByText('line 2', { exact: false }).parentElement
+    const line3 = screen.getByText('line 3', { exact: false }).parentElement
+
+    expect(line1).toHaveClass('highlighted')
+    expect(line2).not.toHaveClass('highlighted')
+    expect(line3).toHaveClass('highlighted')
+  })
+
+  it('highlights the correct lines (multiple ranges)', async () => {
+    render(
+      await Code({
+        codeString: `"const foo = 'line 1'
+        const bar = 'line 2'
+        const baz = 'line 3'
+        const qux = 'line 4'
+        const quux = 'line 5'"`,
+        language: 'js',
+        highlight: '{1-2,4-5}'
+      })
+    )
+
+    const line1 = screen.getByText('line 1', { exact: false }).parentElement
+    const line2 = screen.getByText('line 2', { exact: false }).parentElement
+    const line3 = screen.getByText('line 3', { exact: false }).parentElement
+    const line4 = screen.getByText('line 4', { exact: false }).parentElement
+    const line5 = screen.getByText('line 5', { exact: false }).parentElement
+
+    expect(line1).toHaveClass('highlighted')
+    expect(line2).toHaveClass('highlighted')
+    expect(line3).not.toHaveClass('highlighted')
+    expect(line4).toHaveClass('highlighted')
+    expect(line5).toHaveClass('highlighted')
   })
 })

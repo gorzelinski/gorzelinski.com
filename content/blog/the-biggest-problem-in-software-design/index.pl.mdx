@@ -269,7 +269,7 @@ Jeżeli API dla najczęstszego przypadku zmusza użytkowników, aby uczyli się 
 
 Pokażę przykład z mojego repozytorium. W kodzie, mam funkcje pomocnicze do procesowania plików MDX (format moich wpisów na blogu).
 
-```ts title="Przykład rozsądnych wartości domyślnych" highlight={[4, 5]}
+```ts title="Przykład rozsądnych wartości domyślnych" highlight='{4-5}'
 export async function getMDXes<Type extends MDXTypes>(
   page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>,
   lang: Locale,
@@ -339,7 +339,7 @@ Najlepszym sposobem na podział metody jest wydzielenie z niej podzadania do odd
 
 Ponownie wykorzystam przykład z mojego repozytorium.
 
-```ts title="Przykład wydzielenia podzadania" highlight={[11]}
+```ts title="Przykład wydzielenia podzadania" highlight='{11}'
 export async function getMDXes<Type extends MDXTypes>(
   page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>,
   lang: Locale,

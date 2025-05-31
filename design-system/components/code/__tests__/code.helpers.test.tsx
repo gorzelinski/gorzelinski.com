@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { inRange, isTerminal, preToCodeProps } from '../code.helpers'
+import { isTerminal, preToCodeProps } from '../code.helpers'
 
 describe('Code helpers', () => {
   describe('preToCodeProps()', () => {
@@ -28,40 +28,6 @@ describe('Code helpers', () => {
 
     it('returns false if there is a different language', () => {
       expect(isTerminal('js')).toBe(false)
-    })
-  })
-
-  describe('inRange()', () => {
-    it('returns false if there is no range', () => {
-      expect(inRange(undefined, 1)).toBe(false)
-    })
-
-    it('returns true if the number is the start', () => {
-      expect(inRange([1], 1)).toBe(true)
-    })
-
-    it('returns false if the number is not the start', () => {
-      expect(inRange([1], 2)).toBe(false)
-    })
-
-    it('returns false if the line is less than the range', () => {
-      expect(inRange([2, 3], 1)).toBe(false)
-    })
-
-    it('returns true if the line is the start of the range', () => {
-      expect(inRange([1, 3], 1)).toBe(true)
-    })
-
-    it('returns true if the line is within the range', () => {
-      expect(inRange([1, 3], 2)).toBe(true)
-    })
-
-    it('returns true if the line is the end of the range', () => {
-      expect(inRange([1, 3], 3)).toBe(true)
-    })
-
-    it('returns false if the line is grater than the range', () => {
-      expect(inRange([1, 3], 4)).toBe(false)
     })
   })
 })
