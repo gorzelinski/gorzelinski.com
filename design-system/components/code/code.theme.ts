@@ -14,7 +14,6 @@ export const codeTheme = {
       scope: [
         'constant',
         'constant.character',
-        'constant.character.escape',
         'constant.numeric',
         'constant.language',
         'constant.other'
