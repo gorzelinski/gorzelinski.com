@@ -2,7 +2,7 @@ import { Language } from 'prism-react-renderer'
 import { SystemStyleObject } from '@/styled-system/types'
 import type { ComponentPropsWithoutRef } from 'react'
 
-export type CodeProps = {
+export type BlockCodeProps = {
   codeString: string
   language: Language
   title?: string

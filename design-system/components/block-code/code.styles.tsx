@@ -1,7 +1,6 @@
 import { cva } from '@/styled-system/css'
-import { styled } from '@/styled-system/jsx'
 
-const code = cva({
+export const code = cva({
   base: {
     display: 'inline-block',
     minWidth: '100%',
@@ -43,5 +42,3 @@ const code = cva({
     }
   }
 })
-
-export const Code = styled('code', code)

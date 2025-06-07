@@ -1,27 +1,27 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Code } from '../code'
+import { BlockCode } from '../block-code'
 
-describe('Code', () => {
+describe('BlockCode', () => {
   afterEach(() => {
     cleanup()
   })
 
   it('does not render if there is no code string', async () => {
-    render(await Code({ codeString: '', language: 'js' }))
+    render(await BlockCode({ codeString: '', language: 'js' }))
 
     expect(screen.queryByRole('code')).not.toBeInTheDocument()
   })
 
   it('renders correctly', async () => {
-    render(await Code({ codeString: 'const foo = "bar"', language: 'js' }))
+    render(await BlockCode({ codeString: 'const foo = "bar"', language: 'js' }))
 
     expect(screen.getByRole('code')).toBeInTheDocument()
   })
 
   it('renders the title if it is passed', async () => {
     render(
-      await Code({
+      await BlockCode({
         codeString: 'const foo = "bar"',
         language: 'js',
         title: 'Title'
@@ -33,7 +33,10 @@ describe('Code', () => {
 
   it('renders the correct language', async () => {
     render(
-      await Code({ codeString: 'const foo = "bar"', language: 'javascript' })
+      await BlockCode({
+        codeString: 'const foo = "bar"',
+        language: 'javascript'
+      })
     )
 
     expect(screen.getByText('JAVASCRIPT')).toBeInTheDocument()
@@ -41,14 +44,16 @@ describe('Code', () => {
   })
 
   it('renders the terminal variant', async () => {
-    render(await Code({ codeString: 'npm install react', language: 'bash' }))
+    render(
+      await BlockCode({ codeString: 'npm install react', language: 'bash' })
+    )
 
     expect(screen.getByRole('code')).toHaveClass('terminal')
   })
 
   it('highlights the correct line', async () => {
     render(
-      await Code({
+      await BlockCode({
         codeString: `"const foo = 'line 1'
         const bar = 'line 2'"`,
         language: 'js',
@@ -65,7 +70,7 @@ describe('Code', () => {
 
   it('highlights the correct lines (range)', async () => {
     render(
-      await Code({
+      await BlockCode({
         codeString: `"const foo = 'line 1'
         const bar = 'line 2'
         const baz = 'line 3'"`,
@@ -85,7 +90,7 @@ describe('Code', () => {
 
   it('highlights the correct lines (multiple)', async () => {
     render(
-      await Code({
+      await BlockCode({
         codeString: `"const foo = 'line 1'
         const bar = 'line 2'
         const baz = 'line 3'"`,
@@ -105,7 +110,7 @@ describe('Code', () => {
 
   it('highlights the correct lines (multiple ranges)', async () => {
     render(
-      await Code({
+      await BlockCode({
         codeString: `"const foo = 'line 1'
         const bar = 'line 2'
         const baz = 'line 3'

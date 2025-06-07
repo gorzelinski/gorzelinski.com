@@ -80,8 +80,8 @@ export {
 
 export {
   Avatar,
+  BlockCode,
   Callout,
-  Code,
   Confetti,
   Image,
   LanguageSwitch,

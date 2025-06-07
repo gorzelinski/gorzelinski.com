@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { isTerminal, preToCodeProps } from '../code.helpers'
+import { isTerminal, preToCodeProps } from '../block-code.helpers'
 
-describe('Code helpers', () => {
+describe('BlockCode helpers', () => {
   describe('preToCodeProps()', () => {
     it('returns the correct language and codeString', () => {
       const preProps = {

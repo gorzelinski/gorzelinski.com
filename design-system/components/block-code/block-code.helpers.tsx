@@ -1,7 +1,7 @@
 import { Language } from 'prism-react-renderer'
-import { CodeProps, PreChildrenProps } from './code.types'
+import { BlockCodeProps, PreChildrenProps } from './block-code.types'
 
-export function preToCodeProps(preProps: PreChildrenProps): CodeProps {
+export function preToCodeProps(preProps: PreChildrenProps): BlockCodeProps {
   const language = preProps.props.className.replace('language-', '')
   const codeString = preProps.props.children.trim()
 
