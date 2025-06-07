@@ -5,7 +5,7 @@ import { toJsxRuntime } from 'hast-util-to-jsx-runtime'
 import { Fragment, jsx, jsxs } from 'react/jsx-runtime'
 import { CodeProps, PreElementProps, CodeElementProps } from './code.types'
 import { isTerminal } from './code.helpers'
-import { Pre, Code as CodeElement } from './code.styles'
+import { Pre, Code as CodeElement, PreWrapper } from './code.styles'
 import { CodeHeader } from './code-header'
 import { CodeTitle } from './code-title'
 import { CodeLanguage } from './code-language'
@@ -29,15 +29,19 @@ export async function Code(props: CodeProps) {
     jsxs,
     components: {
       pre: ({ children, ...preProps }: PreElementProps) => (
-        <Pre className={preProps.className} style={preProps.style} css={css}>
+        <PreWrapper
+          className={preProps.className}
+          style={preProps.style}
+          css={css}
+        >
           <CodeHeader>
             {title ? <CodeTitle>{title}</CodeTitle> : null}
             <CodeLanguage>
               {isTerminal(language) ? '🔴  🟡  🟢' : language.toUpperCase()}
             </CodeLanguage>
           </CodeHeader>
-          {children}
-        </Pre>
+          <Pre>{children}</Pre>
+        </PreWrapper>
       ),
       code: ({ children, ...codeProps }: CodeElementProps) => (
         <CodeElement
