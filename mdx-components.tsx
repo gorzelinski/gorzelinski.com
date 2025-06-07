@@ -3,9 +3,9 @@ import type { MDXComponents } from 'mdx/types'
 import { Pages } from './constants'
 import { getTextFromChildren, slugify } from './lib'
 import {
+  BlockCode,
   Blockquote,
   Callout,
-  Code,
   Caption,
   Em,
   Equation,
@@ -122,7 +122,7 @@ const components: MDXComponents = {
     )
 
     return (
-      <Code
+      <BlockCode
         css={verticalRhythm.marginBottom.m}
         codeString={codeString}
         language={language}

@@ -1,6 +1,6 @@
 import { cva } from '@/styled-system/css'
 
-export const codeHeader = cva({
+export const blockCodeHeader = cva({
   base: {
     display: 'flex',
     gap: 's',

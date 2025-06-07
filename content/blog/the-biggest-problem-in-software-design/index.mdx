@@ -269,7 +269,7 @@ If the API for a commonly used feature forces users to learn about other rarely 
 
 I'll show a simple example. In my codebase, I have some helpers to process MDX files (the format of my blog posts).
 
-```ts title="Example of reasonable defaults" highlight={[4, 5]}
+```ts title="Example of reasonable defaults" highlight='{4-5}'
 export async function getMDXes<Type extends MDXTypes>(
   page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>,
   lang: Locale,
@@ -339,7 +339,7 @@ The best way to split a method is by factoring out a subtask into a separate met
 
 I'll reuse the example from my codebase.
 
-```ts title="Example of extracting a subtask" highlight={[11]}
+```ts title="Example of extracting a subtask" highlight='{11}'
 export async function getMDXes<Type extends MDXTypes>(
   page: Extract<Pages, (typeof LINKS)['blog' | 'portfolio']>,
   lang: Locale,
