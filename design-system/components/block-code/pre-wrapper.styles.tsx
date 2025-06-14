@@ -1,8 +1,7 @@
 import { cva } from '@/styled-system/css'
-import { styled } from '@/styled-system/jsx'
 import { sharedTransitionProperties } from '../../utils'
 
-const pre = cva({
+export const preWrapper = cva({
   base: {
     position: 'relative',
     display: 'block',
@@ -38,16 +37,3 @@ const pre = cva({
     }
   }
 })
-
-export const Pre = styled('pre', pre)
-
-const code = cva({
-  base: {
-    display: 'inline-block',
-    width: '100%',
-    lineHeight: '2xs',
-    overflowX: 'auto'
-  }
-})
-
-export const Code = styled('code', code)

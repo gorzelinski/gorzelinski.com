@@ -66,7 +66,7 @@ module.exports = {
 
 Output ustawia, gdzie webpack powinien umieścić nasz bundle. Ta opcja przyjmuje dwa parametry: `path` i `filename`. Skonfigurujemy webpacka, aby zapisywał bundle w `./public/main.js`.
 
-```js title="webpack.config.js" highlight={[5, 8]}
+```js title="webpack.config.js" highlight='{5-8}'
 const path = require('path')
 
 module.exports = {
@@ -107,7 +107,7 @@ Następnie musimy je skonfigurować. Loader przyjmuje dwie właściwości:
 
 W naszym przypadku, użyjemy wyrażenia regularnego do zidentyfikowania plików CSS i użyjemy powyższych loaderów.
 
-```js title="webpack.config.js" highlight={[12, 15]}
+```js title="webpack.config.js" highlight='{12-15}'
 const path = require('path')
 
 module.exports = {
@@ -142,7 +142,7 @@ npm install react react-dom
 
 Babel może być używany niezależnie, ale my skonfigurujemy go z webpackiem. W tym celu musimy dodać loader wewnątrz tablicy `rules`. Tym razem musimy wykluczyć folder `node_modules` i dodać presety, dlatego właściwość `use` przyjmuje obiekt.
 
-```js title="webpack.config.js" highlight={[16,25]}
+```js title="webpack.config.js" highlight='{16-25}'
 const path = require('path')
 
 module.exports = {
@@ -213,7 +213,7 @@ npm install -D webpack-bundle-analyzer
 
 Następnie musimy dodać właściwość `plguins` do naszej konfiguracji. Przyjmuje ona tablicę ze wszystkimi pluginami. W tablicy stworzymy instancję naszego nowego obiektu.
 
-```js title="webpack.config.js" highlight={[28]}
+```js title="webpack.config.js" highlight='{28}'
 const path = require('path')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 

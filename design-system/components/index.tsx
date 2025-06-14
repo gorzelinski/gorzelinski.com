@@ -1,11 +1,11 @@
 export { Avatar } from './avatar'
 export { Callout } from './callout'
 export {
-  Code,
+  BlockCode,
   preToCodeProps,
   type PreChildrenProps,
   type PreProps
-} from './code'
+} from './block-code'
 export { Confetti } from './confetti'
 export { Image } from './image'
 export { LanguageSwitch } from './language-switch'
