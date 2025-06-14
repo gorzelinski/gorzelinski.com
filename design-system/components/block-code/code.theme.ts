@@ -39,7 +39,7 @@ export const codeTheme: ThemeRegistration = {
         'entity.name.type',
         'entity.other'
       ],
-      settings: { foreground: token('colors.primary.400') }
+      settings: { foreground: token('colors.danger.400') }
     },
     {
       scope: ['entity.name.section'],
@@ -62,12 +62,7 @@ export const codeTheme: ThemeRegistration = {
 
     // Keywords
     {
-      scope: [
-        'keyword',
-        'keyword.control',
-        'keyword.operator',
-        'keyword.other'
-      ],
+      scope: ['keyword', 'keyword.control', 'keyword.other'],
       settings: { foreground: token('colors.primary.400') }
     },
     {
