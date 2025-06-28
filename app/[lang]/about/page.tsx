@@ -13,6 +13,7 @@ import {
   ButtonLink,
   Card,
   ChevronForward,
+  Download,
   GameController,
   H1,
   H2,
@@ -106,6 +107,18 @@ export default async function About({ params: { lang } }: PageProps) {
           <P>{page.about.story.activities}</P>
           <P>{page.about.story.position}</P>
         </VStack>
+        <ButtonLink
+          justifySelf="flex-start"
+          href={page.about.resume.href}
+          _hover={{
+            '& > span': {
+              animation: 'bouncing'
+            }
+          }}
+        >
+          {page.about.resume.button}
+          <Download />
+        </ButtonLink>
       </Section>
       <Section columns="3">
         <H2>{page.about.facts.heading}</H2>

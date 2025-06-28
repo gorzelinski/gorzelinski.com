@@ -30,6 +30,7 @@ export function middleware(request: NextRequest) {
     '/fonts',
     '/images',
     '/videos',
+    '/docs',
     '/opengraph-image',
     '/favicon.ico'
   ]

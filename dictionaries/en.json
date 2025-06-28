@@ -116,6 +116,10 @@
         "activities": "If I do not study and consume media (or coffee), I probably work out, walk, watch memes or think hard about cognitive biases.",
         "position": "I currently work at CKSource as a Software Engineer and Technical Writer to co-create rich editing solutions for the web. There is a chance you've heard of CKEditor - our flagship product."
       },
+      "resume": {
+        "button": "My Resume",
+        "href": "/docs/cv-matthew-gorzelinski.pdf"
+      },
       "facts": {
         "heading": "Random facts",
         "list": [

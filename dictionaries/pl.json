@@ -116,6 +116,10 @@
         "activities": "Jeżeli się nie uczę i nie konsumuję różnych mediów (lub kawy) to najprawdopodobniej ćwiczę, spaceruję, przeglądam memy lub ciężko rozmyślam nad błędami poznawczymi.",
         "position": "Obecnie współpracuję z CKSource jako Software Engineer i Technical Writer, aby współtworzyć bogate rozwiązania edycyjne dla sieci. Istnieje szansa, że słyszałeś o CKEditor - naszym sztandarowym produkcie."
       },
+      "resume": {
+        "button": "Mój życiorys",
+        "href": "/docs/cv-mateusz-gorzelinski.pdf"
+      },
       "facts": {
         "heading": "Losowe fakty",
         "list": [
