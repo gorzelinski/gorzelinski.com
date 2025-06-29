@@ -7,5 +7,6 @@ export {
   useScrollProgress,
   type ScrollProgressSelector
 } from './use-scroll-progress'
+export { useScrollToHeading } from './use-scroll-to-heading'
 export { useTheme } from './use-theme'
 export { useDocumentDimensions } from './use-window-dimensions'
