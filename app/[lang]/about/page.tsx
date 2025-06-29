@@ -10,6 +10,7 @@ import { openGraph, twitter } from '@/app/shared-metadata'
 import { VStack } from '@/styled-system/jsx'
 import {
   Book,
+  ButtonAnchor,
   ButtonLink,
   Card,
   ChevronForward,
@@ -107,7 +108,7 @@ export default async function About({ params: { lang } }: PageProps) {
           <P>{page.about.story.activities}</P>
           <P>{page.about.story.position}</P>
         </VStack>
-        <ButtonLink
+        <ButtonAnchor
           justifySelf="flex-start"
           href={page.about.resume.href}
           _hover={{
@@ -118,7 +119,7 @@ export default async function About({ params: { lang } }: PageProps) {
         >
           {page.about.resume.button}
           <Download />
-        </ButtonLink>
+        </ButtonAnchor>
       </Section>
       <Section columns="3">
         <H2>{page.about.facts.heading}</H2>
