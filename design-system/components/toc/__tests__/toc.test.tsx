@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
-import { useHeadings, useScrollProgress } from '@/hooks'
+import { useHeadings, useScrollProgress, useScrollToHeading } from '@/hooks'
 import { Toc } from '../toc'
 import { createHeading } from './toc-element.test'
 import dictionary from '@/dictionaries/en.json'
@@ -13,11 +13,13 @@ const headings = [
 
 vi.mock('@/hooks', () => ({
   useHeadings: vi.fn(),
-  useScrollProgress: vi.fn()
+  useScrollProgress: vi.fn(),
+  useScrollToHeading: vi.fn()
 }))
 
 const useScrollProgressMock = vi.mocked(useScrollProgress)
 const useHeadingsMock = vi.mocked(useHeadings)
+const useScrollToHeadingMock = vi.mocked(useScrollToHeading)
 
 describe('Toc', () => {
   afterEach(() => {
@@ -28,6 +30,7 @@ describe('Toc', () => {
   it("doesn't render without headings", () => {
     useHeadingsMock.mockReturnValue({ headings: [], activeID: 'heading-1' })
     useScrollProgressMock.mockReturnValue(50)
+    useScrollToHeadingMock.mockReturnValue({ current: null })
 
     render(<Toc ariaLabel={ariaLabel} />)
 
@@ -39,6 +42,7 @@ describe('Toc', () => {
   it('renders correctly', async () => {
     useHeadingsMock.mockReturnValue({ headings, activeID: 'heading-1' })
     useScrollProgressMock.mockReturnValue(50)
+    useScrollToHeadingMock.mockReturnValue({ current: null })
 
     render(<Toc ariaLabel={ariaLabel} />)
 
@@ -58,11 +62,22 @@ describe('Toc', () => {
   it('hides the toc when progress is less than 5', async () => {
     useHeadingsMock.mockReturnValue({ headings, activeID: 'heading-1' })
     useScrollProgressMock.mockReturnValue(4)
+    useScrollToHeadingMock.mockReturnValue({ current: null })
 
     render(<Toc ariaLabel={ariaLabel} />)
 
     const toc = screen.getByRole('navigation')
 
     expect(toc).toHaveClass('opacity_0')
+  })
+
+  it('calls useScrollToHeading with activeID', () => {
+    useHeadingsMock.mockReturnValue({ headings, activeID: 'heading-1' })
+    useScrollProgressMock.mockReturnValue(50)
+    useScrollToHeadingMock.mockReturnValue({ current: null })
+
+    render(<Toc ariaLabel={ariaLabel} />)
+
+    expect(useScrollToHeadingMock).toHaveBeenCalledWith('heading-1')
   })
 })
