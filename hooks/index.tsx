@@ -9,4 +9,4 @@ export {
 } from './use-scroll-progress'
 export { useScrollToHeading } from './use-scroll-to-heading'
 export { useTheme } from './use-theme'
-export { useDocumentDimensions } from './use-window-dimensions'
+export { useDocumentDimensions } from './use-document-dimensions'
