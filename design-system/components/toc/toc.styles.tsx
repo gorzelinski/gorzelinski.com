@@ -9,11 +9,11 @@ export const toc = cva({
     xl: {
       display: 'block',
       position: 'fixed',
-      top: 'calc((100% - token(sizes.2xl)) / 2)',
+      top: '25vh',
       left: 'l',
-      height: '2xl',
+      height: '50vh',
       zIndex: 'closer',
-      overflowY: 'auto'
+      overflowY: 'hidden'
     }
   },
   variants: {

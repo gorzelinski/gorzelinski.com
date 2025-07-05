@@ -13,9 +13,9 @@ export const progress = cva({
     transitionProperty: 'background-color, opacity',
     ...sharedTransitionProperties,
     md: {
-      top: 'calc((100% - token(sizes.2xl)) / 2)',
+      top: '25vh',
       left: 's',
-      width: '2xl',
+      width: '50vh',
       borderRadius: 'xs',
       transform: 'rotate(90deg)',
       transformOrigin: 'top left'
