@@ -9,6 +9,7 @@ export default defineConfig({
     setupFiles: ['vitest.setup.ts'],
     include: [
       'design-system/**/*.{test,spec}.?(c|m)[jt]s?(x)',
+      'hooks/**/*.{test,spec}.?(c|m)[jt]s?(x)',
       'lib/**/*.{test,spec}.?(c|m)[jt]s?(x)',
       'scripts/**/*.{test,spec}.?(c|m)[jt]s?(x)'
     ],
@@ -17,6 +18,7 @@ export default defineConfig({
       reporter: ['text', 'json', 'html'],
       include: [
         'design-system/**/*.{js,jsx,ts,tsx}',
+        'hooks/**/*.{js,jsx,ts,tsx}',
         'lib/**/*.{js,jsx,ts,tsx}'
       ],
       exclude: [
