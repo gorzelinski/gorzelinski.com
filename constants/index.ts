@@ -7,4 +7,5 @@ export {
   OPENGRAPH,
   TWITTER
 } from './metadata'
+export { ENGLISH_FORM_ID, POLISH_FORM_ID } from './newsletter'
 export { THEME } from './theme'

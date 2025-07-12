@@ -10,7 +10,7 @@ import {
 import { CONTENTTYPE, HANDLES, LINKS, SOCIALS } from '@/constants'
 import { i18n, Locale } from '@/i18n.config'
 import { token } from '@/styled-system/tokens'
-import { getFormURL } from '@/design-system/sections/newsletter/newsletter.helpers'
+import { getFormURL } from '@/lib/newsletter'
 import en from '@/dictionaries/en.json'
 import pl from '@/dictionaries/pl.json'
 

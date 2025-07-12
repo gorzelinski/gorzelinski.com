@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Locale } from '@/i18n.config'
 import { NewsletterStates } from '@/design-system/sections/newsletter/newsletter.types'
-import { getFormURL } from '@/design-system/sections/newsletter/newsletter.helpers'
+import { getFormURL } from '@/lib/newsletter'
 
 export function useNewsletter(lang: Locale) {
   const [state, setState] = useState<NewsletterStates>('idle')

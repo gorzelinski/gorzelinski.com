@@ -26,12 +26,6 @@ const createMockFormEvent = (
   stopPropagation: vi.fn()
 })
 
-vi.mock('@/design-system/sections/newsletter/newsletter.helpers', () => ({
-  getFormURL: vi.fn((lang: string) =>
-    lang === 'pl' ? FORM_URL_PL : FORM_URL_EN
-  )
-}))
-
 describe('useNewsletter', () => {
   let mockFetch: any
   let mockWindowOpen: any
