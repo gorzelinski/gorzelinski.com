@@ -26,7 +26,7 @@ export const Project = ({
       />
       <Small>{deliverables.join(', ')}</Small>
       <H3 size="s">{title}</H3>
-      <P>{description}</P>
+      <P size="s">{description}</P>
       <ButtonLink
         align="left"
         variant="text"
