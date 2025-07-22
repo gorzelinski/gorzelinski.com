@@ -3,7 +3,7 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const inlineCode = cva({
   base: {
-    display: 'inline-block',
+    display: 'inline',
     paddingX: 'xs',
     paddingY: '2xs',
     borderRadius: 's',
