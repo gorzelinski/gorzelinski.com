@@ -45,7 +45,7 @@ Before responding to any request, follow these steps:
 ### Naming Conventions
 
 - Use descriptive names with auxiliary verbs (e.g. isLoading, hasError)
-- Avoid unnecesary, generic nouns, like reults~~Array~~
+- Avoid unnecessary, generic nouns, like results~~Array~~
 - Name variables, functions, etc. using best JavaScript/Typescript practices
 - camelCase for functions and variables. UpperCamelCase for class names
 - Prefix event handlers with "handle" (e.g. handleClick, handleSubmit)
@@ -93,18 +93,18 @@ Before responding to any request, follow these steps:
       - `og` - folder with the route to generate OG meta images
       - `twitter` - folder with the route to generate twitter meta images
     - `blog` - folder with blog pages
-      - `[slug]` - template for indiwidual blog posts
+      - `[slug]` - template for individual blog posts
       - `page.tsx` - the blog page with all blog posts listed
     - `feed.xml` - folder with the route to generate RSS feed
     - `portfolio` - folder with portfolio pages
-      - `[slug]` - template for indiwidual portfolio projects
+      - `[slug]` - template for individual portfolio projects
       - `page.tsx` - the portfolio page with all portfolio projects listed
     - `subscription-confirmed` - folder with the page for newsletter subscribers
     - `uses` - folder with the uses page
     - `globals.css` - file with all CSS layers imported
     - `layout.tsx` - file with the main layout
     - `not-found.tsx` - 404 page
-    - `page.tsx` - langing page
+    - `page.tsx` - landing page
     - `sitemap.tsx` - a route to generate sitemap XML
 - `assets` - folder with font assets
 - `constants` - folder with global project constants
@@ -128,7 +128,7 @@ Before responding to any request, follow these steps:
 - `theme` - folder with global styles and design tokens
 - `types` - folder with types for the app folder
 - `.eslintrc.json` - file to configure eslint
-- `.gitignore` - file to list ingored git files
+- `.gitignore` - file to list ignored git files
 - `.prettierrc.json` - file to configure prettier
 - `i18n.config.ts` - file to configure website internationalization (polish and english)
 - `mdx-components.tsx` - file to map markdown elements and custom components with React components
