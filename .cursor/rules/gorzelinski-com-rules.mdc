@@ -145,7 +145,7 @@ Before responding to any request, follow these steps:
 
 ## Testing
 
-Ues Vite for unit testing and Playwright for E2E testing.
+Ues Vitest for unit testing and Playwright for E2E testing.
 
 To run unit tests: `npm run test:run`
 
