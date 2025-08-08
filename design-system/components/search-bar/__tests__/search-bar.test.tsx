@@ -3,6 +3,7 @@ import { cleanup, render, screen, fireEvent } from '@testing-library/react'
 import { SearchBar } from '../search-bar'
 
 const mockReplace = vi.fn()
+
 vi.mock('next/navigation', () => ({
   useSearchParams: () => new URLSearchParams('query=test'),
   usePathname: () => '/blog',

@@ -22,6 +22,9 @@ vi.mock('@/constants', () => ({
   THEME: { osMedia: '(prefers-color-scheme: light)' }
 }))
 
+const hasCookieMock = vi.mocked(hasCookie)
+const getThemeAttributeMock = vi.mocked(getThemeAttribute)
+
 const createMatchMediaMock = (
   listeners: Record<string, Function[]>,
   removeEventListenerMock = vi.fn()
@@ -62,7 +65,7 @@ describe('useTheme', () => {
   })
 
   it('returns theme from getThemeAttribute on mount', () => {
-    vi.mocked(getThemeAttribute).mockReturnValue('dark')
+    getThemeAttributeMock.mockReturnValue('dark')
 
     const { result } = renderHook(() => useTheme())
 
@@ -70,7 +73,7 @@ describe('useTheme', () => {
   })
 
   it('sets cookie if not present', () => {
-    vi.mocked(hasCookie).mockReturnValue(false)
+    hasCookieMock.mockReturnValue(false)
 
     renderHook(() => useTheme())
 
@@ -82,7 +85,7 @@ describe('useTheme', () => {
   })
 
   it('does not set cookie if already present', () => {
-    vi.mocked(hasCookie).mockReturnValue(true)
+    hasCookieMock.mockReturnValue(true)
 
     renderHook(() => useTheme())
 
