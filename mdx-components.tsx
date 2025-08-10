@@ -3,6 +3,7 @@ import type { MDXComponents } from 'mdx/types'
 import { Pages } from './constants'
 import { getTextFromChildren, slugify } from './lib'
 import {
+  Abbr,
   BlockCode,
   Blockquote,
   Callout,
@@ -157,6 +158,7 @@ const components: MDXComponents = {
 }
 
 const customComponents: MDXComponents = {
+  Abbr: ({ children, title }) => <Abbr title={title}>{children}</Abbr>,
   Callout: ({ children, ...props }) => (
     <Callout {...props} css={verticalRhythm.marginBottom.m}>
       {children}

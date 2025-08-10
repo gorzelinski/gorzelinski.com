@@ -1,5 +1,6 @@
 export {
   A,
+  Abbr,
   Blockquote,
   Button,
   ButtonAnchor,

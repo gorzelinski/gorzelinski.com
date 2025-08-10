@@ -1,4 +1,5 @@
 export { A, Link } from './anchor'
+export { Abbr } from './abbr'
 export { Blockquote } from './blockquote'
 export { Button, ButtonAnchor, ButtonLink } from './button'
 export { Card, card } from './card'
