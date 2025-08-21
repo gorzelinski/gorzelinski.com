@@ -86,6 +86,7 @@ test.describe('Reading tests', () => {
 
       await tocLink.click()
 
+      await expect(tocLink).toHaveCSS('-webkit-text-stroke-width', '0.25px')
       await expect(page.url()).toContain('#computer-science')
     }
 

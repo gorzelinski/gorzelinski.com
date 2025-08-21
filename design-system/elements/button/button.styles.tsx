@@ -161,11 +161,11 @@ export const button = cva({
         },
         '&.active-subtle': {
           color: 'gray.50',
-          '-webkit-text-stroke-width': 'thin'
+          '-webkit-text-stroke-width': 'token(spacing.4xs)'
         },
         '&.active': {
           color: 'gray.50',
-          '-webkit-text-stroke-width': 'thin'
+          '-webkit-text-stroke-width': 'token(spacing.4xs)'
         },
         '&:is(:hover, :focus, .active):after': {
           transform: 'scaleX(1)',
