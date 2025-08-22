@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import rehypeMdxCodeProps from 'rehype-mdx-code-props'
+import rehypeUnwrapImages from 'rehype-unwrap-images'
 import { Pluggable } from 'unified'
 import readingTime, { ReadTimeResults } from 'reading-time'
 import { LINKS, Pages } from '@/constants'
@@ -88,7 +89,8 @@ export async function getMDX<Type extends MDXTypes>(
         remarkPlugins: [remarkGfm, remarkMath],
         rehypePlugins: [
           rehypeKatex as Pluggable,
-          rehypeMdxCodeProps as Pluggable
+          rehypeMdxCodeProps as Pluggable,
+          rehypeUnwrapImages as Pluggable
         ]
       }
     }
