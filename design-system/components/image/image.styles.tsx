@@ -43,5 +43,9 @@ export const image = cva({
         borderRadius: 'circle'
       }
     }
+  },
+  defaultVariants: {
+    aspectRatio: 'auto',
+    borderRadius: 'none'
   }
 })
