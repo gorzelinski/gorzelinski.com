@@ -46,10 +46,19 @@ export const small = cva({
       bottom: {
         captionSide: 'bottom'
       }
+    },
+    marginTop: {
+      none: {
+        marginTop: '0'
+      },
+      s: {
+        marginTop: 's'
+      }
     }
   },
   defaultVariants: {
     spacing: 'normal',
-    style: 'normal'
+    style: 'normal',
+    marginTop: 'none'
   }
 })

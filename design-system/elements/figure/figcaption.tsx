@@ -4,6 +4,7 @@ import { small } from '../small'
 export const Figcaption = styled('figcaption', small, {
   defaultProps: {
     style: 'italic',
-    spacing: 'wide'
+    spacing: 'wide',
+    marginTop: 's'
   }
 })

@@ -2,6 +2,7 @@ import path from 'path'
 import type { MDXComponents } from 'mdx/types'
 import { Pages } from './constants'
 import { getTextFromChildren, slugify } from './lib'
+import { Box } from '@/styled-system/jsx'
 import {
   Abbr,
   BlockCode,
@@ -172,14 +173,40 @@ export function getMDXComponents(page: Pages, slug: string): MDXComponents {
   return {
     ...components,
     ...customComponents,
-    img: ({ src, alt, title }) => (
-      <Image
-        src={path.normalize(`/images${page}${slug}/${src!}`)}
-        alt={alt!}
-        title={title}
-        width={800}
-        height={500}
-      />
-    )
+    img: ({ src, alt, title }) => {
+      const image = (
+        <Image
+          src={path.normalize(`/images${page}${slug}/${src!}`)}
+          alt={alt!}
+          title={title}
+          width={720}
+          height={540}
+        />
+      )
+
+      if (title) {
+        return (
+          <Figure
+            css={{
+              ...verticalRhythm.marginBottom.m,
+              ...verticalRhythm.marginTop.m
+            }}
+          >
+            {image}
+            <Figcaption>{title}</Figcaption>
+          </Figure>
+        )
+      }
+      return (
+        <Box
+          css={{
+            ...verticalRhythm.marginBottom.m,
+            ...verticalRhythm.marginTop.m
+          }}
+        >
+          {image}
+        </Box>
+      )
+    }
   }
 }
