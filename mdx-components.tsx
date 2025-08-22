@@ -180,7 +180,7 @@ export function getMDXComponents(page: Pages, slug: string): MDXComponents {
           alt={alt!}
           title={title}
           width={720}
-          height={500}
+          height={540}
         />
       )
 
