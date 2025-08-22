@@ -172,14 +172,27 @@ export function getMDXComponents(page: Pages, slug: string): MDXComponents {
   return {
     ...components,
     ...customComponents,
-    img: ({ src, alt, title }) => (
-      <Image
-        src={path.normalize(`/images${page}${slug}/${src!}`)}
-        alt={alt!}
-        title={title}
-        width={800}
-        height={500}
-      />
-    )
+    img: ({ src, alt, title }) => {
+      const image = (
+        <Image
+          src={path.normalize(`/images${page}${slug}/${src!}`)}
+          alt={alt!}
+          title={title}
+          width={720}
+          height={500}
+        />
+      )
+
+      if (title) {
+        return (
+          <Figure>
+            {image}
+            <Figcaption>{title}</Figcaption>
+          </Figure>
+        )
+      }
+
+      return image
+    }
   }
 }
