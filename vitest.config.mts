@@ -19,7 +19,8 @@ export default defineConfig({
       include: [
         'design-system/**/*.{js,jsx,ts,tsx}',
         'hooks/**/*.{js,jsx,ts,tsx}',
-        'lib/**/*.{js,jsx,ts,tsx}'
+        'lib/**/*.{js,jsx,ts,tsx}',
+        'scripts/**/*.{js,jsx,ts,tsx}'
       ],
       exclude: [
         'design-system/elements/**',

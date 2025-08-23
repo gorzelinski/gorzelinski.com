@@ -9,8 +9,8 @@ export async function getMetaFont(
   const font = await fs.readFile(process.cwd() + `/assets/fonts/${file}`)
 
   return {
-    ...options,
     ...METAFONT,
+    ...options,
     data: font
   } as unknown as MetaFontOptions
 }
