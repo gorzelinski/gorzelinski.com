@@ -1,6 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest'
 import fs from 'fs/promises'
-import { getMDX } from '../mdx'
+import { getMDX, getMDXSlugs } from '../mdx'
 
 vi.mock('fs/promises', () => ({
   default: {
@@ -209,6 +209,47 @@ This is a test post in Polish.`
       await expect(getMDX<'post'>('/blog/', 'test-post', 'en')).rejects.toThrow(
         'File not found'
       )
+    })
+  })
+
+  describe('getMDXSlugs()', () => {
+    it('reads directory and returns slugs for blog page', async () => {
+      const mockSlugs = ['post-1', 'post-2', 'post-3']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const result = await getMDXSlugs('/blog/')
+
+      expect(fs.readdir).toHaveBeenCalledWith(
+        expect.stringContaining('content/blog')
+      )
+      expect(result).toEqual(mockSlugs)
+    })
+
+    it('reads directory and returns slugs for portfolio page', async () => {
+      const mockSlugs = ['project-1', 'project-2']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const result = await getMDXSlugs('/portfolio/')
+
+      expect(fs.readdir).toHaveBeenCalledWith(
+        expect.stringContaining('content/portfolio')
+      )
+      expect(result).toEqual(mockSlugs)
+    })
+
+    it('handles empty directory', async () => {
+      vi.mocked(fs.readdir).mockResolvedValue([] as any)
+
+      const result = await getMDXSlugs('/blog/')
+
+      expect(result).toEqual([])
+    })
+
+    it('throws error when directory reading fails', async () => {
+      const error = new Error('Directory not found')
+      vi.mocked(fs.readdir).mockRejectedValue(error)
+
+      await expect(getMDXSlugs('/blog/')).rejects.toThrow('Directory not found')
     })
   })
 })
