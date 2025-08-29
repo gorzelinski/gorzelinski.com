@@ -1,6 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest'
 import fs from 'fs/promises'
-import { getMDX, getMDXSlugs, getMDXes } from '../mdx'
+import { getMDX, getMDXSlugs, getMDXes, createMDXPagination } from '../mdx'
 
 vi.mock('fs/promises', () => ({
   default: {
@@ -527,6 +527,508 @@ links:
       await expect(getMDXes<'post'>('/blog/', 'en')).rejects.toThrow(
         'Directory not found'
       )
+    })
+  })
+
+  describe('createMDXPagination()', () => {
+    it('creates pagination for middle post with prev and next', async () => {
+      const mockSlugs = ['post-1', 'post-2', 'post-3']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const mockContents = {
+        'post-1': `---
+title: Post 1
+description: First post
+date: 2023-01-01
+updated: 2023-01-01
+image:
+  alt: Post 1
+  src: /images/post1.jpg
+categories: [tech]
+tags: [javascript]
+---`,
+        'post-2': `---
+title: Post 2
+description: Second post
+date: 2023-01-02
+updated: 2023-01-02
+image:
+  alt: Post 2
+  src: /images/post2.jpg
+categories: [tech]
+tags: [typescript]
+---`,
+        'post-3': `---
+title: Post 3
+description: Third post
+date: 2023-01-03
+updated: 2023-01-03
+image:
+  alt: Post 3
+  src: /images/post3.jpg
+categories: [design]
+tags: [css]
+---`
+      }
+
+      vi.mocked(fs.readFile).mockImplementation((path: any) => {
+        const pathStr = path.toString()
+        const slug = pathStr.includes('post-1')
+          ? 'post-1'
+          : pathStr.includes('post-2')
+            ? 'post-2'
+            : 'post-3'
+        return Promise.resolve(mockContents[slug as keyof typeof mockContents])
+      })
+
+      const { compileMDX } = await import('next-mdx-remote/rsc')
+      vi.mocked(compileMDX).mockImplementation(({ source }: any) => {
+        const sourceStr = source.toString()
+        const title = sourceStr.includes('Post 1')
+          ? 'Post 1'
+          : sourceStr.includes('Post 2')
+            ? 'Post 2'
+            : 'Post 3'
+        const date = sourceStr.includes('2023-01-01')
+          ? '2023-01-01'
+          : sourceStr.includes('2023-01-02')
+            ? '2023-01-02'
+            : '2023-01-03'
+        const slug = sourceStr.includes('Post 1')
+          ? '/blog/post-1/'
+          : sourceStr.includes('Post 2')
+            ? '/blog/post-2/'
+            : '/blog/post-3/'
+
+        return Promise.resolve({
+          frontmatter: {
+            title,
+            description: `${title} description`,
+            date: new Date(date),
+            updated: new Date(date),
+            image: {
+              alt: title,
+              src: `/images/${title.toLowerCase().replace(' ', '')}.jpg`
+            },
+            categories: ['tech'],
+            tags: ['javascript'],
+            type: 'post' as const,
+            slug
+          },
+          content: {} as any
+        })
+      })
+
+      const result = await createMDXPagination('/blog/', 'post-2', 'en')
+
+      expect(result.prev).toEqual({
+        title: 'Post 1',
+        slug: '/blog/post-1/'
+      })
+      expect(result.next).toEqual({
+        title: 'Post 3',
+        slug: '/blog/post-3/'
+      })
+    })
+
+    it('creates pagination for newest post with prev and no next', async () => {
+      const mockSlugs = ['post-1', 'post-2']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const mockContents = {
+        'post-1': `---
+title: Post 1
+description: First post
+date: 2023-01-02
+updated: 2023-01-02
+image:
+  alt: Post 1
+  src: /images/post1.jpg
+categories: [tech]
+tags: [javascript]
+---`,
+        'post-2': `---
+title: Post 2
+description: Second post
+date: 2023-01-01
+updated: 2023-01-01
+image:
+  alt: Post 2
+  src: /images/post2.jpg
+categories: [tech]
+tags: [typescript]
+---`
+      }
+
+      vi.mocked(fs.readFile).mockImplementation((path: any) => {
+        const pathStr = path.toString()
+        const slug = pathStr.includes('post-1') ? 'post-1' : 'post-2'
+        return Promise.resolve(mockContents[slug as keyof typeof mockContents])
+      })
+
+      const { compileMDX } = await import('next-mdx-remote/rsc')
+      vi.mocked(compileMDX).mockImplementation(({ source }: any) => {
+        const sourceStr = source.toString()
+        const title = sourceStr.includes('Post 1') ? 'Post 1' : 'Post 2'
+        const date = sourceStr.includes('2023-01-02')
+          ? '2023-01-02'
+          : '2023-01-01'
+        const slug = sourceStr.includes('Post 1')
+          ? '/blog/post-1/'
+          : '/blog/post-2/'
+
+        return Promise.resolve({
+          frontmatter: {
+            title,
+            description: `${title} description`,
+            date: new Date(date),
+            updated: new Date(date),
+            image: {
+              alt: title,
+              src: `/images/${title.toLowerCase().replace(' ', '')}.jpg`
+            },
+            categories: ['tech'],
+            tags: ['javascript'],
+            type: 'post' as const,
+            slug
+          },
+          content: {} as any
+        })
+      })
+
+      const result = await createMDXPagination('/blog/', 'post-1', 'en')
+
+      expect(result.prev).toEqual({
+        title: 'Post 2',
+        slug: '/blog/post-2/'
+      })
+      expect(result.next).toBeNull()
+    })
+
+    it('creates pagination for oldest post with next and no prev', async () => {
+      const mockSlugs = ['post-1', 'post-2']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const mockContents = {
+        'post-1': `---
+title: Post 1
+description: First post
+date: 2023-01-02
+updated: 2023-01-02
+image:
+  alt: Post 1
+  src: /images/post1.jpg
+categories: [tech]
+tags: [javascript]
+---`,
+        'post-2': `---
+title: Post 2
+description: Second post
+date: 2023-01-01
+updated: 2023-01-01
+image:
+  alt: Post 2
+  src: /images/post2.jpg
+categories: [tech]
+tags: [typescript]
+---`
+      }
+
+      vi.mocked(fs.readFile).mockImplementation((path: any) => {
+        const pathStr = path.toString()
+        const slug = pathStr.includes('post-1') ? 'post-1' : 'post-2'
+        return Promise.resolve(mockContents[slug as keyof typeof mockContents])
+      })
+
+      const { compileMDX } = await import('next-mdx-remote/rsc')
+      vi.mocked(compileMDX).mockImplementation(({ source }: any) => {
+        const sourceStr = source.toString()
+        const title = sourceStr.includes('Post 1') ? 'Post 1' : 'Post 2'
+        const date = sourceStr.includes('2023-01-02')
+          ? '2023-01-02'
+          : '2023-01-01'
+        const slug = sourceStr.includes('Post 1')
+          ? '/blog/post-1/'
+          : '/blog/post-2/'
+
+        return Promise.resolve({
+          frontmatter: {
+            title,
+            description: `${title} description`,
+            date: new Date(date),
+            updated: new Date(date),
+            image: {
+              alt: title,
+              src: `/images/${title.toLowerCase().replace(' ', '')}.jpg`
+            },
+            categories: ['tech'],
+            tags: ['javascript'],
+            type: 'post' as const,
+            slug
+          },
+          content: {} as any
+        })
+      })
+
+      const result = await createMDXPagination('/blog/', 'post-2', 'en')
+
+      expect(result.prev).toBeNull()
+      expect(result.next).toEqual({
+        title: 'Post 1',
+        slug: '/blog/post-1/'
+      })
+    })
+
+    it('handles portfolio projects with different frontmatter structure', async () => {
+      const mockSlugs = ['project-1', 'project-2', 'project-3']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const mockContents = {
+        'project-1': `---
+title: Project 1
+description: First project
+date: 2023-01-01
+updated: 2023-01-01
+image:
+  alt: Project 1
+  src: /images/project1.jpg
+client: Client 1
+services: [design]
+deliverables: [website]
+links:
+  - text: View Project
+    href: https://example1.com
+---`,
+        'project-2': `---
+title: Project 2
+description: Second project
+date: 2023-01-02
+updated: 2023-01-02
+image:
+  alt: Project 2
+  src: /images/project2.jpg
+client: Client 2
+services: [development]
+deliverables: [mobile app]
+links:
+  - text: View Project
+    href: https://example2.com
+---`,
+        'project-3': `---
+title: Project 3
+description: Third project
+date: 2023-01-03
+updated: 2023-01-03
+image:
+  alt: Project 3
+  src: /images/project3.jpg
+client: Client 3
+services: [design, development]
+deliverables: [website, mobile app]
+links:
+  - text: View Project
+    href: https://example3.com
+---`
+      }
+
+      vi.mocked(fs.readFile).mockImplementation((path: any) => {
+        const pathStr = path.toString()
+        const slug = pathStr.includes('project-1')
+          ? 'project-1'
+          : pathStr.includes('project-2')
+            ? 'project-2'
+            : 'project-3'
+        return Promise.resolve(mockContents[slug as keyof typeof mockContents])
+      })
+
+      const { compileMDX } = await import('next-mdx-remote/rsc')
+      vi.mocked(compileMDX).mockImplementation(({ source }: any) => {
+        const sourceStr = source.toString()
+        const title = sourceStr.includes('Project 1')
+          ? 'Project 1'
+          : sourceStr.includes('Project 2')
+            ? 'Project 2'
+            : 'Project 3'
+        const slug = sourceStr.includes('Project 1')
+          ? '/portfolio/project-1/'
+          : sourceStr.includes('Project 2')
+            ? '/portfolio/project-2/'
+            : '/portfolio/project-3/'
+
+        return Promise.resolve({
+          frontmatter: {
+            title,
+            description: `${title} description`,
+            date: new Date('2023-01-01'),
+            updated: new Date('2023-01-01'),
+            image: {
+              alt: title,
+              src: `/images/${title.toLowerCase().replace(' ', '')}.jpg`
+            },
+            client: 'Test Client',
+            services: ['design', 'development'],
+            deliverables: ['website', 'mobile app'],
+            links: [{ text: 'View Project', href: 'https://example.com' }],
+            type: 'project' as const,
+            slug
+          },
+          content: {} as any
+        })
+      })
+
+      const result = await createMDXPagination('/portfolio/', 'project-2', 'en')
+
+      expect(result.prev).toEqual({
+        title: 'Project 3',
+        slug: '/portfolio/project-3/'
+      })
+      expect(result.next).toEqual({
+        title: 'Project 1',
+        slug: '/portfolio/project-1/'
+      })
+    })
+
+    it('handles localized paths for non-English locale', async () => {
+      const mockSlugs = ['post-1', 'post-2']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const mockContents = {
+        'post-1': `---
+title: Post 1
+description: First post
+date: 2023-01-01
+updated: 2023-01-01
+image:
+  alt: Post 1
+  src: /images/post1.jpg
+categories: [tech]
+tags: [javascript]
+---`,
+        'post-2': `---
+title: Post 2
+description: Second post
+date: 2023-01-02
+updated: 2023-01-02
+image:
+  alt: Post 2
+  src: /images/post2.jpg
+categories: [tech]
+tags: [typescript]
+---`
+      }
+
+      vi.mocked(fs.readFile).mockImplementation((path: any) => {
+        const pathStr = path.toString()
+        const slug = pathStr.includes('post-1') ? 'post-1' : 'post-2'
+        return Promise.resolve(mockContents[slug as keyof typeof mockContents])
+      })
+
+      const { compileMDX } = await import('next-mdx-remote/rsc')
+      vi.mocked(compileMDX).mockImplementation(({ source }: any) => {
+        const sourceStr = source.toString()
+        const title = sourceStr.includes('Post 1') ? 'Post 1' : 'Post 2'
+        const slug = sourceStr.includes('Post 1')
+          ? '/pl/blog/post-1/'
+          : '/pl/blog/post-2/'
+
+        return Promise.resolve({
+          frontmatter: {
+            title,
+            description: `${title} description`,
+            date: new Date('2023-01-01'),
+            updated: new Date('2023-01-01'),
+            image: {
+              alt: title,
+              src: `/images/${title.toLowerCase().replace(' ', '')}.jpg`
+            },
+            categories: ['tech'],
+            tags: ['javascript'],
+            type: 'post' as const,
+            slug
+          },
+          content: {} as any
+        })
+      })
+
+      const result = await createMDXPagination('/blog/', 'post-1', 'pl')
+
+      expect(result.prev).toEqual({
+        title: 'Post 2',
+        slug: '/pl/blog/post-2/'
+      })
+      expect(result.next).toBeNull()
+    })
+
+    it('returns null for both prev and next when post not found', async () => {
+      const mockSlugs = ['post-1', 'post-2']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const mockContents = {
+        'post-1': `---
+title: Post 1
+description: First post
+date: 2023-01-01
+updated: 2023-01-01
+image:
+  alt: Post 1
+  src: /images/post1.jpg
+categories: [tech]
+tags: [javascript]
+---`,
+        'post-2': `---
+title: Post 2
+description: Second post
+date: 2023-01-02
+updated: 2023-01-02
+image:
+  alt: Post 2
+  src: /images/post2.jpg
+categories: [tech]
+tags: [typescript]
+---`
+      }
+
+      vi.mocked(fs.readFile).mockImplementation((path: any) => {
+        const pathStr = path.toString()
+        const slug = pathStr.includes('post-1') ? 'post-1' : 'post-2'
+        return Promise.resolve(mockContents[slug as keyof typeof mockContents])
+      })
+
+      const { compileMDX } = await import('next-mdx-remote/rsc')
+      vi.mocked(compileMDX).mockImplementation(({ source }: any) => {
+        const sourceStr = source.toString()
+        const title = sourceStr.includes('Post 1') ? 'Post 1' : 'Post 2'
+        const slug = sourceStr.includes('Post 1')
+          ? '/blog/post-1/'
+          : '/blog/post-2/'
+
+        return Promise.resolve({
+          frontmatter: {
+            title,
+            description: `${title} description`,
+            date: new Date('2023-01-01'),
+            updated: new Date('2023-01-01'),
+            image: {
+              alt: title,
+              src: `/images/${title.toLowerCase().replace(' ', '')}.jpg`
+            },
+            categories: ['tech'],
+            tags: ['javascript'],
+            type: 'post' as const,
+            slug
+          },
+          content: {} as any
+        })
+      })
+
+      const result = await createMDXPagination(
+        '/blog/',
+        'non-existent-post',
+        'en'
+      )
+
+      expect(result.prev).toBeNull()
+      expect(result.next).toBeNull()
     })
   })
 })

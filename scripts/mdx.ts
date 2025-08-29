@@ -175,6 +175,13 @@ export async function createMDXPagination(
       path.normalize(localizePath(`${page}${slug}/`, lang))
   )
 
+  if (currentIndex === -1) {
+    return {
+      prev: null,
+      next: null
+    }
+  }
+
   const prevMDX =
     currentIndex === mdxes.length - 1 ? null : mdxes[currentIndex + 1]
   const nextMDX = currentIndex === 0 ? null : mdxes[currentIndex - 1]
