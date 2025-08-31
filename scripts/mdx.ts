@@ -258,7 +258,8 @@ export async function searchMDXes<Type extends MDXTypes>(
       frontmatter.title,
       frontmatter.description,
       ...('categories' in frontmatter ? frontmatter.categories : []),
-      ...('tags' in frontmatter ? frontmatter.tags : [])
+      ...('tags' in frontmatter ? frontmatter.tags : []),
+      ...('services' in frontmatter ? frontmatter.services : [])
     ]
       .join(' ')
       .toLowerCase()
