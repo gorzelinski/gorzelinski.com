@@ -1,12 +1,28 @@
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import path from 'path'
 
 export default defineConfig({
   plugins: [tsconfigPaths(), react()],
+  resolve: {
+    alias: {
+      'server-only': path.resolve(
+        __dirname,
+        'scripts/__tests__/__mocks__/server-only.ts'
+      )
+    }
+  },
   test: {
     environment: 'jsdom',
     setupFiles: ['vitest.setup.ts'],
+    deps: {
+      optimizer: {
+        web: {
+          include: ['server-only']
+        }
+      }
+    },
     include: [
       'design-system/**/*.{test,spec}.?(c|m)[jt]s?(x)',
       'hooks/**/*.{test,spec}.?(c|m)[jt]s?(x)',
@@ -27,7 +43,8 @@ export default defineConfig({
         'design-system/icons/**',
         '**/*.styles.{js,jsx,ts,tsx}',
         '**/*.types.{js,jsx,ts,tsx}',
-        '**/index.{js,jsx,ts,tsx}'
+        '**/index.{js,jsx,ts,tsx}',
+        '**/__mocks__/**'
       ],
       thresholds: {
         branches: 80,
