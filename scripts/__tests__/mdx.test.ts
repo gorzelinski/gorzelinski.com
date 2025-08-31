@@ -535,6 +535,96 @@ links:
         'Directory not found'
       )
     })
+
+    it('handles invalid sort parameter by using default case (descending order)', async () => {
+      const mockSlugs = ['post-1', 'post-2', 'post-3']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const mockContents = {
+        'post-1': `---
+title: Post 1
+description: First post
+date: 2023-01-01
+updated: 2023-01-01
+image:
+  alt: Post 1
+  src: /images/post1.jpg
+categories: [tech]
+tags: [javascript]
+---`,
+        'post-2': `---
+title: Post 2
+description: Second post
+date: 2023-01-03
+updated: 2023-01-03
+image:
+  alt: Post 2
+  src: /images/post2.jpg
+categories: [tech]
+tags: [typescript]
+---`,
+        'post-3': `---
+title: Post 3
+description: Third post
+date: 2023-01-02
+updated: 2023-01-02
+image:
+  alt: Post 3
+  src: /images/post3.jpg
+categories: [design]
+tags: [css]
+---`
+      }
+
+      vi.mocked(fs.readFile).mockImplementation((path: any) => {
+        const pathStr = path.toString()
+        const slug = pathStr.includes('post-1')
+          ? 'post-1'
+          : pathStr.includes('post-2')
+            ? 'post-2'
+            : 'post-3'
+        return Promise.resolve(mockContents[slug as keyof typeof mockContents])
+      })
+
+      const { compileMDX } = await import('next-mdx-remote/rsc')
+      vi.mocked(compileMDX).mockImplementation(({ source }: any) => {
+        const sourceStr = source.toString()
+        const title = sourceStr.includes('Post 1')
+          ? 'Post 1'
+          : sourceStr.includes('Post 2')
+            ? 'Post 2'
+            : 'Post 3'
+        const date = sourceStr.includes('2023-01-01')
+          ? '2023-01-01'
+          : sourceStr.includes('2023-01-02')
+            ? '2023-01-02'
+            : '2023-01-03'
+
+        return Promise.resolve({
+          frontmatter: {
+            title,
+            description: `${title} description`,
+            date: new Date(date),
+            updated: new Date(date),
+            image: {
+              alt: title,
+              src: `/images/${title.toLowerCase().replace(' ', '')}.jpg`
+            },
+            categories: ['tech'],
+            tags: ['javascript'],
+            type: 'post' as const
+          },
+          content: {} as any
+        })
+      })
+
+      const result = await (getMDXes as any)('/blog/', 'en', 'all', 'invalid')
+
+      expect(result).toHaveLength(3)
+      expect(result[0].frontmatter.title).toBe('Post 2')
+      expect(result[1].frontmatter.title).toBe('Post 3')
+      expect(result[2].frontmatter.title).toBe('Post 1')
+    })
   })
 
   describe('createMDXPagination()', () => {
