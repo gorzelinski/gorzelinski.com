@@ -1,6 +1,12 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest'
 import fs from 'fs/promises'
-import { getMDX, getMDXSlugs, getMDXes, createMDXPagination } from '../mdx'
+import {
+  getMDX,
+  getMDXSlugs,
+  getMDXes,
+  createMDXPagination,
+  getRelatedMDXes
+} from '../mdx'
 
 vi.mock('fs/promises', () => ({
   default: {
@@ -1029,6 +1035,689 @@ tags: [typescript]
 
       expect(result.prev).toBeNull()
       expect(result.next).toBeNull()
+    })
+  })
+
+  describe('getRelatedMDXes()', () => {
+    it('finds related blog posts by shared categories', async () => {
+      const mockSlugs = ['post-1', 'post-2', 'post-3', 'post-4']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const mockContents = {
+        'post-1': `---
+title: Post 1
+description: First post
+date: 2023-01-01
+updated: 2023-01-01
+image:
+  alt: Post 1
+  src: /images/post1.jpg
+categories: [tech, javascript]
+tags: [react, nextjs]
+---`,
+        'post-2': `---
+title: Post 2
+description: Second post
+date: 2023-01-02
+updated: 2023-01-02
+image:
+  alt: Post 2
+  src: /images/post2.jpg
+categories: [tech, typescript]
+tags: [angular, vue]
+---`,
+        'post-3': `---
+title: Post 3
+description: Third post
+date: 2023-01-03
+updated: 2023-01-03
+image:
+  alt: Post 3
+  src: /images/post3.jpg
+categories: [design, css]
+tags: [styling, layout]
+---`,
+        'post-4': `---
+title: Post 4
+description: Fourth post
+date: 2023-01-04
+updated: 2023-01-04
+image:
+  alt: Post 4
+  src: /images/post4.jpg
+categories: [tech, javascript]
+tags: [nodejs, backend]
+---`
+      }
+
+      vi.mocked(fs.readFile).mockImplementation((path: any) => {
+        const pathStr = path.toString()
+        const slug = pathStr.includes('post-1')
+          ? 'post-1'
+          : pathStr.includes('post-2')
+            ? 'post-2'
+            : pathStr.includes('post-3')
+              ? 'post-3'
+              : 'post-4'
+        return Promise.resolve(mockContents[slug as keyof typeof mockContents])
+      })
+
+      const { compileMDX } = await import('next-mdx-remote/rsc')
+      vi.mocked(compileMDX).mockImplementation(({ source }: any) => {
+        const sourceStr = source.toString()
+        const title = sourceStr.includes('Post 1')
+          ? 'Post 1'
+          : sourceStr.includes('Post 2')
+            ? 'Post 2'
+            : sourceStr.includes('Post 3')
+              ? 'Post 3'
+              : 'Post 4'
+        const categories = sourceStr.includes('javascript')
+          ? ['tech', 'javascript']
+          : sourceStr.includes('typescript')
+            ? ['tech', 'typescript']
+            : ['design', 'css']
+        const tags = sourceStr.includes('react')
+          ? ['react', 'nextjs']
+          : sourceStr.includes('angular')
+            ? ['angular', 'vue']
+            : sourceStr.includes('nodejs')
+              ? ['nodejs', 'backend']
+              : ['styling', 'layout']
+        const slug = `/blog/${title.toLowerCase().replace(' ', '-')}/`
+
+        return Promise.resolve({
+          frontmatter: {
+            title,
+            description: `${title} description`,
+            date: new Date('2023-01-01'),
+            updated: new Date('2023-01-01'),
+            image: {
+              alt: title,
+              src: `/images/${title.toLowerCase().replace(' ', '')}.jpg`
+            },
+            categories,
+            tags,
+            type: 'post' as const,
+            slug
+          },
+          content: {} as any
+        })
+      })
+
+      const currentPost = {
+        title: 'Post 1',
+        description: 'First post',
+        date: new Date('2023-01-01'),
+        updated: new Date('2023-01-01'),
+        image: { alt: 'Post 1', src: '/images/post1.jpg' },
+        categories: ['tech', 'javascript'],
+        tags: ['react', 'nextjs'],
+        type: 'post' as const,
+        slug: '/blog/post-1/',
+        readingTime: {
+          text: '2 min read',
+          minutes: 2,
+          time: 120000,
+          words: 400
+        }
+      }
+
+      const result = await getRelatedMDXes(currentPost, '/blog/', 'en')
+
+      expect(result).toHaveLength(2)
+      expect(result.map((r) => r.frontmatter.title)).toContain('Post 2')
+      expect(result.map((r) => r.frontmatter.title)).toContain('Post 4')
+      expect(result.map((r) => r.frontmatter.title)).not.toContain('Post 1')
+      expect(result.map((r) => r.frontmatter.title)).not.toContain('Post 3')
+    })
+
+    it('finds related blog posts by shared tags', async () => {
+      const mockSlugs = ['post-1', 'post-2', 'post-3']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const mockContents = {
+        'post-1': `---
+title: Post 1
+description: First post
+date: 2023-01-01
+updated: 2023-01-01
+image:
+  alt: Post 1
+  src: /images/post1.jpg
+categories: [tech]
+tags: [react, nextjs, javascript]
+---`,
+        'post-2': `---
+title: Post 2
+description: Second post
+date: 2023-01-02
+updated: 2023-01-02
+image:
+  alt: Post 2
+  src: /images/post2.jpg
+categories: [design]
+tags: [css, nextjs, styling]
+---`,
+        'post-3': `---
+title: Post 3
+description: Third post
+date: 2023-01-03
+updated: 2023-01-03
+image:
+  alt: Post 3
+  src: /images/post3.jpg
+categories: [backend]
+tags: [nodejs, python, api]
+---`
+      }
+
+      vi.mocked(fs.readFile).mockImplementation((path: any) => {
+        const pathStr = path.toString()
+        const slug = pathStr.includes('post-1')
+          ? 'post-1'
+          : pathStr.includes('post-2')
+            ? 'post-2'
+            : 'post-3'
+        return Promise.resolve(mockContents[slug as keyof typeof mockContents])
+      })
+
+      const { compileMDX } = await import('next-mdx-remote/rsc')
+      vi.mocked(compileMDX).mockImplementation(({ source }: any) => {
+        const sourceStr = source.toString()
+        const title = sourceStr.includes('Post 1')
+          ? 'Post 1'
+          : sourceStr.includes('Post 2')
+            ? 'Post 2'
+            : 'Post 3'
+        const categories = sourceStr.includes('tech')
+          ? ['tech']
+          : sourceStr.includes('design')
+            ? ['design']
+            : ['backend']
+        const tags = sourceStr.includes('react')
+          ? ['react', 'nextjs', 'javascript']
+          : sourceStr.includes('css')
+            ? ['css', 'nextjs', 'styling']
+            : ['nodejs', 'python', 'api']
+        const slug = `/blog/${title.toLowerCase().replace(' ', '-')}/`
+
+        return Promise.resolve({
+          frontmatter: {
+            title,
+            description: `${title} description`,
+            date: new Date('2023-01-01'),
+            updated: new Date('2023-01-01'),
+            image: {
+              alt: title,
+              src: `/images/${title.toLowerCase().replace(' ', '')}.jpg`
+            },
+            categories,
+            tags,
+            type: 'post' as const,
+            slug
+          },
+          content: {} as any
+        })
+      })
+
+      const currentPost = {
+        title: 'Post 1',
+        description: 'First post',
+        date: new Date('2023-01-01'),
+        updated: new Date('2023-01-01'),
+        image: { alt: 'Post 1', src: '/images/post1.jpg' },
+        categories: ['tech'],
+        tags: ['react', 'nextjs', 'javascript'],
+        type: 'post' as const,
+        slug: '/blog/post-1/',
+        readingTime: {
+          text: '2 min read',
+          minutes: 2,
+          time: 120000,
+          words: 400
+        }
+      }
+
+      const result = await getRelatedMDXes(currentPost, '/blog/', 'en')
+
+      expect(result).toHaveLength(1)
+      expect(result[0].frontmatter.title).toBe('Post 2')
+      expect(result.map((r) => r.frontmatter.title)).not.toContain('Post 1')
+      expect(result.map((r) => r.frontmatter.title)).not.toContain('Post 3')
+    })
+
+    it('finds related portfolio projects by shared services', async () => {
+      const mockSlugs = ['project-1', 'project-2', 'project-3']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const mockContents = {
+        'project-1': `---
+title: Project 1
+description: First project
+date: 2023-01-01
+updated: 2023-01-01
+image:
+  alt: Project 1
+  src: /images/project1.jpg
+client: Client 1
+services: [design, development]
+deliverables: [website]
+links:
+  - text: View Project
+    href: https://example1.com
+---`,
+        'project-2': `---
+title: Project 2
+description: Second project
+date: 2023-01-02
+updated: 2023-01-02
+image:
+  alt: Project 2
+  src: /images/project2.jpg
+client: Client 2
+services: [design, branding]
+deliverables: [logo, website]
+links:
+  - text: View Project
+    href: https://example2.com
+---`,
+        'project-3': `---
+title: Project 3
+description: Third project
+date: 2023-01-03
+updated: 2023-01-03
+image:
+  alt: Project 3
+  src: /images/project3.jpg
+client: Client 3
+services: [development, consulting]
+deliverables: [mobile app]
+links:
+  - text: View Project
+    href: https://example3.com
+---`
+      }
+
+      vi.mocked(fs.readFile).mockImplementation((path: any) => {
+        const pathStr = path.toString()
+        const slug = pathStr.includes('project-1')
+          ? 'project-1'
+          : pathStr.includes('project-2')
+            ? 'project-2'
+            : 'project-3'
+        return Promise.resolve(mockContents[slug as keyof typeof mockContents])
+      })
+
+      const { compileMDX } = await import('next-mdx-remote/rsc')
+      vi.mocked(compileMDX).mockImplementation(({ source }: any) => {
+        const sourceStr = source.toString()
+        const title = sourceStr.includes('Project 1')
+          ? 'Project 1'
+          : sourceStr.includes('Project 2')
+            ? 'Project 2'
+            : 'Project 3'
+        const services = sourceStr.includes('design, development')
+          ? ['design', 'development']
+          : sourceStr.includes('design, branding')
+            ? ['design', 'branding']
+            : ['development', 'consulting']
+        const slug = `/portfolio/${title.toLowerCase().replace(' ', '-')}/`
+
+        return Promise.resolve({
+          frontmatter: {
+            title,
+            description: `${title} description`,
+            date: new Date('2023-01-01'),
+            updated: new Date('2023-01-01'),
+            image: {
+              alt: title,
+              src: `/images/${title.toLowerCase().replace(' ', '')}.jpg`
+            },
+            client: 'Test Client',
+            services,
+            deliverables: ['website'],
+            links: [{ text: 'View Project', href: 'https://example.com' }],
+            type: 'project' as const,
+            slug
+          },
+          content: {} as any
+        })
+      })
+
+      const currentProject = {
+        title: 'Project 1',
+        description: 'First project',
+        date: new Date('2023-01-01'),
+        updated: new Date('2023-01-01'),
+        image: { alt: 'Project 1', src: '/images/project1.jpg' },
+        client: 'Client 1',
+        services: ['design', 'development'],
+        deliverables: ['website'],
+        links: [{ text: 'View Project', href: 'https://example1.com' }] as [
+          { text: string; href: string }
+        ],
+        type: 'project' as const,
+        slug: '/portfolio/project-1/',
+        readingTime: {
+          text: '2 min read',
+          minutes: 2,
+          time: 120000,
+          words: 400
+        }
+      }
+
+      const result = await getRelatedMDXes(currentProject, '/portfolio/', 'en')
+
+      expect(result).toHaveLength(2)
+      expect(result.map((r) => r.frontmatter.title)).toContain('Project 2')
+      expect(result.map((r) => r.frontmatter.title)).toContain('Project 3')
+      expect(result.map((r) => r.frontmatter.title)).not.toContain('Project 1')
+    })
+
+    it('limits the number of related MDXes when number parameter is specified', async () => {
+      const mockSlugs = ['post-1', 'post-2', 'post-3', 'post-4']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const mockContents = {
+        'post-1': `---
+title: Post 1
+description: First post
+date: 2023-01-01
+updated: 2023-01-01
+image:
+  alt: Post 1
+  src: /images/post1.jpg
+categories: [tech]
+tags: [javascript]
+---`,
+        'post-2': `---
+title: Post 2
+description: Second post
+date: 2023-01-02
+updated: 2023-01-02
+image:
+  alt: Post 2
+  src: /images/post2.jpg
+categories: [tech]
+tags: [typescript]
+---`,
+        'post-3': `---
+title: Post 3
+description: Third post
+date: 2023-01-03
+updated: 2023-01-03
+image:
+  alt: Post 3
+  src: /images/post3.jpg
+categories: [tech]
+tags: [react]
+---`,
+        'post-4': `---
+title: Post 4
+description: Fourth post
+date: 2023-01-04
+updated: 2023-01-04
+image:
+  alt: Post 4
+  src: /images/post4.jpg
+categories: [design]
+tags: [css]
+---`
+      }
+
+      vi.mocked(fs.readFile).mockImplementation((path: any) => {
+        const pathStr = path.toString()
+        const slug = pathStr.includes('post-1')
+          ? 'post-1'
+          : pathStr.includes('post-2')
+            ? 'post-2'
+            : pathStr.includes('post-3')
+              ? 'post-3'
+              : 'post-4'
+        return Promise.resolve(mockContents[slug as keyof typeof mockContents])
+      })
+
+      const { compileMDX } = await import('next-mdx-remote/rsc')
+      vi.mocked(compileMDX).mockImplementation(({ source }: any) => {
+        const sourceStr = source.toString()
+        const title = sourceStr.includes('Post 1')
+          ? 'Post 1'
+          : sourceStr.includes('Post 2')
+            ? 'Post 2'
+            : sourceStr.includes('Post 3')
+              ? 'Post 3'
+              : 'Post 4'
+        const categories = sourceStr.includes('design') ? ['design'] : ['tech']
+        const tags = sourceStr.includes('javascript')
+          ? ['javascript']
+          : sourceStr.includes('typescript')
+            ? ['typescript']
+            : sourceStr.includes('react')
+              ? ['react']
+              : ['css']
+        const slug = `/blog/${title.toLowerCase().replace(' ', '-')}/`
+
+        return Promise.resolve({
+          frontmatter: {
+            title,
+            description: `${title} description`,
+            date: new Date('2023-01-01'),
+            updated: new Date('2023-01-01'),
+            image: {
+              alt: title,
+              src: `/images/${title.toLowerCase().replace(' ', '')}.jpg`
+            },
+            categories,
+            tags,
+            type: 'post' as const,
+            slug
+          },
+          content: {} as any
+        })
+      })
+
+      const currentPost = {
+        title: 'Post 1',
+        description: 'First post',
+        date: new Date('2023-01-01'),
+        updated: new Date('2023-01-01'),
+        image: { alt: 'Post 1', src: '/images/post1.jpg' },
+        categories: ['tech'],
+        tags: ['javascript'],
+        type: 'post' as const,
+        slug: '/blog/post-1/',
+        readingTime: {
+          text: '2 min read',
+          minutes: 2,
+          time: 120000,
+          words: 400
+        }
+      }
+
+      const result = await getRelatedMDXes(currentPost, '/blog/', 'en', 2)
+
+      // Should find 2 related posts (Post 2 and Post 3 share 'tech' category)
+      expect(result).toHaveLength(2)
+      expect(result.map((r) => r.frontmatter.title)).toContain('Post 2')
+      expect(result.map((r) => r.frontmatter.title)).toContain('Post 3')
+      // Should not include Post 1 (current post) or Post 4 (no shared categories)
+      expect(result.map((r) => r.frontmatter.title)).not.toContain('Post 1')
+      expect(result.map((r) => r.frontmatter.title)).not.toContain('Post 4')
+    })
+
+    it('returns empty array when no related MDXes found', async () => {
+      const mockSlugs = ['post-1', 'post-2']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const mockContents = {
+        'post-1': `---
+title: Post 1
+description: First post
+date: 2023-01-01
+updated: 2023-01-01
+image:
+  alt: Post 1
+  src: /images/post1.jpg
+categories: [tech]
+tags: [javascript]
+---`,
+        'post-2': `---
+title: Post 2
+description: Second post
+date: 2023-01-02
+updated: 2023-01-02
+image:
+  alt: Post 2
+  src: /images/post2.jpg
+categories: [design]
+tags: [css]
+---`
+      }
+
+      vi.mocked(fs.readFile).mockImplementation((path: any) => {
+        const pathStr = path.toString()
+        const slug = pathStr.includes('post-1') ? 'post-1' : 'post-2'
+        return Promise.resolve(mockContents[slug as keyof typeof mockContents])
+      })
+
+      const { compileMDX } = await import('next-mdx-remote/rsc')
+      vi.mocked(compileMDX).mockImplementation(({ source }: any) => {
+        const sourceStr = source.toString()
+        const title = sourceStr.includes('Post 1') ? 'Post 1' : 'Post 2'
+        const categories = sourceStr.includes('tech') ? ['tech'] : ['design']
+        const tags = sourceStr.includes('javascript') ? ['javascript'] : ['css']
+        const slug = `/blog/${title.toLowerCase().replace(' ', '-')}/`
+
+        return Promise.resolve({
+          frontmatter: {
+            title,
+            description: `${title} description`,
+            date: new Date('2023-01-01'),
+            updated: new Date('2023-01-01'),
+            image: {
+              alt: title,
+              src: `/images/${title.toLowerCase().replace(' ', '')}.jpg`
+            },
+            categories,
+            tags,
+            type: 'post' as const,
+            slug
+          },
+          content: {} as any
+        })
+      })
+
+      const currentPost = {
+        title: 'Post 1',
+        description: 'First post',
+        date: new Date('2023-01-01'),
+        updated: new Date('2023-01-01'),
+        image: { alt: 'Post 1', src: '/images/post1.jpg' },
+        categories: ['tech'],
+        tags: ['javascript'],
+        type: 'post' as const,
+        slug: '/blog/post-1/',
+        readingTime: {
+          text: '2 min read',
+          minutes: 2,
+          time: 120000,
+          words: 400
+        }
+      }
+
+      const result = await getRelatedMDXes(currentPost, '/blog/', 'en')
+
+      expect(result).toHaveLength(0)
+    })
+
+    it('handles localized content for non-English locale', async () => {
+      const mockSlugs = ['post-1', 'post-2']
+      vi.mocked(fs.readdir).mockResolvedValue(mockSlugs as any)
+
+      const mockContents = {
+        'post-1': `---
+title: Post 1 PL
+description: First post PL
+date: 2023-01-01
+updated: 2023-01-01
+image:
+  alt: Post 1 PL
+  src: /images/post1.jpg
+categories: [tech]
+tags: [javascript]
+---`,
+        'post-2': `---
+title: Post 2 PL
+description: Second post PL
+date: 2023-01-02
+updated: 2023-01-02
+image:
+  alt: Post 2 PL
+  src: /images/post2.jpg
+categories: [tech]
+tags: [typescript]
+---`
+      }
+
+      vi.mocked(fs.readFile).mockImplementation((path: any) => {
+        const pathStr = path.toString()
+        const slug = pathStr.includes('post-1') ? 'post-1' : 'post-2'
+        return Promise.resolve(mockContents[slug as keyof typeof mockContents])
+      })
+
+      const { compileMDX } = await import('next-mdx-remote/rsc')
+      vi.mocked(compileMDX).mockImplementation(({ source }: any) => {
+        const sourceStr = source.toString()
+        const title = sourceStr.includes('Post 1') ? 'Post 1 PL' : 'Post 2 PL'
+        const slug = sourceStr.includes('Post 1')
+          ? '/pl/blog/post-1/'
+          : '/pl/blog/post-2/'
+
+        return Promise.resolve({
+          frontmatter: {
+            title,
+            description: `${title} description`,
+            date: new Date('2023-01-01'),
+            updated: new Date('2023-01-01'),
+            image: {
+              alt: title,
+              src: `/images/${title.toLowerCase().replace(' ', '').replace(' pl', '')}.jpg`
+            },
+            categories: ['tech'],
+            tags: sourceStr.includes('Post 1')
+              ? ['javascript']
+              : ['typescript'],
+            type: 'post' as const,
+            slug
+          },
+          content: {} as any
+        })
+      })
+
+      const currentPost = {
+        title: 'Post 1 PL',
+        description: 'First post PL',
+        date: new Date('2023-01-01'),
+        updated: new Date('2023-01-01'),
+        image: { alt: 'Post 1 PL', src: '/images/post1.jpg' },
+        categories: ['tech'],
+        tags: ['javascript'],
+        type: 'post' as const,
+        slug: '/pl/blog/post-1/',
+        readingTime: {
+          text: '2 min read',
+          minutes: 2,
+          time: 120000,
+          words: 400
+        }
+      }
+
+      const result = await getRelatedMDXes(currentPost, '/blog/', 'pl')
+
+      expect(result).toHaveLength(1)
+      expect(result[0].frontmatter.title).toBe('Post 2 PL')
+      expect(result[0].frontmatter.slug).toBe('/pl/blog/post-2/')
     })
   })
 })
