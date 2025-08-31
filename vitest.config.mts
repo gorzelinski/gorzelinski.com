@@ -25,9 +25,9 @@ export default defineConfig({
       exclude: [
         'design-system/elements/**',
         'design-system/icons/**',
-        '**/*.styles.tsx',
-        '**/*.types.tsx',
-        '**/index.tsx'
+        '**/*.styles.{js,jsx,ts,tsx}',
+        '**/*.types.{js,jsx,ts,tsx}',
+        '**/index.{js,jsx,ts,tsx}'
       ],
       thresholds: {
         branches: 80,
