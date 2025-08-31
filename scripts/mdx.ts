@@ -175,6 +175,13 @@ export async function createMDXPagination(
       path.normalize(localizePath(`${page}${slug}/`, lang))
   )
 
+  if (currentIndex === -1) {
+    return {
+      prev: null,
+      next: null
+    }
+  }
+
   const prevMDX =
     currentIndex === mdxes.length - 1 ? null : mdxes[currentIndex + 1]
   const nextMDX = currentIndex === 0 ? null : mdxes[currentIndex - 1]
@@ -214,9 +221,19 @@ export async function getRelatedMDXes<Type extends MDXTypes>(
       'tags' in relatedMDX.frontmatter &&
       'tags' in mdx &&
       relatedMDX.frontmatter.tags.some((tag) => mdx.tags.includes(tag))
+
+    const hasRelatedService =
+      'services' in relatedMDX.frontmatter &&
+      'services' in mdx &&
+      relatedMDX.frontmatter.services.some((service) =>
+        mdx.services.includes(service)
+      )
+
     const isDuplicate = relatedMDX.frontmatter.slug === mdx.slug
 
-    return !isDuplicate && (hasRelatedCategory || hasRelatedTag)
+    return (
+      !isDuplicate && (hasRelatedCategory || hasRelatedTag || hasRelatedService)
+    )
   })
 
   const filtered =
@@ -241,7 +258,8 @@ export async function searchMDXes<Type extends MDXTypes>(
       frontmatter.title,
       frontmatter.description,
       ...('categories' in frontmatter ? frontmatter.categories : []),
-      ...('tags' in frontmatter ? frontmatter.tags : [])
+      ...('tags' in frontmatter ? frontmatter.tags : []),
+      ...('services' in frontmatter ? frontmatter.services : [])
     ]
       .join(' ')
       .toLowerCase()
