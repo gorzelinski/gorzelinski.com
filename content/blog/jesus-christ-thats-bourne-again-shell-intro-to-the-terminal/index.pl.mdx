@@ -1,0 +1,523 @@
+---
+title: Jesus Christ, that's Bourne…Again Shell. Intro to the Terminal
+description: ''
+date: 2022-07-16T15:00:00+02:00
+updated: 2024-08-24T11:20:00+02:00
+image:
+  alt: 'The row of jars with Jam labels'
+  caption: "Contrary to appearance, it's not about a stack of jams"
+  src: 'keji-gao-yHI9CyBZlfE-unsplash.jpg'
+categories: ['web development']
+tags: ['jamstack', 'gatsby', 'javascript', 'js']
+type: 'post'
+---
+
+Bash to akronim od Bourne Again Shell. Skrót pewnie mówi ci więcej niż rozszerzona wersja. Ale czy na pewno? Bash, terminal, wiersz poleceń, powłoka, CLI... Prawdopodobnie obiły ci się już o uszy te słowa. Musimy je wyjaśnić.
+
+- **Wiersz poleceń** _(ang. command-line interface)_ pozwala nam na interakcję z programami wykorzystując komendy tekstowe. Potrafi on odczytywać tekst z wejścia i przekazywać wyjściowy tekst na ekran. Dodatkowo, może także odczytywać i zapisywać pliki.
+- **Powłoka** _(ang. shell)_ lub interpreter poleceń to program, którego używamy, aby pracować z CLI. Programiści stworzyli wiele powłok przez lata dla różnych systemów operacyjnych.
+- **Bash** jest jedną z powłok. Deweloperzy wydali ją w 1989. Rozszerza ona możliwości wcześniejszych powłok (Bourne Shell lub Thompson Shell) i dodaje nowe funkcjonalności.
+- Powłoka działa wewnątrz aplikacji **terminala.** Może być uruchomiona w jednym lub wielu terminalach. Niektóre aplikacje, takie jak: Visual Studio Code, Cursor, czy inne edytory tekstu/IDE, zawierają wbudowany terminal.
+
+Tabelka porównawcza wygląda tak:
+
+| Wiersz poleceń                                | Terminal                                                  | Powłoka                                                         | Bash                                                   |
+| --------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------ |
+| Każde miejsce, gdzie możemy wpisywać komendy. | Oprogramowanie wewnątrz którego uruchamiana jest powłoka. | Oprogramowanie, które interpretuje i uruchamia wpisane komendy. | Popularna powłoka dostępna na systemach Linux i macOS. |
+
+Pomimo tego, że występują pomiędzy nimi różnice, ludzie często używają tych terminów zamiennie. Czyli co, całe to wyjaśnienie na marne? Nie, ✨im więcej wiesz✨, tym lepiej!
+
+## Bash i systemy operacyjne
+
+Zanim przejdziemy dalej, musisz wiedzieć co jest dostępne na twoim systemie operacyjnym.
+
+- Jeżeli używasz systemu **Linux,** Bash powinien być dla ciebie dostępny w domyśle. Cała zawartość wpisu powinna być możliwa do zastosowania. Linux został zainspirowany przez systemy MINIX i UNIX.
+- Jeżeli używasz systemu **macOS,** Bash również powinien być dla ciebie dostępny, ale w przestarzałej wersji. Jest tak dlatego, ponieważ macOS bazuje na BSD Unix, w przeciwieństwie do Linux'a. Najprawdopodobniej Zsh jest twoją domyślną powłoką. Możesz kontynuować, ale miej świadomość, że niektóre komendy mogą być niedostępne.
+- Jeżeli używasz systemu **Windows 10+,** rozważ skorzystanie z [podsystemu Linux dla Windows'a](https://learn.microsoft.com/pl-pl/windows/wsl/install). Możesz także podzielić swój dysk twardy i zrobić dual-boot z systemem Linux.
+
+Innym rozwiązaniem, niezależnym od systemu, jest skorzystanie z maszyny wirtualnej wykorzystując [VirtualBox](https://www.virtualbox.org/).
+
+## Filozofia Unix'a
+
+> Twórz programy, które robią jedną rzecz i robią to dobrze. Twórz programy, które ze sobą współpracują. Twórz programy obsługujące strumienie tekstowe jako uniwersalny interfejs.
+>
+> - Douglas Mcllroy
+
+Douglas Mcllroy, inżynier z Bell Labs, przyczynił się do rozwoju systemów operacyjnych Unix i jest autorem tego sławnego cytatu. Filozofia Unix'a jest zestawem decyzji projektowych, które kierują rozwojem Unix'a i jego pochodnych, znanych jako systemy Unix-like (np. Linux, macOS). Jak było widać, główne przesłanki to:
+
+- Narzędzia powinny robić jedną rzecz i robić ją dobrze.
+- Narzędzia powinny używać tekstowego interfejsu.
+- Programy powinny być zaprojektowane to komunikowania się ze sobą.
+
+Pewnych świąt Bożego Narodzenia, dałem dziadkowi nóż Victorinox - scyzoryk armii szwajcarskiej. Jest to fajny, mały gadżet z ostrzem, śrubokrętem, korkociągiem, nożyczkami, otwieraczem do butelek, i wieloma innymi narzędziami. Pozwala ci zrobić wiele rzeczy. Jednakże, gdy zaczniesz ciąć, przykręcać lub otwierać, zdasz sobie sprawę, że te narzędzia nie są tak dobre jak ich pełnowymiarowe odpowiedniki. Potrzebujesz skrzynkę z dedykowanymi narzędziami, żeby wykonać jakąś ciężką pracę. Unix (a co za tym idzie Bash) działa podobnie. Mamy zbiór dedykowanych narzędzi do różnych zadań, jak się przekonasz.
+
+## Struktura komendy
+
+Wiedząc wszystko o tym gdzie wpisujemy, powiększmy ekran na to co wpisujemy. A wpisywać będziemy **komendy.**
+
+> [!Note] Komendy
+> Komendy to programy dostępne na systemie. Uruchamiamy komendę, a system podejmuje konkretną akcję.
+
+Ogólny wzór komendy jest taki:
+
+- Komenda
+- Opcje - mówią komendzie _jak_ ma działać.
+- Argumenty - mówią komendzie _na czym_ ma operować.
+
+Jednakże, nie wszystkie komendy wymagają opcji i/lub argumentów. W zależności od tego co robisz, możesz otrzymać inną strukturę.
+
+- Sama komenda, np. `pwd`.
+- Komenda + opcje, np. `ls -l`.
+- Komenda + opcje + argumenty, np. `cp -v file1.txt file2.txt`.
+
+Opcje (zwane także flagami) często zaczynają się od myślnika i są reprezentowane przez jedna literę. Jednakże, są także rozszerzone wersje tych flag, które zaczynają się od podwójnego myślnika i zawierają pełną nazwę opcji. Obie wersje robią to samo. Poniżej przykłady:
+
+```bash
+-h    --help
+-r    --recursive
+-v    --verbose
+```
+
+Długie flagi są bardziej czytelne, ale nie mogą być łączone tak jak te krótkie.
+
+```bash
+ls -lah # Połączone, krótkie flagi
+ls --long --all --human-readable # Długie flagi
+```
+
+Warto również wspomnieć, że opcje też mogą przyjmować argumenty. Argumentami zwykle są: plik, katalog lub oba.
+
+```bash
+ls -l /home/user # Przekazany jest konkretny katalog
+cp -v file1.txt file2.txt # Przekazane są dwa pliki
+cp -r /source /destination # Dwa katalogi są przekazane
+```
+
+## Prompt
+
+Przed komendą, da się zauważyć dziwny ciąg znaków, przypominający `jan@laptop:~$`. Jest to **prompt.** Zawiera informacje o powłoce. Ten ciąg może mieć inną kolejność w zależności od systemu operacyjnego, ale informacje pozostają te same. Rozplączmy je. Zaczynając od lewej, mamy nazwę użytkownika. Później mamy separator w postaci znaku małpy `@`. Na prawo od separatora, mamy nazwę komputera. Potem kolejny separator i nazwa katalogu. Ciąg kończy się znakiem zachęty. Ten znak określa typ użytkownika - standardowy lub root.
+
+| Część             | Opis                             | Przykład                        |
+| ----------------- | -------------------------------- | ------------------------------- |
+| Nazwa użytkownika | Aktualnie zalogowany użytkownika | jan, admin, root                |
+| @                 | Separator                        | @                               |
+| Nazwa hosta       | Nazwa komputera/serwera          | laptop, server01, macbook       |
+| :                 | Separator                        | :                               |
+| Katalog           | Bieżący katalog                  | ~ (home), /var/log, ~/Dokumenty |
+| Znak zachęty      | Określa typ użytkownika          | $ (standardowy), # (root)       |
+
+Zatem, podstawowa struktura przypomina:
+
+```bash
+nazwa_uzytkownika@nazwa_hosta:biezacy_katalog$
+```
+
+## Pomoc dla komend
+
+> Wiele aspektów wiersza poleceń kręci się wokół wydajności. Czasem kosztem zrozumienia.
+
+Jak widziałeś, wiele komend i opcji przyjmuję formę bezsensownych zbitek liter. "Jak mam to zapamiętać?" możesz zapytać. Nijak. Serio, nie próbuj zapamiętywać wszystkich tych komend i opcji. Z czasem powinieneś zapamiętać często wykorzystywane komendy. A dla innych, możesz wykorzystać **strony podręcznika** (_ang. manual pages_). Jest to wbudowana dokumentacja dla komend. Aby sprawdzić dokumentację dla konkretnej komendy (`ls` w tym wypadku), możesz wpisać:
+
+```bash
+man ls
+```
+
+Ilość wyświetlonego tekstu może cię przytłoczyć. Wiele komend oferuje także skróconą dokumentację. Flaga `--help` dostarcza krótkich zwięzłych informacji o komendzie. Nadal jednak odnosi się do stron podręcznika po bardziej szczegółowe informacje.
+
+```bash
+ls --help
+```
+
+Możesz także wpisać samo `help` . Powinna wyświetlić ci się lista wbudowanych komend. Też będzie długa. A załóżmy, że nie znasz nazwy komendy, której szukasz. Wiesz co chcesz zrobić, ale nie wiesz jak. A propos tego problemu, mamy… `apropos`. Ta komenda przeszukuję tę listę zainstalowanych programów i ich opisów pod kątem tekstu dostarczonego jako argument. Jeżeli poszukasz czegoś w stylu "directory list", terminal powinien zasugerować komendę `ls`.
+
+```bash
+apropos "directory list"
+```
+
+## Skróty klawiaturowe dla terminala
+
+Innym sposobem na ułatwienie sobie życia podczas korzystania z terminala są skróty klawiszowe. Zebrałem kilka popularnych poniżej. Jeżeli miałbyś zapamiętać tylko jedną, niech to będzie `Tab`. Tab to twój przyjaciel. Bash (jak i inne powłoki) oferują funkcjonalność nazwaną **autouzupełnianiem na tab.** Automatycznie uzupełnia pliki, nazwy folderów, komendy, zmienne, itp. Zależy to od kontekstu. Próbuje także "zgadywać" co chcesz zrobić. Kliknięcie tab dwa razy pokazuje wszystkie możliwe opcje uzupełnienia, jeżeli jest ich więcej.
+
+| Skrót                     | Akcja                                     |
+| ------------------------- | ----------------------------------------- |
+| Tab                       | Uzupełnij nazwę pliku/komendę             |
+| Tab Tab                   | Wyświetl wszystkie możliwe opcje          |
+| Ctrl + A                  | Przejdź do początku lini                  |
+| Ctrl + E                  | Przejdź na koniec lini                    |
+| Ctrl + ← or ⌥ + ←         | Przejdź w lewo o jedno słowo              |
+| Ctrl + → or ⌥ + →         | Przejdź w prawo o jedno słowo             |
+| Ctrl + U                  | Usuń wszystko od kursora do początku lini |
+| Ctrl + Shift + C or ⌘ + C | Skopiuj zaznaczony tekst do schowka       |
+| Ctrl + Shift + V or ⌘ + V | Wklej tekst ze schowka                    |
+| ↑                         | Przejdź do poprzedniej komendy            |
+| ↓                         | Przejdź do kolejnej komendy               |
+| Ctrl + R                  | Przeszukaj historię komend                |
+| Ctrl + C                  | Anuluj komendę (proces)                   |
+| Ctrl + Z                  | Zawieś komendę (proces)                   |
+| Ctrl + L                  | Wyczyść ekran                             |
+
+## System plików
+
+Będąc w stanie komfortowo poruszać się wewnątrz terminala, możemy zacząć się poruszać po **systemie plików.** Ale czym on jest? Jest to kolekcja informacji reprezentująca zdjęcia, dokumenty, muzykę, kod i inne dane na naszych komputerach. Zwykle, poruszasz się po nim używając interfejsu graficznego, takiego jak Finder, Windows Explorer czy innego menedżera plików. My będziemy używali terminala. **Pliki** zorganizowane są w foldery, które nerdowsko będziemy nazywać **katalogami.**
+
+## Ścieżki plików
+
+> [!Note] Ścieżka
+> ścieżka reprezentuje lokalizację pliku lub katalogu.
+
+Ścieżki zwykle wykorzystują ukośnik (prosty na Linux'ie, macOs, a wsteczny na Windows'ie) jako separator pomiędzy katalogami i nazwami plików. Mogą być one absolutne bądź relatywne.
+
+- Ścieżka absolutna określa całkowitą lokalizację pliku lub katalogu zaczynając od katalogu głównego (root).
+- Ścieżka relatywna określa lokalizację pliku lub katalogu na podstawie aktualnego katalogu.
+
+Wewnątrz terminala możesz zauważyć symbol tyldy. Powłoka rozwija ją do katalogu domowego użytkownika. Np. katalog `~/Dokumenty` może być rozwinięty do czegoś w stylu `/home/jan/Dokumenty`.
+
+## Nawigowanie po systemie plików
+
+Istnieją komendy, które możesz wykorzystać do nawigowania po systemie plików.
+
+- `pwd` (_ang._ print working directory) - wyświetla katalog domowy. Tak jak nazwa wskazuje - pokazuje ci gdzie się znajdujesz. Nie potrzebujesz tu żadnych opcji.
+- `ls` - wyświetl zawartość katalogu. Jest bardziej zaawansowana niż poprzednia komenda - może ci pokazać całą zawartość konkretnego katalogu. Niektóre z opcji mogą ci się przydać:
+  - `ls -a` - wyświetl wszystkie pliki, włączając te ukryte. Wiele plików konfiguracyjnych zaczynających się od kropki, jak `.gitignore` czy `.eslintrc.json`, jest domyślnie ukrywanych. Ta komenda może wyświetlić je wszystkie.
+  - `-l` - długi format z detalami. Ale ja nie wejdę tu w te szczegóły. Wyjście zawiera typ plików, uprawnienia, typ linku. Zasługuje to na oddzielne omówienie.
+  - `-h` - rozmiary czytelne dla człowieka (_ang. human-readable_). Kiedy wyświetliłeś te pliki, pewnie zauważyłeś dziwne liczby - są to rozmiary plików, ale są trudne do doczytania. Ta opcja taje ci znane jednostki jak kilobajty czy megabajty.
+- `cd` (_ang. change directory_) - zmień katalog. Główna komenda do nawigowania po systemie plików. Nie mamy tu flag, ale mamy ścieżki. Mogą one przyjmować różne formy:
+  - `cd /sciezka/absolutna/do/pliku` - przejdź do tej absolutnej ścieżki.
+  - `relative/path` - przejdź do tej relatywnej ścieżki.
+  - `..` - przejdź do katalogu rodzica.
+  - `~` - przejdź do katalogu domowego.
+  - `-` - przejdź do poprzedniego katalogu. Przydaje mi się, gdy przełączam się pomiędzy dwoma repozytoriami w różnych katalogach.
+
+## Modyfikowanie systemu plików
+
+Nawigowanie po systemie plików [nic by nie dało](https://www.youtube.com/watch?v=8AwVRlXsxlA). Korzystając z komputera, kopiujemy, tworzymy i przenosimy pliki pomiędzy folderami. Czynności te możesz także wykonywać przez terminal i często sprawniej niż przez graficzny interfejs.
+
+> [!Note] Wzorzec glob
+> Te dziwne symbole w nazwach plików są nazwane wzorcami glob (_ang. glob patterns_). Są wykorzystywane przez powłokę do dopasowywania wzorców w nazwach plików. Mogą być wykorzystywane do dopasowywania znaków lub ciągów znaków.
+>
+> - `*` - dopasuj dowolną sekwencję znaków.
+> - `?` - dopasuj dowolny, pojedynczy znak.
+> - `[abc]` - dopasuj dowolny znak ze zbioru.
+> - `[a-z]` - dopasuj dowolny znak z zakresu.
+> - `[!abc]` - dopasuj dowolny znak, który **nie** jest w zbiorze.
+
+- `mkdir` (_ang. make directory_) - stwórz katalog. Także przyjmuje ścieżki jako argumenty.
+  - `mkdir kat1 kat2` - stwórz wiele katalogów.
+  - `-p zagniezdzony/kat` - aby stworzyć zagnieżdżone katalogi, potrzebujesz flagi `-p`. Tworzy katalogi rodziców w razie potrzeby.
+- `rmdir` (_ang. remove directories_) - usuń katalogi.
+  - `rmdir kat1` - usuń katalog. Miej na uwadze, że katalog musi być pusty.
+- `rm` - usuń pliki i katalogi.
+  - `rm plik.txt` - usuń plik.
+  - `plik?.txt` - usuń konkretnie nazwane pliki.
+  - `-r katalog` - rekursywnie usuń katalog (z całą zawartością).
+  - `-f katalog` - siłowo usuń katalog, bez potwierdzenia. Uważaj - będzie usunięty na dobre. Nie ma żadnego kosza w przypadku komend `rm`.
+- `cp` - kopiuj pliki i katalogi.
+  - `cp plik.txt /katalog` - kopiuj plik do katalogu.
+  - `*.txt /katalog` - kopiuj wszystkie pliki konkretnego typu do katalogu.
+  - `-r /zrodlo /docelowy` - rekursywnie kopiuj katalog do katalogu.
+  - `-v` - pokaż informację o kopiowanych plikach.
+  - `-i` - interaktywne. Pytaj przed nadpisywaniem.
+  - `-p` - zachowaj atrybuty, takiej jak znaczniki czasu czy uprawnienia.
+- `mv` - przenieś pliki.
+  - `mv plik.txt /katalog` - przenieś plik do katalogu.
+  - `* /katalog` - przenieś wszystkie pliki do katalogu.
+  - `-i` - interaktywne. Pytaj przed nadpisywaniem.
+  - `-v` - pokaż informację o przenoszonych plikach.
+  - `staranazwa.txt nowanazwa.txt` - zmień nazwę pliku.
+
+## Przeszukiwanie systemu plików
+
+Jeżeli nie wiesz gdzie chcesz przejść, możesz także poszukać konkretnego pliku lub katalogu w jakimś zakresie.
+
+- `find` - znajdź pliki w podanym zakresie, jak np. katalog `/sciezka`.
+  - `find /sciezka -name nazwa_pliku.txt` - znajdź plik po nazwie.
+  - `/path -name *.txt` - znajdź pliki po wzorcu.
+  - `/path -type f` - znajdź pliki po typie (tylko pliki).
+  - `/path -type d` - znajdź pliki po typie (tylko katalogi).
+  - `/path -size +100M` - znajdź pliki po rozmiar (większe niż 100MB).
+- `locate` - szybkie przeszukanie w bazie danych.
+  - `locate nazwa_pliku.txt` - znajdź plik po nazwie.
+  - `*.txt` - znajdź pliki po wzorcu.
+- `which` - znajdź pliki wykonywalne w zmiennej `PATH`.
+  - `which python` - znajdź plik wykonywalny python.
+  - `git` - znajdź plik wykonywalny Git.
+- `whereis` - znajdź pliki binarne, źródłowe i strony podręcznika.
+  - `whereis python` - znajdź wszystkie powyższe dla python'a.
+
+## Potoki
+
+Douglas wprowadził także pomysł potoków w Unix. Potoki pozwalają nam na łączenie komend.
+
+> [!Note] Potok
+> Potok (_ang. pipe_) bierze wyjście jednej komendy i przekazuje je kolejnej.
+
+Aby stworzyć przetwarzanie potokowe, musisz zapisać jedną komendę, dodać pionową kreskę "|" (znak potoku) i dodać kolejną komendę. Taka sekwencja tworzy przetwarzanie potokowe. Każda komenda przetwarza dane i podaje je dalej do kolejnej.
+
+```bash
+komenda1 | komenda2 | komenda3 | ... |
+```
+
+Przetwarzanie poniżej czyta logi, przeszukuje błędy i ogranicza wyjście do dziesięciu lini.
+
+```bash
+cat error.log | grep "ERROR" | head -10
+```
+
+Tym samym przechodzimy do komend tekstowych.
+
+## Przeglądanie plików tekstowych
+
+Możemy wybierać komendy w zależności od rozmiaru pliku i części, którą chcemy zobaczyć. Zobaczymy całego "kota" z jego "głową" i "ogonem". Wizualizowanie kota jest w sumie dobrą mnemotechniką, aby je zapamiętać.
+
+![[cat.jpeg]]
+Poprosiłem dziewczynę, żeby narysowała kota, ułatwiającego zapamiętanie. Uroczy, czyż nie?
+
+- `cat` - niestety, komenda ta nie ma nic wspólnego z kotami. Jest to skrót od "konkatenacji", oznaczającej łączenie razem. Komenda ta umożliwia przekazywanie lub konkatenację tekstu do ekranu (lub innego programu, pamiętasz potoki?).
+  - `cat nazwa_pliku.txt` - wyświetl cały plik.
+  - `-n` - pokaż numery linii.
+  - `-A` - wyświetl wszystkie nie-drukowalne znaki, takie jak tab.
+- `head` - wyświetlanie całego pliku może przytłoczyć. Może on "rozlać się" po całym terminalu. Możemy ograniczyć ten tekst to kilku pierwszych lini używając komendy `head`.
+  - `head -10 filename.txt` - wyświetl N pierwszych lini.
+  - `-n 10` - działa tak samo jak ta powyżej.
+  - `-n -10` - wyświetl wszystkie linie poza ostatnimi dziesięcioma.
+- `tail` - działa tak samo, tylko dla ostatnich lini.
+  - `tail -10 filename.txt` - wyświetl N ostatnich lini.
+  - `-n 10 filename.txt` - działa tak samo jak ta powyżej.
+  - `-n -10` - wyświetl wszystkie linie poza pierwszymi dziesięcioma.
+- less - powiedzmy, że chcesz przeglądać tekst podobnie do strony internetowej. Komenda `less` może ci w tym pomóc.
+  - `less nazwa_pliku.txt` - wyświetl i nawiguj po pliku.
+  - `↑` / `↓` - przewiń w górę/dół.
+  - `⏎` - przejdź o jedną linię w dół.
+  - `space` - przejdź o jeden ekran w dół.
+  - `q` - wciśnij q, żeby wyjść.
+  - `h` - jeżeli zapomnisz skrótów, wciśnij h (i wciśnij f, żeby oddać hołd).
+
+## Przeszukiwanie plików tekstowych
+
+Tu mamy tylko jedną komendę, ale potężną. Komenda `grep` przeszukuje pliki lub strumienie w poszukiwaniu wzorców. Wzorce mogą być sprecyzowane bądź specyficzne.
+
+```bash
+grep "wzorzec" plik.txt
+```
+
+- Sprecyzowane wzorce są jasne i jednoznaczne w znaczeniu, jak dosłowny `"ciąg znaków"`.
+- Specyficzne wzorce celują w konkretny, dobrze zdefiniowany zbiór o specyficznych kryteriach, jak wzorzec do poszukiwania daty `"^[0-9]{4}-[0-9]{2}-[0-9]{2}$"`.
+
+Wzorce dopasowania mogą korzystać z **wyrażeń regularnych.**
+
+> [!Note] Wyrażenia regularne
+> Wyrażenia regularne (_ang. regular expression_) to sekwencja znaków i symboli, która definiuje poszukiwany wzorzec. Jest to potężne narzędzie do wyszukiwania wzorców i manipulacji tekstu, która pozwala ci znaleźć, wyodrębnić, zamienić i walidować tekst bazując na zdefiniowanych regułach. Działają podobnie do wzorców glob, ale dają nawet więcej możliwości.
+
+Aby włączyć wyrażenia regularne, użyj flagi `-E`. Inne przydatne opcje to:
+
+- `-F` - potraktuj wzorzec jako dosłowny ciąg znaków.
+- `-r` - przeszukaj rekursywnie katalog.
+- `-i` - przeszukaj ignorując wielkość liter.
+- `--include="*.txt"` - szukaj tylko w plikach `.txt`.
+- `--exclude="*.log"` - wyłącz pliki `.log` z przeszukiwania.
+
+## Manipuluj tekstem
+
+Po przeszukaniu, możemy także manipulować tekstem. Do tego też mamy komendy.
+
+### awk
+
+`awk` to zaawansowana komenda to procesowania tekstu. Czyta wejście linia po lini, dzieli je na pola i pozwala ci na pewne operacje.
+
+```bash
+awk 'wzorzec { akcja }' plik.txt
+```
+
+Obie części są opcjonalne. Gdy nie ma wzorca, przetwarzane są wszystkie linie. Bez akcji, wyświetlana jest cała linia.
+
+W domyśle, komenda wykorzystuje białe znaki jako separatory. Możesz to zmienić korzystając z flagi `-F`, np.: `-F','`.
+
+Istnieją wbudowane zmienne zawierające informacje o aktualnej lini:
+
+- $0 - Cała linia
+- $1, $2, $3 - Poszczególne pola
+- NF - Liczba pól w aktualnej lini
+- NR - Numer aktualnej lini (pośród wszystkich plików)
+- FNR - Number aktualnej lini (wewnątrz aktualnego pliku)
+- FILENAME - Nazwa aktualnego pliku
+
+### sed
+
+`sed` to edytor strumienia, który procesuje tekst, dzieląc go na linie. Czyta dane na wejściu, aplikuje komendy do edycji i zwraca zmodyfikowany tekst. Po co używać komend do edycji zamiast standardowego edytora? `sed` działa na strumieniach danych, przez co możesz zautomatyzować przetwarzanie tekstu.
+
+```bash
+sed '[adres]komenda[parametry]' plik
+```
+
+Komenda wykorzystuje dwa bufory:
+
+- Przestrzeń wzorców - zawiera aktualnie przetwarzaną linię. Operacje tej przestrzeni:
+  - `p` - wyświetl przestrzeń wzorców
+  - `d` - usuń przestrzeń wzorców
+  - `n` - wczytaj następną linię do przestrzeni wzorców
+- Zarezerwowana przestrzeń - tymczasowy bufor pamięci. Operacje tej przestrzeni:
+  - `h` - skopiuj wzorzec do zarezerwowanej przestrzeni
+  - `g` - skopiuj tę przestrzeń do przestrzeni wzorców
+  - `x` - zamień obie przestrzenie
+
+Jednakże najczęstszą operacją tej komendy będzie substytucja. Komenda poniżej zamienia wszystkie wystąpienia `stary` na `nowy`.
+
+```bash
+sed 's/stary/nowy/g' plik.txt
+```
+
+Komenda nie jest interaktywna i - tak jak wspomniałem - może być wykorzystana do automatyzacji przetwarzania tekstu. Jeżeli chcesz samodzielnie edytować tekst, twój system oferuje ci edytory.
+
+## Vim
+
+Istnieje popularny żart o Vimie:
+
+> Jak wygenerować prawdziwie losowy ciąg znaków?
+> Posadź web dewelopera przed Vimem i każ mu wyjść.
+
+Aby uniknąć takiego upokorzenia, nauczymy się podstaw Vima. Jest to domyślny edytor dla Gita i niektórych dystrybucji Linuxa, więc istnieje szansa, że się już z nim spotkałeś.
+
+Vi (_ang. Visual Editor_) to edytor tekstu stworzony przez Gill Joya w 1976 roku dla systemów operacyjnych Unix. Vim (_ang. V Improved_) to rozbudowana wersja Vi, stworzona przez Brama Moolenaara w 1991 roku. Zachowuje kompatybilność z Vi i dodaje współczesne funkcjonalności.
+
+Vim ma dwa główne tryby, które warto rozróżniać:
+
+1. Tryb **wstawiania,** gdzie piszesz i wprowadzasz manualne zmiany do tekstu.
+2. Tryb **komend,** gdzie wpisujesz komendy, takie jak zapisz, wyszukaj, i wiele innych.
+
+Możesz przełączać się pomiędzy nimi używając klawiszy `esc` i `i`.
+
+| Komenda     | Akcja                                            |
+| ----------- | ------------------------------------------------ |
+| i           | Przełącz na tryb wstawiania (wstaw gdzie kursor) |
+| I           | Wstaw na początku lini                           |
+| o           | Wstaw w kolejnej lini                            |
+| Shift + i   | Przejdź do początku lini                         |
+| Escape      | Wyjdź z bieżącego trybu                          |
+| :w nowy.txt | Zapisz plik o nazwie                             |
+| :wq         | Zapisz i wyjdź                                   |
+| vi nowy.txt | Otwórz plik                                      |
+| :q!         | Wyjdź bez zapisywania                            |
+
+Zatem, aby wyjść z Vima, musisz wpisać `:wq` w trybie komend. Po wyjściu, możemy zmienić nasz domyślny edytor na nano.
+
+## nano
+
+Na niektórych systemach operacyjnych, nano jest domyślnym edytorem. Jest preinstalowany na wielu dystrybucjach Linuxa i macOS. Jest lekki i bardziej intuicyjny niż Vim, ale brakuje mu funkcji dla zaawansowanych użytkowników. Został zaprojektowany, aby być bardziej przyjazny użytkownikom. W przeciwieństwie do edytora Vim, nie ma różnych trybów. Wszystkie niezbędne skróty są wyświetlone na dole ekranu. Niektóre z nich to:
+
+| Skrót  | Akcja                                     |
+| ------ | ----------------------------------------- |
+| Ctrl+X | Wyjdź z nano (pytanie czy zapisać zmiany) |
+| Ctrl+O | Zapisz plik                               |
+| Ctrl+G | Pokaż pomoc                               |
+| Ctrl+W | Poszukaj tekstu                           |
+| Ctrl+K | Wytnij linię lub zaznaczony tekst         |
+| Ctrl+U | Wklej wycięty tekst                       |
+| Ctrl+C | Anuluj aktualną operację                  |
+| Ctrl+V | Przejdź w dół o jedną stronę              |
+| Ctrl+Y | Przejdź w górę o jedną stronę             |
+| Ctrl+P | Przejdź do poprzedniej lini               |
+| Ctrl+N | Przejdź do następnej lini                 |
+
+## Przekierowanie wyjścia
+
+Kilkukrotnie w tym poście wspomniałem słowo "strumień". Wyjaśnijmy je.
+
+> [!Note] Strumień
+> Strumień to sekwencja danych będąca dostępna przez jakiś czas.
+
+Woda płynie przez potoki i tworzy strumień. W kontekście informatyki, dane tworzą strumienie. Jest to ciągły przepływ danych. Tekst w powłoce przechodzi przez jeden z trzech rodzajów strumieni.
+
+| Strumień                     | Numer | Wykorzystanie    |
+| ---------------------------- | ----- | ---------------- |
+| Standardowe wejście (stdin)  | 0     | Wejście tekstowe |
+| Standardowe wyjście (stdout) | 1     | Wyjście tekstowe |
+| Standardowy bład (stderr)    | 2     | Tekst błędu      |
+
+> [!Note] Przekierowanie wyjścia
+> Przekierowanie wyjścia to mechanizm, który zmienia miejsce docelowe wyjścia komendy.
+
+Możemy przekierować wszystkie z tych strumieni na ekran lub do pliku. Na przykład, aby zapisać listę katalogów do pliku, możemy użyć:
+
+```bash
+ls 1> lista_katalogow.txt
+```
+
+Deweloperzy tak często wykorzystują tę operację, że możesz pominąć numer "1".
+
+```bash
+ls > lista_katalogow.txt
+```
+
+Jednakże, aby przekierować błąd, potrzebujesz numeru.
+
+```bash
+ls nieistniejacy_plik 2> blad.txt
+```
+
+Uważaj - przekierowując wyjście używając znaku większości ">", **zastępujesz** zawartość pliku. Aby dodać zawartość, potrzebujesz zdwojonego znaku większości ">>".
+
+```bash
+echo "dodaj ten tekst" >> plik.txt
+```
+
+Nie wykorzystuje się tego w praktyce, ale możemy zapisać komendę `cat` alternatywnie, gdzie przekierowujemy plik jako wejście do komendy. Nadal to zadziała.
+
+```bash
+cat < plik.txt
+```
+
+## Zmienne środowiskowe
+
+Jeżeli programujesz w JavaScripcie, prawdopodobnie robiłeś coś takiego:
+
+```js
+process.env.PORT = 3000
+process.env.HOST = localhost
+process.env.API_KEY = 'dsagljewai0jgoaw93209i'
+```
+
+Powyższy fragment ustawia **zmienne środowiskowe.**
+
+> [!Note] Zmienne środowiskowe
+> Zmienne środowiskowe to nazwane wartości, które możemy wykorzystać do konfiguracji zachowań programów. Są częścią środowiska, w którym proces jest uruchomiony.
+
+Środowisko powłoki ma zmienne, które kontrolują informacje i opcje wpływające na jej działanie. Aby sprawdzić te zmienne, możesz wpisać `env`.
+
+```bash
+env # lista zmiennych środowiskowych
+```
+
+- `$PATH` - Ścieżka wyszukiwania plików wykonywalnych
+- `$HOME` - Katalog domowy użytkownika
+- `$USER` - Aktualny użytkownik
+- `$PWD` - Aktualny katalog
+- `$SHELL` - Aktualny wykonywalny plik powłoki
+- `$PS1` - Główny znak prompta
+
+Przyjrzyjmy się pierwszej z nich. Aby wyświetlić zmienną `$PATH`, wpisz:
+
+```bash
+echo $PATH
+```
+
+Ta ścieżka zawiera listę katalogów, gdzie powłoka szuka programów wykonywalnych, poza aktualnym katalogiem. Zwraca listę oddzieloną dwukropkami, np. `/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin`. Jak widzimy, programy żyją w jednym z tych katalogów:
+
+- `/usr/local/bin` - programy zainstalowane przez użytkownika.
+- `/usr/bin` - programy systemowe.
+- `/bin` - niezbędne programy systemowe.
+- `/usr/sbin` - programy administratora systemu.
+- `/sbin` - niezbędne programy administratora systemu.
+
+Gdy zainstalujesz program, powinien on zaktualizować zmienną `$PATH`. Jednakże nie zawsze tak jest. Czasami, kiedy instalujemy nowe oprogramowanie, chcemy sami zaktualizować zmienną w naszym środowisku. Możesz dodać katalog programu do tej zmiennej, poprzez edycję pliku profilu powłoki `~/.bash_profile`.
+
+Możesz także ustawić tę zmienną lokalnie:
+
+```bash
+PATH="$PATH:/moja/sciezka"
+```
+
+Ustawiamy zmienną lokalną `PATH` na ciąg znaków, który rozszerza wyjście globalnej zmiennej `$PATH`. Mamy tu istotne rozróżnienie w wykorzystaniu znaku dolara. Ujmując rzecz prosto, używaj znaku dolara, gdy **odczytujesz** zmienną i nie używaj go, gdy **ustawiasz** zmienną.
+
+## Podsumowanie
+
+Mam nadzieję, że chociaż trochę zrozumiałeś terminal i Basha. Powinieneś także znać różnicę. Można by pisać o wiele więcej o Linux'ie i wykorzystaniu terminala. W tym wpisie, pisaliśmy komendy bezpośrednio w terminalu. Ale możesz tworzyć także pliki ze skryptami, jak w innych językach programowania. Czy ten post pomógł ci zrozumieć terminal? Chciałbyś nauczyć się więcej o Linux'ie i skryptach powłoki? Daj mi znać!
