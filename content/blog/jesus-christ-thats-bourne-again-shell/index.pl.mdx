@@ -8,24 +8,24 @@ image:
   caption: 'Zdjęcie autorstwa Gabriel Heinzer'
   src: 'gabriel-heinzer-xbEVM6oJ1Fs-unsplash.jpg'
 categories: ['informatyka']
-tags: ['terminal', 'bash', 'shell', 'cli']
+tags: ['terminal', 'bash', 'powłoka', 'cli']
 type: 'post'
 ---
 
 Bash to akronim od Bourne Again Shell. Skrót pewnie mówi ci więcej niż rozszerzona wersja. Ale czy na pewno? Bash, terminal, wiersz poleceń, powłoka, CLI... Prawdopodobnie obiły ci się już o uszy te słowa. Musimy je wyjaśnić.
 
 - **Wiersz poleceń** _(ang. command-line interface)_ pozwala nam na interakcję z programami wykorzystując komendy tekstowe. Potrafi on odczytywać tekst z wejścia i przekazywać wyjściowy tekst na ekran. Dodatkowo, może także odczytywać i zapisywać pliki.
-- **Powłoka** _(ang. shell)_ lub interpreter poleceń to program, którego używamy, aby pracować z CLI. Programiści stworzyli wiele powłok przez lata dla różnych systemów operacyjnych.
-- **Bash** jest jedną z powłok. Deweloperzy wydali ją w 1989. Rozszerza ona możliwości wcześniejszych powłok (Bourne Shell lub Thompson Shell) i dodaje nowe funkcjonalności.
+- **Powłoka** _(ang. shell)_ lub interpreter poleceń to program, którego używamy, aby pracować z CLI. Programiści latami tworzyli wiele powłok dla różnych systemów operacyjnych.
+- **Bash** jest jedną z powłok. Deweloperzy wydali ją w 1989 roku. Rozszerza ona możliwości wcześniejszych powłok (Bourne Shell lub Thompson Shell) i dodaje nowe funkcjonalności.
 - Powłoka działa wewnątrz aplikacji **terminala.** Może być uruchomiona w jednym lub wielu terminalach. Niektóre aplikacje, takie jak: Visual Studio Code, Cursor, czy inne edytory tekstu/IDE, zawierają wbudowany terminal.
 
 Tabelka porównawcza wygląda tak:
 
-| Wiersz poleceń                                | Terminal                                                  | Powłoka                                                         | Bash                                                   |
-| --------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------ |
-| Każde miejsce, gdzie możemy wpisywać komendy. | Oprogramowanie wewnątrz którego uruchamiana jest powłoka. | Oprogramowanie, które interpretuje i uruchamia wpisane komendy. | Popularna powłoka dostępna na systemach Linux i macOS. |
+| Wiersz poleceń                                | Terminal                                                   | Powłoka                                                         | Bash                                                   |
+| --------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------ |
+| Każde miejsce, gdzie możemy wpisywać komendy. | Oprogramowanie, wewnątrz którego uruchamiana jest powłoka. | Oprogramowanie, które interpretuje i uruchamia wpisane komendy. | Popularna powłoka dostępna na systemach Linux i macOS. |
 
-Pomimo tego, że występują pomiędzy nimi różnice, ludzie często używają tych terminów zamiennie. Czyli co, całe to wyjaśnienie na marne? Nie, ✨im więcej wiesz✨, tym lepiej!
+Pomimo, że występują pomiędzy nimi różnice, ludzie często używają tych terminów zamiennie. Czyli co, całe to wyjaśnienie na marne? Nie, ✨im więcej wiesz✨, tym lepiej!
 
 ## Bash i systemy operacyjne
 
@@ -47,9 +47,9 @@ Douglas Mcllroy, inżynier z Bell Labs, przyczynił się do rozwoju systemów op
 
 - Narzędzia powinny robić jedną rzecz i robić ją dobrze.
 - Narzędzia powinny używać tekstowego interfejsu.
-- Programy powinny być zaprojektowane to komunikowania się ze sobą.
+- Programy powinny komunikować się ze sobą.
 
-Pewnych świąt Bożego Narodzenia, dałem dziadkowi nóż Victorinox - scyzoryk armii szwajcarskiej. Jest to fajny, mały gadżet z ostrzem, śrubokrętem, korkociągiem, nożyczkami, otwieraczem do butelek, i wieloma innymi narzędziami. Pozwala ci zrobić wiele rzeczy. Jednakże, gdy zaczniesz ciąć, przykręcać lub otwierać, zdasz sobie sprawę, że te narzędzia nie są tak dobre jak ich pełnowymiarowe odpowiedniki. Potrzebujesz skrzynkę z dedykowanymi narzędziami, żeby wykonać jakąś ciężką pracę. Unix (a co za tym idzie Bash) działa podobnie. Mamy zbiór dedykowanych narzędzi do różnych zadań, jak się przekonasz.
+Pewnych świąt Bożego Narodzenia, dałem dziadkowi nóż Victorinox - scyzoryk armii szwajcarskiej. Jest to fajny, mały gadżet z ostrzem, śrubokrętem, korkociągiem, nożyczkami, otwieraczem do butelek, i wieloma innymi narzędziami. Pozwala ci zrobić wiele rzeczy. Jednakże, gdy zaczniesz ciąć, przykręcać lub otwierać, zdasz sobie sprawę, że te narzędzia nie są tak dobre jak ich pełnowymiarowe odpowiedniki. Potrzebujesz skrzynkę z dedykowanymi narzędziami, żeby wykonać jakąś ciężką pracę. Unix (a co za tym idzie Bash) działa podobnie. Mamy zbiór dedykowanych narzędzi do różnych zadań, jak się niedługo przekonasz.
 
 ## Struktura komendy
 
@@ -73,7 +73,7 @@ Jednakże, nie wszystkie komendy wymagają opcji i/lub argumentów. W zależnoś
 - Komenda + opcje, np. `ls -l`.
 - Komenda + opcje + argumenty, np. `cp -v file1.txt file2.txt`.
 
-Opcje (zwane także flagami) często zaczynają się od myślnika i są reprezentowane przez jedna literę. Jednakże, są także rozszerzone wersje tych flag, które zaczynają się od podwójnego myślnika i zawierają pełną nazwę opcji. Obie wersje robią to samo. Poniżej przykłady:
+Opcje (zwane także flagami) często zaczynają się od myślnika i są reprezentowane przez jedną literę. Jednakże, są także rozszerzone wersje tych flag, które zaczynają się od podwójnego myślnika i zawierają pełną nazwę opcji. Obie wersje robią to samo. Poniżej przykłady:
 
 ```bash
 -h    --help
@@ -98,7 +98,7 @@ cp -r /source /destination
 
 ## Prompt
 
-Przed komendą, da się zauważyć dziwny ciąg znaków, przypominający `jan@laptop:~$`. Jest to **prompt.** Zawiera informacje o powłoce. Ten ciąg może mieć inną kolejność w zależności od systemu operacyjnego, ale informacje pozostają te same. Rozplączmy je. Zaczynając od lewej, mamy nazwę użytkownika. Później mamy separator w postaci znaku małpy `@`. Na prawo od separatora, mamy nazwę komputera. Potem kolejny separator i nazwa katalogu. Ciąg kończy się znakiem zachęty. Ten znak określa typ użytkownika - standardowy lub root.
+Przed komendą, da się zauważyć dziwny ciąg znaków, przypominający `jan@laptop:~$`. Jest to **prompt.** Zawiera informacje o powłoce. Ten ciąg może mieć inną kolejność, w zależności od systemu operacyjnego, ale informacje pozostają te same. Rozplączmy je. Zaczynając od lewej, mamy nazwę użytkownika. Później mamy separator w postaci znaku małpy. Na prawo od separatora, mamy nazwę komputera. Potem kolejny separator i nazwa katalogu. Ciąg kończy się znakiem zachęty. Ten znak określa typ użytkownika - standardowy lub root.
 
 | Część             | Opis                             | Przykład                        |
 | ----------------- | -------------------------------- | ------------------------------- |
@@ -119,13 +119,13 @@ nazwa_uzytkownika@nazwa_hosta:biezacy_katalog$
 
 > Wiele aspektów wiersza poleceń kręci się wokół wydajności. Czasem kosztem zrozumienia.
 
-Jak widziałeś, wiele komend i opcji przyjmuję formę bezsensownych zbitek liter. "Jak mam to zapamiętać?" możesz zapytać. Nijak. Serio, nie próbuj zapamiętywać wszystkich tych komend i opcji. Z czasem powinieneś zapamiętać często wykorzystywane komendy. A dla innych, możesz wykorzystać **strony podręcznika** (_ang. manual pages_). Jest to wbudowana dokumentacja dla komend. Aby sprawdzić dokumentację dla konkretnej komendy (`ls` w tym wypadku), możesz wpisać:
+Jak widziałeś, wiele komend i opcji przyjmuję formę bezsensownych zbitek liter. "Jak mam to zapamiętać?" możesz zapytać. Nijak. Serio, nie próbuj zapamiętywać wszystkich tych komend i opcji. Z czasem powinieneś zapamiętać często wykorzystywane komendy. A dla innych, możesz wykorzystać **strony podręcznika** _(ang. manual pages)_. Jest to wbudowana dokumentacja dla komend. Aby sprawdzić dokumentację dla konkretnej komendy (`ls` w tym wypadku), możesz wpisać:
 
 ```bash
 man ls
 ```
 
-Ilość wyświetlonego tekstu może cię przytłoczyć. Wiele komend oferuje także skróconą dokumentację. Flaga `--help` dostarcza krótkich zwięzłych informacji o komendzie. Nadal jednak odnosi się do stron podręcznika po bardziej szczegółowe informacje.
+Ilość wyświetlonego tekstu może cię przytłoczyć. Wiele komend oferuje także skróconą dokumentację. Flaga `--help` dostarcza krótkich i zwięzłych informacji o komendzie. Nadal jednak odnosi się do stron podręcznika po bardziej szczegółowe informacje.
 
 ```bash
 ls --help
@@ -173,8 +173,8 @@ Będąc w stanie komfortowo poruszać się wewnątrz terminala, możemy zacząć
 
 Ścieżki zwykle wykorzystują ukośnik (prosty na Linux'ie, macOs, a wsteczny na Windows'ie) jako separator pomiędzy katalogami i nazwami plików. Mogą być one absolutne bądź relatywne.
 
-- Ścieżka absolutna określa całkowitą lokalizację pliku lub katalogu zaczynając od katalogu głównego (root).
-- Ścieżka relatywna określa lokalizację pliku lub katalogu na podstawie aktualnego katalogu.
+- **Ścieżka absolutna** określa całkowitą lokalizację pliku lub katalogu zaczynając od katalogu głównego (root).
+- **Ścieżka relatywna** określa lokalizację pliku lub katalogu na podstawie aktualnego katalogu.
 
 Wewnątrz terminala możesz zauważyć symbol tyldy. Powłoka rozwija ją do katalogu domowego użytkownika. Np. katalog `~/Dokumenty` może być rozwinięty do czegoś w stylu `/home/jan/Dokumenty`.
 
@@ -182,12 +182,12 @@ Wewnątrz terminala możesz zauważyć symbol tyldy. Powłoka rozwija ją do kat
 
 Istnieją komendy, które możesz wykorzystać do nawigowania po systemie plików.
 
-- `pwd` (_ang._ print working directory) - wyświetla katalog domowy. Tak jak nazwa wskazuje - pokazuje ci gdzie się znajdujesz. Nie potrzebujesz tu żadnych opcji.
+- `pwd` _(ang. print working directory)_ - wyświetla katalog domowy. Tak jak nazwa wskazuje - pokazuje ci gdzie się znajdujesz. Nie potrzebujesz tu żadnych opcji.
 - `ls` - wyświetl zawartość katalogu. Jest bardziej zaawansowana niż poprzednia komenda - może ci pokazać całą zawartość konkretnego katalogu. Niektóre z opcji mogą ci się przydać:
   - `ls -a` - wyświetl wszystkie pliki, włączając te ukryte. Wiele plików konfiguracyjnych zaczynających się od kropki, jak `.gitignore` czy `.eslintrc.json`, jest domyślnie ukrywanych. Ta komenda może wyświetlić je wszystkie.
   - `-l` - długi format z detalami. Ale ja nie wejdę tu w te szczegóły. Wyjście zawiera typ plików, uprawnienia, typ linku. Zasługuje to na oddzielne omówienie.
-  - `-h` - rozmiary czytelne dla człowieka (_ang. human-readable_). Kiedy wyświetliłeś te pliki, pewnie zauważyłeś dziwne liczby - są to rozmiary plików, ale są trudne do doczytania. Ta opcja taje ci znane jednostki jak kilobajty czy megabajty.
-- `cd` (_ang. change directory_) - zmień katalog. Główna komenda do nawigowania po systemie plików. Nie mamy tu flag, ale mamy ścieżki. Mogą one przyjmować różne formy:
+  - `-h` - rozmiary czytelne dla człowieka _(ang. human-readable)_. Kiedy wyświetliłeś te pliki, pewnie zauważyłeś dziwne liczby - są to rozmiary plików, ale są trudne do doczytania. Ta opcja taje ci znane jednostki jak kilobajty czy megabajty.
+- `cd` _(ang. change directory)_ - zmień katalog. Główna komenda do nawigowania po systemie plików. Nie mamy tu flag, ale mamy ścieżki. Mogą one przyjmować różne formy:
   - `cd /sciezka/absolutna/do/pliku` - przejdź do tej absolutnej ścieżki.
   - `relative/path` - przejdź do tej relatywnej ścieżki.
   - `..` - przejdź do katalogu rodzica.
@@ -196,11 +196,11 @@ Istnieją komendy, które możesz wykorzystać do nawigowania po systemie plikó
 
 ## Modyfikowanie systemu plików
 
-Nawigowanie po systemie plików [nic by nie dało](https://www.youtube.com/watch?v=8AwVRlXsxlA). Korzystając z komputera, kopiujemy, tworzymy i przenosimy pliki pomiędzy folderami. Czynności te możesz także wykonywać przez terminal i często sprawniej niż przez graficzny interfejs.
+Nawigowanie po systemie plików [nic by nie dało](https://www.youtube.com/watch?v=8AwVRlXsxlA). Korzystając z komputera, kopiujemy, tworzymy i przenosimy pliki pomiędzy folderami. Czynności te możesz także wykonywać przez terminal. Często także sprawniej niż przez graficzny interfejs.
 
 <Callout variant="info">
 
-Te dziwne symbole w nazwach plików są nazwane **wzorcami glob** (_ang. glob patterns_). Są wykorzystywane przez powłokę do dopasowywania wzorców w nazwach plików. Mogą być wykorzystywane do dopasowywania znaków lub ciągów znaków.
+Te dziwne symbole w nazwach plików są nazwane **wzorcami glob** _(ang. glob patterns)_. Są wykorzystywane przez powłokę do dopasowywania wzorców w nazwach plików. Mogą być wykorzystywane do dopasowywania znaków lub ciągów znaków.
 
 - `*` - dopasuj dowolną sekwencję znaków.
 - `?` - dopasuj dowolny, pojedynczy znak.
@@ -210,10 +210,10 @@ Te dziwne symbole w nazwach plików są nazwane **wzorcami glob** (_ang. glob pa
 
 </Callout>
 
-- `mkdir` (_ang. make directory_) - stwórz katalog. Także przyjmuje ścieżki jako argumenty.
+- `mkdir` _(ang. make directory)_ - stwórz katalog. Także przyjmuje ścieżki jako argumenty.
   - `mkdir kat1 kat2` - stwórz wiele katalogów.
   - `-p zagniezdzony/kat` - aby stworzyć zagnieżdżone katalogi, potrzebujesz flagi `-p`. Tworzy katalogi rodziców w razie potrzeby.
-- `rmdir` (_ang. remove directories_) - usuń katalogi.
+- `rmdir` _(ang. remove directories)_ - usuń katalogi.
   - `rmdir kat1` - usuń katalog. Miej na uwadze, że katalog musi być pusty.
 - `rm` - usuń pliki i katalogi.
   - `rm plik.txt` - usuń plik.
@@ -259,7 +259,7 @@ Douglas wprowadził także pomysł potoków w Unix. Potoki pozwalają nam na ł�
 
 <Callout variant="info">
 
-**Potok** (_ang. pipe_) bierze wyjście jednej komendy i przekazuje je kolejnej.
+**Potok** _(ang. pipe)_ bierze wyjście jednej komendy i przekazuje je kolejnej.
 
 </Callout>
 
@@ -281,8 +281,7 @@ Tym samym przechodzimy do komend tekstowych.
 
 Możemy wybierać komendy w zależności od rozmiaru pliku i części, którą chcemy zobaczyć. Zobaczymy całego "kota" z jego "głową" i "ogonem". Wizualizowanie kota jest w sumie dobrą mnemotechniką, aby je zapamiętać.
 
-![[cat.jpeg]]
-Poprosiłem dziewczynę, żeby narysowała kota, ułatwiającego zapamiętanie. Uroczy, czyż nie?
+![Rysunek kota](cat.jpeg 'Poprosiłem dziewczynę, żeby narysowała kota, ułatwiającego zapamiętanie.')
 
 - `cat` - niestety, komenda ta nie ma nic wspólnego z kotami. Jest to skrót od "konkatenacji", oznaczającej łączenie razem. Komenda ta umożliwia przekazywanie lub konkatenację tekstu do ekranu (lub innego programu, pamiętasz potoki?).
   - `cat nazwa_pliku.txt` - wyświetl cały plik.
@@ -296,7 +295,7 @@ Poprosiłem dziewczynę, żeby narysowała kota, ułatwiającego zapamiętanie. 
   - `tail -10 filename.txt` - wyświetl N ostatnich lini.
   - `-n 10 filename.txt` - działa tak samo jak ta powyżej.
   - `-n -10` - wyświetl wszystkie linie poza pierwszymi dziesięcioma.
-- less - powiedzmy, że chcesz przeglądać tekst podobnie do strony internetowej. Komenda `less` może ci w tym pomóc.
+- `less` - powiedzmy, że chcesz przeglądać tekst podobnie do strony internetowej. Komenda `less` może ci w tym pomóc.
   - `less nazwa_pliku.txt` - wyświetl i nawiguj po pliku.
   - <Kbd>↑</Kbd> / <Kbd>↓</Kbd> - przewiń w górę/dół.
   - <Kbd>⏎</Kbd> - przejdź o jedną linię w dół.
@@ -320,7 +319,7 @@ Wzorce dopasowania mogą korzystać z **wyrażeń regularnych.**
 
 <Callout variant="info">
 
-**Wyrażenie regularne** (_ang. regular expression_) to sekwencja znaków i symboli, która definiuje poszukiwany wzorzec. Jest to potężne narzędzie do wyszukiwania wzorców i manipulacji tekstu, która pozwala ci znaleźć, wyodrębnić, zamienić i walidować tekst bazując na zdefiniowanych regułach. Działają podobnie do wzorców glob, ale dają nawet więcej możliwości.
+**Wyrażenie regularne** _(ang. regular expression)_ to sekwencja znaków i symboli, która definiuje poszukiwany wzorzec. Jest to potężne narzędzie do wyszukiwania wzorców i manipulacji tekstu, która pozwala ci znaleźć, wyodrębnić, zamienić i walidować tekst bazując na zdefiniowanych regułach. Działają podobnie do wzorców glob, ale dają nawet więcej możliwości.
 
 </Callout>
 
@@ -393,7 +392,7 @@ Istnieje popularny żart o Vimie:
 
 Aby uniknąć takiego upokorzenia, nauczymy się podstaw Vima. Jest to domyślny edytor dla Gita i niektórych dystrybucji Linuxa, więc istnieje szansa, że się już z nim spotkałeś.
 
-Vi (_ang. Visual Editor_) to edytor tekstu stworzony przez Gill Joya w 1976 roku dla systemów operacyjnych Unix. Vim (_ang. V Improved_) to rozbudowana wersja Vi, stworzona przez Brama Moolenaara w 1991 roku. Zachowuje kompatybilność z Vi i dodaje współczesne funkcjonalności.
+Vi _(ang. Visual Editor)_ to edytor tekstu stworzony przez Gill Joya w 1976 roku dla systemów operacyjnych Unix. Vim _(ang. V Improved)_ to rozbudowana wersja Vi, stworzona przez Brama Moolenaara w 1991 roku. Zachowuje kompatybilność z Vi i dodaje współczesne funkcjonalności.
 
 Vim ma dwa główne tryby, które warto rozróżniać:
 
