@@ -12,24 +12,24 @@ tags: ['terminal', 'bash', 'shell', 'cli']
 type: 'post'
 ---
 
-Bash is an acronym for Bourne Again Shell. The abbreviation may suggest more than the expanded version. Or does it? Bash, Terminal, Command Line, Shell, CLI… You probably heard all of those words already. We need to clarify those.
+Bash is an acronym for Bourne Again Shell. The abbreviation may suggest more than the expanded version. Or does it? Bash, terminal, command Line, shell, CLI… You probably heard all of those words already. We need to clarify those.
 
-- **CLI** (Command Line Interface) allows us to interact with programs using text commands. It can read text inputs and output text to the screen. Additionally, it can also read and write files.
+- The **CLI** (Command Line Interface) enables us to interact with programs using text-based commands. It can read text inputs and output text to the screen. Additionally, it can also read and write files.
 - A **shell** or command line interpreter is software that we'll use to work with the CLI. Devs created many shells over the years for different operating systems.
 - **Bash** is one of those shells. Devs released it in 1989. Bash extends the capabilities of earlier shells (Bourne Shell or Thompson Shell) and adds new features.
 - A shell runs in a **terminal** application. It can run in one or many terminals. Some software, like Visual Studio Code, Cursor, or other code editors/IDEs, include a built-in terminal.
 
 The comparison table look like this:
 
-| CLI                                  | Terminal                                        | Shell                                                        | Bash                                                 |
-| ------------------------------------ | ----------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------- |
-| Any place we can type text commands. | A software that a shell program runs inside of. | A piece of software that interprets and runs typed commands. | A widely popular shell available on Linux and macOS. |
+| CLI                                        | Terminal                                        | Shell                                                        | Bash                                                 |
+| ------------------------------------------ | ----------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------- |
+| Any place where we can type text commands. | A software that a shell program runs inside of. | A piece of software that interprets and runs typed commands. | A widely popular shell available on Linux and macOS. |
 
-Even though there are differences between them, people use those terms interchangeably. So, was all this explaining for nothing? Nah, ✨the more you know✨, the better!
+Although there are differences between them, people often use these terms interchangeably. Was all this explaining for nothing? Nah, ✨the more you know✨, the better!
 
 ## Bash and operating systems
 
-Before moving on, you need to know what's available on your operating system.
+Before continuing, you need to know what's available on your operating system.
 
 - If you use **Linux,** Bash should be available to you by default. All the content of this blog post will be applicable. Linux was inspired by MINIX and UNIX.
 - If you use **macOS,** Bash should also be available to you, but in an outdated version. It's because macOs is based on BSD Unix, not Linux. Most likely, Zsh is your default shell. You can follow along, but be aware that some of the commands may not be available.
@@ -47,7 +47,7 @@ Douglas McIlroy, an engineer at Bell Labs, contributed to the development of Uni
 
 - Tools should do one thing and do it well.
 - Tools should use text interfaces.
-- Programs should be designed to communicate with each other.
+- Programs should communicate with each other.
 
 One Christmas, I gave my grandfather a Victorinox - Swiss Army knife. It's a cool little gadget with a blade, screwdriver, corckscrew, scissors, can opener, and even more tools. It allows you to do many things. However, when you start cutting, screwing in, or opening, you'll notice that those tools are not as good as their standard counterparts. You'll need a toolbox with multiple dedicated tools to do heavy work. Unix (and consequently Bash) works similarly. We have a set of dedicated commands for different tasks, as you will see.
 
@@ -64,8 +64,8 @@ Knowing all about where we will type, let's zoom in on what we will type. And we
 The general pattern of a command is:
 
 - Command - specific action for the system.
-- Option(s) - tell the command _how_ to operate
-- Argument(s) - tell the command _what_ to operate on
+- Option(s) - tell the command _how_ to operate.
+- Argument(s) - tell the command _what_ to operate on.
 
 However, not all commands require options and/or arguments. Depending on what you're doing, you may have a different structure.
 
@@ -173,8 +173,8 @@ A **path** represents the location of a file or directory.
 
 Paths use the slash character (forward slash on Linux, macOS, and backslash on Windows) as a separator between directory and file names. They can be absolute or relative.
 
-- An absolute path specifies the complete location of a file or directory from the root of the file system.
-- A relative path specifies the location of a file or directory relative to the current working directory.
+- An **absolute path** specifies the complete location of a file or directory from the root of the file system.
+- A **relative path** specifies the location of a file or directory relative to the current working directory.
 
 In your terminal, you may see the tilde character. The shell expands it to the user's home directory. So, the `~/Documents` directory expands to something like `/home/john/Documents`.
 
@@ -183,10 +183,10 @@ In your terminal, you may see the tilde character. The shell expands it to the u
 There are some commands that you would use constantly when navigating the file system.
 
 - `pwd` - print working directory. It does what it says - shows you where you are. You won't need any options here.
-- `ls` - list directory content. It is more advanced than the previous command - it could show you all the content of a specific directory. There are some options you may want to know:
+- `ls` - list directory content. It is more advanced than the previous command. It shows you all the content of a specific directory. There are some options you may want to know:
   - `ls -a` - show all files, including hidden ones. Many configuration files start with a dot, like `.gitignore` or `.eslintrc.json`, and they are hidden by default. The command can list them all.
   - `-l` - long format with details. But I won't get into those details here. The output consists of file type, permissions, and link type, which deserve more explanation.
-  - `-h` - human-readable file sizes. When listing those files, you probably saw those strange numbers - those are file sizes, but they are hard to read. The option will give you known units like kilobytes or megabytes.
+  - `-h` - human-readable file sizes. When listing those files, you probably saw those strange numbers - those are file sizes, but they are hard to read. The option will display well-known units like kilobytes or megabytes.
 - `cd` - change directory. The command to navigate the file system. We don't have flags here, but paths. They may take different forms:
   - `cd /absolute/path/to/directory` - go to an absolute path.
   - `relative/path` - go to a relative path.
@@ -200,7 +200,7 @@ Navigating the file system would not make a difference. While using a PC, we als
 
 <Callout variant="info">
 
-Those strange symbols in file names are called **glob patterns.** They are used for filename matching in shells. They can search for and match characters or substrings.
+Those strange symbols in file names are called **glob patterns.** You can use them for filename matching in shells. They can search for and match characters or substrings.
 
 - `*` - match any sequence of characters.
 - `?` - match any single character.
@@ -347,7 +347,7 @@ Both parts are optional. If there is no pattern, all lines are processed. Withou
 
 By default, the command uses whitespaces as separators. You can change it with the `-F` flag, for example, `-F','`.
 
-There are some built-in variables with information about current the line:
+There are some built-in variables with information about the current line:
 
 - `$0` - Entire line
 - `$1`, `$2`, `$3` - Individual fields
@@ -396,7 +396,7 @@ Vi (Visual Editor) is a screen-oriented text editor created by Gill Joy in 1976 
 
 Vim has two primary modes that are important to distinguish:
 
-1. **Insertion** mode, where we type and make manual changes to text.
+1. **Insertion** mode, where we type and make changes to text.
 2. **Command** mode, where we issue commands like save, search, and many more.
 
 You can switch between modes using the <Kbd>escape</Kbd> and <Kbd>i</Kbd> keys.
@@ -475,7 +475,7 @@ However, to redirect the error, you need the number.
 ls nonExistingFile 2> error.txt
 ```
 
-Be aware that redirecting output with the greater-than sign ('>') will **replace** file content. To append it, you need a double greater-than symbol ('>>').
+Be aware that redirecting output with the greater-than sign (">") will **replace** file content. To append it, you need a double greater-than symbol (">>").
 
 ```bash
 echo "append this text" >> file.txt
