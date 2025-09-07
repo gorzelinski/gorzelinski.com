@@ -12,7 +12,7 @@ tags: ['terminal', 'bash', 'powłoka', 'cli']
 type: 'post'
 ---
 
-Bash to akronim od Bourne Again Shell. Skrót pewnie mówi ci więcej niż rozszerzona wersja. Ale czy na pewno? Bash, terminal, wiersz poleceń, powłoka, CLI... Prawdopodobnie obiły ci się już o uszy te słowa. Musimy je wyjaśnić.
+Bash to akronim od Bourne Again Shell. Skrót pewnie mówi ci więcej niż rozszerzona wersja. Ale czy na pewno? Bash, terminal, wiersz poleceń, powłoka, CLI... Prawdopodobnie obiły ci się już o uszy te terminy. Musimy je wyjaśnić.
 
 - **Wiersz poleceń** _(ang. command-line interface)_ pozwala nam na interakcję z programami wykorzystując komendy tekstowe. Potrafi on odczytywać tekst z wejścia i przekazywać wyjściowy tekst na ekran. Dodatkowo, może także odczytywać i zapisywać pliki.
 - **Powłoka** _(ang. shell)_ lub interpreter poleceń to program, którego używamy, aby pracować z CLI. Programiści latami tworzyli wiele powłok dla różnych systemów operacyjnych.
@@ -73,7 +73,7 @@ Jednakże, nie wszystkie komendy wymagają opcji i/lub argumentów. W zależnoś
 - Komenda + opcje, np. `ls -l`.
 - Komenda + opcje + argumenty, np. `cp -v file1.txt file2.txt`.
 
-Opcje (zwane także flagami) często zaczynają się od myślnika i są reprezentowane przez jedną literę. Jednakże, są także rozszerzone wersje tych flag, które zaczynają się od podwójnego myślnika i zawierają pełną nazwę opcji. Obie wersje robią to samo. Poniżej przykłady:
+Opcje (zwane także **flagami**) często zaczynają się od myślnika i są reprezentowane przez jedną literę. Jednakże, są także rozszerzone wersje tych flag, które zaczynają się od podwójnego myślnika i zawierają pełną nazwę opcji. Obie wersje robią to samo. Poniżej przykłady:
 
 ```bash
 -h    --help
@@ -98,16 +98,16 @@ cp -r /source /destination
 
 ## Prompt
 
-Przed komendą, da się zauważyć dziwny ciąg znaków, przypominający `jan@laptop:~$`. Jest to **prompt.** Zawiera informacje o powłoce. Ten ciąg może mieć inną kolejność, w zależności od systemu operacyjnego, ale informacje pozostają te same. Rozplączmy je. Zaczynając od lewej, mamy nazwę użytkownika. Później mamy separator w postaci znaku małpy. Na prawo od separatora, mamy nazwę komputera. Potem kolejny separator i nazwa katalogu. Ciąg kończy się znakiem zachęty. Ten znak określa typ użytkownika - standardowy lub root.
+Przed komendą, da się zauważyć dziwny ciąg znaków, przypominający: `jan@laptop:~$`. Jest to **prompt.** Zawiera informacje o powłoce. Ten ciąg może mieć inną kolejność, w zależności od systemu operacyjnego, ale informacje pozostają te same. Rozplączmy je. Zaczynając od lewej, mamy nazwę użytkownika. Później mamy separator w postaci znaku małpy. Na prawo od separatora, mamy nazwę komputera. Potem kolejny separator i nazwa katalogu. Ciąg kończy się znakiem zachęty. Ten znak określa typ użytkownika - standardowy lub root.
 
-| Część             | Opis                             | Przykład                        |
-| ----------------- | -------------------------------- | ------------------------------- |
-| Nazwa użytkownika | Aktualnie zalogowany użytkownika | jan, admin, root                |
-| @                 | Separator                        | @                               |
-| Nazwa hosta       | Nazwa komputera/serwera          | laptop, server01, macbook       |
-| :                 | Separator                        | :                               |
-| Katalog           | Bieżący katalog                  | ~ (home), /var/log, ~/Dokumenty |
-| Znak zachęty      | Określa typ użytkownika          | $ (standardowy), # (root)       |
+| Część             | Opis                             | Przykład                              |
+| ----------------- | -------------------------------- | ------------------------------------- |
+| Nazwa użytkownika | Aktualnie zalogowany użytkownika | jan, admin, root                      |
+| @                 | Separator                        | @                                     |
+| Nazwa hosta       | Nazwa komputera/serwera          | laptop, server01, macbook             |
+| :                 | Separator                        | :                                     |
+| Katalog           | Bieżący katalog                  | `~` (home), `/var/log`, `~/Dokumenty` |
+| Znak zachęty      | Określa typ użytkownika          | `$` (standardowy), `#` (root)         |
 
 Zatem, podstawowa struktura przypomina:
 
@@ -119,7 +119,7 @@ nazwa_uzytkownika@nazwa_hosta:biezacy_katalog$
 
 > Wiele aspektów wiersza poleceń kręci się wokół wydajności. Czasem kosztem zrozumienia.
 
-Jak widziałeś, wiele komend i opcji przyjmuję formę bezsensownych zbitek liter. "Jak mam to zapamiętać?" możesz zapytać. Nijak. Serio, nie próbuj zapamiętywać wszystkich tych komend i opcji. Z czasem powinieneś zapamiętać często wykorzystywane komendy. A dla innych, możesz wykorzystać **strony podręcznika** _(ang. manual pages)_. Jest to wbudowana dokumentacja dla komend. Aby sprawdzić dokumentację dla konkretnej komendy (`ls` w tym wypadku), możesz wpisać:
+Jak widziałeś, wiele komend i opcji przyjmuje formę bezsensownych zbitek liter. "Jak mam to zapamiętać?" możesz zapytać. Nijak. Serio, nie próbuj zapamiętywać wszystkich tych komend i opcji. Z czasem powinieneś zapamiętać często wykorzystywane komendy. A dla innych, możesz wykorzystać **strony podręcznika** _(ang. manual pages)_. Jest to wbudowana dokumentacja dla komend. Aby sprawdzić dokumentację dla konkretnej komendy (`ls` w tym wypadku), możesz wpisać:
 
 ```bash
 man ls
@@ -184,11 +184,11 @@ Istnieją komendy, które możesz wykorzystać do nawigowania po systemie plikó
 
 - `pwd` _(ang. print working directory)_ - wyświetla katalog domowy. Tak jak nazwa wskazuje - pokazuje ci gdzie się znajdujesz. Nie potrzebujesz tu żadnych opcji.
 - `ls` - wyświetl zawartość katalogu. Jest bardziej zaawansowana niż poprzednia komenda - może ci pokazać całą zawartość konkretnego katalogu. Niektóre z opcji mogą ci się przydać:
-  - `ls -a` - wyświetl wszystkie pliki, włączając te ukryte. Wiele plików konfiguracyjnych zaczynających się od kropki, jak `.gitignore` czy `.eslintrc.json`, jest domyślnie ukrywanych. Ta komenda może wyświetlić je wszystkie.
-  - `-l` - długi format z detalami. Ale ja nie wejdę tu w te szczegóły. Wyjście zawiera typ plików, uprawnienia, typ linku. Zasługuje to na oddzielne omówienie.
-  - `-h` - rozmiary czytelne dla człowieka _(ang. human-readable)_. Kiedy wyświetliłeś te pliki, pewnie zauważyłeś dziwne liczby - są to rozmiary plików, ale są trudne do doczytania. Ta opcja taje ci znane jednostki jak kilobajty czy megabajty.
+  - `-a` - wyświetl wszystkie pliki, włączając te ukryte. Wiele plików konfiguracyjnych zaczynających się od kropki, jak `.gitignore` czy `.eslintrc.json`, jest domyślnie ukrywanych. Ta komenda może wyświetlić je wszystkie.
+  - `-l` - długi format z detalami. Ale teraz nie będę się zagłębiał w te szczegóły. Wyjście zawiera typ plików, uprawnienia, typ linku. Zasługuje to na oddzielne omówienie.
+  - `-h` - rozmiary czytelne dla człowieka _(ang. human-readable)_. Kiedy wyświetliłeś te pliki, pewnie zauważyłeś dziwne liczby - są to rozmiary plików, ale są trudne do doczytania. Ta opcja daje ci znane jednostki, jak kilobajty czy megabajty.
 - `cd` _(ang. change directory)_ - zmień katalog. Główna komenda do nawigowania po systemie plików. Nie mamy tu flag, ale mamy ścieżki. Mogą one przyjmować różne formy:
-  - `cd /sciezka/absolutna/do/pliku` - przejdź do tej absolutnej ścieżki.
+  - `/sciezka/absolutna/do/pliku` - przejdź do tej absolutnej ścieżki.
   - `relative/path` - przejdź do tej relatywnej ścieżki.
   - `..` - przejdź do katalogu rodzica.
   - `~` - przejdź do katalogu domowego.
@@ -200,7 +200,7 @@ Nawigowanie po systemie plików [nic by nie dało](https://www.youtube.com/watch
 
 <Callout variant="info">
 
-Te dziwne symbole w nazwach plików są nazwane **wzorcami glob** _(ang. glob patterns)_. Są wykorzystywane przez powłokę do dopasowywania wzorców w nazwach plików. Mogą być wykorzystywane do dopasowywania znaków lub ciągów znaków.
+Te dziwne symbole w nazwach plików poniżej są nazwane **wzorcami glob** _(ang. glob patterns)_. Są wykorzystywane przez powłokę do dopasowywania wzorców w nazwach plików. Mogą być wykorzystywane do dopasowywania znaków lub ciągów znaków.
 
 - `*` - dopasuj dowolną sekwencję znaków.
 - `?` - dopasuj dowolny, pojedynczy znak.
@@ -211,24 +211,24 @@ Te dziwne symbole w nazwach plików są nazwane **wzorcami glob** _(ang. glob pa
 </Callout>
 
 - `mkdir` _(ang. make directory)_ - stwórz katalog. Także przyjmuje ścieżki jako argumenty.
-  - `mkdir kat1 kat2` - stwórz wiele katalogów.
+  - `kat1 kat2` - stwórz wiele katalogów.
   - `-p zagniezdzony/kat` - aby stworzyć zagnieżdżone katalogi, potrzebujesz flagi `-p`. Tworzy katalogi rodziców w razie potrzeby.
 - `rmdir` _(ang. remove directories)_ - usuń katalogi.
-  - `rmdir kat1` - usuń katalog. Miej na uwadze, że katalog musi być pusty.
+  - `kat1` - usuń katalog. Miej na uwadze, że katalog musi być pusty.
 - `rm` - usuń pliki i katalogi.
-  - `rm plik.txt` - usuń plik.
+  - `plik.txt` - usuń plik.
   - `plik?.txt` - usuń konkretnie nazwane pliki.
   - `-r katalog` - rekursywnie usuń katalog (z całą zawartością).
   - `-f katalog` - siłowo usuń katalog, bez potwierdzenia. Uważaj - będzie usunięty na dobre. Nie ma żadnego kosza w przypadku komend `rm`.
 - `cp` - kopiuj pliki i katalogi.
-  - `cp plik.txt /katalog` - kopiuj plik do katalogu.
+  - `plik.txt /katalog` - kopiuj plik do katalogu.
   - `*.txt /katalog` - kopiuj wszystkie pliki konkretnego typu do katalogu.
   - `-r /zrodlo /docelowy` - rekursywnie kopiuj katalog do katalogu.
   - `-v` - pokaż informację o kopiowanych plikach.
   - `-i` - interaktywne. Pytaj przed nadpisywaniem.
   - `-p` - zachowaj atrybuty, takiej jak znaczniki czasu czy uprawnienia.
 - `mv` - przenieś pliki.
-  - `mv plik.txt /katalog` - przenieś plik do katalogu.
+  - `plik.txt /katalog` - przenieś plik do katalogu.
   - `* /katalog` - przenieś wszystkie pliki do katalogu.
   - `-i` - interaktywne. Pytaj przed nadpisywaniem.
   - `-v` - pokaż informację o przenoszonych plikach.
@@ -239,23 +239,23 @@ Te dziwne symbole w nazwach plików są nazwane **wzorcami glob** _(ang. glob pa
 Jeżeli nie wiesz gdzie chcesz przejść, możesz także poszukać konkretnego pliku lub katalogu w jakimś zakresie.
 
 - `find` - znajdź pliki w podanym zakresie, jak np. katalog `/sciezka`.
-  - `find /sciezka -name nazwa_pliku.txt` - znajdź plik po nazwie.
+  - `-name nazwa_pliku.txt` - znajdź plik po nazwie.
   - `/path -name *.txt` - znajdź pliki po wzorcu.
   - `/path -type f` - znajdź pliki po typie (tylko pliki).
   - `/path -type d` - znajdź pliki po typie (tylko katalogi).
   - `/path -size +100M` - znajdź pliki po rozmiar (większe niż 100MB).
 - `locate` - szybkie przeszukanie w bazie danych.
-  - `locate nazwa_pliku.txt` - znajdź plik po nazwie.
+  - `nazwa_pliku.txt` - znajdź plik po nazwie.
   - `*.txt` - znajdź pliki po wzorcu.
 - `which` - znajdź pliki wykonywalne w zmiennej `PATH`.
-  - `which python` - znajdź plik wykonywalny python.
+  - `python` - znajdź plik wykonywalny python.
   - `git` - znajdź plik wykonywalny Git.
 - `whereis` - znajdź pliki binarne, źródłowe i strony podręcznika.
-  - `whereis python` - znajdź wszystkie powyższe dla python'a.
+  - `python` - znajdź wszystkie powyższe dla python'a.
 
 ## Potoki
 
-Douglas wprowadził także pomysł potoków w Unix. Potoki pozwalają nam na łączenie komend.
+Douglas wprowadził także pomysł potoków w systemach Unix. Potoki pozwalają nam na łączenie komend.
 
 <Callout variant="info">
 
@@ -281,27 +281,27 @@ Tym samym przechodzimy do komend tekstowych.
 
 Możemy wybierać komendy w zależności od rozmiaru pliku i części, którą chcemy zobaczyć. Zobaczymy całego "kota" z jego "głową" i "ogonem". Wizualizowanie kota jest w sumie dobrą mnemotechniką, aby je zapamiętać.
 
-![Rysunek kota](cat.jpeg 'Poprosiłem dziewczynę, żeby narysowała kota, ułatwiającego zapamiętanie.')
+![Rysunek kota](cat.jpeg 'Poprosiłem dziewczynę, żeby narysowała kota, ułatwiającego zapamiętanie. Uroczy, czyż nie?')
 
 - `cat` - niestety, komenda ta nie ma nic wspólnego z kotami. Jest to skrót od "konkatenacji", oznaczającej łączenie razem. Komenda ta umożliwia przekazywanie lub konkatenację tekstu do ekranu (lub innego programu, pamiętasz potoki?).
-  - `cat nazwa_pliku.txt` - wyświetl cały plik.
+  - `nazwa_pliku.txt` - wyświetl cały plik.
   - `-n` - pokaż numery linii.
   - `-A` - wyświetl wszystkie nie-drukowalne znaki, takie jak tab.
-- `head` - wyświetlanie całego pliku może przytłoczyć. Może on "rozlać się" po całym terminalu. Możemy ograniczyć ten tekst to kilku pierwszych lini używając komendy `head`.
-  - `head -10 filename.txt` - wyświetl N pierwszych lini.
-  - `-n 10` - działa tak samo jak ta powyżej.
-  - `-n -10` - wyświetl wszystkie linie poza ostatnimi dziesięcioma.
+- `head` - wyświetlanie całego pliku może przytłoczyć. Może on "rozlać się" po całym terminalu. Aby ograniczyć ten tekst do kilku pierwszych lini używając komendy `head`.
+  - `-10 nazwa_pliku.txt` - wyświetl N pierwszych lini.
+  - `-n 10 nazwa_pliku.txt` - działa tak samo jak ta powyżej.
+  - `-n -10 nazwa_pliku.txt` - wyświetl wszystkie linie poza ostatnimi dziesięcioma.
 - `tail` - działa tak samo, tylko dla ostatnich lini.
-  - `tail -10 filename.txt` - wyświetl N ostatnich lini.
-  - `-n 10 filename.txt` - działa tak samo jak ta powyżej.
-  - `-n -10` - wyświetl wszystkie linie poza pierwszymi dziesięcioma.
+  - `-10 nazwa_pliku.txt` - wyświetl N ostatnich lini.
+  - `-n 10 nazwa_pliku.txt` - działa tak samo jak ta powyżej.
+  - `-n -10 nazwa_pliku.txt` - wyświetl wszystkie linie poza pierwszymi dziesięcioma.
 - `less` - powiedzmy, że chcesz przeglądać tekst podobnie do strony internetowej. Komenda `less` może ci w tym pomóc.
-  - `less nazwa_pliku.txt` - wyświetl i nawiguj po pliku.
+  - `nazwa_pliku.txt` - wyświetl i nawiguj po pliku.
   - <Kbd>↑</Kbd> / <Kbd>↓</Kbd> - przewiń w górę/dół.
   - <Kbd>⏎</Kbd> - przejdź o jedną linię w dół.
   - <Kbd>space</Kbd> - przejdź o jeden ekran w dół.
   - <Kbd>q</Kbd> - wciśnij q, żeby wyjść.
-  - <Kbd>h</Kbd> - jeżeli zapomnisz skrótów, wciśnij h (i wciśnij f, żeby oddać
+  - <Kbd>h</Kbd> - jeżeli zapomnisz skrótów, wciśnij h (i wciśnij f, żeby złożyć
     hołd).
 
 ## Przeszukiwanie plików tekstowych
@@ -337,7 +337,7 @@ Po przeszukaniu, możemy także manipulować tekstem. Do tego też mamy komendy.
 
 ### awk
 
-`awk` to zaawansowana komenda to procesowania tekstu. Czyta wejście linia po lini, dzieli je na pola i pozwala ci na pewne operacje.
+`awk` to zaawansowana komenda do procesowania tekstu. Czyta wejście linia po lini, dzieli je na pola i pozwala ci na pewne operacje.
 
 ```bash
 awk 'wzorzec { akcja }' plik.txt
@@ -366,11 +366,11 @@ sed '[adres]komenda[parametry]' plik
 
 Komenda wykorzystuje dwa bufory:
 
-- Przestrzeń wzorców - zawiera aktualnie przetwarzaną linię. Operacje tej przestrzeni:
+- **Przestrzeń wzorców** - zawiera aktualnie przetwarzaną linię. Operacje tej przestrzeni:
   - <Kbd>p</Kbd> - wyświetl przestrzeń wzorców
   - <Kbd>d</Kbd> - usuń przestrzeń wzorców
   - <Kbd>n</Kbd> - wczytaj następną linię do przestrzeni wzorców
-- Zarezerwowana przestrzeń - tymczasowy bufor pamięci. Operacje tej przestrzeni:
+- **Zarezerwowana przestrzeń** - tymczasowy bufor pamięci. Operacje tej przestrzeni:
   - <Kbd>h</Kbd> - skopiuj wzorzec do zarezerwowanej przestrzeni
   - <Kbd>g</Kbd> - skopiuj tę przestrzeń do przestrzeni wzorców
   - <Kbd>x</Kbd> - zamień obie przestrzenie
@@ -390,13 +390,13 @@ Istnieje popularny żart o Vimie:
 > Jak wygenerować prawdziwie losowy ciąg znaków?
 > Posadź web dewelopera przed Vimem i każ mu wyjść.
 
-Aby uniknąć takiego upokorzenia, nauczymy się podstaw Vima. Jest to domyślny edytor dla Gita i niektórych dystrybucji Linuxa, więc istnieje szansa, że się już z nim spotkałeś.
+Aby uniknąć takiego upokorzenia, nauczymy się podstaw [Vima](https://www.gnu.org/software/emacs/). Jest to domyślny edytor dla Gita i niektórych dystrybucji Linuxa, więc istnieje szansa, że się już z nim spotkałeś.
 
 Vi _(ang. Visual Editor)_ to edytor tekstu stworzony przez Gill Joya w 1976 roku dla systemów operacyjnych Unix. Vim _(ang. V Improved)_ to rozbudowana wersja Vi, stworzona przez Brama Moolenaara w 1991 roku. Zachowuje kompatybilność z Vi i dodaje współczesne funkcjonalności.
 
 Vim ma dwa główne tryby, które warto rozróżniać:
 
-1. Tryb **wstawiania,** gdzie piszesz i wprowadzasz manualne zmiany do tekstu.
+1. Tryb **wstawiania,** gdzie piszesz i wprowadzasz zmiany do tekstu.
 2. Tryb **komend,** gdzie wpisujesz komendy, takie jak zapisz, wyszukaj, i wiele innych.
 
 Możesz przełączać się pomiędzy nimi używając klawiszy <Kbd>esc</Kbd> i <Kbd>i</Kbd>.
@@ -419,19 +419,19 @@ Zatem, aby wyjść z Vima, musisz wpisać <Kbd>:wq</Kbd> w trybie komend. Po wyj
 
 Na niektórych systemach operacyjnych, nano jest domyślnym edytorem. Jest preinstalowany na wielu dystrybucjach Linuxa i macOS. Jest lekki i bardziej intuicyjny niż Vim, ale brakuje mu funkcji dla zaawansowanych użytkowników. Został zaprojektowany, aby być bardziej przyjazny użytkownikom. W przeciwieństwie do edytora Vim, nie ma różnych trybów. Wszystkie niezbędne skróty są wyświetlone na dole ekranu. Niektóre z nich to:
 
-| Skrót             | Akcja                                     |
-| ----------------- | ----------------------------------------- |
-| <Kbd>Ctrl+X</Kbd> | Wyjdź z nano (pytanie czy zapisać zmiany) |
-| <Kbd>Ctrl+O</Kbd> | Zapisz plik                               |
-| <Kbd>Ctrl+G</Kbd> | Pokaż pomoc                               |
-| <Kbd>Ctrl+W</Kbd> | Poszukaj tekstu                           |
-| <Kbd>Ctrl+K</Kbd> | Wytnij linię lub zaznaczony tekst         |
-| <Kbd>Ctrl+U</Kbd> | Wklej wycięty tekst                       |
-| <Kbd>Ctrl+C</Kbd> | Anuluj aktualną operację                  |
-| <Kbd>Ctrl+V</Kbd> | Przejdź w dół o jedną stronę              |
-| <Kbd>Ctrl+Y</Kbd> | Przejdź w górę o jedną stronę             |
-| <Kbd>Ctrl+P</Kbd> | Przejdź do poprzedniej lini               |
-| <Kbd>Ctrl+N</Kbd> | Przejdź do następnej lini                 |
+| Skrót               | Akcja                                     |
+| ------------------- | ----------------------------------------- |
+| <Kbd>Ctrl + X</Kbd> | Wyjdź z nano (pytanie czy zapisać zmiany) |
+| <Kbd>Ctrl + O</Kbd> | Zapisz plik                               |
+| <Kbd>Ctrl + G</Kbd> | Pokaż pomoc                               |
+| <Kbd>Ctrl + W</Kbd> | Poszukaj tekstu                           |
+| <Kbd>Ctrl + K</Kbd> | Wytnij linię lub zaznaczony tekst         |
+| <Kbd>Ctrl + U</Kbd> | Wklej wycięty tekst                       |
+| <Kbd>Ctrl + C</Kbd> | Anuluj aktualną operację                  |
+| <Kbd>Ctrl + V</Kbd> | Przejdź w dół o jedną stronę              |
+| <Kbd>Ctrl + Y</Kbd> | Przejdź w górę o jedną stronę             |
+| <Kbd>Ctrl + P</Kbd> | Przejdź do poprzedniej lini               |
+| <Kbd>Ctrl + N</Kbd> | Przejdź do następnej lini                 |
 
 ## Przekierowanie wyjścia
 
@@ -475,7 +475,7 @@ Jednakże, aby przekierować błąd, potrzebujesz numeru.
 ls nieistniejacy_plik 2> blad.txt
 ```
 
-Uważaj - przekierowując wyjście używając znaku większości ">", **zastępujesz** zawartość pliku. Aby dodać zawartość, potrzebujesz zdwojonego znaku większości ">>".
+Uważaj, przekierowując wyjście używając znaku większości ">", **zastępujesz** zawartość pliku. Aby dodać zawartość, potrzebujesz podwojonego znaku większości ">>".
 
 ```bash
 echo "dodaj ten tekst" >> plik.txt
@@ -544,4 +544,6 @@ Ustawiamy zmienną lokalną `PATH` na ciąg znaków, który rozszerza wyjście g
 
 ## Podsumowanie
 
-Mam nadzieję, że chociaż trochę zrozumiałeś terminal i Basha. Powinieneś także znać różnicę. Można by pisać o wiele więcej o Linux'ie i wykorzystaniu terminala. W tym wpisie, pisaliśmy komendy bezpośrednio w terminalu. Ale możesz tworzyć także pliki ze skryptami, jak w innych językach programowania. Czy ten post pomógł ci zrozumieć terminal? Chciałbyś nauczyć się więcej o Linux'ie i skryptach powłoki? Daj mi znać!
+Mam nadzieję, że chociaż trochę zrozumiałeś terminal i Basha. Powinieneś także znać różnicę. Można by pisać wiele więcej o Linux'ie i wykorzystaniu terminala. W tym wpisie, pisaliśmy komendy bezpośrednio w terminalu. Ale możesz tworzyć także pliki ze skryptami, jak w innych językach programowania.
+
+Czy ten post pomógł ci zrozumieć terminal? Chciałbyś nauczyć się więcej o Linux'ie i skryptach powłoki? Daj mi znać!
