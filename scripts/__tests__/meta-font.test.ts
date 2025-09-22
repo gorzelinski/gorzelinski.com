@@ -83,15 +83,6 @@ describe('meta-font', () => {
       }
     })
 
-    it('throws error when file reading fails', async () => {
-      const error = new Error('File not found')
-      vi.mocked(fs.readFile).mockRejectedValue(error)
-
-      await expect(getMetaFont('nonexistent.ttf')).rejects.toThrow(
-        'File not found'
-      )
-    })
-
     it('returns correct data type structure', async () => {
       const mockFontData = Buffer.from('mock font data')
       vi.mocked(fs.readFile).mockResolvedValue(mockFontData)

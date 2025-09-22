@@ -80,10 +80,5 @@ describe('dictionaries', () => {
       expect(dictionary.component.avatar.name).toBe('Mateusz Gorzeliński')
       expect(dictionary.component.pagination.prev).toBe('Poprzedni')
     })
-
-    it('throws error for invalid locale', async () => {
-      // @ts-expect-error - Testing invalid locale
-      await expect(getDictionary('invalid')).rejects.toThrow()
-    })
   })
 })

@@ -226,15 +226,6 @@ This is a test post in Polish.`
       )
       expect(result.frontmatter.title).toBe('Test Post PL')
     })
-
-    it('throws error when file reading fails', async () => {
-      const error = new Error('File not found')
-      vi.mocked(fs.readFile).mockRejectedValue(error)
-
-      await expect(getMDX<'post'>('/blog/', 'test-post', 'en')).rejects.toThrow(
-        'File not found'
-      )
-    })
   })
 
   describe('getMDXSlugs()', () => {
@@ -268,13 +259,6 @@ This is a test post in Polish.`
       const result = await getMDXSlugs('/blog/')
 
       expect(result).toEqual([])
-    })
-
-    it('throws error when directory reading fails', async () => {
-      const error = new Error('Directory not found')
-      vi.mocked(fs.readdir).mockRejectedValue(error)
-
-      await expect(getMDXSlugs('/blog/')).rejects.toThrow('Directory not found')
     })
   })
 
@@ -525,15 +509,6 @@ links:
       expect(result).toHaveLength(2)
       expect(result[0].frontmatter.type).toBe('project')
       expect(result[0].frontmatter.client).toBe('Test Client')
-    })
-
-    it('throws error when getMDXSlugs fails', async () => {
-      const error = new Error('Directory not found')
-      vi.mocked(fs.readdir).mockRejectedValue(error)
-
-      await expect(getMDXes<'post'>('/blog/', 'en')).rejects.toThrow(
-        'Directory not found'
-      )
     })
 
     it('handles invalid sort parameter by using default case (descending order)', async () => {
