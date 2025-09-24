@@ -271,13 +271,16 @@ export const tokens = defineTokens({
           description: 'Red color (dark mode). A base for other shades.'
         },
         300: {
-          value: 'hsl(347, 64%, 72%)'
+          value: 'hsl(347, 64%, 70%)'
         },
         200: {
-          value: 'hsl(347, 64%, 82%)'
+          value: 'hsl(347, 64%, 78%)'
         },
         100: {
-          value: 'hsl(347, 64%, 92%)'
+          value: 'hsl(347, 64%, 86%)'
+        },
+        50: {
+          value: 'hsl(347, 64%, 94%)'
         }
       },
       // Orange
