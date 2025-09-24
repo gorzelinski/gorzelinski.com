@@ -52,7 +52,7 @@ describe('Toc', () => {
 
     expect(toc).toBeInTheDocument()
     expect(toc).toHaveAttribute('aria-label', ariaLabel)
-    expect(toc).toHaveClass('opacity_100')
+    expect(toc).toHaveClass('op_100')
     expect(h2).toBeInTheDocument()
     expect(h2).toHaveAttribute('href', '#heading-1')
     expect(h3).toBeInTheDocument()
@@ -68,7 +68,7 @@ describe('Toc', () => {
 
     const toc = screen.getByRole('navigation')
 
-    expect(toc).toHaveClass('opacity_0')
+    expect(toc).toHaveClass('op_0')
   })
 
   it('calls useScrollToHeading with activeID', () => {
