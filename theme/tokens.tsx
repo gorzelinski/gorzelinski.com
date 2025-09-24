@@ -693,6 +693,9 @@ export const tokens = defineTokens({
     }
   },
   aspectRatios: {
+    auto: {
+      value: 'auto'
+    },
     square: {
       value: '1 / 1'
     },
