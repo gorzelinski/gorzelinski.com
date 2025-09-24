@@ -691,5 +691,28 @@ export const tokens = defineTokens({
     farther: {
       value: 100
     }
+  },
+  aspectRatios: {
+    square: {
+      value: '1 / 1'
+    },
+    portrait: {
+      value: '2 / 3'
+    },
+    landscape: {
+      value: '4 / 3'
+    },
+    golden: {
+      value: '1.618 / 1'
+    },
+    wide: {
+      value: '16 / 9'
+    },
+    cinema: {
+      value: '21 / 9'
+    },
+    ultrawide: {
+      value: '32 / 9'
+    }
   }
 })
