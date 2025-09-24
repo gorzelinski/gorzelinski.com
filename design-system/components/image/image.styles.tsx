@@ -11,7 +11,7 @@ export const image = cva({
         aspectRatio: 'auto'
       },
       portrait: {
-        aspectRatio: '2 / 3'
+        aspectRatio: 'portrait'
       },
       square: {
         aspectRatio: 'square'
@@ -26,7 +26,7 @@ export const image = cva({
         aspectRatio: 'wide'
       },
       cinema: {
-        aspectRatio: '21 / 9'
+        aspectRatio: 'cinema'
       },
       ultrawide: {
         aspectRatio: 'ultrawide'
