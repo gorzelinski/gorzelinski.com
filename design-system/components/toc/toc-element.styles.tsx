@@ -2,7 +2,6 @@ import { cva } from '@/styled-system/css'
 
 export const tocElement = cva({
   base: {
-    display: 'inline-block',
     maxWidth: {
       xl: 's',
       '2xl': 'm'

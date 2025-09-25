@@ -3,7 +3,6 @@ import { sharedTransitionProperties } from '../../utils'
 
 export const button = cva({
   base: {
-    display: 'inline-flex',
     alignItems: 'center',
     gap: 's',
     padding: 's',
@@ -23,6 +22,14 @@ export const button = cva({
     }
   },
   variants: {
+    display: {
+      inlineFlex: {
+        display: 'inline-flex'
+      },
+      inlineBlock: {
+        display: 'inline-block'
+      }
+    },
     align: {
       left: {
         marginLeft: '-s'
@@ -274,6 +281,7 @@ export const button = cva({
     }
   },
   defaultVariants: {
+    display: 'inlineFlex',
     variant: 'primary',
     size: 'm',
     width: 'fixed'
