@@ -153,8 +153,8 @@ export default async function Portfolio({
             {frontmatter.description}
           </P>
           <Grid
-            gridTemplateColumns="2"
-            gridTemplateRows="2"
+            gridTemplateColumns="1fr 1fr"
+            gridTemplateRows="auto auto"
             css={verticalRhythm.gap.m}
           >
             <VStack alignItems="start" gap="s">
