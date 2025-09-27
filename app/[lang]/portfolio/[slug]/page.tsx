@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { cookies } from 'next/headers'
-import { getCookie } from 'cookies-next'
+import { getCookie } from 'cookies-next/server'
 import { BlogPosting, WithContext } from 'schema-dts'
 import { NestedPageProps, Theme } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
@@ -44,15 +44,19 @@ export async function generateStaticParams() {
   return params
 }
 
-export async function generateMetadata({
-  params: { lang, slug }
-}: NestedPageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: NestedPageProps
+): Promise<Metadata> {
+  const params = await props.params
+
+  const { lang, slug } = params
+
   const { frontmatter } = await getMDX<'project'>(LINKS.portfolio, slug, lang)
   const { layout, page } = await getDictionary(lang)
   const canonical = localizePath(`${LINKS.portfolio}${slug}/`, lang)
   const languages = generateAlternateLinks(canonical)
   const metaImageParams = {
-    theme: getCookie(COOKIES.theme, { cookies }) as Theme,
+    theme: (await getCookie(COOKIES.theme, { cookies })) as Theme,
     title: frontmatter.title,
     subtitle: layout.root.metadata.title,
     alt: `${page.portfolioProject.metadata.image.alt} ${frontmatter.image.alt}`,
@@ -88,9 +92,11 @@ export async function generateMetadata({
   }
 }
 
-export default async function Portfolio({
-  params: { lang, slug }
-}: NestedPageProps) {
+export default async function Portfolio(props: NestedPageProps) {
+  const params = await props.params
+
+  const { lang, slug } = params
+
   const { component, section, layout, page } = await getDictionary(lang)
   const { content, frontmatter } = await getMDX<'project'>(
     LINKS.portfolio,

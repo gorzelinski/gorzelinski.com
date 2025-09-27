@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { cookies } from 'next/headers'
-import { getCookie } from 'cookies-next'
+import { getCookie } from 'cookies-next/server'
 import { WebSite, WithContext } from 'schema-dts'
 import { Analytics } from '@vercel/analytics/react'
 import { PageProps, Theme } from '@/types'
@@ -13,12 +13,15 @@ import { Background, Footer, Main, Navbar } from '@/design-system'
 import { openGraph, twitter } from '../shared-metadata'
 import './globals.css'
 
-export async function generateMetadata({
-  params: { lang }
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params
+
+  const { lang } = params
+  const theme = (await getCookie(COOKIES.theme, { cookies })) as Theme
+
   const { layout, page } = await getDictionary(lang)
   const metaImageParams = {
-    theme: getCookie(COOKIES.theme, { cookies }) as Theme,
+    theme: theme,
     title: page.home.metadata.title,
     subtitle: layout.root.metadata.title,
     alt: page.home.metadata.image.alt
@@ -53,15 +56,16 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))
 }
 
-export default async function RootLayout({
-  children,
-  params
-}: {
+export default async function RootLayout(props: {
   children: React.ReactNode
-  params: { lang: Locale }
+  params: Promise<{ lang: string }>
 }) {
-  const { lang } = params
-  const theme = getCookie(COOKIES.theme, { cookies })
+  const params = await props.params
+
+  const { children } = props
+
+  const { lang } = params as { lang: Locale }
+  const theme = (await getCookie(COOKIES.theme, { cookies })) as Theme
   const dictionary = await getDictionary(lang)
   const jsonLd: WithContext<WebSite> = {
     '@context': 'https://schema.org',

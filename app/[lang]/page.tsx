@@ -24,9 +24,13 @@ import {
 } from '@/design-system'
 import profile from '@/public/images/gorzelinski.jpg'
 
-export async function generateMetadata({
-  params: { lang }
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    lang
+  } = params;
+
   const { page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.home)
   const canonical = localizePath(LINKS.home, lang)
@@ -41,7 +45,13 @@ export async function generateMetadata({
   }
 }
 
-export default async function Home({ params: { lang } }: PageProps) {
+export default async function Home(props: PageProps) {
+  const params = await props.params;
+
+  const {
+    lang
+  } = params;
+
   const { component, section, layout, page } = await getDictionary(lang)
   const lastProjects = await getMDXes<'project'>(
     LINKS.portfolio,

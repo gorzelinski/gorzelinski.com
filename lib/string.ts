@@ -14,9 +14,12 @@ export function getTextFromChildren(children: ReactNode): string {
   if (
     typeof children === 'object' &&
     children !== null &&
-    'props' in children
+    'props' in children &&
+    children.props &&
+    typeof children.props === 'object' &&
+    'children' in children.props
   ) {
-    text += getTextFromChildren(children.props.children)
+    text += getTextFromChildren(children.props.children as ReactNode)
   }
 
   if (Array.isArray(children)) {

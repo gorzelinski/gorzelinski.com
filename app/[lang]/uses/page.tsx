@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { cookies } from 'next/headers'
-import { getCookie } from 'cookies-next'
+import { getCookie } from 'cookies-next/server'
 import { WebPage, WithContext } from 'schema-dts'
 import { PageProps, Theme } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
@@ -17,14 +17,16 @@ import {
   verticalRhythm
 } from '@/design-system'
 
-export async function generateMetadata({
-  params: { lang }
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params
+
+  const { lang } = params
+
   const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.uses)
   const canonical = localizePath(LINKS.uses, lang)
   const metaImageParams = {
-    theme: getCookie(COOKIES.theme, { cookies }) as Theme,
+    theme: (await getCookie(COOKIES.theme, { cookies })) as Theme,
     title: page.uses.metadata.title,
     subtitle: layout.root.metadata.title,
     alt: page.uses.metadata.image.alt
@@ -52,7 +54,11 @@ export async function generateMetadata({
   }
 }
 
-export default async function Uses({ params: { lang } }: PageProps) {
+export default async function Uses(props: PageProps) {
+  const params = await props.params
+
+  const { lang } = params
+
   const { layout, page } = await getDictionary(lang)
   const { frontmatter, content } = await getMDX(LINKS.uses, '', lang)
   const jsonLd: WithContext<WebPage> = {

@@ -6,7 +6,7 @@ export function useDebouncedCallback<T extends AnyFunction>(
   func: T,
   wait: number = 300
 ): (...args: Parameters<T>) => void {
-  const timeout = useRef<NodeJS.Timeout>()
+  const timeout = useRef<NodeJS.Timeout>(undefined)
 
   return useCallback(
     (...args: Parameters<T>) => {

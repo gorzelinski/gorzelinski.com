@@ -3,9 +3,11 @@ import { notFound } from 'next/navigation'
 import { PageProps } from '@/types'
 import { getDictionary } from '@/scripts'
 
-export async function generateMetadata({
-  params: { lang }
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params
+
+  const { lang } = params
+
   const { page } = await getDictionary(lang)
 
   return {

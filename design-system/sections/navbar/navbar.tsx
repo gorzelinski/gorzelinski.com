@@ -3,7 +3,7 @@ import { usePathname } from 'next/navigation'
 import { LINKS } from '@/constants'
 import { localizePath, selectActiveClass } from '@/lib'
 import { useScrollDirection, useScrollProgress } from '@/hooks'
-import { navbar } from './navbar.styles'
+// import { navbar } from './navbar.styles'
 import { NavbarProps } from './navbar.types'
 import { Logo, ThemeSwitch } from '../../components'
 import { ButtonLink, Nav } from '../../elements'
@@ -16,10 +16,10 @@ export const Navbar = ({ lang, dictionary }: NavbarProps) => {
 
   return (
     <header
-      className={navbar({
-        opacity: progress > 5 && direction === 'down' ? 'hidden' : 'visible',
-        border: progress < 1 ? 'transparent' : 'bottom'
-      })}
+    // className={navbar({
+    //   opacity: progress > 5 && direction === 'down' ? 'hidden' : 'visible',
+    //   border: progress < 1 ? 'transparent' : 'bottom'
+    // })}
     >
       <Nav
         aria-label={section.navbar.navigation.main}
@@ -34,11 +34,11 @@ export const Navbar = ({ lang, dictionary }: NavbarProps) => {
       </Nav>
       <Nav
         aria-label={section.navbar.navigation.helper}
-        className={navbar({
-          position: 'bottom',
-          structure: 'nested',
-          border: 'top'
-        })}
+        // className={navbar({
+        //   position: 'bottom',
+        //   structure: 'nested',
+        //   border: 'top'
+        // })}
       >
         <ButtonLink
           variant="nav"
