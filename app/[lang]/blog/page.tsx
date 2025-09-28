@@ -80,6 +80,7 @@ export default async function Blog(props: SearchPageProps) {
   return (
     <>
       <script
+        id="jsonld-blog"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

@@ -74,6 +74,7 @@ export default async function Portfolio(props: PageProps) {
   return (
     <>
       <script
+        id="jsonld-portfolio"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

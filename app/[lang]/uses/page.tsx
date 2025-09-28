@@ -76,6 +76,7 @@ export default async function Uses(props: PageProps) {
   return (
     <>
       <script
+        id="jsonld-uses"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

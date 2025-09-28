@@ -67,6 +67,7 @@ export default async function SubscriptionConfirmed(props: PageProps) {
   return (
     <>
       <script
+        id="jsonld-subscription-confirmed"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

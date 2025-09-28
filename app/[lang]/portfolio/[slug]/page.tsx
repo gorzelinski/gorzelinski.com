@@ -124,6 +124,7 @@ export default async function Portfolio(props: NestedPageProps) {
   return (
     <>
       <script
+        key={`jsonld-portfolio-project-${slug}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

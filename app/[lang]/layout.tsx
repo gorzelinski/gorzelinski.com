@@ -81,14 +81,13 @@ export default async function RootLayout(props: {
 
   return (
     <html
-      suppressHydrationWarning
       className={`${montserrat.variable} ${lora.variable} ${firaCode.variable}`}
       lang={lang}
       data-color-mode={theme}
     >
       <body>
         <script
-          id="set-initial-theme"
+          id="initial-theme-script"
           dangerouslySetInnerHTML={{
             __html: `
             try {
@@ -112,6 +111,7 @@ export default async function RootLayout(props: {
           }}
         />
         <script
+          id="jsonld-layout-root"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />

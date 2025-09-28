@@ -134,6 +134,7 @@ export default async function Blog(props: NestedPageProps) {
   return (
     <>
       <script
+        key={`jsonld-blog-post-${slug}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
