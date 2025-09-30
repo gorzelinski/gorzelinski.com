@@ -18,10 +18,7 @@ import {
 } from '@/design-system'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const params = await props.params
-
-  const { lang } = params
-
+  const { lang } = await props.params
   const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.uses)
   const canonical = localizePath(LINKS.uses, lang)
@@ -55,10 +52,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 }
 
 export default async function Uses(props: PageProps) {
-  const params = await props.params
-
-  const { lang } = params
-
+  const { lang } = await props.params
   const { layout, page } = await getDictionary(lang)
   const { frontmatter, content } = await getMDX(LINKS.uses, '', lang)
   const jsonLd: WithContext<WebPage> = {

@@ -4,10 +4,7 @@ import { PageProps } from '@/types'
 import { getDictionary } from '@/scripts'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const params = await props.params
-
-  const { lang } = params
-
+  const { lang } = await props.params
   const { page } = await getDictionary(lang)
 
   return {

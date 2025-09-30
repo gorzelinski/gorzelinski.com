@@ -10,10 +10,7 @@ import { openGraph, twitter } from '@/app/shared-metadata'
 import { Confetti, H1, P, Section } from '@/design-system'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const params = await props.params
-
-  const { lang } = params
-
+  const { lang } = await props.params
   const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.subscriptionConfirmed)
   const canonical = localizePath(LINKS.subscriptionConfirmed, lang)
@@ -47,10 +44,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 }
 
 export default async function SubscriptionConfirmed(props: PageProps) {
-  const params = await props.params
-
-  const { lang } = params
-
+  const { lang } = await props.params
   const { layout, page, component } = await getDictionary(lang)
   const jsonLd: WithContext<WebPage> = {
     '@context': 'https://schema.org',

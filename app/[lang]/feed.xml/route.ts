@@ -9,10 +9,7 @@ export async function GET(
   request: NextRequest,
   context: { params: Promise<{ lang: string }> }
 ) {
-  const params = await context.params
-
-  const { lang } = params as { lang: Locale }
-
+  const { lang } = (await context.params) as { lang: Locale }
   const { layout, page } = await getDictionary(lang)
   const posts = await getMDXes<'post'>(LINKS.blog, lang)
   const projects = await getMDXes<'project'>(LINKS.portfolio, lang)

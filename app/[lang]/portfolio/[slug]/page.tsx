@@ -47,10 +47,7 @@ export async function generateStaticParams() {
 export async function generateMetadata(
   props: NestedPageProps
 ): Promise<Metadata> {
-  const params = await props.params
-
-  const { lang, slug } = params
-
+  const { lang, slug } = await props.params
   const { frontmatter } = await getMDX<'project'>(LINKS.portfolio, slug, lang)
   const { layout, page } = await getDictionary(lang)
   const canonical = localizePath(`${LINKS.portfolio}${slug}/`, lang)
@@ -93,10 +90,7 @@ export async function generateMetadata(
 }
 
 export default async function Portfolio(props: NestedPageProps) {
-  const params = await props.params
-
-  const { lang, slug } = params
-
+  const { lang, slug } = await props.params
   const { component, section, layout, page } = await getDictionary(lang)
   const { content, frontmatter } = await getMDX<'project'>(
     LINKS.portfolio,

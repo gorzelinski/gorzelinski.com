@@ -32,10 +32,7 @@ import laptop from '@/public/images/about/andras-vas-Bd7gNnWJBkU-unsplash.jpg'
 import type { JSX } from 'react'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const params = await props.params
-
-  const { lang } = params
-
+  const { lang } = await props.params
   const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.about)
   const canonical = localizePath(LINKS.about, lang)
@@ -78,10 +75,7 @@ const mediaIcons: Record<MediaTypes, JSX.Element> = {
 }
 
 export default async function About(props: PageProps) {
-  const params = await props.params
-
-  const { lang } = params
-
+  const { lang } = await props.params
   const { layout, page } = await getDictionary(lang)
   const jsonLd: WithContext<WebPage> = {
     '@context': 'https://schema.org',

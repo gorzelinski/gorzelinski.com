@@ -11,10 +11,7 @@ import { H1, Header, Newsletter, Project, Section } from '@/design-system'
 import { small } from '@/design-system/elements/small'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const params = await props.params
-
-  const { lang } = params
-
+  const { lang } = await props.params
   const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.portfolio)
   const canonical = localizePath(LINKS.portfolio, lang)
@@ -48,10 +45,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 }
 
 export default async function Portfolio(props: PageProps) {
-  const params = await props.params
-
-  const { lang } = params
-
+  const { lang } = await props.params
   const { component, section, layout, page } = await getDictionary(lang)
   const projects = await getMDXes<'project'>(
     LINKS.portfolio,

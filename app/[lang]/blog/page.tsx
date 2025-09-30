@@ -20,10 +20,7 @@ import {
 } from '@/design-system'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const params = await props.params
-
-  const { lang } = params
-
+  const { lang } = await props.params
   const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.blog)
   const canonical = localizePath(LINKS.blog, lang)
@@ -58,10 +55,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
 export default async function Blog(props: SearchPageProps) {
   const searchParams = await props.searchParams
-  const params = await props.params
-
-  const { lang } = params
-
+  const { lang } = await props.params
   const { component, section, layout, page } = await getDictionary(lang)
   const query = searchParams?.query || ''
   const posts = await searchMDXes<'post'>(LINKS.blog, lang, query)

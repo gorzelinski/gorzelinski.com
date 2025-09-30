@@ -60,10 +60,7 @@ export async function generateStaticParams() {
 export async function generateMetadata(
   props: NestedPageProps
 ): Promise<Metadata> {
-  const params = await props.params
-
-  const { lang, slug } = params
-
+  const { lang, slug } = await props.params
   const { frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
   const { layout, page } = await getDictionary(lang)
   const canonical = localizePath(`${LINKS.blog}${slug}/`, lang)
@@ -106,10 +103,7 @@ export async function generateMetadata(
 }
 
 export default async function Blog(props: NestedPageProps) {
-  const params = await props.params
-
-  const { lang, slug } = params
-
+  const { lang, slug } = await props.params
   const { component, section, layout, page } = await getDictionary(lang)
   const { content, frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
   const { prev, next } = await createMDXPagination(LINKS.blog, slug, lang)
@@ -134,7 +128,7 @@ export default async function Blog(props: NestedPageProps) {
   return (
     <>
       <script
-        key={`jsonld-blog-post-${slug}`}
+        id={`jsonld-blog-post-${slug}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
