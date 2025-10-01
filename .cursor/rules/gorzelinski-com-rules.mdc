@@ -145,7 +145,7 @@ Before responding to any request, follow these steps:
 
 Ues Vitest for unit testing and Playwright for E2E testing.
 
-- To run unit tests: `npm run test:run`
+- To run unit tests: `npm run test`
 - To run unit test coverage: `npm run test:coverage`
 - To prepare browsers for E2E tests: `npx playwright install`
 - To run E2E tests: `npx playwright test`
