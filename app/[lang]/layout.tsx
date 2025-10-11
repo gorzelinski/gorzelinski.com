@@ -84,6 +84,7 @@ export default async function RootLayout(props: {
       className={`${montserrat.variable} ${lora.variable} ${firaCode.variable}`}
       lang={lang}
       data-color-mode={theme}
+      suppressHydrationWarning
     >
       <body>
         <script
