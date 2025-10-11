@@ -7,7 +7,7 @@ export const Ul = styled('ul', list, {
   }
 })
 
-export const Ol = styled('ul', list, {
+export const Ol = styled('ol', list, {
   defaultProps: {
     variant: 'number'
   }
