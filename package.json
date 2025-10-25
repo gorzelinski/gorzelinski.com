@@ -56,7 +56,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
     "husky": "^9.1.7",
-    "jsdom": "^26.0.0",
+    "jsdom": "^27.0.1",
     "shiki": "^3.13.0",
     "ts-node": "^10.9.2",
     "typescript": "^5",
