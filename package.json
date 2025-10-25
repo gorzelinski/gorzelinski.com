@@ -13,7 +13,7 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@formatjs/intl-localematcher": "^0.5.2",
+    "@formatjs/intl-localematcher": "^0.6.2",
     "@vercel/analytics": "^1.5.0",
     "cookies-next": "^6.1.0",
     "eslint-config-prettier": "^10.1.8",
