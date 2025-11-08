@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { cookies } from 'next/headers'
-import { getCookie } from 'cookies-next'
+import { getCookie } from 'cookies-next/server'
 import { BlogPosting, WithContext } from 'schema-dts'
 import { NestedPageProps, Theme } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
@@ -44,15 +44,16 @@ export async function generateStaticParams() {
   return params
 }
 
-export async function generateMetadata({
-  params: { lang, slug }
-}: NestedPageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: NestedPageProps
+): Promise<Metadata> {
+  const { lang, slug } = await props.params
   const { frontmatter } = await getMDX<'project'>(LINKS.portfolio, slug, lang)
   const { layout, page } = await getDictionary(lang)
   const canonical = localizePath(`${LINKS.portfolio}${slug}/`, lang)
   const languages = generateAlternateLinks(canonical)
   const metaImageParams = {
-    theme: getCookie(COOKIES.theme, { cookies }) as Theme,
+    theme: (await getCookie(COOKIES.theme, { cookies })) as Theme,
     title: frontmatter.title,
     subtitle: layout.root.metadata.title,
     alt: `${page.portfolioProject.metadata.image.alt} ${frontmatter.image.alt}`,
@@ -88,9 +89,8 @@ export async function generateMetadata({
   }
 }
 
-export default async function Portfolio({
-  params: { lang, slug }
-}: NestedPageProps) {
+export default async function Portfolio(props: NestedPageProps) {
+  const { lang, slug } = await props.params
   const { component, section, layout, page } = await getDictionary(lang)
   const { content, frontmatter } = await getMDX<'project'>(
     LINKS.portfolio,
@@ -118,6 +118,7 @@ export default async function Portfolio({
   return (
     <>
       <script
+        key={`jsonld-portfolio-project-${slug}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
@@ -153,8 +154,8 @@ export default async function Portfolio({
             {frontmatter.description}
           </P>
           <Grid
-            gridTemplateColumns="2"
-            gridTemplateRows="2"
+            gridTemplateColumns="1fr 1fr"
+            gridTemplateRows="auto auto"
             css={verticalRhythm.gap.m}
           >
             <VStack alignItems="start" gap="s">

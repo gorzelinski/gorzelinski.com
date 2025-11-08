@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { cookies } from 'next/headers'
-import { getCookie } from 'cookies-next'
+import { getCookie } from 'cookies-next/server'
 import { BlogPosting, WithContext } from 'schema-dts'
 import { NestedPageProps, Theme } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
@@ -57,15 +57,16 @@ export async function generateStaticParams() {
   return params
 }
 
-export async function generateMetadata({
-  params: { lang, slug }
-}: NestedPageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: NestedPageProps
+): Promise<Metadata> {
+  const { lang, slug } = await props.params
   const { frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
   const { layout, page } = await getDictionary(lang)
   const canonical = localizePath(`${LINKS.blog}${slug}/`, lang)
   const languages = generateAlternateLinks(canonical)
   const metaImageParams = {
-    theme: getCookie(COOKIES.theme, { cookies }) as Theme,
+    theme: (await getCookie(COOKIES.theme, { cookies })) as Theme,
     title: frontmatter.title,
     subtitle: layout.root.metadata.title,
     alt: `${page.blogPost.metadata.image.alt} ${frontmatter.image.alt}`,
@@ -101,9 +102,8 @@ export async function generateMetadata({
   }
 }
 
-export default async function Blog({
-  params: { lang, slug }
-}: NestedPageProps) {
+export default async function Blog(props: NestedPageProps) {
+  const { lang, slug } = await props.params
   const { component, section, layout, page } = await getDictionary(lang)
   const { content, frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
   const { prev, next } = await createMDXPagination(LINKS.blog, slug, lang)
@@ -128,6 +128,7 @@ export default async function Blog({
   return (
     <>
       <script
+        id={`jsonld-blog-post-${slug}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

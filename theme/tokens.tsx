@@ -271,13 +271,16 @@ export const tokens = defineTokens({
           description: 'Red color (dark mode). A base for other shades.'
         },
         300: {
-          value: 'hsl(347, 64%, 72%)'
+          value: 'hsl(347, 64%, 70%)'
         },
         200: {
-          value: 'hsl(347, 64%, 82%)'
+          value: 'hsl(347, 64%, 78%)'
         },
         100: {
-          value: 'hsl(347, 64%, 92%)'
+          value: 'hsl(347, 64%, 86%)'
+        },
+        50: {
+          value: 'hsl(347, 64%, 94%)'
         }
       },
       // Orange
@@ -687,6 +690,32 @@ export const tokens = defineTokens({
     },
     farther: {
       value: 100
+    }
+  },
+  aspectRatios: {
+    auto: {
+      value: 'auto'
+    },
+    square: {
+      value: '1 / 1'
+    },
+    portrait: {
+      value: '2 / 3'
+    },
+    landscape: {
+      value: '4 / 3'
+    },
+    golden: {
+      value: '1.618 / 1'
+    },
+    wide: {
+      value: '16 / 9'
+    },
+    cinema: {
+      value: '21 / 9'
+    },
+    ultrawide: {
+      value: '32 / 9'
     }
   }
 })

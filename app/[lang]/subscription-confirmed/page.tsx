@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { cookies } from 'next/headers'
-import { getCookie } from 'cookies-next'
+import { getCookie } from 'cookies-next/server'
 import { WebPage, WithContext } from 'schema-dts'
 import { PageProps, Theme } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
@@ -9,14 +9,13 @@ import { generateAlternateLinks, getMetaImage, localizePath } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
 import { Confetti, H1, P, Section } from '@/design-system'
 
-export async function generateMetadata({
-  params: { lang }
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { lang } = await props.params
   const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.subscriptionConfirmed)
   const canonical = localizePath(LINKS.subscriptionConfirmed, lang)
   const metaImageParams = {
-    theme: getCookie(COOKIES.theme, { cookies }) as Theme,
+    theme: (await getCookie(COOKIES.theme, { cookies })) as Theme,
     title: page.subscriptionConfirmed.metadata.title,
     subtitle: layout.root.metadata.title,
     alt: page.subscriptionConfirmed.metadata.image.alt
@@ -44,9 +43,8 @@ export async function generateMetadata({
   }
 }
 
-export default async function SubscriptionConfirmed({
-  params: { lang }
-}: PageProps) {
+export default async function SubscriptionConfirmed(props: PageProps) {
+  const { lang } = await props.params
   const { layout, page, component } = await getDictionary(lang)
   const jsonLd: WithContext<WebPage> = {
     '@context': 'https://schema.org',
@@ -63,6 +61,7 @@ export default async function SubscriptionConfirmed({
   return (
     <>
       <script
+        id="jsonld-subscription-confirmed"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

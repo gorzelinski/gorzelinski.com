@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { cookies } from 'next/headers'
-import { getCookie } from 'cookies-next'
+import { getCookie } from 'cookies-next/server'
 import { WebPage, WithContext } from 'schema-dts'
 import { PageProps, Theme } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
@@ -10,14 +10,13 @@ import { openGraph, twitter } from '@/app/shared-metadata'
 import { H1, Header, Newsletter, Project, Section } from '@/design-system'
 import { small } from '@/design-system/elements/small'
 
-export async function generateMetadata({
-  params: { lang }
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { lang } = await props.params
   const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.portfolio)
   const canonical = localizePath(LINKS.portfolio, lang)
   const metaImageParams = {
-    theme: getCookie(COOKIES.theme, { cookies }) as Theme,
+    theme: (await getCookie(COOKIES.theme, { cookies })) as Theme,
     title: page.portfolio.metadata.title,
     subtitle: layout.root.metadata.title,
     alt: page.portfolio.metadata.image.alt
@@ -45,7 +44,8 @@ export async function generateMetadata({
   }
 }
 
-export default async function Portfolio({ params: { lang } }: PageProps) {
+export default async function Portfolio(props: PageProps) {
+  const { lang } = await props.params
   const { component, section, layout, page } = await getDictionary(lang)
   const projects = await getMDXes<'project'>(
     LINKS.portfolio,
@@ -68,6 +68,7 @@ export default async function Portfolio({ params: { lang } }: PageProps) {
   return (
     <>
       <script
+        id="jsonld-portfolio"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

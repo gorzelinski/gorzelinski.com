@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { cookies } from 'next/headers'
-import { getCookie } from 'cookies-next'
+import { getCookie } from 'cookies-next/server'
 import { WebPage, WithContext } from 'schema-dts'
 import { PageProps, Theme, SearchPageProps } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
@@ -19,14 +19,13 @@ import {
   SearchBar
 } from '@/design-system'
 
-export async function generateMetadata({
-  params: { lang }
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { lang } = await props.params
   const { layout, page } = await getDictionary(lang)
   const languages = generateAlternateLinks(LINKS.blog)
   const canonical = localizePath(LINKS.blog, lang)
   const metaImageParams = {
-    theme: getCookie(COOKIES.theme, { cookies }) as Theme,
+    theme: (await getCookie(COOKIES.theme, { cookies })) as Theme,
     title: page.blog.metadata.title,
     subtitle: layout.root.metadata.title,
     alt: page.blog.metadata.image.alt
@@ -54,7 +53,9 @@ export async function generateMetadata({
   }
 }
 
-export default async function Blog({ params: { lang }, searchParams }: SearchPageProps) {
+export default async function Blog(props: SearchPageProps) {
+  const searchParams = await props.searchParams
+  const { lang } = await props.params
   const { component, section, layout, page } = await getDictionary(lang)
   const query = searchParams?.query || ''
   const posts = await searchMDXes<'post'>(LINKS.blog, lang, query)
@@ -73,6 +74,7 @@ export default async function Blog({ params: { lang }, searchParams }: SearchPag
   return (
     <>
       <script
+        id="jsonld-blog"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

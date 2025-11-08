@@ -1,10 +1,15 @@
 import RSS from 'rss'
-import { PageProps } from '@/types'
+import { NextRequest } from 'next/server'
+import { Locale } from '@/i18n.config'
 import { LINKS } from '@/constants'
 import { getDictionary, getMDXes } from '@/scripts'
 import { getAbsoluteURL } from '@/lib'
 
-export async function GET(request: Request, { params: { lang } }: PageProps) {
+export async function GET(
+  request: NextRequest,
+  context: { params: Promise<{ lang: string }> }
+) {
+  const { lang } = (await context.params) as { lang: Locale }
   const { layout, page } = await getDictionary(lang)
   const posts = await getMDXes<'post'>(LINKS.blog, lang)
   const projects = await getMDXes<'project'>(LINKS.portfolio, lang)

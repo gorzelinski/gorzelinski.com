@@ -24,7 +24,7 @@ describe('Image', () => {
     expect(image).toBeInTheDocument()
     expect(image).toHaveAttribute('width', '300')
     expect(image).toHaveAttribute('height', '300')
-    expect(image).toHaveClass('rounded_l')
+    expect(image).toHaveClass('bdr_l')
     expect(image).toHaveAttribute('alt', 'Alt text')
     expect(image).toHaveAttribute(
       'src',

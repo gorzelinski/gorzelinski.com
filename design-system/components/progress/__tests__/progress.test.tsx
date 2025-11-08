@@ -24,7 +24,7 @@ describe('Progress', () => {
     const progressBar = progress.firstChild
 
     expect(progress).toBeInTheDocument()
-    expect(progress).toHaveClass('opacity_100')
+    expect(progress).toHaveClass('op_100')
     expect(progressBar).toHaveStyle('width: 50.00%')
   })
 
@@ -35,7 +35,7 @@ describe('Progress', () => {
 
     const progress = screen.getByTestId('progress')
 
-    expect(progress).toHaveClass('opacity_0')
+    expect(progress).toHaveClass('op_0')
   })
 
   it('hides when the progress is greater than 99%', () => {
@@ -45,6 +45,6 @@ describe('Progress', () => {
 
     const progress = screen.getByTestId('progress')
 
-    expect(progress).toHaveClass('opacity_0')
+    expect(progress).toHaveClass('op_0')
   })
 })

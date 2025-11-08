@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers'
-import { getCookie } from 'cookies-next'
+import { getCookie } from 'cookies-next/server'
 import { Locale } from '@/i18n.config'
 import { COOKIES, LINKS } from '@/constants'
 import { getDictionary } from '@/scripts'
@@ -16,7 +16,8 @@ import {
 import { VStack } from '@/styled-system/jsx'
 
 export default async function NotFound() {
-  const lang = (getCookie(COOKIES.locale, { cookies }) || 'en') as Locale
+  const lang = ((await getCookie(COOKIES.locale, { cookies })) ||
+    'en') as Locale
   const { page } = await getDictionary(lang)
 
   return (

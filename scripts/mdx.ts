@@ -97,6 +97,8 @@ export async function getMDX<Type extends MDXTypes>(
   })
   frontmatter.readingTime = readingTime(file)
   frontmatter.slug = path.normalize(localizePath(`${page}${slug}/`, lang))
+  frontmatter.date = new Date(frontmatter.date)
+  frontmatter.updated = new Date(frontmatter.updated)
 
   return {
     frontmatter,

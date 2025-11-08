@@ -1,19 +1,20 @@
 import { Locale } from '@/i18n.config'
 
 export type PageProps = {
-  params: {
+  params: Promise<{
     lang: Locale
-  }
+  }>
 }
 
 export type NestedPageProps = PageProps & {
-  params: {
+  params: Promise<{
+    lang: Locale
     slug: string
-  }
+  }>
 }
 
 export type SearchPageProps = PageProps & {
-  searchParams?: {
+  searchParams?: Promise<{
     query?: string
-  }
+  }>
 }

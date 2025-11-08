@@ -288,13 +288,24 @@ export class SettingsPage {
     description: string
     date?: string
   }) {
+    // TODO: Find a better way to check the JSON-LD scripts
     const jsonLdTags = this.page.locator('script[type="application/ld+json"]')
-    const jsonLdWebsite = await jsonLdTags.first().textContent()
-    const jsonLdWebPage = await jsonLdTags.last().textContent()
+    const allScripts = await jsonLdTags.all()
+    const scriptContents = await Promise.all(
+      allScripts.map((script) => script.textContent())
+    )
+    const uniqueScripts = scriptContents.filter(
+      (content, index, array) => array.indexOf(content) === index
+    )
+
+    expect(uniqueScripts).toHaveLength(2)
+
+    const jsonLdWebsite =
+      uniqueScripts.find((content) => content?.includes('WebSite')) || ''
+    const jsonLdWebPage =
+      uniqueScripts.find((content) => content?.includes(type)) || ''
     const schemaUrl = 'https://schema.org'
     const person = 'Person'
-
-    await expect(jsonLdTags).toHaveCount(2)
 
     await expect(jsonLdWebsite).toContain(schemaUrl)
     await expect(jsonLdWebsite).toContain('WebSite')

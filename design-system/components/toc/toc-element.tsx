@@ -9,14 +9,13 @@ export const TocElement = ({ heading, activeID }: TocElementProps) => {
     <li>
       <ButtonAnchor
         variant="nav"
+        display="inlineBlock"
         size="s"
         padding="0"
         href={`#${heading.id}`}
-        className={
-          tocElement({
-            nest: tagName.toLowerCase() as 'h2' | 'h3' | 'h4'
-          }) + (activeID === heading.id ? ' active-subtle' : '')
-        }
+        className={`${tocElement({
+          nest: tagName.toLowerCase() as 'h2' | 'h3' | 'h4'
+        })} ${activeID === heading.id ? ' active-subtle' : ''}`}
       >
         {heading.textContent}
       </ButtonAnchor>

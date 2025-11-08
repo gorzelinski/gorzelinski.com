@@ -12,17 +12,15 @@ const nextConfig = {
       }
     ]
   },
-  experimental: {
-    outputFileTracingExcludes: {
-      '/*': [
-        './public',
-        './.git',
-        './.next/cache/webpack',
-        './node_modules/@swc/core-linux-x64-gnu',
-        './node_modules/@swc/core-linux-x64-musl',
-        './node_modules/@esbuild/linux-x64'
-      ]
-    }
+  outputFileTracingExcludes: {
+    '/*': [
+      './public',
+      './.git',
+      './.next/cache/webpack',
+      './node_modules/@swc/core-linux-x64-gnu',
+      './node_modules/@swc/core-linux-x64-musl',
+      './node_modules/@esbuild/linux-x64'
+    ]
   }
 }
 

@@ -337,5 +337,26 @@ describe('useHeadings', () => {
 
       expect(unobserveMock).toHaveBeenCalledTimes(2)
     })
+
+    it('handles missing elements gracefully during cleanup', () => {
+      const { article, observeMock, unobserveMock } = createTestSetup()
+
+      const h2 = createHeading('h2', 'foo')
+      const h3 = createHeading('h3', 'bar')
+
+      article.appendChild(h2)
+      article.appendChild(h3)
+
+      const { unmount } = renderHook(() => useHeadings())
+
+      expect(observeMock).toHaveBeenCalledTimes(2)
+
+      const getElementByIdSpy = vi.spyOn(document, 'getElementById')
+      getElementByIdSpy.mockImplementation(() => null)
+
+      unmount()
+
+      expect(unobserveMock).toHaveBeenCalledTimes(0)
+    })
   })
 })

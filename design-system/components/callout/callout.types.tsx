@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react';
 import { RecipeVariantProps, SystemStyleObject } from '@/styled-system/types'
 import { callout } from './callout.styles'
 

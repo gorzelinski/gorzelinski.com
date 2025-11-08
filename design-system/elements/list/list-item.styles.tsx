@@ -20,11 +20,11 @@ export const listItem = cva({
     },
     transitionProperty: 'color',
     ...sharedTransitionProperties,
+    '&::marker': {
+      color: 'primary.400'
+    },
     _last: {
       margin: '0'
-    },
-    _marker: {
-      color: 'primary.400'
     },
     '& > ul': {
       marginLeft: 'l',
