@@ -206,6 +206,21 @@
                 "title": "Code Complete",
                 "image": "code-complete.jpeg",
                 "link": "https://www.goodreads.com/book/show/4845.Code_Complete"
+              },
+              {
+                "title": "Solaris",
+                "image": "solaris-en.jpg",
+                "link": "https://www.goodreads.com/book/show/95558.Solaris"
+              },
+              {
+                "title": "A Philosophy of Software Design",
+                "image": "a-philosophy-of-software-design.jpg",
+                "link": "https://www.goodreads.com/book/show/39996759-a-philosophy-of-software-design"
+              },
+              {
+                "title": "The Demon-Haunted World: Science as a Candle in the Dark",
+                "image": "the-demon-haunted-world.jpg",
+                "link": "https://www.goodreads.com/book/show/17349.The_Demon_Haunted_World"
               }
             ]
           },
