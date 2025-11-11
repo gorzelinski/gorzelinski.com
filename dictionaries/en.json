@@ -293,6 +293,21 @@
                 "title": "Silicon Valley",
                 "image": "silicon-valley.jpg",
                 "link": "https://www.imdb.com/title/tt2575988/"
+              },
+              {
+                "title": "Dark",
+                "image": "dark.jpg",
+                "link": "https://www.imdb.com/title/tt5753856/"
+              },
+              {
+                "title": "Brooklyn Nine-Nine",
+                "image": "brooklyn-nine-nine.jpg",
+                "link": "https://www.imdb.com/title/tt2467372/"
+              },
+              {
+                "title": "Breaking Bad",
+                "image": "breaking-bad.jpg",
+                "link": "https://www.imdb.com/title/tt0903747/"
               }
             ]
           },

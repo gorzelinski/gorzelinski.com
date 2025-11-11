@@ -293,6 +293,21 @@
                 "title": "Dolina Krzemowa",
                 "image": "silicon-valley.jpg",
                 "link": "https://www.filmweb.pl/serial/Dolina+Krzemowa-2014-684792"
+              },
+              {
+                "title": "Dark",
+                "image": "dark.jpg",
+                "link": "https://www.filmweb.pl/serial/Dark-2017-771383"
+              },
+              {
+                "title": "Brooklyn Nine-Nine",
+                "image": "brooklyn-nine-nine.jpg",
+                "link": "https://www.filmweb.pl/serial/Brooklyn+9+9-2013-685359"
+              },
+              {
+                "title": "Breaking Bad",
+                "image": "breaking-bad.jpg",
+                "link": "https://www.filmweb.pl/serial/Breaking+Bad-2008-430668"
               }
             ]
           },
