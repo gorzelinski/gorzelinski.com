@@ -206,6 +206,21 @@
                 "title": "Kod doskonały",
                 "image": "kod-doskonaly.jpeg",
                 "link": "https://lubimyczytac.pl/ksiazka/125144/kod-doskonaly-jak-tworzyc-oprogramowanie-pozbawione-bledow"
+              },
+              {
+                "title": "Solaris",
+                "image": "solaris-pl.jpg",
+                "link": "https://lubimyczytac.pl/ksiazka/133717/solaris"
+              },
+              {
+                "title": "A Philosophy of Software Design",
+                "image": "a-philosophy-of-software-design.jpg",
+                "link": "https://lubimyczytac.pl/ksiazka/4902573/a-philosophy-of-software-design"
+              },
+              {
+                "title": "Świat opanowany przez demony. Nauka jako światło w mroku",
+                "image": "swiat-opanowany-przez-demony.jpg",
+                "link": "https://lubimyczytac.pl/ksiazka/5117938/swiat-opanowany-przez-demony-nauka-jako-swiatlo-w-mroku"
               }
             ]
           },
@@ -242,6 +257,21 @@
                 "title": "Money for the Rest of Us",
                 "image": "money-for-the-rest-of-us.jpeg",
                 "link": "https://moneyfortherestofus.com/"
+              },
+              {
+                "title": "On Purpose",
+                "image": "on-purpose.jpg",
+                "link": "https://www.jayshetty.me/podcast"
+              },
+              {
+                "title": "Decoding the Gurus",
+                "image": "decoding-the-gurus.jpeg",
+                "link": "https://decoding-the-gurus.captivate.fm/"
+              },
+              {
+                "title": "Unexplainable",
+                "image": "unexplainable.jpeg",
+                "link": "https://www.vox.com/unexplainable"
               }
             ]
           },
@@ -278,6 +308,21 @@
                 "title": "Dolina Krzemowa",
                 "image": "silicon-valley.jpg",
                 "link": "https://www.filmweb.pl/serial/Dolina+Krzemowa-2014-684792"
+              },
+              {
+                "title": "Dark",
+                "image": "dark.jpg",
+                "link": "https://www.filmweb.pl/serial/Dark-2017-771383"
+              },
+              {
+                "title": "Brooklyn Nine-Nine",
+                "image": "brooklyn-nine-nine.jpg",
+                "link": "https://www.filmweb.pl/serial/Brooklyn+9+9-2013-685359"
+              },
+              {
+                "title": "Breaking Bad",
+                "image": "breaking-bad.jpg",
+                "link": "https://www.filmweb.pl/serial/Breaking+Bad-2008-430668"
               }
             ]
           },
@@ -314,6 +359,21 @@
                 "title": "Resident Evil 4 Remake",
                 "image": "resident-evil-4-remake.jpg",
                 "link": "https://www.gry-online.pl/gry/resident-evil-4-1/"
+              },
+              {
+                "title": "Wiedźmin 3: Dziki Gon",
+                "image": "wiedzmin-3-dziki-gon.avif",
+                "link": "https://www.gry-online.pl/gry/the-witcher-3-wild-hunt/"
+              },
+              {
+                "title": "The Last of Us",
+                "image": "the-last-of-us.jpg",
+                "link": "https://www.gry-online.pl/gry/the-last-of-us/"
+              },
+              {
+                "title": "Hollow Knight: Silksong",
+                "image": "hollow-knight-silksong.avif",
+                "link": "https://www.gry-online.pl/gry/hollow-knight-silksong/"
               }
             ]
           }

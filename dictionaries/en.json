@@ -206,6 +206,21 @@
                 "title": "Code Complete",
                 "image": "code-complete.jpeg",
                 "link": "https://www.goodreads.com/book/show/4845.Code_Complete"
+              },
+              {
+                "title": "Solaris",
+                "image": "solaris-en.jpg",
+                "link": "https://www.goodreads.com/book/show/95558.Solaris"
+              },
+              {
+                "title": "A Philosophy of Software Design",
+                "image": "a-philosophy-of-software-design.jpg",
+                "link": "https://www.goodreads.com/book/show/39996759-a-philosophy-of-software-design"
+              },
+              {
+                "title": "The Demon-Haunted World: Science as a Candle in the Dark",
+                "image": "the-demon-haunted-world.jpg",
+                "link": "https://www.goodreads.com/book/show/17349.The_Demon_Haunted_World"
               }
             ]
           },
@@ -242,6 +257,21 @@
                 "title": "Money for the Rest of Us",
                 "image": "money-for-the-rest-of-us.jpeg",
                 "link": "https://moneyfortherestofus.com/"
+              },
+              {
+                "title": "On Purpose",
+                "image": "on-purpose.jpg",
+                "link": "https://www.jayshetty.me/podcast"
+              },
+              {
+                "title": "Decoding the Gurus",
+                "image": "decoding-the-gurus.jpeg",
+                "link": "https://decoding-the-gurus.captivate.fm/"
+              },
+              {
+                "title": "Unexplainable",
+                "image": "unexplainable.jpeg",
+                "link": "https://www.vox.com/unexplainable"
               }
             ]
           },
@@ -278,6 +308,21 @@
                 "title": "Silicon Valley",
                 "image": "silicon-valley.jpg",
                 "link": "https://www.imdb.com/title/tt2575988/"
+              },
+              {
+                "title": "Dark",
+                "image": "dark.jpg",
+                "link": "https://www.imdb.com/title/tt5753856/"
+              },
+              {
+                "title": "Brooklyn Nine-Nine",
+                "image": "brooklyn-nine-nine.jpg",
+                "link": "https://www.imdb.com/title/tt2467372/"
+              },
+              {
+                "title": "Breaking Bad",
+                "image": "breaking-bad.jpg",
+                "link": "https://www.imdb.com/title/tt0903747/"
               }
             ]
           },
@@ -315,6 +360,21 @@
                 "title": "Resident Evil 4 Remake",
                 "image": "resident-evil-4-remake.jpg",
                 "link": "https://www.metacritic.com/game/resident-evil-4/"
+              },
+              {
+                "title": "The Witcher 3: Wild Hunt",
+                "image": "the-witcher-3-wild-hunt.jpeg",
+                "link": "https://www.metacritic.com/game/the-witcher-3-wild-hunt/"
+              },
+              {
+                "title": "The Last of Us",
+                "image": "the-last-of-us.jpg",
+                "link": "https://www.metacritic.com/game/the-last-of-us/"
+              },
+              {
+                "title": "Hollow Knight: Silksong",
+                "image": "hollow-knight-silksong.avif",
+                "link": "https://www.metacritic.com/game/hollow-knight-silksong/"
               }
             ]
           }
