@@ -344,6 +344,21 @@
                 "title": "Resident Evil 4 Remake",
                 "image": "resident-evil-4-remake.jpg",
                 "link": "https://www.gry-online.pl/gry/resident-evil-4-1/"
+              },
+              {
+                "title": "Wiedźmin 3: Dziki Gon",
+                "image": "wiedzmin-3-dziki-gon.avif",
+                "link": "https://www.gry-online.pl/gry/the-witcher-3-wild-hunt/"
+              },
+              {
+                "title": "The Last of Us",
+                "image": "the-last-of-us.jpg",
+                "link": "https://www.gry-online.pl/gry/the-last-of-us/"
+              },
+              {
+                "title": "Hollow Knight: Silksong",
+                "image": "hollow-knight-silksong.avif",
+                "link": "https://www.gry-online.pl/gry/hollow-knight-silksong/"
               }
             ]
           }

@@ -345,6 +345,21 @@
                 "title": "Resident Evil 4 Remake",
                 "image": "resident-evil-4-remake.jpg",
                 "link": "https://www.metacritic.com/game/resident-evil-4/"
+              },
+              {
+                "title": "The Witcher 3: Wild Hunt",
+                "image": "the-witcher-3-wild-hunt.jpeg",
+                "link": "https://www.metacritic.com/game/the-witcher-3-wild-hunt/"
+              },
+              {
+                "title": "The Last of Us",
+                "image": "the-last-of-us.jpg",
+                "link": "https://www.metacritic.com/game/the-last-of-us/"
+              },
+              {
+                "title": "Hollow Knight: Silksong",
+                "image": "hollow-knight-silksong.avif",
+                "link": "https://www.metacritic.com/game/hollow-knight-silksong/"
               }
             ]
           }
