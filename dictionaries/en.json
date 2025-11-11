@@ -257,6 +257,21 @@
                 "title": "Money for the Rest of Us",
                 "image": "money-for-the-rest-of-us.jpeg",
                 "link": "https://moneyfortherestofus.com/"
+              },
+              {
+                "title": "On Purpose",
+                "image": "on-purpose.jpg",
+                "link": "https://www.jayshetty.me/podcast"
+              },
+              {
+                "title": "Decoding the Gurus",
+                "image": "decoding-the-gurus.jpeg",
+                "link": "https://decoding-the-gurus.captivate.fm/"
+              },
+              {
+                "title": "Unexplainable",
+                "image": "unexplainable.jpeg",
+                "link": "https://www.vox.com/unexplainable"
               }
             ]
           },
