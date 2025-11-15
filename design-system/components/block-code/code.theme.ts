@@ -15,15 +15,10 @@ export const codeTheme: ThemeRegistration = {
       scope: [
         'constant',
         'constant.character',
-        'constant.numeric',
         'constant.language',
         'constant.other'
       ],
       settings: { foreground: token('colors.primary.300') }
-    },
-    {
-      scope: ['constant.character.escape'],
-      settings: { foreground: token('colors.warning.400') }
     },
     {
       scope: ['constant.numeric'],
@@ -32,13 +27,7 @@ export const codeTheme: ThemeRegistration = {
 
     // Entities
     {
-      scope: [
-        'entity',
-        'entity.name',
-        'entity.name.function',
-        'entity.name.type',
-        'entity.other'
-      ],
+      scope: ['entity', 'entity.name', 'entity.name.function', 'entity.other'],
       settings: { foreground: token('colors.danger.400') }
     },
     {
@@ -50,8 +39,24 @@ export const codeTheme: ThemeRegistration = {
       settings: { foreground: token('colors.danger.400') }
     },
     {
-      scope: ['entity.other.attribute-name'],
-      settings: { foreground: token('colors.primary.200') }
+      scope: [
+        'entity.name.type',
+        'entity.name.type.class',
+        'entity.name.type.interface',
+        'entity.name.type.module',
+        'support.type',
+        'support.class'
+      ],
+      settings: { foreground: token('colors.success.400') }
+    },
+    {
+      scope: [
+        'support.function',
+        'support.function.builtin',
+        'meta.function-call',
+        'entity.name.function.member'
+      ],
+      settings: { foreground: token('colors.primary.400') }
     },
 
     // Invalid
@@ -66,8 +71,20 @@ export const codeTheme: ThemeRegistration = {
       settings: { foreground: token('colors.primary.400') }
     },
     {
+      scope: [
+        'keyword.control.import',
+        'keyword.control.from',
+        'keyword.control.export'
+      ],
+      settings: { foreground: token('colors.danger.400') }
+    },
+    {
       scope: ['keyword.operator'],
       settings: { foreground: token('colors.warning.400') }
+    },
+    {
+      scope: ['keyword.operator.new', 'keyword.operator.expression.typeof'],
+      settings: { foreground: token('colors.primary.400') }
     },
     {
       scope: ['keyword.other.unit'],
@@ -130,17 +147,34 @@ export const codeTheme: ThemeRegistration = {
 
     // Punctuation
     {
-      scope: [
-        'punctuation',
-        'punctuation.definition',
-        'punctuation.separator',
-        'punctuation.terminator'
-      ],
+      scope: ['punctuation', 'punctuation.separator', 'punctuation.terminator'],
       settings: { foreground: token('colors.primary.200') }
     },
     {
-      scope: ['punctuation.accessor'],
+      scope: ['punctuation.definition.comment'],
       settings: { foreground: token('colors.gray.400') }
+    },
+    {
+      scope: ['punctuation.accessor'],
+      settings: { foreground: token('colors.gray.100') }
+    },
+    {
+      scope: [
+        'punctuation.definition.template-expression',
+        'punctuation.definition.template-expression.begin',
+        'punctuation.definition.template-expression.end'
+      ],
+      settings: { foreground: token('colors.primary.400') }
+    },
+    {
+      scope: [
+        'punctuation.definition.block',
+        'punctuation.definition.parameters',
+        'punctuation.definition.typeparameters',
+        'punctuation.section.block',
+        'punctuation.section.embedded'
+      ],
+      settings: { foreground: token('colors.primary.200') }
     },
 
     // Storage
@@ -155,11 +189,15 @@ export const codeTheme: ThemeRegistration = {
         'string',
         'string.interpolated',
         'string.other',
-        'string.regexp',
-        'string.escape'
+        'punctuation.definition.string',
+        'punctuation.definition.string.begin',
+        'punctuation.definition.string.end',
+        'constant.character',
+        'constant.character.escape'
       ],
       settings: { foreground: token('colors.success.400') }
     },
+    // String overrides
     {
       scope: ['string.regexp'],
       settings: { foreground: token('colors.warning.400') }
@@ -176,15 +214,26 @@ export const codeTheme: ThemeRegistration = {
         'variable.language',
         'variable.other',
         'variable.parameter',
-        'variable.readwrite'
+        'variable.readwrite',
+        'variable.other.property',
+        'variable.other.object.property',
+        'meta.object-literal.key',
+        'variable.other.constant',
+        'variable.other.object',
+        'meta.definition.variable',
+        'support.variable',
+        'entity.name.namespace',
+        'variable.function',
+        'meta.function-call.generic',
+        'entity.name.function.call'
       ],
-      settings: { foreground: token('colors.primary.200') }
+      settings: { foreground: token('colors.primary.300') }
     },
     {
       scope: ['variable.language.this'],
       settings: { foreground: token('colors.primary.400') }
     }
   ],
-  fg: token('colors.gray.400'),
+  fg: token('colors.primary.200'),
   bg: token('colors.gray.800')
 }
