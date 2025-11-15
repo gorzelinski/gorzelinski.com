@@ -197,6 +197,7 @@ export const codeTheme: ThemeRegistration = {
       ],
       settings: { foreground: token('colors.success.400') }
     },
+
     // String overrides
     {
       scope: ['string.regexp'],
