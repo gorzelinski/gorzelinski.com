@@ -35,9 +35,7 @@ test.describe('I18n tests', () => {
 
   for (const config of initialLanguages) {
     test.describe(`initial language (${config.name})`, () => {
-      if (config.locale !== 'en-US') {
-        test.use({ locale: config.locale })
-      }
+      test.use({ locale: config.locale })
 
       test(`checks the initial language when the browser is set to ${config.name}`, async ({
         page,
