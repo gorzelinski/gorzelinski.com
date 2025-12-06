@@ -45,13 +45,7 @@ test.describe('Accessibility tests', () => {
     },
     {
       name: 'not found page',
-      getUrl: () => '/404/',
-      setup: (page) => {
-        page.on('console', (msg: ConsoleMessage) => {
-          if (msg.text().includes('404'))
-            console.log(`Expected 404 error: ${msg.text()}`)
-        })
-      }
+      getUrl: () => '/404/'
     }
   ]
 
