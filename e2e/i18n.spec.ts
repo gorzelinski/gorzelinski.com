@@ -71,7 +71,7 @@ test.describe('I18n tests', () => {
     },
     {
       name: 'portfolio project page',
-      url: (settingsPage) => `${settingsPage.link.portfolio}/an-lam/`,
+      url: (settingsPage) => `${settingsPage.link.portfolio}an-lam/`,
       getTitle: async (_, settingsPage, lang) => {
         const title =
           lang === 'en'
