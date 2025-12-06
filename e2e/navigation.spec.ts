@@ -2,7 +2,7 @@ import { expect, test, type SettingsPage } from './fixtures'
 import type { Dictionary } from '@/scripts'
 
 type NavigationLinkConfig = {
-  getName: (dict: Dictionary) => string
+  getName: (dictionary: Dictionary) => string
   getUrl: (settingsPage: SettingsPage) => string
   useFirstLocator?: boolean
   expectActiveClass?: boolean
@@ -22,35 +22,35 @@ test.describe('Navigation tests', () => {
 
     const navigationLinks: NavigationLinkConfig[] = [
       {
-        getName: (dict) => dict.layout.root.metadata.title,
+        getName: (dictionary) => dictionary.layout.root.metadata.title,
         getUrl: (settingsPage) => settingsPage.link.home,
         expectActiveClass: false
       },
       {
-        getName: (dict) => dict.links.portfolio,
+        getName: (dictionary) => dictionary.links.portfolio,
         getUrl: (settingsPage) => settingsPage.link.portfolio,
         useFirstLocator: true,
         expectActiveClass: true
       },
       {
-        getName: (dict) => dict.links.about,
+        getName: (dictionary) => dictionary.links.about,
         getUrl: (settingsPage) => settingsPage.link.about,
         useFirstLocator: true,
         expectActiveClass: true
       },
       {
-        getName: (dict) => dict.links.blog,
+        getName: (dictionary) => dictionary.links.blog,
         getUrl: (settingsPage) => settingsPage.link.blog,
         useFirstLocator: true,
         expectActiveClass: true
       },
       {
-        getName: (dict) => dict.links.uses,
+        getName: (dictionary) => dictionary.links.uses,
         getUrl: (settingsPage) => settingsPage.link.uses,
         expectActiveClass: false
       },
       {
-        getName: (dict) => dict.links.newsletter,
+        getName: (dictionary) => dictionary.links.newsletter,
         getUrl: (settingsPage) => settingsPage.link.newsletter,
         expectActiveClass: false
       }

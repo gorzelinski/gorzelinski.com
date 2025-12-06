@@ -4,8 +4,8 @@ import type { Dictionary } from '@/scripts'
 type MetaTagsConfig = {
   name: string
   getUrl: (settingsPage: SettingsPage) => string
-  getTitle: (dict: Dictionary) => string
-  getDescription: (dict: Dictionary) => string
+  getTitle: (dictionary: Dictionary) => string
+  getDescription: (dictionary: Dictionary) => string
   type: 'website' | 'article'
 }
 
@@ -13,8 +13,8 @@ type JsonLdConfig = {
   name: string
   getUrl: (settingsPage: SettingsPage) => string
   type: 'WebPage' | 'BlogPosting'
-  getTitle: (dict: Dictionary) => string
-  getDescription: (dict: Dictionary) => string
+  getTitle: (dictionary: Dictionary) => string
+  getDescription: (dictionary: Dictionary) => string
   date?: string
 }
 
@@ -24,15 +24,17 @@ test.describe('SEO tests', () => {
       {
         name: 'home page',
         getUrl: (settingsPage) => settingsPage.link.home,
-        getTitle: (dict) => dict.page.home.metadata.title,
-        getDescription: (dict) => dict.page.home.metadata.description,
+        getTitle: (dictionary) => dictionary.page.home.metadata.title,
+        getDescription: (dictionary) =>
+          dictionary.page.home.metadata.description,
         type: 'website'
       },
       {
         name: 'portfolio page',
         getUrl: (settingsPage) => settingsPage.link.portfolio,
-        getTitle: (dict) => dict.page.portfolio.metadata.title,
-        getDescription: (dict) => dict.page.portfolio.metadata.description,
+        getTitle: (dictionary) => dictionary.page.portfolio.metadata.title,
+        getDescription: (dictionary) =>
+          dictionary.page.portfolio.metadata.description,
         type: 'website'
       },
       {
@@ -46,15 +48,17 @@ test.describe('SEO tests', () => {
       {
         name: 'about page',
         getUrl: (settingsPage) => settingsPage.link.about,
-        getTitle: (dict) => dict.page.about.metadata.title,
-        getDescription: (dict) => dict.page.about.metadata.description,
+        getTitle: (dictionary) => dictionary.page.about.metadata.title,
+        getDescription: (dictionary) =>
+          dictionary.page.about.metadata.description,
         type: 'website'
       },
       {
         name: 'blog page',
         getUrl: (settingsPage) => settingsPage.link.blog,
-        getTitle: (dict) => dict.page.blog.metadata.title,
-        getDescription: (dict) => dict.page.blog.metadata.description,
+        getTitle: (dictionary) => dictionary.page.blog.metadata.title,
+        getDescription: (dictionary) =>
+          dictionary.page.blog.metadata.description,
         type: 'website'
       },
       {
@@ -67,16 +71,18 @@ test.describe('SEO tests', () => {
       {
         name: 'uses page',
         getUrl: (settingsPage) => settingsPage.link.uses,
-        getTitle: (dict) => dict.page.uses.metadata.title,
-        getDescription: (dict) => dict.page.uses.metadata.description,
+        getTitle: (dictionary) => dictionary.page.uses.metadata.title,
+        getDescription: (dictionary) =>
+          dictionary.page.uses.metadata.description,
         type: 'website'
       },
       {
         name: 'subscription confirmed page',
         getUrl: (settingsPage) => settingsPage.link.subscriptionConfirmed,
-        getTitle: (dict) => dict.page.subscriptionConfirmed.metadata.title,
-        getDescription: (dict) =>
-          dict.page.subscriptionConfirmed.metadata.description,
+        getTitle: (dictionary) =>
+          dictionary.page.subscriptionConfirmed.metadata.title,
+        getDescription: (dictionary) =>
+          dictionary.page.subscriptionConfirmed.metadata.description,
         type: 'website'
       }
     ]
@@ -107,15 +113,17 @@ test.describe('SEO tests', () => {
         name: 'home page',
         getUrl: (settingsPage) => settingsPage.link.home,
         type: 'WebPage',
-        getTitle: (dict) => dict.page.home.metadata.title,
-        getDescription: (dict) => dict.page.home.metadata.description
+        getTitle: (dictionary) => dictionary.page.home.metadata.title,
+        getDescription: (dictionary) =>
+          dictionary.page.home.metadata.description
       },
       {
         name: 'portfolio page',
         getUrl: (settingsPage) => settingsPage.link.portfolio,
         type: 'WebPage',
-        getTitle: (dict) => dict.page.portfolio.metadata.title,
-        getDescription: (dict) => dict.page.portfolio.metadata.description
+        getTitle: (dictionary) => dictionary.page.portfolio.metadata.title,
+        getDescription: (dictionary) =>
+          dictionary.page.portfolio.metadata.description
       },
       {
         name: 'portfolio project page',
@@ -130,15 +138,17 @@ test.describe('SEO tests', () => {
         name: 'about page',
         getUrl: (settingsPage) => settingsPage.link.about,
         type: 'WebPage',
-        getTitle: (dict) => dict.page.about.metadata.title,
-        getDescription: (dict) => dict.page.about.metadata.description
+        getTitle: (dictionary) => dictionary.page.about.metadata.title,
+        getDescription: (dictionary) =>
+          dictionary.page.about.metadata.description
       },
       {
         name: 'blog page',
         getUrl: (settingsPage) => settingsPage.link.blog,
         type: 'WebPage',
-        getTitle: (dict) => dict.page.blog.metadata.title,
-        getDescription: (dict) => dict.page.blog.metadata.description
+        getTitle: (dictionary) => dictionary.page.blog.metadata.title,
+        getDescription: (dictionary) =>
+          dictionary.page.blog.metadata.description
       },
       {
         name: 'blog post page',
@@ -152,16 +162,18 @@ test.describe('SEO tests', () => {
         name: 'uses page',
         getUrl: (settingsPage) => settingsPage.link.uses,
         type: 'WebPage',
-        getTitle: (dict) => dict.page.uses.metadata.title,
-        getDescription: (dict) => dict.page.uses.metadata.description
+        getTitle: (dictionary) => dictionary.page.uses.metadata.title,
+        getDescription: (dictionary) =>
+          dictionary.page.uses.metadata.description
       },
       {
         name: 'subscription confirmed page',
         getUrl: (settingsPage) => settingsPage.link.subscriptionConfirmed,
         type: 'WebPage',
-        getTitle: (dict) => dict.page.subscriptionConfirmed.metadata.title,
-        getDescription: (dict) =>
-          dict.page.subscriptionConfirmed.metadata.description
+        getTitle: (dictionary) =>
+          dictionary.page.subscriptionConfirmed.metadata.title,
+        getDescription: (dictionary) =>
+          dictionary.page.subscriptionConfirmed.metadata.description
       }
     ]
 

@@ -12,11 +12,11 @@ type PageI18nConfig = {
   name: string
   url: (settingsPage: SettingsPage) => string
   getTitle: (
-    dict: Dictionary,
+    dictionary: Dictionary,
     settingsPage: SettingsPage,
     lang: Locale
   ) => Promise<string> | string
-  getHeading: (dict: Dictionary, lang: Locale) => string
+  getHeading: (dictionary: Dictionary, lang: Locale) => string
 }
 
 test.describe('I18n tests', () => {
@@ -54,18 +54,21 @@ test.describe('I18n tests', () => {
     {
       name: 'home page',
       url: (settingsPage) => settingsPage.link.home,
-      getTitle: (dict) => dict.page.home.metadata.title,
-      getHeading: (dict) => dict.page.home.landing.typewriter.create
+      getTitle: (dictionary) => dictionary.page.home.metadata.title,
+      getHeading: (dictionary) => dictionary.page.home.landing.typewriter.create
     },
     {
       name: 'portfolio page',
       url: (settingsPage) => settingsPage.link.portfolio,
-      getTitle: async (dict, settingsPage, lang) =>
-        settingsPage.getTemplateTitle(dict.page.portfolio.metadata.title, lang),
-      getHeading: (dict, lang) =>
+      getTitle: async (dictionary, settingsPage, lang) =>
+        settingsPage.getTemplateTitle(
+          dictionary.page.portfolio.metadata.title,
+          lang
+        ),
+      getHeading: (dictionary, lang) =>
         lang === 'en'
-          ? dict.page.portfolio.heading
-          : dict.page.portfolio.metadata.title
+          ? dictionary.page.portfolio.heading
+          : dictionary.page.portfolio.metadata.title
     },
     {
       name: 'portfolio project page',
@@ -83,16 +86,22 @@ test.describe('I18n tests', () => {
     {
       name: 'about page',
       url: (settingsPage) => settingsPage.link.about,
-      getTitle: async (dict, settingsPage, lang) =>
-        settingsPage.getTemplateTitle(dict.page.about.metadata.title, lang),
-      getHeading: (dict) => dict.page.about.heading
+      getTitle: async (dictionary, settingsPage, lang) =>
+        settingsPage.getTemplateTitle(
+          dictionary.page.about.metadata.title,
+          lang
+        ),
+      getHeading: (dictionary) => dictionary.page.about.heading
     },
     {
       name: 'blog page',
       url: (settingsPage) => settingsPage.link.blog,
-      getTitle: async (dict, settingsPage, lang) =>
-        settingsPage.getTemplateTitle(dict.page.blog.metadata.title, lang),
-      getHeading: (dict) => dict.page.blog.heading
+      getTitle: async (dictionary, settingsPage, lang) =>
+        settingsPage.getTemplateTitle(
+          dictionary.page.blog.metadata.title,
+          lang
+        ),
+      getHeading: (dictionary) => dictionary.page.blog.heading
     },
     {
       name: 'blog post page',
@@ -104,19 +113,22 @@ test.describe('I18n tests', () => {
     {
       name: 'uses page',
       url: (settingsPage) => settingsPage.link.uses,
-      getTitle: async (dict, settingsPage, lang) =>
-        settingsPage.getTemplateTitle(dict.page.uses.metadata.title, lang),
-      getHeading: (dict) => dict.page.uses.metadata.title
+      getTitle: async (dictionary, settingsPage, lang) =>
+        settingsPage.getTemplateTitle(
+          dictionary.page.uses.metadata.title,
+          lang
+        ),
+      getHeading: (dictionary) => dictionary.page.uses.metadata.title
     },
     {
       name: 'subscription confirmed page',
       url: (settingsPage) => settingsPage.link.subscriptionConfirmed,
-      getTitle: async (dict, settingsPage, lang) =>
+      getTitle: async (dictionary, settingsPage, lang) =>
         settingsPage.getTemplateTitle(
-          dict.page.subscriptionConfirmed.metadata.title,
+          dictionary.page.subscriptionConfirmed.metadata.title,
           lang
         ),
-      getHeading: (dict) => dict.page.subscriptionConfirmed.heading
+      getHeading: (dictionary) => dictionary.page.subscriptionConfirmed.heading
     }
   ]
 
