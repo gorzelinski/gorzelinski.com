@@ -157,32 +157,4 @@ test.describe('I18n tests', () => {
       )
     })
   }
-
-  // test('checks language switching on the not found page', async ({
-  //   page,
-  //   settingsPage
-  // }) => {
-  //   const en = await settingsPage.getDictionary('en')
-  //   const pl = await settingsPage.getDictionary('pl')
-
-  //   page.on('console', (msg) => {
-  //     if (msg.text().includes('404'))
-  //       console.log(`Expected 404 error: ${msg.text()}`)
-  //   })
-  //   await page.goto('/404/')
-
-  //   await expect(page).not.toHaveURL(/en/g)
-  //   await expect(await page.title()).toBe(
-  //     await settingsPage.getTemplateTitle(en.page.notFound.metadata.title, 'en')
-  //   )
-  //   await expect(settingsPage.heading).toHaveText(en.page.notFound.heading)
-
-  //   await settingsPage.switchLanguage('pl')
-
-  //   await expect(page).toHaveURL(/pl/g)
-  //   await expect(await page.title()).toBe(
-  //     await settingsPage.getTemplateTitle(pl.page.notFound.metadata.title, 'pl')
-  //   )
-  //   await expect(settingsPage.heading).toHaveText(pl.page.notFound.heading)
-  // })
 })
