@@ -15,7 +15,7 @@ type ContactLinkConfig = {
 
 test.describe('Navigation tests', () => {
   test('navigates around pages', async ({ page, settingsPage }) => {
-    const { links, layout } = await settingsPage.getDictionary('en')
+    const dictionary = await settingsPage.getDictionary('en')
     const { link } = settingsPage
 
     await page.goto(link.home)
@@ -58,7 +58,7 @@ test.describe('Navigation tests', () => {
 
     for (const linkConfig of navigationLinks) {
       const linkLocator = page.getByRole('link', {
-        name: linkConfig.getName({ links, layout } as Dictionary)
+        name: linkConfig.getName(dictionary)
       })
       const link = linkConfig.useFirstLocator
         ? linkLocator.first()
@@ -74,7 +74,7 @@ test.describe('Navigation tests', () => {
     }
 
     const rss = page.getByRole('link', {
-      name: links.rss
+      name: dictionary.links.rss
     })
     await expect(rss).toBeVisible()
   })
