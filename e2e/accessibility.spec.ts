@@ -1,13 +1,13 @@
 import AxeBuilder from '@axe-core/playwright'
 import { test, expect, type SettingsPage } from './fixtures'
 
-type PageConfig = {
+type A11yPageConfig = {
   name: string
   getUrl: (settingsPage: SettingsPage) => string
 }
 
 test.describe('Accessibility tests', () => {
-  const pages: PageConfig[] = [
+  const a11yPages: A11yPageConfig[] = [
     {
       name: 'home',
       getUrl: (settingsPage) => settingsPage.link.home
@@ -47,12 +47,12 @@ test.describe('Accessibility tests', () => {
     }
   ]
 
-  pages.forEach((pageConfig) => {
-    test(`${pageConfig.name} page should not have accessibility violations`, async ({
+  a11yPages.forEach((a11yPage) => {
+    test(`${a11yPage.name} page should not have accessibility violations`, async ({
       page,
       settingsPage
     }) => {
-      await page.goto(pageConfig.getUrl(settingsPage))
+      await page.goto(a11yPage.getUrl(settingsPage))
 
       const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
 

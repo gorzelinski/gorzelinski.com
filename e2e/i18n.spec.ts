@@ -8,7 +8,7 @@ type InitialLanguageConfig = {
   lang: Locale
 }
 
-type PageI18nConfig = {
+type I18nPageConfig = {
   name: string
   url: (settingsPage: SettingsPage) => string
   getTitle: (
@@ -33,24 +33,24 @@ test.describe('I18n tests', () => {
     }
   ]
 
-  initialLanguages.forEach((config) => {
-    test.describe(`initial language (${config.name})`, () => {
-      test.use({ locale: config.locale })
+  initialLanguages.forEach((initialLanguage) => {
+    test.describe(`initial language (${initialLanguage.name})`, () => {
+      test.use({ locale: initialLanguage.locale })
 
-      test(`checks the initial language when the browser is set to ${config.name}`, async ({
+      test(`checks the initial language when the browser is set to ${initialLanguage.name}`, async ({
         page,
         settingsPage
       }) => {
         await page.goto(settingsPage.link.home)
 
         await expect(page).toHaveURL(
-          await settingsPage.getAbsoluteURL('/', config.lang)
+          await settingsPage.getAbsoluteURL('/', initialLanguage.lang)
         )
       })
     })
   })
 
-  const pages: PageI18nConfig[] = [
+  const i18nPages: I18nPageConfig[] = [
     {
       name: 'home page',
       url: (settingsPage) => settingsPage.link.home,
@@ -132,27 +132,27 @@ test.describe('I18n tests', () => {
     }
   ]
 
-  pages.forEach((pageConfig) => {
-    test(`checks language switching on the ${pageConfig.name}`, async ({
+  i18nPages.forEach((i18nPage) => {
+    test(`checks language switching on the ${i18nPage.name}`, async ({
       page,
       settingsPage
     }) => {
       const en = await settingsPage.getDictionary('en')
       const pl = await settingsPage.getDictionary('pl')
 
-      if (pageConfig.name === 'home page') {
+      if (i18nPage.name === 'home page') {
         await page.emulateMedia({ reducedMotion: 'reduce' })
       }
 
-      await page.goto(pageConfig.url(settingsPage))
+      await page.goto(i18nPage.url(settingsPage))
 
       await expect(page).not.toHaveURL(/en/g)
       await settingsPage.checkI18nTags('en')
       await expect(await page.title()).toBe(
-        await pageConfig.getTitle(en, settingsPage, 'en')
+        await i18nPage.getTitle(en, settingsPage, 'en')
       )
       await expect(settingsPage.heading).toHaveText(
-        pageConfig.getHeading(en, 'en')
+        i18nPage.getHeading(en, 'en')
       )
 
       await settingsPage.switchLanguage('pl')
@@ -160,10 +160,10 @@ test.describe('I18n tests', () => {
       await expect(page).toHaveURL(/pl/g)
       await settingsPage.checkI18nTags('pl')
       await expect(await page.title()).toBe(
-        await pageConfig.getTitle(pl, settingsPage, 'pl')
+        await i18nPage.getTitle(pl, settingsPage, 'pl')
       )
       await expect(settingsPage.heading).toHaveText(
-        pageConfig.getHeading(pl, 'pl')
+        i18nPage.getHeading(pl, 'pl')
       )
     })
   })

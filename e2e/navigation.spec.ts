@@ -56,19 +56,19 @@ test.describe('Navigation tests', () => {
       }
     ]
 
-    for (const linkConfig of navigationLinks) {
+    for (const navigationLink of navigationLinks) {
       const linkLocator = page.getByRole('link', {
-        name: linkConfig.getName(dictionary)
+        name: navigationLink.getName(dictionary)
       })
-      const link = linkConfig.useFirstLocator
+      const link = navigationLink.useFirstLocator
         ? linkLocator.first()
         : linkLocator
 
       await expect(link).toBeVisible()
       await link.click()
-      await expect(page).toHaveURL(linkConfig.getUrl(settingsPage))
+      await expect(page).toHaveURL(navigationLink.getUrl(settingsPage))
 
-      if (linkConfig.expectActiveClass) {
+      if (navigationLink.expectActiveClass) {
         await expect(link).toHaveClass(/active/)
       }
     }

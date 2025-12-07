@@ -1,7 +1,7 @@
 import { test, type SettingsPage } from './fixtures'
 import type { Dictionary } from '@/scripts'
 
-type MetaTagsConfig = {
+type MetaTagsPageConfig = {
   name: string
   getUrl: (settingsPage: SettingsPage) => string
   getTitle: (dictionary: Dictionary) => string
@@ -9,7 +9,7 @@ type MetaTagsConfig = {
   type: 'website' | 'article'
 }
 
-type JsonLdConfig = {
+type JsonLdPageConfig = {
   name: string
   getUrl: (settingsPage: SettingsPage) => string
   type: 'WebPage' | 'BlogPosting'
@@ -20,7 +20,7 @@ type JsonLdConfig = {
 
 test.describe('SEO tests', () => {
   test.describe('Meta tags', () => {
-    const metaTagsPages: MetaTagsConfig[] = [
+    const metaTagsPages: MetaTagsPageConfig[] = [
       {
         name: 'home page',
         getUrl: (settingsPage) => settingsPage.link.home,
@@ -87,28 +87,28 @@ test.describe('SEO tests', () => {
       }
     ]
 
-    metaTagsPages.forEach((pageConfig) => {
-      test(`checks the meta tags on the ${pageConfig.name}`, async ({
+    metaTagsPages.forEach((metaTagsPage) => {
+      test(`checks the meta tags on the ${metaTagsPage.name}`, async ({
         page,
         settingsPage
       }) => {
         const dictionary = await settingsPage.getDictionary('en')
-        const url = pageConfig.getUrl(settingsPage)
+        const url = metaTagsPage.getUrl(settingsPage)
 
         await page.goto(url)
 
         await settingsPage.checkSeoTags({
-          title: pageConfig.getTitle(dictionary),
-          description: pageConfig.getDescription(dictionary),
+          title: metaTagsPage.getTitle(dictionary),
+          description: metaTagsPage.getDescription(dictionary),
           slug: url,
-          type: pageConfig.type
+          type: metaTagsPage.type
         })
       })
     })
   })
 
   test.describe('JSON-LD', () => {
-    const jsonLdPages: JsonLdConfig[] = [
+    const jsonLdPages: JsonLdPageConfig[] = [
       {
         name: 'home page',
         getUrl: (settingsPage) => settingsPage.link.home,
@@ -177,22 +177,22 @@ test.describe('SEO tests', () => {
       }
     ]
 
-    jsonLdPages.forEach((pageConfig) => {
-      test(`checks the JSON-LD scripts on the ${pageConfig.name}`, async ({
+    jsonLdPages.forEach((jsonLdPage) => {
+      test(`checks the JSON-LD scripts on the ${jsonLdPage.name}`, async ({
         page,
         settingsPage
       }) => {
         const dictionary = await settingsPage.getDictionary('en')
 
-        await page.goto(pageConfig.getUrl(settingsPage))
+        await page.goto(jsonLdPage.getUrl(settingsPage))
 
         await settingsPage.checkJSONLD({
-          type: pageConfig.type,
+          type: jsonLdPage.type,
           lang: 'en',
           author: dictionary.layout.root.metadata.author,
-          title: pageConfig.getTitle(dictionary),
-          description: pageConfig.getDescription(dictionary),
-          date: pageConfig.date
+          title: jsonLdPage.getTitle(dictionary),
+          description: jsonLdPage.getDescription(dictionary),
+          date: jsonLdPage.date
         })
       })
     })
