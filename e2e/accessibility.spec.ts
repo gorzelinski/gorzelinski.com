@@ -49,7 +49,7 @@ test.describe('Accessibility tests', () => {
     }
   ]
 
-  for (const pageConfig of pages) {
+  pages.forEach((pageConfig) => {
     test(`${pageConfig.name} should not have accessibility violations`, async ({
       page,
       settingsPage
@@ -64,5 +64,5 @@ test.describe('Accessibility tests', () => {
 
       expect(accessibilityScanResults.violations).toEqual([])
     })
-  }
+  })
 })

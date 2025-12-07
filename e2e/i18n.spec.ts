@@ -33,7 +33,7 @@ test.describe('I18n tests', () => {
     }
   ]
 
-  for (const config of initialLanguages) {
+  initialLanguages.forEach((config) => {
     test.describe(`initial language (${config.name})`, () => {
       test.use({ locale: config.locale })
 
@@ -48,7 +48,7 @@ test.describe('I18n tests', () => {
         )
       })
     })
-  }
+  })
 
   const pages: PageI18nConfig[] = [
     {
@@ -132,7 +132,7 @@ test.describe('I18n tests', () => {
     }
   ]
 
-  for (const pageConfig of pages) {
+  pages.forEach((pageConfig) => {
     test(`checks language switching on the ${pageConfig.name}`, async ({
       page,
       settingsPage
@@ -166,5 +166,5 @@ test.describe('I18n tests', () => {
         pageConfig.getHeading(pl, 'pl')
       )
     })
-  }
+  })
 })

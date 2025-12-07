@@ -87,7 +87,7 @@ test.describe('SEO tests', () => {
       }
     ]
 
-    for (const pageConfig of metaTagsPages) {
+    metaTagsPages.forEach((pageConfig) => {
       test(`checks the meta tags on the ${pageConfig.name}`, async ({
         page,
         settingsPage
@@ -104,7 +104,7 @@ test.describe('SEO tests', () => {
           type: pageConfig.type
         })
       })
-    }
+    })
   })
 
   test.describe('JSON-LD', () => {
@@ -177,7 +177,7 @@ test.describe('SEO tests', () => {
       }
     ]
 
-    for (const pageConfig of jsonLdPages) {
+    jsonLdPages.forEach((pageConfig) => {
       test(`checks the JSON-LD scripts on the ${pageConfig.name}`, async ({
         page,
         settingsPage
@@ -195,6 +195,6 @@ test.describe('SEO tests', () => {
           date: pageConfig.date
         })
       })
-    }
+    })
   })
 })
