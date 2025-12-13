@@ -22,35 +22,35 @@ test.describe('Navigation tests', () => {
 
     const navigationLinks: NavigationLinkConfig[] = [
       {
-        getName: (dictionary) => dictionary.layout.root.metadata.title,
+        getName: ({ layout }) => layout.root.metadata.title,
         getUrl: (settingsPage) => settingsPage.link.home,
         expectActiveClass: false
       },
       {
-        getName: (dictionary) => dictionary.links.portfolio,
+        getName: ({ links }) => links.portfolio,
         getUrl: (settingsPage) => settingsPage.link.portfolio,
         useFirstLocator: true,
         expectActiveClass: true
       },
       {
-        getName: (dictionary) => dictionary.links.about,
+        getName: ({ links }) => links.about,
         getUrl: (settingsPage) => settingsPage.link.about,
         useFirstLocator: true,
         expectActiveClass: true
       },
       {
-        getName: (dictionary) => dictionary.links.blog,
+        getName: ({ links }) => links.blog,
         getUrl: (settingsPage) => settingsPage.link.blog,
         useFirstLocator: true,
         expectActiveClass: true
       },
       {
-        getName: (dictionary) => dictionary.links.uses,
+        getName: ({ links }) => links.uses,
         getUrl: (settingsPage) => settingsPage.link.uses,
         expectActiveClass: false
       },
       {
-        getName: (dictionary) => dictionary.links.newsletter,
+        getName: ({ links }) => links.newsletter,
         getUrl: (settingsPage) => settingsPage.link.newsletter,
         expectActiveClass: false
       }
@@ -101,31 +101,31 @@ test.describe('Navigation tests', () => {
     const socialLinks: ContactLinkConfig[] = [
       {
         name: 'Github',
-        getUrl: (settingsPage) => settingsPage.link.github
+        getUrl: ({ link }) => link.github
       },
       {
         name: 'Bluesky',
-        getUrl: (settingsPage) => settingsPage.link.bluesky
+        getUrl: ({ link }) => link.bluesky
       },
       {
         name: 'Twitter',
-        getUrl: (settingsPage) => settingsPage.link.twitter
+        getUrl: ({ link }) => link.twitter
       },
       {
         name: 'Dribbble',
-        getUrl: (settingsPage) => settingsPage.link.dribbble
+        getUrl: ({ link }) => link.dribbble
       },
       {
         name: 'Facebook',
-        getUrl: (settingsPage) => settingsPage.link.facebook
+        getUrl: ({ link }) => link.facebook
       },
       {
         name: 'Instagram',
-        getUrl: (settingsPage) => settingsPage.link.instagram
+        getUrl: ({ link }) => link.instagram
       },
       {
         name: 'Linkedin',
-        getUrl: (settingsPage) => settingsPage.link.linkedin
+        getUrl: ({ link }) => link.linkedin
       }
     ]
 

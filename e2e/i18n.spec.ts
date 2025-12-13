@@ -53,26 +53,21 @@ test.describe('I18n tests', () => {
   const i18nPages: I18nPageConfig[] = [
     {
       name: 'home page',
-      url: (settingsPage) => settingsPage.link.home,
-      getTitle: (dictionary) => dictionary.page.home.metadata.title,
-      getHeading: (dictionary) => dictionary.page.home.landing.typewriter.create
+      url: ({ link }) => link.home,
+      getTitle: ({ page }) => page.home.metadata.title,
+      getHeading: ({ page }) => page.home.landing.typewriter.create
     },
     {
       name: 'portfolio page',
-      url: (settingsPage) => settingsPage.link.portfolio,
-      getTitle: async (dictionary, settingsPage, lang) =>
-        settingsPage.getTemplateTitle(
-          dictionary.page.portfolio.metadata.title,
-          lang
-        ),
-      getHeading: (dictionary, lang) =>
-        lang === 'en'
-          ? dictionary.page.portfolio.heading
-          : dictionary.page.portfolio.metadata.title
+      url: ({ link }) => link.portfolio,
+      getTitle: async ({ page }, settingsPage, lang) =>
+        settingsPage.getTemplateTitle(page.portfolio.metadata.title, lang),
+      getHeading: ({ page }, lang) =>
+        lang === 'en' ? page.portfolio.heading : page.portfolio.metadata.title
     },
     {
       name: 'portfolio project page',
-      url: (settingsPage) => `${settingsPage.link.portfolio}an-lam/`,
+      url: ({ link }) => `${link.portfolio}an-lam/`,
       getTitle: async (_, settingsPage, lang) => {
         const title =
           lang === 'en'
@@ -85,50 +80,41 @@ test.describe('I18n tests', () => {
     },
     {
       name: 'about page',
-      url: (settingsPage) => settingsPage.link.about,
-      getTitle: async (dictionary, settingsPage, lang) =>
-        settingsPage.getTemplateTitle(
-          dictionary.page.about.metadata.title,
-          lang
-        ),
-      getHeading: (dictionary) => dictionary.page.about.heading
+      url: ({ link }) => link.about,
+      getTitle: async ({ page }, settingsPage, lang) =>
+        settingsPage.getTemplateTitle(page.about.metadata.title, lang),
+      getHeading: ({ page }) => page.about.heading
     },
     {
       name: 'blog page',
-      url: (settingsPage) => settingsPage.link.blog,
-      getTitle: async (dictionary, settingsPage, lang) =>
-        settingsPage.getTemplateTitle(
-          dictionary.page.blog.metadata.title,
-          lang
-        ),
-      getHeading: (dictionary) => dictionary.page.blog.heading
+      url: ({ link }) => link.blog,
+      getTitle: async ({ page }, settingsPage, lang) =>
+        settingsPage.getTemplateTitle(page.blog.metadata.title, lang),
+      getHeading: ({ page }) => page.blog.heading
     },
     {
       name: 'blog post page',
-      url: (settingsPage) => `${settingsPage.link.blog}hello-world/`,
+      url: ({ link }) => `${link.blog}hello-world/`,
       getTitle: async (_, settingsPage, lang) =>
         settingsPage.getTemplateTitle('Hello... world?', lang),
       getHeading: () => 'Hello... world?'
     },
     {
       name: 'uses page',
-      url: (settingsPage) => settingsPage.link.uses,
-      getTitle: async (dictionary, settingsPage, lang) =>
-        settingsPage.getTemplateTitle(
-          dictionary.page.uses.metadata.title,
-          lang
-        ),
-      getHeading: (dictionary) => dictionary.page.uses.metadata.title
+      url: ({ link }) => link.uses,
+      getTitle: async ({ page }, settingsPage, lang) =>
+        settingsPage.getTemplateTitle(page.uses.metadata.title, lang),
+      getHeading: ({ page }) => page.uses.metadata.title
     },
     {
       name: 'subscription confirmed page',
-      url: (settingsPage) => settingsPage.link.subscriptionConfirmed,
-      getTitle: async (dictionary, settingsPage, lang) =>
+      url: ({ link }) => link.subscriptionConfirmed,
+      getTitle: async ({ page }, settingsPage, lang) =>
         settingsPage.getTemplateTitle(
-          dictionary.page.subscriptionConfirmed.metadata.title,
+          page.subscriptionConfirmed.metadata.title,
           lang
         ),
-      getHeading: (dictionary) => dictionary.page.subscriptionConfirmed.heading
+      getHeading: ({ page }) => page.subscriptionConfirmed.heading
     }
   ]
 

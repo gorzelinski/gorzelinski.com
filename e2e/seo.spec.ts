@@ -23,23 +23,21 @@ test.describe('SEO tests', () => {
     const metaTagsPages: MetaTagsPageConfig[] = [
       {
         name: 'home page',
-        getUrl: (settingsPage) => settingsPage.link.home,
-        getTitle: (dictionary) => dictionary.page.home.metadata.title,
-        getDescription: (dictionary) =>
-          dictionary.page.home.metadata.description,
+        getUrl: ({ link }) => link.home,
+        getTitle: ({ page }) => page.home.metadata.title,
+        getDescription: ({ page }) => page.home.metadata.description,
         type: 'website'
       },
       {
         name: 'portfolio page',
-        getUrl: (settingsPage) => settingsPage.link.portfolio,
-        getTitle: (dictionary) => dictionary.page.portfolio.metadata.title,
-        getDescription: (dictionary) =>
-          dictionary.page.portfolio.metadata.description,
+        getUrl: ({ link }) => link.portfolio,
+        getTitle: ({ page }) => page.portfolio.metadata.title,
+        getDescription: ({ page }) => page.portfolio.metadata.description,
         type: 'website'
       },
       {
         name: 'portfolio project page',
-        getUrl: (settingsPage) => `${settingsPage.link.portfolio}an-lam/`,
+        getUrl: ({ link }) => `${link.portfolio}an-lam/`,
         getTitle: () => 'An-lam - business website',
         getDescription: () =>
           'An-lam is a small polish local business repairing boats and yachts. Its niche character makes it interesting also for distant clients.',
@@ -47,42 +45,38 @@ test.describe('SEO tests', () => {
       },
       {
         name: 'about page',
-        getUrl: (settingsPage) => settingsPage.link.about,
-        getTitle: (dictionary) => dictionary.page.about.metadata.title,
-        getDescription: (dictionary) =>
-          dictionary.page.about.metadata.description,
+        getUrl: ({ link }) => link.about,
+        getTitle: ({ page }) => page.about.metadata.title,
+        getDescription: ({ page }) => page.about.metadata.description,
         type: 'website'
       },
       {
         name: 'blog page',
-        getUrl: (settingsPage) => settingsPage.link.blog,
-        getTitle: (dictionary) => dictionary.page.blog.metadata.title,
-        getDescription: (dictionary) =>
-          dictionary.page.blog.metadata.description,
+        getUrl: ({ link }) => link.blog,
+        getTitle: ({ page }) => page.blog.metadata.title,
+        getDescription: ({ page }) => page.blog.metadata.description,
         type: 'website'
       },
       {
         name: 'blog post page',
-        getUrl: (settingsPage) => `${settingsPage.link.blog}hello-world/`,
+        getUrl: ({ link }) => `${link.blog}hello-world/`,
         getTitle: () => 'Hello... world?',
         getDescription: () => 'What am I actually doing?',
         type: 'article'
       },
       {
         name: 'uses page',
-        getUrl: (settingsPage) => settingsPage.link.uses,
-        getTitle: (dictionary) => dictionary.page.uses.metadata.title,
-        getDescription: (dictionary) =>
-          dictionary.page.uses.metadata.description,
+        getUrl: ({ link }) => link.uses,
+        getTitle: ({ page }) => page.uses.metadata.title,
+        getDescription: ({ page }) => page.uses.metadata.description,
         type: 'website'
       },
       {
         name: 'subscription confirmed page',
-        getUrl: (settingsPage) => settingsPage.link.subscriptionConfirmed,
-        getTitle: (dictionary) =>
-          dictionary.page.subscriptionConfirmed.metadata.title,
-        getDescription: (dictionary) =>
-          dictionary.page.subscriptionConfirmed.metadata.description,
+        getUrl: ({ link }) => link.subscriptionConfirmed,
+        getTitle: ({ page }) => page.subscriptionConfirmed.metadata.title,
+        getDescription: ({ page }) =>
+          page.subscriptionConfirmed.metadata.description,
         type: 'website'
       }
     ]
@@ -111,23 +105,21 @@ test.describe('SEO tests', () => {
     const jsonLdPages: JsonLdPageConfig[] = [
       {
         name: 'home page',
-        getUrl: (settingsPage) => settingsPage.link.home,
+        getUrl: ({ link }) => link.home,
         type: 'WebPage',
-        getTitle: (dictionary) => dictionary.page.home.metadata.title,
-        getDescription: (dictionary) =>
-          dictionary.page.home.metadata.description
+        getTitle: ({ page }) => page.home.metadata.title,
+        getDescription: ({ page }) => page.home.metadata.description
       },
       {
         name: 'portfolio page',
-        getUrl: (settingsPage) => settingsPage.link.portfolio,
+        getUrl: ({ link }) => link.portfolio,
         type: 'WebPage',
-        getTitle: (dictionary) => dictionary.page.portfolio.metadata.title,
-        getDescription: (dictionary) =>
-          dictionary.page.portfolio.metadata.description
+        getTitle: ({ page }) => page.portfolio.metadata.title,
+        getDescription: ({ page }) => page.portfolio.metadata.description
       },
       {
         name: 'portfolio project page',
-        getUrl: (settingsPage) => `${settingsPage.link.portfolio}an-lam/`,
+        getUrl: ({ link }) => `${link.portfolio}an-lam/`,
         type: 'BlogPosting',
         getTitle: () => 'An-lam - business website',
         getDescription: () =>
@@ -136,23 +128,21 @@ test.describe('SEO tests', () => {
       },
       {
         name: 'about page',
-        getUrl: (settingsPage) => settingsPage.link.about,
+        getUrl: ({ link }) => link.about,
         type: 'WebPage',
-        getTitle: (dictionary) => dictionary.page.about.metadata.title,
-        getDescription: (dictionary) =>
-          dictionary.page.about.metadata.description
+        getTitle: ({ page }) => page.about.metadata.title,
+        getDescription: ({ page }) => page.about.metadata.description
       },
       {
         name: 'blog page',
-        getUrl: (settingsPage) => settingsPage.link.blog,
+        getUrl: ({ link }) => link.blog,
         type: 'WebPage',
-        getTitle: (dictionary) => dictionary.page.blog.metadata.title,
-        getDescription: (dictionary) =>
-          dictionary.page.blog.metadata.description
+        getTitle: ({ page }) => page.blog.metadata.title,
+        getDescription: ({ page }) => page.blog.metadata.description
       },
       {
         name: 'blog post page',
-        getUrl: (settingsPage) => `${settingsPage.link.blog}hello-world/`,
+        getUrl: ({ link }) => `${link.blog}hello-world/`,
         type: 'BlogPosting',
         getTitle: () => 'Hello... world?',
         getDescription: () => 'What am I actually doing?',
@@ -160,11 +150,10 @@ test.describe('SEO tests', () => {
       },
       {
         name: 'uses page',
-        getUrl: (settingsPage) => settingsPage.link.uses,
+        getUrl: ({ link }) => link.uses,
         type: 'WebPage',
-        getTitle: (dictionary) => dictionary.page.uses.metadata.title,
-        getDescription: (dictionary) =>
-          dictionary.page.uses.metadata.description
+        getTitle: ({ page }) => page.uses.metadata.title,
+        getDescription: ({ page }) => page.uses.metadata.description
       },
       {
         name: 'subscription confirmed page',

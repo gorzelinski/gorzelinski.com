@@ -10,36 +10,36 @@ test.describe('Accessibility tests', () => {
   const a11yPages: A11yPageConfig[] = [
     {
       name: 'home',
-      getUrl: (settingsPage) => settingsPage.link.home
+      getUrl: ({ link }) => link.home
     },
     {
       name: 'portfolio',
-      getUrl: (settingsPage) => settingsPage.link.portfolio
+      getUrl: ({ link }) => link.portfolio
     },
     {
       name: 'portfolio project',
-      getUrl: (settingsPage) => `${settingsPage.link.portfolio}an-lam/`
+      getUrl: ({ link }) => `${link.portfolio}an-lam/`
     },
     {
       name: 'about',
-      getUrl: (settingsPage) => settingsPage.link.about
+      getUrl: ({ link }) => link.about
     },
     {
       name: 'uses',
-      getUrl: (settingsPage) => settingsPage.link.uses
+      getUrl: ({ link }) => link.uses
     },
     {
       name: 'blog',
-      getUrl: (settingsPage) => settingsPage.link.blog
+      getUrl: ({ link }) => link.blog
     },
     {
       name: 'blog post',
-      getUrl: (settingsPage) =>
-        `${settingsPage.link.blog}object-oriented-programming-in-typescript/`
+      getUrl: ({ link }) =>
+        `${link.blog}object-oriented-programming-in-typescript/`
     },
     {
       name: 'subscription confirmed',
-      getUrl: (settingsPage) => settingsPage.link.subscriptionConfirmed
+      getUrl: ({ link }) => link.subscriptionConfirmed
     },
     {
       name: 'not found',
