@@ -30,17 +30,6 @@ test.describe('Theme tests', () => {
     await settingsPage.checkTheme('light')
   })
 
-  // test('checks the OS theme change', async ({ page, settingsPage }) => {
-  //   await page.emulateMedia({ colorScheme: 'light' })
-  //   await page.goto(settingsPage.link.home)
-
-  //   await settingsPage.checkTheme('light')
-
-  //   await page.emulateMedia({ colorScheme: 'dark' })
-
-  //   await settingsPage.checkTheme('dark')
-  // })
-
   test('checks theme switching', async ({ page, settingsPage }) => {
     await page.goto(settingsPage.link.home)
 

@@ -1,274 +1,188 @@
-import { test } from './fixtures'
+import { test, type SettingsPage } from './fixtures'
+import type { Dictionary } from '@/scripts'
+
+type MetaTagsPageConfig = {
+  name: string
+  getUrl: (settingsPage: SettingsPage) => string
+  getTitle: (dictionary: Dictionary) => string
+  getDescription: (dictionary: Dictionary) => string
+  type: 'website' | 'article'
+}
+
+type JsonLdPageConfig = {
+  name: string
+  getUrl: (settingsPage: SettingsPage) => string
+  type: 'WebPage' | 'BlogPosting'
+  getTitle: (dictionary: Dictionary) => string
+  getDescription: (dictionary: Dictionary) => string
+  date?: string
+}
 
 test.describe('SEO tests', () => {
   test.describe('Meta tags', () => {
-    test('checks the meta tags on the home page', async ({
-      page,
-      settingsPage
-    }) => {
-      const dictionary = await settingsPage.getDictionary('en')
-
-      await page.goto(settingsPage.link.home)
-
-      await settingsPage.checkSeoTags({
-        title: dictionary.page.home.metadata.title,
-        description: dictionary.page.home.metadata.description,
-        slug: settingsPage.link.home,
+    const metaTagsPages: MetaTagsPageConfig[] = [
+      {
+        name: 'home page',
+        getUrl: ({ link }) => link.home,
+        getTitle: ({ page }) => page.home.metadata.title,
+        getDescription: ({ page }) => page.home.metadata.description,
         type: 'website'
-      })
-    })
-
-    test('checks the meta tags on the portfolio page', async ({
-      page,
-      settingsPage
-    }) => {
-      const dictionary = await settingsPage.getDictionary('en')
-
-      await page.goto(settingsPage.link.portfolio)
-
-      await settingsPage.checkSeoTags({
-        title: dictionary.page.portfolio.metadata.title,
-        description: dictionary.page.portfolio.metadata.description,
-        slug: settingsPage.link.portfolio,
+      },
+      {
+        name: 'portfolio page',
+        getUrl: ({ link }) => link.portfolio,
+        getTitle: ({ page }) => page.portfolio.metadata.title,
+        getDescription: ({ page }) => page.portfolio.metadata.description,
         type: 'website'
-      })
-    })
-
-    test('checks the meta tags on the portfolio project page', async ({
-      page,
-      settingsPage
-    }) => {
-      const slug = `${settingsPage.link.portfolio}an-lam/`
-
-      await page.goto(slug)
-
-      await settingsPage.checkSeoTags({
-        title: 'An-lam - business website',
-        description:
+      },
+      {
+        name: 'portfolio project page',
+        getUrl: ({ link }) => `${link.portfolio}an-lam/`,
+        getTitle: () => 'An-lam - business website',
+        getDescription: () =>
           'An-lam is a small polish local business repairing boats and yachts. Its niche character makes it interesting also for distant clients.',
-        slug,
         type: 'article'
-      })
-    })
-
-    test('checks the meta tags on the about page', async ({
-      page,
-      settingsPage
-    }) => {
-      const dictionary = await settingsPage.getDictionary('en')
-
-      await page.goto(settingsPage.link.about)
-
-      await settingsPage.checkSeoTags({
-        title: dictionary.page.about.metadata.title,
-        description: dictionary.page.about.metadata.description,
-        slug: settingsPage.link.about,
+      },
+      {
+        name: 'about page',
+        getUrl: ({ link }) => link.about,
+        getTitle: ({ page }) => page.about.metadata.title,
+        getDescription: ({ page }) => page.about.metadata.description,
         type: 'website'
-      })
-    })
-
-    test('checks the meta tags on the blog page', async ({
-      page,
-      settingsPage
-    }) => {
-      const dictionary = await settingsPage.getDictionary('en')
-
-      await page.goto(settingsPage.link.blog)
-
-      await settingsPage.checkSeoTags({
-        title: dictionary.page.blog.metadata.title,
-        description: dictionary.page.blog.metadata.description,
-        slug: settingsPage.link.blog,
+      },
+      {
+        name: 'blog page',
+        getUrl: ({ link }) => link.blog,
+        getTitle: ({ page }) => page.blog.metadata.title,
+        getDescription: ({ page }) => page.blog.metadata.description,
         type: 'website'
-      })
-    })
-
-    test('checks the meta tags on the blog post page', async ({
-      page,
-      settingsPage
-    }) => {
-      const slug = `${settingsPage.link.blog}hello-world/`
-
-      await page.goto(slug)
-
-      await settingsPage.checkSeoTags({
-        title: 'Hello... world?',
-        description: 'What am I actually doing?',
-        slug,
+      },
+      {
+        name: 'blog post page',
+        getUrl: ({ link }) => `${link.blog}hello-world/`,
+        getTitle: () => 'Hello... world?',
+        getDescription: () => 'What am I actually doing?',
         type: 'article'
-      })
-    })
-
-    test('checks the meta tags on the uses page', async ({
-      page,
-      settingsPage
-    }) => {
-      const dictionary = await settingsPage.getDictionary('en')
-
-      await page.goto(settingsPage.link.uses)
-
-      await settingsPage.checkSeoTags({
-        title: dictionary.page.uses.metadata.title,
-        description: dictionary.page.uses.metadata.description,
-        slug: settingsPage.link.uses,
+      },
+      {
+        name: 'uses page',
+        getUrl: ({ link }) => link.uses,
+        getTitle: ({ page }) => page.uses.metadata.title,
+        getDescription: ({ page }) => page.uses.metadata.description,
         type: 'website'
-      })
-    })
-
-    test('checks the meta tags on the subscription confirmed page', async ({
-      page,
-      settingsPage
-    }) => {
-      const dictionary = await settingsPage.getDictionary('en')
-
-      await page.goto(settingsPage.link.subscriptionConfirmed)
-
-      await settingsPage.checkSeoTags({
-        title: dictionary.page.subscriptionConfirmed.metadata.title,
-        description: dictionary.page.subscriptionConfirmed.metadata.description,
-        slug: settingsPage.link.subscriptionConfirmed,
+      },
+      {
+        name: 'subscription confirmed page',
+        getUrl: ({ link }) => link.subscriptionConfirmed,
+        getTitle: ({ page }) => page.subscriptionConfirmed.metadata.title,
+        getDescription: ({ page }) =>
+          page.subscriptionConfirmed.metadata.description,
         type: 'website'
+      }
+    ]
+
+    metaTagsPages.forEach((metaTagsPage) => {
+      test(`checks the meta tags on the ${metaTagsPage.name}`, async ({
+        page,
+        settingsPage
+      }) => {
+        const dictionary = await settingsPage.getDictionary('en')
+        const url = metaTagsPage.getUrl(settingsPage)
+
+        await page.goto(url)
+
+        await settingsPage.checkSeoTags({
+          title: metaTagsPage.getTitle(dictionary),
+          description: metaTagsPage.getDescription(dictionary),
+          slug: url,
+          type: metaTagsPage.type
+        })
       })
     })
   })
 
   test.describe('JSON-LD', () => {
-    test('checks the JSON-LD scripts on the home page', async ({
-      page,
-      settingsPage
-    }) => {
-      const dictionary = await settingsPage.getDictionary('en')
-
-      await page.goto(settingsPage.link.home)
-
-      await settingsPage.checkJSONLD({
+    const jsonLdPages: JsonLdPageConfig[] = [
+      {
+        name: 'home page',
+        getUrl: ({ link }) => link.home,
         type: 'WebPage',
-        lang: 'en',
-        author: dictionary.layout.root.metadata.author,
-        title: dictionary.page.home.metadata.title,
-        description: dictionary.page.home.metadata.description
-      })
-    })
-
-    test('checks the JSON-LD scripts on the portfolio page', async ({
-      page,
-      settingsPage
-    }) => {
-      const dictionary = await settingsPage.getDictionary('en')
-
-      await page.goto(settingsPage.link.portfolio)
-
-      await settingsPage.checkJSONLD({
+        getTitle: ({ page }) => page.home.metadata.title,
+        getDescription: ({ page }) => page.home.metadata.description
+      },
+      {
+        name: 'portfolio page',
+        getUrl: ({ link }) => link.portfolio,
         type: 'WebPage',
-        lang: 'en',
-        author: dictionary.layout.root.metadata.author,
-        title: dictionary.page.portfolio.metadata.title,
-        description: dictionary.page.portfolio.metadata.description
-      })
-    })
-
-    test('checks the JSON-LD scripts on the portfolio project page', async ({
-      page,
-      settingsPage
-    }) => {
-      const dictionary = await settingsPage.getDictionary('en')
-
-      await page.goto(`${settingsPage.link.portfolio}an-lam/`)
-
-      await settingsPage.checkJSONLD({
+        getTitle: ({ page }) => page.portfolio.metadata.title,
+        getDescription: ({ page }) => page.portfolio.metadata.description
+      },
+      {
+        name: 'portfolio project page',
+        getUrl: ({ link }) => `${link.portfolio}an-lam/`,
         type: 'BlogPosting',
-        lang: 'en',
-        author: dictionary.layout.root.metadata.author,
-        title: 'An-lam - business website',
-        description:
+        getTitle: () => 'An-lam - business website',
+        getDescription: () =>
           'An-lam is a small polish local business repairing boats and yachts. Its niche character makes it interesting also for distant clients.',
         date: '2021-05-19T14:00:00.000Z'
-      })
-    })
-
-    test('checks the JSON-LD scripts on the about page', async ({
-      page,
-      settingsPage
-    }) => {
-      const dictionary = await settingsPage.getDictionary('en')
-
-      await page.goto(settingsPage.link.about)
-
-      await settingsPage.checkJSONLD({
+      },
+      {
+        name: 'about page',
+        getUrl: ({ link }) => link.about,
         type: 'WebPage',
-        lang: 'en',
-        author: dictionary.layout.root.metadata.author,
-        title: dictionary.page.about.metadata.title,
-        description: dictionary.page.about.metadata.description
-      })
-    })
-
-    test('checks the JSON-LD scripts on the blog page', async ({
-      page,
-      settingsPage
-    }) => {
-      const dictionary = await settingsPage.getDictionary('en')
-
-      await page.goto(settingsPage.link.blog)
-
-      await settingsPage.checkJSONLD({
+        getTitle: ({ page }) => page.about.metadata.title,
+        getDescription: ({ page }) => page.about.metadata.description
+      },
+      {
+        name: 'blog page',
+        getUrl: ({ link }) => link.blog,
         type: 'WebPage',
-        lang: 'en',
-        author: dictionary.layout.root.metadata.author,
-        title: dictionary.page.blog.metadata.title,
-        description: dictionary.page.blog.metadata.description
-      })
-    })
-
-    test('checks the JSON-LD scripts on the blog post page', async ({
-      page,
-      settingsPage
-    }) => {
-      const dictionary = await settingsPage.getDictionary('en')
-
-      await page.goto(`${settingsPage.link.blog}hello-world/`)
-
-      await settingsPage.checkJSONLD({
+        getTitle: ({ page }) => page.blog.metadata.title,
+        getDescription: ({ page }) => page.blog.metadata.description
+      },
+      {
+        name: 'blog post page',
+        getUrl: ({ link }) => `${link.blog}hello-world/`,
         type: 'BlogPosting',
-        lang: 'en',
-        author: dictionary.layout.root.metadata.author,
-        title: 'Hello... world?',
-        description: 'What am I actually doing?',
+        getTitle: () => 'Hello... world?',
+        getDescription: () => 'What am I actually doing?',
         date: '2022-07-07T14:00:00.000Z'
-      })
-    })
-
-    test('checks the JSON-LD scripts on the uses page', async ({
-      page,
-      settingsPage
-    }) => {
-      const dictionary = await settingsPage.getDictionary('en')
-
-      await page.goto(settingsPage.link.uses)
-
-      await settingsPage.checkJSONLD({
+      },
+      {
+        name: 'uses page',
+        getUrl: ({ link }) => link.uses,
         type: 'WebPage',
-        lang: 'en',
-        author: dictionary.layout.root.metadata.author,
-        title: dictionary.page.uses.metadata.title,
-        description: dictionary.page.uses.metadata.description
-      })
-    })
-
-    test('checks the JSON-LD scripts on the subscription confirmed page', async ({
-      page,
-      settingsPage
-    }) => {
-      const dictionary = await settingsPage.getDictionary('en')
-
-      await page.goto(settingsPage.link.subscriptionConfirmed)
-
-      await settingsPage.checkJSONLD({
+        getTitle: ({ page }) => page.uses.metadata.title,
+        getDescription: ({ page }) => page.uses.metadata.description
+      },
+      {
+        name: 'subscription confirmed page',
+        getUrl: (settingsPage) => settingsPage.link.subscriptionConfirmed,
         type: 'WebPage',
-        lang: 'en',
-        author: dictionary.layout.root.metadata.author,
-        title: dictionary.page.subscriptionConfirmed.metadata.title,
-        description: dictionary.page.subscriptionConfirmed.metadata.description
+        getTitle: (dictionary) =>
+          dictionary.page.subscriptionConfirmed.metadata.title,
+        getDescription: (dictionary) =>
+          dictionary.page.subscriptionConfirmed.metadata.description
+      }
+    ]
+
+    jsonLdPages.forEach((jsonLdPage) => {
+      test(`checks the JSON-LD scripts on the ${jsonLdPage.name}`, async ({
+        page,
+        settingsPage
+      }) => {
+        const dictionary = await settingsPage.getDictionary('en')
+
+        await page.goto(jsonLdPage.getUrl(settingsPage))
+
+        await settingsPage.checkJSONLD({
+          type: jsonLdPage.type,
+          lang: 'en',
+          author: dictionary.layout.root.metadata.author,
+          title: jsonLdPage.getTitle(dictionary),
+          description: jsonLdPage.getDescription(dictionary),
+          date: jsonLdPage.date
+        })
       })
     })
   })

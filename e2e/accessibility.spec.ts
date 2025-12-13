@@ -1,108 +1,62 @@
-import { test, expect } from './fixtures'
 import AxeBuilder from '@axe-core/playwright'
+import { test, expect, type SettingsPage } from './fixtures'
+
+type A11yPageConfig = {
+  name: string
+  getUrl: (settingsPage: SettingsPage) => string
+}
 
 test.describe('Accessibility tests', () => {
-  test('home page should not have accessibility violations', async ({
-    page,
-    settingsPage
-  }) => {
-    await page.goto(settingsPage.link.home)
+  const a11yPages: A11yPageConfig[] = [
+    {
+      name: 'home',
+      getUrl: ({ link }) => link.home
+    },
+    {
+      name: 'portfolio',
+      getUrl: ({ link }) => link.portfolio
+    },
+    {
+      name: 'portfolio project',
+      getUrl: ({ link }) => `${link.portfolio}an-lam/`
+    },
+    {
+      name: 'about',
+      getUrl: ({ link }) => link.about
+    },
+    {
+      name: 'uses',
+      getUrl: ({ link }) => link.uses
+    },
+    {
+      name: 'blog',
+      getUrl: ({ link }) => link.blog
+    },
+    {
+      name: 'blog post',
+      getUrl: ({ link }) =>
+        `${link.blog}object-oriented-programming-in-typescript/`
+    },
+    {
+      name: 'subscription confirmed',
+      getUrl: ({ link }) => link.subscriptionConfirmed
+    },
+    {
+      name: 'not found',
+      getUrl: () => '/404/'
+    }
+  ]
 
-    const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
+  a11yPages.forEach((a11yPage) => {
+    test(`${a11yPage.name} page should not have accessibility violations`, async ({
+      page,
+      settingsPage
+    }) => {
+      await page.goto(a11yPage.getUrl(settingsPage))
 
-    expect(accessibilityScanResults.violations).toEqual([])
-  })
+      const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
 
-  test('portfolio page should not have accessibility violations', async ({
-    page,
-    settingsPage
-  }) => {
-    await page.goto(settingsPage.link.portfolio)
-
-    const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
-
-    expect(accessibilityScanResults.violations).toEqual([])
-  })
-
-  test('portfolio project page should not have accessibility violations', async ({
-    page,
-    settingsPage
-  }) => {
-    await page.goto(`${settingsPage.link.portfolio}an-lam/`)
-
-    const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
-
-    expect(accessibilityScanResults.violations).toEqual([])
-  })
-
-  test('about page should not have accessibility violations', async ({
-    page,
-    settingsPage
-  }) => {
-    await page.goto(settingsPage.link.about)
-
-    const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
-
-    expect(accessibilityScanResults.violations).toEqual([])
-  })
-
-  test('uses page should not have accessibility violations', async ({
-    page,
-    settingsPage
-  }) => {
-    await page.goto(settingsPage.link.uses)
-
-    const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
-
-    expect(accessibilityScanResults.violations).toEqual([])
-  })
-
-  test('blog page should not have accessibility violations', async ({
-    page,
-    settingsPage
-  }) => {
-    await page.goto(settingsPage.link.blog)
-
-    const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
-
-    expect(accessibilityScanResults.violations).toEqual([])
-  })
-
-  test('blog post page should not have accessibility violations', async ({
-    page,
-    settingsPage
-  }) => {
-    await page.goto(
-      `${settingsPage.link.blog}object-oriented-programming-in-typescript/`
-    )
-
-    const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
-
-    expect(accessibilityScanResults.violations).toEqual([])
-  })
-
-  test('subscription confirmed page should not have accessibility violations', async ({
-    page,
-    settingsPage
-  }) => {
-    await page.goto(settingsPage.link.subscriptionConfirmed)
-
-    const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
-
-    expect(accessibilityScanResults.violations).toEqual([])
-  })
-
-  test('not found page should not have accessibility violations', async ({
-    page
-  }) => {
-    page.on('console', (msg) => {
-      if (msg.text().includes('404'))
-        console.log(`Expected 404 error: ${msg.text()}`)
+      expect(accessibilityScanResults.violations).toEqual([])
     })
-    await page.goto('/404/')
-
-    const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
-
-    expect(accessibilityScanResults.violations).toEqual([])
   })
 })

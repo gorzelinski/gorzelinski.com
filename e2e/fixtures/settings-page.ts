@@ -36,10 +36,10 @@ export class SettingsPage {
   private readonly contentType: string
 
   public heading: Locator
-  private themeButtons: {
+  private themeButton: {
     [key in Locale]: Locator
   }
-  private languageButtons: {
+  private languageButton: {
     [key in Locale]: Locator
   }
   private sunny: Locator
@@ -75,7 +75,7 @@ export class SettingsPage {
     }
     this.contentType = CONTENTTYPE
 
-    this.themeButtons = {
+    this.themeButton = {
       en: this.page.getByRole('button', {
         name: this.dictionary.en.component.themeSwitch.ariaLabel
       }),
@@ -83,7 +83,7 @@ export class SettingsPage {
         name: this.dictionary.pl.component.themeSwitch.ariaLabel
       })
     }
-    this.languageButtons = {
+    this.languageButton = {
       en: this.page.getByRole('link', {
         name: getLocaleDisplayName('en')
       }),
@@ -98,11 +98,11 @@ export class SettingsPage {
   }
 
   async switchTheme(lang: Locale = 'en') {
-    await this.themeButtons[lang].click()
+    await this.themeButton[lang].click()
   }
 
   async switchLanguage(lang: Locale) {
-    await this.languageButtons[lang].click()
+    await this.languageButton[lang].click()
   }
 
   async getDictionary(lang: Locale) {
@@ -122,7 +122,7 @@ export class SettingsPage {
   }
 
   async checkTheme(theme: Theme, lang: Locale = 'en') {
-    await expect(this.themeButtons[lang]).toBeVisible()
+    await expect(this.themeButton[lang]).toBeVisible()
     await expect(theme === 'light' ? this.sunny : this.moon).toBeVisible()
     await expect(this.heading).toHaveCSS(
       'color',
@@ -289,21 +289,18 @@ export class SettingsPage {
     date?: string
   }) {
     // TODO: Find a better way to check the JSON-LD scripts
-    const jsonLdTags = this.page.locator('script[type="application/ld+json"]')
-    const allScripts = await jsonLdTags.all()
-    const scriptContents = await Promise.all(
-      allScripts.map((script) => script.textContent())
-    )
-    const uniqueScripts = scriptContents.filter(
-      (content, index, array) => array.indexOf(content) === index
+    const jsonLdLayoutTag = this.page.locator('#jsonld-layout-root').first()
+    const jsonLdPageTag = this.page.locator(
+      'script[type="application/ld+json"]:not(#jsonld-layout-root)'
     )
 
-    expect(uniqueScripts).toHaveLength(2)
+    await expect(async () => {
+      await expect(jsonLdLayoutTag).toHaveCount(1)
+      await expect(jsonLdPageTag).toHaveCount(1)
+    }).toPass()
 
-    const jsonLdWebsite =
-      uniqueScripts.find((content) => content?.includes('WebSite')) || ''
-    const jsonLdWebPage =
-      uniqueScripts.find((content) => content?.includes(type)) || ''
+    const jsonLdWebsite = (await jsonLdLayoutTag.textContent()) || ''
+    const jsonLdWebPage = (await jsonLdPageTag.textContent()) || ''
     const schemaUrl = 'https://schema.org'
     const person = 'Person'
 
