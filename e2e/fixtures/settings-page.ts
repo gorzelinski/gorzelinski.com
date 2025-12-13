@@ -288,7 +288,8 @@ export class SettingsPage {
     description: string
     date?: string
   }) {
-    const jsonLdLayoutTag = this.page.locator('#jsonld-layout-root')
+    // TODO: Find a better way to check the JSON-LD scripts
+    const jsonLdLayoutTag = this.page.locator('#jsonld-layout-root').first()
     const jsonLdPageTag = this.page.locator(
       'script[type="application/ld+json"]:not(#jsonld-layout-root)'
     )
