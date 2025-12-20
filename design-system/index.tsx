@@ -46,7 +46,8 @@ export {
   Thead,
   Tr,
   Ul,
-  Underline
+  Underline,
+  Video
 } from './elements'
 
 export {
@@ -99,7 +100,6 @@ export {
   ThemeSwitch,
   Toc,
   Typewriter,
-  Video,
   createShareLinks,
   preToCodeProps,
   type PreChildrenProps,
