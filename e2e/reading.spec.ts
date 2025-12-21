@@ -9,7 +9,7 @@ test.describe('Reading tests', () => {
 
     await page.goto(settingsPage.link.blog)
 
-    const searchBar = page.getByRole('searchbox', {
+    const searchBar = page.getByRole('search').getByRole('searchbox', {
       name: component.searchBar.placeholder
     })
     await searchBar.fill('hello... world?')

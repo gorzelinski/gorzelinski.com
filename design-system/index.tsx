@@ -30,6 +30,7 @@ export {
   Ol,
   P,
   Pill,
+  Search,
   S,
   Small,
   small,
@@ -45,7 +46,8 @@ export {
   Thead,
   Tr,
   Ul,
-  Underline
+  Underline,
+  Video
 } from './elements'
 
 export {
@@ -70,7 +72,7 @@ export {
   Linkedin,
   Mail,
   Moon,
-  Search,
+  Search as SearchIcon,
   Send,
   Sunny,
   Sync,
@@ -98,7 +100,6 @@ export {
   ThemeSwitch,
   Toc,
   Typewriter,
-  Video,
   createShareLinks,
   preToCodeProps,
   type PreChildrenProps,
