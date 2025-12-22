@@ -1,6 +1,5 @@
 import { SupportMeProps } from './support-me.types'
-import { Section } from '../section'
-import { ButtonAnchor, H2, P } from '../../elements'
+import { ButtonAnchor, H2, P, Section } from '../../elements'
 import { Cafe } from '../../icons'
 import { getCoffeeURL } from '@/lib'
 
