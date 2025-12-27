@@ -1,6 +1,8 @@
 export {
   A,
   Abbr,
+  Article,
+  Background,
   Blockquote,
   Button,
   ButtonAnchor,
@@ -25,6 +27,7 @@ export {
   Label,
   Li,
   Link,
+  Main,
   Nav,
   navigation,
   Ol,
@@ -32,6 +35,7 @@ export {
   Pill,
   Search,
   S,
+  Section,
   Small,
   small,
   Strong,
@@ -106,15 +110,6 @@ export {
   type PreProps
 } from './components'
 
-export {
-  Article,
-  Background,
-  Footer,
-  Main,
-  Navbar,
-  Newsletter,
-  Section,
-  SupportMe
-} from './sections'
+export { Footer, Navbar, Newsletter, SupportMe } from './sections'
 
 export { verticalRhythm } from './utils'
