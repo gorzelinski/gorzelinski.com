@@ -81,7 +81,7 @@ touch example.component.{ts,html,css}
 echo {0..100..2}
 ```
 
-The example above prints numbers from 0 to 100 with a step of 2. It is simple, but it doesn't need to be. You can use this syntax inside scripts, commands, directories, etc., to create whole structures with simple one-liners!
+The example above prints numbers from 0 to 100 with a step of 2. Again, it is simple, but it doesn't need to be. You can use this syntax inside scripts, commands, directories, etc., to create whole file structures with simple one-liners!
 
 ### Parameter expansion
 
@@ -136,7 +136,7 @@ After removing one pair of brackets, we're getting command substitution. **Comma
 $(...)
 ```
 
-You can think of it like calling a callback inside a function. Bash runs the specified command in a sub-shell and returns the output into the current command. For example, we can use one command to extract information about our processor architecture and then use the `echo` command to display it.
+You can think of it as string interpolation. Bash runs the specified command in a sub-shell and returns the output to the current command. For example, we can use one command to extract information about our processor architecture and then use the `echo` command to display it.
 
 ```bash
 echo "Your CPU architecture is $(uname -m)."
@@ -253,7 +253,7 @@ declare -p
 
 In the previous section, I mentioned we can use arithmetic expansion to perform calculations. Additionally, we also have an arithmetic evaluation at our disposal. The difference between them lies in the variable mutability.
 
-- **Arithmetic expansion** (with the dollar sign) returns the result of mathematical operations without changing the value.
+- **Arithmetic expansion** (with the dollar sign) returns the result of mathematical operations without changing the variable's value.
 - **Arithmetic evaluation** (without the dollar sign) performs calculations and changes the values of variables.
 
 ```bash
@@ -273,7 +273,7 @@ Bash supports six basic arithmetic operations as follows:
 | Modulo         | %        |
 | Exponentiation | \*\*     |
 
-You can also declare an integer explicitly, using the declare keyword and a proper flag.
+You can also declare an integer explicitly, using the `declare` keyword and a proper flag.
 
 ```bash
 declare -i b=3
@@ -281,7 +281,7 @@ declare -i b=3
 
 ## Tests in Bash
 
-A **test** in Bash is a command that evaluates a condition and returns a **status code.** Square brackets wrap the condition. You can test various things, such as permissions, strings, numbers, and much more. To test if the home directory exists, we can type:
+A **test** in Bash is a command that evaluates a condition and returns a **exit status.** Square brackets wrap the condition. You can test various things, such as permissions, strings, numbers, and much more. To test if the home directory exists, we can type:
 
 ```bash
 [ -d ~ ]
@@ -289,7 +289,7 @@ A **test** in Bash is a command that evaluates a condition and returns a **statu
 
 ## Exit status
 
-The above test returns a status code `0` if the directory exists. A **status code (or exit status)** is a small integer that a program returns to the os when it finishes. Unlike other programming languages, Bash treats `0` as a success. It can also be treated as a boolean in conditionals:
+The above test returns a exit code `0` if the directory exists. A **exit code (or exit status)** is a small integer that a program returns to the os when it finishes. Unlike other programming languages, Bash treats `0` as a success. It can also be treated as a boolean in conditionals:
 
 - `0` equals to `true` (yup, to confuse everyone).
 - `1` or non-zero value equals to false. Different numbers often mean different failure reasons.
