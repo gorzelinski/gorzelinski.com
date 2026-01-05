@@ -1,0 +1,608 @@
+---
+title: Jesus Christ, that's Bourne... Again Shell Scripting
+description: 'Stop being afraid of Bash scripting! Learn core syntax - expansions, variables, tests, loops, functions - and how to handle args, options, and input.'
+date: 2026-01-05T17:00:00+02:00
+updated: 2026-01-05T17:00:00+02:00
+image:
+  alt: 'Bash prompt with sudo command'
+  caption: 'Photo by Gabriel Heinzer'
+  src: 'gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg'
+categories: ['computer science']
+tags: ['terminal', 'bash', 'shell', 'cli', 'scripting']
+type: 'post'
+---
+
+Bash is a widely popular shell available on operating systems such as macOS or Linux. You can access it via a terminal and type commands inside. What's shell? What's terminal? What's a command? If you're unfamiliar with those terms, you can refer to the [first part](/blog/jesus-christ-thats-bourne-again-shell/) of this short series about Bash. In this one, we will focus on the basic Bash syntax to write our first Bash scripts.
+
+## Bash built-in (and other) commands
+
+However, before we write any script, we need to know how Bash executes commands. We can run various programs through a terminal. A command like `code path/to/codebase` should be familiar if you use Visual Studio Code. You may type `cd` many times a day to change directories. Or `echo` to print something to the screen. There is an important distinction between those commands. Some of them are built into Bash, while others are not.
+
+- A **built-in command** is a command that the shell executes directly.
+- Bash interprets **other commands** as a request to load and execute another program.
+
+The `cd` command needs to be a built-in because it operates on the shell's current directory. The `code` command opens the external program, Visual Studio Code. There are even commands that can be both, such as `echo`. It is a built-in command for efficiency, but it doesn't need to be. We can check that. To see which one you're using, you can type:
+
+```bash
+command -V echo
+```
+
+You should get a message that the echo is a built-in command. The shell will run the built-in version by default. Then it will look for other programs. Those programs are located in the `/usr/bin/` directory.
+
+This distinction is important for another reason. Both types of command use different documentation systems. To learn more about a built-in command, you can type:
+
+```bash
+help echo
+```
+
+## Bash expansions and substitutions
+
+Expansions and substitutions allow us to specify values that aren't known until a script runs. We will explore various types of expansions and substitutions in the following sections.
+
+<Callout variant="info">
+
+Many programming languages use braces to group blocks of code (_Python: Am I a joke to you?_). Bash uses them differently. Braces in Bash often serve as commands.
+
+</Callout>
+
+### Tilde expansion
+
+**Tilde expansion** represents the user's `$HOME` environment variable. Therefore, the `~/Documents` directory expands to something like `/home/john/Documents`.
+
+### Brace expansion
+
+**Brace expansion** creates sets or ranges.
+
+```bash
+{a,b,c} # Set
+{x..y..i} # Range
+```
+
+The syntax allows us to replace items from a list of values.
+
+- A **set** is a list of values separated by a comma.
+- A **range** is a list of letters or numbers between two values. There is also an option to declare a step.
+
+How can we use it? Let's say we want to create a couple of files - a boilerplate for an Angular component. We need at least three different files:
+
+1. A component file, `<component-name>.component.ts`
+2. A template file, `<component-name>.component.html`
+3. A CSS file, `<component-name>.component.css`
+
+Instead of clicking and manually creating all those files, we can write one Bash command.
+
+```bash
+touch example.component.{ts,html,css}
+```
+
+"Actually, you can use the Angular CLI to create components 🤓" I know, but I wanted to give a somewhat relevant example. It is simple, but I think you can see potential in how powerful it can be. Especially when paired with ranges.
+
+```bash
+echo {0..100..2}
+```
+
+The example above prints numbers from 0 to 100 with a step of 2. Again, it is simple, but it doesn't need to be. You can use this syntax inside scripts, commands, directories, etc., to create whole file structures with simple one-liners!
+
+### Parameter expansion
+
+**Parameter expansion** retrieves and transforms stored values.
+
+```bash
+${...}
+```
+
+We basically use it to operate on variables. First, we set a parameter equal to a value. Then we use the dollar sign (and optionally braces) with the parameter name to retrieve the value.
+
+```bash
+a="Amelie"
+echo $a # Amelie
+echo ${a} # Amelie
+```
+
+You can also use the braces syntax to extract or manipulate the value of a parameter.
+
+```bash
+echo ${a:3:6} # lie
+echo ${a/Amelie/Bridget} # Bridget
+```
+
+The syntax resembles the slicing operator in Python.
+
+### Arithmetic expansion
+
+**Arithmetic expansion** does calculations. As simple as that.
+
+```bash
+$((...))
+```
+
+To calculate some numbers, put them inside double round brackets. You can do basic arithmetic operations known from other languages, like addition, subtraction, multiplication, division, or modulo.
+
+```bash
+echo $(( 2 + 2 )) # 4
+```
+
+<Callout variant="warning">
+
+Bash only supports calculations with integers.
+
+</Callout>
+
+### Command substitution
+
+After removing one pair of brackets, we're getting command substitution. **Command substitution** puts the output of one command inside another.
+
+```bash
+$(...)
+```
+
+You can think of it as string interpolation. Bash runs the specified command in a sub-shell and returns the output to the current command. For example, we can use one command to extract information about our processor architecture and then use the `echo` command to display it.
+
+```bash
+echo "Your CPU architecture is $(uname -m)."
+# Your CPU architecture is arm64.
+```
+
+You can even chain output from other programming languages, like Python.
+
+```bash
+echo "Colonel Campbell: $(python3 -c 'print("Snaaake!")' | tr [a-z] [A-Z])"
+# Colonel Campbell: SNAAAKE!
+```
+
+Imagine the possibilities when paired with string manipulation, pipes, and other expansions we've discussed!
+
+## Bash script syntaxes
+
+Through this and previous posts, we mostly run singular commands. That's fine for simple use cases, but it becomes cumbersome for complex scripts. We have several options for running multiple commands.
+
+### One-liners
+
+We've been using them till now. These are commands presented in one line of text, often separated by a semicolon or piped (as in the example above). Be aware that "one line" doesn't mean a literal, singular horizontal line in the terminal. Lines can be very long and wrap in the terminal.
+
+### Bash scripts
+
+A long one-liner is not very readable. In a complex case, it's better to use a Bash script. It's a file that contains a series of commands. It can contain loops, conditional logic, and other syntaxes familiar from other programming languages (which we'll cover later). Those files use a `.sh` extension. You can run such a script by invoking it directly using Bash, like `bash myscript.sh`.
+
+```bash
+# myscript.sh - Check disk usage and send alert
+
+THRESHOLD=80
+USAGE=$(df -h / | awk 'NR==2 {print $5}' | sed 's/%//')
+
+if [ "$USAGE" -gt "$THRESHOLD" ]; then
+    echo "Warning: Disk usage is at ${USAGE}%"
+    echo "Disk space critical on $(hostname)" | mail -s "Disk Alert" admin@example.com
+else
+    echo "Disk usage is healthy: ${USAGE}%"
+fi
+```
+
+### Executable Bash scripts
+
+To make a script executable, you need to include a shebang as the first line (It should be pronounced "shuh·bang," not "she bangs" although [Ricky Martin](https://youtu.be/5ihtX86JzmA?si=V7MJAev-1EuDw6uT) would prefer the latter version). The line tells the operating system which interpreter to use to execute the file. As the sentence suggests, it doesn't need to be Bash. These files don't need an extension, but they need proper permissions. You can make a script executable using `chmod +x myscript`. Then you can run it directly by typing `./myscript` (or `myscript` if in the `$PATH`).
+
+```bash
+# Execute the file using Bash
+#!/bin/bash
+
+# Execute the file using PHP
+#!/usr/bin/php
+
+# Execute the file using Python
+#!/usr/bin/python
+
+# Script in appropriate programming language
+```
+
+<Callout variant="info">
+
+To learn more about the `$PATH` variable, or standard output, check my [previous post](/blog/jesus-christ-thats-bourne-again-shell/).
+
+</Callout>
+
+## The echo command
+
+As mentioned earlier, the `echo` command prints out information to the screen, or more specifically, standard output. However, you can redirect it elsewhere. It can output static text, variables, or any value, really. For example, you can create an empty file without using the `touch` command.
+
+```bash
+echo -n > filename.txt
+```
+
+## Quotation marks in Bash
+
+I can make a good segue here to talk about quotation marks in Bash. Coming from JavaScript, we can trap ourselves by using single and double quotes interchangeably. In Bash, there is a distinction between them.
+
+- **Single quotes** (or strong quotes) indicate that everything should be text.
+- In **double quotes,** Bash will still interpret substitutions, expansions, evaluations, variables, and so on.
+
+However, if you want to ignore special characters like parentheses, you must escape them with a backslash.
+
+## Variables in Bash
+
+There is more regarding variables in Bash. No surprises, variables in Bash allow us to store and retrieve values by name, like in other programming languages. They are a special case of parameter substitution.
+
+<Callout variant="warning">
+
+Variables in Bash should use alphanumeric characters and are case-sensitive.
+
+</Callout>
+
+There already exist system variables on our systems, like `$PATH`. To distinguish our variables, we should declare them in lowercase. It's a good practice.
+
+How to declare constants if we should use lowercase? By using a specific flag.
+
+```bash
+declare -r readonlyvariable="sam"
+```
+
+There are many different flags you can explore. For example, you can lowercase or uppercase the value of the variable itself.
+
+```bash
+declare -l lowerstring="This is TEXT!" # this is text!
+declare -u upperstring="This is TEXT!" # THIS IS TEXT!
+```
+
+To check all the variables in the current session, type:
+
+```bash
+declare -p
+```
+
+## Numbers in Bash
+
+In the previous section, I mentioned we can use arithmetic expansion to perform calculations. Additionally, we also have an arithmetic evaluation at our disposal. The difference between them lies in the variable mutability.
+
+- **Arithmetic expansion** (with the dollar sign) returns the result of mathematical operations without changing the variable's value.
+- **Arithmetic evaluation** (without the dollar sign) performs calculations and changes the values of variables.
+
+```bash
+a=3
+((a++))
+echo $a # 4
+```
+
+Bash supports six basic arithmetic operations as follows:
+
+| Operation      | Operator |
+| -------------- | -------- |
+| Addition       | +        |
+| Subtraction    | -        |
+| Multiplication | \*       |
+| Division       | /        |
+| Modulo         | %        |
+| Exponentiation | \*\*     |
+
+You can also declare an integer explicitly, using the `declare` keyword and a proper flag.
+
+```bash
+declare -i b=3
+```
+
+## Tests in Bash
+
+A **test** in Bash is a command that evaluates a condition and returns a **exit status.** Square brackets wrap the condition. You can test various things, such as permissions, strings, numbers, and much more. To test if the home directory exists, we can type:
+
+```bash
+[ -d ~ ]
+```
+
+## Exit status
+
+The above test returns an exit code `0` if the directory exists. A **exit code (or exit status)** is a small integer that a program returns to the OS when it finishes. Unlike other programming languages, Bash treats `0` as a success. It can also be treated as a boolean in conditionals:
+
+- `0` equals to `true` (yup, to confuse everyone).
+- `1` or non-zero value equals to false. Different numbers often mean different failure reasons.
+
+The `$?` variable stores the return status of the last-run command.
+
+```bash
+[ "Amelie" = "Bridget" ]; echo $? # 1
+```
+
+In this case, it returns `1` because the strings aren't equal. Besides strings, we can test other things, as I mentioned earlier. The most common kinds of checks are:
+
+- Strings: empty/non-empty, equality, pattern matching.
+- Numbers: `-eq`, `-ne`, `-lt,` `-le`, `-gt`, `-ge` (equal, not equal, less than, etc.)
+- Files: existence/type/permissions (`-e`, `-f`, `-d`, `-r`, `-w`, `-x`, `-s`).
+- Logic: AND/OR/NOT (`-a`, `-o`, `!`, `&&`, `||`).
+
+<Callout variant="info">
+
+The test syntax is widely compatible across shells. However, there may be differences. `test` is a synonym for square brackets. The double square bracket syntax is a safer equivalent available in Bash/Ksh.
+
+</Callout>
+
+## Arrays in Bash
+
+Have you had enough of brackets? Because we'll learn another concept that involves them. An **array** in Bash stores multiple values. Newer versions of Bash support two types of arrays:
+
+- **Indexed arrays**
+- **Associative arrays**
+
+In an indexed array, we set or read pieces of information by referring to their position in the list, or their index. To declare an indexed array, use the round brackets:
+
+```bash
+beach=("Sam","Bridget")
+declare -a beach=("Sam","Bridget") # Explicit syntax
+echo ${beach[0]} # Sam
+beach+=("Amelie") # Append value
+echo ${beach[@]} # List all values
+```
+
+If you're using Bash v4 or above, you can also declare associative arrays. They use key/string pairs similarly to objects in JavaScript or dictionaries in Python.
+
+```bash
+declare -A beach
+beach[name]="Sam"
+```
+
+However, both types are limited to one level. **You can't create nested arrays.**
+
+## Control structures in Bash
+
+In Bash, you can direct execution flow with control structures like branching, looping, selecting cases, and controlling groups of commands.
+
+### Conditional statements in Bash
+
+Bash chooses what commands to run based on exit statuses. It allows us to control how script execution happens. We can run commands based on specific conditions. There are multiple syntaxes to write `if` statements in Bash:
+
+```bash
+#1
+if # condition
+then
+	# script
+fi
+
+#2
+if # condition
+then
+	# script
+else
+	# script
+fi
+
+#3
+if [[...]]
+then
+	# script
+else
+	# script
+fi
+
+#4
+if ((...))
+then
+	# script
+elif ((...))
+then
+	# script
+else
+	# script
+fi
+
+#5
+if # condition; then
+	# script
+fi
+
+#6
+if # condition; then # script; fi
+```
+
+### Loops in Bash
+
+Bash offers well-known kinds of loops: `while`, `until`, and `for`.
+
+A `while` loop runs as long as its condition is `true`.
+
+```bash
+while # ...
+do
+	# ...
+done
+```
+
+An `until` loop runs as long as its condition is `false`.
+
+```bash
+until # ...
+do
+	# ...
+done
+```
+
+A `for` loop iterates through a list of items, running code once for each item. There are also alternative syntaxes.
+
+```bash
+#1
+for i in # ...
+do
+	# ...
+done
+
+#2
+for (( i=1; i<=10; i++ ))
+do
+	echo $i
+done
+
+#3
+for i in * # List of files in the current directory
+do
+	echo "Found a file: $i"
+done
+```
+
+### The "case" statement
+
+The `case` syntax is a multi-branch control structure that matches one value against patterns, then runs the first matching branch. It checks an input against a set of predefined values. It's often cleaner and safer than long `if`/`elif` chains for CLI arguments.
+
+```bash
+person="sam"
+
+case $person in
+	sam) echo "Son";; # Specific case
+	amelie|bridget) echo "Mother";; # You can OR patterns
+	*) echo "Human";; # Any case
+esac
+```
+
+## Functions in Bash
+
+Besides control structures, you can also use functions to organize your Bash scripts. They allow us to group blocks of code and call them repeatedly like commands.
+
+```bash
+greet() {
+	echo "Hi there, $1!"
+}
+
+greet "Snake" # Hi there, Snake!
+```
+
+<Callout variant="info">
+
+There is also an alternative syntax to define functions: `function fname {...}`.
+
+</Callout>
+
+A function provides arguments accessible inside itself:
+
+- `$1`, `$2`: a specific function argument.
+- `$@`: list of all arguments.
+- `$#`: number of arguments.
+- `$FUNCNAME`: name of the function.
+
+You can also declare your variables inside functions.
+
+```bash
+x="global"
+
+f() {
+	echo "$x"        # Function reads global
+	x="changed"      # It modifies global
+	local y="temp"   # y exists only during f
+}
+```
+
+A function in Bash can read global variables from the script environment. Also, variables declared inside a function are **global by default.** To distinguish local variables, you need to declare them explicitly with the `local` keyword.
+
+## Working with Bash arguments
+
+Similarly to arguments in functions, we can provide arguments to whole Bash scripts. **Arguments** are a special type of variable that are specified by the user when Bash executes the script. Arguments usually contain values that the script operates on. Script arguments mirror those from functions:
+
+- `$1`, `$2` are positional arguments.
+- `$0` contains the name of the script.
+- `$@` gives a list of all arguments.
+- `$#` gives the number of arguments.
+
+```bash
+echo "script: $0"
+echo "count: $#"
+echo "first: $1"
+echo "all: $*"
+
+for arg in "$@"; do
+  echo "arg: $arg"
+done
+```
+
+<Callout variant="info">
+
+To learn the basics about command arguments and options, check my [previous post](/blog/jesus-christ-thats-bourne-again-shell/).
+
+</Callout>
+
+## Working with Bash options
+
+**Options** also allow us to pass information into a script from the CLI. You most likely used both arguments and options while programming. A simple Git command contains them both:
+
+```bash
+git commit -m "fix: Hyper-important bug"
+# Option: -m
+# Argument: "fix: Hyper-important bug"
+```
+
+Under the hood, options are accessed using the `getopts` keyword. It is a Bash built-in that parses short options (such as `-a`, `-v`, `-p`) from a script's positional parameters.
+
+```bash
+while getopts :u:p:a option; do
+	case $option in
+		u) user=$OPTARG;;
+		p) pass=$OPTARG;;
+		# a is without arg, so you can only check presence
+		a) echo "got the 'a' flag";;
+		?) echo "Unknown option" # The first colon catches this
+	esac
+done
+
+echo "user: $user / pass: $pass"
+```
+
+Options can be specified and used in any order. They can even accept arguments of their own.
+
+## Getting input in Bash scripts
+
+Passing arguments to scripts while invoking them is useful, but sometimes we need input while the script is running. For example, when you need multiple, consecutive answers from the user. In Bash, there are reserved keywords to gather input.
+
+The `read` keyword pauses the script until input is provided.
+
+```bash
+echo "What is your name?"
+read name
+
+echo "What is your password?"
+read -s pass
+```
+
+The `-s` flag means "silent" - Bash will not display characters when typing. Other common options are:
+
+- `-r`: don't treat backslashes as escapes (recommended for raw input).
+- `-p`: show a prompt before reading.
+- `-e`: use readline editing (interactive).
+- `-n`: read at most N characters.
+
+To narrow down the input to several options, use the `select` keyword. You can combine it with the `case` syntax to allow the user to choose from a predefined list.
+
+```bash
+select actor in "sam" "clifford" "fragile"
+do
+	case $actor in
+		sam) echo "Norman Reedus";;
+		clifford) echo "Mads Mikkelsen";;
+		fragile) echo "Léa Seydoux";;
+		quit) break;;
+		*) echo "Probably not in the cast."
+	esac
+done
+```
+
+In our simple case, semicolons separate options. Each of them displays a simple string. It remains readable, but if you have many commands to run, functions may be a better option.
+
+### Ensuring a response
+
+Our script works, but pressing <Kbd>Enter</Kbd> omits a response and passes an empty one. And sometimes that's not desirable behavior. There are different ways to ensure a response in Bash.
+
+For example, you can suggest the option with the `-i` flag.
+
+```bash
+read -ep "Favourite game? " -i "MGS 3" favgame
+echo "$favgame"
+```
+
+Or you can check the number of arguments.
+
+```bash
+if (($#<3)); then
+	echo "This command requires three arguments"
+	echo "username, userid, and favorite number"
+else
+	echo "username: $1"
+	echo "userid: $2"
+	echo "favorite number: $3"
+fi
+```
+
+---
+
+I can't ensure a response from you, but you can let me know if you liked this post. Now, you should be capable of writing and reading simple Bash scripts. We may write such a simple one in future posts. Bash scripts out there in the wild shouldn't be so scary. And most importantly, you'll be able to tell when the Cursor agent decided to hallucinate some strange Bash syntax.

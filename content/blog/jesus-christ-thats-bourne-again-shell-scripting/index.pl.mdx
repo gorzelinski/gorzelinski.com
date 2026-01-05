@@ -1,0 +1,597 @@
+---
+title: Jezu Chryste, to Bourne… Again Shell Scripting
+description: 'Przestań bać się skryptów Basha! Poznaj podstawową składnię — rozwinięcia, zmienne, testy, pętle i funkcje — oraz pracę z argumentami, opcjami i danymi wejściowymi.'
+date: 2026-01-05T17:00:00+02:00
+updated: 2026-01-05T17:00:00+02:00
+image:
+  alt: 'Prompt Basha z komendą sudo'
+  caption: 'Zdjęcie autorstwa Gabriel Heinzer'
+  src: 'gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg'
+categories: ['informatyka']
+tags: ['terminal', 'bash', 'powłoka', 'cli', 'skrypty']
+type: 'post'
+---
+
+Bash jest popularną powłoką dostępną na systemach operacyjnych takich jak macOS czy Linux. Możesz uzyskać do niej dostęp przez terminal i wpisywać w niej komendy. Czym jest powłoka? Czym jest terminal? Czym jest komenda? Jeżeli chcesz się zapoznać z tymi terminami, sprawdź [pierwszą część](/pl/blog/jesus-christ-thats-bourne-again-shell/) tej krótkiej serii o powłoce Bash. W tym wpisie skupimy się na podstawowej składni, aby tworzyć nasze pierwsze skrypty powłoki.
+
+## Wbudowane (i inne) komendy Basha
+
+Jednakże, zanim napiszemy jakikolwiek skrypt, musimy zrozumieć jak Bash je wykonuje. Możemy uruchamiać różne programy przez terminal. Komenda taka jak `code path/to/codebase` powinna być ci znajoma, jeżeli używasz Visual Studio Code. Możliwe, że wpisujesz `cd` wielokrotnie w ciągu dnia, aby zmieniać katalogi. Albo `echo`, żeby wyświetlać rzeczy na ekranie. Trzeba tu poczynić istotne rozróżnienie pomiędzy tymi komendami. Niektóre z nich są wbudowane w Basha, podczas gdy inne nie są.
+
+- **Wbudowane komendy** są bezpośrednio wykonywane przez powłokę.
+- Bash interpretuje **inne komendy** jako zapytanie do załadowania i uruchomienia innego programu.
+
+Komenda `cd` musi być wbudowana, ponieważ operuje na bieżącym katalogu powłoki. Komenda `code` otwiera zewnętrzny program - Visual Studio Code. Są nawet komendy, które mogą być oboma typami jak `echo`. Z powodu wydajności jest wbudowana, ale nie musi być. Możemy to sprawdzić. Aby zobaczyć, której wersji używasz, możesz wpisać:
+
+```bash
+command -V echo
+```
+
+Powinna pojawić się informacja, że `echo` jest wbudowaną komendą. Powłoka domyślnie uruchamia wbudowane komendy. Później szuka innych programów. Te programy są zlokalizowane w katalogu `/usr/bin/`.
+
+To rozróżnienie jest istotne jeszcze z innego powodu. Oba typy komend używają różnych systemów dokumentacji. Aby dowiedzieć się więcej o wbudowanej komendzie wpisz:
+
+```bash
+help echo
+```
+
+## Rozwijanie i podstawianie w Bashu
+
+Rozwijanie i podstawienie pozwala nam określić wartości, które nie są znane do momentu uruchomienia skryptu. Poznamy różne typy rozszerzeń i podstawień w kolejnych sekcjach.
+
+<Callout variant="info">
+
+Wiele języków programowania używa nawiasów do grupowania bloków kodu (_Python: Am I a joke to you?_). Bash używa ich inaczej. Nawiasy w Bashu są często komendami.
+
+</Callout>
+
+### Rozwijanie tyldy
+
+**Rozwijanie tyldy** reprezentuje zmienną środowiskową użytkownika - `$HOME`. W związku z tym, katalog `~/Documents` zostanie rozszerzony do czegoś takiego jak `/home/jan/Documents`.
+
+### Rozwijanie nawiasów
+
+**Rozwijanie nawiasów** tworzy zbiory lub zakresy.
+
+```bash
+{a,b,c} # Zbiór
+{x..y..i} # Zakres
+```
+
+Ta składnia pozwala nam zastąpić elementy wartościami z listy.
+
+- **Zbiór** to lista wartości oddzielona przecinkami.
+- **Zakres** to lista liter bądź liczb pomiędzy dwoma wartościami. Istnieje też opcja, aby zadeklarować krok.
+
+Jak możemy to wykorzystać? Powiedzmy, że chcemy stworzyć kilka plików - szkielet komponentu Angular. Potrzebujemy przynajmniej trzech, różnych plików:
+
+1. Pliku komponentu: `<component-name>.component.ts`
+2. Szablonu: `<component-name>.component.html`
+3. Pliku CSS: `<component-name>.component.css`
+
+Zamiast klikać i manualnie tworzyć wszystkie te pliki, możemy napisać jedną komendę Basha.
+
+```bash
+touch example.component.{ts,html,css}
+```
+
+"W zasadzie, możesz skorzystać z Angular CLI do tworzenia komponentów 🤓". Wiem, ale chciałem dać jakiś sensowny przykład. Jest prosty, ale pewnie widzisz już potencjał jak potężne potrafi to być. Szczególnie w połączeniu z zakresami.
+
+```bash
+echo {0..100..2}
+```
+
+Przykład powyżej wypisuje liczby od 0 do 100 z krokiem 2. Ponownie, jest to proste, ale nie musi być. Możesz użyć tej składni wewnątrz skryptów, komend, katalogów, itp., aby tworzyć całe struktury plików prostymi jednolinijkowcami!
+
+### Rozwijanie parametrów
+
+**Rozwijanie parametrów** pobiera i transformuje przechowywane wartości.
+
+```bash
+${...}
+```
+
+Zasadniczo, wykorzystujemy je do operowania zmiennymi. Najpierw ustawiamy parametr równy jakiejś wartości. Później używamy znaku dolara (i opcjonalnie nawiasów klamrowych) z nazwą parametru, aby pobrać wartość.
+
+```bash
+a="Amelie"
+echo $a # Amelie
+echo ${a} # Amelie
+```
+
+Możesz także wykorzystać składnię klamrową, aby wyciągnąć lub manipulować wartością parametru.
+
+```bash
+echo ${a:3:6} # lie
+echo ${a/Amelie/Bridget} # Bridget
+```
+
+Składnia ta przypomina operator wycinania w języku Python.
+
+### Rozwijanie arytmetyczne
+
+**Rozwijanie matematyczne** służy do wykonywania obliczeń. Tak po prostu.
+
+```bash
+$((...))
+```
+
+Aby kalkulować jakieś liczby, umieść je wewnątrz podwójnych, okrągłych nawiasów. Możesz wykonywać podstawowe operacje matematyczne znane z innych języków programowania, jak dodawanie, odejmowanie, mnożenie, dzielenie lub modulo.
+
+```bash
+echo $(( 2 + 2 )) # 4
+```
+
+<Callout variant="warning">
+
+Bash wspiera obliczenia tylko na liczbach całkowitych.
+
+</Callout>
+
+### Podstawianie komend
+
+Po usunięciu jednej pary nawiasów, otrzymujemy podstawianie komend. **Podstawianie komend** umieszcza wyjście jednej komendy wewnątrz innej.
+
+```bash
+$(...)
+```
+
+Możesz myśleć o tym jak o interpolacji łańcuchów znaków. Bash wykonuje komendę w podpowłoce i zwraca wyjście do bieżącej komendy. Możemy na przykład użyć jednej komendy do wyodrębnienia informacji o architekturze procesora i użyć komendy `echo`, aby je wyświetlić.
+
+```bash
+echo "Architektura twojego procesora to $(uname -m)."
+# Architektura twojego procesora to arm64.
+```
+
+Możesz nawet połączyć wyjście z innego języka programowania, jak Python.
+
+```bash
+echo "Colonel Campbell: $(python3 -c 'print("Snaaake!")' | tr [a-z] [A-Z])"
+# Colonel Campbell: SNAAAKE!
+```
+
+Tylko wyobraź sobie możliwości, gdy sparujemy to z manipulacją łańcuchami, potokami i rozwijaniem, które omówiliśmy!
+
+## Składnia skryptów Basha
+
+W tym i poprzednim wpisie, uruchamialiśmy głównie pojedyncze komendy. Dla prostych przypadków są wystarczające, ale zaczynają być niewygodne w złożonych skryptach. Mamy kilka innych opcji, aby uruchamiać wiele komend.
+
+### Jednolinijkowce
+
+Do tej pory ich używaliśmy. Są to komendy zapisane w jednej lini tekstu, często oddzielone średnikami lub złożone w potok (jak w przykładzie powyżej). Miej na uwadze, że "jedna linia" nie oznacza dosłownie pojedynczej, horyzontalnej lini w terminalu. Linie mogą być bardzo długie i zawijać się wewnątrz terminala.
+
+### Skrypty Basha
+
+Długa linia tekstu nie jest zbyt czytelna. W złożonych przypadkach, lepiej użyć skryptu. Jest to plik, który zawiera serię komend. Może także zawierać pętle, logikę warunkową i składnię znaną z innych języków programowania (pomówimy o niej później). Pliki te używają rozszerzenia `.sh`. Taki skrypt możesz wywołać bezpośrednio używając basha, np.: `bash myscript.sh`.
+
+```bash
+# myscript.sh - Sprawdź użycie dysku i wyślij alert
+
+THRESHOLD=80
+USAGE=$(df -h / | awk 'NR==2 {print $5}' | sed 's/%//')
+
+if [ "$USAGE" -gt "$THRESHOLD" ]; then
+    echo "Uwaga: Zapełnienie dysku na poziomie ${USAGE}%"
+    echo "Krytyczna ilość miejsca: $(hostname)" | mail -s "Alert dysku" admin@example.com
+else
+    echo "Zapełnienie dysku jest w normie: ${USAGE}%"
+fi
+```
+
+### Wykonywalne skrypty Basha
+
+Stworzenie wykonywalnego skryptu, wymaga umieszczenia znaku "shebang" w pierwszej linii (wymawia się to "shuh·bang", a nie "she bangs", pomimo, że [Ricky Martin](https://youtu.be/5ihtX86JzmA?si=V7MJAev-1EuDw6uT) preferowałby drugą wersję). Linia ta informuje system operacyjny, którego interpretera powinien użyć do wykonania pliku. Jak poprzednie zdanie sugeruje, nie musi to być Bash. Takie pliki nie wymagają rozszerzenia, ale wymagają odpowiednich uprawnień. Możesz przerobić skrypt na wykonywalny wykorzystując `chmod +x myscript`. Po tej operacji możesz uruchomić ten plik bezpośrednio, wpisując `./myscript` (lub `myscript` jeżeli jest w zmiennej `$PATH`).
+
+```bash
+# Uruchom plik wykorzystując Bash
+#!/bin/bash
+
+# Uruchom plik wykorzystując PHP
+#!/usr/bin/php
+
+# Uruchom plik wykorzystując Pythona
+#!/usr/bin/python
+
+# Skrypt w odpowiednim języku programowania
+```
+
+<Callout variant="info">
+
+Aby dowiedzieć się więcej o zmiennej `$PATH` lub standardowym wyjściu, sprawdź mój [poprzedni post](/pl/blog/jesus-christ-thats-bourne-again-shell/).
+
+</Callout>
+
+## Komenda echo
+
+Jak wspomniałem wcześniej, komenda `echo` wyświetla informacje na ekranie, lub bardziej precyzyjnie, w standardowym wyjściu. Jednakże, może być przekierowana gdziekolwiek. Może zwracać statyczny tekst, zmienne, lub dowolną, inną wartość. Możesz na przykład stworzyć pusty plik bez korzystania z komendy `touch`.
+
+```bash
+echo -n > nazwa-pliku.txt
+```
+
+## Cudzysłowy w Bashu
+
+W tym miejscu mogę zrobić dobry segue do znaków cudzysłowu w Bashu. Przyzwyczajenia z języka JavaScript, mogą wpędzić nas w pułapkę zamiennego używania pojedynczych i podwójnych cudzysłowów. W Bashu, istnieją pomiędzy nimi różnice.
+
+- **Pojedyncze cudzysłowy** (lub silne cudzysłowy) oznaczają, że wszystko wewnątrz powinno być traktowane jak tekst.
+- W **podwójnych cudzysłowach** Bash będzie interpretował rozwijanie, podstawianie, obliczenia, zmienne, itd.
+
+Jednakże, ignorowanie specjalnych znaków wymaga poprzedzenia ich znakiem odwrotnego ukośnika.
+
+## Zmienne w Bashu
+
+Zmienne w Bashu wymagają szerszego omówienia. Nie będzie zaskoczeniem, że zmienne w Bashu pozwalają nam zapisywać i pobierać wartości poprzez nazwy, jak w innych językach programowania. Są one specjalnym przypadkiem podstawiania parametrów.
+
+<Callout variant="warning">
+
+Zmienne w Bashu powinny być zapisane alfanumerycznymi znakami i uwzględniają wielkość liter.
+
+</Callout>
+
+Na naszych systemach istnieją zmienne środowiskowe, takie jak `$PATH`. Nasze zmienne powinniśmy zapisywać z małej litery, żeby je rozróżnić. Jest to dobra praktyka.
+
+Ale jak zadeklarować stałe używając małych liter? Wykorzystując specjalną flagę.
+
+```bash
+declare -r readonlyvariable="sam"
+```
+
+Istnieje wiele flag do odkrycia. Na przykład, możesz zmienić wielkość liter wartości samej zmiennej.
+
+```bash
+declare -l lowerstring="To jest TEKST!" # to jest tekst!
+declare -u upperstring="To jest TEKST!" # TO JEST TEKST!
+```
+
+Żeby sprawdzić wszystkie zmienne w danej sesji, wpisz:
+
+```bash
+declare -p
+```
+
+## Liczby w Bashu
+
+W poprzedniej sekcji, wspomniałem o rozwijaniu arytmetycznym do wykonywania kalkulacji. Dodatkowo mamy arytmetyczną ewaluację do naszej dyspozycji. Różnica pomiędzy nimi leży w nadpisywaniu zmiennych.
+
+- **Rozwijanie arytmetyczne** (ze znakiem dolara) zwraca wynik matematycznych operacji bez zmieniania wartości zmiennej.
+- **Ewaluacja arytmetyczna** (bez znaku dolara) dokonuje kalkulacji i zmienia wartości zmiennych.
+
+```bash
+a=3
+((a++))
+echo $a # 4
+```
+
+Bash wspiera sześć podstawowych matematycznych operacji:
+
+| Operacja    | Operator |
+| ----------- | -------- |
+| Dodawanie   | +        |
+| Odejmowanie | -        |
+| Mnożenie    | \*       |
+| Dzielenie   | /        |
+| Modulo      | %        |
+| Potęgowanie | \*\*     |
+
+Możesz także jasno zadeklarować liczby całkowite, wykorzystując słowo kluczowe `declare` wraz z odpowiednią flagą.
+
+```bash
+declare -i b=3
+```
+
+## Testy w Bashu
+
+**Test** w Bashu to komenda, która ocenia warunek i zwraca **status wyjścia.** Kwadratowe nawiasy owijają warunek. Możesz testować różne rzeczy, jak uprawnienia, łańcuchy znaków, liczby i wiele więcej. Aby przetestować czy istnieje katalog domowy, możemy wpisać:
+
+```bash
+[ -d ~ ]
+```
+
+## Status wyjścia
+
+Powyższy test zwraca status wyjścia `0`, jeżeli katalog istnieje. **Status wyjścia (lub kod wyjścia)** to mała liczba całkowita, zwracana do systemu operacyjnego, kiedy program kończy pracę. W przeciwieństwie do innych języków programowania, Bash traktuje `0` jako sukces. Może on też być traktowany jak wartość logiczna w kodzie warunkowym:
+
+- `0` równa się `true` (tak, żeby wszystkich zdezorientować).
+- `1` lub inna wartość powyżej zera równa się `false`. Różne cyfry często oznaczają przyczyny awarii.
+
+Zmienna `$?` przechowuje status ostatnio uruchamianej komendy.
+
+```bash
+[ "Amelie" = "Bridget" ]; echo $? # 1
+```
+
+W tym przypadku, zwraca `1`, bo łańcuchy znaków nie są równe. Poza łańcuchami, możemy także testować inne rzeczy, jak wspomniałem wcześniej. Najczęstszymi typami testów są:
+
+- Łańcuchy znaków: pusty/niepusty, równość, wyszukiwanie wzorców.
+- Liczby: `-eq`, `-ne`, `-lt,` `-le`, `-gt`, `-ge` (równa, nierówna, mniejsza niż, itd.)
+- Pliki: istnienie/typ/uprawnienia (`-e`, `-f`, `-d`, `-r`, `-w`, `-x`, `-s`).
+- Logika: AND/OR/NOT (`-a`, `-o`, `!`, `&&`, `||`).
+
+<Callout variant="info">
+
+Składnia testów jest szeroko kompatybilna z różnymi powłokami. Jednakże, mogą istnieć różnice. `test` jest synonimem kwadratowych nawiasów. Podwójne kwadratowe nawiasy są bezpieczniejszym ekwiwalentem dostępnym w powłokach Bash/Ksh.
+
+</Callout>
+
+## Tablice w Bashu
+
+Masz już dość nawiasów? Bo nauczymy się kolejnego konceptu, który je wykorzystuje. **Tablica** w Bashu przechowuje wiele wartości. Nowsze wersje Basha wspierają dwa typy tablic:
+
+- **Tablicę indeksowaną**
+- **Tablicę asocjacyjną**
+
+W indeksowanej tablicy ustawiamy i odczytujemy informacje za pomocą pozycji w liście, czyli indeksu. Aby zadeklarować taką tablicę, użyj okrągłych nawiasów:
+
+```bash
+beach=("Sam","Bridget")
+declare -a beach=("Sam","Bridget") # Wyraźna składnia
+echo ${beach[0]} # Sam
+beach+=("Amelie") # Dodaj wartość
+echo ${beach[@]} # Wyświetl wszystkie wartości
+```
+
+Jeżeli używasz Basha w wersji 4 lub wyższej, możesz także deklarować tablice asocjacyjne. Wykorzystują one pary klucz/wartość podobne do obiektów JavaScript lub słowników w języku Python.
+
+```bash
+declare -A beach
+beach[name]="Sam"
+```
+
+Jednakże, oba typy są ograniczone do jednego poziomu. **Nie możesz tworzyć zagnieżdżonych tablic.**
+
+## Struktury kontrolne w Bashu
+
+W Bashu, możesz kontrolować wykonywanie programy wykorzystując struktury kontrolne, takie jak rozgałęzienia, pętle, wybór przypadków i kontrolowanie grup komend.
+
+### Instrukcje warunkowe w Bashu
+
+Bash wybiera, które komendy uruchomić bazując na statusach wyjścia. Pozwala to kontrolować przebieg wykonywania skryptu. Możemy uruchamiać komendy bazując na konkretnych warunkach. Istnieje wiele różnych składni instrukcji warunkowych `if`:
+
+```bash
+#1
+if # warunek
+then
+	# skrypt
+fi
+
+#2
+if # warunek
+then
+	# skrypt
+else
+	# skrypt
+fi
+
+#3
+if [[...]]
+then
+	# skrypt
+else
+	# skrypt
+fi
+
+#4
+if ((...))
+then
+	# skrypt
+elif ((...))
+then
+	# skrypt
+else
+	# skrypt
+fi
+
+#5
+if # warunek; then
+	# skrypt
+fi
+
+#6
+if # warunek; then # skrypt; fi
+```
+
+### Pętle w Bashu
+
+Bash oferuje dobrze znane typy pętli: `while`, `until` i `for`.
+
+Pętla `while` działa dopóki warunek jest `true`.
+
+```bash
+while # ...
+do
+	# ...
+done
+```
+
+Pętla `until` działa dopóki warunek jest `false`.
+
+```bash
+until # ...
+do
+	# ...
+done
+```
+
+Pętla `for` iteruje po liście elementów, uruchamiając kod dla każdego z nich. Tu także istnieją alternatywne składnie.
+
+```bash
+#1
+for i in # ...
+do
+	# ...
+done
+
+#2
+for (( i=1; i<=10; i++ ))
+do
+	echo $i
+done
+
+#3
+for i in * # Lista plików w bieżącym katalogu
+do
+	echo "Found a file: $i"
+done
+```
+
+### Wyrażenie "case"
+
+Składnia `case` jest rozgałęziającą się strukturą kontrolną, która dopasowuje wartość do wzorca, a następnie uruchamia pierwszą pasującą opcję. Sprawdza zgodność danych wejściowych ze zbiorem zdefiniowanych wcześniej wartości. Jest zwykle bardziej przejrzysta i bezpieczniejsza niż długi ciąg wyrażeń `if`/`elif` dla argumentów CLI.
+
+```bash
+person="sam"
+
+case $person in
+	sam) echo "Son";; # Konkretny przypadek
+	amelie|bridget) echo "Mother";; # Możesz używać OR we wzorcach
+	*) echo "Human";; # Dowolny przypadek
+esac
+```
+
+## Funkcje w Bashu
+
+Poza strukturami kontrolnymi, możesz także używać funkcji do organizowania swoich skryptów Basha. Pozwalają one grupować bloki kodu, a następnie wywoływać je jak komendy.
+
+```bash
+greet() {
+	echo "Hi there, $1!"
+}
+
+greet "Snake" # Hi there, Snake!
+```
+
+<Callout variant="info">
+
+Istnieje także alternatywna składnia do definiowania funkcji: `function fname {...}`.
+
+</Callout>
+
+Funkcja dostarcza argumenty dostępne w jej wnętrzu:
+
+- `$1`, `$2` - konkretne argumenty funkcji.
+- `$@` - lista wszystkich argumentów.
+- `$#` - liczba argumentów.
+- `$FUNCNAME` - nazwa funkcji.
+
+Możesz także deklarować własne zmienne wewnątrz funkcji.
+
+```bash
+x="global"
+
+f() {
+	echo "$x"        # Funkcja odczytuje zmienne globalne
+	x="changed"      # Modyfikuje zmienną globalną
+	local y="temp"   # y istnieje tylko podczas f
+}
+```
+
+Funkcja w Bashu może odczytywać zmienne globalne ze środowiska skryptu. Dodatkowo, zmienne zadeklarowane wewnątrz funkcji są **w domyśle globalne.** Aby wyróżnić zmienne lokalne, musisz deklarować je wykorzystując słowo kluczowe `local`.
+
+## Praca z argumentami Basha
+
+Podobnie jak w funkcjach, możemy dostarczać argumenty do całych skryptów Basha. **Argumenty** są specjalnym typem zmiennej ustawianej przez użytkownika, kiedy Bash wykonuje skrypt. Argumenty zwykle zawierają wartości na których operuje skrypt. Argumenty skryptów pokrywają się z tymi od funkcji:
+
+- `$1`, `$2` to pozycyjne argumenty.
+- `$0` zawiera nazwę skryptu.
+- `$@` zwraca listę wszystkich argumentów.
+- `$#` zwraca liczbę argumentów.
+
+<Callout variant="info">
+
+Aby poznać podstawy argumentów i opcji, sprawdź mój [poprzedni wpis](/pl/blog/jesus-christ-thats-bourne-again-shell/).
+
+</Callout>
+
+## Praca z opcjami Basha
+
+**Opcje** także pozwalają nam przekazać informacje do skryptu przez CLI. Najczęściej wykorzystujesz zarówno opcje jak i argumenty podczas programowania. Prosta komenda Git'a zawiera oba typy:
+
+```bash
+git commit -m "fix: Hyper-important bug"
+# Opcja: -m
+# Argument: "fix: Hyper-important bug"
+```
+
+Pod spodem, opcje są dostępne z wykorzystaniem słowa kluczowego `getopts`. Jest ono wbudowane w Basha i przetwarza krótkie opcje (jak `-a`, `-v`, `-p`) z parametrów pozycyjnych skryptu.
+
+```bash
+while getopts :u:p:a option; do
+	case $option in
+		u) user=$OPTARG;;
+		p) pass=$OPTARG;;
+		# a jest bez argumentów, więc możesz sprawdzić tylko obecność
+		a) echo "got the 'a' flag";;
+		?) echo "Unknown option" # Pierwszy dwukropek łapie to
+	esac
+done
+
+echo "user: $user / pass: $pass"
+```
+
+Opcje mogą być określone i użyte w dowolnej kolejności. Mogą nawet same przyjmować argumenty.
+
+## Uzyskiwanie danych wejściowych w skryptach Basha
+
+Podsyłanie argumentów do skryptów w momencie ich wywoływania jest przydatne, ale czasami potrzebujemy takich danych, gdy skrypt jest uruchomiony. Na przykład, w momencie, gdy potrzebujesz wielokrotnie następujących po sobie odpowiedzi od użytkownika. W Bashu, istnieją zarezerwowane słowa kluczowe do zbierania danych wejściowych.
+
+Słowo kluczowe `read` zatrzymuje działanie skryptu do momentu podania danych.
+
+```bash
+echo "Jak masz na imię?"
+read name
+
+echo "Jakie jest twoje hasło?"
+read -s pass
+```
+
+Flaga `-s` oznacza "silent" - Bash nie wyświetli wpisywanych znaków. Inne popularne opcje to:
+
+- `-r` - nie używaj ukośników jako znaków ucieczki (polecana do surowych danych wejściowych).
+- `-p` - pokaż prompt przed odczytaniem.
+- `-e` - użyj edycji linii (interaktywne).
+- `-n` - odczytaj co najwyżej N znaków.
+
+Aby zawęzić dane wejściowe do kilku opcji, możesz skorzystać ze słowa kluczowego `select`. Możesz połączyć je ze składnią "case", aby pozwolić użytkownikowi wybierać z wcześniej zdefiniowanej listy opcji.
+
+```bash
+select actor in "sam" "clifford" "fragile"
+do
+	case $actor in
+		sam) echo "Norman Reedus";;
+		clifford) echo "Mads Mikkelsen";;
+		fragile) echo "Léa Seydoux";;
+		quit) break;;
+		*) echo "Prawdopodobnie nie ma w obsadzie."
+	esac
+done
+```
+
+W naszym prostym przykładzie, opcje oddzielone są średnikami. Każda z nich wyświetla prosty łańcuch znaków. Jest to czytelne, ale jeżeli masz wiele komend do uruchomienia, lepszym wyborem będą funkcje.
+
+### Zagwarantowanie odpowiedzi
+
+Nasz skrypt działa, ale naciśnięcie <Kbd>Enter</Kbd> pomija odpowiedź i posyła puste pole. Czasami nie jest to pożądane zachowanie. Istnieje wiele sposobów na zagwarantowanie odpowiedzi w Bashu.
+
+Na przykład, możesz zasugerować opcję, wykorzystując flagę `-i`.
+
+```bash
+read -ep "Ulubiona gra? " -i "MGS 3" favgame
+echo "$favgame"
+```
+
+Lub sprawdzić liczbę argumentów.
+
+```bash
+if (($#<3)); then
+	echo "Ta komenda wymaga trzech argumentów"
+	echo "użytkownik, id i ulubiony numer"
+else
+	echo "użytkownik: $1"
+	echo "id: $2"
+	echo "ulubiony number: $3"
+fi
+```
+
+---
+
+Nie mogę zagwarantować odpowiedzi od ciebie, ale możesz dać mi znać czy spodobał ci się ten post. Powinieneś teraz być w stanie odczytywać i pisać proste skrypty w Bashu. Być może napiszemy jakiś prosty skrypt w przyszłych postach. Skrypty Basha w sieci nie powinny być już takie straszne. No i najważniejsze - powinieneś być w stanie rozpoznać, gdy agent Cursora postanowi halucynować jakąś dziwną składnię Basha.
