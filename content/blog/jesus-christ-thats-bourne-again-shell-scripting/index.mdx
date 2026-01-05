@@ -289,7 +289,7 @@ A **test** in Bash is a command that evaluates a condition and returns a **exit 
 
 ## Exit status
 
-The above test returns a exit code `0` if the directory exists. A **exit code (or exit status)** is a small integer that a program returns to the os when it finishes. Unlike other programming languages, Bash treats `0` as a success. It can also be treated as a boolean in conditionals:
+The above test returns an exit code `0` if the directory exists. A **exit code (or exit status)** is a small integer that a program returns to the OS when it finishes. Unlike other programming languages, Bash treats `0` as a success. It can also be treated as a boolean in conditionals:
 
 - `0` equals to `true` (yup, to confuse everyone).
 - `1` or non-zero value equals to false. Different numbers often mean different failure reasons.
@@ -430,7 +430,7 @@ done
 #3
 for i in * # List of files in the current directory
 do
-	echo "Found a file: $1"
+	echo "Found a file: $i"
 done
 ```
 
