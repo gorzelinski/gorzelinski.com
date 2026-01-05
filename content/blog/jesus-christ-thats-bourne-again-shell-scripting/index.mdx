@@ -523,7 +523,7 @@ git commit -m "fix: Hyper-important bug"
 # Argument: "fix: Hyper-important bug"
 ```
 
-Under the hood, they are accessed using the `getopts` keyword. It is a Bash built-in that parses short options (such as `-a`, `-v`, `-p`) from a script's positional parameters.
+Under the hood, options are accessed using the `getopts` keyword. It is a Bash built-in that parses short options (such as `-a`, `-v`, `-p`) from a script's positional parameters.
 
 ```bash
 while getopts :u:p:a option; do
@@ -539,7 +539,7 @@ done
 echo "user: $user / pass: $pass"
 ```
 
-Those options can be specified and used in any order. They can even accept arguments of their own.
+Options can be specified and used in any order. They can even accept arguments of their own.
 
 ## Getting input in Bash scripts
 
