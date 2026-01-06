@@ -1,7 +1,9 @@
 import { styled } from '@/styled-system/jsx'
-import { Small } from '../../elements'
+import { small } from '../../elements'
 
-export const CalloutTitle = styled(Small, {
+const Strong = styled('strong', small)
+
+export const CalloutTitle = styled(Strong, {
   base: {
     width: '100%',
     color: 'gray.25',
