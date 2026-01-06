@@ -7,22 +7,41 @@ export const small = cva({
     color: 'gray.400',
     fontFamily: 'heading',
     fontWeight: 'medium',
-    fontSize: {
-      base: '4xs',
-      md: '3xs',
-      lg: '2xs',
-      '2xl': 'xs'
-    },
-    lineHeight: {
-      base: '4xs',
-      md: '3xs',
-      lg: '2xs',
-      '2xl': 'xs'
-    },
+
     transitionProperty: 'color',
     ...sharedTransitionProperties
   },
   variants: {
+    size: {
+      s: {
+        fontSize: {
+          base: '4xs',
+          md: '3xs',
+          lg: '2xs',
+          '2xl': 'xs'
+        },
+        lineHeight: {
+          base: '4xs',
+          md: '3xs',
+          lg: '2xs',
+          '2xl': 'xs'
+        }
+      },
+      m: {
+        fontSize: {
+          base: '3xs',
+          md: '2xs',
+          lg: 'xs',
+          '2xl': 's'
+        },
+        lineHeight: {
+          base: '3xs',
+          md: '2xs',
+          lg: 'xs',
+          '2xl': 's'
+        }
+      }
+    },
     spacing: {
       normal: {
         letterSpacing: 'normal'
@@ -57,6 +76,7 @@ export const small = cva({
     }
   },
   defaultVariants: {
+    size: 's',
     spacing: 'normal',
     style: 'normal',
     marginTop: 'none'
