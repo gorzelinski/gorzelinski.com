@@ -18,9 +18,8 @@ That's one of the introductory sentences in John Ousterhout's book "A Philosophy
 
 ## Defining complexity
 
-<Callout variant="info">
+<Callout variant="info" title="Complexity">
 
-**Complexity**  
 Complexity is anything related to the structure of a software system that makes it hard to understand and modify the system.
 
 </Callout>
@@ -175,9 +174,8 @@ How does the anatomy of a module look? A module consists of two parts: interface
 
 The interface describes _what_ the modules do but _not how_ to do it. Implementation answers the second question.
 
-<Callout variant="info">
+<Callout variant="info" title="Abstraction">
 
-**Abstraction**  
 An abstraction is a simplified view of an entity that omits unimportant details. Abstractions are useful because they simplify our thinking and manipulation of complex things.
 
 </Callout>
@@ -192,9 +190,8 @@ Now, we're getting into interesting stuff. I hope the previous sections were als
 
 I like this simple graphical interpretation that I redrew from the book. The oblong rectangle represents deep modules - the interface is narrow, but covers a lot of functionality underneath. On the other hand, we have shallow modules. Their interface is wide without much functionality. Shallow modules are our first red flag.
 
-<Callout variant="danger">
+<Callout variant="danger" title="Shallow modules 🚩">
 
-**Shallow modules** 🚩  
 A shallow module is one whose interface is complicated relative to the functionality it provides. Shallow modules don't help much in the battle against complexity because the provided benefit is negated by the cost of learning and using their interfaces.
 
 </Callout>
@@ -247,9 +244,8 @@ Author mentions information hiding as one of the most important techniques for a
 
 Poorly designed and non-modular components often require random or extra information exposing the inner workings. This additional information is a form of information leakage. You leak the implementation details to the module's user.
 
-<Callout variant="danger">
+<Callout variant="danger" title="Information leakage 🚩">
 
-**Information leakage** 🚩  
 Information leakage occurs when the same knowledge is used in multiple places, such as two different classes that both understand the format of a particular type of file.
 
 </Callout>
@@ -260,9 +256,8 @@ Information leakage is a crucial red flag in software design. Developing a high 
 
 Defaults illustrate the principle that interfaces should be designed to make the common case as simple as possible.
 
-<Callout variant="danger">
+<Callout variant="danger" title="Unreasonable defaults 🚩">
 
-**Unreasonable defaults** 🚩  
 If the API for a commonly used feature forces users to learn about other rarely used features, it increases the cognitive load on users who don't need those features.
 
 </Callout>
@@ -298,18 +293,16 @@ Edge cases can hide in methods' bodies, increasing code specialization. If state
 - **Bring together if it will simplify the interface.** When classes or methods share information, ring them together to improve readability. The code may get simpler and shorter.
 - **Bring together to eliminate duplication.** When two or more modules are combined into a singlu module, it may be possible to define an interface for the new module that is simpler or easier to use than the original one.
 
-<Callout variant="danger">
+<Callout variant="danger" title="Code duplication 🚩">
 
-**Code duplication** 🚩  
 If the same piece of code (or code that is almost the same) appears over and over again, that's a red flag that you haven't found the right abstractions.
 
 </Callout>
 
 - **Separate general-purpose and special-purpose code.** If you find the same pattern of code repeated over and over, see if you can recognize the code to eliminate the repetition.
 
-<Callout variant="danger">
+<Callout variant="danger" title="Mixing general-purpose and special-purpose code 🚩">
 
-**Mixing general-purpose and special-purpose code** 🚩  
 This red flag occurs when a general-purpose mechanism also contains code specialized for a particular use of that mechanism. This makes the mechanism more complicated and creates information leakage between the mechanism and the particular case: future modifications to the use case are likely to require changes to the underlying mechanism as well.
 
 </Callout>
@@ -322,9 +315,8 @@ This red flag occurs when a general-purpose mechanism also contains code special
 
 You probably know "Uncle Bob" and his thoughts on functions from the "Clean Code." Classic. And… I'm gonna argue with that. John Ousterhou is arguing with that, actually. He thinks length is rarely a good reason for splitting up a method. Splitting up a method introduces additional interfaces, which adds to complexity. For me, it makes sense. It's an opposite interesting point to Uncle's perspective. Shorter functions are generally easier to understand, that's true. However, our goal should be to reduce the overall system complexity. If functions are made too small, they lose their independence, resulting in conjoined methods you must read and understand together.
 
-<Callout variant="danger">
+<Callout variant="danger" title="Dependent methods 🚩">
 
-**Dependent methods** 🚩  
 It should be possible to understand each method independently. If you can't understand the implementation of one method without also understanding the implementation of another, that's a red flag.
 
 </Callout>
@@ -384,16 +376,14 @@ We're getting to another big problem in software engineering - naming things. Se
 
 A good name has two properties: consistency and precision. And with those two properties are associated two red flags.
 
-<Callout variant="danger">
+<Callout variant="danger" title="Vague name 🚩">
 
-**Vague name** 🚩  
 If a variable or method name is broad enough to refer to many different things, then it doesn't convey much information to the developer and the underlying entity is more likely to be misused.
 
 </Callout>
 
-<Callout variant="danger">
+<Callout variant="danger" title="Hard to pick name 🚩">
 
-**Hard to pick name** 🚩  
 If it's hard to find a simple name for a variable or method that creates a clear image of the underlying object, that's a hint that the underlying object may not have a clean design.
 
 </Callout>
