@@ -1,7 +1,9 @@
 import { styled } from '@/styled-system/jsx'
-import { Small } from '../../elements'
+import { small } from '../../elements'
 
-export const BlockCodeLanguage = styled(Small, {
+const Span = styled('span', small)
+
+export const BlockCodeLanguage = styled(Span, {
   base: {
     color: 'gray.25'
   }

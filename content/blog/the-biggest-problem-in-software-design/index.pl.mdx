@@ -18,9 +18,8 @@ Jest to jedno z wprowadzających zdań w książce John'a Ousterhoust'a, "A Phil
 
 ## Definicja złożoności
 
-<Callout variant="info">
+<Callout variant="info" title="Złożoność">
 
-**Złożoność**  
 Złożoność to wszystko co wiąże się ze strukturą oprogramowania, utrudniające zrozumienie i modyfikacje systemu.
 
 </Callout>
@@ -175,9 +174,8 @@ Jak wygląda anatomia modułu? Moduł składa się z dwóch części: interfejsu
 
 Interfejs opisuje _co_ moduł robi, ale _nie jak_ to zrobić. Implementacja odpowiada na drugie pytanie.
 
-<Callout variant="info">
+<Callout variant="info" title="Abstrakcja">
 
-**Abstrakcja**  
 Abstrakcja to uproszczony obraz jednostki, opuszczająca nieistotne detale. Abstrakcje są przydatne, ponieważ upraszczają nasze myślenie i manipulacje złożonymi rzeczami.
 
 </Callout>
@@ -192,9 +190,8 @@ Teraz przechodzimy do ciekawych rzeczy. Mam nadzieję, że poprzednie sekcje by�
 
 Podoba mi się ta prosta, graficzna interpretacja, którą przerysowałem z książki. Podłużny prostokąt reprezentuje głębokie moduły - interfejs jest wąski, ale przykrywa wiele funkcjonalności pod spodem. Z drugiej strony, mamy płytkie moduły. Ich interfejs jest szeroki z niewielką funkcjonalnością. Płytkie moduły to nasza pierwsza czerwona flaga.
 
-<Callout variant="danger">
+<Callout variant="danger" title="Płytkie moduły 🚩">
 
-**Płytkie moduły** 🚩  
 Płytki moduł to taki, którego interfejs jest skomplikowany relatywnie do funkcjonalności, którą dostarcza. Płytkie moduły nie pomagają za bardzo w walce przeciwko złożoności, ponieważ ich korzyści są negowane przez koszt nauki i używania ich interfejsów.
 
 </Callout>
@@ -247,9 +244,8 @@ Autor wspomina ukrywanie informacji jako jedną z najważniejszych technik osią
 
 Słabo zaprojektowane, niemodułowe komponenty często wymagają przypadkowych, dodatkowych informacji, ujawniając wewnętrzne działanie. Te dodatkowe informacje to forma wycieku. Wyjawiasz detale implementacyjne do użytkownika modułu.
 
-<Callout variant="danger">
+<Callout variant="danger" title="Wyciek informacji 🚩">
 
-**Wyciek informacji** 🚩  
 Wyciek informacji pojawia się, gdy ta sama wiedza jest użyta w wielu miejscach, jak w dwóch różnych klasach, które rozumieją format konkretnego typu pliku.
 
 </Callout>
@@ -260,9 +256,8 @@ Wyciek informacji to krytyczna czerwona flaga w projektowaniu oprogramowania. Ro
 
 Wartości domyślne ilustrują zasadę, że interfejsy powinny być zaprojektowany w sposób, aby najczęstszy przypadek był tak prosty jak to możliwe.
 
-<Callout variant="danger">
+<Callout variant="danger" title="Nierozsądne wartości domyślne 🚩">
 
-**Nierozsądne wartości domyślne** 🚩  
 Jeżeli API dla najczęstszego przypadku zmusza użytkowników, aby uczyli się o rzadkich funkcjonalnościach, zwiększa to obciążenie poznawcze użytkowników, którzy nie potrzebują tych funkcjonalności.
 
 </Callout>
@@ -298,18 +293,16 @@ Przypadki brzegowe mogą się ukrywać w ciałach funkcji, zwiększając specjal
 - **Połącz razem jeżeli upraszcza to interfejs.** Kiedy klasy lub metody dzielą informacje, zbliż je do siebie, aby poprawić czytelność. Kod stanie się prostszy i krótszy.
 - **Połącz razem, aby wyeliminować duplikację.** Kiedy dwa lub więcej modułów zostaje połączonych w jeden, jest możliwe, aby zdefiniować interfejs dla nowego modułu, który jest prostszy lub łatwiejszy w użyciu niż ten oryginalny.
 
-<Callout variant="danger">
+<Callout variant="danger" title="Duplikacja kodu 🚩">
 
-**Duplikacja kodu** 🚩  
 Jeżeli ten sam fragment kodu (albo prawie ten sam) pojawia się raz za razem, jest to czerwona flaga, oznaczająca, że brakuje odpowiednich abstrakcji.
 
 </Callout>
 
 - **Rozdziel kod ogólnego i specjalnego przeznaczenia.** Jeżeli zauważysz jakiś wzorzec w kodzie powtórzony wielokrotnie, sprawdź czy jesteś w stanie wyeliminować powtórzenie.
 
-<Callout variant="danger">
+<Callout variant="danger" title="Mieszanie kodu ogólnego i specjalnego przeznaczenia 🚩">
 
-**Mieszanie kodu ogólnego i specjalnego przeznaczenia** 🚩  
 Ta czerwona flaga pojawia się, gdy mechanizm ogólnego przeznaczenia zawiera także wyspecjalizowany kod dla konkretnego przypadku tego mechanizmu. Komplikuje to ten mechanizm i tworzy wyciek informacji pomiędzy mechanizmem, a konkretnym przypadkiem - przyszłe modyfikacje tego przypadku będą najprawdopodobniej wymagały zmian w podstawowym mechanizmie.
 
 </Callout>
@@ -322,9 +315,8 @@ Ta czerwona flaga pojawia się, gdy mechanizm ogólnego przeznaczenia zawiera ta
 
 Prawdopodobnie znasz "wujka Boba" i jego przemyślenia dotyczące funkcji z "Czystego kodu". Klasyka. No i... zamierzam z nią polemizować. W zasadzie, John Ousterhou polemizuje z nią. Myśli on, że długość sama w sobie jest rzadko dobrym powodem, aby podzielić metodę. Podział metody wprowadza dodatkowe interfejsy, które zwiększają złożoność. Dla mnie ma to sens. Jest to ciekawa alternatywa dla perspektywy "wujka". Krótkie funkcje są ogólnie łatwiejsze do zrozumienia - wiadomo. Jednakże naszym celem powinno być redukowanie ogólnej złożoności systemu. Jeżeli funkcje są zbyt małe, tracą niezależność, są połączone i muszą być czytane i rozumiane razem.
 
-<Callout variant="danger">
+<Callout variant="danger" title="Zależne metody 🚩">
 
-**Zależne metody** 🚩  
 Powinno dać się zrozumieć każdą z metod niezależnie. Jeżeli nie możesz zrozumieć implementacji jednej metody bez zrozumienia implementacji innej, jest to czerwona flaga.
 
 </Callout>
@@ -384,16 +376,14 @@ Docieramy do innego wielkiego problemu w inżynierii oprogramowania - nazywania 
 
 Dobra nazwa ma dwie cechy: spójność i precyzję. I z tymi dwoma cechami wiążą się dwie czerwone flagi.
 
-<Callout variant="danger">
+<Callout variant="danger" title="Mglista nazwa 🚩">
 
-**Mglista nazwa** 🚩  
 Jeżeli nazwa zmiennej czy metody jest wystarczająco szeroka, aby odnosić się do wielu różnych rzeczy, wówczas nie przekazuje programiście zbyt wielu informacji o jednostce do której się odnosi i może zostać błędnie użyta.
 
 </Callout>
 
-<Callout variant="danger">
+<Callout variant="danger" title="Trudna do wybrania nazwa 🚩">
 
-**Trudna do wybrania nazwa** 🚩  
 Jeżeli trudno jest wybrać prostą nazwę dla zmiennej czy metody, która tworzyłaby jasny obraz obiektu leżącego pod spodem, jest to wskazówka, że ten obiekt może nie mieć czystego projektu.
 
 </Callout>

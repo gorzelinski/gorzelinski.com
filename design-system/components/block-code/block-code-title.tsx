@@ -1,7 +1,9 @@
 import { styled } from '@/styled-system/jsx'
-import { Small } from '../../elements'
+import { small } from '../../elements'
 
-export const BlockCodeTitle = styled(Small, {
+const Strong = styled('strong', small)
+
+export const BlockCodeTitle = styled(Strong, {
   base: {
     flex: '1',
     color: 'gray.25'
