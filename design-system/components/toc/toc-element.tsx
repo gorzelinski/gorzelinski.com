@@ -8,16 +8,14 @@ export const TocElement = ({
   children
 }: TocElementProps) => {
   return (
-    <li>
+    <li className={tocElement()}>
       <ButtonAnchor
         variant="nav"
         display="inlineBlock"
         size="s"
         padding="0"
         href={`#${heading.id}`}
-        className={`${tocElement()} ${
-          activeID === heading.id ? ' active-subtle' : ''
-        }`}
+        className={activeID === heading.id ? ' active-subtle' : ''}
       >
         {heading.textContent}
       </ButtonAnchor>

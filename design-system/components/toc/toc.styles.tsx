@@ -5,6 +5,10 @@ export const toc = cva({
   base: {
     display: 'none',
     marginLeft: '2xs',
+    maxWidth: {
+      xl: 'calc(token(sizes.m) - token(spacing.l))',
+      '2xl': 'l'
+    },
     transitionProperty: 'opacity',
     ...sharedTransitionProperties,
     xl: {
