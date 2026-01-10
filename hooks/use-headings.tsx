@@ -1,13 +1,59 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+
+export type TocHeadingNode = {
+  heading: Element
+  children: TocHeadingNode[]
+}
+
+const getHeadingLevel = (heading: Element) => {
+  const tagName = heading.tagName.toLowerCase()
+
+  if (tagName === 'h2') return 2
+  if (tagName === 'h3') return 3
+  if (tagName === 'h4') return 4
+
+  return null
+}
+
+const buildTocTree = (headings: Element[]): TocHeadingNode[] => {
+  const roots: TocHeadingNode[] = []
+  const stack: { level: number; node: TocHeadingNode }[] = []
+
+  headings.forEach((heading) => {
+    const level = getHeadingLevel(heading)
+    if (level === null) return
+
+    const node: TocHeadingNode = { heading, children: [] }
+
+    while (stack.length > 0 && stack[stack.length - 1].level >= level) {
+      stack.pop()
+    }
+
+    const parent = stack.at(-1)?.node
+
+    if (parent) {
+      parent.children.push(node)
+    } else {
+      roots.push(node)
+    }
+
+    stack.push({ level, node })
+  })
+
+  return roots
+}
 
 export function useHeadings() {
   const [headings, setHeadings] = useState<Element[]>([])
   const [activeID, setActiveID] = useState<string | null>(null)
+  const tocTree = useMemo(() => buildTocTree(headings), [headings])
   const scrollRef = useRef(0)
 
   useEffect(() => {
     const headings = Array.from(
-      document.querySelectorAll('article h2[id], h3[id], h4[id]')
+      document.querySelectorAll(
+        'article h2[id], article h3[id], article h4[id]'
+      )
     )
 
     if (headings.length > 0) {
@@ -63,5 +109,5 @@ export function useHeadings() {
     }
   }, [])
 
-  return { headings, activeID }
+  return { tocTree, activeID }
 }

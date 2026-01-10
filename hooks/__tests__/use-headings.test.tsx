@@ -42,12 +42,12 @@ describe('useHeadings', () => {
   })
 
   describe('detection', () => {
-    it('returns empty headings and null activeID when no headings exist', () => {
+    it('returns empty tocTree and null activeID when no headings exist', () => {
       createTestSetup()
 
       const { result } = renderHook(() => useHeadings())
 
-      expect(result.current.headings).toEqual([])
+      expect(result.current.tocTree).toEqual([])
       expect(result.current.activeID).toBeNull()
     })
 
@@ -62,9 +62,10 @@ describe('useHeadings', () => {
 
       const { result } = renderHook(() => useHeadings())
 
-      expect(result.current.headings.length).toBe(2)
-      expect(result.current.headings[0].id).toBe('foo')
-      expect(result.current.headings[1].id).toBe('bar')
+      expect(result.current.tocTree.length).toBe(1)
+      expect(result.current.tocTree[0].heading.id).toBe('foo')
+      expect(result.current.tocTree[0].children.length).toBe(1)
+      expect(result.current.tocTree[0].children[0].heading.id).toBe('bar')
       expect(result.current.activeID).toBe('foo')
     })
 
@@ -81,10 +82,16 @@ describe('useHeadings', () => {
 
       const { result } = renderHook(() => useHeadings())
 
-      expect(result.current.headings.length).toBe(3)
-      expect(result.current.headings[0].id).toBe('h2-heading')
-      expect(result.current.headings[1].id).toBe('h3-heading')
-      expect(result.current.headings[2].id).toBe('h4-heading')
+      expect(result.current.tocTree.length).toBe(1)
+      expect(result.current.tocTree[0].heading.id).toBe('h2-heading')
+      expect(result.current.tocTree[0].children.length).toBe(1)
+      expect(result.current.tocTree[0].children[0].heading.id).toBe(
+        'h3-heading'
+      )
+      expect(result.current.tocTree[0].children[0].children.length).toBe(1)
+      expect(result.current.tocTree[0].children[0].children[0].heading.id).toBe(
+        'h4-heading'
+      )
       expect(result.current.activeID).toBe('h2-heading')
     })
 
@@ -99,8 +106,8 @@ describe('useHeadings', () => {
 
       const { result } = renderHook(() => useHeadings())
 
-      expect(result.current.headings.length).toBe(1)
-      expect(result.current.headings[0].id).toBe('inside')
+      expect(result.current.tocTree.length).toBe(1)
+      expect(result.current.tocTree[0].heading.id).toBe('inside')
       expect(result.current.activeID).toBe('inside')
     })
 
@@ -114,8 +121,8 @@ describe('useHeadings', () => {
 
       const { result } = renderHook(() => useHeadings())
 
-      expect(result.current.headings.length).toBe(1)
-      expect(result.current.headings[0].id).toBe('foo')
+      expect(result.current.tocTree.length).toBe(1)
+      expect(result.current.tocTree[0].heading.id).toBe('foo')
       expect(result.current.activeID).toBe('foo')
     })
   })
