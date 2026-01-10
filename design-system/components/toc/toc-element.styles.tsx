@@ -3,13 +3,10 @@ import { cva } from '@/styled-system/css'
 export const tocElement = cva({
   base: {
     maxWidth: {
-      xl: 's',
-      '2xl': 'm'
+      xl: 'calc(token(sizes.m) - token(spacing.m))',
+      '2xl': 'l'
     },
-    marginRight: 'xs',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden'
+    marginRight: 'xs'
   },
   variants: {
     nest: {
