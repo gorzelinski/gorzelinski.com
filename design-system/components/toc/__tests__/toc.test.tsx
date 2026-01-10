@@ -10,6 +10,9 @@ const headings = [
   createHeading('h2', 'heading-1', 'Heading 1'),
   createHeading('h3', 'heading-2', 'Heading 2')
 ]
+const tocTree = [
+  { heading: headings[0], children: [{ heading: headings[1], children: [] }] }
+]
 
 vi.mock('@/hooks', () => ({
   useHeadings: vi.fn(),
@@ -28,7 +31,10 @@ describe('Toc', () => {
   })
 
   it("doesn't render without headings", () => {
-    useHeadingsMock.mockReturnValue({ headings: [], activeID: 'heading-1' })
+    useHeadingsMock.mockReturnValue({
+      tocTree: [],
+      activeID: 'heading-1'
+    })
     useScrollProgressMock.mockReturnValue(50)
     useScrollToHeadingMock.mockReturnValue({ current: null })
 
@@ -40,7 +46,10 @@ describe('Toc', () => {
   })
 
   it('renders correctly', async () => {
-    useHeadingsMock.mockReturnValue({ headings, activeID: 'heading-1' })
+    useHeadingsMock.mockReturnValue({
+      tocTree,
+      activeID: 'heading-1'
+    })
     useScrollProgressMock.mockReturnValue(50)
     useScrollToHeadingMock.mockReturnValue({ current: null })
 
@@ -57,10 +66,19 @@ describe('Toc', () => {
     expect(h2).toHaveAttribute('href', '#heading-1')
     expect(h3).toBeInTheDocument()
     expect(h3).toHaveAttribute('href', '#heading-2')
+
+    const h2Li = h2.closest('li')
+    const nestedList = h2Li?.querySelector('ol')
+
+    expect(nestedList).not.toBeNull()
+    expect(nestedList?.querySelector('a[href="#heading-2"]')).not.toBeNull()
   })
 
   it('hides the toc when progress is less than 5', async () => {
-    useHeadingsMock.mockReturnValue({ headings, activeID: 'heading-1' })
+    useHeadingsMock.mockReturnValue({
+      tocTree,
+      activeID: 'heading-1'
+    })
     useScrollProgressMock.mockReturnValue(4)
     useScrollToHeadingMock.mockReturnValue({ current: null })
 
@@ -72,7 +90,10 @@ describe('Toc', () => {
   })
 
   it('calls useScrollToHeading with activeID', () => {
-    useHeadingsMock.mockReturnValue({ headings, activeID: 'heading-1' })
+    useHeadingsMock.mockReturnValue({
+      tocTree,
+      activeID: 'heading-1'
+    })
     useScrollProgressMock.mockReturnValue(50)
     useScrollToHeadingMock.mockReturnValue({ current: null })
 

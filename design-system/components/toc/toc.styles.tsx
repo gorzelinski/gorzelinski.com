@@ -4,6 +4,7 @@ import { sharedTransitionProperties } from '../../utils'
 export const toc = cva({
   base: {
     display: 'none',
+    marginLeft: '2xs',
     transitionProperty: 'opacity',
     ...sharedTransitionProperties,
     xl: {
