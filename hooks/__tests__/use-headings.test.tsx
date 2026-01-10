@@ -38,6 +38,7 @@ describe('useHeadings', () => {
   afterEach(() => {
     document.body.innerHTML = ''
     vi.unstubAllGlobals()
+    vi.restoreAllMocks()
     vi.clearAllMocks()
   })
 
@@ -124,6 +125,47 @@ describe('useHeadings', () => {
       expect(result.current.tocTree.length).toBe(1)
       expect(result.current.tocTree[0].heading.id).toBe('foo')
       expect(result.current.activeID).toBe('foo')
+    })
+
+    it('skips unsupported heading tags when building tocTree', () => {
+      createTestSetup()
+
+      const h2 = createHeading('h2', 'foo')
+      const h3 = createHeading('h3', 'bar')
+      const h5 = document.createElement('h5')
+      h5.id = 'baz'
+
+      vi.spyOn(document, 'querySelectorAll').mockImplementation(
+        () => [h2, h5, h3] as any
+      )
+
+      const { result } = renderHook(() => useHeadings())
+
+      expect(result.current.tocTree.length).toBe(1)
+      expect(result.current.tocTree[0].heading.id).toBe('foo')
+      expect(result.current.tocTree[0].children.length).toBe(1)
+      expect(result.current.tocTree[0].children[0].heading.id).toBe('bar')
+      expect(result.current.activeID).toBe('foo')
+    })
+
+    it('creates a new root when heading level decreases (pops stack)', () => {
+      const { article } = createTestSetup()
+
+      const h2a = createHeading('h2', 'foo')
+      const h3 = createHeading('h3', 'bar')
+      const h2b = createHeading('h2', 'baz')
+
+      article.appendChild(h2a)
+      article.appendChild(h3)
+      article.appendChild(h2b)
+
+      const { result } = renderHook(() => useHeadings())
+
+      expect(result.current.tocTree.length).toBe(2)
+      expect(result.current.tocTree[0].heading.id).toBe('foo')
+      expect(result.current.tocTree[0].children.length).toBe(1)
+      expect(result.current.tocTree[0].children[0].heading.id).toBe('bar')
+      expect(result.current.tocTree[1].heading.id).toBe('baz')
     })
   })
 
