@@ -36,4 +36,10 @@ describe('Callout', () => {
 
     expect(screen.getByText('Children')).toBeInTheDocument()
   })
+
+  it('renders the title when provided', () => {
+    render(<Callout title="Title">Children</Callout>)
+
+    expect(screen.getByText('Title')).toBeInTheDocument()
+  })
 })
