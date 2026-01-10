@@ -4,7 +4,7 @@ import { sharedTransitionProperties } from '../../utils'
 export const toc = cva({
   base: {
     display: 'none',
-    marginLeft: '2xs',
+    marginLeft: 's',
     maxWidth: {
       xl: 'calc(token(sizes.m) - token(spacing.l))',
       '2xl': 'l'

@@ -8,7 +8,7 @@ export const tocElement = cva({
     },
     '& > ol': {
       borderLeft: 'gray.subtle',
-      paddingLeft: 's'
+      paddingLeft: 'm'
     }
   }
 })
