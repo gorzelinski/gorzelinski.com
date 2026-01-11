@@ -205,9 +205,9 @@ describe('useHeadings', () => {
             target: h3,
             isIntersecting: true,
             intersectionRatio: 1,
-            boundingClientRect: {},
-            rootBounds: {},
-            intersectionRect: {},
+            boundingClientRect: {} as DOMRectReadOnly,
+            rootBounds: {} as DOMRectReadOnly,
+            intersectionRect: {} as DOMRectReadOnly,
             time: 0
           }
         ])
@@ -240,9 +240,9 @@ describe('useHeadings', () => {
             target: h3,
             isIntersecting: true,
             intersectionRatio: 1,
-            boundingClientRect: {},
-            rootBounds: {},
-            intersectionRect: {},
+            boundingClientRect: {} as DOMRectReadOnly,
+            rootBounds: {} as DOMRectReadOnly,
+            intersectionRect: {} as DOMRectReadOnly,
             time: 0
           }
         ])
@@ -259,9 +259,9 @@ describe('useHeadings', () => {
             target: h3,
             isIntersecting: false,
             intersectionRatio: 0,
-            boundingClientRect: {},
-            rootBounds: {},
-            intersectionRect: {},
+            boundingClientRect: {} as DOMRectReadOnly,
+            rootBounds: {} as DOMRectReadOnly,
+            intersectionRect: {} as DOMRectReadOnly,
             time: 0
           }
         ])
@@ -290,9 +290,9 @@ describe('useHeadings', () => {
             target: h2,
             isIntersecting: true,
             intersectionRatio: 1,
-            boundingClientRect: {},
-            rootBounds: {},
-            intersectionRect: {},
+            boundingClientRect: {} as DOMRectReadOnly,
+            rootBounds: {} as DOMRectReadOnly,
+            intersectionRect: {} as DOMRectReadOnly,
             time: 0
           }
         ])
@@ -309,9 +309,9 @@ describe('useHeadings', () => {
             target: h2,
             isIntersecting: false,
             intersectionRatio: 0,
-            boundingClientRect: {},
-            rootBounds: {},
-            intersectionRect: {},
+            boundingClientRect: {} as DOMRectReadOnly,
+            rootBounds: {} as DOMRectReadOnly,
+            intersectionRect: {} as DOMRectReadOnly,
             time: 0
           }
         ])
@@ -345,9 +345,9 @@ describe('useHeadings', () => {
             target: h3,
             isIntersecting: true,
             intersectionRatio: 1,
-            boundingClientRect: {},
-            rootBounds: {},
-            intersectionRect: {},
+            boundingClientRect: {} as DOMRectReadOnly,
+            rootBounds: {} as DOMRectReadOnly,
+            intersectionRect: {} as DOMRectReadOnly,
             time: 0
           }
         ])
@@ -364,9 +364,9 @@ describe('useHeadings', () => {
             target: h3,
             isIntersecting: false,
             intersectionRatio: 0,
-            boundingClientRect: {},
-            rootBounds: {},
-            intersectionRect: {},
+            boundingClientRect: {} as DOMRectReadOnly,
+            rootBounds: {} as DOMRectReadOnly,
+            intersectionRect: {} as DOMRectReadOnly,
             time: 0
           }
         ])
