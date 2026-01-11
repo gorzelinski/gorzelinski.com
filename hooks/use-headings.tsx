@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export type TocHeadingNode = {
   heading: Element
@@ -29,7 +29,8 @@ const buildTocTree = (headings: Element[]): TocHeadingNode[] => {
       stack.pop()
     }
 
-    const parent = stack.at(-1)?.node
+    const lastInStack = stack.at(-1)
+    const parent = lastInStack?.node
 
     if (parent) {
       parent.children.push(node)
@@ -44,9 +45,8 @@ const buildTocTree = (headings: Element[]): TocHeadingNode[] => {
 }
 
 export function useHeadings() {
-  const [headings, setHeadings] = useState<Element[]>([])
+  const [tocTree, setTocTree] = useState<TocHeadingNode[]>([])
   const [activeID, setActiveID] = useState<string | null>(null)
-  const tocTree = useMemo(() => buildTocTree(headings), [headings])
   const scrollRef = useRef(0)
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export function useHeadings() {
     )
 
     if (headings.length > 0) {
-      setHeadings(headings)
+      setTocTree(buildTocTree(headings))
       setActiveID(headings[0].id)
 
       const observer = new IntersectionObserver(
