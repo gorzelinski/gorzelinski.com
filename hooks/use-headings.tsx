@@ -8,9 +8,8 @@ export type TocHeadingNode = {
 const getHeadingLevel = (heading: Element) => {
   const tagName = heading.tagName.toLowerCase()
 
-  if (tagName === 'h2') return 2
-  if (tagName === 'h3') return 3
-  if (tagName === 'h4') return 4
+  const headingLevels: Record<string, number> = { h2: 2, h3: 3, h4: 4 }
+  if (tagName in headingLevels) return headingLevels[tagName]
 
   return null
 }
