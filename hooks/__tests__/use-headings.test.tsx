@@ -2,6 +2,13 @@ import { describe, it, expect, afterEach, vi } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
 import { useHeadings } from '../use-headings'
 
+type MockObserver = {
+  observe: ReturnType<typeof vi.fn>
+  unobserve: ReturnType<typeof vi.fn>
+  disconnect: ReturnType<typeof vi.fn>
+  trigger: (entries: IntersectionObserverEntry[]) => void
+}
+
 const createHeading = (tag: 'h2' | 'h3' | 'h4', id: string) => {
   const el = document.createElement(tag)
 
@@ -17,18 +24,24 @@ const createTestSetup = () => {
   const observeMock = vi.fn()
   const unobserveMock = vi.fn()
 
-  const observerMock = vi.fn(function (this: any, cb, _) {
+  const observerMock = vi.fn(function (
+    this: MockObserver,
+    cb: IntersectionObserverCallback
+  ) {
     this.observe = observeMock
     this.unobserve = unobserveMock
     this.disconnect = vi.fn()
-    this.trigger = (entries: any[]) => cb(entries)
+    this.trigger = (entries: IntersectionObserverEntry[]) =>
+      cb(entries, this as unknown as IntersectionObserver)
   })
 
   vi.stubGlobal('IntersectionObserver', observerMock)
 
   return {
     article,
-    observerMock: observerMock as any,
+    observerMock: observerMock as unknown as typeof IntersectionObserver & {
+      mock: { instances: MockObserver[] }
+    },
     observeMock,
     unobserveMock
   }
