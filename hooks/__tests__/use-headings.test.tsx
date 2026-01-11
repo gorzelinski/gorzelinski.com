@@ -2,6 +2,13 @@ import { describe, it, expect, afterEach, vi } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
 import { useHeadings } from '../use-headings'
 
+type MockObserver = {
+  observe: ReturnType<typeof vi.fn>
+  unobserve: ReturnType<typeof vi.fn>
+  disconnect: ReturnType<typeof vi.fn>
+  trigger: (entries: IntersectionObserverEntry[]) => void
+}
+
 const createHeading = (tag: 'h2' | 'h3' | 'h4', id: string) => {
   const el = document.createElement(tag)
 
@@ -17,18 +24,24 @@ const createTestSetup = () => {
   const observeMock = vi.fn()
   const unobserveMock = vi.fn()
 
-  const observerMock = vi.fn(function (this: any, cb, _) {
+  const observerMock = vi.fn(function (
+    this: MockObserver,
+    cb: IntersectionObserverCallback
+  ) {
     this.observe = observeMock
     this.unobserve = unobserveMock
     this.disconnect = vi.fn()
-    this.trigger = (entries: any[]) => cb(entries)
+    this.trigger = (entries: IntersectionObserverEntry[]) =>
+      cb(entries, this as unknown as IntersectionObserver)
   })
 
   vi.stubGlobal('IntersectionObserver', observerMock)
 
   return {
     article,
-    observerMock: observerMock as any,
+    observerMock: observerMock as unknown as typeof IntersectionObserver & {
+      mock: { instances: MockObserver[] }
+    },
     observeMock,
     unobserveMock
   }
@@ -38,16 +51,17 @@ describe('useHeadings', () => {
   afterEach(() => {
     document.body.innerHTML = ''
     vi.unstubAllGlobals()
+    vi.restoreAllMocks()
     vi.clearAllMocks()
   })
 
   describe('detection', () => {
-    it('returns empty headings and null activeID when no headings exist', () => {
+    it('returns empty tocTree and null activeID when no headings exist', () => {
       createTestSetup()
 
       const { result } = renderHook(() => useHeadings())
 
-      expect(result.current.headings).toEqual([])
+      expect(result.current.tocTree).toEqual([])
       expect(result.current.activeID).toBeNull()
     })
 
@@ -62,9 +76,10 @@ describe('useHeadings', () => {
 
       const { result } = renderHook(() => useHeadings())
 
-      expect(result.current.headings.length).toBe(2)
-      expect(result.current.headings[0].id).toBe('foo')
-      expect(result.current.headings[1].id).toBe('bar')
+      expect(result.current.tocTree.length).toBe(1)
+      expect(result.current.tocTree[0].heading.id).toBe('foo')
+      expect(result.current.tocTree[0].children.length).toBe(1)
+      expect(result.current.tocTree[0].children[0].heading.id).toBe('bar')
       expect(result.current.activeID).toBe('foo')
     })
 
@@ -81,10 +96,16 @@ describe('useHeadings', () => {
 
       const { result } = renderHook(() => useHeadings())
 
-      expect(result.current.headings.length).toBe(3)
-      expect(result.current.headings[0].id).toBe('h2-heading')
-      expect(result.current.headings[1].id).toBe('h3-heading')
-      expect(result.current.headings[2].id).toBe('h4-heading')
+      expect(result.current.tocTree.length).toBe(1)
+      expect(result.current.tocTree[0].heading.id).toBe('h2-heading')
+      expect(result.current.tocTree[0].children.length).toBe(1)
+      expect(result.current.tocTree[0].children[0].heading.id).toBe(
+        'h3-heading'
+      )
+      expect(result.current.tocTree[0].children[0].children.length).toBe(1)
+      expect(result.current.tocTree[0].children[0].children[0].heading.id).toBe(
+        'h4-heading'
+      )
       expect(result.current.activeID).toBe('h2-heading')
     })
 
@@ -99,8 +120,8 @@ describe('useHeadings', () => {
 
       const { result } = renderHook(() => useHeadings())
 
-      expect(result.current.headings.length).toBe(1)
-      expect(result.current.headings[0].id).toBe('inside')
+      expect(result.current.tocTree.length).toBe(1)
+      expect(result.current.tocTree[0].heading.id).toBe('inside')
       expect(result.current.activeID).toBe('inside')
     })
 
@@ -114,9 +135,50 @@ describe('useHeadings', () => {
 
       const { result } = renderHook(() => useHeadings())
 
-      expect(result.current.headings.length).toBe(1)
-      expect(result.current.headings[0].id).toBe('foo')
+      expect(result.current.tocTree.length).toBe(1)
+      expect(result.current.tocTree[0].heading.id).toBe('foo')
       expect(result.current.activeID).toBe('foo')
+    })
+
+    it('skips unsupported heading tags when building tocTree', () => {
+      createTestSetup()
+
+      const h2 = createHeading('h2', 'foo')
+      const h3 = createHeading('h3', 'bar')
+      const h5 = document.createElement('h5')
+      h5.id = 'baz'
+
+      vi.spyOn(document, 'querySelectorAll').mockImplementation(
+        () => [h2, h5, h3] as unknown as NodeListOf<Element>
+      )
+
+      const { result } = renderHook(() => useHeadings())
+
+      expect(result.current.tocTree.length).toBe(1)
+      expect(result.current.tocTree[0].heading.id).toBe('foo')
+      expect(result.current.tocTree[0].children.length).toBe(1)
+      expect(result.current.tocTree[0].children[0].heading.id).toBe('bar')
+      expect(result.current.activeID).toBe('foo')
+    })
+
+    it('creates a new root when heading level decreases (pops stack)', () => {
+      const { article } = createTestSetup()
+
+      const h2a = createHeading('h2', 'foo')
+      const h3 = createHeading('h3', 'bar')
+      const h2b = createHeading('h2', 'baz')
+
+      article.appendChild(h2a)
+      article.appendChild(h3)
+      article.appendChild(h2b)
+
+      const { result } = renderHook(() => useHeadings())
+
+      expect(result.current.tocTree.length).toBe(2)
+      expect(result.current.tocTree[0].heading.id).toBe('foo')
+      expect(result.current.tocTree[0].children.length).toBe(1)
+      expect(result.current.tocTree[0].children[0].heading.id).toBe('bar')
+      expect(result.current.tocTree[1].heading.id).toBe('baz')
     })
   })
 
@@ -143,9 +205,9 @@ describe('useHeadings', () => {
             target: h3,
             isIntersecting: true,
             intersectionRatio: 1,
-            boundingClientRect: {},
-            rootBounds: {},
-            intersectionRect: {},
+            boundingClientRect: {} as DOMRectReadOnly,
+            rootBounds: {} as DOMRectReadOnly,
+            intersectionRect: {} as DOMRectReadOnly,
             time: 0
           }
         ])
@@ -178,9 +240,9 @@ describe('useHeadings', () => {
             target: h3,
             isIntersecting: true,
             intersectionRatio: 1,
-            boundingClientRect: {},
-            rootBounds: {},
-            intersectionRect: {},
+            boundingClientRect: {} as DOMRectReadOnly,
+            rootBounds: {} as DOMRectReadOnly,
+            intersectionRect: {} as DOMRectReadOnly,
             time: 0
           }
         ])
@@ -197,9 +259,9 @@ describe('useHeadings', () => {
             target: h3,
             isIntersecting: false,
             intersectionRatio: 0,
-            boundingClientRect: {},
-            rootBounds: {},
-            intersectionRect: {},
+            boundingClientRect: {} as DOMRectReadOnly,
+            rootBounds: {} as DOMRectReadOnly,
+            intersectionRect: {} as DOMRectReadOnly,
             time: 0
           }
         ])
@@ -228,9 +290,9 @@ describe('useHeadings', () => {
             target: h2,
             isIntersecting: true,
             intersectionRatio: 1,
-            boundingClientRect: {},
-            rootBounds: {},
-            intersectionRect: {},
+            boundingClientRect: {} as DOMRectReadOnly,
+            rootBounds: {} as DOMRectReadOnly,
+            intersectionRect: {} as DOMRectReadOnly,
             time: 0
           }
         ])
@@ -247,9 +309,9 @@ describe('useHeadings', () => {
             target: h2,
             isIntersecting: false,
             intersectionRatio: 0,
-            boundingClientRect: {},
-            rootBounds: {},
-            intersectionRect: {},
+            boundingClientRect: {} as DOMRectReadOnly,
+            rootBounds: {} as DOMRectReadOnly,
+            intersectionRect: {} as DOMRectReadOnly,
             time: 0
           }
         ])
@@ -283,9 +345,9 @@ describe('useHeadings', () => {
             target: h3,
             isIntersecting: true,
             intersectionRatio: 1,
-            boundingClientRect: {},
-            rootBounds: {},
-            intersectionRect: {},
+            boundingClientRect: {} as DOMRectReadOnly,
+            rootBounds: {} as DOMRectReadOnly,
+            intersectionRect: {} as DOMRectReadOnly,
             time: 0
           }
         ])
@@ -302,9 +364,9 @@ describe('useHeadings', () => {
             target: h3,
             isIntersecting: false,
             intersectionRatio: 0,
-            boundingClientRect: {},
-            rootBounds: {},
-            intersectionRect: {},
+            boundingClientRect: {} as DOMRectReadOnly,
+            rootBounds: {} as DOMRectReadOnly,
+            intersectionRect: {} as DOMRectReadOnly,
             time: 0
           }
         ])
