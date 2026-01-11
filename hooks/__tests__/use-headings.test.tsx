@@ -136,7 +136,7 @@ describe('useHeadings', () => {
       h5.id = 'baz'
 
       vi.spyOn(document, 'querySelectorAll').mockImplementation(
-        () => [h2, h5, h3] as any
+        () => [h2, h5, h3] as unknown as NodeListOf<Element>
       )
 
       const { result } = renderHook(() => useHeadings())
