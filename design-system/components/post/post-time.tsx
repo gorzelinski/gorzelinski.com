@@ -9,15 +9,17 @@ export const PostTime = ({
   lang,
   dictionary
 }: PostTimeProps) => {
+  const dateTime = new Date(date).toISOString()
+  const formattedDate = formatDate(date, lang)
+  const formattedReadingTime = formatReadingTime(readingTime.minutes)
+
   return (
     <HStack gap="xs">
-      <Time dateTime={new Date(date).toISOString()}>
-        {formatDate(date, lang)}
-      </Time>
+      <Time dateTime={dateTime}>{formattedDate}</Time>
       <Span>•</Span>
-      <Span>
-        {formatReadingTime(readingTime.minutes)} {dictionary.min}
-      </Span>
+      <Time dateTime={`PT${formattedReadingTime}M`}>
+        {formattedReadingTime} {dictionary.min}
+      </Time>
     </HStack>
   )
 }
