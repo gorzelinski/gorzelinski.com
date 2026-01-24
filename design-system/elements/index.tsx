@@ -40,5 +40,6 @@ export {
   Caption
 } from './table'
 export { Hr } from './thematic-break'
+export { Time } from './time'
 export { Underline } from './underline'
 export { Video } from './video'

@@ -27,7 +27,8 @@ describe('Post', () => {
 
     const post = screen.getByRole('article')
     const image = screen.getByRole('img')
-    const date = screen.getByText('January 1, 2024 • 1 min read')
+    const date = screen.getByText('January 1, 2024')
+    const readingTime = screen.getByText('1 min read')
     const title = screen.getByRole('heading', { level: 3 })
     const description = screen.getByText('Description')
     const button = screen.getByRole('link')
@@ -35,6 +36,7 @@ describe('Post', () => {
     expect(post).toBeInTheDocument()
     expect(image).toBeInTheDocument()
     expect(date).toBeInTheDocument()
+    expect(readingTime).toBeInTheDocument()
     expect(title).toBeInTheDocument()
     expect(description).toBeInTheDocument()
     expect(button).toHaveAttribute('href', 'post/')

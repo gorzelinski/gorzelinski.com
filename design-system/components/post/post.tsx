@@ -1,8 +1,9 @@
 import { delocalizePath, formatDate, formatReadingTime } from '@/lib'
 import { PostProps } from './post.types'
 import { Image } from '../image'
-import { ButtonLink, Card, H3, P, Small } from '../../elements'
+import { ButtonLink, Card, H3, P, Span, Time } from '../../elements'
 import { ChevronForward } from '../../icons'
+import { HStack } from '@/styled-system/jsx'
 
 export const Post = ({
   lang,
@@ -24,10 +25,15 @@ export const Post = ({
         alt={image.alt}
         priority={priority}
       />
-      <Small>
-        {formatDate(date, lang)} • {formatReadingTime(readingTime.minutes)}{' '}
-        {dictionary.min}
-      </Small>
+      <HStack gap="xs">
+        <Time dateTime={new Date(date).toISOString()}>
+          {formatDate(date, lang)}
+        </Time>
+        <Span>•</Span>
+        <Span>
+          {formatReadingTime(readingTime.minutes)} {dictionary.min}
+        </Span>
+      </HStack>
       <H3 size="s">{title}</H3>
       <P size="s">{description}</P>
       <ButtonLink

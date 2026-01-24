@@ -51,6 +51,7 @@ export {
   Thead,
   Tr,
   Ul,
+  Time,
   Underline,
   Video
 } from './elements'
