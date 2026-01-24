@@ -14,7 +14,6 @@ import {
 } from '@/scripts'
 import {
   formatDate,
-  formatReadingTime,
   generateAlternateLinks,
   getAbsoluteURL,
   getMetaImage,
@@ -35,13 +34,12 @@ import {
   Pagination,
   Pill,
   Post,
+  PostTime,
   Progress,
   Section,
   Small,
   Socials,
-  Span,
   SupportMe,
-  Time,
   Toc,
   verticalRhythm
 } from '@/design-system'
@@ -138,16 +136,12 @@ export default async function Blog(props: NestedPageProps) {
         <Progress selector="article" />
         <Toc ariaLabel={component.toc.ariaLabel} />
         <header>
-          <HStack gap="xs">
-            <Time dateTime={new Date(frontmatter.date).toISOString()}>
-              {formatDate(frontmatter.date, lang)}
-            </Time>
-            <Span>•</Span>
-            <Span>
-              {formatReadingTime(frontmatter.readingTime.minutes)}
-              {component.post.min}
-            </Span>
-          </HStack>
+          <PostTime
+            date={frontmatter.date}
+            readingTime={frontmatter.readingTime}
+            lang={lang}
+            dictionary={component.post}
+          />
           <H1 css={verticalRhythm.marginBottom.m}>{frontmatter.title}</H1>
           <P css={verticalRhythm.marginBottom.m} size="l" color="subtle">
             {frontmatter.description}
