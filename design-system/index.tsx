@@ -99,6 +99,7 @@ export {
   MetaImage,
   Pagination,
   Post,
+  PostTime,
   Progress,
   Project,
   SearchBar,
