@@ -142,7 +142,14 @@ export default async function Blog(props: NestedPageProps) {
             lang={lang}
             dictionary={component.post}
           />
-          <H1 css={verticalRhythm.marginBottom.m}>{frontmatter.title}</H1>
+          <H1
+            css={{
+              ...verticalRhythm.marginTop.s,
+              ...verticalRhythm.marginBottom.m
+            }}
+          >
+            {frontmatter.title}
+          </H1>
           <P css={verticalRhythm.marginBottom.m} size="l" color="subtle">
             {frontmatter.description}
           </P>
