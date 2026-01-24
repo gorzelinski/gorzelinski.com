@@ -39,7 +39,9 @@ import {
   Section,
   Small,
   Socials,
+  Span,
   SupportMe,
+  Time,
   Toc,
   verticalRhythm
 } from '@/design-system'
@@ -136,11 +138,16 @@ export default async function Blog(props: NestedPageProps) {
         <Progress selector="article" />
         <Toc ariaLabel={component.toc.ariaLabel} />
         <header>
-          <Small css={verticalRhythm.marginBottom.s}>
-            {formatDate(frontmatter.date, lang)} •{' '}
-            {formatReadingTime(frontmatter.readingTime.minutes)}{' '}
-            {component.post.min}
-          </Small>
+          <HStack gap="xs">
+            <Time dateTime={new Date(frontmatter.date).toISOString()}>
+              {formatDate(frontmatter.date, lang)}
+            </Time>
+            <Span>•</Span>
+            <Span>
+              {formatReadingTime(frontmatter.readingTime.minutes)}
+              {component.post.min}
+            </Span>
+          </HStack>
           <H1 css={verticalRhythm.marginBottom.m}>{frontmatter.title}</H1>
           <P css={verticalRhythm.marginBottom.m} size="l" color="subtle">
             {frontmatter.description}
