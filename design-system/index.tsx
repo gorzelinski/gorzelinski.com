@@ -38,6 +38,7 @@ export {
   Section,
   Small,
   small,
+  Span,
   Strong,
   Sub,
   Sup,
