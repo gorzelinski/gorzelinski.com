@@ -11,12 +11,12 @@ import {
   H1,
   Header,
   Newsletter,
+  P,
   Post,
   Section,
   SupportMe,
-  Small,
-  small,
-  SearchBar
+  SearchBar,
+  small
 } from '@/design-system'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
@@ -87,7 +87,9 @@ export default async function Blog(props: SearchPageProps) {
         </Header>
         <SearchBar placeholder={component.searchBar.placeholder} />
         {posts.length === 0 ? (
-          <Small>{page.blog.none}</Small>
+          <P size="s" color="subtle">
+            {page.blog.none}
+          </P>
         ) : (
           posts.map(({ frontmatter }, index) => (
             <Post

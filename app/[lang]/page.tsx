@@ -19,8 +19,9 @@ import {
   Post,
   Project,
   Section,
-  Small,
-  Typewriter
+  Span,
+  Typewriter,
+  verticalRhythm
 } from '@/design-system'
 import profile from '@/public/images/gorzelinski.jpg'
 
@@ -120,11 +121,13 @@ export default async function Home(props: PageProps) {
           borderRadius="rounded"
         />
         <Box>
-          <Small marginBottom="1rem">{page.home.bio.greeting}</Small>
-          <H2 marginBottom="1rem">{page.home.bio.heading}</H2>
-          <P marginBottom="1rem">{page.home.bio.brief}</P>
+          <Span css={verticalRhythm.marginBottom.s}>
+            {page.home.bio.greeting}
+          </Span>
+          <H2 css={verticalRhythm.marginBottom.s}>{page.home.bio.heading}</H2>
+          <P css={verticalRhythm.marginBottom.s}>{page.home.bio.brief}</P>
           {page.home.bio.activities.map((activity) => (
-            <P key={activity.link} marginBottom="1rem">
+            <P key={activity.link} css={verticalRhythm.marginBottom.s}>
               {activity.mention}{' '}
               <Link href={localizePath(activity.href, lang)}>
                 {activity.link}

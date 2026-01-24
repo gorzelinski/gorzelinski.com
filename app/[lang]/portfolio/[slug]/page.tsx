@@ -28,7 +28,7 @@ import {
   Newsletter,
   P,
   Pagination,
-  Small,
+  Span,
   verticalRhythm
 } from '@/design-system'
 
@@ -159,19 +159,19 @@ export default async function Portfolio(props: NestedPageProps) {
             css={verticalRhythm.gap.m}
           >
             <VStack alignItems="start" gap="s">
-              <Small>{page.portfolioProject.services}</Small>
+              <Span>{page.portfolioProject.services}</Span>
               <H2 size="s">{frontmatter.services.join(', ')}</H2>
             </VStack>
             <VStack alignItems="start" gap="s">
-              <Small>{page.portfolioProject.client}</Small>
+              <Span>{page.portfolioProject.client}</Span>
               <H2 size="s">{frontmatter.client}</H2>
             </VStack>
             <VStack alignItems="start" gap="s">
-              <Small>{page.portfolioProject.deliverables}</Small>
+              <Span>{page.portfolioProject.deliverables}</Span>
               <H2 size="s">{frontmatter.deliverables.join(', ')}</H2>
             </VStack>
             <VStack alignItems="start" gap="s">
-              <Small>{page.portfolioProject.links}</Small>
+              <Span>{page.portfolioProject.links}</Span>
               {frontmatter.links.map((link) => (
                 <H2 size="s" key={link.text}>
                   <LinkOrA href={link.href}>{link.text}</LinkOrA>
