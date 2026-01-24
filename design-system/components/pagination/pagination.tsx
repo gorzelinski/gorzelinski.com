@@ -1,6 +1,6 @@
 import { VStack } from '@/styled-system/jsx'
 import { PaginationProps } from './pagination.types'
-import { ButtonLink, Small, header } from '../../elements'
+import { ButtonLink, Span, header } from '../../elements'
 import { ChevronBack, ChevronForward } from '../../icons'
 
 export const Pagination = ({ prev, next, dictionary }: PaginationProps) => {
@@ -14,7 +14,7 @@ export const Pagination = ({ prev, next, dictionary }: PaginationProps) => {
             sm: 's'
           }}
         >
-          <Small>{dictionary.prev}</Small>
+          <Span>{dictionary.prev}</Span>
           <ButtonLink
             rel="prev"
             variant="text"
@@ -33,7 +33,7 @@ export const Pagination = ({ prev, next, dictionary }: PaginationProps) => {
             sm: 's'
           }}
         >
-          <Small>{dictionary.next}</Small>
+          <Span>{dictionary.next}</Span>
           <ButtonLink
             rel="next"
             align={prev ? 'right' : 'left'}
