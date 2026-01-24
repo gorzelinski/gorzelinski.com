@@ -17,9 +17,9 @@ export const PostTime = ({
     <HStack gap="xs">
       <Time dateTime={dateTime}>{formattedDate}</Time>
       <Span>•</Span>
-      <Time dateTime={`PT${formattedReadingTime}M`}>
+      <Span>
         {formattedReadingTime} {dictionary.min}
-      </Time>
+      </Span>
     </HStack>
   )
 }
