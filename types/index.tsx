@@ -15,5 +15,6 @@ export {
   type NestedPageProps,
   type SearchPageProps
 } from './page'
+export { type ScrollProgressSelector } from './scroll'
 export { type Theme } from './theme'
 export { type TocHeadingNode } from './toc'
