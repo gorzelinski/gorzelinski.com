@@ -37,8 +37,8 @@ import {
   PostTime,
   Progress,
   Section,
-  Small,
   Socials,
+  Span,
   SupportMe,
   Toc,
   verticalRhythm
@@ -194,7 +194,7 @@ export default async function Blog(props: NestedPageProps) {
             }}
           >
             <HStack css={verticalRhythm.gap.s}>
-              <Small>{page.blogPost.share}</Small>
+              <Span>{page.blogPost.share}</Span>
               <Socials title={frontmatter.title} />
             </HStack>
             <Avatar
