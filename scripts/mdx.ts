@@ -1,6 +1,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { JSXElementConstructor, ReactElement } from 'react'
+import { unstable_cache } from 'next/cache'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
@@ -8,56 +9,12 @@ import rehypeKatex from 'rehype-katex'
 import rehypeMdxCodeProps from 'rehype-mdx-code-props'
 import rehypeUnwrapImages from 'rehype-unwrap-images'
 import { Pluggable } from 'unified'
-import readingTime, { ReadTimeResults } from 'reading-time'
+import readingTime from 'reading-time'
+import type { MDX, MDXTypes, Post, Project } from '@/types'
 import { LINKS, Pages } from '@/constants'
 import { Locale } from '@/i18n.config'
 import { localizeFileName, localizePath } from '@/lib'
 import { getMDXComponents } from '@/mdx-components'
-import { unstable_cache } from 'next/cache'
-
-type Frontmatter = {
-  slug: string
-  title: string
-  description: string
-  readingTime: ReadTimeResults
-  date: Date
-  updated: Date
-  image: {
-    alt: string
-    src: string
-    caption?: string
-  }
-}
-
-export type Page = Frontmatter & {
-  type: 'page'
-}
-
-export type Post = Frontmatter & {
-  categories: string[]
-  tags: string[]
-  type: 'post'
-}
-
-export type Project = Frontmatter & {
-  client: string
-  services: string[]
-  deliverables: string[]
-  links: [{ text: string; href: string }]
-  type: 'project'
-}
-
-type MDX = {
-  frontmatter: Post | Project | Page
-  content: ReactElement<any, string | JSXElementConstructor<any>>
-}
-
-type MDXTypes = Post['type'] | Project['type'] | Page['type']
-
-export type Pagination = {
-  title: string
-  slug: string
-} | null
 
 const root = process.cwd()
 

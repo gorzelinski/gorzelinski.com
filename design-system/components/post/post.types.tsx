@@ -1,5 +1,6 @@
 import { Locale } from '@/i18n.config'
-import { Dictionary, Post } from '@/scripts'
+import { Dictionary } from '@/scripts'
+import type { Post } from '@/types'
 
 export type PostProps = Pick<
   Post,

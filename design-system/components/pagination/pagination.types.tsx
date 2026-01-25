@@ -1,4 +1,5 @@
-import { Dictionary, Pagination } from '@/scripts'
+import { Dictionary } from '@/scripts'
+import type { Pagination } from '@/types'
 
 export type PaginationProps = {
   prev: Pagination
