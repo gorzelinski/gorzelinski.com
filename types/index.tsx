@@ -1,6 +1,6 @@
 export { type Dictionary } from './dictionary'
 export { type I18nConfig, type Locale, type Region } from './i18n'
-export { type MetaFontOptions } from './meta-font'
+export { type MetaFontOptions, type MetaImageProps } from './meta'
 export {
   type Frontmatter,
   type MDX,

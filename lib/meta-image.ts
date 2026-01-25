@@ -1,14 +1,13 @@
 import { Metadata } from 'next'
-import type { Locale } from '@/types'
+import type { Locale, MetaImageProps } from '@/types'
 import { CONTENTTYPE, OPENGRAPH, TWITTER } from '@/constants'
-import { MetaImageProps } from '@/design-system/components/meta-image/meta-image.types'
 import { getCorrectTheme } from './theme'
 
-type MetaImage =
+type MetaImageResponse =
   | NonNullable<Metadata['openGraph']>['images']
   | NonNullable<Metadata['twitter']>['images']
 
-type Params = Pick<
+type MetaImageParams = Pick<
   MetaImageProps,
   'title' | 'subtitle' | Partial<'theme'> | Partial<'backgroundURL'>
 > & {
@@ -18,8 +17,8 @@ type Params = Pick<
 export function getMetaImage(
   type: 'og' | 'twitter',
   lang: Locale,
-  params: Params
-): MetaImage {
+  params: MetaImageParams
+): MetaImageResponse {
   const { theme, title, subtitle, backgroundURL, alt } = params
 
   const searchParams = new URLSearchParams()

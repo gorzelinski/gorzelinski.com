@@ -1,8 +1,7 @@
 import { LINKS } from '@/constants'
-import { Theme } from '@/types'
+import type { MetaImageProps, Theme } from '@/types'
 import { getAbsoluteURL } from '@/lib'
 import { token } from '@/styled-system/tokens'
-import { MetaImageProps } from './meta-image.types'
 
 export const MetaImage = ({
   theme,
