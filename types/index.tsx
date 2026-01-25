@@ -10,6 +10,7 @@ export {
   type Post,
   type Project
 } from './mdx'
+export { type NewsletterStates } from './newsletter'
 export {
   type PageProps,
   type NestedPageProps,

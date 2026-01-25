@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import type { Locale } from '@/types'
-import { NewsletterStates } from '@/design-system/sections/newsletter/newsletter.types'
-import { getFormURL } from '@/lib/newsletter'
+import type { Locale, NewsletterStates } from '@/types'
+import { getFormURL } from '@/lib'
 
 export function useNewsletter(lang: Locale) {
   const [state, setState] = useState<NewsletterStates>('idle')
