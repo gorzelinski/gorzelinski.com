@@ -1,4 +1,4 @@
-import { Locale } from '@/i18n.config'
+import type { Locale } from '@/types'
 import { ENGLISH_FORM_ID, POLISH_FORM_ID } from '@/constants'
 
 export function getFormURL(lang: Locale) {

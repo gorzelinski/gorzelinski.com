@@ -1,3 +1,4 @@
+export { type I18nConfig, type Locale, type Region } from './i18n'
 export { type MetaFontOptions } from './meta-font'
 export {
   type Frontmatter,

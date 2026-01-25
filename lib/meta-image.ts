@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { Locale } from '@/i18n.config'
+import type { Locale } from '@/types'
 import { CONTENTTYPE, OPENGRAPH, TWITTER } from '@/constants'
 import { MetaImageProps } from '@/design-system/components/meta-image/meta-image.types'
 import { getCorrectTheme } from './theme'

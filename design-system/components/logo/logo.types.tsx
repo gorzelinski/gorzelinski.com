@@ -1,5 +1,5 @@
 import React from 'react'
-import { Locale } from '@/i18n.config'
+import type { Locale } from '@/types'
 
 export type LogoProps = {
   children: React.ReactNode

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Locale } from '@/i18n.config'
+import type { Locale } from '@/types'
 import { NewsletterStates } from '@/design-system/sections/newsletter/newsletter.types'
 import { getFormURL } from '@/lib/newsletter'
 

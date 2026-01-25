@@ -1,4 +1,4 @@
-import { Locale } from '@/i18n.config'
+import type { Locale } from '@/types'
 
 export type PageProps = {
   params: Promise<{

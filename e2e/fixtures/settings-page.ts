@@ -1,4 +1,5 @@
 import { expect, type Locator, type Page } from '@playwright/test'
+import type { Locale } from '@/types'
 import { Theme } from '@/types'
 import { Dictionary } from '@/scripts'
 import {
@@ -8,7 +9,7 @@ import {
   hslToRgb
 } from '@/lib'
 import { CONTENTTYPE, HANDLES, LINKS, SOCIALS } from '@/constants'
-import { i18n, Locale } from '@/i18n.config'
+import { i18n } from '@/i18n.config'
 import { token } from '@/styled-system/tokens'
 import { getFormURL } from '@/lib/newsletter'
 import en from '@/dictionaries/en.json'

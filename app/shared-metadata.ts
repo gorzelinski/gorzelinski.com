@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
-import { Locale, i18n } from '@/i18n.config'
+import type { Locale } from '@/types'
+import { i18n } from '@/i18n.config'
 import { HANDLES } from '@/constants'
 import { createLocaleWithTerritory } from '@/lib'
 import { getDictionary } from '@/scripts'
