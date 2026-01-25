@@ -3,7 +3,13 @@ import { getCoffeeURL, localizePath } from '@/lib'
 import { footer } from './footer.styles'
 import { FooterProps } from './footer.types'
 import { HStack, VStack } from '@/styled-system/jsx'
-import { ButtonAnchor, ButtonLink, Small, navigation } from '../../elements'
+import {
+  ButtonAnchor,
+  ButtonLink,
+  Small,
+  Span,
+  navigation
+} from '../../elements'
 import { Cafe, Mail } from '../../icons'
 import { LanguageSwitch, Socials } from '../../components'
 
@@ -14,7 +20,7 @@ export const Footer = ({ lang, dictionary }: FooterProps) => {
     <footer id="contact" className={footer()}>
       <HStack justifyContent="space-between" flexWrap="wrap" gap="l">
         <VStack alignItems="start" gap="xs">
-          <Small>{section.footer.email}</Small>
+          <Span>{section.footer.email}</Span>
           <ButtonAnchor
             variant="text"
             size="s"
@@ -26,11 +32,11 @@ export const Footer = ({ lang, dictionary }: FooterProps) => {
           </ButtonAnchor>
         </VStack>
         <VStack alignItems="start" gap="xs">
-          <Small>{section.footer.socials}</Small>
+          <Span>{section.footer.socials}</Span>
           <Socials />
         </VStack>
         <VStack alignItems="start" gap="xs">
-          <Small>{section.footer.language}</Small>
+          <Span>{section.footer.language}</Span>
           <LanguageSwitch lang={lang} />
         </VStack>
       </HStack>

@@ -14,7 +14,6 @@ import {
 } from '@/scripts'
 import {
   formatDate,
-  formatReadingTime,
   generateAlternateLinks,
   getAbsoluteURL,
   getMetaImage,
@@ -35,10 +34,11 @@ import {
   Pagination,
   Pill,
   Post,
+  PostTime,
   Progress,
   Section,
-  Small,
   Socials,
+  Span,
   SupportMe,
   Toc,
   verticalRhythm
@@ -136,12 +136,20 @@ export default async function Blog(props: NestedPageProps) {
         <Progress selector="article" />
         <Toc ariaLabel={component.toc.ariaLabel} />
         <header>
-          <Small css={verticalRhythm.marginBottom.s}>
-            {formatDate(frontmatter.date, lang)} •{' '}
-            {formatReadingTime(frontmatter.readingTime.minutes)}{' '}
-            {component.post.min}
-          </Small>
-          <H1 css={verticalRhythm.marginBottom.m}>{frontmatter.title}</H1>
+          <PostTime
+            date={frontmatter.date}
+            readingTime={frontmatter.readingTime}
+            lang={lang}
+            dictionary={component.post}
+          />
+          <H1
+            css={{
+              ...verticalRhythm.marginTop.s,
+              ...verticalRhythm.marginBottom.m
+            }}
+          >
+            {frontmatter.title}
+          </H1>
           <P css={verticalRhythm.marginBottom.m} size="l" color="subtle">
             {frontmatter.description}
           </P>
@@ -186,7 +194,7 @@ export default async function Blog(props: NestedPageProps) {
             }}
           >
             <HStack css={verticalRhythm.gap.s}>
-              <Small>{page.blogPost.share}</Small>
+              <Span>{page.blogPost.share}</Span>
               <Socials title={frontmatter.title} />
             </HStack>
             <Avatar

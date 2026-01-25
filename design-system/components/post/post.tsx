@@ -1,7 +1,8 @@
-import { delocalizePath, formatDate, formatReadingTime } from '@/lib'
+import { delocalizePath } from '@/lib'
 import { PostProps } from './post.types'
+import { PostTime } from './post-time'
 import { Image } from '../image'
-import { ButtonLink, Card, H3, P, Small } from '../../elements'
+import { ButtonLink, Card, H3, P } from '../../elements'
 import { ChevronForward } from '../../icons'
 
 export const Post = ({
@@ -24,10 +25,12 @@ export const Post = ({
         alt={image.alt}
         priority={priority}
       />
-      <Small>
-        {formatDate(date, lang)} • {formatReadingTime(readingTime.minutes)}{' '}
-        {dictionary.min}
-      </Small>
+      <PostTime
+        date={date}
+        readingTime={readingTime}
+        lang={lang}
+        dictionary={dictionary}
+      />
       <H3 size="s">{title}</H3>
       <P size="s">{description}</P>
       <ButtonLink

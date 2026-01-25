@@ -38,6 +38,7 @@ export {
   Section,
   Small,
   small,
+  Span,
   Strong,
   Sub,
   Sup,
@@ -50,6 +51,7 @@ export {
   Thead,
   Tr,
   Ul,
+  Time,
   Underline,
   Video
 } from './elements'
@@ -97,6 +99,7 @@ export {
   MetaImage,
   Pagination,
   Post,
+  PostTime,
   Progress,
   Project,
   SearchBar,

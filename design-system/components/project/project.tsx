@@ -1,7 +1,7 @@
 import { delocalizePath } from '@/lib'
 import { ProjectProps } from './project.types'
 import { Image } from '../image'
-import { ButtonLink, Card, H3, P, Small } from '../../elements'
+import { ButtonLink, Card, H3, P, Span } from '../../elements'
 import { ChevronForward } from '../../icons'
 
 export const Project = ({
@@ -24,7 +24,7 @@ export const Project = ({
         alt={image.alt}
         priority={priority}
       />
-      <Small>{deliverables.join(', ')}</Small>
+      <Span>{deliverables.join(', ')}</Span>
       <H3 size="s">{title}</H3>
       <P size="s">{description}</P>
       <ButtonLink
