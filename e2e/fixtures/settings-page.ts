@@ -1,7 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test'
-import type { Locale } from '@/types'
+import type { Dictionary, Locale } from '@/types'
 import { Theme } from '@/types'
-import { Dictionary } from '@/scripts'
 import {
   createLocaleWithTerritory,
   getAbsoluteURL,

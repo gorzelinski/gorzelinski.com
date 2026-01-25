@@ -1,5 +1,4 @@
-import { Dictionary } from '@/scripts'
-import type { Locale, Project } from '@/types'
+import type { Dictionary, Locale, Project } from '@/types'
 
 export type ProjectProps = Pick<
   Project,

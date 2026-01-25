@@ -1,5 +1,4 @@
-import type { Locale } from '@/types'
-import { Dictionary } from '@/scripts'
+import type { Dictionary, Locale } from '@/types'
 
 export type SupportMeProps = {
   dictionary: Dictionary['section']['supportMe']

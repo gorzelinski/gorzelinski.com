@@ -1,5 +1,5 @@
 import { test, type SettingsPage } from './fixtures'
-import type { Dictionary } from '@/scripts'
+import type { Dictionary } from '@/types'
 
 type MetaTagsPageConfig = {
   name: string

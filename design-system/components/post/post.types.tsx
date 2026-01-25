@@ -1,5 +1,4 @@
-import type { Locale, Post } from '@/types'
-import { Dictionary } from '@/scripts'
+import type { Dictionary, Locale, Post } from '@/types'
 
 export type PostProps = Pick<
   Post,

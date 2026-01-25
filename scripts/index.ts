@@ -1,4 +1,4 @@
-export { type Dictionary, getDictionary } from './dictionaries'
+export { dictionaries, getDictionary } from './dictionaries'
 export {
   createMDXPagination,
   getMDX,
