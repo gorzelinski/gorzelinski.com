@@ -16,3 +16,4 @@ export {
   type SearchPageProps
 } from './page'
 export { type Theme } from './theme'
+export { type TocHeadingNode } from './toc'
