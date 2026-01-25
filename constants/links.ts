@@ -43,11 +43,3 @@ export const CRAWLABLE = [
   LINKS.uses,
   LINKS.blog
 ] as const
-
-export type Pages = (typeof LINKS)[
-  | 'home'
-  | 'portfolio'
-  | 'about'
-  | 'blog'
-  | 'uses'
-  | 'subscriptionConfirmed']

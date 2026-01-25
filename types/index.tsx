@@ -14,7 +14,8 @@ export { type NewsletterStates } from './newsletter'
 export {
   type PageProps,
   type NestedPageProps,
-  type SearchPageProps
+  type SearchPageProps,
+  type Pages
 } from './page'
 export { type ScrollProgressSelector } from './scroll'
 export { type Theme } from './theme'
