@@ -1,4 +1,4 @@
-import { ReactElement, JSXElementConstructor } from 'react'
+import type { ReactElement, JSXElementConstructor } from 'react'
 import { ReadTimeResults } from 'reading-time'
 
 export type Frontmatter = {
