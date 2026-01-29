@@ -1,5 +1,4 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import { match } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
 import type { I18nConfig } from '@/types'

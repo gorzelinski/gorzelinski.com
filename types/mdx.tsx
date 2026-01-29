@@ -1,5 +1,5 @@
 import type { ReactElement, JSXElementConstructor } from 'react'
-import { ReadTimeResults } from 'reading-time'
+import type { ReadTimeResults } from 'reading-time'
 
 export type Frontmatter = {
   slug: string
