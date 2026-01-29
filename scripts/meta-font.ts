@@ -1,6 +1,6 @@
 import fs from 'fs/promises'
 import { METAFONT } from '@/constants'
-import { MetaFontOptions } from '@/types'
+import type { MetaFontOptions } from '@/types'
 
 export async function getMetaFont(
   file: string,
