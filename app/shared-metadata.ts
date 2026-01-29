@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import type { Locale } from '@/types'
 import { i18n } from '@/i18n.config'
 import { HANDLES } from '@/constants'
