@@ -1,4 +1,4 @@
-import { ReadTimeResults } from 'reading-time'
+import type { ReadTimeResults } from 'reading-time'
 import type { Locale } from '@/types'
 
 export function formatDate(date: Date, locale: Locale) {
