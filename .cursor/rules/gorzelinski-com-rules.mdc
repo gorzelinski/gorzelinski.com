@@ -78,6 +78,71 @@ Before responding to any request, follow these steps:
 - Implement proper type safety and inference
 - Use `satisfies` operator for type validation
 
+### Import Order and Type Imports
+
+Follow a strict import order pattern in all TypeScript files:
+
+1. **ALL external type imports** (from npm packages)
+2. **ALL internal type imports** (from `@/types`, local `.types.tsx` files, `@/styled-system/types`)
+3. **ALL external value imports** (from npm packages)
+4. **ALL internal value imports** (from `@/constants`, `@/lib`, `@/hooks`, `@/scripts`, `@/design-system`, `@/styled-system`)
+
+**Within each group:** Default imports come before named imports.
+
+```typescript
+// ✅ CORRECT - Default imports before named imports
+import fs from 'fs/promises'           // default import
+import path from 'path'                // default import
+import { unstable_cache } from 'next/cache'  // named import
+import { cookies } from 'next/headers'       // named import
+```
+
+#### Use `import type` for Type-Only Imports
+
+Always use the `import type` keyword for imports that are used exclusively for type annotations. This improves tree-shaking and clarifies intent.
+
+**Examples:**
+
+```typescript
+// ✅ CORRECT - Strict ordering with import type
+import type { Metadata } from 'next'
+import type { JSX } from 'react'
+import type { WebPage, WithContext } from 'schema-dts'
+import type { PageProps, Theme } from '@/types'
+import { cookies } from 'next/headers'
+import { getCookie } from 'cookies-next/server'
+import { LINKS } from '@/constants'
+import { getDictionary } from '@/scripts'
+
+// ❌ WRONG - Mixed ordering without import type
+import { cookies } from 'next/headers'
+import { Metadata } from 'next' // Missing 'type', wrong order
+import { PageProps } from '@/types' // Missing 'type', wrong order
+import { getCookie } from 'cookies-next/server'
+```
+
+#### Inline Type Modifier
+
+When importing both types and values from the **exact same package**, you can use the inline `type` modifier:
+
+```typescript
+// ✅ CORRECT - Same package
+import { type NextRequest, NextResponse } from 'next/server'
+
+// ❌ WRONG - Different packages cannot be combined
+import { type Metadata, cookies } from 'next/headers' // Metadata is from 'next', not 'next/headers'
+```
+
+#### Re-exports in Barrel Files
+
+Use `export type` for type-only re-exports:
+
+```typescript
+// ✅ CORRECT
+export { test, expect } from './page' // value exports
+export type { SettingsPage } from './settings-page' // type-only export
+```
+
 ## Project Structure
 
 - `.husky` - folder with Git hooks
