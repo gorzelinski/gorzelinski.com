@@ -1,4 +1,4 @@
-import { test, type SettingsPage } from './fixtures'
+import { type SettingsPage, test } from './fixtures'
 import type { Dictionary } from '@/types'
 
 type MetaTagsPageConfig = {
