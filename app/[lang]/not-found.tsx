@@ -1,6 +1,6 @@
+import type { Locale } from '@/types'
 import { cookies } from 'next/headers'
 import { getCookie } from 'cookies-next/server'
-import type { Locale } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
 import { getDictionary } from '@/scripts'
 import { localizePath } from '@/lib'

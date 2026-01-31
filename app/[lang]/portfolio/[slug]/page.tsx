@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { cookies } from 'next/headers'
-import { getCookie } from 'cookies-next/server'
 import type { BlogPosting, WithContext } from 'schema-dts'
 import type { NestedPageProps, Theme } from '@/types'
+import { cookies } from 'next/headers'
+import { getCookie } from 'cookies-next/server'
 import { COOKIES, LINKS } from '@/constants'
 import { i18n } from '@/i18n.config'
 import {
