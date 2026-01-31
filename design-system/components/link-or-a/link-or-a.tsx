@@ -1,5 +1,5 @@
+import type { LinkOrAProps } from './link-or-a.types'
 import { isInternalURL } from '@/lib'
-import { LinkOrAProps } from './link-or-a.types'
 import { A, Link } from '../../elements'
 
 export const LinkOrA = (props: LinkOrAProps) => {

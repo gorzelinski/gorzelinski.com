@@ -1,5 +1,5 @@
+import type { ProjectProps } from './project.types'
 import { delocalizePath } from '@/lib'
-import { ProjectProps } from './project.types'
 import { Image } from '../image'
 import { ButtonLink, Card, H3, P, Span } from '../../elements'
 import { ChevronForward } from '../../icons'

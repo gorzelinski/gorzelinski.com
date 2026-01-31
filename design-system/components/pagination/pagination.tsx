@@ -1,5 +1,5 @@
+import type { PaginationProps } from './pagination.types'
 import { VStack } from '@/styled-system/jsx'
-import { PaginationProps } from './pagination.types'
 import { ButtonLink, Span, header } from '../../elements'
 import { ChevronBack, ChevronForward } from '../../icons'
 

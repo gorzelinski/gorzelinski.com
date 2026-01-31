@@ -1,5 +1,5 @@
+import type { TocElementProps } from './toc-element.types'
 import { ButtonAnchor } from '@/design-system'
-import { TocElementProps } from './toc-element.types'
 import { tocElement } from './toc-element.styles'
 
 export const TocElement = ({

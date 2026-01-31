@@ -1,6 +1,6 @@
+import type { IconProps } from './icon.types'
 import { styled } from '@/styled-system/jsx'
 import { icon } from './icon.styles'
-import { IconProps } from './icon.types'
 
 const ChevronBackSVG = (props: IconProps) => (
   <span {...props}>

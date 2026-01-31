@@ -1,8 +1,8 @@
 'use client'
+import type { SocialsProps } from './socials.types'
 import { usePathname } from 'next/navigation'
 import { getAbsoluteURL } from '@/lib'
 import { socialLinks } from './socials.constants'
-import { SocialsProps } from './socials.types'
 import { createShareLinks } from './socials.helpers'
 import { ButtonAnchor, navigation } from '../../elements'
 

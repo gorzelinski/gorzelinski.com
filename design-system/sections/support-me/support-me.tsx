@@ -1,4 +1,4 @@
-import { SupportMeProps } from './support-me.types'
+import type { SupportMeProps } from './support-me.types'
 import { ButtonAnchor, H2, P, Section } from '../../elements'
 import { Cafe } from '../../icons'
 import { getCoffeeURL } from '@/lib'

@@ -1,7 +1,7 @@
+import type { FooterProps } from './footer.types'
 import { LINKS } from '@/constants'
 import { getCoffeeURL, localizePath } from '@/lib'
 import { footer } from './footer.styles'
-import { FooterProps } from './footer.types'
 import { HStack, VStack } from '@/styled-system/jsx'
 import {
   ButtonAnchor,

@@ -1,5 +1,5 @@
+import type { IconProps } from './icon.types'
 import { styled } from '@/styled-system/jsx'
-import { IconProps } from './icon.types'
 import { icon } from './icon.styles'
 
 const SunnySVG = (props: IconProps) => (

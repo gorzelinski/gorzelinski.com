@@ -1,6 +1,6 @@
 'use client'
+import type { TocProps } from './toc.types'
 import { useHeadings, useScrollProgress, useScrollToHeading } from '@/hooks'
-import { TocProps } from './toc.types'
 import { toc } from './toc.styles'
 import { TocList } from './toc-list'
 
