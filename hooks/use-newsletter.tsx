@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import type { Locale, NewsletterStates } from '@/types'
+import { useState } from 'react'
 import { getFormURL } from '@/lib'
 
 export function useNewsletter(lang: Locale) {

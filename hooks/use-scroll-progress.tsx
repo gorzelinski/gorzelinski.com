@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
 import type { ScrollProgressSelector } from '@/types'
+import { useEffect, useRef, useState } from 'react'
 
 export function useScrollProgress(selector: ScrollProgressSelector = 'html') {
   const [scrollProgress, setScrollProgress] = useState<number>(0)
