@@ -1,6 +1,6 @@
-import path from 'path'
 import type { MDXComponents } from 'mdx/types'
 import type { Pages } from '@/types'
+import path from 'path'
 import { getTextFromChildren, slugify } from './lib'
 import { Box } from '@/styled-system/jsx'
 import {
