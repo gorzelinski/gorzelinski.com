@@ -1,9 +1,9 @@
 'use client'
+import type { ChangeEvent } from 'react'
+import type { SearchBarProps } from './search-bar.types'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
-import { ChangeEvent } from 'react'
 import { useDebouncedCallback } from '@/hooks'
 import { SearchIcon, Input, InputWrapper, Search } from '@/design-system'
-import { SearchBarProps } from './search-bar.types'
 
 export const SearchBar = ({ placeholder }: SearchBarProps) => {
   const searchParams = useSearchParams()

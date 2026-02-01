@@ -1,5 +1,5 @@
+import { type SettingsPage, test, expect } from './fixtures'
 import AxeBuilder from '@axe-core/playwright'
-import { test, expect, type SettingsPage } from './fixtures'
 
 type A11yPageConfig = {
   name: string

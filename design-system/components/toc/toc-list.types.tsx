@@ -1,4 +1,4 @@
-import type { TocHeadingNode } from '@/hooks'
+import type { TocHeadingNode } from '@/types'
 
 export type TocListProps = {
   nodes: TocHeadingNode[]

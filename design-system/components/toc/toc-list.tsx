@@ -1,7 +1,7 @@
 'use client'
+import type { TocListProps } from './toc-list.types'
 import { TocElement } from './toc-element'
 import { tocList } from './toc-list.styles'
-import { TocListProps } from './toc-list.types'
 
 export const TocList = ({ nodes, activeID }: TocListProps) => {
   return (

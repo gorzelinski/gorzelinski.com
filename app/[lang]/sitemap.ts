@@ -1,4 +1,4 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
 import { i18n } from '@/i18n.config'
 import { CRAWLABLE, LINKS } from '@/constants'
 import { getMDXSlugs } from '@/scripts'

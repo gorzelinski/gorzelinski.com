@@ -1,5 +1,5 @@
+import type { AvatarProps } from './avatar.types'
 import { HStack, VStack } from '@/styled-system/jsx'
-import { AvatarProps } from './avatar.types'
 import { Image } from '../image'
 import { H3, Link, P } from '../../elements'
 

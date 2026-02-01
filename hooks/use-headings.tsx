@@ -1,9 +1,5 @@
+import type { TocHeadingNode } from '@/types'
 import { useEffect, useRef, useState } from 'react'
-
-export type TocHeadingNode = {
-  heading: Element
-  children: TocHeadingNode[]
-}
 
 const getHeadingLevel = (heading: Element) => {
   const tagName = heading.tagName.toLowerCase()

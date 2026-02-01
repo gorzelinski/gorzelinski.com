@@ -1,4 +1,4 @@
-import { Theme } from '@/types'
+import type { Theme } from '@/types'
 import { THEME } from '@/constants'
 
 export function getCorrectTheme(theme: string | null) {

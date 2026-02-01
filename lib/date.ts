@@ -1,5 +1,5 @@
-import { ReadTimeResults } from 'reading-time'
-import { Locale } from '@/i18n.config'
+import type { ReadTimeResults } from 'reading-time'
+import type { Locale } from '@/types'
 
 export function formatDate(date: Date, locale: Locale) {
   return new Date(date).toLocaleDateString(locale, {

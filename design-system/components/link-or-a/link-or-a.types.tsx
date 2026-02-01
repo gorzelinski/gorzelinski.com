@@ -1,4 +1,4 @@
-import { RecipeVariantProps } from '@/styled-system/types'
+import type { RecipeVariantProps } from '@/styled-system/types'
 import { anchor } from '../../elements/anchor/anchor.styles'
 
 type AnchorVariantProps = RecipeVariantProps<typeof anchor>

@@ -1,4 +1,4 @@
-import { MetaFontOptions } from '@/types'
+import type { MetaFontOptions } from '@/types'
 
 export const metadataBase = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? new URL(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`)

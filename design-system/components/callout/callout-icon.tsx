@@ -1,4 +1,4 @@
-import { CalloutIcons } from './callout.types'
+import type { CalloutIcons } from './callout.types'
 import {
   AlertCircle,
   CheckmarkCircle,

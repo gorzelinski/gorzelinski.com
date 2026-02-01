@@ -1,4 +1,4 @@
-import { NewsletterStates } from './newsletter.types'
+import type { NewsletterStates } from '@/types'
 
 export function mapStateToCalloutVariant(state: NewsletterStates) {
   switch (state) {

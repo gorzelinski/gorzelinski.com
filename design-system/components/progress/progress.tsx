@@ -1,6 +1,6 @@
 'use client'
+import type { ProgressProps } from './progress.types'
 import { useScrollProgress } from '@/hooks'
-import { ProgressProps } from './progress.types'
 import { progress as progressStyles } from './progress.styles'
 import { ProgressBar } from './progress-bar'
 

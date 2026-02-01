@@ -1,5 +1,5 @@
+import type { PostProps } from './post.types'
 import { delocalizePath } from '@/lib'
-import { PostProps } from './post.types'
 import { PostTime } from './post-time'
 import { Image } from '../image'
 import { ButtonLink, Card, H3, P } from '../../elements'

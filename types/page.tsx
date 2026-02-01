@@ -1,4 +1,5 @@
-import { Locale } from '@/i18n.config'
+import type { Locale } from '@/types'
+import type { LINKS } from '@/constants'
 
 export type PageProps = {
   params: Promise<{
@@ -18,3 +19,11 @@ export type SearchPageProps = PageProps & {
     query?: string
   }>
 }
+
+export type Pages = (typeof LINKS)[
+  | 'home'
+  | 'portfolio'
+  | 'about'
+  | 'blog'
+  | 'uses'
+  | 'subscriptionConfirmed']

@@ -1,5 +1,4 @@
-import { Locale } from '@/i18n.config'
-import { Dictionary } from '@/scripts'
+import type { Dictionary, Locale } from '@/types'
 
 export type FooterProps = {
   lang: Locale

@@ -1,4 +1,5 @@
-import { Locale, i18n } from '@/i18n.config'
+import type { Locale } from '@/types'
+import { i18n } from '@/i18n.config'
 import { capitalize } from './string'
 
 export function isDefaultLocale(

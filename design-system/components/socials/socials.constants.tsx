@@ -1,5 +1,5 @@
+import type { Social } from './socials.types'
 import { LINKS, SOCIALS } from '@/constants'
-import { Social } from './socials.types'
 import {
   Bluesky,
   Dribbble,

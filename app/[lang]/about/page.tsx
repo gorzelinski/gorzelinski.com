@@ -1,8 +1,9 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
+import type { JSX } from 'react'
+import type { WebPage, WithContext } from 'schema-dts'
+import type { PageProps, Theme } from '@/types'
 import { cookies } from 'next/headers'
 import { getCookie } from 'cookies-next/server'
-import { WebPage, WithContext } from 'schema-dts'
-import { PageProps, Theme } from '@/types'
 import { COOKIES, LINKS } from '@/constants'
 import { getDictionary } from '@/scripts'
 import { generateAlternateLinks, getMetaImage, localizePath } from '@/lib'
@@ -28,8 +29,6 @@ import {
   verticalRhythm
 } from '@/design-system'
 import laptop from '@/public/images/about/andras-vas-Bd7gNnWJBkU-unsplash.jpg'
-
-import type { JSX } from 'react'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { lang } = await props.params

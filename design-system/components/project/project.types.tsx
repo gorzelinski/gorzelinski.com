@@ -1,5 +1,4 @@
-import { Dictionary, Project } from '@/scripts'
-import { Locale } from '@/i18n.config'
+import type { Dictionary, Locale, Project } from '@/types'
 
 export type ProjectProps = Pick<
   Project,

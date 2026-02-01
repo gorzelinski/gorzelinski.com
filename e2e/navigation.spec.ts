@@ -1,5 +1,5 @@
-import { expect, test, type SettingsPage } from './fixtures'
-import type { Dictionary } from '@/scripts'
+import { type SettingsPage, test, expect } from './fixtures'
+import type { Dictionary } from '@/types'
 
 type NavigationLinkConfig = {
   getName: (dictionary: Dictionary) => string

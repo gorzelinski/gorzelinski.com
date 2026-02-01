@@ -1,6 +1,6 @@
+import type { Locale } from '@/types'
 import RSS from 'rss'
 import { NextRequest } from 'next/server'
-import { Locale } from '@/i18n.config'
 import { LINKS } from '@/constants'
 import { getDictionary, getMDXes } from '@/scripts'
 import { getAbsoluteURL } from '@/lib'
