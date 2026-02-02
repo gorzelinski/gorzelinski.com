@@ -1,18 +1,8 @@
-import type { Dictionary, Locale } from '@/types'
-import type { ReadTimeResults } from 'reading-time'
+import type { Dictionary, Locale, Post } from '@/types'
 
 export type PostHeaderProps = {
   lang: Locale
   slug: string
-  date: Date
-  updated: Date
+  frontmatter: Post
   dictionary: Dictionary['component']['post']
-  readingTime: ReadTimeResults
-  title: string
-  description: string
-  image: {
-    alt: string
-    src: string
-    caption?: string
-  }
 }

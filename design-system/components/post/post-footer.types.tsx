@@ -1,11 +1,13 @@
-import type { Dictionary } from '@/types'
+import type { Dictionary, Post } from '@/types'
 import type { StaticImageData } from 'next/image'
 
 export type PostFooterProps = {
+  frontmatter: Post
   dictionary: Dictionary['component']['post']
-  postTitle: string
-  avatarImage: StaticImageData
-  avatarName: Dictionary['component']['avatar']['name']
-  avatarBio: Dictionary['component']['avatar']['bio']
-  avatarHref: string
+  avatar: {
+    image: StaticImageData
+    name: string
+    bio: string
+    href: string
+  }
 }

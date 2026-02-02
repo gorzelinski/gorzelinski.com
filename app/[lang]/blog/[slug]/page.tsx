@@ -127,22 +127,19 @@ export default async function Blog(props: NestedPageProps) {
         <PostHeader
           lang={lang}
           slug={slug}
+          frontmatter={frontmatter}
           dictionary={component.post}
-          date={frontmatter.date}
-          updated={frontmatter.updated}
-          readingTime={frontmatter.readingTime}
-          title={frontmatter.title}
-          description={frontmatter.description}
-          image={frontmatter.image}
         />
         {content}
         <PostFooter
+          frontmatter={frontmatter}
           dictionary={component.post}
-          postTitle={frontmatter.title}
-          avatarImage={avatar}
-          avatarName={component.avatar.name}
-          avatarBio={component.avatar.bio}
-          avatarHref={localizePath(LINKS.about, lang)}
+          avatar={{
+            image: avatar,
+            name: component.avatar.name,
+            bio: component.avatar.bio,
+            href: localizePath(LINKS.about, lang)
+          }}
         />
       </Article>
       <Pagination prev={prev} next={next} dictionary={component.pagination} />

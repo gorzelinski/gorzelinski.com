@@ -6,12 +6,9 @@ import { Avatar } from '../avatar'
 import { Socials } from '../socials'
 
 export const PostFooter = ({
+  frontmatter,
   dictionary,
-  postTitle,
-  avatarImage,
-  avatarName,
-  avatarBio,
-  avatarHref
+  avatar
 }: PostFooterProps) => {
   return (
     <footer>
@@ -24,13 +21,13 @@ export const PostFooter = ({
       >
         <HStack css={verticalRhythm.gap.s}>
           <Span>{dictionary.share}</Span>
-          <Socials title={postTitle} />
+          <Socials title={frontmatter.title} />
         </HStack>
         <Avatar
-          image={avatarImage}
-          name={avatarName}
-          bio={avatarBio}
-          href={avatarHref}
+          image={avatar.image}
+          name={avatar.name}
+          bio={avatar.bio}
+          href={avatar.href}
         />
       </VStack>
     </footer>
