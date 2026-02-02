@@ -12,11 +12,13 @@ export const PostHeader = ({
   frontmatter,
   dictionary
 }: PostHeaderProps) => {
+  const { date, readingTime, title, description, updated, image } = frontmatter
+
   return (
     <header>
       <PostTime
-        date={frontmatter.date}
-        readingTime={frontmatter.readingTime}
+        date={date}
+        readingTime={readingTime}
         lang={lang}
         dictionary={dictionary}
       />
@@ -26,13 +28,13 @@ export const PostHeader = ({
           ...verticalRhythm.marginBottom.m
         }}
       >
-        {frontmatter.title}
+        {title}
       </H1>
       <P css={verticalRhythm.marginBottom.m} size="l" color="subtle">
-        {frontmatter.description}
+        {description}
       </P>
       <Pill css={verticalRhythm.marginBottom.s}>
-        {dictionary.updated}: {formatDate(frontmatter.updated, lang)}
+        {dictionary.updated}: {formatDate(updated, lang)}
       </Pill>
       <Figure
         css={verticalRhythm.marginBottom.m}
@@ -41,8 +43,8 @@ export const PostHeader = ({
       >
         <Image
           aspectRatio="cinema"
-          src={`/images${LINKS.blog}${slug}/${frontmatter.image.src}`}
-          alt={frontmatter.image.alt}
+          src={`/images${LINKS.blog}${slug}/${image.src}`}
+          alt={image.alt}
           width={1200}
           height={675}
           priority={true}
@@ -52,7 +54,7 @@ export const PostHeader = ({
           textAlign="center"
           css={verticalRhythm.marginTop.s}
         >
-          {frontmatter.image.caption}
+          {image.caption}
         </Figcaption>
       </Figure>
     </header>
