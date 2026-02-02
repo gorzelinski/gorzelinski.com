@@ -32,7 +32,11 @@
       "share": "Share"
     },
     "project": {
-      "button": "Check project"
+      "button": "Check project",
+      "services": "Services",
+      "client": "Client",
+      "deliverables": "Deliverables",
+      "links": "Links"
     },
     "searchBar": {
       "placeholder": "Curious about something?"
@@ -482,10 +486,6 @@
       "all": "All projects"
     },
     "portfolioProject": {
-      "services": "Services",
-      "client": "Client",
-      "deliverables": "Deliverables",
-      "links": "Links",
       "metadata": {
         "image": {
           "alt": "There is a stack of three elements: my profile picture as a round logo and my full name as a subtitle above the portfolio project title. The color palette of the texts is grayish. Everything is on top of an image background. What is on the image?"

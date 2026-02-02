@@ -114,7 +114,7 @@ export default async function Portfolio(props: NestedPageProps) {
         <ProjectHeader
           slug={slug}
           frontmatter={frontmatter}
-          dictionary={page.portfolioProject}
+          dictionary={component.project}
         />
         {content}
       </Article>
