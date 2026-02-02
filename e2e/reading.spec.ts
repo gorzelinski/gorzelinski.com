@@ -51,7 +51,7 @@ test.describe('Reading tests', () => {
     const externalLink = page.getByText('flow state')
     const internalLink = page.getByText("I'm an engineer")
 
-    const share = page.getByText('Share via')
+    const share = page.getByText(component.post.share, { exact: true })
     const bluesky = page.getByRole('link', { name: 'Bluesky' }).first()
     const twitter = page.getByRole('link', { name: 'Twitter' }).first()
     const facebook = page.getByRole('link', { name: 'Facebook' }).first()
