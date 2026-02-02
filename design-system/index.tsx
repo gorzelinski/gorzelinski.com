@@ -100,6 +100,7 @@ export {
   Pagination,
   Post,
   PostFooter,
+  PostHeader,
   PostTime,
   Progress,
   Project,

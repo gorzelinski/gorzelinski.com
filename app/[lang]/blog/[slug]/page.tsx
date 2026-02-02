@@ -13,7 +13,6 @@ import {
   getMDXSlugs
 } from '@/scripts'
 import {
-  formatDate,
   generateAlternateLinks,
   getAbsoluteURL,
   getMetaImage,
@@ -22,23 +21,16 @@ import {
 import { openGraph, twitter } from '@/app/shared-metadata'
 import {
   Article,
-  Figcaption,
-  Figure,
-  H1,
   H2,
-  Image,
   Newsletter,
-  P,
   Pagination,
-  Pill,
   Post,
   PostFooter,
-  PostTime,
+  PostHeader,
   Progress,
   Section,
   SupportMe,
-  Toc,
-  verticalRhythm
+  Toc
 } from '@/design-system'
 import avatar from '@/public/images/logo.png'
 
@@ -132,57 +124,26 @@ export default async function Blog(props: NestedPageProps) {
       <Article>
         <Progress selector="article" />
         <Toc ariaLabel={component.toc.ariaLabel} />
-        <header>
-          <PostTime
-            date={frontmatter.date}
-            readingTime={frontmatter.readingTime}
-            lang={lang}
-            dictionary={component.post}
-          />
-          <H1
-            css={{
-              ...verticalRhythm.marginTop.s,
-              ...verticalRhythm.marginBottom.m
-            }}
-          >
-            {frontmatter.title}
-          </H1>
-          <P css={verticalRhythm.marginBottom.m} size="l" color="subtle">
-            {frontmatter.description}
-          </P>
-          <Pill css={verticalRhythm.marginBottom.s}>
-            {page.blogPost.updated}: {formatDate(frontmatter.updated, lang)}
-          </Pill>
-          <Figure
-            css={verticalRhythm.marginBottom.m}
-            margin="bleed"
-            textAlign="center"
-          >
-            <Image
-              aspectRatio="cinema"
-              src={`/images${LINKS.blog}${slug}/${frontmatter.image.src}`}
-              alt={frontmatter.image.alt}
-              width={1200}
-              height={675}
-              priority={true}
-            />
-            <Figcaption
-              style="italic"
-              textAlign="center"
-              css={verticalRhythm.marginTop.s}
-            >
-              {frontmatter.image.caption}
-            </Figcaption>
-          </Figure>
-        </header>
+        <PostHeader
+          lang={lang}
+          slug={slug}
+          dictionary={component.post}
+          updatedLabel={page.blogPost.updated}
+          date={frontmatter.date}
+          updated={frontmatter.updated}
+          readingTime={frontmatter.readingTime}
+          title={frontmatter.title}
+          description={frontmatter.description}
+          image={frontmatter.image}
+        />
         {content}
         <PostFooter
+          shareLabel={page.blogPost.share}
           postTitle={frontmatter.title}
           avatarImage={avatar}
           avatarName={component.avatar.name}
           avatarBio={component.avatar.bio}
           avatarHref={localizePath(LINKS.about, lang)}
-          shareLabel={page.blogPost.share}
         />
       </Article>
       <Pagination prev={prev} next={next} dictionary={component.pagination} />
