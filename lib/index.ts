@@ -1,3 +1,4 @@
+export { preToCodeProps } from './code'
 export { formatDate, formatReadingTime } from './date'
 export {
   createLocaleWithTerritory,

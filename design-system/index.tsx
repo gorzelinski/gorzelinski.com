@@ -110,10 +110,7 @@ export {
   ThemeSwitch,
   Toc,
   Typewriter,
-  createShareLinks,
-  preToCodeProps,
-  type PreChildrenProps,
-  type PreProps
+  createShareLinks
 } from './components'
 
 export { Footer, Navbar, Newsletter, SupportMe } from './sections'
