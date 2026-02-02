@@ -20,10 +20,8 @@ import {
   localizePath
 } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
-import { HStack, VStack } from '@/styled-system/jsx'
 import {
   Article,
-  Avatar,
   Figcaption,
   Figure,
   H1,
@@ -34,11 +32,10 @@ import {
   Pagination,
   Pill,
   Post,
+  PostFooter,
   PostTime,
   Progress,
   Section,
-  Socials,
-  Span,
   SupportMe,
   Toc,
   verticalRhythm
@@ -179,26 +176,14 @@ export default async function Blog(props: NestedPageProps) {
           </Figure>
         </header>
         {content}
-        <footer>
-          <VStack
-            alignItems="start"
-            css={{
-              ...verticalRhythm.gap.s,
-              ...verticalRhythm.marginTop['2xmarginBottom']
-            }}
-          >
-            <HStack css={verticalRhythm.gap.s}>
-              <Span>{page.blogPost.share}</Span>
-              <Socials title={frontmatter.title} />
-            </HStack>
-            <Avatar
-              image={avatar}
-              name={component.avatar.name}
-              bio={component.avatar.bio}
-              href={localizePath(LINKS.about, lang)}
-            />
-          </VStack>
-        </footer>
+        <PostFooter
+          postTitle={frontmatter.title}
+          avatarImage={avatar}
+          avatarName={component.avatar.name}
+          avatarBio={component.avatar.bio}
+          avatarHref={localizePath(LINKS.about, lang)}
+          shareLabel={page.blogPost.share}
+        />
       </Article>
       <Pagination prev={prev} next={next} dictionary={component.pagination} />
       <SupportMe lang={lang} dictionary={section.supportMe} />
