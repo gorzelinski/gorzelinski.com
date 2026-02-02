@@ -160,13 +160,8 @@ export default async function Home(props: PageProps) {
           <Post
             key={frontmatter.slug}
             lang={lang}
+            frontmatter={frontmatter}
             dictionary={component.post}
-            slug={frontmatter.slug}
-            date={frontmatter.date}
-            readingTime={frontmatter.readingTime}
-            title={frontmatter.title}
-            description={frontmatter.description}
-            image={frontmatter.image}
           />
         ))}
       </Section>

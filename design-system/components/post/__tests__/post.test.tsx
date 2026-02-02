@@ -13,13 +13,8 @@ describe('Post', () => {
     render(
       <Post
         lang="en"
-        slug="post/"
         dictionary={dictionary.component.post}
-        image={mockPost.image}
-        title={mockPost.title}
-        description={mockPost.description}
-        date={mockPost.date}
-        readingTime={mockPost.readingTime}
+        frontmatter={mockPost}
       />
     )
 
@@ -37,6 +32,6 @@ describe('Post', () => {
     expect(readingTime).toBeInTheDocument()
     expect(title).toBeInTheDocument()
     expect(description).toBeInTheDocument()
-    expect(button).toHaveAttribute('href', 'post/')
+    expect(button).toHaveAttribute('href', mockPost.slug)
   })
 })

@@ -95,13 +95,8 @@ export default async function Blog(props: SearchPageProps) {
             <Post
               key={frontmatter.slug}
               lang={lang}
+              frontmatter={frontmatter}
               dictionary={component.post}
-              image={frontmatter.image}
-              date={frontmatter.date}
-              readingTime={frontmatter.readingTime}
-              title={frontmatter.title}
-              description={frontmatter.description}
-              slug={frontmatter.slug}
               priority={index < 3}
             />
           ))

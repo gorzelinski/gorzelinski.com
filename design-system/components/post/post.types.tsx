@@ -1,10 +1,8 @@
 import type { Dictionary, Locale, Post } from '@/types'
 
-export type PostProps = Pick<
-  Post,
-  'image' | 'date' | 'readingTime' | 'title' | 'description' | 'slug'
-> & {
+export type PostProps = {
   lang: Locale
   dictionary: Dictionary['component']['post']
+  frontmatter: Post
   priority?: boolean
 }

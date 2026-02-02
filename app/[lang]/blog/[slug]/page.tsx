@@ -96,7 +96,12 @@ export default async function Blog(props: NestedPageProps) {
   const { component, section, layout, page } = await getDictionary(lang)
   const { content, frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
   const { prev, next } = await createMDXPagination(LINKS.blog, slug, lang)
-  const relatedPosts = await getRelatedMDXes(frontmatter, LINKS.blog, lang, 3)
+  const relatedPosts = await getRelatedMDXes<'post'>(
+    frontmatter,
+    LINKS.blog,
+    lang,
+    3
+  )
   const jsonLd: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -152,13 +157,8 @@ export default async function Blog(props: NestedPageProps) {
             <Post
               key={frontmatter.slug}
               lang={lang}
+              frontmatter={frontmatter}
               dictionary={component.post}
-              image={frontmatter.image}
-              date={frontmatter.date}
-              readingTime={frontmatter.readingTime}
-              title={frontmatter.title}
-              description={frontmatter.description}
-              slug={frontmatter.slug}
             />
           ))}
         </Section>

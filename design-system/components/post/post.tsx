@@ -8,14 +8,11 @@ import { ChevronForward } from '../../icons'
 export const Post = ({
   lang,
   dictionary,
-  slug,
-  image,
-  title,
-  description,
-  date,
-  readingTime,
+  frontmatter,
   priority = false
 }: PostProps) => {
+  const { slug, image, title, description, date, readingTime } = frontmatter
+
   return (
     <Card orientation="horizontal">
       <Image
