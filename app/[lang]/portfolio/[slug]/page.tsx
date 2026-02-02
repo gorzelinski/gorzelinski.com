@@ -18,20 +18,7 @@ import {
   localizePath
 } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
-import { Grid, VStack } from '@/styled-system/jsx'
-import {
-  Article,
-  Figure,
-  H1,
-  H2,
-  Image,
-  LinkOrA,
-  Newsletter,
-  P,
-  Pagination,
-  Span,
-  verticalRhythm
-} from '@/design-system'
+import { Article, Newsletter, Pagination, ProjectHeader } from '@/design-system'
 
 export async function generateStaticParams() {
   const slugs = await getMDXSlugs(LINKS.portfolio)
@@ -124,55 +111,11 @@ export default async function Portfolio(props: NestedPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Article>
-        <header>
-          <Figure margin="bleed">
-            <Image
-              aspectRatio="cinema"
-              src={`/images${LINKS.portfolio}${slug}/${frontmatter.image.src}`}
-              alt={frontmatter.image.alt}
-              width={1200}
-              height={675}
-              priority={true}
-            />
-          </Figure>
-          <H1
-            css={{
-              ...verticalRhythm.marginTop['2xmarginBottom'],
-              ...verticalRhythm.marginBottom.m
-            }}
-          >
-            {frontmatter.title}
-          </H1>
-          <P css={verticalRhythm.marginBottom.m} size="l" color="subtle">
-            {frontmatter.description}
-          </P>
-          <Grid
-            gridTemplateColumns="1fr 1fr"
-            gridTemplateRows="auto auto"
-            css={verticalRhythm.gap.m}
-          >
-            <VStack alignItems="start" gap="s">
-              <Span>{page.portfolioProject.services}</Span>
-              <H2 size="s">{frontmatter.services.join(', ')}</H2>
-            </VStack>
-            <VStack alignItems="start" gap="s">
-              <Span>{page.portfolioProject.client}</Span>
-              <H2 size="s">{frontmatter.client}</H2>
-            </VStack>
-            <VStack alignItems="start" gap="s">
-              <Span>{page.portfolioProject.deliverables}</Span>
-              <H2 size="s">{frontmatter.deliverables.join(', ')}</H2>
-            </VStack>
-            <VStack alignItems="start" gap="s">
-              <Span>{page.portfolioProject.links}</Span>
-              {frontmatter.links.map((link) => (
-                <H2 size="s" key={link.text}>
-                  <LinkOrA href={link.href}>{link.text}</LinkOrA>
-                </H2>
-              ))}
-            </VStack>
-          </Grid>
-        </header>
+        <ProjectHeader
+          slug={slug}
+          frontmatter={frontmatter}
+          dictionary={page.portfolioProject}
+        />
         {content}
       </Article>
       <Pagination prev={prev} next={next} dictionary={component.pagination} />

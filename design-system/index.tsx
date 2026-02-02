@@ -104,6 +104,7 @@ export {
   PostTime,
   Progress,
   Project,
+  ProjectHeader,
   SearchBar,
   Socials,
   ThemeSwitch,
