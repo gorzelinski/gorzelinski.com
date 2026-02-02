@@ -6,7 +6,7 @@ import { Avatar } from '../avatar'
 import { Socials } from '../socials'
 
 export const PostFooter = ({
-  shareLabel,
+  dictionary,
   postTitle,
   avatarImage,
   avatarName,
@@ -23,7 +23,7 @@ export const PostFooter = ({
         }}
       >
         <HStack css={verticalRhythm.gap.s}>
-          <Span>{shareLabel}</Span>
+          <Span>{dictionary.share}</Span>
           <Socials title={postTitle} />
         </HStack>
         <Avatar

@@ -10,7 +10,6 @@ export const PostHeader = ({
   lang,
   slug,
   dictionary,
-  updatedLabel,
   date,
   updated,
   readingTime,
@@ -38,7 +37,7 @@ export const PostHeader = ({
         {description}
       </P>
       <Pill css={verticalRhythm.marginBottom.s}>
-        {updatedLabel}: {formatDate(updated, lang)}
+        {dictionary.updated}: {formatDate(updated, lang)}
       </Pill>
       <Figure
         css={verticalRhythm.marginBottom.m}

@@ -2,7 +2,7 @@ import type { Dictionary } from '@/types'
 import type { StaticImageData } from 'next/image'
 
 export type PostFooterProps = {
-  shareLabel: Dictionary['page']['blogPost']['share']
+  dictionary: Dictionary['component']['post']
   postTitle: string
   avatarImage: StaticImageData
   avatarName: Dictionary['component']['avatar']['name']

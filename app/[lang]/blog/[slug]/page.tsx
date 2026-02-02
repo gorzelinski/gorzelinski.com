@@ -128,7 +128,6 @@ export default async function Blog(props: NestedPageProps) {
           lang={lang}
           slug={slug}
           dictionary={component.post}
-          updatedLabel={page.blogPost.updated}
           date={frontmatter.date}
           updated={frontmatter.updated}
           readingTime={frontmatter.readingTime}
@@ -138,7 +137,7 @@ export default async function Blog(props: NestedPageProps) {
         />
         {content}
         <PostFooter
-          shareLabel={page.blogPost.share}
+          dictionary={component.post}
           postTitle={frontmatter.title}
           avatarImage={avatar}
           avatarName={component.avatar.name}

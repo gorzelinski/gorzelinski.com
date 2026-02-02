@@ -27,7 +27,9 @@
     },
     "post": {
       "button": "Czytaj wpis",
-      "min": "min. czytania"
+      "min": "min. czytania",
+      "updated": "Zaktualizowano",
+      "share": "Udostępnij"
     },
     "project": {
       "button": "Sprawdź projekt"
@@ -400,8 +402,6 @@
       "none": "To wyszukiwanie nic nie znalazło, ale wzbudziło moją ciekawość."
     },
     "blogPost": {
-      "updated": "Zaktualizowano",
-      "share": "Udostępnij na",
       "related": "Pozostań ciekawy. Przeczytaj więcej",
       "metadata": {
         "image": {

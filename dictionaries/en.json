@@ -27,7 +27,9 @@
     },
     "post": {
       "button": "Read post",
-      "min": "min read"
+      "min": "min read",
+      "updated": "Last updated",
+      "share": "Share"
     },
     "project": {
       "button": "Check project"
@@ -401,8 +403,6 @@
       "none": "This search came up empty, but it piqued my interest."
     },
     "blogPost": {
-      "updated": "Last updated",
-      "share": "Share via",
       "related": "Stay curious. Read more",
       "metadata": {
         "image": {

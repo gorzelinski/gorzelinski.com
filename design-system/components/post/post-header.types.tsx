@@ -7,7 +7,6 @@ export type PostHeaderProps = {
   date: Date
   updated: Date
   dictionary: Dictionary['component']['post']
-  updatedLabel: string
   readingTime: ReadTimeResults
   title: string
   description: string
