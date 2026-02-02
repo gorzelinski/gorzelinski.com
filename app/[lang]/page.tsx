@@ -103,12 +103,8 @@ export default async function Home(props: PageProps) {
           <Project
             key={frontmatter.slug}
             lang={lang}
+            frontmatter={frontmatter}
             dictionary={component.project}
-            image={frontmatter.image}
-            deliverables={frontmatter.deliverables}
-            title={frontmatter.title}
-            description={frontmatter.description}
-            slug={frontmatter.slug}
             priority={true}
           />
         ))}

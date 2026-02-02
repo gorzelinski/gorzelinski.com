@@ -6,14 +6,12 @@ import { ChevronForward } from '../../icons'
 
 export const Project = ({
   lang,
+  frontmatter,
   dictionary,
-  slug,
-  image,
-  title,
-  description,
-  deliverables,
   priority = false
 }: ProjectProps) => {
+  const { slug, image, title, description, deliverables } = frontmatter
+
   return (
     <Card orientation="vertical">
       <Image
