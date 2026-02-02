@@ -18,9 +18,10 @@ import {
   localizePath
 } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
-import { Box, Grid, VStack } from '@/styled-system/jsx'
+import { Grid, VStack } from '@/styled-system/jsx'
 import {
   Article,
+  Figure,
   H1,
   H2,
   Image,
@@ -124,15 +125,7 @@ export default async function Portfolio(props: NestedPageProps) {
       />
       <Article>
         <header>
-          <Box
-            marginX={{
-              base: '-m',
-              sm: '-l',
-              md: '-xl',
-              lg: '-2xl',
-              xl: '-4xl'
-            }}
-          >
+          <Figure margin="bleed">
             <Image
               aspectRatio="cinema"
               src={`/images${LINKS.portfolio}${slug}/${frontmatter.image.src}`}
@@ -141,7 +134,7 @@ export default async function Portfolio(props: NestedPageProps) {
               height={675}
               priority={true}
             />
-          </Box>
+          </Figure>
           <H1
             css={{
               ...verticalRhythm.marginTop['2xmarginBottom'],

@@ -157,14 +157,8 @@ export default async function Blog(props: NestedPageProps) {
             {page.blogPost.updated}: {formatDate(frontmatter.updated, lang)}
           </Pill>
           <Figure
-            marginX={{
-              base: '-m',
-              sm: '-l',
-              md: '-xl',
-              lg: '-2xl',
-              xl: '-4xl'
-            }}
             css={verticalRhythm.marginBottom.m}
+            margin="bleed"
             textAlign="center"
           >
             <Image
