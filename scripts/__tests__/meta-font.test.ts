@@ -1,5 +1,5 @@
-import { describe, expect, it, vi, beforeEach } from 'vitest'
 import fs from 'fs/promises'
+import { describe, expect, it, vi, beforeEach } from 'vitest'
 import { getMetaFont } from '../meta-font'
 
 vi.mock('fs/promises', () => ({
