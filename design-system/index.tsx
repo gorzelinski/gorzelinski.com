@@ -109,8 +109,7 @@ export {
   Socials,
   ThemeSwitch,
   Toc,
-  Typewriter,
-  createShareLinks
+  Typewriter
 } from './components'
 
 export { Footer, Navbar, Newsletter, SupportMe } from './sections'
