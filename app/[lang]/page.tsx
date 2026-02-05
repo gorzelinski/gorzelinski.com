@@ -103,12 +103,8 @@ export default async function Home(props: PageProps) {
           <Project
             key={frontmatter.slug}
             lang={lang}
+            frontmatter={frontmatter}
             dictionary={component.project}
-            image={frontmatter.image}
-            deliverables={frontmatter.deliverables}
-            title={frontmatter.title}
-            description={frontmatter.description}
-            slug={frontmatter.slug}
             priority={true}
           />
         ))}
@@ -160,13 +156,8 @@ export default async function Home(props: PageProps) {
           <Post
             key={frontmatter.slug}
             lang={lang}
+            frontmatter={frontmatter}
             dictionary={component.post}
-            slug={frontmatter.slug}
-            date={frontmatter.date}
-            readingTime={frontmatter.readingTime}
-            title={frontmatter.title}
-            description={frontmatter.description}
-            image={frontmatter.image}
           />
         ))}
       </Section>

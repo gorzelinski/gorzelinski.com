@@ -27,10 +27,16 @@
     },
     "post": {
       "button": "Read post",
-      "min": "min read"
+      "min": "min read",
+      "updated": "Last updated",
+      "share": "Share"
     },
     "project": {
-      "button": "Check project"
+      "button": "Check project",
+      "services": "Services",
+      "client": "Client",
+      "deliverables": "Deliverables",
+      "links": "Links"
     },
     "searchBar": {
       "placeholder": "Curious about something?"
@@ -401,8 +407,6 @@
       "none": "This search came up empty, but it piqued my interest."
     },
     "blogPost": {
-      "updated": "Last updated",
-      "share": "Share via",
       "related": "Stay curious. Read more",
       "metadata": {
         "image": {
@@ -482,10 +486,6 @@
       "all": "All projects"
     },
     "portfolioProject": {
-      "services": "Services",
-      "client": "Client",
-      "deliverables": "Deliverables",
-      "links": "Links",
       "metadata": {
         "image": {
           "alt": "There is a stack of three elements: my profile picture as a round logo and my full name as a subtitle above the portfolio project title. The color palette of the texts is grayish. Everything is on top of an image background. What is on the image?"

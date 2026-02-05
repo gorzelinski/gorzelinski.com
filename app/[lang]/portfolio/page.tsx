@@ -81,12 +81,8 @@ export default async function Portfolio(props: PageProps) {
           <Project
             key={frontmatter.slug}
             lang={lang}
+            frontmatter={frontmatter}
             dictionary={component.project}
-            title={frontmatter.title}
-            description={frontmatter.description}
-            image={frontmatter.image}
-            deliverables={frontmatter.deliverables}
-            slug={frontmatter.slug}
             priority={index < 2}
           />
         ))}

@@ -15,6 +15,17 @@ export const figure = cva({
       right: {
         textAlign: 'right'
       }
+    },
+    margin: {
+      bleed: {
+        marginX: {
+          base: '-m',
+          sm: '-l',
+          md: '-xl',
+          lg: '-2xl',
+          xl: '-4xl'
+        }
+      }
     }
   },
   defaultVariants: {

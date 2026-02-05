@@ -1,7 +1,7 @@
 import type { MDXComponents } from 'mdx/types'
-import type { Pages } from '@/types'
+import type { Pages, PreChildrenProps, PreProps } from '@/types'
 import path from 'path'
-import { getTextFromChildren, slugify } from './lib'
+import { getTextFromChildren, slugify, preToCodeProps } from './lib'
 import { Box } from '@/styled-system/jsx'
 import {
   Abbr,
@@ -39,10 +39,7 @@ import {
   Thead,
   Tr,
   Ul,
-  verticalRhythm,
-  preToCodeProps,
-  PreProps,
-  PreChildrenProps
+  verticalRhythm
 } from './design-system'
 
 const components: MDXComponents = {

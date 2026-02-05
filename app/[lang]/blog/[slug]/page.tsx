@@ -13,35 +13,24 @@ import {
   getMDXSlugs
 } from '@/scripts'
 import {
-  formatDate,
   generateAlternateLinks,
   getAbsoluteURL,
   getMetaImage,
   localizePath
 } from '@/lib'
 import { openGraph, twitter } from '@/app/shared-metadata'
-import { HStack, VStack } from '@/styled-system/jsx'
 import {
   Article,
-  Avatar,
-  Figcaption,
-  Figure,
-  H1,
   H2,
-  Image,
   Newsletter,
-  P,
   Pagination,
-  Pill,
   Post,
-  PostTime,
+  PostFooter,
+  PostHeader,
   Progress,
   Section,
-  Socials,
-  Span,
   SupportMe,
-  Toc,
-  verticalRhythm
+  Toc
 } from '@/design-system'
 import avatar from '@/public/images/logo.png'
 
@@ -107,7 +96,12 @@ export default async function Blog(props: NestedPageProps) {
   const { component, section, layout, page } = await getDictionary(lang)
   const { content, frontmatter } = await getMDX<'post'>(LINKS.blog, slug, lang)
   const { prev, next } = await createMDXPagination(LINKS.blog, slug, lang)
-  const relatedPosts = await getRelatedMDXes(frontmatter, LINKS.blog, lang, 3)
+  const relatedPosts = await getRelatedMDXes<'post'>(
+    frontmatter,
+    LINKS.blog,
+    lang,
+    3
+  )
   const jsonLd: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -135,76 +129,23 @@ export default async function Blog(props: NestedPageProps) {
       <Article>
         <Progress selector="article" />
         <Toc ariaLabel={component.toc.ariaLabel} />
-        <header>
-          <PostTime
-            date={frontmatter.date}
-            readingTime={frontmatter.readingTime}
-            lang={lang}
-            dictionary={component.post}
-          />
-          <H1
-            css={{
-              ...verticalRhythm.marginTop.s,
-              ...verticalRhythm.marginBottom.m
-            }}
-          >
-            {frontmatter.title}
-          </H1>
-          <P css={verticalRhythm.marginBottom.m} size="l" color="subtle">
-            {frontmatter.description}
-          </P>
-          <Pill css={verticalRhythm.marginBottom.s}>
-            {page.blogPost.updated}: {formatDate(frontmatter.updated, lang)}
-          </Pill>
-          <Figure
-            marginX={{
-              base: '-m',
-              sm: '-l',
-              md: '-xl',
-              lg: '-2xl',
-              xl: '-4xl'
-            }}
-            css={verticalRhythm.marginBottom.m}
-            textAlign="center"
-          >
-            <Image
-              aspectRatio="cinema"
-              src={`/images${LINKS.blog}${slug}/${frontmatter.image.src}`}
-              alt={frontmatter.image.alt}
-              width={1200}
-              height={675}
-              priority={true}
-            />
-            <Figcaption
-              style="italic"
-              textAlign="center"
-              css={verticalRhythm.marginTop.s}
-            >
-              {frontmatter.image.caption}
-            </Figcaption>
-          </Figure>
-        </header>
+        <PostHeader
+          lang={lang}
+          slug={slug}
+          frontmatter={frontmatter}
+          dictionary={component.post}
+        />
         {content}
-        <footer>
-          <VStack
-            alignItems="start"
-            css={{
-              ...verticalRhythm.gap.s,
-              ...verticalRhythm.marginTop['2xmarginBottom']
-            }}
-          >
-            <HStack css={verticalRhythm.gap.s}>
-              <Span>{page.blogPost.share}</Span>
-              <Socials title={frontmatter.title} />
-            </HStack>
-            <Avatar
-              image={avatar}
-              name={component.avatar.name}
-              bio={component.avatar.bio}
-              href={localizePath(LINKS.about, lang)}
-            />
-          </VStack>
-        </footer>
+        <PostFooter
+          frontmatter={frontmatter}
+          dictionary={component.post}
+          avatar={{
+            image: avatar,
+            name: component.avatar.name,
+            bio: component.avatar.bio,
+            href: localizePath(LINKS.about, lang)
+          }}
+        />
       </Article>
       <Pagination prev={prev} next={next} dictionary={component.pagination} />
       <SupportMe lang={lang} dictionary={section.supportMe} />
@@ -216,13 +157,8 @@ export default async function Blog(props: NestedPageProps) {
             <Post
               key={frontmatter.slug}
               lang={lang}
+              frontmatter={frontmatter}
               dictionary={component.post}
-              image={frontmatter.image}
-              date={frontmatter.date}
-              readingTime={frontmatter.readingTime}
-              title={frontmatter.title}
-              description={frontmatter.description}
-              slug={frontmatter.slug}
             />
           ))}
         </Section>

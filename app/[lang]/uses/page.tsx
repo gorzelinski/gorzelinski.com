@@ -79,16 +79,7 @@ export default async function Uses(props: PageProps) {
         <P size="l" color="subtle" css={verticalRhythm.marginBottom.m}>
           {frontmatter.description}
         </P>
-        <Figure
-          marginX={{
-            base: '-m',
-            sm: '-l',
-            md: '-xl',
-            lg: '-2xl',
-            xl: '-4xl'
-          }}
-          textAlign="center"
-        >
+        <Figure margin="bleed" textAlign="center">
           <Image
             aspectRatio="auto"
             src={`/images${LINKS.uses}${frontmatter.image.src}`}

@@ -1,8 +1,8 @@
 import type { Dictionary, Locale, Post } from '@/types'
 
-export type PostProps = {
+export type PostHeaderProps = {
   lang: Locale
-  dictionary: Dictionary['component']['post']
+  slug: string
   frontmatter: Post
-  priority?: boolean
+  dictionary: Dictionary['component']['post']
 }

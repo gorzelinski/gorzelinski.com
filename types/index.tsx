@@ -1,6 +1,6 @@
+export { type PreChildrenProps, type PreProps } from './code'
 export { type Dictionary } from './dictionary'
 export { type I18nConfig, type Locale, type Region } from './i18n'
-export { type MetaFontOptions, type MetaImageProps } from './meta'
 export {
   type Frontmatter,
   type MDX,
@@ -10,6 +10,7 @@ export {
   type Post,
   type Project
 } from './mdx'
+export { type MetaFontOptions, type MetaImageProps } from './meta'
 export { type NewsletterStates } from './newsletter'
 export {
   type PageProps,
