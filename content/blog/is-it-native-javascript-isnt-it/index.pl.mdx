@@ -18,7 +18,7 @@ Pierwszy raz, gdy użyłem frameworka Gatsby, zauważyłem dziwny fragment kodu.
 const defaultTitle = site.siteMetadata?.title
 ```
 
-Zastanawiałem się: “O co chodzi z tym znakiem zapytania po kropce? To jest jakaś specjalna składnia Gatsby?”. Wątpiłem w to, więc zacząłem szukać informacji. Po krótkich poszukiwaniach i googlowaniu głupich pytań, znalazłem termin, którego szukałem - **optional chaining.** Byłem zaskoczony - to jest natywny JavaScript. Składnia ta została zaprezentowana w ES2020 (w dniu, w którym piszę ten post jest na czwartym etapie procesu wdrażania). Najpierw przyjrzymy się kilku błędom, aby zobaczyć dlaczego jest użyteczna.
+Zastanawiałem się: „O co chodzi z tym znakiem zapytania po kropce? To jest jakaś specjalna składnia Gatsby?” Wątpiłem w to, więc zacząłem szukać informacji. Po krótkich poszukiwaniach i googlowaniu głupich pytań znalazłem termin, którego szukałem — optional chaining. Byłem zaskoczony — to jest natywny JavaScript. Składnia ta została zaprezentowana w ES2020 (w dniu, w którym piszę ten post, jest na czwartym etapie procesu wdrażania). Najpierw przyjrzymy się kilku błędom, aby zobaczyć, dlaczego jest użyteczna.
 
 <Callout variant="info">
 
@@ -26,7 +26,7 @@ Zastanawiałem się: “O co chodzi z tym znakiem zapytania po kropce? To jest j
 
 </Callout>
 
-Jeżeli nie jesteś kompletnym nowicjuszem JavaScript, prawdopodobnie widziałeś wiadomość jak ta: “Cannot read properties of undefined”. Zwykle oznacza, że próbujesz uzyskać dostęp do nieistniejącej wartości zagnieżdżonego obiektu. Odtwórzmy ten błąd, ale tym razem celowo. Wyobraź sobie, że chcesz wyświetlić dokładne informacje o komputerach - stacjonarnych i laptopach. Składają się prawie z tych samych części, ale niektóre laptopy nie mają dedykowanej karty graficznej - nie ma o niej informacji. Jeżeli zechcesz uzyskać do niej dostęp, otrzymasz nasz błąd.
+Jeżeli nie jesteś kompletnym nowicjuszem JavaScript, prawdopodobnie widziałeś wiadomość jak ta: „Cannot read properties of undefined”. Zwykle oznacza, że próbujesz uzyskać dostęp do nieistniejącej wartości zagnieżdżonego obiektu. Odtwórzmy ten błąd, ale tym razem celowo. Wyobraź sobie, że chcesz wyświetlić dokładne informacje o komputerach — stacjonarnych i laptopach. Składają się prawie z tych samych części, ale niektóre laptopy nie mają dedykowanej karty graficznej — nie ma o niej informacji. Jeżeli zechcesz uzyskać do niej dostęp, otrzymasz nasz błąd.
 
 ```js
 const desktop = {
@@ -68,7 +68,7 @@ const laptop = {
 const info = laptop.graphicsCard.manufacturer //Brak błędu. Zwraca ""
 ```
 
-A co gdybyśmy nie mogli? Nie zawsze mamy kontrolę nad API. Innym problemem jest sytuacja, gdy obiekt ma więcej wartości - każda z nich to musiałby być pusty `string`, `null`, itp. Średni pomysł. JavaScript jest dynamicznym językiem programowania i wartości mogą być `null` albo `undefined`. Musimy radzić sobie z takimi sytuacjami. Możemy użyć wyrażeń logicznych, aby rozwiązać ten problem.
+A co gdybyśmy nie mogli? Nie zawsze mamy kontrolę nad API. Innym problemem jest sytuacja, gdy obiekt ma więcej wartości — każda z nich to musiałby być pusty `string`, `null` itp. Średni pomysł. JavaScript jest dynamicznym językiem programowania i wartości mogą być `null` albo `undefined`. Musimy radzić sobie z takimi sytuacjami. Możemy użyć wyrażeń logicznych, aby rozwiązać ten problem.
 
 ```js
 const laptop = {
@@ -81,7 +81,7 @@ const laptop = {
 const info = laptop && laptop.graphicsCard && laptop.graphicsCard.manufacturer //undefined
 ```
 
-Ten kod działa. Ale jest rozwlekły i niezgrabny. Chcemy się dostać do jednej wartości, a potrzebujemy dwóch operatorów logicznych. Wyobraź sobie, że jest ich wiele. Może składnia warunkowa pomoże.
+Ten kod działa. Jednakże jest rozwlekły i niezgrabny. Chcemy się dostać do jednej wartości, a potrzebujemy dwóch operatorów logicznych. Wyobraź sobie, że jest ich wiele. Może składnia warunkowa pomoże.
 
 ```js
 const laptop = {
@@ -98,7 +98,7 @@ const info = laptop
     : laptop.graphicsCard.manufacturer //undefined
 ```
 
-Pisałem coś o niezgrabnym kodzie? To wygląda nawet gorzej. Zagnieżdżony operator trójskładnikowy to rzadko jest dobry pomysł. Ale JavaScript ma przecież składnię do obsługi błędów. Spróbujmy złapać ten błąd.
+Pisałem coś o niezgrabnym kodzie? To wygląda nawet gorzej. Zagnieżdżony operator trójskładnikowy to rzadko jest dobry pomysł. Tymczasem JavaScript ma przecież składnię do obsługi błędów. Spróbujmy złapać ten błąd.
 
 ```js
 const laptop = {
@@ -116,7 +116,7 @@ try {
 }
 ```
 
-To jest bardziej czytelne, ale nadal rozwlekłe. Definiujemy nowe zakresy pomiędzy klamrami i nie możemy użyć `const`. Pora rozwiązać ten problem jak prawdziwy programista JavaScript - użyjmy zewnętrznej biblioteki!
+To jest bardziej czytelne, ale nadal rozwlekłe. Definiujemy nowe zakresy pomiędzy klamrami i nie możemy użyć `const`. Pora rozwiązać ten problem, jak prawdziwy programista JavaScript — użyjmy zewnętrznej biblioteki!
 
 ```js
 const R = require('ramda')
@@ -131,7 +131,7 @@ const laptop = {
 const info = R.path(['graphicsCard', 'manufacturer'], laptop) //undefined
 ```
 
-Ten fragment jest zwięzły i czytelny. Ale czy naprawdę potrzebujemy zewnętrznej biblioteki do czegoś tak podstawowego? Nie, już nie. Optional chaining przychodzi na ratunek!
+Ten fragment jest zwięzły i czytelny. Jednakowoż czy naprawdę potrzebujemy zewnętrznej biblioteki do czegoś tak podstawowego? Nie, już nie. Optional chaining przychodzi na ratunek!
 
 ```js
 const laptop = {
@@ -157,7 +157,7 @@ const laptop = {
 const info = laptop.nonExistingMethod?.() //undefined
 ```
 
-Obiekt nie ma żadnej metody. Mimo to fragment powyżej nie wyrzuca wyjątku. Zwraca `undefined`. Pójdźmy dalej - czy można użyć tego operatora z tablicami? Tak, można.
+Obiekt nie ma żadnej metody. Mimo to fragment powyżej nie wyrzuca wyjątku. Zwraca `undefined`. Pójdźmy dalej — czy można użyć tego operatora z tablicami? Tak, można.
 
 ```js
 const laptop = {
@@ -171,7 +171,7 @@ Mimo że nie ma czterech elementów w tablicy, kod nie zwraca błędu.
 
 ## Nullish coalescing operator
 
-Jeżeli “dodamy” kolejny znak zapytania do naszego operatora i usuniemy kropkę, otrzymamy nowy operator logiczny - **nullish coalescing operator.**
+Jeżeli „dodamy” kolejny znak zapytania do naszego operatora i usuniemy kropkę, otrzymamy nowy operator logiczny — **nullish coalescing operator.**
 
 ```js
 const laptop = {
@@ -183,7 +183,7 @@ const laptop = {
 const info = laptop.graphicsCard?.manufacturer ?? 'integrated' //integrated
 ```
 
-Możesz interpretować powyższy fragment w ten sposób: "Jeżeli istnieje producent karty graficznej w obiekcie laptop, przypisz tę wartość do zmiennej info. W innym wypadku przypisz wyraz 'integrated'". Z poprzedniej sekcji wiemy, że optional chaining zwraca `undefined`. Następnie interpreter przechodzi do logicznego operatora. Nullish coalescing operator to specjalny przypadek logicznego OR. Zwraca prawą część wyrażenia, gdy lewa część jest `null`lub `undefined`. Logiczne OR zwraca prawą część jeżeli po lewej stronie jest dowolna wartość `falsy`.
+Możesz interpretować powyższy fragment w ten sposób: „Jeżeli istnieje producent karty graficznej w obiekcie laptop, przypisz tę wartość do zmiennej info. W innym wypadku przypisz wyraz 'integrated'”. Z poprzedniej sekcji wiemy, że optional chaining zwraca `undefined`. Następnie interpreter przechodzi do logicznego operatora. Nullish coalescing operator to specjalny przypadek logicznego OR. Zwraca prawą część wyrażenia, gdy lewa część jest `null` lub `undefined`. Logiczne OR zwraca prawą część, jeżeli po lewej stronie jest dowolna wartość `falsy`.
 
 ```js
 const a = null ?? 'default' //"default"
@@ -196,7 +196,7 @@ const f = NaN || 'default' //"default"
 const g = 0 || 'default' //"default" - zwraca "default" dla każdego falsy
 ```
 
-Takie zachowanie logicznego OR może prowadzić to niespodziewanych błędów. Na przykład, gdy chcemy domyślną liczbę, ale 0 też jest poprawną, spodziewaną wartością. Dlatego nullish coalescing operator jest przydatny. Jest bardziej restrykcyjny i pomaga uniknąć takich błędów. Ale nie zastępuje on logicznego OR. Nie możesz także łączyć go z innymi operatorami logicznymi bez nawiasów.
+Takie zachowanie OR może prowadzić to niespodziewanych błędów. Na przykład, gdy chcemy domyślną liczbę, ale 0 też jest poprawną, spodziewaną wartością. Dlatego nullish coalescing operator jest przydatny. Jest bardziej restrykcyjny i pomaga uniknąć takich błędów. Jakkolwiek nie zastępuje on logicznego OR. Nie możesz także łączyć go z innymi operatorami logicznymi bez nawiasów.
 
 <Callout variant="danger">
 
@@ -208,15 +208,15 @@ Powyższy kod zwraca błąd składni.
 
 <Callout variant="success">
 
-`(null || undefined) ?? "default”`
+`(null || undefined) ?? "default"`
 
 </Callout>
 
-Powyższy kod jest poprawny i zwraca “default”
+Powyższy kod jest poprawny i zwraca "default".
 
 ## Bonus - logical nullish assignment
 
-Zbierając informację do tego posta, znalazłem jeszcze jeden operator z podwójnym znakiem zapytania. “Dodając” znak równości do nullish coalescing operator uzyskamy **logical nullish assignment.** Łatwo wydedukować co robi. Zamiast zwracania, przypisuje konkretną wartość do x, jeżeli x jest nullish (null lub undefined).
+Zbierając informację do tego posta, znalazłem jeszcze jeden operator z podwójnym znakiem zapytania. „Dodając” znak równości do nullish coalescing operator uzyskamy **logical nullish assignment.** Łatwo wydedukować, co robi. Zamiast zwracania, przypisuje konkretną wartość do x, jeżeli x jest nullish (null lub undefined).
 
 ```js
 const laptop = {
