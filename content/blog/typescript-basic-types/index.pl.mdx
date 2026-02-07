@@ -1,5 +1,5 @@
 ---
-title: TypeScript - podstawowe typy
+title: TypeScript — podstawowe typy
 description: 'Wraz z rosnącym wykorzystaniem TypeScripta, myślę, że nadszedł czas, aby zacząć się go uczyć. Czym jest? Po co go używać? Postaramy się odpowiedzieć na te pytania i nauczyć się kilkunastu podstawowych typów.'
 date: 2023-03-05T11:00:00+02:00
 updated: 2023-03-05T11:00:00+02:00
@@ -12,11 +12,11 @@ tags: ['typescript', 'ts', 'javascript', 'js', 'programming']
 type: 'post'
 ---
 
-Niedawno zacząłem uczyć się TypeScripta (w zasadzie kodowałem wcześniej w Angularze, więc TypeScript nie jest dla mnie zupełnie nowy, ale od tamtej pory nie używałem go często). Na początku miałem wątpliwości, nie będę kłamał. Kod w tym języku wydawał mi się opasły i nieelegancki. Ale bądźmy szczerzy - jedynym minusem TypeScripta jest to, że musisz poświęcić czas na naukę. Jestem tylko człowiekiem, więc zmiana może być przerażająca. Ale jedyną stałą życiu jest zmiana. Zmiany mogą być dobre. A wraz z rosnącym wykorzystaniem TypeScripta, to jest dobry moment żeby zacząć się go uczyć. Ucz się ze mną!
+Niedawno zacząłem uczyć się TypeScripta (w zasadzie kodowałem wcześniej w Angularze, więc TypeScript nie jest dla mnie zupełnie nowy, ale od tamtej pory nie używałem go często). Na początku miałem wątpliwości, nie będę kłamał. Kod w tym języku wydawał mi się opasły i nieelegancki. Ale bądźmy szczerzy — jedynym minusem TypeScripta jest to, że musisz poświęcić czas na naukę. Jestem tylko człowiekiem, więc zmiana może być przerażająca. Jedyną jednak stałą życiu jest zmiana. Zmiany mogą być dobre. A wraz z rosnącym wykorzystaniem TypeScripta, to jest dobry moment żeby zacząć się go uczyć. Ucz się ze mną!
 
 ## Czym jest TypeScript?
 
-U podstaw, TypeScript jest **nadzbiorem** JavaScriptu. Co to znaczy? Już wyjaśniam zagadnienie. Pewnie pamiętasz zbiory ze szkoły - wiesz, te przecinające się kółka. Jest to diagram Venna - graficzna reprezentacja, która pokazuje logiczne relacje pomiędzy tymi zbiorami. Podobna relacja zachodzi pomiędzy językiem JavaScript i TypeScript - TypeScript to nadzbiór JavaScriptu lub JavaScript to podzbiór TypeScripta. Każda linia kodu JS jest poprawnym kodem TS, ale nie odwrotnie.
+U podstaw, TypeScript jest **nadzbiorem** JavaScriptu. Co to znaczy? Już wyjaśniam zagadnienie. Pewnie pamiętasz zbiory ze szkoły — wiesz, te przecinające się kółka. Jest to diagram Venna — graficzna reprezentacja, która pokazuje logiczne relacje pomiędzy tymi zbiorami. Podobna relacja zachodzi pomiędzy językiem JavaScript i TypeScript — TypeScript to nadzbiór JavaScriptu lub JavaScript to podzbiór TypeScripta. Każda linia kodu JS jest poprawnym kodem TS, ale nie odwrotnie.
 
 ![JavaScript i TypeScript diagram venna](js-ts-venn-diagram.png)
 
@@ -28,11 +28,11 @@ To znaczy, że TypeScript rozbudowuje JavaScript. Dodaje nowe funkcjonalności i
 
 “No dobra, po co pisać kod, którego przeglądarki nie rozpoznają?”. Istnieje kilka zalet.
 
-- Przede wszystkim, TypeScript zmusza cię, abyś myślał więcej o swoim kodzie i celach. Wszystkie twoje intencje są spisane - nie ma miejsca na domysły.
-- TypeScript dodaje nowe funkcjonalności - niedostępne w bazowym języku - jak np. interfejsy czy generyki.
+- Przede wszystkim, TypeScript zmusza cię, abyś myślał więcej o swoim kodzie i celach. Wszystkie twoje intencje są spisane — nie ma miejsca na domysły.
+- TypeScript dodaje nowe funkcjonalności — niedostępne w bazowym języku — jak np. interfejsy czy generyki.
 - TypeScript oferuje meta-programistyczne funkcjonalności jak dekoratory.
 - Dzięki krokowi kompilacji, możesz używać współczesnej składni języka JavaScript i nie przejmować się wsparciem dla przeglądarek. Jest to podobna zaleta jak w przypadku używania kompilatora Babel.
-- Wiele opcji konfiguracji - możesz skonfigurować kompilator według swoich potrzeb.
+- Wiele opcji konfiguracji — możesz skonfigurować kompilator według swoich potrzeb.
 - Jak nazwa wskazuje, oferuje on typy. Na nich skupimy się w następnych sekcjach.
 - Lepsze autouzupełnianie w edytorach tekstu i IDE.
 
@@ -44,7 +44,7 @@ TypeScript jest typowany statycznie. Definiujemy typy podczas rozwoju oprogramow
 
 ## Typy TypeScript
 
-Zacznijmy od tego, że TypeScript dostarcza dodatkowe typy do języka JavaScript. Istnieją typy które są dostępne zarówno w JavaScripcie jak i w TypeScripcie. Ale istnieją też typy dostarczone przez nasz nadzbiór.
+Zacznijmy od tego, że TypeScript dostarcza dodatkowe typy do języka JavaScript. Istnieją typy które są dostępne zarówno w JavaScripcie jak i w TypeScripcie. Istnieją jednak też typy dostarczone przez nasz nadzbiór.
 
 Podstawowe typy dostępne w JS i TS to:
 
@@ -84,8 +84,8 @@ Podobnie do bazowego języka, TypeScript nie definiuje różnych typów liczb. L
 ```typescript
 const PI = 3.14 // TypeScript wnioskuje, że ta liczba zawsze powinna równać się 3.14.
 let age = 25 // TypeScript wnioskuje, że to ma być liczba.
-// W przypadku maksymalnego wieku dziewczyny DiCaprio to również jest stała - wiem.
-let age: number = 25 // Ten kod działa ale jest redundantny - zła praktyka.
+// W przypadku maksymalnego wieku dziewczyny DiCaprio to również jest stała — wiem.
+let age: number = 25 // Ten kod działa ale jest redundantny — zła praktyka.
 let age: number // Tu ma to sens, ponieważ nie ma inicjalizacji zmiennej.
 ```
 
@@ -101,7 +101,7 @@ let name: string // Tej zmiennej będzie przypisany string.
 
 ### Boolean
 
-Najbardziej podstawowy typ danych - reprezentuje wartość true lub false. W przeciwieństwie to JavaScriptu, TypeScript nie posiada wartości “truthy” i “falsy”.
+Najbardziej podstawowy typ danych — reprezentuje wartość true lub false. W przeciwieństwie to JavaScriptu, TypeScript nie posiada wartości “truthy” i “falsy”.
 
 ```typescript
 let isDone: boolean
@@ -109,7 +109,7 @@ let isDone: boolean
 
 ### Object
 
-Typ obiektu definiujesz podobnie do standardowych obiektów JS. Jednakże zamiast par klucz-wartość, zapisujesz pary klucz-typ. Przyjrzyj się składni - odrobinę się różni.
+Typ obiektu definiujesz podobnie do standardowych obiektów JS. Jednakże zamiast par klucz-wartość, zapisujesz pary klucz-typ. Przyjrzyj się składni — odrobinę się różni.
 
 ```typescript
 const person = {
@@ -138,7 +138,7 @@ const person: { name: string } = {
 
 ### Array
 
-W języku JavaScript, możesz mieszać różne typy danych - jedna tablica może składać się z liczb i łańcuchów znaków. Każda tablica JS jest poprawną tablicą TS. Tablice TS mogą być elastyczne, ale również restrykcyjne.
+W języku JavaScript, możesz mieszać różne typy danych — jedna tablica może składać się z liczb i łańcuchów znaków. Każda tablica JS jest poprawną tablicą TS. Tablice TS mogą być elastyczne, ale również restrykcyjne.
 
 ```typescript
 const person = {
@@ -159,7 +159,7 @@ let hobbies: any[]
 
 ### Tuple
 
-Typ tuple nie jest dostępny w języku JavaScript - jest dodany przez TypeScript. Tuple to tablica o stałej długości i typie. Może być przydatna, gdy wcześniej znasz dokładną strukturę tablicy.
+Typ tuple nie jest dostępny w języku JavaScript — jest dodany przez TypeScript. Tuple to tablica o stałej długości i typie. Może być przydatna, gdy wcześniej znasz dokładną strukturę tablicy.
 
 ```typescript
 const person = {
@@ -223,8 +223,8 @@ const PI = 3.14 // TypeScript oczekuje tej konkretnej liczby, nie dowolnej liczb
 function combine(
 	i1: number | string,
 	i2: number | string
-	// Union połączone z typem literal - tylko dwa możliwe łańcuchy znaków.
-	conversion: "as-text" | "as-number"
+	// Union połączone z typem literal — tylko dwa możliwe łańcuchy znaków.
+	conversion: „as-text" | „as-number"
 ) {
 	const result = i1 + i2
 	return result
@@ -233,7 +233,7 @@ function combine(
 
 ### Custom
 
-Poza wbudowanymi typami, TypeScript pozwala ci także definiować niestandardowe typy (znane także jako aliasy typów). Istnieje specjalne słowo kluczowe - `type` - do tego celu. Możesz wrzucić cokolwiek do niestandardowego typu: sting, obiekt czy unie. Po zdefiniowaniu niestandardowego typu, możesz użyć tego aliasu w wielu miejscach w kodzie. W ten sposób unikasz duplikacji kodu.
+Poza wbudowanymi typami, TypeScript pozwala ci także definiować niestandardowe typy (znane także jako aliasy typów). Istnieje specjalne słowo kluczowe — `type` — do tego celu. Możesz wrzucić cokolwiek do niestandardowego typu: sting, obiekt czy unie. Po zdefiniowaniu niestandardowego typu, możesz użyć tego aliasu w wielu miejscach w kodzie. W ten sposób unikasz duplikacji kodu.
 
 ```typescript
 // Konwencja mówi, żeby zdefiniować niestandardowe typy z wielkiej litery.
@@ -264,7 +264,7 @@ function add(n1: number, n2: number) {
 
 ### Typy zwracane przez funkcję
 
-Podobnie możesz ustawiać typy wartościom zwracanym przez funkcje. `void` jest często używany z funkcjami, które nie zwracają żadnej wartości. Jest jak przeciwieństwo typu `any` - brak jakiejkolwiek wartości.
+Podobnie możesz ustawiać typy wartościom zwracanym przez funkcje. `void` jest często używany z funkcjami, które nie zwracają żadnej wartości. Jest jak przeciwieństwo typu `any` — brak jakiejkolwiek wartości.
 
 ```typescript
 function add(n1: number, n2: number) {
@@ -297,7 +297,7 @@ function printResult(num: number): undefined {
 
 ### Wyrażenie typu funkcji
 
-Istnieje także typ `Function` w języku TypeScript. Opisuje on właściwości takie jak `bind` lub `apply` - dostępne we wszystkich funkcjach w JavaScripcie. Jednakże, deklarowanie niespecyficznej funkcji nie jest zbyt przydatne. Lepszym sposobem na ich opisywanie jest wyrażenie typu funkcji. Jeżeli przypomina ci funkcje strzałkowe - masz rację - składnia jest podobna.
+Istnieje także typ `Function` w języku TypeScript. Opisuje on właściwości takie jak `bind` lub `apply` — dostępne we wszystkich funkcjach w JavaScripcie. Jednakże, deklarowanie niespecyficznej funkcji nie jest zbyt przydatne. Lepszym sposobem na ich opisywanie jest wyrażenie typu funkcji. Jeżeli przypomina ci funkcje strzałkowe — masz rację — składnia jest podobna.
 
 ```typescript
 // Deklarowanie niespecyficznej funkcji.
