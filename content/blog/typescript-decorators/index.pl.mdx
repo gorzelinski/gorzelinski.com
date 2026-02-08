@@ -1,5 +1,5 @@
 ---
-title: TypeScript - dekoratory
+title: TypeScript — dekoratory
 description: 'Udekorujmy nasz tor... kod używając dekoratorów TypeScript. Dekoratory są smacznym dodatkiem do klas i zapewniają składnię do metaprogramowania.'
 date: 2023-10-21T17:00:00+02:00
 updated: 2023-10-21T17:00:00+02:00
@@ -13,7 +13,7 @@ tags:
 type: 'post'
 ---
 
-Dekoratory to eksperymentalna funkcjonalność w TypeScripcie. Zostały dodane w TypeScript 5.0 i mogą być dołączone do 5 różnych rzeczy: deklaracji klasy, metody, akcesora, właściwości i parametru. Zatem dotyczą głównie klasy. Możesz je wykorzystywać w metaprogramowaniu - technice, w której program ma wiedzę o samym sobie, albo może sobą manipulować. Nie mają one bezpośredniego wpływu na końcowego użytkownika. Jest to dobrze dostrojony instrument do pisania kodu, który jest łatwy do użycia przez innych programistów. Dostrójmy nasze instrumenty mózgowe, aby nauczyć się dekoratorów!
+Dekoratory to eksperymentalna funkcjonalność w TypeScripcie. Zostały dodane w TypeScript 5.0 i mogą być dołączone do 5 różnych rzeczy: deklaracji klasy, metody, akcesora, właściwości i parametru. Zatem dotyczą głównie klasy. Możesz je wykorzystywać w metaprogramowaniu, technice, w której program ma wiedzę o samym sobie, albo może sobą manipulować. Nie mają one bezpośredniego wpływu na końcowego użytkownika. Jest to dobrze dostrojony instrument do pisania kodu, który jest łatwy do użycia przez innych programistów. Dostrójmy nasze instrumenty mózgowe, aby nauczyć się dekoratorów!
 
 <Callout variant="info">
 
@@ -23,7 +23,7 @@ W momencie pisania, dekoratory są nadchodzącą [funkcjonalnością w ECMAScrip
 
 ## Konfiguracja
 
-Zanim zaczniemy się uczyć dekoratorów, mamy trochę pracy z konfiguracją. Aby uruchomić tą eksperymentalną funkcjonalność, masz dwie opcje.
+Zanim zaczniemy się uczyć dekoratorów, mamy trochę pracy z konfiguracją. Aby uruchomić tę eksperymentalną funkcjonalność, masz dwie opcje.
 
 Możesz dodać opcję do TypeScript CLI.
 
@@ -62,17 +62,17 @@ class Agent {
 }
 ```
 
-Dekoratory, tak jak funkcje, mogą otrzymywać argumenty. Argumenty zależą od typu dekoratora. Dekorator klasy otrzymuje jeden, `target` - jest to konstruktor klasy. Jeżeli dekorator zwraca wartość, zastępuje ona deklarację klasy. Później przejdziemy przez pozostałe typy dekoratorów.
+Dekoratory, tak jak funkcje, mogą otrzymywać argumenty. Argumenty zależą od typu dekoratora. Dekorator klasy otrzymuje jeden, `target` — jest to konstruktor klasy. Jeżeli dekorator zwraca wartość, zastępuje ona deklarację klasy. Później przejdziemy przez pozostałe typy dekoratorów.
 
 <Callout variant="warning">
 
-Dekoratory zwykle wykorzystują PascalCase (lub UpperCamelCase) - powinny rozpoczynać się wielką literą.
+Dekoratory zwykle wykorzystują PascalCase (lub UpperCamelCase) — powinny rozpoczynać się wielką literą.
 
 </Callout>
 
 ## Fabryka dekoratorów
 
-Możemy zagnieździć kolejną funkcję w naszym dekoratorze, i w ten sposób, dostaniemy fabrykę dekoratorów. Fabryka dekoratorów zwraca funkcję dekoratora. Wykorzystując ten wzorzec, możemy skonfigurować dekorator przed dodaniem go do czegoś. Jeżeli odczuwasz tu funkcje wyższego rzędu, to twoja intuicja cię nie myli.
+Możemy zagnieździć kolejną funkcję w naszym dekoratorze i w ten sposób, dostaniemy fabrykę dekoratorów. Fabryka dekoratorów zwraca funkcję dekoratora. Wykorzystując ten wzorzec, możemy skonfigurować dekorator przed dodaniem go do czegoś. Jeżeli odczuwasz tu funkcje wyższego rzędu, to twoja intuicja cię nie myli.
 
 ```typescript
 function Logger(message: string) {
@@ -105,7 +105,7 @@ Możemy wykorzystać parametry, aby posyłać wartości do tego wewnętrznego de
 
 ## Wiele dekoratorów
 
-“A co z dodawaniem większej ilość dekoratorów? Możemy to zrobić?”. Tak, możemy dodać więcej niż jeden dekorator do klasy. Albo gdziekolwiek dekoratory się aplikują. Składnia jest prosta - układaj dekoratory jeden na drugim, jak naleśniki o poranku.
+„A co z dodawaniem większej ilość dekoratorów? Możemy to zrobić?”. Tak, możemy dodać więcej niż jeden dekorator do klasy. Albo gdziekolwiek dekoratory się aplikują. Składnia jest prosta — układaj dekoratory jeden na drugim jak naleśniki o poranku.
 
 ```typescript
 function Greeting(constructor: Function) {
@@ -127,7 +127,7 @@ class Agent {
 }
 ```
 
-To rodzi kolejne pytanie - w jakiej kolejności są uruchamiane? Uruchamiane są od dołu do góry. Najniższy dekorator jako pierwszy, a później dekoratory powyżej.
+To rodzi kolejne pytanie — w jakiej kolejności są uruchamiane? Uruchamiane są od dołu do góry. Najniższy dekorator jako pierwszy, a później dekoratory powyżej.
 
 ```typescript
 function FirstDecorator(constructor: Function) {
@@ -149,7 +149,7 @@ class Agent {
 }
 ```
 
-“No dobra, a co z fabrykami? Czy one też działają od dołu do góry?”. W zasadzie… nie. Przeciwnie - uruchamiają się od góry do dołu - w standardowej kolejności wykonywania. Może być to mylące, dlatego napisałem wiersz, który pomoże nam zapamiętać:
+„No dobra, a co z fabrykami? Czy one też działają od dołu do góry?”. W zasadzie… nie. Przeciwnie — uruchamiają się od góry do dołu — w standardowej kolejności wykonywania. Może być to mylące, dlatego napisałem wiersz, który pomoże nam zapamiętać:
 
 > Na górze róże, na dole fiołki,  
 > dekoratory lecą od dołu do góry,  
@@ -185,22 +185,22 @@ class Agent {
 
 ## Kiedy wykonują się dekoratory?
 
-Skoro dotykamy wykonywanie, złapmy ten temat i sprawdźmy kiedy właściwie dekoratory się uruchamiają. Jeżeli przyjrzysz się poprzednim fragmentom kodu, zauważysz, że żadna z powyższych klas nie została zainicjalizowana. Niemniej, zobaczysz wiadomości w konsoli. Dzieje się tak dlatego, ponieważ dekoratory (bez względu na typ) wykonują się kiedy **definiujesz klasę.** **Nie kiedy ją inicjalizujesz.** Nie są wykonywane w trakcie wykonywania programu. Pozwalają na dodanie zakulisowej pracy konfiguracyjnej kiedy klasa jest zdefiniowana.
+Skoro dotykamy wykonywanie, złapmy ten temat i sprawdźmy kiedy właściwie dekoratory się uruchamiają. Jeżeli przyjrzysz się poprzednim fragmentom kodu, zauważysz, że żadna z powyższych klas nie została zainicjalizowana. Niemniej, zobaczysz wiadomości w konsoli. Dzieje się tak, ponieważ dekoratory (bez względu na typ) wykonują się, kiedy **definiujesz klasę.** **Nie kiedy ją inicjalizujesz.** Nie są wykonywane w trakcie wykonywania programu. Pozwalają na dodanie zakulisowej pracy konfiguracyjnej, kiedy klasa jest zdefiniowana.
 
 ## Typy dekoratorów
 
-Wspomniałem o różnych typach dekoratorów. Mamy opcje jeżeli chodzi o dodawanie dekoratorów. Wcześniej widzieliśmy dekoratory klasy. Ale nie musimy ich aplikować bezpośrednio do klas. Dekoratory możemy dodać np. do właściwości. To jakie argumenty dekorator otrzyma zależy od miejsca, w którym został dodany.
+Wspomniałem o różnych typach dekoratorów. Mamy opcje jeżeli chodzi o dodawanie dekoratorów. Wcześniej widzieliśmy dekoratory klasy. Nie musimy jednak ich aplikować bezpośrednio do klas. Dekoratory możemy dodać np. do właściwości. To jakie argumenty dekorator otrzyma zależy od miejsca, w którym został dodany.
 
-Podobna historia wiąże się ze zwracanymi wartościami. Niektóre dekoratory mają możliwość zwrócenia czegoś. To co otrzymasz z powrotem zależy od typu dekoratora, z którym pracujesz. Jednakże, tylko w niektórych dekoratorach zwracana wartość jest respektowana. Przejdźmy przez różne typy dekoratorów.
+Podobna historia wiąże się ze zwracanymi wartościami. Niektóre dekoratory mają możliwość zwrócenia czegoś. To co, otrzymasz z powrotem, zależy od typu dekoratora, z którym pracujesz. Jednakże tylko w niektórych dekoratorach zwracana wartość jest respektowana. Przejdźmy przez różne typy dekoratorów.
 
 ### Dekoratory właściwości
 
 Dekorator właściwości otrzymuje dwa argumenty:
 
-1. `target` - może być zarówno:
-   - Funkcją konstruktora klasy - dla statycznego członka.
-   - Prototypem klasy - dla członka instancji.
-2. `propertyKey` - nazwa właściwości.
+1. `target` — może być jednakowo:
+   - Funkcją konstruktora klasy — dla statycznego członka.
+   - Prototypem klasy — dla członka instancji.
+2. `propertyKey` — nazwa właściwości.
 
 Zwracana wartość będzie ignorowana.
 
@@ -224,11 +224,11 @@ class Agent {
 
 Aby uzyskać dostęp do właściwości, możemy wykorzystać akcesory. Do akcesorów również możemy dodać dekoratory. Argumenty, które otrzymują to:
 
-1. `target` - może być zarówno:
-   - Funkcją konstruktora klasy - dla statycznego członka.
-   - Prototypem klasy - dla członka instancji.
-2. `propertyKey` - nazwa właściwości.
-3. `descriptor` - [deskryptor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) właściwości dla członka. Deskryptor w akcesorze ma następujące opcje:
+1. `target` — może być jednakowo:
+   - Funkcją konstruktora klasy — dla statycznego członka.
+   - Prototypem klasy — dla członka instancji.
+2. `propertyKey` — nazwa właściwości.
+3. `descriptor` — [deskryptor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) właściwości dla członka. Deskryptor w akcesorze ma następujące opcje:
    - `get`
    - `set`
    - `enumerable`
@@ -266,11 +266,11 @@ class Agent {
 
 Dekoratory metod są podobne do tych z akcesorów. Główną różnicą są opcje deskryptora:
 
-1. `target` - może być zarówno:
-   - Funkcją konstruktora klasy - dla statycznego członka.
-   - Prototypem klasy - dla członka instancji.
-2. `propertyKey` - nazwa właściwości.
-3. `descriptor` - [deskryptor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) właściwości dla członka. Możemy wykorzystać ten parametr, aby nadpisać oryginalną implementację i wstrzyknąć dodatkową logikę. Deskryptor w metodzie ma następujące opcje:
+1. `target` — może być jednakowo:
+   - Funkcją konstruktora klasy — dla statycznego członka.
+   - Prototypem klasy — dla członka instancji.
+2. `propertyKey` — nazwa właściwości.
+3. `descriptor` — [deskryptor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) właściwości dla członka. Możemy wykorzystać ten parametr, aby nadpisać oryginalną implementację i wstrzyknąć dodatkową logikę. Deskryptor w metodzie ma następujące opcje:
    - `value`
    - `writable`
    - `enumerable`
@@ -308,11 +308,11 @@ class Agent {
 
 Możesz nawet dodać dekoratory do indywidualnych parametrów w metodzie. Ten typ dekoratora również przyjmuje trzy argumenty:
 
-1. `target` - może być zarówno:
-   - Funkcją konstruktora klasy - dla statycznego członka.
-   - Prototypem klasy - dla członka instancji.
-2. `propertyKey` - nazwa właściwości. Ale tu mała uwaga - jest to nazwa metody. Nie nazwa parametru.
-3. `parameterIndex` - pozycja parametru w liście parametrów funkcji.
+1. `target` — może być jednakowo:
+   - Funkcją konstruktora klasy — dla statycznego członka.
+   - Prototypem klasy — dla członka instancji.
+2. `propertyKey` — nazwa właściwości. Tu jednak mała uwaga — jest to nazwa metody. Nie nazwa parametru.
+3. `parameterIndex` — pozycja parametru w liście parametrów funkcji.
 
 Zwracana wartość będzie ignorowana.
 
@@ -350,7 +350,7 @@ Aby podsumować dekoratory, przygotowałem tabelę:
 
 ### Angular
 
-Jednym z popularniejszych frameworków, który wykorzystuje TypeScript jest Angular. Google zdecydowało, że Angular 2 będzie bazował na TypeScripcie, wymieniając statyczne typowanie jako jeden z powodów. Statyczne typy to zdecydowana zaleta, ale skupmy się na dekoratorach. Sprawdźmy jak Angular wykorzystuje dekoratory.
+Jednym z popularniejszych frameworków, który wykorzystuje TypeScript jest Angular. Google zdecydowało, że Angular 2 będzie bazował na TypeScripcie, wymieniając statyczne typowanie jako jeden z powodów. Statyczne typy to zdecydowana zaleta, ale skupmy się na dekoratorach. Sprawdźmy, jak Angular wykorzystuje dekoratory.
 
 ```typescript
 @Component({
@@ -385,4 +385,4 @@ Kontrolery są odpowiedzialne za obsługę przychodzących zapytań i zwracanie 
 
 ## Podsumowanie
 
-Pomimo że dekoratory nie wpływają na użytkownika końcowego, wpływają na jakość pracy programistów. Możesz wykorzystać je do obserwowania zmian wartości, transformowania parametrów, walidacji w trakcie wykonywania programu i na wiele innych sposobów. Zapewniają one elegancką składnie do modyfikowania lub rozszerzania zachowań klasy. Od niedawna TypeScript oferuje tę składnię jako część języka. Sprawdź moje poprzednie posty, aby dowiedzieć się więcej o OOP lub ogólnie o TypeScripcie.
+Pomimo że dekoratory nie wpływają na użytkownika końcowego, wpływają na jakość pracy programistów. Możesz wykorzystać je do obserwowania zmian wartości, transformowania parametrów, walidacji w trakcie wykonywania programu i na wiele innych sposobów. Zapewniają one elegancką składnię do modyfikowania lub rozszerzania zachowań klasy. Od niedawna TypeScript oferuje tę składnię jako część języka. Sprawdź moje poprzednie posty, aby dowiedzieć się więcej o OOP lub ogólnie o TypeScripcie.
