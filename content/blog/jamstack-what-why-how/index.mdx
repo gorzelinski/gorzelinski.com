@@ -1,6 +1,6 @@
 ---
 title: Jamstack. What, why, how?
-description: 'Websites and apps created with this new architecture characterize performance, security, and scalability.'
+description: 'Websites and apps created with this new architecture are characterized by performance, security, and scalability.'
 date: 2022-07-16T15:00:00+02:00
 updated: 2024-08-24T11:20:00+02:00
 image:
@@ -12,17 +12,17 @@ tags: ['jamstack', 'gatsby', 'javascript', 'js']
 type: 'post'
 ---
 
-Jamstack is an alternative approach for creating websites and applications. It differs from traditional monolithic architecture.
+Jamstack is an alternative approach for creating websites and applications. It differs from traditional monolithic architectures.
 
 ![It's a comparison between traditional monolithic architecture and new JAMstack architecture. In this new approach, CDN and microservices replace different servers (app, web, etc.).](jamstack-architecture.png)
 
-At the same time, it's not a bunch of random letters. People in the computer science field like acronyms. Jamstack is not an exception. The following letters mean:
+At the same time, it's not a bunch of random letters. People in the computer science field like acronyms. Jamstack is no exception. The following letters mean:
 
-- **JavaScript -** a scripting language interpreted by browsers. It is responsible for the dynamic parts of a website. You don't need to use vanilla JavaScript. Pick one of many frameworks if you like. The joke says that every six months, there is a new one.
-- **APIs -** interfaces that define interactions between software. Back-end operations - in this architecture - are abstracted to the APIs. You can reach them via HTTPS protocol.
-- **Markup -** document in some format. Pages - in this approach - are served as HTML files. You can generate them with Markdown, MDX, or Static Site Generator.
+- **JavaScript**—a scripting language interpreted by browsers. It is responsible for the dynamic parts of a website. You don't need to use vanilla JavaScript. Pick one of many frameworks if you like. The joke says that every six months, there is a new one.
+- **APIs**—interfaces that define interactions between software. Back-end operations—in this architecture—are abstracted to the APIs. You can reach them via HTTPS.
+- **Markup**—a document in some format. Pages—in this approach—are served as HTML files. You can generate them with Markdown, MDX, or a static site generator.
 
-Nevertheless, Jamstack is **not** a specific technology. This stack is not controlled (or defined) by any corporation. It is more like a movement and a community. Jamstack is a set of good practices and a working system. The system is convenient for developers and produces websites friendly for the users.
+Nevertheless, Jamstack is **not** a specific technology. This stack is not controlled (or defined) by any corporation. It is more like a movement and a community. Jamstack is a set of good practices and a working system. The system is convenient for developers and produces websites friendly for users.
 
 ## Why (not) use this approach?
 
@@ -30,9 +30,9 @@ Jamstack is the answer to many well-known problems associated with web developme
 
 ### Better performance
 
-Website performance matters. Web crawlers index websites considering performance as a significant factor. Users may leave if your website is loading slowly. I'm a patient guy (hey, I'm sitting here typing for another hour), but my patience is on the edge when I wait for a damn website to load. But I'm not alone. There was a study about [tolerable waiting time](https://www.tandfonline.com/doi/abs/10.1080/01449290410001669914). Most users are willing to wait for just about 2 seconds. And not all of them have fast internet connections.
+Website performance matters. Web crawlers index websites, considering performance a significant factor. Users may leave if your website is loading slowly. I'm a patient guy (hey, I'm sitting here typing for another hour), but my patience is on the edge when I wait for a damn website to load. But I'm not alone. There was a study about [tolerable waiting time](https://www.tandfonline.com/doi/abs/10.1080/01449290410001669914). Most users are willing to wait for just about 2 seconds. And not all of them have fast internet connections.
 
-Jamstack approach precompiles pages. A user, after a request, gets a finished page. You don't need to send many requests to different servers. CDN sends your website with all the assets. Distributed nature of a CDN allows sending them from the nearest edge. It shortens the route the files need to travel, and it saves time.
+The Jamstack approach precompiles pages. After a request, a user gets a finished page. You don't need to send many requests to different servers. A CDN sends your website with all the assets. The distributed nature of a CDN allows it to send them from the nearest edge. It shortens the route the files need to travel, and it saves time.
 
 ### Scalability
 
@@ -46,13 +46,13 @@ Besides hosting fees, Jamstack lowers the costs of a team. Simpler architecture 
 
 ### Improved security
 
-Simple architecture has one more benefit - improved security. Less number of elements means fewer weak links. You don't have to worry about server or database breaches. Hackers have a smaller [attack surface](https://en.wikipedia.org/wiki/Attack_surface) to penetrate.
+Simple architecture has one more benefit—improved security. Fewer elements mean fewer weak links. You don't have to worry about server or database breaches. Hackers have a smaller [attack surface](https://en.wikipedia.org/wiki/Attack_surface) to penetrate.
 
 ![You don't need to worry about a database if you don't use a database](roll-safe-meme.png)
 
 ### Developer's convenience
 
-Simplifying some tasks have a positive effect on a developer's working comfort. On their mental health, probably too. You don't have to focus on complex configurations - you can focus on writing code. And a happy developer is a productive one. It may make the project better.
+Simplifying some tasks has a positive effect on a developer's working comfort. On their mental health, probably too. You don't have to focus on complex configurations—you can focus on writing code. And a happy developer is a productive one. It may make the project better.
 
 ### There is no silver bullet
 
@@ -60,11 +60,11 @@ In software engineering, there is [no silver bullet](https://www.cgl.ucsf.edu/Ou
 
 ### The necessity of building an app
 
-Precompilation can be great, but it has flaws. Every change on the website needs to be preceded by the build phase. The changes are not instantaneous. It can be a problem for huge websites that change often. In their case build phase may take too long. And that costs time and money. Because of that, I would not advise making a new Facebook based on this approach.
+Precompilation can be great, but it has flaws. Every change on the website needs to be preceded by the build phase. The changes are not instantaneous. It can be a problem for huge websites that change often. In their case, build phase may take too long. And that costs time and money. Because of that, I would not advise making a new Facebook based on this approach.
 
 ### Use of dynamic data
 
-The dream of becoming the next Zuckerberg with this approach can be problematic for another reason - dynamic data. You can't generate users' (or other real-time) data earlier. Some applications cannot avoid them.
+The dream of becoming the next Zuckerberg with this approach can be problematic for another reason—dynamic data. You can't generate users' (or other real-time) data earlier. Some applications cannot avoid them.
 
 At the same time, it's not like you cannot create anything dynamic. Developers create Jamstack sites that are regularly updated. I've created this blog with Jamstack, although posts are published regularly (let's say). You can develop e-commerce with it. The problem may occur on a large scale - with numerous subpages and frequent updates.
 
@@ -78,9 +78,9 @@ To create a Jamstack project, you need to make decisions in several aspects.
 
 ### Content creation
 
-Contents in a Jamstack project are usually simple text files. They are in the same file structure as plugins, templates, and assets. Using Markdown or MDX, you can generate HTML pages that use custom components and templates (this blog post uses such a template). But, creating content this way requires specific syntax. For non-technical users, there are convenient alternatives.
+Content in a Jamstack project is usually stored in simple text files. It is in the same file structure as plugins, templates, and assets. Using Markdown or MDX, you can generate HTML pages that use custom components and templates (this blog post uses such a template). But creating content this way requires specific syntax. For non-technical users, there are convenient alternatives.
 
-**Headless CMS** is a service that offers a rich user interface available via browser. Using it, you can easily create and edit content. Headless means that only the data layer is editable. It's decoupled from the rendering layer (head), which you can choose. There may even be multiple rendering layers. Such a service exposes API for downloading data in the build phase. A few examples are:
+**Headless CMS** is a service that offers a rich user interface available via a browser. Using it, you can easily create and edit content. Headless means that only the data layer is editable. It's decoupled from the rendering layer (head), which you can choose. There may even be multiple rendering layers. Such a service exposes an API for downloading data in the build phase. A few examples are:
 
 - Sanity
 - Contentful
@@ -97,7 +97,7 @@ Contents in a Jamstack project are usually simple text files. They are in the sa
 
 ### Static Site Generator
 
-Having content, we need HTML pages to present it. You could code them by hand, which is reasonable for tiny websites. But, for most cases, it's worth using a Static Site Generator. It does what the name implies - it generates static pages using provided content. Almost. The name may insinuate the result is non-interactive. But it's not the case! Generated files are static, but the finished website may have dynamic features. It's usually the domain of external APIs. There are many generators in different programming languages:
+Having content, we need HTML pages to present it. You could code them by hand, which is reasonable for tiny websites. But, for most cases, it's worth using a Static Site Generator. It does what the name implies—it generates static pages using provided content. Almost. The name may insinuate the result is non-interactive. But it's not the case! Generated files are static, but the finished website may have dynamic features. It's usually the domain of external APIs. There are many generators in different programming languages:
 
 - [Next.js](/blog/next-js-overview-in-1000-words/)
 - Hugo
@@ -109,21 +109,21 @@ Having content, we need HTML pages to present it. You could code them by hand, w
 
 ### External APIs
 
-Many services offer various functionalities - from comments, through forms and searching to payment processing and e-commerce. You can even create your APIs, abstracting some logic into custom functions.
+Many services offer various functionalities—from comments, through forms and searching, to payment processing and e-commerce. You can even create your APIs, abstracting some logic into custom functions.
 
 ### Deployment
 
 When your app has all the required features, you need to deploy it somewhere. Today, on the market, there are some solid feature-rich hosting platforms. Beyond hosting, they offer options such as form processing, data analytics, and easy-to-configure CD. Check platforms like:
 
 - Vercel
-- Github Pages
+- GitHub Pages
 - Firebase
 - Azure Static Web Apps
 - Digital Ocean
 
 ### Can I board the Jamstack hype train?
 
-Before making a website with this architecture, consider its pros and cons. This approach is not ideal for every application. If you've decided and want such a fast website or have questions - [write to me](/blog/jamstack-what-why-how/#contact).
+Before making a website with this architecture, consider its pros and cons. This approach is not ideal for every application. If you've decided you want such a fast website or have questions, [write to me](/blog/jamstack-what-why-how/#contact).
 
 <Callout variant="info">
 
