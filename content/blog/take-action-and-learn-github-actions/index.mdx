@@ -12,27 +12,27 @@ tags: ['devops', 'github', 'actions', 'ci', 'cd']
 type: 'post'
 ---
 
-"Never spend 6 minutes doing something by hand when you can spend 6 hours failing to automate it." - the old joke goes. Even though, as programmers, we tend to overcomplicate things, there are obvious benefits of automation.
+“Never spend 6 minutes doing something by hand when you can spend 6 hours failing to automate it”—the old joke goes. Even though, as programmers, we tend to overcomplicate things, there are obvious benefits of automation.
 
-![How long can you work on making a routine task more efficient before you're spending more time than you save? - xkcd comic](xkcd-is-it-worth-the-time-2x.png)
+![How long can you work on making a routine task more efficient before you're spending more time than you save?—xkcd comic](xkcd-is-it-worth-the-time-2x.png)
 
-Think about it - it's not like your whole day is about programming. Other mundane or organizational tasks also need our attention - labeling issues, updating packages, integrating and deploying code, etc. Oh, and we shouldn't forget about everyone's favorite - meetings.
+Think about it—it's not like your whole day is about programming. Other mundane or organizational tasks also need our attention—labeling issues, updating packages, integrating and deploying code, etc. Oh, and we shouldn't forget about everyone's favorite—meetings.
 
-Over the last decade, developers created many automation tools and platforms like CircleCI, Jenkins, or Travis (not Scott) to solve some of the mentioned issues. But we will focus on a relatively new player in the game - GitHub Actions.
+Over the last decade, developers created many automation tools and platforms like CircleCI, Jenkins, or Travis (not Scott) to solve some of the mentioned issues. But we will focus on a relatively new player in the game—GitHub Actions.
 
 ## Not another CI/CD tool?
 
-Before we learn what GitHub Actions are, we should find out what they are not. "GitHub Actions is a CI/CD tool." While doing research, I repeatedly saw this misconception. And don't get me wrong - it is, but it doesn't have to be. The use case is broader. GitHub Actions is a platform to automate tasks with workflows. CI or CD is one of many possible workflows.
+Before we learn what GitHub Actions are, we should find out what they are not. “GitHub Actions is a CI/CD tool.” While doing research, I repeatedly saw this misconception. And don't get me wrong—it is, but it doesn't have to be. The use case is broader. GitHub Actions is a platform to automate tasks with workflows. CI or CD is one of many possible workflows.
 
 ## Why use GitHub Actions?
 
 Ok, but why pick them instead of other battle-tested solutions? There are a couple of reasons.
 
 - It doesn't require third-party integrations. Looking at statistics, you most likely use GitHub already.
-- The setup is easy. You don't need to be a DevOps specialist to use it (don't be mad at me, guys - you're invaluable for more complex stuff).
+- The setup is easy. You don't need to be a DevOps specialist to use it (don't be mad at me, guys—you're invaluable for more complex stuff).
 - It abstracts low-level terminal commands and other logic. Recall how many small steps are required to start a Node.js app from scratch. Have you done it? Good, now you can forget them again because they'll be abstracted.
 - There are many integrations with various tools and tech stacks. Java, .NET, Node.js? Go to the [GitHub Marketplace](https://github.com/marketplace) and find the environment you need. Oh, and there is an integration with Go.
-- You don't need to start from scratch. Mentioned marketplace offers tons of ready-to-use apps and actions. You can also base your custom actions on templates.
+- You don't need to start from scratch. The mentioned marketplace offers tons of ready-to-use apps and actions. You can also base your custom actions on templates.
 
 ## What is a GitHub workflow?
 
@@ -57,10 +57,10 @@ GitHub emits **events** when something happens in or to your repository, like op
 
 As I mentioned, you need a YAML file to configure the GitHub workflow. Let's see how to structure such a file.
 
-- `name` - the name of the workflow. The repo action page displays it.
-- `on` - the name of the event that triggers the workflow, like `push` or `pull_request`. There is a list of all [GitHub events](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
-- `jobs` - it's a section where you put individual jobs.
-- `job-name` - a customizable name for a particular task. Under this key, you put a list of steps. Each step can:
+- `name`—the name of the workflow. The repo action page displays it.
+- `on`—the name of the event that triggers the workflow, like `push` or `pull_request`. There is a list of all [GitHub events](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
+- `jobs`—it's a section where you put individual jobs.
+- `job-name`—a customizable name for a particular task. Under this key, you put a list of steps. Each step can:
   - Have a `name`.
   - `use` a predefined action.
   - `run` a terminal command.
@@ -227,9 +227,9 @@ jobs:
           install: false
 ```
 
-Oh boy, it's a long file. But don't be intimidated - we'll try to decipher it. Our workflow is called "CI." It will run when someone makes a pull request to the `main` branch. Also, changes must include files with listed extensions. Why? Because changing files like Markdown or MDX most likely won't break anything, so there is no need to run the workflow.
+Oh boy, it's a long file. But don't be intimidated—we'll try to decipher it. Our workflow is called “CI.” It will run when someone makes a pull request to the `main` branch. Also, changes must include files with listed extensions. Why? Because changing files like Markdown or MDX most likely won't break anything so there is no need to run the workflow.
 
-The concurrency section allows canceling jobs in progress when they are in the same group. For example, don't continue building a project after failing tests - it doesn't make sense.
+The concurrency section allows canceling jobs in progress when they are in the same group. For example, don't continue building a project after failing tests—it doesn't make sense.
 
 The `install-cache` job starts by accessing the repository. There is a predefined action for that called just `checkout`.
 Then we need to set up the node. In our example, we'll use node 16 by accessing the number from the matrix. With a matrix strategy, you can automatically create multiple job runs based on variables.
@@ -237,15 +237,15 @@ Then we need to set up the node. In our example, we'll use node 16 by accessing 
 Having a node, we can install dependencies. The `npm ci` command works like `npm install`, but developers designed it for automated environments.
 Finally, we're checking for cached Cypress binaries. We'll find out why later.
 
-The `unit-test` job - without surprise - runs unit tests. It starts similarly to the previous job - by checking if there are cached files. We don't need to install dependencies every time we run the workflow. The last step actually `runs` tests.
+The `unit-test` job—without surprise—runs unit tests. It starts similarly to the previous job—by checking if there are cached files. We don't need to install dependencies every time we run the workflow. The last step actually `runs` tests.
 
-The following job `builds` the project. It's an example of a sequential job. It has a dependency - the previous step. After the build process, the `upload-artifact` action caches the build output for one day.
+The following job `builds` the project. It's an example of a sequential job. It has a dependency—the previous step. After the build process, the `upload-artifact` action caches the build output for one day.
 
-The last two jobs are very similar - they both run end-to-end tests. One runs them on Chrome and one on Firefox. Those jobs must run after the build process. They try to access cached files for the project and Cypress to be efficient. After all of the jobs executed successfully, the whole workflow is finished.
+The last two jobs are very similar—they both run end-to-end tests. One runs them on Chrome and one on Firefox. Those jobs must run after the build process. They try to access cached files for the project and Cypress to be efficient. After all the jobs execute successfully, the whole workflow is finished.
 
 ![GitHub Actions page with CI schema](../../portfolio/gorzelinski/ci.png)
 
-I hope this post introduced you to GitHub Actions. After reading it, you should know why and how to use them. Maybe you'll even manage to automate some mundane tasks in under 6 hours now. We may continue this automation journey and write custom GitHub Action. But, for now, the best I can do is to offer you some helpful links.
+I hope this post introduced you to GitHub Actions. After reading it, you should know why and how to use them. Maybe you'll even manage to automate some mundane tasks in under 6 hours now. We may continue this automation journey and write a custom GitHub Action. But, for now, the best I can do is to offer you some helpful links.
 
 - [GitHub Marketplace](https://github.com/marketplace)
 - [Events that trigger workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)
