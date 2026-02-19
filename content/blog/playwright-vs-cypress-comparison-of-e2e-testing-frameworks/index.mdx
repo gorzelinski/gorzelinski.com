@@ -1,6 +1,6 @@
 ---
-title: Playwright vs. Cypress - comparison of E2E testing frameworks
-description: 'A detailed comparison of two popular testing E2E frameworks - Playwright and Cypress. What features are comparable, and which of them offers more?'
+title: Playwright vs. Cypress—comparison of E2E testing frameworks
+description: 'A detailed comparison of two popular E2E testing frameworks—Playwright and Cypress. What features are comparable, and which of them offers more?'
 date: 2024-11-03T11:30:00+02:00
 updated: 2024-11-03T11:30:00+02:00
 image:
@@ -12,11 +12,11 @@ tags: ['testing', 'framework', 'e2e']
 type: 'post'
 ---
 
-Recently, I moved my website to a new technological stack. I ditched my old Gatsby website and created a new project in Next.js. It was a great effort in itself. I wondered if it was the right time to rewrite my tests. E2E tests are abstract, so after the migration, I would only need to change tests a little (or not). However, instead of changing things incrementally - like a normal human being - I changed everything simultaneously, including tests. It took me a lot of time, but I ended up with two sets of similar E2E tests - in Cypress and Playwright. I decided to take advantage of this opportunity and compare those two frameworks.
+Recently, I moved my website to a new technological stack. I ditched my old Gatsby website and created a new project in Next.js. It was a great effort in itself. I wondered if it was the right time to rewrite my tests. E2E tests are abstract, so after the migration, I would only need to change tests a little (or not). However, instead of changing things incrementally—like a normal human being—I changed everything simultaneously, including tests. It took me a lot of time, but I ended up with two sets of similar E2E tests in Cypress and Playwright. I decided to take advantage of this opportunity and compare those two frameworks.
 
 ## Playwright
 
-Playwright is a modern testing library developed by Microsoft and released in 2020. The team that initially worked on another automation tool, Puppeteer, created Playwright. "Hold on, isn't Puppeteer from Google?" It is, but the team moved from Google to Microsoft. It's another tool to your tech stack from Microsoft if you don't have enough already.
+Playwright is a modern testing library developed by Microsoft and released in 2020. The team that initially worked on another automation tool, Puppeteer, created Playwright. “Hold on, isn't Puppeteer from Google?” It is, but the team moved from Google to Microsoft. It's another tool in your tech stack from Microsoft if you don't have enough already.
 
 Playwright consists of two parts:
 
@@ -27,11 +27,11 @@ Even though it has a much shorter lifespan than Cypress, the library gained over
 
 ## Cypress
 
-Cypress, an end-to-end testing framework for web applications, was first released in September 2017. Since its release, it has gained significant popularity in the developer community, amassing over 40,000 stars on GitHub. The framework is developed and maintained by the Cypress.io team, a group of experienced developers and engineers including Gleb Bahamutov. I stumbled on his [blog posts](https://glebbahmutov.com/blog/) about testing multiple times - good stuff. Cypress is still a go-to choice for many developers looking for an E2E testing framework.
+Cypress, an end-to-end testing framework for web applications, was first released in September 2017. Since its release, it has gained significant popularity in the developer community, amassing over 40,000 stars on GitHub. The framework is developed and maintained by the Cypress.io team, a group of experienced developers and engineers including Gleb Bahamutov. I stumbled on his [blog posts](https://glebbahmutov.com/blog/) about testing multiple times—good stuff. Cypress is still a go-to choice for many developers looking for an E2E testing framework.
 
 ## Playwright vs. Cypress
 
-Let's move on to the meat of this post - comparison. I prepared a table listing different features you may expect from a modern E2E testing tool. The table may be helpful per se, but I'll review each feature and add context. I'll start with "more," where Playwright offers extra functionality, and I'll move to the feature parity.
+Let's move on to the meat of this post—comparison. I prepared a table listing different features you may expect from a modern E2E testing tool. The table may be helpful per se, but I'll review each feature and add context. I'll start with “more,” where Playwright offers extra functionality, and I'll move to feature parity.
 
 | Feature                    | Playwright         | Cypress            |
 | -------------------------- | ------------------ | ------------------ |
@@ -60,7 +60,7 @@ Let's move on to the meat of this post - comparison. I prepared a table listing 
 
 ### Other languages
 
-Besides JavaScript, [Playwright supports other programming languages](https://playwright.dev/docs/languages) like Python, C# or Java. It doesn't matter much to me - I'm creating this website in the JavaScript ecosystem. But having one testing framework for the whole team - front-end and back-end developers - may be a plus. While on the subject - I wondered if I should put Java support as a plus (JavaScript developer shitting on Java - oh, irony). [Cypress does not](https://www.cypress.io/how-it-works) (and probably won't) support other languages.
+Besides JavaScript, [Playwright supports other programming languages](https://playwright.dev/docs/languages) like Python, C#, or Java. It doesn't matter much to me—I'm creating this website in the JavaScript ecosystem. But having one testing framework for the whole team—front-end and back-end developers—may be a plus. While on the subject, I wondered if I should put Java support as a plus (JavaScript developer shitting on Java—oh, irony). [Cypress does not](https://www.cypress.io/how-it-works) (and probably won't) support other languages.
 
 ### Parallelization
 
@@ -68,7 +68,7 @@ By default, Playwright Test runs test files in [parallel](https://playwright.dev
 
 ### Browsers
 
-Parallelization helps with cross-browser testing. The Playwright framework offers the concept of "projects," each of which can serve as a different [browser](https://playwright.dev/docs/browsers), including Safari.
+Parallelization helps with cross-browser testing. The Playwright framework offers the concept of “projects,” each of which can serve as a different [browser](https://playwright.dev/docs/browsers), including Safari.
 
 ```ts title="Defining projects in Playwright"
 projects: [
@@ -179,7 +179,7 @@ Playwright Test is a dedicated test runner for the framework. However, with a fe
 
 ### Multiple tabs
 
-Playwright uses [`BrowserContext`](https://playwright.dev/docs/pages), which provides a way to operate multiple independent browser sessions. You can effortlessly write tests that interact with numerous tabs. Cypress runs inside a browser - therefore, it won't support [multiple browser tabs](https://docs.cypress.io/app/references/trade-offs).
+Playwright uses [`BrowserContext`](https://playwright.dev/docs/pages), which provides a way to operate multiple independent browser sessions. You can effortlessly write tests that interact with numerous tabs. Cypress runs inside a browser—therefore, it won't support [multiple browser tabs](https://docs.cypress.io/app/references/trade-offs).
 
 ### Code generation
 
@@ -305,7 +305,7 @@ Both Playwright and Cypress offer good APIs to interact with DOM elements. Playw
 await page.getByRole('button', { name: 'Submit' }).click()
 ```
 
-In Cypress, you can get elements using... the [get function](https://docs.cypress.io/api/commands/get). There is also a way to add meaningful names to elements with aliases.
+In Cypress, you can get elements using… the [get function](https://docs.cypress.io/api/commands/get). There is also a way to add meaningful names to elements with aliases.
 
 ```js title="Interacting with elements in Cypress"
 cy.get('button[type=submit]').as('submitBtn')
@@ -330,8 +330,8 @@ state before visiting the application. [Cypress](https://learn.cypress.io/advanc
 
 ### Documentation
 
-Both frameworks offer in-depth and broad technical documentation. While working with them, I rarely needed to browse other sources. It's hard to point out why, but I prefer Cypress documentation. Maybe because of the aesthetic? And don't get me wrong - Playwright has good documentation. I quickly picked up and rewrote my E2E tests using it. But it's tough competition - Cypress's documentation is just so good.
+Both frameworks offer in-depth and broad technical documentation. While working with them, I rarely needed to browse other sources. It's hard to point out why, but I prefer Cypress documentation. Maybe because of the aesthetic? And don't get me wrong—Playwright has good documentation. I quickly picked up and rewrote my E2E tests using it. But it's tough competition—Cypress's documentation is just so good.
 
 ## Summary
 
-There won't be any plot twists because I wrote about rewriting my tests in Playwright at the beginning. So, you know my choice already. After reading this post, you know the reasons behind this decision, too (I hope). Playwright offers full feature parity with Cypress and extra functionality like parallelization or multi-tab support, which is handy for me. However, saying all that, Cypress is still a great choice. Its popularity is not a coincidence. And how about you - what framework do you choose?
+There won't be any plot twists because I wrote about rewriting my tests in Playwright at the beginning. So, you know my choice already. After reading this post, you know the reasons behind this decision, too (I hope). Playwright offers full feature parity with Cypress and extra functionality like parallelization or multi-tab support, which is handy for me. However, saying all that, Cypress is still a great choice. Its popularity is not a coincidence. And how about you—what framework do you choose?
