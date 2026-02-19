@@ -12,13 +12,13 @@ tags: ['oop', 'fp', 'programming', 'paradigm', 'assembly', 'javascript', 'js']
 type: 'post'
 ---
 
-Lately, I've been writing about specific technologies: React, Gatsby, or Netlify CMS. But, in my [first post](/blog/hello-world/), I promised universal knowledge. Ten posts later, I think it's time to fulfill the promise. This post will be more theoretical. But I don't want to make it too abstract, so I'll write about OOP in the context of JavaScript language.
+Lately, I've been writing about specific technologies: React, Gatsby, or Netlify CMS. But in my [first post](/blog/hello-world/), I promised universal knowledge. Ten posts later, I think it's time to fulfill the promise. This post will be more theoretical. But I would rather not make it too abstract, so I'll write about OOP in the context of the JavaScript language.
 
 ## OOP is one of the programming paradigms
 
-Even before we touch on the definition of OOP, we need a short history lesson. It will give us context, and a bigger picture, hence a better understanding.
+Even before we touch on the definition of OOP, we need a short history lesson. It will give us context and the bigger picture—hence a better understanding.
 
-Every code boils down to ones and zeros. It's what computers understand. The lowest-level programming paradigms are machine code, which directly represents the instructions as a sequence of numbers. It's easy to understand for machines but hard for humans.
+All code boils down to ones and zeros. It's what computers understand. The lowest-level programming paradigm is machine code, which directly represents the instructions as a sequence of numbers. It's easy to understand for machines but hard for humans.
 
 In the 1960s, there was a development of assembly languages. It is a little step up from machine code. Writing in assembly, we can use logical operators such as READ, WRITE, GET, and PUT or use symbolic labels for memory addresses. I even wrote some assembly code at my university, which looked like this:
 
@@ -31,7 +31,7 @@ In the 1960s, there was a development of assembly languages. It is a little step
 
     ; int 21h is going to want...
 
-    mov  dx, msg      ; the address of or message in dx
+    mov  dx, msg      ; the address of our message in dx
     mov  ah, 9        ; ah=9 - "print string" sub-function
     int  0x21         ; call dos services
 
@@ -41,13 +41,13 @@ In the 1960s, there was a development of assembly languages. It is a little step
     msg  db 'Hello, World!', 0x0d, 0x0a, '$'   ; $-terminated message
 ```
 
-Even though it's hard to understand and not sophisticated as modern languages, people still use it in things like embedded systems.
+Even though it's difficult to understand and not as sophisticated as modern languages, people still use it in things like embedded systems.
 
-C, COBOL, or BASIC are examples of third-generation languages. All these languages follow a procedural paradigm - you write procedures a computer needs to follow to solve a specific problem. Code is easier to write, but still, there is no structure or organization. We have just step-by-step instructions.
+C, COBOL, and BASIC are examples of third-generation languages. All these languages follow a procedural paradigm—you write procedures a computer needs to follow to solve a specific problem. Code is easier to write, but still, there is no structure or organization. We have just step-by-step instructions.
 
 People started agreeing on good practices, and after some time, they invented object-oriented programming languages such as C#, Python, or JavaScript. Programmers can now model real-world things with objects. An object is the foundational building block of all these languages.
 
-Also, another paradigm called functional programming is gaining attention. It works well with concurrent and distributed computing - hot topics now. Functions are building blocks in this paradigm. They behave like mathematical functions. Most programming languages support more than one programming paradigm. JavaScript is one of them.
+Furthermore, another paradigm called functional programming is gaining attention. It works well with concurrent and distributed computing—hot topics now. Functions are building blocks in this paradigm. They behave like mathematical functions. Most programming languages support more than one programming paradigm. JavaScript is one of them.
 
 ## FP and OOP
 
@@ -56,15 +56,15 @@ In all programs, there are two primary components:
 - Data
 - Behavior
 
-**Object-oriented programming** says that bringing together the data and its behavior in a single location - object - makes the program easier to understand. It's like packing everything inside a tightly sealed box.
+**Object-oriented programming** says that bringing together the data and its behavior in a single location—an object—makes the program easier to understand. It's like packing everything inside a tightly sealed box.
 
-**Functional programming** says that data and behavior are distinctly different things and should be kept separately for clarity. It is like a pipe with some valves - the data flows from one end to the other, changing along the way.
+**Functional programming** says that data and behavior are distinctly different things and should be kept separate for clarity. It is like a pipe with some valves—the data flows from one end to the other, changing along the way.
 
 It's **not** functional programming vs. object-oriented programming. I used OOP in Node and FP in React. Don't hang on tightly to one. Both have use cases and can be complementary.
 
 ## Why use OOP?
 
-As I mentioned, we want code that is easy to understand. We read code more often than we write it. Current software can be very complex. Windows 10 have about 50 million lines of code, and Facebook has even more. An average app can still have thousands of lines. To make this complex code more organized, we can use our paradigm. Using OOP, we want the code to be:
+As I mentioned, we want code that is easy to understand. We read code more often than we write it. Current software can be very complex. Windows 10 has about 50 million lines of code, and Facebook has even more. An average app can still have thousands of lines. To make this complex code more organized, we can use our paradigm. Using OOP, we want the code to be:
 
 - Clear
 - Easy to extend
@@ -74,7 +74,7 @@ As I mentioned, we want code that is easy to understand. We read code more often
 
 ## OOP in JavaScript
 
-We've just moved through the short history of programming paradigms featuring different languages. Now, we will focus on one - JavaScript - and write some code to show them in practice. We will start with structural code and move toward more object-oriented code. JavaScript is evolving, and we didn't always have syntax for clear OOP.
+We've just moved through the short history of programming paradigms featuring different languages. Now, we will focus on one—JavaScript—and write some code to show it in practice. We will start with structured code and move toward more object-oriented code. JavaScript is evolving, and we didn't always have syntax for clear OOP.
 
 ---
 
@@ -102,7 +102,7 @@ We can create an object for each machine. But imagine we want ten more. We would
 
 ### Factory Functions
 
-To limit repeating, we can create a function that will make objects for us - a factory function.
+To limit repeating, we can create a function that will make objects for us—a factory function.
 
 ```javascript title="Factory Function"
 function createComputer(name) {
@@ -118,7 +118,7 @@ const desktop = createComputer('Mac Studio')
 const laptop = createComputer('MacBook Air')
 ```
 
-We can call the function multiple times to create multiple objects. We don't repeat ourselves as much. But, there is another problem. Look at the `info()` function. It stays the same for every computer, yet we copy it each time. It's not very memory-efficient.
+We can call the function multiple times to create multiple objects. We don't repeat ourselves as much. But there is another problem. Look at the `info()` function. It stays the same for every computer, yet we copy it each time. It's not very memory-efficient.
 
 ### Object.create()
 
@@ -143,11 +143,11 @@ const laptop = createComputer('MacBook Air')
 
 <Callout variant="warning">
 
-JavaScript doesn't have classical inheritance known from languages like Java or C++. It has only one construct - an object. But it's not a bug - it's a feature! Each object has a link to another one called its **prototype.** These linked objects create a **prototype chain.**
+JavaScript doesn't have classical inheritance known from languages like Java or C++. It has only one construct—an object. But it's not a bug—it's a feature! Each object has a link to another one called its **prototype.** These linked objects create a **prototype chain.**
 
 </Callout>
 
-We could stop here. We don't repeat ourselves, and the code is memory efficient. But, there are other parts of OOP we could improve. Earlier, I was talking about this sealed box in the context of OOP. We don't have that here, and the above snippet is a little hard to understand. Let's use this knowledge about prototypes and see if we can improve something.
+We could stop here. We don't repeat ourselves, and the code is memory efficient. But there are other parts of OOP we could improve. Earlier, I was talking about this sealed box in the context of OOP. We don't have that here, and the above snippet is a little hard to understand. Let's use this knowledge about prototypes and see if we can improve something.
 
 ### Constructor Functions
 
@@ -175,11 +175,11 @@ We can use the prototype to define the shared function once, and it will be avai
 
 <Callout variant="warning">
 
-Be aware - it won't work with arrow functions. Arrow functions use lexical scope - they define `this` based on their place in code. If we define `info()` as an arrow function in our snippet, `this` will be pointing to the `window`.
+Be aware—it won't work with arrow functions. Arrow functions use lexical scope—they define `this` based on their place in code. If we define `info()` as an arrow function in our snippet, `this` will be pointing to the `window`.
 
 </Callout>
 
-JavaScript developers have been writing things that way for a long time. You can probably spot similar snippets in older code bases. But, with ES6, we've got a new way to write object-oriented code.
+JavaScript developers have been writing things that way for a long time. You can probably spot similar snippets in older codebases. But with ES6, we've got a new way to write object-oriented code.
 
 ### Classes
 
@@ -199,15 +199,15 @@ const desktop = new Computer('Mac Studio')
 const laptop = new Computer('MacBook Air')
 ```
 
-The best part is that everything is in one "box." All properties and methods are between curly braces. We don't need to use prototypes explicitly.
+The best part is that everything is in one “box.” All properties and methods are between curly braces. We don't need to use prototypes explicitly.
 
 <Callout variant="warning">
 
-But remember, even though there is a `class` keyword, it is syntactic sugar. Underneath the hood, we're still using prototype inheritance. In other languages, classes are an actual thing. Opposed to that, in JavaScript, they are still objects.
+But remember, even though there is a `class` keyword, it is syntactic sugar. Under the hood, we're still using prototype inheritance. In other languages, classes are an actual thing. Opposed to that, in JavaScript, they are still objects.
 
 </Callout>
 
-You may argue that using the `class` keyword with prototype inheritance is deceptive. And it is a little. But I think the benefit of readability overweight the cons. In my opinion, this code is easy to understand and looks like OOP. Especially when we add inheritance.
+You may argue that using the `class` keyword with prototype inheritance is deceptive. And it is a little. But I think the benefit of readability outweighs the cons. In my opinion, this code is easy to understand and looks like OOP—especially when we add inheritance.
 
 ```javascript title="Classes and inheritance"
 class Computer {
@@ -246,7 +246,7 @@ Talking about pillars at the end of the post may look strange. But it is a good 
 
 ### Encapsulation
 
-Look at our classes - everything is inside objects wrapped by curly braces. Our code consists of closed units. We've **encapsulated** our code. The code written this way is easy to understand.
+Look at our classes—everything is inside objects wrapped by curly braces. Our code consists of closed units. We've **encapsulated** our code. The code written this way is easy to understand.
 
 ### Abstraction
 
@@ -254,11 +254,11 @@ Our examples are uncomplicated to simplify reasoning. But imagine the `info()` m
 
 ### Inheritance
 
-Our classes **inherit** from each other parts of the functionality. We avoid rewriting and repeating ourselves. We also save space by having shared methods.
+Our classes **inherit** parts of the functionality from each other. We avoid rewriting and repeating ourselves. We also save space by having shared methods.
 
 ### Polymorphism
 
-Ok, I lied. We haven't touched on one of the pillars. But I'm redeeming myself now. The word "polymorphism" comes from the Greek word "polymorphos," which means "many forms." The etymology accurately describes what we want to accomplish with polymorphism in OOP. I don't know if there is one correct definition of polymorphism. I don't want to argue with people smarter than me, so I'm not claiming I'm giving a precise definition. But the idea is that we can call the same method on different objects, and each object responds distinctly. JavaScript is a dynamically typed language, so it limits polymorphism. But we can write something like this:
+Ok, I lied. We haven't touched on one of the pillars. But I'm redeeming myself now. The word “polymorphism” comes from the Greek word “polymorphos,” which means “many forms.” The etymology accurately describes what we want to accomplish with polymorphism in OOP. I don't know if there is one correct definition of polymorphism. I don't want to argue with people smarter than me, so I'm not claiming I'm giving a precise definition. But the idea is that we can call the same method on different objects, and each object responds distinctly. JavaScript is a dynamically typed language, so it limits polymorphism. But we can write something like this:
 
 ```javascript title="Classes and polymorphism"
 class Computer {
@@ -305,7 +305,7 @@ Our `info()` method is **polymorphic.** Depending on the object, it displays inf
 
 ## Summary
 
-We've explored object-oriented programming principles, concepts, and goals. Also, now we know how to implement them in future JavaScript projects. I hope this post was helpful and you've got to the end. And if you don't have enough, check out below links:
+We've explored object-oriented programming principles, concepts, and goals. Moreover, now we know how to implement them in future JavaScript projects. I hope this post was helpful and you made it to the end. And if you don't have enough, browse through the links below:
 
 - [Assembly](https://montcs.bloomu.edu/Information/LowLevel/Assembly/hello-asm.html)
 - [Inheritance and the prototype chain (MDN web docs)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
