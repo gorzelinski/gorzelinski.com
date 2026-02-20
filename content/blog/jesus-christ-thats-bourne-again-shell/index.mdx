@@ -1,5 +1,5 @@
 ---
-title: Jesus Christ, that's Bourne... Again Shell
+title: Jesus Christ, that's Bourne… Again Shell
 description: 'Stop being afraid of the terminal! Get to know the difference between shell, CLI, and Bash. Learn about commands, file operations, pipes, and more.'
 date: 2025-09-09T20:00:00+02:00
 updated: 2025-09-09T20:00:00+02:00
@@ -17,13 +17,13 @@ Bash is an acronym for Bourne Again Shell. The abbreviation may suggest more tha
 - The **CLI** (Command Line Interface) enables us to interact with programs using text-based commands. It can read text inputs and output text to the screen. Additionally, it can also read and write files.
 - A **shell** or command line interpreter is software that we'll use to work with the CLI. Devs created many shells over the years for different operating systems.
 - **Bash** is one of those shells. Devs released it in 1989. Bash extends the capabilities of earlier shells (Bourne Shell or Thompson Shell) and adds new features.
-- A shell runs in a **terminal** application. It can run in one or many terminals. Some software, like Visual Studio Code, Cursor, or other code editors/IDEs, include a built-in terminal.
+- A shell runs in a **terminal** application. It can run in one or many terminals. Some software, like Visual Studio Code, Cursor, or other code editors/IDEs, includes a built-in terminal.
 
-The comparison table look like this:
+The comparison table looks like this:
 
-| CLI                                        | Terminal                                        | Shell                                                        | Bash                                                 |
-| ------------------------------------------ | ----------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------- |
-| Any place where we can type text commands. | A software that a shell program runs inside of. | A piece of software that interprets and runs typed commands. | A widely popular shell available on Linux and macOS. |
+| CLI                                        | Terminal                                   | Shell                                             | Bash                                                 |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------------- | ---------------------------------------------------- |
+| Any place where we can type text commands. | Software that a shell program runs inside. | Software that interprets and runs typed commands. | A widely popular shell available on Linux and macOS. |
 
 Although there are differences between them, people often use these terms interchangeably. Was all this explaining for nothing? Nah, ✨the more you know✨, the better!
 
@@ -43,13 +43,13 @@ Alternatively, to access Linux regardless of your OS, you can create a virtual m
 >
 > &mdash; <cite>Douglas McIlroy</cite>
 
-Douglas McIlroy, an engineer at Bell Labs, contributed to the development of Unix operating systems and is the author of this famous quote. The Unix philosophy is a set of design principles that guided the development of Unix and its derivatives, known as Unix-like systems (like Linux, or macOS). As you saw, the core tenets are:
+Douglas McIlroy, an engineer at Bell Labs, contributed to the development of Unix operating systems and is the author of this famous quote. The Unix philosophy is a set of design principles that guided the development of Unix and its derivatives, known as Unix-like systems (like Linux or macOS). As you saw, the core tenets are:
 
 - Tools should do one thing and do it well.
 - Tools should use text interfaces.
 - Programs should communicate with each other.
 
-One Christmas, I gave my grandfather a Victorinox - Swiss Army knife. It's a cool little gadget with a blade, screwdriver, corckscrew, scissors, can opener, and even more tools. It allows you to do many things. However, when you start cutting, screwing in, or opening, you'll notice that those tools are not as good as their standard counterparts. You'll need a toolbox with multiple dedicated tools to do heavy work. Unix (and consequently Bash) works similarly. We have a set of dedicated commands for different tasks, as you will see.
+One Christmas, I gave my grandfather a Victorinox—Swiss Army knife. It's a cool little gadget with a blade, screwdriver, corkscrew, scissors, can opener, and even more tools. It allows you to do many things. However, when you start cutting, screwing in, or opening, you'll notice that those tools are not as good as their standard counterparts. You'll need a toolbox with multiple dedicated tools to do heavy work. Unix (and consequently Bash) works similarly. We have a set of dedicated commands for different tasks, as you will see.
 
 ## Command structure
 
@@ -63,11 +63,11 @@ Programs that are available on a system. When we run a command, the system takes
 
 The general pattern of a command is:
 
-- Command - specific action for the system.
-- Option(s) - tell the command _how_ to operate.
-- Argument(s) - tell the command _what_ to operate on.
+- Command is a specific action for the system.
+- Option(s) tell the command _how_ to operate.
+- Argument(s) tell the command _what_ to operate on.
 
-However, not all commands require options and/or arguments. Depending on what you're doing, you may have a different structure.
+However, not all commands require options or arguments. Depending on what you're doing, you may have a different structure.
 
 - Only a command, like `pwd`.
 - Command + option(s), like `ls -l`.
@@ -77,7 +77,7 @@ Options (also called **flags**) often begin with a dash and are represented by o
 
 ```bash
 -h    --help
--r    --recurisve
+-r    --recursive
 -v    --verbose
 ```
 
@@ -98,7 +98,7 @@ cp -r /source /destination
 
 ## Prompt
 
-Before a command, you may notice some strange chain of text, like: `john@laptop:~$`. It's a **prompt.** It contains some information about the shell. The string may be in a different order depending on the OS and platform, but the information stays the same. Let's untangle it. Starting from left, we have the username. Then we have a separator in the form of the at sign. To the right of the separator, we have the computer name. Then, another separator and the current directory. It ends with a prompt symbol. The symbol indicates the user type - regular user or root.
+Before a command, you may notice some strange chain of text, like: `john@laptop:~$`. It's a **prompt.** It contains some information about the shell. The string may be in a different order depending on the OS and platform, but the information stays the same. Let's untangle it. Starting from the left, we have the username. Then we have a separator in the form of the at sign. To the right of the separator, we have the computer name. Then, another separator and the current directory. It ends with a prompt symbol. The symbol indicates the user type—regular user or root.
 
 | Part          | Description               | Example                               |
 | ------------- | ------------------------- | ------------------------------------- |
@@ -119,7 +119,7 @@ username@hostname:current_directory$
 
 > Many aspects of the command line are all about efficiency. Sometimes at a cost of understanding.
 
-As you saw, many commands and options take the form of short, meaningless consonant clusters. "How am I supposed to remember all of that?" you may ask. You don't. Seriously, don't try to memorize all those commands and options. With practice, you should remember the often-used ones. And for other commands, you can use **manual pages.** It's a built-in documentation for commands. To check documentation for a particular command (`ls` in this case), you can type:
+As you saw, many commands and options take the form of short, meaningless consonant clusters. “How am I supposed to remember all of that?” you may ask. You don't. Seriously, don't try to memorize all those commands and options. With practice, you should remember the often-used ones. And for other commands, you can use **manual pages.** It's a built-in documentation for commands. To check documentation for a particular command (`ls` in this case), you can type:
 
 ```bash
 man ls
@@ -131,7 +131,7 @@ There is a lot of text, and the output may overwhelm you. Many commands also hav
 ls --help
 ```
 
-You can also type `help` by itself. It lists all available built-in commands. The list is also long. And let's say you don't know the name of the command you're looking for. You know what you want to do, but don't know how to do it. Apropos of this problem, we have… `apropos`. The command searches a list of installed programs and their descriptions for the text you provided as an argument. If you search for something like "directory list," your terminal should suggest the `ls` command.
+You can also type `help` by itself. It lists all available built-in commands. The list is also long. And let's say you don't know the name of the command you're looking for. You know what you want to do but don't know how to do it. Apropos of this problem, we have… `apropos`. The command searches a list of installed programs and their descriptions for the text you provided as an argument. If you search for something like “directory list,” your terminal should suggest the `ls` command.
 
 ```bash
 apropos "directory list"
@@ -139,7 +139,7 @@ apropos "directory list"
 
 ## Terminal keyboard shortcuts
 
-Another way to make your life easier when using terminal is to use shortcuts. I gathered some commonly used ones below. If you only remember one, it should be <Kbd>Tab</Kbd>. It's your friend. Bash (and other shells) offers a feature called **tab completion.** It automatically completes files, folder names, commands, variables, etc. It depends on the context. It tries to "guess" what you want to do. Clicking the Tab twice shows all possible completions if there are more.
+Another way to make your life easier when using terminal is to use shortcuts. I gathered some commonly used ones below. If you only remember one, it should be <Kbd>Tab</Kbd>. It's your friend. Bash (and other shells) offers a feature called **tab completion.** It automatically completes files, folder names, commands, variables, etc. It depends on the context. It tries to “guess” what you want to do. Clicking the Tab twice shows all possible completions if there are more.
 
 | Shortcut                                        | Action                                     |
 | ----------------------------------------------- | ------------------------------------------ |
@@ -171,7 +171,7 @@ Represents the location of a file or directory.
 
 </Callout>
 
-Paths use the slash character (forward slash on Linux, macOS, and backslash on Windows) as a separator between directory and file names. They can be absolute or relative.
+Paths use the slash character (forward slash on Linux and macOS and backslash on Windows) as a separator between directory and file names. They can be absolute or relative.
 
 - An **absolute path** specifies the complete location of a file or directory from the root of the file system.
 - A **relative path** specifies the location of a file or directory relative to the current working directory.
@@ -182,17 +182,17 @@ In your terminal, you may see the tilde character. The shell expands it to the u
 
 There are some commands that you would use constantly when navigating the file system.
 
-- `pwd` - print working directory. It does what it says - shows you where you are. You won't need any options here.
-- `ls` - list directory content. It is more advanced than the previous command. It shows you all the content of a specific directory. There are some options you may want to know:
-  - `-a` - show all files, including hidden ones. Many configuration files start with a dot, like `.gitignore` or `.eslintrc.json`, and they are hidden by default. The command can list them all.
-  - `-l` - long format with details. But I won't get into those details here. The output consists of file type, permissions, and link type, which deserve more explanation.
-  - `-h` - human-readable file sizes. When listing those files, you probably saw those strange numbers - those are file sizes, but they are hard to read. The option will display well-known units like kilobytes or megabytes.
-- `cd` - change directory. The command to navigate the file system. We don't have flags here, but paths. They may take different forms:
-  - `/absolute/path/to/directory` - go to an absolute path.
-  - `relative/path` - go to a relative path.
-  - `..` - go to a parent directory.
-  - `~` - go to home directory.
-  - `-` - go to previous directory. I use it often when switching between two repositories in different directories.
+- `pwd`: print working directory. It does what it says - shows you where you are. You won't need any options here.
+- `ls`: list directory content. It is more advanced than the previous command. It shows you all the content of a specific directory. There are some options you may want to know:
+  - `-a`: show all files, including hidden ones. Many configuration files start with a dot, like `.gitignore` or `.eslintrc.json`, and they are hidden by default. The command can list them all.
+  - `-l`: long format with details. But I won't get into those details here. The output consists of file type, permissions, and link type, which deserve more explanation.
+  - `-h`: human-readable file sizes. When listing those files, you probably saw those strange numbers - those are file sizes, but they are hard to read. The option will display well-known units like kilobytes or megabytes.
+- `cd`: change directory. The command to navigate the file system. We don't have flags here, but paths. They may take different forms:
+  - `/absolute/path/to/directory`: go to an absolute path
+  - `relative/path`: go to a relative path
+  - `..`: go to a parent directory
+  - `~`: go to home directory
+  - `-`: go to previous directory. I use it often when switching between two repositories in different directories.
 
 ## Modifying the file system
 
@@ -202,56 +202,56 @@ Navigating the file system would not make a difference. While using a PC, we als
 
 Those strange symbols below in file names. You can use them for filename matching in shells. They can search for and match characters or substrings.
 
-- `*` - match any sequence of characters.
-- `?` - match any single character.
-- `[abc]` - match any character in the set.
-- `[a-z]` - match any character in the range.
-- `[!abc]` - match any character **not** in a set.
+- `*`: match any sequence of characters
+- `?`: match any single character
+- `[abc]`: match any character in the set
+- `[a-z]`: match any character in the range
+- `[!abc]`: match any character **not** in a set
 
 </Callout>
 
-- `mkdir` - make directories. It also takes paths as arguments.
-  - `dir1 dir2` - create multiple directories.
-  - `-p dir/nested` - to create nested directories, you need the `-p` flag. It creates parent directories if needed.
-- `rmdir` - remove directories.
-  - `rmdir dir1` - remove directory. Be aware that the directory must be empty.
-- `rm` - remove files and directories.
-  - `file.txt` - remove file.
-  - `file?.txt` - remove all specifically named text files.
-  - `-r directory` - remove a directory recursively (with all the contents).
-  - `-f directory` - forcefully remove a directory, without confirmation. Be aware, it will be gone for good. There is no trash with the `rm` command.
-- `cp` - copy files and directories.
-  - `file.txt /directory` - copy file to a directory.
-  - `*.txt /directory` - copy all files by type to a directory.
-  - `-r /source /dest` - recursively copy a directory to a directory.
-  - `-v` - verbose. Show what's being copied.
-  - `-i` - interactive. Ask before overwriting.
-  - `-p` - preserve attributes like timestamps or permissions.
-- `mv` - move files.
-  - `file.txt /directory` - move file to a directory.
-  - `* /directory` - move all files to a directory.
-  - `-i` - interactive. Ask before overwriting.
-  - `-v` - verbose. Show what's being moved.
-  - `oldname.txt newname.txt` - rename a file.
+- `mkdir`: make directories. It also takes paths as arguments.
+  - `dir1 dir2`: create multiple directories
+  - `-p dir/nested`: to create nested directories, you need the `-p` flag. It creates parent directories if needed.
+- `rmdir`: remove directories
+  - `rmdir dir1`: remove directory. Be aware that the directory must be empty.
+- `rm`: remove files and directories
+  - `file.txt`: remove file
+  - `file?.txt`: remove all specifically named text files
+  - `-r directory`: remove a directory recursively (with all the contents)
+  - `-f directory`: forcefully remove a directory, without confirmation. Be aware, it will be gone for good. There is no trash with the `rm` command.
+- `cp`: copy files and directories
+  - `file.txt /directory`: copy file to a directory
+  - `*.txt /directory`: copy all files by type to a directory
+  - `-r /source /dest`: recursively copy a directory to a directory
+  - `-v`: verbose. Show what's being copied.
+  - `-i`: interactive. Ask before overwriting.
+  - `-p`: preserve attributes like timestamps or permissions
+- `mv`: move files
+  - `file.txt /directory`: move file to a directory
+  - `* /directory`: move all files to a directory
+  - `-i`: interactive. Ask before overwriting.
+  - `-v`: verbose. Show what's being moved.
+  - `oldname.txt newname.txt`: rename a file
 
 ## Searching the file system
 
 If you don't know where to navigate, you can also look for specific files or directories within a particular scope.
 
-- `find` - find files in the provided scope, like a `/path` directory.
-  - `-name filename.txt` - find a file by name.
-  - `/path -name *.txt` - find files by a pattern.
-  - `/path -type f` - find files by a type (files only).
-  - `/path -type d` - find files by a type (directories only).
-  - `/path -size +100M` - find files by size (larger than 100MB).
-- `locate` - fast database search.
-  - `filename.txt` - find a file by name.
-  - `*.txt` - find files by a pattern.
-- `which` - find executable in `PATH`.
-  - `python` - find the Python executable.
-  - `git` - find the Git executable.
-- `whereis` - find binary, source, and manual pages.
-  - `python` - find all of the above for Python.
+- `find`: find files in the provided scope, like a `/path` directory
+  - `-name filename.txt`: find a file by name
+  - `/path -name *.txt`: find files by a pattern
+  - `/path -type f`: find files by a type (files only)
+  - `/path -type d`: find files by a type (directories only)
+  - `/path -size +100M`: find files by size (larger than 100MB)
+- `locate`: fast database search
+  - `filename.txt`: find a file by name
+  - `*.txt`: find files by a pattern
+- `which`: find executable in `PATH`
+  - `python`: find the Python executable
+  - `git`: find the Git executable
+- `whereis`: find binary, source, and manual pages
+  - `python`: find all of the above for Python
 
 ## Pipes
 
@@ -263,7 +263,7 @@ Take the output of one command and send it to another.
 
 </Callout>
 
-To make a pipeline, you write one command, add a vertical bar "|" (a pipe symbol), and add another command. Such a sequence creates a pipeline. Each command in the pipeline processes the data and passes it to the next.
+To make a pipeline, you write one command, add a vertical bar (`|`) (a pipe symbol), and add another command. Such a sequence creates a pipeline. Each command in the pipeline processes the data and passes it to the next.
 
 ```bash
 command1 | command2 | command3 | ... |
@@ -279,29 +279,29 @@ Thus, we move to text file commands.
 
 ## Viewing text files
 
-We can choose what command to use depending on the file size and the part of the file we want to see. We will check on the whole "cat" with "head" and "tail". Visualizing a cat is a good mnemonic to remember these commands.
+We can choose what command to use depending on the file size and the part of the file we want to see. We will check on the whole `cat` with `head` and `tail`. Visualizing a cat is a good mnemonic to remember these commands.
 
 ![Drawing of a cat](cat.jpeg "I asked my girlfriend to draw a cat to help you remember. Cute, isn't it?")
 
-- `cat` - unfortunately, it has nothing to do with cats. It is an abbreviation of "concatenation," which means linking together. The command allows you to output or concatenate text to the screen (or another program, remember pipes?).
-  - `filename.txt` - view entire file.
-  - `-n` - show line numbers.
-  - `-A` - show all non-printable characters like tabs or line ends.
-- `head` - displaying the entire file may be overwhelming. The output can easily overflow your terminal. We can limit the text to the first several lines with the head command.
-  - `-10 filename.txt` - view first N lines.
-  - `-n 10 filename.txt` - works the same as the above.
-  - `-n -10 filename.txt` - view all lines except the last N lines.
-- `tail` - it does the same, but for the last several lines.
-  - `-10 filename.txt` - view last N lines.
-  - `-n 10 filename.txt` - works the same as the above.
-  - `-n -10 filename.txt` - view all lines except the first N lines.
-- less - let's say you want to navigate the text similarly to a web page; the less command can help you here.
-  - `filename.txt` - view and navigate the file.
-  - <Kbd>↑</Kbd> / <Kbd>↓</Kbd> - scroll up/down.
-  - <Kbd>⏎</Kbd> - go down a line.
-  - <Kbd>space</Kbd> - go down a screen.
-  - <Kbd>q</Kbd> - press q to quit.
-  - <Kbd>h</Kbd> - If you forget the shortcuts, press h for help (and press f to
+- `cat`: unfortunately, it has nothing to do with cats. It is an abbreviation of “concatenation,” which means linking together. The command allows you to output or concatenate text to the screen (or another program, remember pipes?).
+  - `filename.txt`: view entire file
+  - `-n`: show line numbers
+  - `-A`: show all non-printable characters like tabs or line ends
+- `head`: displaying the entire file may be overwhelming. The output can easily overflow your terminal. We can limit the text to the first several lines with the head command.
+  - `-10 filename.txt`: view first N lines
+  - `-n 10 filename.txt`: works the same as the above
+  - `-n -10 filename.txt`: view all lines except the last N lines
+- `tail`: it does the same, but for the last several lines.
+  - `-10 filename.txt`: view last N lines
+  - `-n 10 filename.txt`: works the same as the above
+  - `-n -10 filename.txt`: view all lines except the first N lines
+- `less`: let's say you want to navigate the text similarly to a web page; the `less` command can help you here.
+  - `filename.txt`: view and navigate the file
+  - <Kbd>↑</Kbd> / <Kbd>↓</Kbd>: scroll up/down
+  - <Kbd>⏎</Kbd>: go down a line
+  - <Kbd>space</Kbd>: go down a screen
+  - <Kbd>q</Kbd>: press q to quit
+  - <Kbd>h</Kbd>: If you forget the shortcuts, press h for help (and press f to
     pay respects).
 
 ## Searching for text in files
@@ -319,17 +319,17 @@ Match patterns can use **regular expressions.**
 
 <Callout variant="info" title="Regular expression">
 
-A sequence of characters and symbols (also called regex) that define a search pattern. It's a powerful tool for pattern matching and text manipulation that allows you to find, extract, replace, or validate text based on specific rules. It works similarly to glob patterns, but is even more powerful.
+A sequence of characters and symbols (also called regex) that defines a search pattern. It's a powerful tool for pattern matching and text manipulation that allows you to find, extract, replace, or validate text based on specific rules. It works similarly to glob patterns but is even more powerful.
 
 </Callout>
 
 Enabling regular expressions requires the `-E` flag. Other handy options are:
 
-- `-F` - treat pattern as a literal string.
-- `-r` - search recursively in a directory.
-- `-i` - case-insensitive search.
-- `--include="*.txt"` - include only `.txt` files.
-- `--exclude="*.log"` - exclude `.log` files.
+- `-F`: treat pattern as a literal string
+- `-r`: search recursively in a directory
+- `-i`: case-insensitive search
+- `--include="*.txt"`: include only `.txt` files
+- `--exclude="*.log"`: exclude `.log` files
 
 ## Manipulate text
 
@@ -349,12 +349,12 @@ By default, the command uses whitespaces as separators. You can change it with t
 
 There are some built-in variables with information about the current line:
 
-- `$0` - Entire line
-- `$1`, `$2`, `$3` - Individual fields
-- `NF` - Number of fields in current line
-- `NR` - Current line number (across all files)
-- `FNR` - Current line number (within current file)
-- `FILENAME` - Name of current input file
+- `$0`: entire line
+- `$1`, `$2`, `$3`: individual fields
+- `NF`: number of fields in current line
+- `NR`: current line number (across all files)
+- `FNR`: current line number (within current file)
+- `FILENAME`: name of current input file
 
 ### sed
 
@@ -367,18 +367,18 @@ sed '[address]command[parameters]' file
 The command uses two buffers:
 
 - **Pattern Space:** Contains the current line being processed. Pattern space operations:
-  - <Kbd>p</Kbd> - print pattern space
-  - <Kbd>d</Kbd> - delete pattern space
-  - <Kbd>n</Kbd> - read next line into pattern space
-- **Hold Space:** Temporary storage buffer. Hold space operations
-  - <Kbd>h</Kbd> - copy pattern space to hold space
-  - <Kbd>g</Kbd> - copy hold space to pattern space
-  - <Kbd>x</Kbd> - exchange those spaces
+  - <Kbd>p</Kbd>: print pattern space
+  - <Kbd>d</Kbd>: delete pattern space
+  - <Kbd>n</Kbd>: read next line into pattern space
+- **Hold Space:** Temporary storage buffer. Hold space operations:
+  - <Kbd>h</Kbd>: copy pattern space to hold space
+  - <Kbd>g</Kbd>: copy hold space to pattern space
+  - <Kbd>x</Kbd>: exchange those spaces
 
 However, the most common `sed` command may be substitution. The command below replaces all occurrences of `old` with `new`.
 
 ```bash
-sed `s/old/new/g` file.txt
+sed 's/old/new/g' file.txt
 ```
 
 The command is not interactive and, as I mentioned, can be used for automating text processing. If you want to edit text yourself, there are already editors on your system.
@@ -390,9 +390,9 @@ There is a running joke about Vim:
 > How to generate a truly random string?
 > Put a web developer in front of Vim and tell them to exit.
 
-To avoid embarrassment like this, let's learn the basics of [Vim](https://www.gnu.org/software/emacs/). It's a default for Git Bash and some Linux distributions, and you may have already met Vim.
+To avoid embarrassment like this, let's learn the basics of [Vim](https://www.vim.org/). It's a default for Git Bash and some Linux distributions, and you may have already met Vim.
 
-Vi (Visual Editor) is a screen-oriented text editor created by Gill Joy in 1976 for the Unix operating systems. Vim (V Improved) is an enhanced version of Vi created by Bram Moolenaar in 1991. It maintains compatibility with Vi while adding many modern features.
+Vi (Visual Editor) is a screen-oriented text editor created by Bill Joy in 1976 for Unix operating systems. Vim (V Improved) is an enhanced version of Vi created by Bram Moolenaar in 1991. It maintains compatibility with Vi while adding many modern features.
 
 Vim has two primary modes that are important to distinguish:
 
@@ -435,7 +435,7 @@ On some operating systems, nano is the default text editor. It is preinstalled o
 
 ## Output redirection
 
-A few times throughout this post, I mentioned the word "stream." Let's finally explain it.
+A few times throughout this post, I mentioned the word `stream`. Let's finally explain it.
 
 <Callout variant="info" title="Stream">
 
@@ -457,13 +457,13 @@ A mechanism that changes the destination of a command's output.
 
 </Callout>
 
-We can **redirect** those streams to a screen of files. For example, to save the directory list to a file, we can type:
+We can **redirect** those streams to the screen or to files. For example, to save the directory list to a file, we can type:
 
 ```bash
 ls 1> filelist.txt
 ```
 
-Devs utilize the operation so often that you can omit the number "1."
+Devs utilize the operation so often that you can omit the number `1`.
 
 ```bash
 ls > filelist.txt
@@ -475,7 +475,7 @@ However, to redirect the error, you need the number.
 ls nonExistingFile 2> error.txt
 ```
 
-Be aware that redirecting output with the greater-than sign (">") will **replace** file content. To append it, you need a double greater-than symbol (">>").
+Be aware that redirecting output with the greater-than sign (`>`) will **replace** file content. To append it, you need a double greater-than symbol (`>>`).
 
 ```bash
 echo "append this text" >> file.txt
@@ -511,12 +511,12 @@ The shell environment has variables that control information and options that af
 env
 ```
 
-- `$PATH` - Executable search path
-- `$HOME` - User's home directory
-- `$USER` - Current username
-- `$PWD` - Current working directory
-- `$SHELL` - Current shell executable
-- `$PS1` - Primary prompt string
+- `$PATH`: executable search path
+- `$HOME`: user's home directory
+- `$USER`: current username
+- `$PWD`: current working directory
+- `$SHELL`: current shell executable
+- `$PS1`: primary prompt string
 
 We can look at the first one. To display the `$PATH` variable, type:
 
@@ -524,13 +524,13 @@ We can look at the first one. To display the `$PATH` variable, type:
 echo $PATH
 ```
 
-Path actually contains a list of directories where the shell should look for programs or executables outside of the current working directory. It outputs a colon-separated list, like `/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin`. As we see, programs live under one of those directories:
+Path actually contains a list of directories where the shell should look for programs or executables outside the current working directory. It outputs a colon-separated list, like `/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin`. As we see, programs live under one of those directories:
 
-- `/usr/local/bin` - user-installed programs.
-- `/usr/bin` - system programs.
-- `/bin` - essential system programs.
-- `/usr/sbin` - system administration programs.
-- `/sbin` - essential system administration programs.
+- `/usr/local/bin`: user-installed programs
+- `/usr/bin`: system programs
+- `/bin`: essential system programs
+- `/usr/sbin`: system administration programs
+- `/sbin`: essential system administration programs
 
 You can use the `which` command mentioned earlier to check the location of a program.
 
