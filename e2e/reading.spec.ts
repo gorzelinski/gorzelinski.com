@@ -16,7 +16,9 @@ test.describe('Reading tests', () => {
 
     await expect(page.url()).not.toContain('hello')
 
-    await page.waitForURL(`${settingsPage.link.blog}?query=hello…+world%3F`)
+    await page.waitForURL(
+      `${settingsPage.link.blog}?query=hello%E2%80%A6+world%3F`
+    )
 
     await expect(page.url()).toContain('hello')
 
