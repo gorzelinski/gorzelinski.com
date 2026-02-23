@@ -54,7 +54,7 @@ The property is written down twice in the above snippet. TypeScript offers a sho
 ```typescript title="Shortcut for defining properties"
 class Computer {
   constructor(private name: string) {}
-  // It's a hint to Typescript regarding what "this" should be referred to.
+  // It's a hint to TypeScript regarding what "this" should be referred to.
   public info(this: Computer) {
     console.log(`Name of the computer: ${this.name}`)
   }
@@ -118,7 +118,7 @@ console.log(Computer.firstProgrammer) // Ada Lovelace
 
 ## Abstract Class
 
-Every so often you want to be sure that a class has implemented a specific method. Classes inherit methods, but you can't provide a default implementation. You hope to enforce developers working with a class to create their version. That's where abstract classes are handy. TypeScript offers the abstract keyword you can use with classes and methods.
+Every so often you want to be sure that a class has implemented a specific method. Classes inherit methods, but you can't provide a default implementation. You hope to enforce developers working with a class to create their version. That's where abstract classes are handy. TypeScript offers the `abstract` keyword you can use with classes and methods.
 
 ```typescript title="Abstract classes"
 abstract class Computer {

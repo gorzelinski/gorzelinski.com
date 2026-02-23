@@ -84,8 +84,8 @@ Podobnie do bazowego języka, TypeScript nie definiuje różnych typów liczb. L
 ```typescript
 const PI = 3.14 // TypeScript wnioskuje, że ta liczba zawsze powinna równać się 3.14.
 let age = 25 // TypeScript wnioskuje, że to ma być liczba.
-// W przypadku maksymalnego wieku dziewczyny DiCaprio to również jest stała — wiem.
-let age: number = 25 // Ten kod działa ale jest redundantny — zła praktyka.
+// W przypadku maksymalnego wieku dziewczyny DiCaprio to również jest stała - wiem.
+let age: number = 25 // Ten kod działa ale jest redundantny - zła praktyka.
 let age: number // Tu ma to sens, ponieważ nie ma inicjalizacji zmiennej.
 ```
 
@@ -224,7 +224,7 @@ function combine(
 	i1: number | string,
 	i2: number | string
 	// Union połączone z typem literal — tylko dwa możliwe łańcuchy znaków.
-	conversion: „as-text” | „as-number”
+	conversion: "as-text" | "as-number"
 ) {
 	const result = i1 + i2
 	return result
