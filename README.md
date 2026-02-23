@@ -39,7 +39,7 @@ Here, I gave you the full instructions. My website is (and will be) open-source.
 
 ## 📝 Content
 
-If you're reading this file, there is a high chance you're a nerd like me. And even if you're not, and you're here by mistake, you may find something interesting on my website. That's because I write about many eclectic things that currently interest me. I elaborated more about topics in my first post - [Hello… world?](https://gorzelinski.com/blog/hello-world/) You may start there and decide on your own. Another posts that may interest you by a category:
+If you're reading this file, there is a high chance you're a nerd like me. And even if you're not, and you're here by mistake, you may find something interesting on my website. That's because I write about many eclectic things that currently interest me. I elaborated more about topics in my first post - [Hello… world?](https://gorzelinski.com/blog/hello-world/) You may start there and decide on your own. Other posts that may interest you by a category:
 
 - [Design](https://gorzelinski.com/blog/stylish-design-principles-with-a-nasty-acronym/)
 - [Writing](https://gorzelinski.com/blog/the-craft-of-writing/)
