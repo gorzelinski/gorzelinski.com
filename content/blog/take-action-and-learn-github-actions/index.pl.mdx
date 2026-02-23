@@ -227,7 +227,7 @@ jobs:
           install: false
 ```
 
-O panie, jaki długi plik! Nie bądź przytłoczony jednak — spróbujemy go rozszyfrować. Nasz workflow nazywa się „CI”. Wystartuje, gdy ktoś zrobi PR do gałęzi `main`. Dodatkowo zmiany muszą obejmować pliki z wymienionymi rozszerzeniami. Dlaczego? Bo zmiany w plikach takich jak Markdown lub MDX najprawdopodobniej niczego nie zepsują, więc nie musimy uruchamiać naszego worfklow.
+O panie, jaki długi plik! Nie bądź jednak przytłoczony — spróbujemy go rozszyfrować. Nasz workflow nazywa się „CI”. Wystartuje, gdy ktoś zrobi PR do gałęzi `main`. Dodatkowo zmiany muszą obejmować pliki z wymienionymi rozszerzeniami. Dlaczego? Bo zmiany w plikach takich jak Markdown lub MDX najprawdopodobniej niczego nie zepsują, więc nie musimy uruchamiać naszego workflow.
 
 Sekcja `concurrency` pozwala na anulowanie zadań w trakcie pracy, jeżeli należą do tej samej grupy. Np. kontynuowanie procesu budowania projektu nie ma sensu, jeżeli testy nie przeszły.
 
