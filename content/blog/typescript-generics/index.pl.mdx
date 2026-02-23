@@ -1,6 +1,6 @@
 ---
-title: TypeScript - typy generyczne
-description: 'Typy generyczne nie istnieją w JavaScripcie, ale są jednym z podstawowych konceptów w TypeScripcie. Oferują to co najlepsze z obu światów: elastyczność i bezpieczeństwo typów.'
+title: TypeScript — typy generyczne
+description: 'Typy generyczne nie istnieją w JavaScripcie, ale są jednym z podstawowych konceptów w TypeScripcie. Oferują to, co najlepsze z obu światów: elastyczność i bezpieczeństwo typów.'
 date: 2023-04-19T20:30:00+02:00
 updated: 2023-04-19T20:30:00+02:00
 image:
@@ -12,7 +12,7 @@ tags: ['typescript', 'ts', 'javascript', 'js', 'programming']
 type: 'post'
 ---
 
-Kontynuujmy naszą TypeScriptową serię. Dziś przyjrzymy się konceptowi, który jest dla mnie trochę niejasny - typy generyczne. Jeżeli znasz inne języki programowania takie jak C# lub Java, najprawdopodobniej zapoznałeś się z nimi. Ale istnieje spora szansa, że podobnie do mnie, skupiasz się głównie na języku JavaScript (i być może jest to dla ciebie również niejasne). Nie ma takiego konceptu w podstawowym języku, więc może powodować problemy. Ale jednocześnie jest do niezbędny koncept języka TypeScript. Dlatego spróbuję wyjaśnić typy generyczne (tobie i sobie) jakbyśmy byli ośmiolatkami.
+Kontynuujmy naszą TypeScriptową serię. Dziś przyjrzymy się pojęciu, które jest dla mnie trochę niejasne — typy generyczne. Jeżeli znasz inne języki programowania takie jak C# lub Java, najprawdopodobniej zapoznałeś się z nimi. Istnieje jednak spora szansa, że podobnie do mnie, skupiasz się głównie na języku JavaScript (i być może jest to dla ciebie również niejasne). Nie ma takiego pojęcia w podstawowym języku, więc może powodować problemy. Jest to jednak niezbędne pojęcie języka TypeScript. Dlatego spróbuję wyjaśnić typy generyczne (tobie i sobie) jakbyśmy byli ośmiolatkami.
 
 ## Co to jest typ generyczny?
 
@@ -25,13 +25,13 @@ person = 'Sam'
 let surname = 'Fisher'
 ```
 
-Definiujesz zmienną, inicjalizujesz ją (lub nie), definiujesz typ lub pozwalasz TypeScriptowi go wywnioskować. I to tyle. Typ się nie zmienia. Po to używamy języka TypeScript, nie? Tak, ale czasem potrzebujemy więcej elastyczności. Jednakże nie chcemy powracać do dynamicznych typów JavaScriptu. Aby osiągnąć balans i bezpieczeństwo związane z typami nadchodzą one - typy generyczne.
+Definiujesz zmienną, inicjalizujesz ją (lub nie), definiujesz typ lub pozwalasz TypeScriptowi go wywnioskować. I to tyle. Typ się nie zmienia. Po to używamy języka TypeScript, nie? Tak, ale czasem potrzebujemy więcej elastyczności. Jednakże nie chcemy powracać do dynamicznych typów JavaScriptu. Aby osiągnąć balans i bezpieczeństwo związane z typami nadchodzą one — typy generyczne.
 
-**Typ generyczny** jest jak zmienna, ale dla typów. Zmienna może przyjmować różne wartości - typ generyczny może akceptować różne typy. Typ generyczny jest powiązany z innym typem i jest elastyczny w stosunku do niego. Co przez to rozumiem?
+**Typ generyczny** jest jak zmienna, ale dla typów. Zmienna może przyjmować różne wartości — typ generyczny może akceptować różne typy. Typ generyczny jest powiązany z innym typem i jest elastyczny w stosunku do niego. Co przez to rozumiem?
 
 ## Wbudowane typy generyczne
 
-Jeżeli przyjrzysz się bliżej, podstawowe typy, takie jak Array czy Promise, to generyki w języku TypeScript. W “waniliowym” JavaScripcie, tablice mogą przechowywać różne typy. Używając TS-a, chcemy być bardziej precyzyjni. Na przykład, definiując tablicę z łańcuchami znaków, dajemy TS-owi więcej informacji, a w zamian otrzymujemy lepsze podpowiedzi. Możemy zapisać to na dwa sposoby. Możemy użyć standardowej składni…
+Jeżeli przyjrzysz się bliżej, podstawowe typy, takie jak Array czy Promise, to generyki w języku TypeScript. W „waniliowym” JavaScripcie tablice mogą przechowywać różne typy. Używając TS-a, chcemy być bardziej precyzyjni. Na przykład, definiując tablicę z łańcuchami znaków, dajemy TS-owi więcej informacji, a w zamian otrzymujemy lepsze podpowiedzi. Możemy zapisać to na dwa sposoby. Możemy użyć standardowej składni…
 
 ```ts title="Podstawowe typy i typy generyczne"
 let hobbies: string[] // Standardowa składnia.
@@ -61,11 +61,11 @@ merge<string[], string[]>(['Sam'], ['Fisher'])
 merge({ name: 'Sam' }, { hobbies: ['sneaking'] })
 ```
 
-Aby zdefiniować typy generyczne, potrzebujemy dodatkową parę (ostrych) nawiasów. Istnieje konwencja mówiąca, żeby zaczynać definiować typy generyczne przy pomocy liter alfabetu, zaczynając od litery “T”. Argument “a” jest typu “T”, a argument “b” jest typu “U”. Te typy nie są statyczne. Są dynamiczne - ustawione, gdy wywołujemy funkcję. TypeScript nadal może wywnioskować zwracaną wartość i zaoferować automatyczne uzupełnianie. Generyki pozwalają ci pracować z danymi w optymalny, TS-owy sposób. Przyjrzyj się powyższemu fragmentowi - możemy podać obiekty, tablice lub łańcuchy znaków. Funkcje generyczne pozwalają ci wypełniać konkretne typy dla różnych wywołań. “Czyli mogę też podać liczby?”. Tak i to jest problematyczne, bo używamy operatora spread.
+Aby zdefiniować typy generyczne, potrzebujemy dodatkową parę (ostrych) nawiasów. Istnieje konwencja mówiąca, żeby zaczynać definiować typy generyczne przy pomocy liter alfabetu, zaczynając od litery „T”. Argument „a” jest typu „T”, a argument „b” jest typu „U”. Te typy nie są statyczne. Są dynamiczne — ustawione, gdy wywołujemy funkcję. TypeScript nadal może wywnioskować zwracaną wartość i zaoferować automatyczne uzupełnianie. Generyki pozwalają ci pracować z danymi w optymalny, TS-owy sposób. Przyjrzyj się powyższemu fragmentowi — możemy podać obiekty, tablice lub łańcuchy znaków. Funkcje generyczne pozwalają ci wypełniać konkretne typy dla różnych wywołań. „Czyli mogę też podać liczby?”. Tak i to jest problematyczne, bo używamy operatora spread.
 
 ## Ograniczenia typów generycznych
 
-Z pomocą przychodzą ograniczenia typów generycznych. Czasami chcemy elastyczności, ale z drugiej strony walidacji. Możesz ustawić pewne limity dla typów na których bazują typy generyczne. Słowo kluczowe **extends** służy do ustawiania takich ograniczeń.
+Z pomocą przychodzą ograniczenia typów generycznych. Czasami chcemy elastyczności, ale z drugiej strony walidacji. Możesz ustawić pewne limity dla typów, na których bazują typy generyczne. Słowo kluczowe **extends** służy do ustawiania takich ograniczeń.
 
 ```ts title="Ograniczenia typów generycznych"
 function merge<T extends object, U extends object>(a: T, b: U) {
@@ -102,7 +102,7 @@ const person = merge({ name: 'Sam' }, { hobbies: ['sneaking'] })
 person.name // You can be sure there is the name property.
 ```
 
-Wyobraźmy sobie jeszcze inny scenariusz - chcemy mieć dostęp do właściwości obiektu, posyłając string. W takim scenariuszu, możemy wykorzystać słowo kluczowe **keyof.** Pierwszy parametr w poniższym przykładzie powinien być obiektem. Drugi parametr powinien być kluczem w tym obiekcie. Operator keyof przyjmuje obiekt i zwraca unię na którą składają się jego klucze.
+Wyobraźmy sobie jeszcze inny scenariusz — chcemy mieć dostęp do właściwości obiektu, posyłając string. W takim scenariuszu możemy wykorzystać słowo kluczowe **keyof.** Pierwszy parametr w poniższym przykładzie powinien być obiektem. Drugi parametr powinien być kluczem w tym obiekcie. Operator keyof przyjmuje obiekt i zwraca unię, na którą składają się jego klucze.
 
 ```ts title="Słowo kluczowe keyof"
 function extract<T extends object, U extends keyof T>(obj: T, key: U) {
@@ -123,7 +123,7 @@ Aby przeczytać więcej o typach union lub literal, sprawdź mój post o [typach
 
 ## Generyczna klasa
 
-Podobnie do funkcji, możesz zapisywać generyczne klasy. Składnia jest w zasadzie jednakowa - wykorzystując ostre nawiasy. Taka klasa może być jednocześnie elastyczna i silnie typowana.
+Podobnie do funkcji, możesz zapisywać generyczne klasy. Składnia jest w zasadzie jednakowa — wykorzystując ostre nawiasy. Taka klasa może być jednocześnie elastyczna i silnie typowana.
 
 ```ts title="Generyczna klasa"
 class Data<T extends string | number | boolean> {
@@ -146,7 +146,7 @@ const number = new Data<number>()
 number.addItem(50)
 ```
 
-Nie ograniczyliśmy powyższej klasy do jednego typu. Na początku TypeScript nie wie, jakiego jest typu. Ale później TypeScript rozpoznaje podesłany typ - przy wywołaniu funkcji lub inicjalizacji klasy. Możesz być nawet bardziej granularny i wprowadzić nowe typy generyczne, wewnątrz metod lub właściwości klasy. Ten zapis jest przydatny, gdy nie potrzebujesz ich w całej klasie.
+Nie ograniczyliśmy powyższej klasy do jednego typu. Na początku TypeScript nie wie, jakiego jest typu. Później jednak TypeScript rozpoznaje podesłany typ — przy wywołaniu funkcji lub inicjalizacji klasy. Możesz być nawet bardziej granularny i wprowadzić nowe typy generyczne, wewnątrz metod lub właściwości klasy. Ten zapis jest przydatny, gdy nie potrzebujesz ich w całej klasie.
 
 ```ts title="Typy generyczne wewnątrz klasy"
 class Data {
@@ -164,7 +164,7 @@ const object = new Data([{ name: 'Sam' }]) // TypeScript error.
 
 ## Typy generyczne, a union types
 
-Widząc poprzedni fragment kodu, możesz zapytać: “czym to się różni od union types?”. No tak, zapis wygląda podobnie, ale te typy działają inaczej. Myślę, że wykorzystując przykłady, będzie najłatwiej pokazać tę różnicę. Wróćmy do naszej klasy.
+Widząc poprzedni fragment kodu, możesz zapytać: „czym to się różni od union types?”. No tak, zapis wygląda podobnie, ale te typy działają inaczej. Myślę, że wykorzystując przykłady, będzie najłatwiej pokazać tę różnicę. Wróćmy do naszej klasy.
 
 ```ts title="Typy generyczne, a union types"
 class Data<T extends string | number | boolean> {
@@ -180,7 +180,7 @@ class Data<T extends string | number | boolean> {
 }
 ```
 
-Zapisując naszą klasę w ten sposób, wykorzystując typy generyczne, mówimy: “musisz wybrać pomiędzy typami danych, który z nich chcesz przechowywać, a następnie możesz dodawać tylko taki typ danych”. Wykorzystuj generyki jeżeli potrzebujesz elastyczności, ale jednocześnie chcesz się trzymać konkretnego typu. Wykorzystując union types, sprawa wygląda inaczej.
+Zapisując naszą klasę w ten sposób, wykorzystując typy generyczne, mówimy: „musisz wybrać pomiędzy typami danych, który z nich chcesz przechowywać, a następnie możesz dodawać tylko taki typ danych”. Wykorzystuj generyki, jeżeli potrzebujesz elastyczności, ale jednocześnie chcesz się trzymać konkretnego typu. Wykorzystując union types, sprawa wygląda inaczej.
 
 ```ts title="Typy generyczne, a union types"
 class Data {
@@ -204,7 +204,7 @@ Istnieje wiele przykładów generycznych typów użytkowych. Są one jak zbiór 
 
 ### Partial
 
-W czystym JavaScripcie możesz stworzyć obiekt, a następnie dodawać do niego właściwości. TypeScript nie lubi takiego dodawania “w locie”. Ale powiedzmy, że potrzebujesz takiej funkcjonalności.
+W czystym JavaScripcie możesz stworzyć obiekt, a następnie dodawać do niego właściwości. TypeScript nie lubi takiego dodawania „w locie”. Powiedzmy jednak, że potrzebujesz takiej funkcjonalności.
 
 ```ts title="Typ użytkowy Partial"
 interface Computer {
@@ -227,7 +227,7 @@ const desktop: Computer = {
 const laptop = updateComputer(desktop, { description: 'It has a 16" display.' })
 ```
 
-Partial owija typ i ustawia jego właściwości jako opcjonalne. W naszym przykładzie musimy ustalić `name` i `description` podczas tworzenia obiektu. Ale, wykorzystując typ partial, nie musimy podawać obu wartości, gdy chcemy zaktualizować jeden z obiektów. Pola są opcjonalne i możemy je aktualizować niezależnie.
+Partial owija typ i ustawia jego właściwości jako opcjonalne. W naszym przykładzie musimy ustalić `name` i `description` podczas tworzenia obiektu. Jednak, wykorzystując typ partial, nie musimy podawać obu wartości, gdy chcemy zaktualizować jeden z obiektów. Pola są opcjonalne i możemy je aktualizować niezależnie.
 
 ### Required
 
@@ -275,4 +275,4 @@ const laptop: Readonly<Computer> = {
 laptop.id = 'ags98kd'
 ```
 
-Nie miałoby to sensu, gdybym zaczął wymieniać wszystkie te typy i zaczął kopiować dokumentację, więc na tym poprzestanę. Sprawdzając trudność tego tekstu, dostałem informację, że powinien być on zrozumiały dla czytelnika z 8 klasy szkoły podstawowej (13 - 14 lat) i dla większości dorosłych. Jest to więcej niż osiem lat, ale mam nadzieję, że ten post tak czy siak był jasny. Generyczne typy istnieją, aby ułatwić ci życie oraz zapewnić kombinację elastyczności i bezpieczeństwa związanego z typami. Mam nadzieję, że ten post nie był zbyt generyczny i że teraz potrafisz użyć typów generycznych na swoją korzyść.
+Nie miałoby to sensu, gdybym zaczął wymieniać wszystkie te typy i zaczął kopiować dokumentację, więc na tym poprzestanę. Sprawdzając trudność tego tekstu, dostałem informację, że powinien być on zrozumiały dla czytelnika z 8 klasy szkoły podstawowej (13 — 14 lat) i dla większości dorosłych. Jest to więcej niż osiem lat, ale mam nadzieję, że ten post, tak czy siak, był jasny. Generyczne typy istnieją, aby ułatwić ci życie oraz zapewnić kombinację elastyczności i bezpieczeństwa związanego z typami. Mam nadzieję, że ten post nie był zbyt generyczny i że teraz potrafisz użyć typów generycznych na swoją korzyść.

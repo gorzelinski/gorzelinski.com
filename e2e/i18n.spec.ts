@@ -95,8 +95,8 @@ test.describe('I18n tests', () => {
       name: 'blog post page',
       url: ({ link }) => `${link.blog}hello-world/`,
       getTitle: async (_, settingsPage, lang) =>
-        settingsPage.getTemplateTitle('Hello... world?', lang),
-      getHeading: () => 'Hello... world?'
+        settingsPage.getTemplateTitle('Hello… world?', lang),
+      getHeading: () => 'Hello… world?'
     },
     {
       name: 'uses page',

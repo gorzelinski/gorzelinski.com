@@ -1,6 +1,6 @@
 ---
 title: Sssearch for books like a programmer
-description: 'I like to read books, and I spend many hours searching for them. So, I automated this process with a Python script that would scrape books from the web.'
+description: 'I enjoy reading books, and I spend many hours searching for them. So, I automated this process with a Python script that scrapes books from the web.'
 date: 2022-08-22T20:00:00+02:00
 updated: 2022-08-22T20:00:00+02:00
 image:
@@ -12,18 +12,18 @@ tags: ['python', 'web', 'scraping', 'books']
 type: 'post'
 ---
 
-I like to read books. Different genres fill my bookshelf: economy, psychology, philosophy, biographies, nonfiction, and especially - science. Bonobo from Frans de Waal's book cover looks at Einstein's prominent face. Before I put anything there, I search. I can spend an hour before I click “buy” in an online bookstore. I look for recommendations everywhere: asking friends, and strangers, browsing through Quora, Medium, and of course - Goodreads. Browsing the web is fun, but every hour spent searching is taking time from actual reading. So, like a real programmer, let's spend other hours automating this process!
+I enjoy reading books. Different genres fill my bookshelf: economy, psychology, philosophy, biographies, nonfiction, and especially—science. The bonobo on Frans de Waal's book cover looks at Einstein's prominent face. Before I put anything there, I search. I can spend an hour before I click “buy” in an online bookstore. I look for recommendations everywhere: asking friends and strangers, browsing through Quora, Medium, and of course—Goodreads. Browsing the web is fun, but every hour spent searching takes time away from actual reading. So, like a real programmer, let's spend more hours automating this process!
 
-Before I write any code, I need to clarify - I'm not a Python developer. I've completed several Python and data science courses and read a book, but that's it. This post is an opportunity to learn more. You can learn with me. A little knowledge of Python and the web is required to continue.
+Before I write any code, I need to clarify—I'm not a Python developer. I've completed several Python and data science courses and read a book, but that's it. This post is an opportunity to learn more. You can learn with me. A little knowledge of Python and the web is required to continue.
 
 ## Plan
 
-Let's start with a plan. What do we want to achieve? We want a list of the best books for a particular subject or category. Goodreads has an enormous catalog of books, so we'll use it. Choosing "the best" books will be inter-subjective - I'll use user ratings. It's not like the books on the list will be the best for everyone. But, there is a high possibility we may like it. We will trust the wisdom of the crowd. Let's think about the steps we need to take.
+Let's start with a plan. What do we want to achieve? We want a list of the best books for a particular subject or category. Goodreads has an enormous catalog of books, so we'll use it. Choosing “the best” books will be intersubjective; I'll use user ratings. It's not like the books on the list will be the best for everyone. But there is a high possibility we may like them. We will trust the wisdom of the crowd. Let's think about the steps we need to take.
 
 1. Visit the Goodreads website.
 2. Request a list of books for a particular subject.
 3. Loop through multiple pages.
-4. Process response of every URL.
+4. Process the response of every URL.
 5. Find DOM elements with an average rating and the number of ratings.
 6. Create a list of the best books.
 7. Set subjective principles for adding books to the list.
@@ -31,7 +31,7 @@ Let's start with a plan. What do we want to achieve? We want a list of the best 
 
 ## Environment
 
-I'll be using Ubuntu, so I have Python preinstalled. If you use another os, here's the [download link](https://www.python.org/downloads/). For this project, I'll be using Python 3.8.10. I'll also be using third-party Python modules. To avoid any troubles with versions, let's create a [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/) (for Windows, the steps will differ a bit).
+I'll be using Ubuntu, so I have Python preinstalled. If you use another OS, here's the [download link](https://www.python.org/downloads/). For this project, I'll be using Python 3.8.10. I'll also be using third-party Python modules. To avoid any trouble with versions, let's create a [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/) (for Windows, the steps will differ a bit).
 
 ```bash
 python3 -m venv best-books
@@ -55,17 +55,17 @@ There should be a directory:
 ./best-books/bin/python
 ```
 
-Now, we're ready to type sssome code. Ok, I'm not going to use this joke again. Especially considering that name comes from the comedy "Monty Python's Flying Circus" and not from a snake.
+Now, we're ready to type sssome code. OK, I'm not going to use this joke again. Especially considering that the name comes from the comedy “Monty Python's Flying Circus” and not from a snake.
 
 ## Third-party modules
 
-I've done some research, and there are many tools for scraping the web with Python. For example, I found [Scrapy](https://scrapy.org/) - a popular, powerful, and efficient framework for building web spiders that can crawl the web. It sounds cool, but for our simple script, it will be overkill. The learning curve is supposedly steep. So, we'll use two simple libraries instead. We'll use `requests` for. . .well, making HTTP requests. The name isn't exciting, but don't be fooled - it's one of the most popular libraries for Python. Let's install it.
+I've done some research, and there are many tools for scraping the web with Python. For example, I found [Scrapy](https://scrapy.org/)—a popular, powerful, and efficient framework for building web spiders that can crawl the web. It sounds cool, but for our simple script, it will be overkill. The learning curve is supposedly steep. So, we'll use two simple libraries instead. We'll use `requests` for… well, making HTTP requests. The name isn't exciting, but don't be fooled—it's one of the most popular libraries for Python. Let's install it.
 
 ```bash
 pip install requests
 ```
 
-After getting responses, we need a tool for extracting data from websites. `BeautifulSoup` will help us with just that. It's a parser library - it can obtain data from XML and HTML files. And the name is fancier. A modern website can be a beautiful soup of JavaScript, HTML, and CSS, I guess.
+After getting responses, we need a tool for extracting data from websites. `BeautifulSoup` will help us with just that. It's a parser library—it can obtain data from XML and HTML files. And the name is fancier. A modern website can be a beautiful soup of JavaScript, HTML, and CSS, I guess.
 
 ```bash
 pip install beautifulsoup4
@@ -156,7 +156,7 @@ for book in books:
     print(int(ratings.replace(",", "")))  # Int like 84 006
 ```
 
-A lot going on here, so let's stop for a moment. For every book on a page, we want to extract info about the average rating and the number of ratings. First, we select the `span` with this information and grab text from it (last element). We split the string using spaces and used list unpacking to take just numbers. The average rating is first in the list, and the number of ratings is one before the last. We also need to convert the numbers to `float` and `int` because they are strings. I know I could use regex or iterate over the list to extract that info and don't rely on positions, but I wanted to keep it simple. Then I also extracted the info about the title, author, and link.
+There's a lot going on here, so let's stop for a moment. For every book on a page, we want to extract info about the average rating and the number of ratings. First, we select the `span` with this information and grab text from it (the last element). We split the string using spaces and use list unpacking to take just the numbers. The average rating is first in the list, and the number of ratings is one before the last. We also need to convert the numbers to `float` and `int` because they are strings. I know I could use regex or iterate over the list to extract that info and not rely on positions, but I wanted to keep it simple. Then I also extracted the info about the title, author, and link.
 
 ```python
 from requests import get
@@ -171,12 +171,12 @@ for book in books:
     ratings_string = book.select_one(".minirating").contents[-1]
     average_rating, *other, ratings, _ = ratings_string.split()
     title = book.select_one(".bookTitle").get_text(strip=True)
-		link = book.select_one(".bookTitle")["href"]
+    link = book.select_one(".bookTitle")["href"]
     author = book.select_one(".authorName").get_text(strip=True)
     print(title, author)  # Title and author of every book
 ```
 
-Now, we can finally grab only the best books. Let's be picky - to be on our list title needs to have over 4.2 average and over 50000 ratings. We can modify variables: `average_rating_threshold` and `average_threshold` to ease our conditions. Before the loop, I created the `best_books` list. Information about the book is added if both conditions are met.
+Now, we can finally grab only the best books. Let's be picky—to be on our list, a title needs to have over 4.2 average and over 50,000 ratings. We can modify the variables `average_rating_threshold` and `ratings_threshold` to ease our conditions. Before the loop, I created the `best_books` list. Information about the book is added if both conditions are met.
 
 ```python
 from requests import get
@@ -209,7 +209,7 @@ for book in books:
 print(best_books)  # List of books with over 4.2 average and over 50000 ratings
 ```
 
-We successfully scraped books from one page. Let's do something even better - let's search ten pages!
+We successfully scraped books from one page. Let's do something even better—let's search ten pages!
 
 ```python
 from requests import get
@@ -245,7 +245,7 @@ for page in range(start_page, stop_page):
 print(best_books)  # List of best books from 10 pages
 ```
 
-I modified the URL to consist current page. I iterated over pages with the `range` function. After scraping books, the last step has left - saving them to a file. Below the scraping loop, I added another snippet that writes down the best books to a markdown file.
+I modified the URL to include the current page. I iterated over pages with the `range` function. After scraping books, the last step is left—saving them to a file. Below the scraping loop, I added another snippet that writes the best books to a Markdown file.
 
 ```python
 # ...
@@ -272,7 +272,7 @@ for book in best_books:
 file.close()
 ```
 
-I used Python's built-in functions: `open`, `write`, and `close` to save the best books into a file. The first line in a file is an `h2` header with the subject. `itemgetter` is a function to extract data from a dictionary neatly. Then, I used the data to create a list item for every book. There is some custom HTML markup to make it prettier. And that's it - we have the best books in a file. Here's the output...
+I used Python's built-in functions: `open`, `write`, and `close` to save the best books into a file. The first line in a file is an `h2` header with the subject. `itemgetter` is a function to extract data from a dictionary neatly. Then, I used the data to create a list item for every book. There is some custom HTML markup to make it prettier. And that's it—we have the best books in a file. Here's the output…
 
 ```markdown
 ## Best books about science
@@ -282,7 +282,7 @@ I used Python's built-in functions: `open`, `write`, and `close` to save the bes
 - [Why We Sleep: The New Science of Sleep and Dreams](https://www.goodreads.com/book/show/36303871-why-we-sleep?from_search=true&from_srp=true&qid=E5tgn4SYZ5&rank=129)<br />by Matthew Walker | <small title="Average rating">4.38⭐</small> <small>140,971 ratings</small>
 ```
 
-...and how it is displayed:
+… and how it is displayed:
 
 ## Best books about science
 
@@ -357,7 +357,7 @@ I've refactored it a bit. I've put the logic for scraping and saving books into 
 
 ## Bonus
 
-I thought running the script directly from the terminal without modifying it would be cool. So, I used custom line arguments to provide the necessary data. We can capture info passed to the script with the `argv` module. The first argument is a script name, and the others are custom.
+I thought running the script directly from the terminal without modifying it would be cool. So, I used custom command-line arguments to provide the necessary data. We can capture info passed to the script with the `argv` module. The first argument is the script name, and the others are custom.
 
 ```python
 # ...
@@ -376,7 +376,7 @@ best_books = scrape_books(subject, start_page, stop_page,
 save_books(best_books, subject)
 ```
 
-Now we scrape books by typing to the terminal something like this:
+Now we scrape books by typing in the terminal something like this:
 
 ```bash
 python3 scrape-books.py science 1 11 4.2 50000

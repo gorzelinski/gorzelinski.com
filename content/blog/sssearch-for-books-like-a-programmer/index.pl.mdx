@@ -12,13 +12,13 @@ tags: ['python', 'web', 'scraping', 'książki']
 type: 'post'
 ---
 
-Lubię czytać książki. Różne gatunki wypełniają mój regał: ekonomia, psychologia, filozofia, biografie, literatura faktu, a w szczególności książki naukowe. Bonobo z okładki książki Fransa de Walla spogląda na wybitną twarz Einsteina. Zanim jednak cokolwiek tam postawię, dużo szukam. Potrafię spędzić dosłownie godzinę, zanim kliknę “kup” w księgarni internetowej. Poleceń szukam wszędzie: pytając znajomych, nieznajomych, przeglądając forum Quora, Medium i oczywiście - Lubimyczytać. Przeszukiwanie sieci jest fajne, ale każda godzina spędzona na szukaniu, zabiera czas od właściwego czytania. Dlatego, jak prawdziwy programista, spędźmy kolejne godziny automatyzując ten proces!
+Lubię czytać książki. Różne gatunki wypełniają mój regał: ekonomia, psychologia, filozofia, biografie, literatura faktu, a w szczególności książki naukowe. Bonobo z okładki książki Fransa de Walla spogląda na wybitną twarz Einsteina. Zanim jednak cokolwiek tam postawię, dużo szukam. Potrafię spędzić dosłownie godzinę, zanim kliknę „kup” w księgarni internetowej. Poleceń szukam wszędzie: pytając znajomych, nieznajomych, przeglądając forum Quora, Medium i oczywiście — Lubimyczytać. Przeszukiwanie sieci jest fajne, ale każda godzina spędzona na szukaniu, zabiera czas od właściwego czytania. Dlatego, jak prawdziwy programista, spędźmy kolejne godziny, automatyzując ten proces!
 
-Zanim napiszę pierwszą linię kodu, muszę zaznaczyć - nie jestem programistą Pythona. Skończyłem jakieś kursy o języku Python, data science i przeczytałem książkę, ale to wszystko. Ten post jest dla mnie okazją do nauki. Możesz uczyć się ze mną. Trochę wiedzy o sieci i języku Python jest wymagane, aby kontynuować.
+Zanim napiszę pierwszą linię kodu, muszę zaznaczyć — nie jestem programistą Pythona. Skończyłem jakieś kursy o języku Python, data science i przeczytałem książkę, ale to wszystko. Ten post jest dla mnie okazją do nauki. Możesz uczyć się ze mną. Trochę wiedzy o sieci i języku Python jest wymagane, aby kontynuować.
 
 ## Plan
 
-Zacznijmy od planu. Co chcemy osiągnąć? Chcemy listę najlepszych książek na konkretny temat lub z konkretnej kategorii. Lubimyczytać ma ogromny katalog książek, dlatego użyjemy go. Wybieranie “najlepszych” książek będzie intersubiektywne - wykorzystamy istniejące oceny użytkowników. To nie jest tak, że znalezione książki będą najlepsze dla każdego. Ale istnieje spora szansa, że nam się spodobają. Zawierzymy mądrości tłumu. Pomyślmy o krokach, które musimy podjąć.
+Zacznijmy od planu. Co chcemy osiągnąć? Chcemy listę najlepszych książek na konkretny temat lub z konkretnej kategorii. Lubimyczytać ma ogromny katalog książek, dlatego użyjemy go. Wybieranie „najlepszych” książek będzie intersubiektywne — wykorzystamy istniejące oceny użytkowników. To nie jest tak, że znalezione książki będą najlepsze dla każdego. Jednak istnieje spora szansa, że nam się spodobają. Zawierzymy mądrości tłumu. Pomyślmy o krokach, które musimy podjąć.
 
 1. Odwiedzić stronę Lubimyczytać.
 2. Zażądać listy książek z konkretnej kategorii.
@@ -26,7 +26,7 @@ Zacznijmy od planu. Co chcemy osiągnąć? Chcemy listę najlepszych książek n
 4. Przetworzyć odpowiedź dla każdego adresu URL.
 5. Znaleźć elementy DOM ze średnią ocen i liczbą ocen.
 6. Stworzyć listę z najlepszymi książkami.
-7. Ustalić subiektywne zasady dodawania książek do lisy.
+7. Ustalić subiektywne zasady dodawania książek do listy.
 8. Zapisać listę do jakiegoś pliku.
 
 ## Środowisko
@@ -37,13 +37,13 @@ Będę używał Ubuntu, gdzie język Python jest preinstalowany. Jeżeli używas
 python3 -m venv best-books
 ```
 
-Będzie ono zawierało konkretne wersje interpretera Python i innych modułów. Po stworzeniu wirtualnego środowiska, musimy je aktywować.
+Będzie ono zawierało konkretne wersje interpretera Python i innych modułów. Po stworzeniu wirtualnego środowiska musimy je aktywować.
 
 ```bash
 source best-books/bin/activate
 ```
 
-Ta komenda umieści pliki wykonywalne pip i python w ścieżce `PATH` powłoki. Aby sprawdzić czy działa, możesz wpisać:
+Ta komenda umieści pliki wykonywalne pip i python w ścieżce `PATH` powłoki. Aby sprawdzić, czy działa, możesz wpisać:
 
 ```bash
 which python
@@ -55,17 +55,17 @@ Powinna wyświetlić się ścieżka:
 ./best-books/bin/python
 ```
 
-Teraz jesteśmy gotowi, żeby napisssać pierwsze linie kodu. Dobra, nie użyję tego żartu ponownie. Zwłaszcza, że nazwa języka pochodzi od komedii “Latający Cyrk Monty Pythona”, a nie od węża.
+Teraz jesteśmy gotowi, żeby napisssać pierwsze linie kodu. Dobra, nie użyję tego żartu ponownie. Zwłaszcza że nazwa języka pochodzi od komedii „Latający Cyrk Monty Pythona”, a nie od węża.
 
 ## Zewnętrzne moduły
 
-Przeszukałem sieć i znalazłem sporo narzędzi do web scrapingu dla języka Python. Znalazłem na przykład [Scrapy](https://scrapy.org/) - popularny, potężny i wydajny framework do budowania pająków, które będą przeszukiwały sieć. Brzmi fajnie, ale dla naszego prostego skryptu byłaby to przesada. Krzywa uczenia się jest podobno stroma. Dlatego wykorzystamy dwie prostsze biblioteki. Wykorzystamy bibliotekę `requests` do wykonywania żądań HTTP. Nazwa może nie jest ekscytująca, ale niech cię to nie zwiedzie - to jest jedna z najpopularniejszych bibliotek Pythona. Zainstalujmy ją.
+Przeszukałem sieć i znalazłem sporo narzędzi do web scrapingu dla języka Python. Znalazłem na przykład [Scrapy](https://scrapy.org/) — popularny, potężny i wydajny framework do budowania pająków, które będą przeszukiwały sieć. Brzmi fajnie, ale dla naszego prostego skryptu byłaby to przesada. Krzywa uczenia się jest podobno stroma. Dlatego wykorzystamy dwie prostsze biblioteki. Wykorzystamy bibliotekę `requests` do wykonywania żądań HTTP. Nazwa może nie jest ekscytująca, ale niech cię to nie zwiedzie — to jest jedna z najpopularniejszych bibliotek Pythona. Zainstalujmy ją.
 
 ```bash
 pip install requests
 ```
 
-Po otrzymaniu odpowiedzi, musimy wydobyć potrzebne dane ze strony internetowej. `BeautifulSoup` pomoże nam w tym. Jest to biblioteka parsująca - pomaga wyłuskać dane z plików XML i HTML. No i nazwa jest bardziej fantazyjna. Współczesne strony chyba faktycznie mogą być piękną zupą składającą się plików JavaScript, HTML i CSS.
+Po otrzymaniu odpowiedzi musimy wydobyć potrzebne dane ze strony internetowej. `BeautifulSoup` pomoże nam w tym. Jest to biblioteka parsująca — pomaga wyłuskać dane z plików XML i HTML. No i nazwa jest bardziej fantazyjna. Współczesne strony chyba faktycznie mogą być piękną zupą składającą się plików JavaScript, HTML i CSS.
 
 ```bash
 pip install beautifulsoup4
@@ -79,7 +79,7 @@ Najpierw musimy zaimportować metodę `get` z biblioteki `requests`.
 from requests import get
 ```
 
-Zażądajmy strony Lubimyczytać z książkami popularnonaukowymi, aby sprawdzić czy działa.
+Zażądajmy strony Lubimyczytać z książkami popularnonaukowymi, aby sprawdzić, czy działa.
 
 ```python
 from requests import get
@@ -95,7 +95,7 @@ print(res.text)  # Zawartość strony
 python3 scrape-books.py
 ```
 
-Jeżeli wyświetliłeś zawartość, zauważyłeś dużo rzeczy w terminalu. Teraz musimy zaimportować bibliotekę `BeautifulSoup`, aby to przetworzyć.
+Jeżeli wyświetliłeś zawartość, zauważyłeś dużo rzeczy w terminalu. Teraz musimy zaimportować bibliotekę `BeautifulSoup`, aby ją przetworzyć.
 
 ```python
 from requests import get
@@ -136,7 +136,7 @@ Musimy znaleźć elementy DOM zawierające informacje o ocenach i ich liczbie.
 <div class="listLibrary__ratingAll">3 ocen</div>
 ```
 
-Elementy, których szukamy mają klasy `listLibrary__ratingStarsNumber` i `listLibrary__ratingAll`. Wykorzystując je możemy wydobyć oceny z książek.
+Elementy, których szukamy, mają klasy `listLibrary__ratingStarsNumber` i `listLibrary__ratingAll`. Wykorzystując je, możemy wydobyć oceny z książek.
 
 ```python
 from requests import get
@@ -158,7 +158,7 @@ for book in books:
     print(int(ratings))  # Int np. 3
 ```
 
-Sporo się tu dzieje, dlatego zatrzymajmy się na chwilę. Z każdej książki na stronie chcemy wydobyć informację o średniej i liczbie ocen. Na początek wybieramy `span` ze średnią ocen i wyciągamy z niego tekst. Zamieniamy przecinki na kropki, żeby móc zmienić typ danych na `float`. Następnie wybieramy element z informacją o liczbie ocen. Dzielimy ten tekst wykorzystując spacje i wybieramy z listy pierwszy element. Prawie zawsze znajduje się w nim liczba ocen, ale czasem jej brakuje. Dlatego wykorzystałem operator trójskładnikowy, żeby uwzględnić ten przypadek. Mogłem wykorzystać regex albo iterację przez tekst, aby wydobyć te informacje zamiast polegać na pozycjach, ale nie chciałem komplikować tego fragmentu. Wyciągnąłem także informacje o autorze, tytule i link.
+Sporo się tu dzieje, dlatego zatrzymajmy się na chwilę. Z każdej książki na stronie chcemy wydobyć informację o średniej i liczbie ocen. Na początek wybieramy `span` ze średnią ocen i wyciągamy z niego tekst. Zamieniamy przecinki na kropki, żeby móc zmienić typ danych na `float`. Następnie wybieramy element z informacją o liczbie ocen. Dzielimy ten tekst, wykorzystując spacje i wybieramy z listy pierwszy element. Prawie zawsze znajduje się w nim liczba ocen, ale czasem jej brakuje. Dlatego wykorzystałem operator trójskładnikowy, żeby uwzględnić ten przypadek. Mogłem wykorzystać regex albo iterację przez tekst, aby wydobyć te informacje, zamiast polegać na pozycjach, ale nie chciałem komplikować tego fragmentu. Wyciągnąłem także informacje o autorze, tytule i linku.
 
 ```python
 from requests import get
@@ -184,7 +184,7 @@ for book in books:
     print(title, author)  # Tytuł, autor dla każdej książki
 ```
 
-Teraz w końcu możemy wybrać najlepsze książki. Bądźmy wybredni - książka, aby być na naszej liście musi mieć średnią powyżej 8.0 i liczbę ocen powyżej 2000. Możemy zmodyfikować zmienne: `average_rating_threshold` i `average_threshold`, aby poluzować warunki. Przed pętlą stworzyłem listę `best_books`. Informacje o książce są do niej dodane jeżeli oba warunki zostały spełnione.
+Teraz w końcu możemy wybrać najlepsze książki. Bądźmy wybredni — książka, aby być na naszej liście, musi mieć średnią powyżej 8.0 i liczbę ocen powyżej 2000. Możemy zmodyfikować zmienne: `average_rating_threshold` i `ratings_threshold`, aby poluzować warunki. Przed pętlą stworzyłem listę `best_books`. Informacje o książce są do niej dodane, jeżeli oba warunki zostały spełnione.
 
 ```python
 from requests import get
@@ -222,7 +222,7 @@ for book in books:
 print(best_books)  # Lista książek ze średnią powyżej 8.0 i ponad 2000 ocen
 ```
 
-Udało nam się “zeskrobać” książki z jednej strony. Zróbmy coś nawet lepszego - przeszukajmy dziesięć stron!
+Udało nam się „zeskrobać” książki z jednej strony. Zróbmy coś nawet lepszego — przeszukajmy dziesięć stron!
 
 ```python
 from requests import get
@@ -262,7 +262,7 @@ for page in range(start_page, stop_page):
 print(best_books)
 ```
 
-Zmodyfikowałem adres URL aby zawierał aktualną stronę. Iterowałem przez strony używając funkcji `range`. Po znalezieniu książek pozostał ostatni krok - zapisanie ich do pliku. Poniżej pętli iterującej przez strony, dodałem fragment kodu, który zapisuje najlepsze książki do pliku markdown.
+Zmodyfikowałem adres URL, aby zawierał aktualną stronę. Iterowałem przez strony, używając funkcji `range`. Po znalezieniu książek pozostał ostatni krok — zapisanie ich do pliku. Poniżej pętli iterującej przez strony, dodałem fragment kodu, który zapisuje najlepsze książki do pliku markdown.
 
 ```python
 # ...
@@ -289,7 +289,7 @@ for book in best_books:
 file.close()
 ```
 
-Wykorzystałem wbudowane funkcje języka Python: `open`, `write` i `close`, aby zapisać najlepsze książki do pliku. Pierwsza linia w pliku to nagłówek `h2` z informacją o kategorii. `itemgetter` to funkcja, która pozwala w elegancki sposób wydobyć dane ze słownika. Następnie użyłem tych danych, aby stworzyć element listy dla każdej książki. Znajduję się tam trochę znaczników HTML, aby wyglądało to ładniej. No i to wszystko - mamy najlepsze książki w pliku. Tu jest jego zawartość...
+Wykorzystałem wbudowane funkcje języka Python:`open`, `write` i `close`, aby zapisać najlepsze książki do pliku. Pierwsza linia w pliku to nagłówek `h2` z informacją o kategorii. `itemgetter` to funkcja, która pozwala w elegancki sposób wydobyć dane ze słownika. Następnie użyłem tych danych, aby stworzyć element listy dla każdej książki. Znajduję się tam trochę znaczników HTML, aby wyglądało to ładniej. No i to wszystko — mamy najlepsze książki w pliku. Tu jest jego zawartość…
 
 ```markdown
 ## Najlepsze książki z kategorii: popularnonaukowe
@@ -299,7 +299,7 @@ Wykorzystałem wbudowane funkcje języka Python: `open`, `write` i `close`, aby 
 - [Krótka historia prawie wszystkiego](https://lubimyczytac.pl/ksiazka/3749344/krotka-historia-prawie-wszystkiego)<br />autorstwa Bill Bryson | <small title="Średnia ocen">8.2⭐</small> <small>2123 ocen</small>
 ```
 
-...i to jak się wyświetla:
+…i to jak się wyświetla:
 
 # Najlepsze książki z kategorii: popularnonaukowe
 

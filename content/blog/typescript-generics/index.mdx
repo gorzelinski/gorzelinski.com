@@ -12,7 +12,7 @@ tags: ['typescript', 'ts', 'javascript', 'js', 'programming']
 type: 'post'
 ---
 
-Let's continue our TypeScript series. Today, we will look at a concept that's pretty confusing for me - generics. If you're coming from other languages like C# or Java, you're probably familiar with them. But there is a high chance you're like me - focused mainly on JavaScript (and maybe you're confused too). There is no such concept in the vanilla language and it may cause problems. But it's an essential concept of TypeScript. So, I'll explain generics (to you and myself) like we're eight years old.
+Let's continue our TypeScript series. Today, we will look at a concept that's pretty confusing for me—generics. If you're coming from other languages like C# or Java, you're probably familiar with them. But there is a high chance you're like me—focused mainly on JavaScript (and maybe you're confused too). There is no such concept in the vanilla language, and it may cause problems. But it's an essential concept of TypeScript. So, I'll explain generics (to you and myself) like we're eight years old.
 
 ## What is a Generic?
 
@@ -25,12 +25,13 @@ person = 'Sam'
 let surname = 'Fisher'
 ```
 
-You define a variable, initialize it (or not), define a type, or let TypeScript infers it. And it's done. The type won't change. That's why we use TypeScript, right? Yes, but sometimes we want to be more flexible. However, we want to avoid returning to the dynamic types of JavaScript. To achieve balance and type-safety, here comes - generics.
-A **generic** is like a variable but for types. A variable can receive different values - a generic can accept different types. A generic is a type connected with some other one, and it's flexible regarding which that other type is. What do I mean by that?
+You define a variable, initialize it (or not), define a type, or let TypeScript infer it. And it's done. The type won't change. That's why we use TypeScript, right? Yes, but sporadically we want to be more flexible. However, we wish to avoid returning to the dynamic types of JavaScript. To achieve balance and type safety, here come generics.
+
+A **generic** is like a variable but for types. A variable can receive different values—a generic can accept different types. A generic is a type connected with some other one, and it's flexible regarding which that other type is. What do I mean by that?
 
 ## Built-in Generics
 
-If you look closely, some basic types like Array or Promise are generics in TypeScript. In vanilla JavaScript, arrays can store multiple different types. We want to be more precise using TS. For example, defining an array of strings can give TS more information and give us better auto-completion. We can write it two ways. We can use the standard syntax…
+If you look closely, some basic types like Array or Promise are generics in TypeScript. In vanilla JavaScript, arrays can store multiple different types. We want to be more precise using TS. For example, defining an array of strings can provide TS with more information and give us better auto-completion. We can write it two ways. We can use the standard syntax…
 
 ```ts title="Basic Types and Generics"
 let hobbies: string[] // The standard syntax.
@@ -60,7 +61,7 @@ merge<string[], string[]>(['Sam'], ['Fisher'])
 merge({ name: 'Sam' }, { hobbies: ['sneaking'] })
 ```
 
-To define generics, we need additional pair of (pointing) brackets. The convention is to define generics using single letters starting from the "T" letter. The "a" argument is of type "T," and the "b" is of type "U." These types are not static. They are dynamic - set when we call the function. TypeScript can still infer the return value and provide auto-completion. Generics allow you to work with your data in TS optimal way. Look at the above snippet - we can pass objects, arrays, or strings. Generic functions allow you to fill concrete types for different function calls. "So, I can pass other types like numbers too?" Yes, and that is problematic because we use the spread operator.
+To define generics, we need an additional pair of (pointing) brackets. The convention is to define generics using single letters starting from the “T” letter. The “a” argument is of type “T,” and the “b” is of type “U.” These types are not static. They are dynamic—set when we call the function. TypeScript can still infer the return value and provide auto-completion. Generics allow you to work with your data optimally in TS. Look at the above snippet—we can pass objects, arrays, or strings. Generic functions allow you to fill concrete types for different function calls. “So, I can pass other types like numbers too?” Yes, and that is problematic because we use the spread operator.
 
 ## Generic Constraints
 
@@ -101,7 +102,7 @@ const person = merge({ name: 'Sam' }, { hobbies: ['sneaking'] })
 person.name // You can be sure there is the name property.
 ```
 
-Let's imagine another scenario - we want to access an object property by passing a string. In such a scenario, we can use the **keyof** keyword. The first parameter in the below example should be an object. The second parameter should be any key in that object. The keyof operator takes an object type and produces a string or numeric literal union of its keys.
+Let's imagine another scenario—we want to access an object property by passing a string. In such a scenario, we can use the **keyof** keyword. The first parameter in the below example should be an object. The second parameter should be any key in that object. The keyof operator takes an object type and produces a string or numeric literal union of its keys.
 
 ```ts title="The keyof keyword"
 function extract<T extends object, U extends keyof T>(obj: T, key: U) {
@@ -122,7 +123,7 @@ To read more about literal or union types, check my post about [basic TypeScript
 
 ## Generic Class
 
-Similarly to functions, you can write generic classes. The syntax is the same - using angled brackets. Such a class can be both flexible and strongly typed.
+Similarly to functions, you can write generic classes. The syntax is the same—using angled brackets. Such a class can be both flexible and strongly typed.
 
 ```ts title="Generic Class"
 class Data<T extends string | number | boolean> {
@@ -145,7 +146,7 @@ const number = new Data<number>()
 number.addItem(50)
 ```
 
-We didn't lock the above class to one type. At first, TypeScript doesn't know which type it is. But then TypeScript knows the concrete type you pass in - when you call the function or instantiate the class. You can even be more granular and introduce new generic types in class methods or properties. That’s a good use case when you don't need them in the entire class.
+We didn't lock the above class to one type. At first, TypeScript doesn't know which type it is. But then TypeScript knows the concrete type you pass in—when you call the function or instantiate the class. You can even be more granular and introduce new generic types in class methods or properties. That’s a good use case when you don't need them in the entire class.
 
 ```ts title="Generics inside classes"
 class Data {
@@ -163,7 +164,7 @@ const object = new Data([{ name: 'Sam' }]) // TypeScript error.
 
 ## Generic vs. Union Types
 
-Seeing the previous snippet, you may ask, "how that's different from the union type?" Yeah, they look similar, but they work differently. I think the best way to explain the difference will be to use examples. Let's go back to our class.
+Seeing the previous snippet, you may ask, “How is that different from a union type?” Yeah, they look similar, but they work differently. I think the best way to explain the difference is to use examples. Let's go back to our class.
 
 ```ts title="Generic vs. Union Types"
 class Data<T extends string | number | boolean> {
@@ -179,7 +180,7 @@ class Data<T extends string | number | boolean> {
 }
 ```
 
-Writing our class like this using generics, we say: "You have to choose the type of data you want to store, and then you're only allowed to add that type of data." Use generics if you want flexibility but then want to stick to a specific type. It's a different story using union types.
+Writing our class like this using generics, we say, “You have to choose the type of data you want to store, and then you're only allowed to add that type of data.” Use generics if you want flexibility but then want to stick to a specific type. It's a different story with union types.
 
 ```ts title="Generic vs. Union Types"
 class Data {
@@ -195,7 +196,7 @@ class Data {
 }
 ```
 
-Here we're **not** saying this is either an array of strings, or array of numbers, or an array of booleans. The array can store strings, numbers, and booleans mixed. It's the same for functions. With union types, we accept any of these types every time we call the method.
+Here we're **not** saying this is either an array of strings, an array of numbers, or an array of booleans. The array can store strings, numbers, and booleans mixed. It's the same for functions. With union types, we accept any of these types every time we call the method.
 
 ## Generic Utility Types
 
@@ -203,7 +204,7 @@ There are also many examples of generic utility types. They are like a set of he
 
 ### Partial
 
-In vanilla JavaScript, you can create an object and then add properties. TypeScript doesn't like on-fly adding. But let's say you need such a functionality.
+In vanilla JavaScript, you can create an object and then add properties. TypeScript doesn't like on-the-fly adding. But let's say you need such a functionality.
 
 ```ts title="Partial Utility Type"
 interface Computer {
@@ -273,4 +274,4 @@ const laptop: Readonly<Computer> = {
 laptop.id = 'ags98kd'
 ```
 
-It wouldn't make much sense to list all utility types and copy the TypeScript documentation, so I'll end here. Grammarly (spell checking tool I use) says that "Your text is likely to be understood by a reader who has at least an 8th-grade education (age 13-14) and should be fairly easy for most adults to read." That's over eight years old, but I hope the post was clear anyway. Generic types are there to make your life easier and give you a combination of flexibility and type safety. I hope this post wasn't too generic, and now you can use generics to your advantage.
+It wouldn't make much sense to list all utility types and copy the TypeScript documentation, so I'll end here. Grammarly (the spell-checking tool I use) says that “Your text is likely to be understood by a reader who has at least an 8th-grade education (age 13-14) and should be fairly easy for most adults to read.” That's over eight years old, but I hope the post was clear anyway. Generic types are there to make your life easier and give you a combination of flexibility and type safety. I hope this post wasn't too generic, and now you can use generics to your advantage.

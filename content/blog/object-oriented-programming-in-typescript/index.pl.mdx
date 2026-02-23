@@ -13,19 +13,19 @@ tags:
 type: 'post'
 ---
 
-W [ostatnim wpisie](/pl/blog/typescript-basic-types/) przedstawiłem przesłanki stojące za używaniem TypeScripta. Krótko go opisałem i wymieniłem podstawowe typy, przydatne podczas codziennej pracy z oprogramowaniem. Ale podstawowe typy to za mało, żeby budować współczesne, złożone aplikacje webowe.
+W [ostatnim wpisie](/pl/blog/typescript-basic-types/) przedstawiłem przesłanki stojące za używaniem TypeScripta. Krótko go opisałem i wymieniłem podstawowe typy, przydatne podczas codziennej pracy z oprogramowaniem. Jednakże podstawowe typy to za mało, żeby budować współczesne, złożone aplikacje webowe.
 
 <Callout variant="info">
 
-W tym poście zakładam, że rozumiesz OOP w czystym języku JavaScript. Nie jesteś pewien co do swojej wiedzy? Nie przejmuj się, mam coś dla ciebie - [Programowanie obiektowe w języku JavaScript](/pl/blog/object-oriented-programming-in-javascript/).
+W tym poście zakładam, że rozumiesz OOP w czystym języku JavaScript. Nie jesteś pewien co do swojej wiedzy? Nie przejmuj się, mam coś dla ciebie — [Programowanie obiektowe w języku JavaScript](/pl/blog/object-oriented-programming-in-javascript/).
 
 </Callout>
 
-Aby modelować rzeczywiste przedmioty, potrzebujemy obiektów. I klas. I interfejsów. W tym wpisie, poznamy je wszystkie. Pod koniec tego wpisu, powinniśmy dobrze rozumieć OOP w języku TypeScript. Powinniśmy poznać najważniejszą składnię i jak wypada w porównaniu do OOP w języku JavaScript.
+Aby modelować rzeczywiste przedmioty, potrzebujemy obiektów. I klas. I interfejsów. W tym wpisie poznamy je wszystkie. Pod koniec tego wpisu, powinniśmy dobrze rozumieć OOP w języku TypeScript. Powinniśmy poznać najważniejszą składnię i jak wypada w porównaniu do OOP w języku JavaScript.
 
 ## Klasa
 
-Definiowanie klas w TypeScripcie jest identycznie jak w “waniliowym” języku (przynajmniej w ECMAScript 6). Dostępne jest słowo kluczowe `class`, które możesz wykorzystać do tego celu. Jednakże, w przypadku pól, mamy więcej opcji. TypeScript oferuje **modyfikatory,** które zmieniają widoczność poszczególnych właściwości.
+Definiowanie klas w TypeScripcie jest identycznie jak w „waniliowym” języku (przynajmniej w ECMAScript 6). Dostępne jest słowo kluczowe `class`, które możesz wykorzystać do tego celu. Jednakże w przypadku pól, mamy więcej opcji. TypeScript oferuje **modyfikatory,** które zmieniają widoczność poszczególnych właściwości.
 
 ```typescript title="Klasy"
 class Computer {
@@ -64,7 +64,7 @@ class Computer {
 
 ## Dziedziczenie
 
-Jeżeli wiesz jak działa dziedziczenie w JavaScripcie, TypeScript nie zaskoczy cię (no dobra, może trochę). Klasy dziedziczą po sobie za pomocą słówka `extends`. Istnieje także modyfikator powiązany z dziedziczeniem - `protected`. Pola oznaczone jako “protected” są dostępne wewnątrz klasy, a także wewnątrz każdej dziedziczącej klasy. Poniższa tabela porównuje modyfikatory pól w TypeScripcie.
+Jeżeli wiesz, jak działa dziedziczenie w JavaScripcie, TypeScript nie zaskoczy cię (no dobra, może trochę). Klasy dziedziczą po sobie za pomocą słówka `extends`. Istnieje także modyfikator powiązany z dziedziczeniem — `protected`. Pola oznaczone jako „protected” są dostępne wewnątrz klasy, a także wewnątrz każdej dziedziczącej klasy. Poniższa tabela porównuje modyfikatory pól w TypeScripcie.
 
 | Modyfikator | Klasa    | Dziedziczące klasy | Pozostały kod |
 | ----------- | -------- | ------------------ | ------------- |
@@ -72,7 +72,7 @@ Jeżeli wiesz jak działa dziedziczenie w JavaScripcie, TypeScript nie zaskoczy 
 | Protected   | Dostępne | Dostępne           | Niedostępne   |
 | Private     | Dostępne | Niedostępne        | Niedostępne   |
 
-Poza wymienionymi modyfikatorami, istnieje inny sposób zabezpieczania pól w języku TypeScript. Słowo kluczowe `readonly` robi to co nazwa wskazuje - oznacza właściwości jako tylko do odczytu. Nie możesz ich zmienić po inicjalizacji.
+Poza wymienionymi modyfikatorami, istnieje inny sposób zabezpieczania pól w języku TypeScript. Słowo kluczowe `readonly` robi to co nazwa wskazuje — oznacza właściwości jako tylko do odczytu. Nie możesz ich zmienić po inicjalizacji.
 
 ```typescript title="Klasy i dziedziczenie"
 class Computer {
@@ -107,7 +107,7 @@ const laptop = new Laptop('MacBook Air', 'bzkx32', '13.6"')
 
 ## Statyczne pola
 
-Do tej pory mówiliśmy o metodach i właściwościach instancji. Ale istnieje także sposób na dostęp do właściwości i metod bezpośrednio na klasie. Słowo kluczowe `static` definiuje statyczną metodę lub pole klasy. Działa zarówno w języku JavaScript jak i TypeScript. Najprawdopodobniej już miałeś okazję używać statycznych metod/właściwości. Wszystkie właściwości i metody obiektu `Math` - jak `Math.PI` lub `Math.abs()` - są statyczne.
+Do tej pory mówiliśmy o metodach i właściwościach instancji. Istnieje jednak także sposób na dostęp do właściwości i metod bezpośrednio na klasie. Słowo kluczowe `static` definiuje statyczną metodę lub pole klasy. Działa zarówno w języku JavaScript jak i TypeScript. Najprawdopodobniej już miałeś okazję używać statycznych metod/właściwości. Wszystkie właściwości i metody obiektu `Math` — jak `Math.PI` lub `Math.abs()` — są statyczne.
 
 ```typescript title="Statyczne pola"
 class Computer {
@@ -153,7 +153,7 @@ laptop.info() // Laptop display: 16"
 
 ## Interfejs
 
-Prosto rzecz ujmując, interfejs opisuje strukturę obiektu. Pod tym względem jest podobny do klasy abstrakcyjnej ale nie taki sam. Klasa abstrakcyjna może zapewnić również implementację. Interfejs definiuje tylko strukturę. Nie jest to schemat jak klasa. Bardziej przypomina niestandardowy typ. Możesz wykorzystywać interfejsy i niestandardowe typy zamiennie, ale one też nie są identyczne. Interfejsy są tylko dla obiektów. Niestandardowe typy są bardziej elastyczne i mogą przechowywać inne rzeczy, takie jak unie. Jaki jest zatem cel interfejsu? Jest jaśniejszy. Możesz być pewien, że pracujesz z obiektem wykorzystując interfejs.
+Prosto rzecz ujmując, interfejs opisuje strukturę obiektu. Pod tym względem jest podobny do klasy abstrakcyjnej, ale nie taki sam. Klasa abstrakcyjna może zapewnić również implementację. Interfejs definiuje tylko strukturę. Nie jest to schemat jak klasa. Bardziej przypomina niestandardowy typ. Możesz wykorzystywać interfejsy i niestandardowe typy zamiennie, ale one też nie są identyczne. Interfejsy są tylko dla obiektów. Niestandardowe typy są bardziej elastyczne i mogą przechowywać inne rzeczy, takie jak unie. Jaki jest zatem cel interfejsu? Jest jaśniejszy. Możesz być pewien, że pracujesz z obiektem, wykorzystując interfejs.
 
 ```typescript title="Interfejsy i typy"
 interface Computer {
@@ -181,7 +181,7 @@ desktop = {
 desktop.info()
 ```
 
-Klasa może zaimplementować interfejs i wykorzystać go jak kontrakt. Istnieje słowo kluczowe `implements` do tego celu. W przeciwieństwie do dziedziczenia, klasa może implementować wiele interfejsów. Interfejs mogą rozszerzać się wzajemnie. Daje ci to dużo możliwości podczas kompozycji i ponownego wykorzystania kodu.
+Klasa może zaimplementować interfejs i wykorzystać go jak kontrakt. Istnieje słowo kluczowe `implements` do tego celu. W przeciwieństwie do dziedziczenia klasa może implementować wiele interfejsów. Interfejs mogą rozszerzać się wzajemnie. Daje ci to dużo możliwości podczas kompozycji i ponownego wykorzystania kodu.
 
 ```typescript title="Interfejsy i klasy"
 interface Named {
@@ -206,7 +206,7 @@ const laptop = new Computer('MacBook Pro')
 laptop.info()
 ```
 
-Możesz także użyć interfejsów do zdefiniowania struktury funkcji. “Zaraz, zaraz, czy nie wspominałeś, że można ich tylko użyć z obiektami?”. Tak i nie ma tu sprzeczności, bo funkcje JavaScript są obiektami pierwszej klasy. Tak, JS ma swoje arkana. W każdym razie, możesz użyć interfejsu do zastąpienia typów funkcji. Jest to rzadziej spotykany zapis, ale masz taką alternatywę.
+Możesz także użyć interfejsów do zdefiniowania struktury funkcji. „Zaraz, zaraz, czy nie wspominałeś, że można ich tylko użyć z obiektami?”. Tak i nie ma tu sprzeczności, bo funkcje JavaScript są obiektami pierwszej klasy. Tak, JS ma swoje arkana. W każdym razie możesz użyć interfejsu do zastąpienia typów funkcji. Jest to rzadziej spotykany zapis, ale masz taką alternatywę.
 
 ```typescript title="Interfejsy i funkcje"
 type Info = (name: string) => void
@@ -220,7 +220,7 @@ const info: InfoInterface = (name: string) => {
 }
 ```
 
-Spędziłem trochę czasu opisując interfejsy, ale na koniec dnia (lub raczej kompilacji), interfejsów nie ma w kodzie JavaScript. Jest to czysto deweloperska funkcjonalność wprowadzona przez TypeScript.
+Spędziłem trochę czasu, opisując interfejsy, ale na koniec dnia (lub raczej kompilacji), interfejsów nie ma w kodzie JavaScript. Jest to czysto deweloperska funkcjonalność wprowadzona przez TypeScript.
 
 ```javascript title="Interfejsy po kompilacji"
 var info = function (name) {
@@ -228,4 +228,4 @@ var info = function (name) {
 }
 ```
 
-Tak jak interfejsy znikają podczas kompilacji, ja znikam po opisaniu ich. Chcę żeby te posty o TypeScripcie można było łatwo przetrawić, więc tu zakończę. Oczywiście, jest o wiele więcej tematów dotyczących TypeScripta. Bardziej złożonym tematom, jak generyki czy dekoratory, przyjrzymy się w następnych postach. Jeżeli chcesz poczytać o mniej złożonych konceptach, sprawdź mój ostatni wpis - [TypeScript - podstawowe typy](/pl/blog/typescript-basic-types/).
+Tak jak interfejsy znikają podczas kompilacji, ja znikam po opisaniu ich. Chcę, żeby te posty o TypeScripcie można było łatwo przetrawić, więc tu zakończę. Oczywiście, jest o wiele więcej tematów dotyczących TypeScripta. Bardziej złożonym tematom, jak generyki czy dekoratory, przyjrzymy się w następnych postach. Jeżeli chcesz poczytać o mniej złożonych pojęciach, sprawdź mój ostatni wpis — [TypeScript - podstawowe typy](/pl/blog/typescript-basic-types/).

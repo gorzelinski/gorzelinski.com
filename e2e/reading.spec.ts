@@ -6,19 +6,20 @@ test.describe('Reading tests', () => {
     settingsPage
   }) => {
     const { component } = await settingsPage.getDictionary('en')
+    const query = 'world'
 
     await page.goto(settingsPage.link.blog)
 
     const searchBar = page.getByRole('search').getByRole('searchbox', {
       name: component.searchBar.placeholder
     })
-    await searchBar.fill('hello... world?')
+    await searchBar.fill(`${query}?`)
 
-    await expect(page.url()).not.toContain('hello')
+    await expect(page.url()).not.toContain(query)
 
-    await page.waitForURL(`${settingsPage.link.blog}?query=hello...+world%3F`)
+    await page.waitForURL(`${settingsPage.link.blog}?query=${query}%3F`)
 
-    await expect(page.url()).toContain('hello')
+    await expect(page.url()).toContain(query)
 
     const posts = page.getByRole('article')
 
@@ -28,7 +29,7 @@ test.describe('Reading tests', () => {
 
     await page.waitForURL(settingsPage.link.blog)
 
-    await expect(page.url()).not.toContain('?query=hello')
+    await expect(page.url()).not.toContain(`?query=${query}`)
 
     await expect(await posts.count()).toBeGreaterThan(5)
   })

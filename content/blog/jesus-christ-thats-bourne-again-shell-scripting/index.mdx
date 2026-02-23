@@ -1,6 +1,6 @@
 ---
-title: Jesus Christ, that's Bourne... Again Shell Scripting
-description: 'Stop being afraid of Bash scripting! Learn core syntax - expansions, variables, tests, loops, functions - and how to handle args, options, and input.'
+title: Jesus Christ, that's Bourne… Again Shell Scripting
+description: 'Stop being afraid of Bash scripting! Learn core syntax—expansions, variables, tests, loops, functions—and how to handle args, options, and input.'
 date: 2026-01-05T17:00:00+02:00
 updated: 2026-01-05T17:00:00+02:00
 image:
@@ -12,7 +12,7 @@ tags: ['terminal', 'bash', 'shell', 'cli', 'scripting']
 type: 'post'
 ---
 
-Bash is a widely popular shell available on operating systems such as macOS or Linux. You can access it via a terminal and type commands inside. What's shell? What's terminal? What's a command? If you're unfamiliar with those terms, you can refer to the [first part](/blog/jesus-christ-thats-bourne-again-shell/) of this short series about Bash. In this one, we will focus on the basic Bash syntax to write our first Bash scripts.
+Bash is a widely popular shell available on operating systems such as macOS or Linux. You can access it via a terminal and type commands inside. What's a shell? What's a terminal? What's a command? If you're unfamiliar with those terms, you can refer to the [first part](/blog/jesus-christ-thats-bourne-again-shell/) of this short series about Bash. In this one, we will focus on basic Bash syntax to write our first Bash scripts.
 
 ## Bash built-in (and other) commands
 
@@ -21,13 +21,13 @@ However, before we write any script, we need to know how Bash executes commands.
 - A **built-in command** is a command that the shell executes directly.
 - Bash interprets **other commands** as a request to load and execute another program.
 
-The `cd` command needs to be a built-in because it operates on the shell's current directory. The `code` command opens the external program, Visual Studio Code. There are even commands that can be both, such as `echo`. It is a built-in command for efficiency, but it doesn't need to be. We can check that. To see which one you're using, you can type:
+The `cd` command needs to be built-in because it operates on the shell's current directory. The `code` command opens the external program, Visual Studio Code. There are even commands that can be both, such as `echo`. It is a built-in command for efficiency, but it doesn't need to be. We can check that. To see which one you're using, you can type:
 
 ```bash
 command -V echo
 ```
 
-You should get a message that the echo is a built-in command. The shell will run the built-in version by default. Then it will look for other programs. Those programs are located in the `/usr/bin/` directory.
+You should get a message that echo is a built-in command. The shell will run the built-in version by default. Then it will look for other programs. Those programs are located in the `/usr/bin/` directory.
 
 This distinction is important for another reason. Both types of command use different documentation systems. To learn more about a built-in command, you can type:
 
@@ -63,7 +63,7 @@ The syntax allows us to replace items from a list of values.
 - A **set** is a list of values separated by a comma.
 - A **range** is a list of letters or numbers between two values. There is also an option to declare a step.
 
-How can we use it? Let's say we want to create a couple of files - a boilerplate for an Angular component. We need at least three different files:
+How can we use it? Let's say we want to create a couple of files—a boilerplate for an Angular component. We need at least three different files:
 
 1. A component file, `<component-name>.component.ts`
 2. A template file, `<component-name>.component.html`
@@ -75,7 +75,7 @@ Instead of clicking and manually creating all those files, we can write one Bash
 touch example.component.{ts,html,css}
 ```
 
-"Actually, you can use the Angular CLI to create components 🤓" I know, but I wanted to give a somewhat relevant example. It is simple, but I think you can see potential in how powerful it can be. Especially when paired with ranges.
+“Actually, you can use the Angular CLI to create components 🤓.” I know, but I wanted to give a somewhat relevant example. It is simple, but I think you can see potential in how powerful it can be—especially when paired with ranges.
 
 ```bash
 echo {0..100..2}
@@ -152,13 +152,13 @@ echo "Colonel Campbell: $(python3 -c 'print("Snaaake!")' | tr [a-z] [A-Z])"
 
 Imagine the possibilities when paired with string manipulation, pipes, and other expansions we've discussed!
 
-## Bash script syntaxes
+## Bash script syntax
 
 Through this and previous posts, we mostly run singular commands. That's fine for simple use cases, but it becomes cumbersome for complex scripts. We have several options for running multiple commands.
 
 ### One-liners
 
-We've been using them till now. These are commands presented in one line of text, often separated by a semicolon or piped (as in the example above). Be aware that "one line" doesn't mean a literal, singular horizontal line in the terminal. Lines can be very long and wrap in the terminal.
+We've been using them until now. These are commands presented in one line of text, often separated by a semicolon or piped (as in the example above). Be aware that “one line” doesn't mean a literal, singular horizontal line in the terminal. Lines can be very long and wrap in the terminal.
 
 ### Bash scripts
 
@@ -180,7 +180,7 @@ fi
 
 ### Executable Bash scripts
 
-To make a script executable, you need to include a shebang as the first line (It should be pronounced "shuh·bang," not "she bangs" although [Ricky Martin](https://youtu.be/5ihtX86JzmA?si=V7MJAev-1EuDw6uT) would prefer the latter version). The line tells the operating system which interpreter to use to execute the file. As the sentence suggests, it doesn't need to be Bash. These files don't need an extension, but they need proper permissions. You can make a script executable using `chmod +x myscript`. Then you can run it directly by typing `./myscript` (or `myscript` if in the `$PATH`).
+To make a script executable, you need to include a shebang as the first line (it should be pronounced “shuh·bang,” not “she bangs,” although [Ricky Martin](https://youtu.be/5ihtX86JzmA?si=V7MJAev-1EuDw6uT) would prefer the latter version). The line tells the operating system which interpreter to use to execute the file. As the sentence suggests, it doesn't need to be Bash. These files don't need an extension, but they need proper permissions. You can make a script executable using `chmod +x myscript`. Then you can run it directly by typing `./myscript` (or `myscript` if it's in your `$PATH`).
 
 ```bash
 # Execute the file using Bash
@@ -230,7 +230,7 @@ Variables in Bash should use alphanumeric characters and are case-sensitive.
 
 There already exist system variables on our systems, like `$PATH`. To distinguish our variables, we should declare them in lowercase. It's a good practice.
 
-How to declare constants if we should use lowercase? By using a specific flag.
+How do we declare constants if we should use lowercase? By using a specific flag.
 
 ```bash
 declare -r readonlyvariable="sam"
@@ -281,7 +281,7 @@ declare -i b=3
 
 ## Tests in Bash
 
-A **test** in Bash is a command that evaluates a condition and returns a **exit status.** Square brackets wrap the condition. You can test various things, such as permissions, strings, numbers, and much more. To test if the home directory exists, we can type:
+A **test** in Bash is a command that evaluates a condition and returns an **exit status.** Square brackets wrap the condition. You can test various things, such as permissions, strings, numbers, and much more. To test if the home directory exists, we can type:
 
 ```bash
 [ -d ~ ]
@@ -289,10 +289,10 @@ A **test** in Bash is a command that evaluates a condition and returns a **exit 
 
 ## Exit status
 
-The above test returns an exit code `0` if the directory exists. A **exit code (or exit status)** is a small integer that a program returns to the OS when it finishes. Unlike other programming languages, Bash treats `0` as a success. It can also be treated as a boolean in conditionals:
+The above test returns an exit code `0` if the directory exists. An **exit code** (or exit status) is a small integer that a program returns to the OS when it finishes. Unlike other programming languages, Bash treats `0` as a success. It can also be treated as a boolean in conditionals:
 
-- `0` equals to `true` (yup, to confuse everyone).
-- `1` or non-zero value equals to false. Different numbers often mean different failure reasons.
+- `0` equals `true` (yup, to confuse everyone).
+- `1` (or any non-zero value) equals `false`. Different numbers often mean different failure reasons.
 
 The `$?` variable stores the return status of the last-run command.
 
@@ -434,7 +434,7 @@ do
 done
 ```
 
-### The "case" statement
+### The “case” statement
 
 The `case` syntax is a multi-branch control structure that matches one value against patterns, then runs the first matching branch. It checks an input against a set of predefined values. It's often cleaner and safer than long `if`/`elif` chains for CLI arguments.
 
@@ -543,7 +543,7 @@ Options can be specified and used in any order. They can even accept arguments o
 
 ## Getting input in Bash scripts
 
-Passing arguments to scripts while invoking them is useful, but sometimes we need input while the script is running. For example, when you need multiple, consecutive answers from the user. In Bash, there are reserved keywords to gather input.
+Passing arguments to scripts while invoking them is useful, but occasionally we need input while the script is running. For example, when you require multiple, consecutive answers from the user. In Bash, there are reserved keywords to gather input.
 
 The `read` keyword pauses the script until input is provided.
 
@@ -555,7 +555,7 @@ echo "What is your password?"
 read -s pass
 ```
 
-The `-s` flag means "silent" - Bash will not display characters when typing. Other common options are:
+The `-s` flag means “silent”—Bash will not display characters when typing. Other common options are:
 
 - `-r`: don't treat backslashes as escapes (recommended for raw input).
 - `-p`: show a prompt before reading.

@@ -16,7 +16,7 @@ In the [last post](/blog/typescript-basic-types/), I presented the rationale beh
 
 <Callout variant="info">
 
-In this post, I assume you understand OOP in vanilla JavaScript. You don't know about it? No worries, I got you covered - [Object-Oriented Programming in JavaScript](/blog/object-oriented-programming-in-javascript/).
+In this post, I assume you understand OOP in vanilla JavaScript. You don't know about it? No worries, I got you covered—[Object-Oriented Programming in JavaScript](/blog/object-oriented-programming-in-javascript/).
 
 </Callout>
 
@@ -54,7 +54,7 @@ The property is written down twice in the above snippet. TypeScript offers a sho
 ```typescript title="Shortcut for defining properties"
 class Computer {
   constructor(private name: string) {}
-  // It's a hint to Typescript regarding what "this" should be referred to.
+  // It's a hint to TypeScript regarding what "this" should be referred to.
   public info(this: Computer) {
     console.log(`Name of the computer: ${this.name}`)
   }
@@ -63,7 +63,7 @@ class Computer {
 
 ## Inheritance
 
-If you know how inheritance works in JavaScript, TypeScript won't surprise you (okay, maybe a little). Classes inherit from each other via the `extends` keyword. There is also a modifier connected to the inheritance - `protected`. Fields marked as protected are accessible within the class or any class that extends it. The below table compares TypeScript field modifiers.
+If you know how inheritance works in JavaScript, TypeScript won't surprise you (okay, maybe a little). Classes inherit from each other via the `extends` keyword. There is also a modifier connected to inheritance—`protected`. Fields marked as protected are accessible within the class or any class that extends it. The table below compares TypeScript field modifiers.
 
 | Modifier  | Class      | Inheriting classes | Other code     |
 | --------- | ---------- | ------------------ | -------------- |
@@ -71,7 +71,7 @@ If you know how inheritance works in JavaScript, TypeScript won't surprise you (
 | Protected | Accessible | Accessible         | Not accessible |
 | Private   | Accessible | Not accessible     | Not accessible |
 
-Besides mentioned modifiers, there is another way of protecting fields in TypeScript. The `readonly` keyword does what the name suggests - it marks properties as read-only. You can't change them after initialization.
+Besides the mentioned modifiers, there is another way of protecting fields in TypeScript. The `readonly` keyword does what the name suggests—it marks properties as read-only. You can't change them after initialization.
 
 ```typescript title="Classes and inheritance"
 class Computer {
@@ -106,7 +106,7 @@ const laptop = new Laptop('MacBook Air', 'bzkx32', '13.6"')
 
 ## Static Members
 
-We've been talking about instance methods and properties so far. But there is also a way to access properties and methods directly on the class. The `static` keyword defines a static method or field for a class. It works both in JavaScript and TypeScript. Most likely, you've already been using static methods/properties. All properties and methods of the `Math` object - like `Math.PI` or `Math.abs()` - are static.
+We've been talking about instance methods and properties so far. But there is also a way to access properties and methods directly on the class. The `static` keyword defines a static method or field for a class. It works both in JavaScript and TypeScript. Most likely, you've already been using static methods/properties. All properties and methods of the `Math` object—like `Math.PI` or `Math.abs()`—are static.
 
 ```typescript title="Static members"
 class Computer {
@@ -118,7 +118,7 @@ console.log(Computer.firstProgrammer) // Ada Lovelace
 
 ## Abstract Class
 
-Sometimes you want to be sure that a class has implemented a specific method. Classes inherit methods, but you can't provide a default implementation. You want to enforce developers working with a class to create their version. That's where abstract classes are handy. TypeScript offers the `abstract` keyword you can use with classes and methods.
+Every so often you want to be sure that a class has implemented a specific method. Classes inherit methods, but you can't provide a default implementation. You hope to enforce developers working with a class to create their version. That's where abstract classes are handy. TypeScript offers the `abstract` keyword you can use with classes and methods.
 
 ```typescript title="Abstract classes"
 abstract class Computer {
@@ -205,7 +205,7 @@ const laptop = new Computer('MacBook Pro')
 laptop.info()
 ```
 
-You can also use interfaces to define the structure of a function. "Whoa, whoa, haven't you just mentioned that they are only for objects?" Yes, and there is no contradiction because functions are first-class objects in JavaScript. Yeah, JS has its mysteries. Anyway, you can use an interface as a replacement for function types. It's a less common syntax, but you have this alternative.
+You can also use interfaces to define the structure of a function. “Whoa, whoa, haven't you just mentioned that they are only for objects?” Yes, and there is no contradiction because functions are first-class objects in JavaScript. Yeah, JS has its mysteries. Anyway, you can use an interface as a replacement for function types. It's a less common syntax, but you have this alternative.
 
 ```typescript title="Interfaces and functions"
 type Info = (name: string) => void
@@ -227,4 +227,4 @@ var info = function (name) {
 }
 ```
 
-Just like interfaces vanish after compilation, I will vanish after describing them. I want those TypeScript posts to be easily digestible, so I'll end here. Of course, there are more topics when it comes to TypeScript. But I'll touch on the more complex ones, like generics or decorators, in the following posts. If you want to read about less complex concepts, check my last post - [TypeScript basic types](/blog/typescript-basic-types/).
+Just like interfaces vanish after compilation, I will vanish after describing them. I want those TypeScript posts to be easily digestible, so I'll end here. Of course, there are more topics when it comes to TypeScript. But I'll touch on the more complex ones, like generics or decorators, in the following posts. If you want to read about less complex concepts, check my last post—[TypeScript basic types](/blog/typescript-basic-types/).

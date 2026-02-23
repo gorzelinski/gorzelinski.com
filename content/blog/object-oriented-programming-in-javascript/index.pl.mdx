@@ -13,7 +13,7 @@ tags:
 type: 'post'
 ---
 
-Ostatnio pisałem o konkretnych technologiach: React, Gatsby czy Netlify CMS. W [pierwszym wpisie](/pl/blog/hello-world/), obiecałem jednak bardziej uniwersalną wiedzę. Dziesięć postów później, czas wypełnić obietnicę. Ten wpis będzie bardziej teoretyczny. Ale nie chcę żeby stał się zbyt abstrakcyjny, dlatego napiszę o OOP (Object Oriented Programming) w kontekście języka JavaScript.
+Ostatnio pisałem o konkretnych technologiach: React, Gatsby czy Netlify CMS. W [pierwszym wpisie](/pl/blog/hello-world/), obiecałem jednak bardziej uniwersalną wiedzę. Dziesięć postów później, czas wypełnić obietnicę. Ten wpis będzie bardziej teoretyczny. Jednak nie chcę, żeby stał się zbyt abstrakcyjny, dlatego napiszę o OOP (Object Oriented Programming) w kontekście języka JavaScript.
 
 ## OOP jest jednym z paradygmatów programowania
 
@@ -21,7 +21,7 @@ Zanim nawet dotkniemy definicję OOP, potrzebujemy krótkiej lekcji historii. Da
 
 Każdy kod sprowadza się do zer i jedynek. To jest to, co rozumieją komputery. Najniższym paradygmatem programowania jest kod maszynowy, który reprezentuje instrukcje bezpośrednio, jako sekwencje cyfr. Jest łatwy do zrozumienia dla maszyn, ale trudny dla ludzi.
 
-W latach 60. XX wieku, nastąpił rozwój języków assembly. Jest to mały krok naprzód w stosunku do kodu maszynowego. Pisząc w assemblerze mamy do dyspozycji operatory takie jak: READ, WRITE, GET i PUT. Możemy także używać symbolicznych etykiet dla adresów pamięci. Sam nawet pisałem coś tam w assemblerze na uczelni. Ten kod wyglądał mniej więcej tak:
+W latach 60. XX wieku nastąpił rozwój języków assembly. Jest to mały krok naprzód w stosunku do kodu maszynowego. Pisząc w assemblerze mamy do dyspozycji operatory takie jak: READ, WRITE, GET i PUT. Możemy także używać symbolicznych etykiet dla adresów pamięci. Sam nawet pisałem coś tam w assemblerze na uczelni. Ten kod wyglądał mniej więcej tak:
 
 ```asm
 ; hello-DOS.asm - single-segment, 16-bit "hello world" program
@@ -42,13 +42,13 @@ W latach 60. XX wieku, nastąpił rozwój języków assembly. Jest to mały krok
     msg  db 'Hello, World!', 0x0d, 0x0a, '$'   ; $-terminated message
 ```
 
-Pomimo, że trudno go zrozumieć i nie jest tak wyrafinowany jak współczesne języki programowania, ludzie nadal używają assemblera w rzeczach takich jak systemy wbudowane.
+Pomimo że trudno go zrozumieć i nie jest tak wyrafinowany, jak współczesne języki programowania, ludzie nadal używają assemblera w rzeczach takich jak systemy wbudowane.
 
-C, COBOL czy BASIC to przykłady języków trzeciej generacji. Wszystkie te języki podążają za proceduralnym paradygmatem programowania - komputer otrzymuje procedury, za którymi musi podążać, aby rozwiązać konkretny problem. Łatwiej pisać taki kod, ale nadal nie ma w nim struktury czy organizacji. Mamy po prostu instrukcje typu krok po kroku.
+C, COBOL czy BASIC to przykłady języków trzeciej generacji. Wszystkie te języki podążają za proceduralnym paradygmatem programowania — komputer otrzymuje procedury, za którymi musi podążać, aby rozwiązać konkretny problem. Łatwiej pisać taki kod, ale nadal nie ma w nim struktury czy organizacji. Mamy po prostu instrukcje typu krok po kroku.
 
-Z czasem ludzie zaczęli się zgadzać co do dobrych praktyk i języki zorientowane obiektowo, takie jak C# czy Python, zostały wynalezione. Od tej pory programiści mogli modelować rzeczy z rzeczywistości przy pomocy obiektów. Obiekt to podstawowa, fundamentalna jednostka budulcowa wszystkich tych języków.
+Z czasem ludzie zaczęli się zgadzać co do dobrych praktyk i języki obiektowe, takie jak C# czy Python, zostały wynalezione. Od tej pory programiści mogli modelować rzeczy z rzeczywistości przy pomocy obiektów. Obiekt to podstawowa, fundamentalna jednostka budulcowa wszystkich tych języków.
 
-Dodatkowo, programowanie funkcjonalne zyskuje popularność. Współpracuje ono dobrze z obliczeniami równoległymi i rozproszonymi - gorącymi tematami aktualnie. Funkcje są podstawową jednostką w tym paradygmacie. Zachowują się one jak matematyczne funkcje. Większość języków programowania wspiera więcej niż jeden paradygmat. JavaScript jest jednym z nich.
+Dodatkowo programowanie funkcjonalne zyskuje popularność. Współpracuje ono dobrze z obliczeniami równoległymi i rozproszonymi — gorącymi tematami aktualnie. Funkcje są podstawową jednostką w tym paradygmacie. Zachowują się one jak matematyczne funkcje. Większość języków programowania wspiera więcej niż jeden paradygmat. JavaScript jest jednym z nich.
 
 ## FP i OOP
 
@@ -57,15 +57,15 @@ We wszystkich programach istnieją dwa główne komponenty:
 - Dane
 - Zachowania
 
-**Programowanie zorientowane obiektowo** mówi, że umieszczanie danych i zachowań w jednym miejscu - obiekcie - upraszcza zrozumienie działania programu. Można to porównać to zapakowania wszystkiego w szczelnie zamkniętym pudełku.
+**Programowanie obiektowe** mówi, że umieszczanie danych i zachowań w jednym miejscu — obiekcie — upraszcza zrozumienie działania programu. Można to porównać to zapakowania wszystkiego w szczelnie zamkniętym pudełku.
 
-**Programowanie funkcjonalne** mówi, że dane i zachowania to dwie odrębne rzeczy i powinny być trzymane oddzielnie dla przejrzystości programu. Można je porównać do rury i serii zaworów - dane przepływają od jednego końca rury do drugiego, zmieniając kształt po drodze.
+**Programowanie funkcjonalne** mówi, że dane i zachowania to dwie odrębne rzeczy i powinny być trzymane oddzielnie dla przejrzystości programu. Można je porównać do rury i serii zaworów — dane przepływają od jednego końca rury do drugiego, zmieniając kształt po drodze.
 
-To **nie** są zawody pod tytułem: "programowanie funkcjonalne kontra programowanie zorientowane obiektowo". Używałem OOP pisząc w Node i FP w React. Nie trzymaj się kurczowo jednego paradygmatu. Oba mają swoje zastosowania i mogą być komplementarne.
+To **nie** są zawody pod tytułem: „programowanie funkcjonalne kontra programowanie obiektowe”. Używałem OOP pisząc w Node i FP w React. Nie trzymaj się kurczowo jednego paradygmatu. Oba mają swoje zastosowania i mogą być komplementarne.
 
 ## Dlaczego używać OOP?
 
-Tak jak wspomniałem chcemy, aby nasz kod był łatwy do zrozumienia. Częściej czytamy kod niż go piszemy. Współczesne oprogramowanie może być bardzo złożone. Windows 10 składa się z ok. 50 milionów linii kodu, a Facebook z jeszcze większej ich liczby. Przeciętna aplikacja może zawierać ich tysiące. Aby zorganizować jakoś ten złożony kod, możemy użyć naszego paradygmatu. Wykorzystując OOP chcemy, aby nasz kod był:
+Tak jak wspomniałem, chcemy, aby nasz kod był łatwy do zrozumienia. Częściej czytamy kod, niż go piszemy. Współczesne oprogramowanie może być bardzo złożone. Windows 10 składa się z ok. 50 milionów linii kodu, a Facebook z jeszcze większej ich liczby. Przeciętna aplikacja może zawierać ich tysiące. Aby zorganizować jakoś ten złożony kod, możemy użyć naszego paradygmatu. Wykorzystując OOP chcemy, aby nasz kod był:
 
 - Jasny
 - Łatwy do rozbudowy
@@ -75,7 +75,7 @@ Tak jak wspomniałem chcemy, aby nasz kod był łatwy do zrozumienia. Częściej
 
 ## OOP w języku JavaScript
 
-Przeszliśmy przez krótką historię paradygmatów programowania wymieniając różne języki. Teraz skupimy się na jednym - języku JavaScript - i napiszemy trochę kodu, aby zaprezentować je w praktyce. Zaczniemy od strukturalnego kodu i stopniowo przejdziemy do kodu zorientowanego na obiekty. JavaScript ewoluuje i nie zawsze mieliśmy składnie do jasnego OOP.
+Przeszliśmy przez krótką historię paradygmatów programowania, wymieniając różne języki. Teraz skupimy się na jednym — języku JavaScript — i napiszemy trochę kodu, aby zaprezentować je w praktyce. Zaczniemy od strukturalnego kodu i stopniowo przejdziemy do kodu zorientowanego na obiekty. JavaScript ewoluuje i nie zawsze mieliśmy składnie do jasnego OOP.
 
 ---
 
@@ -99,11 +99,11 @@ const laptop = {
 }
 ```
 
-Możemy tworzyć odrębne obiekty dla każdej maszyny. Ale wyobraź sobie, że chcemy teraz dziesięć kolejnych. Musielibyśmy ręcznie stworzyć obiekt dla każdego komputera, albo kopiować wiele linii kodu. Stale byśmy się powtarzali.
+Możemy tworzyć odrębne obiekty dla każdej maszyny. Wyobraź sobie jednak, że chcemy teraz dziesięć kolejnych. Musielibyśmy ręcznie stworzyć obiekt dla każdego komputera albo kopiować wiele linii kodu. Stale byśmy się powtarzali.
 
 ### Funkcje fabryczne
 
-Aby ograniczyć powtarzanie, możemy napisać funkcję, która stworzy obiekty dla nas - funkcję fabryczną.
+Aby ograniczyć powtarzanie, możemy napisać funkcję, która stworzy obiekty dla nas — funkcję fabryczną.
 
 ```javascript title="Funkcja fabryczna"
 function createComputer(name) {
@@ -119,7 +119,7 @@ const desktop = createComputer('Mac Studio')
 const laptop = createComputer('MacBook Air')
 ```
 
-Możemy tę funkcję wywołać wiele razy, aby stworzyć wiele obiektów. Nie powtarzamy się już tak bardzo. Ale istnieje inny problem. Spójrz na funkcję `info()`. Pozostaje ona taka sama dla każdego komputera, a jednak kopiujemy ją za każdym razem. Nie jest to specjalnie oszczędne pod kątem pamięci.
+Możemy tę funkcję wywołać wiele razy, aby stworzyć wiele obiektów. Nie powtarzamy się już tak bardzo. Istnieje jednak inny problem. Spójrz na funkcję `info()`. Pozostaje ona taka sama dla każdego komputera, a jednak kopiujemy ją za każdym razem. Nie jest to specjalnie oszczędne pod kątem pamięci.
 
 ### Object.create()
 
@@ -144,15 +144,15 @@ const laptop = createComputer('MacBook Air')
 
 <Callout variant="warning">
 
-Język JavaScript nie posiada klasycznego dziedziczenia znanego z języków takich jak Java czy C++. Posiada on tylko jedną konstrukcję - obiekt. Ale to nie jest bug - to jest feature! Każdy obiekt ma link do innego, który nazwany jest jego **prototypem.** Te powiązane obiekty tworzą **łańcuch prototypowy.**
+Język JavaScript nie posiada klasycznego dziedziczenia znanego z języków takich jak Java czy C++. Posiada on tylko jedną konstrukcję — obiekt. To nie jest jednak bug — to jest feature! Każdy obiekt ma link do innego, który nazwany jest jego **prototypem.** Te powiązane obiekty tworzą **łańcuch prototypowy.**
 
 </Callout>
 
-Moglibyśmy się tu zatrzymać. Nie powtarzamy się i nasz kod nie zajmuje zbędnego miejsca. Ale możemy także ulepszyć inne części paradygmatu OOP. Wcześniej wspominałem o tych zamkniętych pudełkach. Nie mamy tu tego i powyższy fragment kodu jest trochę trudny do zrozumienia. Użyjmy naszej wiedzy na temat prototypów i sprawdźmy czy uda nam się coś ulepszyć.
+Moglibyśmy się tu zatrzymać. Nie powtarzamy się i nasz kod nie zajmuje zbędnego miejsca. Możemy jednak także ulepszyć inne części paradygmatu OOP. Wcześniej wspominałem o tych zamkniętych pudełkach. Nie mamy tu tego i powyższy fragment kodu jest trochę trudny do zrozumienia. Użyjmy naszej wiedzy na temat prototypów i sprawdźmy, czy uda nam się coś ulepszyć.
 
 ### Funkcje konstruktora
 
-Każda funkcja wywołana używając słowa `new` to funkcja konstruktora. Wbudowane obiekty takie jak `Array` czy `Function` są właśnie funkcjami konstrukcyjnymi. W języku JavaScript wszystko posiada funkcję konstruktora (z wyjątkiem `null` i `undefined`). To słowo kluczowe `new` robi klika rzeczy za kulisami:
+Każda funkcja wywołana ze słowem `new` to funkcja konstruktora. Wbudowane obiekty takie jak `Array` czy `Function` są właśnie funkcjami konstrukcyjnymi. W języku JavaScript wszystko ma funkcję konstruktora (z wyjątkiem `null` i `undefined`). To słowo kluczowe `new` robi klika rzeczy za kulisami:
 
 1. Tworzy nowy obiekt.
 2. Zwraca ten obiekt.
@@ -176,11 +176,11 @@ Możemy wykorzystać prototyp do zdefiniowania współdzielonej funkcjonalności
 
 <Callout variant="warning">
 
-Ale uważaj - to nie zadziała z funkcjami strzałkowymi. Funkcje strzałkowe używają zasięgu leksykalnego - definiują `this` na podstawie swojego miejsca w kodzie. Jeżeli zdefiniowalibyśmy funkcję `info()` jako strzałkową w naszym fragmencie, `this` wskazywałoby na obiekt `window`.
+Uważaj jednak — to nie zadziała z funkcjami strzałkowymi. Funkcje strzałkowe używają zasięgu leksykalnego — definiują `this` na podstawie swojego miejsca w kodzie. Jeżeli zdefiniowalibyśmy funkcję `info()` jako strzałkową w naszym fragmencie, `this` wskazywałoby na obiekt `window`.
 
 </Callout>
 
-Programiści JavaScript pisali w ten sposób przez długi czas. Prawdopodobnie znalazłbyś podobne fragmenty kody w starszych repozytoriach. Ale wraz z ES6 dostaliśmy nowy sposób, aby pisać kod zorientowany obiektowo.
+Programiści JavaScript pisali w ten sposób przez długi czas. Prawdopodobnie znalazłbyś podobne fragmenty kody w starszych repozytoriach. Wraz z ES6 dostaliśmy jednak nowy sposób, aby pisać kod obiektowy.
 
 ### Klasy
 
@@ -200,11 +200,11 @@ const desktop = new Computer('Mac Studio')
 const laptop = new Computer('MacBook Air')
 ```
 
-Chyba największą zaletą jest to, że wszystko jest umieszczone w jednym “pudełku”. Wszystkie właściwości i metody są pomiędzy klamrami. Nie musimy używać prototypów bezpośrednio.
+Chyba największą zaletą jest to, że wszystko jest umieszczone w jednym „pudełku”. Wszystkie właściwości i metody są pomiędzy klamrami. Nie musimy używać prototypów bezpośrednio.
 
 <Callout variant="warning">
 
-Ale pamiętaj - pomimo tego, że istnieje słowo `class`, to jest to tak zwany lukier składniowy. Pod spodem, cały czas używamy dziedziczenia prototypowego. W innych językach klasy są realną rzeczą. W przeciwieństwie do języka JavaScript, gdzie istnieją tylko obiekty.
+Uważaj — mimo że istnieje słowo `class`, to jest to tak zwany lukier składniowy. Pod spodem, cały czas używamy dziedziczenia prototypowego. W innych językach klasy są realną rzeczą. W przeciwieństwie do języka JavaScript, gdzie istnieją tylko obiekty.
 
 </Callout>
 
@@ -238,19 +238,19 @@ const desktop = new Desktop('Mac Studio', 'AMD Radeon Pro W6800X')
 const laptop = new Laptop('MacBook Air', '13.6"')
 ```
 
-Klasy `Desktop` i `Laptop` mają łańcuch prototypowy z klasą `Computer`. Podklasy dziedziczą z klasy bazowej (zwanej także super klasą). Aby odziedziczyć właściwości, musimy wywołać metodę `super()` wewnątrz konstruktora. Poniżej tej metody możemy dodać właściwości specyficzne dla podklasy. Ten typ dziedziczenia nie kopiuje wszystkiego z klasy bazowej jak w klasycznych językach obiektowych. Zamiast tego, poszerzamy łańcuch prototypowy wykorzystując `extends`. Ma to swoje zalety pod kątem optymalizacji pamięci.
+Klasy `Desktop` i `Laptop` mają łańcuch prototypowy z klasą `Computer`. Podklasy dziedziczą z klasy bazowej (zwanej także super klasą). Aby odziedziczyć właściwości, musimy wywołać metodę `super()` wewnątrz konstruktora. Poniżej tej metody możemy dodać właściwości specyficzne dla podklasy. Ten typ dziedziczenia nie kopiuje wszystkiego z klasy bazowej jak w klasycznych językach obiektowych. Zamiast tego, poszerzamy łańcuch prototypowy, wykorzystując `extends`. Ma to swoje zalety pod kątem optymalizacji pamięci.
 
 ## Cztery filary OOP
 
-Mówienie o filarach pod koniec wpisu może wydawać się dziwne. Ale są one dobrym podsumowaniem i my już je poznaliśmy!
+Mówienie o filarach pod koniec wpisu może wydawać się dziwne. Są one jednak dobrym podsumowaniem i my już je poznaliśmy!
 
 ### Enkapsulacja
 
-Spójrz na nasze klasy - wszystko jest wewnątrz obiektu owinięte przez klamry. Nasz kod składa się z zamkniętych jednostek. Poddaliśmy nasz kod **enkapsulacji.** Taki kod jest łatwy do zrozumienia.
+Spójrz na nasze klasy — wszystko jest wewnątrz obiektu owinięte przez klamry. Nasz kod składa się z zamkniętych jednostek. Poddaliśmy nasz kod **enkapsulacji.** Taki kod jest łatwy do zrozumienia.
 
 ### Abstrakcja
 
-Nasze przykłady nie są skomplikowane, aby uprościć wywód. Ale wyobraź sobie, że metoda `info()` jest złożona. Nie musisz wiedzieć jak działa, aby jej użyć. Złożoność jest wyabstrahowana przed tobą. **Abstrakcja** oznacza, że ukrywamy złożoność przed użytkownikiem. Taki kod jest łatwy w użyciu.
+Nasze przykłady nie są skomplikowane, aby uprościć wywód. Jednak wyobraź sobie, że metoda `info()` jest złożona. Nie musisz wiedzieć, jak działa, aby jej użyć. Złożoność jest wyabstrahowana przed tobą. **Abstrakcja** oznacza, że ukrywamy złożoność przed użytkownikiem. Taki kod jest łatwy w użyciu.
 
 ### Dziedziczenie
 
@@ -258,7 +258,7 @@ Nasze klasy **dziedziczą** część funkcjonalności od siebie. Unikamy przepis
 
 ### Polimorfizm
 
-Dobra, skłamałem. Nie poznaliśmy jeszcze jednego z filarów. Ale odkupuję swoje winy w tym momencie. Słowo “polimorfizm” pochodzi od greckiego słowa “polymorphos”, które dosłownie oznacza “wiele postaci”. Etymologia dobrze opisuje to co chcemy osiągnąć polimorfizmem w OOP. Nie wiem czy istnieje jedna, konkretna definicja polimorfizmu. Nie chcę kłócić się z ludźmi mądrzejszymi ode mnie, dlatego nie twierdzę, że przytaczam precyzyjną definicję. Ale pomysł jest taki, że wywołujemy tę samą metodę na różnych obiektach i każdy z nich reaguje inaczej. JavaScript jest typowany dynamicznie i ogranicza polimorfizm. Ale możemy napisać coś takiego:
+Dobra, skłamałem. Nie poznaliśmy jeszcze jednego z filarów. Odkupuję swoje winy w tym momencie. Słowo „polimorfizm” pochodzi od greckiego słowa „polymorphos”, które dosłownie oznacza „wiele postaci”. Etymologia dobrze opisuje to, co chcemy osiągnąć polimorfizmem w OOP. Nie wiem, czy istnieje jedna, konkretna definicja polimorfizmu. Nie chcę kłócić się z ludźmi mądrzejszymi ode mnie, dlatego nie twierdzę, że przytaczam precyzyjną definicję. Pomysł jednak jest taki, że wywołujemy tę samą metodę na różnych obiektach i każdy z nich reaguje inaczej. JavaScript jest typowany dynamicznie i ogranicza polimorfizm. Jednakże możemy napisać coś takiego:
 
 ```javascript title="Klasy i polimorfizm"
 class Computer {
@@ -305,7 +305,7 @@ Nasza metoda `info()` jest **polimorficzna.** W zależności od obiektu, wyświe
 
 ## Podsumowanie
 
-Odkryliśmy zasady, koncepty i cele programowania zorientowanego obiektowo. Dodatkowo, wiemy teraz jak je zastosować w przyszłych projektach JavaScript. Mam nadzieję, że ten post był pomocny i że udało ci się dotrwać do końca. A jeżeli nie masz dość, sprawdź także poniższe linki:
+Odkryliśmy zasady, pojęcia i cele programowania obiektowego. Dodatkowo wiemy teraz jak je zastosować w przyszłych projektach JavaScript. Mam nadzieję, że ten post był pomocny i że udało ci się dotrwać do końca. A jeżeli nie masz dość, sprawdź także poniższe linki:
 
 - [Assembler](https://montcs.bloomu.edu/Information/LowLevel/Assembly/hello-asm.html)
 - [Dziedziczenie i łańcuch prototypowy (MDN web docs)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)

@@ -44,13 +44,13 @@ Before responding to any request, follow these steps:
 
 - Use descriptive names with auxiliary verbs (e.g. isLoading, hasError)
 - Avoid unnecessary, generic nouns, like results~~Array~~
-- Name variables, functions, etc. using best JavaScript/Typescript practices
+- Name variables, functions, etc. using best JavaScript/TypeScript practices
 - camelCase for functions and variables. UpperCamelCase for class names
 - Prefix event handlers with "handle" (e.g. handleClick, handleSubmit)
 - Use kebab case for directories and file names (e.g. components/search-bar)
 - Use .constants prefix for files with constants (e.g. socials.constants.tsx)
 - Use .helpers prefix for files with helper functions (e.g. socials.helpers.tsx)
-- Use .types prefix for files with Typescript types (e.g. socials.types.tsx)
+- Use .types prefix for files with TypeScript types (e.g. socials.types.tsx)
 - Use .pl prefix for content files in polish language (e.g. index.pl.mdx)
 - Don't use .en prefix for content files in english language (e.g. index.mdx)
 - Favor named exports
@@ -91,10 +91,10 @@ Follow a strict import order pattern in all TypeScript files:
 
 ```typescript
 // ✅ CORRECT - Default imports before named imports
-import fs from 'fs/promises'           // default import
-import path from 'path'                // default import
-import { unstable_cache } from 'next/cache'  // named import
-import { cookies } from 'next/headers'       // named import
+import fs from 'fs/promises' // default import
+import path from 'path' // default import
+import { unstable_cache } from 'next/cache' // named import
+import { cookies } from 'next/headers' // named import
 ```
 
 #### Use `import type` for Type-Only Imports
@@ -202,7 +202,7 @@ export type { SettingsPage } from './settings-page' // type-only export
 - `playwright.config.ts` - file to configure Playwright E2E testing framework
 - `postcss.config.cjs` - another file to configure Panda
 - `README.md` - global readme file for GitHub
-- `tsconfig.json` - file to configure Typescript
+- `tsconfig.json` - file to configure TypeScript
 - `vitest.config.mts` - file to configure vitest unit testing framework
 - `vitest.setup.ts` - another vitest setup file
 

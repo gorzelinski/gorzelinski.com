@@ -60,7 +60,7 @@ test.describe('SEO tests', () => {
       {
         name: 'blog post page',
         getUrl: ({ link }) => `${link.blog}hello-world/`,
-        getTitle: () => 'Hello... world?',
+        getTitle: () => 'Hello… world?',
         getDescription: () => 'What am I actually doing?',
         type: 'article'
       },
@@ -144,7 +144,7 @@ test.describe('SEO tests', () => {
         name: 'blog post page',
         getUrl: ({ link }) => `${link.blog}hello-world/`,
         type: 'BlogPosting',
-        getTitle: () => 'Hello... world?',
+        getTitle: () => 'Hello… world?',
         getDescription: () => 'What am I actually doing?',
         date: '2022-07-07T14:00:00.000Z'
       },
