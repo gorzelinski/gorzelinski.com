@@ -29,12 +29,12 @@ Definiowanie klas w TypeScripcie jest identycznie jak w „waniliowym” języku
 
 ```typescript title="Klasy"
 class Computer {
-  // W czystym języku JavaScript nie ma słów „private” lub „public”.
+  // W czystym języku JavaScript nie ma słów "private" lub "public".
   private name: string
   constructor(name) {
     this.name = name
   }
-  // Modyfikator „public” jest domyślny, ale możesz go jawnie zapisać.
+  // Modyfikator "public" jest domyślny, ale możesz go jawnie zapisać.
   public info(this: Computer) {
     console.log(`Name of the computer: ${this.name}`)
   }
@@ -55,7 +55,7 @@ Właściwość jest zapisana dwukrotnie w powyższym fragmencie kodu. TypeScript
 ```typescript title="Skrót do definiowania właściwości"
 class Computer {
   constructor(private name: string) {}
-  // Jest to wskazówka dla TypeScripta do czego odnosi się „this”.
+  // Jest to wskazówka dla TypeScripta do czego odnosi się "this".
   public info(this: Computer) {
     console.log(`Name of the computer: ${this.name}`)
   }

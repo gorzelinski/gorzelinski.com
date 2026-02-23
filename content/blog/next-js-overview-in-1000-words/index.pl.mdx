@@ -12,11 +12,11 @@ tags: ['next', 'csr', 'ssr', 'ssg', 'isr', 'jamstack']
 type: 'post'
 ---
 
-Mówi się, że „każdego dnia rodzi się nowy framework JavaScript”. Ta sentencja jest wyolbrzymiona i zabawna, ale jest w niej trochę prawdy. W szybko zmieniającym się świecie języka JavaScript łatwo wziąć nowe, lśniące narzędzie i porzucić stare. Jednakże często okazuje się, że nowy framework nie jest najlepszy w przypadku naszego projektu. Mając to w pamięci, postanowiłem sobie, że nie wskoczę na żaden hype train. Nowe wydanie Next.js jednak i prawie 100 000 gwiazdek na platformie GitHub sprawia, że hype train jest REALNY. Niemniej, zamiast ślepo wchodzić na pokład, postaram się zrobić krótki przegląd frameworka Next.js. I postaram się to zrobić w 1000 słów.
+Mówi się, że „każdego dnia rodzi się nowy framework JavaScript”. Ta sentencja jest wyolbrzymiona i zabawna, ale jest w niej trochę prawdy. W szybko zmieniającym się świecie języka JavaScript łatwo wziąć nowe, lśniące narzędzie i porzucić stare. Jednakże często okazuje się, że nowy framework nie jest najlepszy w przypadku naszego projektu. Mając to w pamięci, postanowiłem sobie, że nie wskoczę na żaden hype train. Nowe wydanie Next.js i prawie 100 000 gwiazdek na platformie GitHub sprawia, że hype train jest jednak REALNY. Niemniej, zamiast ślepo wchodzić na pokład, postaram się zrobić krótki przegląd frameworka Next.js. I postaram się to zrobić w 1000 słów.
 
 ## Next.js to framework oparty o React
 
-Na początek rozwiejmy nieporozumienia, które zauważyłem, przeglądając sieć. Next.js to **nie** jest alternatywa dla platform takich jak Vue, Angular czy React. To jest bardziej alternatywa dla statycznych generatorów stron takich jak Gatsby, Hugo czy Nuxt (to porównanie nie jest w 100% dokładne, ale dojedziemy do tego). Nie używasz React'a zamiast Next.js. Oczywiście możesz wybierać pomiędzy nimi, ale React'a używasz w obu przypadkach. Next buduje na fundamentach React'a. Dlatego możemy powiedzieć, że to jest framework² lub meta-framework.
+Na początek rozwiejmy nieporozumienia, które zauważyłem, przeglądając sieć. Next.js to **nie** jest alternatywa dla platform takich jak Vue, Angular czy React. To jest bardziej alternatywa dla statycznych generatorów stron takich jak Gatsby, Hugo czy Nuxt (to porównanie nie jest w 100% dokładne, ale dojedziemy do tego). Nie używasz React'a zamiast Next.js. Oczywiście możesz wybierać pomiędzy nimi, ale React'a używasz w obu przypadkach. Next buduje na fundamentach React'a. Dlatego możemy powiedzieć, że to jest framework<sup>2</sup> lub meta-framework.
 
 <Callout variant="info">
 
@@ -26,7 +26,7 @@ Jeżeli chcesz zobaczyć statyczne generatory treści w szerszym kontekście, wc
 
 ## Po co używać meta-frameworka?
 
-„Po cholerę mi potrzebny meta-framework? Nie wystarczy mi sam React?”, możesz zapytać. I to zależy. To zależy od tego, co chcesz zbudować. Jeżeli potrzebujesz prostej aplikacji SPA (Single-Page Application), React prawdopodobnie wystarczy. Strony jednak internetowe na produkcji potrzebują rozwiązania problemów z nawigacją, SEO, optymalizacją zdjęć, testowaniem i innych. React nie oferuje tego, a Next oferuje. Pomaga on rozwiązać te powszechnie występujące problemy. Na stronie głównej Next.js możemy przeczytać: „The React Framework for Production” i to zdanie zwięźle wyjaśnia, czym on jest.
+„Po cholerę mi potrzebny meta-framework? Nie wystarczy mi sam React?”, możesz zapytać. I to zależy. To zależy od tego, co chcesz zbudować. Jeżeli potrzebujesz prostej aplikacji SPA (Single-Page Application), React prawdopodobnie wystarczy. Strony internetowe na produkcji potrzebują jednak rozwiązania problemów z nawigacją, SEO, optymalizacją zdjęć, testowaniem i innych. React nie oferuje tego, a Next oferuje. Pomaga on rozwiązać te powszechnie występujące problemy. Na stronie głównej Next.js możemy przeczytać: „The React Framework for Production” i to zdanie zwięźle wyjaśnia, czym on jest.
 
 ## Strategie renderowania
 
