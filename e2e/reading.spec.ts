@@ -12,11 +12,11 @@ test.describe('Reading tests', () => {
     const searchBar = page.getByRole('search').getByRole('searchbox', {
       name: component.searchBar.placeholder
     })
-    await searchBar.fill('hello... world?')
+    await searchBar.fill('hello… world?')
 
     await expect(page.url()).not.toContain('hello')
 
-    await page.waitForURL(`${settingsPage.link.blog}?query=hello...+world%3F`)
+    await page.waitForURL(`${settingsPage.link.blog}?query=hello…+world%3F`)
 
     await expect(page.url()).toContain('hello')
 
