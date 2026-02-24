@@ -16,7 +16,7 @@ type: 'project'
 
 ## Problem
 
-"Szewc bez butów chodzi" czy może "web developer jest offline". Pomimo że naukę frontendu zacząłem jakiś czas temu, nigdy nie stworzyłem strony dla siebie. Czułem syndrom oszusta i myślałem, że nie jestem wystarczająco dobry. Ale w ten sposób, mógłbym to odwlekać w nieskończoność. Postanowiłem to zmienić. Chciałem mieć swój kącik w internecine - gdzie mógłbym wyrazić siebie i dzielić się moimi znaleziskami.
+„Szewc bez butów chodzi” czy może „web developer jest offline”? Mimo że naukę front-endu zacząłem jakiś czas temu, nigdy nie stworzyłem strony dla siebie. Czułem syndrom oszusta i myślałem, że nie jestem wystarczająco dobry. Jednak w ten sposób mógłbym to odwlekać w nieskończoność. Postanowiłem to zmienić. Chciałem mieć swój kącik w internecie — gdzie mógłbym wyrazić siebie i dzielić się moimi znaleziskami.
 
 ## Szkice
 
@@ -26,11 +26,11 @@ Mając to w pamięci, zacząłem generować pomysły. Zrobiłem zgrubne szkice k
 
 ![Szkice różnych sekcji mojej strony](sketches.png)
 
-Nie jest to poziom szkiców Da Vinciego, ale były przydatne zanim zabrałem się za robienie makiet.
+Nie jest to poziom szkiców Da Vinciego, ale były przydatne, zanim zabrałem się za robienie makiet.
 
 ## Wireframes
 
-Wireframes powinny znajdować się pomiędzy szkicami, a prototypami o wysokiej szczegółowości. Nie przejmując się za bardzo fontami i kolorami, zrobiłem wiele takich makiet.
+Wireframes powinny znajdować się pomiędzy szkicami a prototypami o wysokiej szczegółowości. Nie przejmując się za bardzo fontami i kolorami, zrobiłem wiele takich makiet.
 
 ![Makiety sekcji landing](wireframes-landing.png)
 
@@ -42,27 +42,27 @@ Wireframes powinny znajdować się pomiędzy szkicami, a prototypami o wysokiej 
 
 ## Kolory
 
-Na wyborze kolorów spędziłem więcej czasu niż chciałbym przyznać. Ale po wielu godzinach poszukiwań (i testowania dostępności) doszedłem do porozumienia sam ze sobą. Paleta kolorów powinna być minimalistyczna, prosta, składać się z odcieni bieli i szarości. I oczywiście powinna zawierać niebieski akcent. Nie stoi za tym jakaś filozofia - po prostu lubię niebieski.
+Na wyborze kolorów spędziłem więcej czasu, niż chciałbym przyznać. Jednakże po wielu godzinach poszukiwań (i testowania dostępności) doszedłem do porozumienia sam ze sobą. Paleta kolorów powinna być minimalistyczna, prosta, składać się z odcieni bieli i szarości. I oczywiście powinna zawierać niebieski akcent. Nie stoi za tym jakaś filozofia — po prostu lubię niebieski.
 
 ![Palety kolorów mojej strony internetowej](colors.png)
 
 ## Typografia
 
-Chciałem, aby strona była zorientowana na typografię, więc kolejny kawał czasu spędziłem poszukując odpowiednich fontów. Moim celem było zestawienie nowoczesnego fontu bezszeryfowego z bardziej klasycznym szeryfowym. Potrzebowałem także fontu do fragmentów kodu.
+Chciałem, aby strona była zorientowana na typografię, więc kolejny kawał czasu spędziłem, poszukując odpowiednich fontów. Moim celem było zestawienie nowoczesnego fontu bezszeryfowego z bardziej klasycznym szeryfowym. Potrzebowałem także fontu do fragmentów kodu.
 
-![Montserrat - font dla nagłówków](montserrat.png)
+![Montserrat — font dla nagłówków](montserrat.png)
 
-![Lora - font dla tekstu](lora.png)
+![Lora — font dla tekstu](lora.png)
 
-![Fira Code - font dla fragmentów kodu](fira-code.png)
+![Fira Code — font dla fragmentów kodu](fira-code.png)
 
 ## Design system
 
 Mając podstawy i część treści, zacząłem tworzyć system projektowania. Chciałem, aby był elastyczny, spójny i łatwo skalowalny. Stworzyłem abstrakcyjne, prymitywne elementy takie jak przyciski i nagłówki. Wykorzystałem je w wielu różnych kontekstach do zbudowania bardziej złożonych komponentów i sekcji.
 
-![Elementy projektowe - przyciski](buttons.png)
+![Elementy projektowe — przyciski](buttons.png)
 
-[Panda CSS](https://panda-css.com/) to biblioteka CSS-in-JS, która pozwala na definiowanie bazowych stylów wraz z wieloma wariantami konkretnego komponentu. W ten sposób, definiujemy bibliotekę komponentów, z której przyjemnie się korzysta. Poniżej pokazałem jak powyższy przycisk wygląda w kodzie (ograniczyłem style do tych bazowych, ponieważ oryginalny kod jest długi na 300 linii).
+[Panda CSS](https://panda-css.com/) to biblioteka CSS-in-JS, która pozwala na definiowanie bazowych stylów wraz z wieloma wariantami konkretnego komponentu. W ten sposób definiujemy bibliotekę komponentów, z której przyjemnie się korzysta. Poniżej pokazałem, jak powyższy przycisk wygląda w kodzie (ograniczyłem style do tych bazowych, ponieważ oryginalny kod jest długi na 300 linii).
 
 ```tsx title="Definiowanie przepisu na przycisk w Panda CSS"
 import { cva } from '@/styled-system/css'
@@ -101,45 +101,45 @@ export const button = cva({
 })
 ```
 
-I tak - style są definiowane w TypeScripcie. Nietypowe, ale bardzo wygodne. NIe musisz nawet pamiętać swoich design tokenów - autouzupełnianie ci pomoże.
+I tak — style są definiowane w TypeScripcie. Nietypowe, ale bardzo wygodne. Nie musisz nawet pamiętać swoich design tokenów — autouzupełnianie ci pomoże.
 
 Mając elementy, komponenty i sekcje, stworzyłem responsywne szablony dla każdej strony.
 
 ![Szablony strony głównej i portfolio](templates-home-portfolio.png)
 
-Mój design nie jest skończony i bardziej przypomina proces. Cały czas go rozwijam. W związku z tym możesz zagrać w "znajdź różnicę", pomiędzy tymi szablonami, a aktualną wersją mojej strony.
+Mój design nie jest skończony i bardziej przypomina proces. Cały czas go rozwijam. W związku z tym możesz zagrać w „znajdź różnicę” między tymi szablonami a aktualną wersją mojej strony.
 
 ![Szablony strony o mnie i bloga](templates-about-blog.png)
 
-Zauważyłem, że elastyczność jest pożądana podczas całego procesu. Podobnie jak przerwy - dają nową perspektywę. Nowe pomysły przychodziły do mnie w różnych etapach procesu i w nieoczekiwanych momentach. Jak pomysł na pasek postępu - znalazłem go przeglądając internet. Tak, ukradłem go i się tego nie wstydzę!
+Zauważyłem, że elastyczność jest pożądana podczas całego procesu. Podobnie jak przerwy — dają nową perspektywę. Nowe pomysły przychodziły do mnie w różnych etapach procesu i w nieoczekiwanych momentach. Jak pomysł na pasek postępu — znalazłem go, przeglądając Internet. Tak, ukradłem go i się tego nie wstydzę!
 
 > The only art I'll ever study is stuff that I can steal from.
 >
-> &mdash;<cite> David Bowie</cite>
+> &mdash; <cite>David Bowie</cite>
 
 ## ~~Gatsby~~
 
-~~Do zaimplementowania mojej strony użyłem generatora stron statycznych - Gatsby. Strony są budowane i optymalizowane w procesie generowania, nawet zanim użytkownik ich zażąda. Strony internetowe stworzone przy pomocy tego podejścia są zwykle wydajniejsze niż tradycyjne rozwiązania jak WordPress.~~
+~~Do zaimplementowania mojej strony użyłem generatora stron statycznych — Gatsby. Strony są budowane i optymalizowane w procesie generowania, nawet zanim użytkownik ich zażąda. Strony internetowe stworzone przy pomocy tego podejścia są zwykle wydajniejsze niż tradycyjne rozwiązania jak WordPress.~~
 
-~~Jeżeli strony są generowane wcześniej, skąd wiedzieć jaki motyw wybrał użytkownik? Zaimplementowanie funkcjonalności zmieniania motywów było dla mnie niespodziewanym wyzwaniem. Ale po przeczytaniu o procesie budowania i testach udało mi się zrobić, aby działało to gładko.~~
+~~Jeżeli strony są generowane wcześniej, skąd wiedzieć, jaki motyw wybrał użytkownik? Zaimplementowanie funkcjonalności zmieniania motywów było dla mnie niespodziewanym wyzwaniem. Jednakże po przeczytaniu o procesie budowania i testach udało mi się sprawić, że działało to gładko.~~
 
 ## Next.js
 
-Słyszy się, że "jeżeli coś działa, to nie ruszaj". Pomimo, że poprzednia wersja mojej strony działała całkiem nieźle, to działanie _nad nią_ stawało się coraz trudniejsze. Dlatego przemigrowałem mój stos technologiczny. Głównie dlatego. Była to też niezła okazja do nauki czegoś nowego, dlatego [Next.js](/pl/blog/next-js-overview-in-1000-words/) stał się moim nowym frameworkiem. On także bazuje na Reac'ie, więc nie musiałem uczyć się wszystkiego od zera. Jednakże, oba te narzędzia różnią się znacznie. Gatsby oferuje bogaty ekosystem pluginów. Myślisz o jakiejś funkcjonalności i najprawdopodobniej istnieje na to wtyczka. Jest to jednak broń obosieczna. W łatwy sposób możesz dodać funkcjonalność, ale zaczynasz mieć problem, gdy któryś z pluginów przestaje być wspierany. W Next.js, więcej rzeczy musisz implementować ręcznie. Musisz mieć lepsze pojęcie o tym co robisz, ale daje ci to elastyczność i łatwiejsze zarządzanie w przyszłości.
+Słyszy się, że „jeżeli coś działa, to nie ruszaj”. Pomimo że poprzednia wersja mojej strony działała całkiem nieźle, to działanie _nad nią_ stawało się coraz trudniejsze. Dlatego zmieniłem mój stos technologiczny. Głównie dlatego. Była to też niezła okazja do nauki czegoś nowego, dlatego [Next.js](/pl/blog/next-js-overview-in-1000-words/) stał się moim nowym frameworkiem. On także bazuje na React'cie, więc nie musiałem uczyć się wszystkiego od zera. Jednakże oba te narzędzia różnią się znacznie. Gatsby oferuje bogaty ekosystem pluginów. Myślisz o jakiejś funkcjonalności i najprawdopodobniej istnieje na to wtyczka. Jest to jednak broń obosieczna. W łatwy sposób możesz dodać funkcjonalność, ale zaczynasz mieć problem, gdy któryś z pluginów przestaje być wspierany. W Next.js więcej rzeczy musisz implementować ręcznie. Musisz mieć lepsze pojęcie o tym, co robisz, ale daje ci to elastyczność i łatwiejsze zarządzanie w przyszłości.
 
 ## Testowanie
 
-Poza manualnymi testami, napisałem zautomatyzowane testy. ~~Użyłem frameworka Jest do testowania komponentów.~~ Vitest jest zauważalnie szybszy od Jesta, więc zmieniłem go. Migracja była całkiem prosta, bo API jest podobne. ~~Do testowania integracji pomiędzy komponentami i bardziej złożonych zachowań użytkownika, wykorzystałem framework Cypress wraz z cypress-axe. Te testy pokrywały różne aspekty strony - dostępność, internacjonalizację, SEO i więcej.~~
+Poza manualnymi testami napisałem zautomatyzowane testy. ~~Użyłem frameworka Jest do testowania komponentów.~~ Vitest jest zauważalnie szybszy od Jesta, więc zmieniłem go. Migracja była całkiem prosta, bo API jest podobne. ~~Do testowania integracji pomiędzy komponentami i bardziej złożonych zachowań użytkownika wykorzystałem framework Cypress wraz z cypress-axe. Te testy pokrywały różne aspekty strony — dostępność, internacjonalizację, SEO i więcej.~~
 
-Przemigrowałem także zestawy moich testów E2E, wykorzystując Playwright. Oferuje on parytet funkcjonalności w stosunku do Cypressa, a nawet więcej. Nie będę może poświęcał tu wiele czasu na wyjaśnianie różnic pomiędzy nimi, bo napisałem post, który je porównuje - [Playwright vs. Cypress - porównanie frameworków do testowania E2E](/blog/playwright-vs-cypress-comparison-of-e2e-testing-frameworks/).
+Zmieniłem także zestawy moich testów E2E, wykorzystując Playwright. Oferuje on parytet funkcjonalności w stosunku do Cypressa, a nawet więcej. Nie będę może poświęcał tu wiele czasu na wyjaśnianie różnic pomiędzy nimi, bo napisałem post, który je porównuje — [Playwright vs. Cypress — porównanie frameworków do testowania E2E](/blog/playwright-vs-cypress-comparison-of-e2e-testing-frameworks/).
 
 ## GitHub
 
-Będę się starał dodawać treści i funkcjonalności regularnie, dlatego długotrwała konserwacja była celem od początku. Uruchomiłem ciągłą integrację wykorzystując akcje GitHub, aby zminimalizować liczbę błędów i zyskać więcej pewności co do mojego projektu. Każda zmiana w kodzie uruchamia serię weryfikacji i testów.
+Będę się starał dodawać treści i funkcjonalności regularnie, dlatego długotrwała konserwacja była celem od początku. Uruchomiłem ciągłą integrację, wykorzystując akcje GitHub, aby zminimalizować liczbę błędów i zyskać więcej pewności co do mojego projektu. Każda zmiana w kodzie uruchamia serię weryfikacji i testów.
 
 ![Graf zadań w ciągłej integracji](ci.png)
 
-Playwright, w domyśle, uruchamia testy równolegle, więc mogłem znacznie uprościć moją akcję GitHub CI. Aktualnie jest to jeden job z konfiguracją zbliżoną do tej domyślnej od Playwright'a.
+Playwright domyślnie uruchamia testy równolegle, więc mogłem znacznie uprościć moją akcję GitHub CI. Aktualnie jest to jeden job z konfiguracją zbliżoną do tej domyślnej Playwrighta.
 
 ![Graf zadań w ciągłej integracji w wersji drugiej](ci-v2.png)
 
