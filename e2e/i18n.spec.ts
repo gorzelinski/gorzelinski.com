@@ -69,13 +69,11 @@ test.describe('I18n tests', () => {
       url: ({ link }) => `${link.portfolio}an-lam/`,
       getTitle: async (_, settingsPage, lang) => {
         const title =
-          lang === 'en'
-            ? 'An-lam - business website'
-            : 'An-lam - strona firmowa'
+          lang === 'en' ? 'An-lam—business website' : 'An-lam — strona firmowa'
         return settingsPage.getTemplateTitle(title, lang)
       },
       getHeading: (_, lang) =>
-        lang === 'en' ? 'An-lam - business website' : 'An-lam - strona firmowa'
+        lang === 'en' ? 'An-lam—business website' : 'An-lam — strona firmowa'
     },
     {
       name: 'about page',

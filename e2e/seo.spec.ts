@@ -38,9 +38,9 @@ test.describe('SEO tests', () => {
       {
         name: 'portfolio project page',
         getUrl: ({ link }) => `${link.portfolio}an-lam/`,
-        getTitle: () => 'An-lam - business website',
+        getTitle: () => 'An-lam—business website',
         getDescription: () =>
-          'An-lam is a small polish local business repairing boats and yachts. Its niche character makes it interesting also for distant clients.',
+          'An-lam is a small Polish local business that repairs boats and yachts. Its niche character also makes it interesting for distant clients.',
         type: 'article'
       },
       {
@@ -121,9 +121,9 @@ test.describe('SEO tests', () => {
         name: 'portfolio project page',
         getUrl: ({ link }) => `${link.portfolio}an-lam/`,
         type: 'BlogPosting',
-        getTitle: () => 'An-lam - business website',
+        getTitle: () => 'An-lam—business website',
         getDescription: () =>
-          'An-lam is a small polish local business repairing boats and yachts. Its niche character makes it interesting also for distant clients.',
+          'An-lam is a small Polish local business that repairs boats and yachts. Its niche character also makes it interesting for distant clients.',
         date: '2021-05-19T14:00:00.000Z'
       },
       {
