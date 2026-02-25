@@ -65,7 +65,7 @@
       "heading": "Newsletter, który rozpala ciekawość💡",
       "description": "Subskrybuj mój newsletter, aby otrzymywać comiesięczną dawkę:",
       "topics": [
-        "Nowości, przykładów, inspiracji ze świata front-end, programowania i designu",
+        "Nowości, przykładów, inspiracji ze świata programowania i designu",
         "Teorii naukowych i sceptycyzmu",
         "Moich ulubionych źródeł, idei, narzędzi i innych interesujących linków"
       ],
@@ -446,12 +446,12 @@
         "brief": "Jestem inżynierem i humanistą. W jednym? Czy to jest legalne?",
         "activities": [
           {
-            "mention": "Swoje techniczne umiejętności i humanistyczne zainteresowania rozwijam projektując, kodując i pisząc treści dla stron internetowych. Do tego celu wykorzystuję głównie Figmę, JAMstack, długopis i kartę papieru. Efekty tego rozwoju możesz znaleźć w moim",
+            "mention": "Swoje techniczne umiejętności i humanistyczne zainteresowania rozwijam, projektując, kodując i pisząc treści dla stron internetowych. Do tego celu wykorzystuję głównie Figmę, JAMstack, długopis i kartę papieru. Efekty tego rozwoju możesz znaleźć w moim",
             "link": "portfolio",
             "href": "/portfolio/"
           },
           {
-            "mention": "Jeżeli jesteś zainteresowany szczegółami moich rzeczy, możesz sprawdzić czego jeszcze",
+            "mention": "Jeżeli jesteś zainteresowany szczegółami moich rzeczy, możesz sprawdzić, czego jeszcze",
             "link": "używam",
             "href": "/uses/"
           },
