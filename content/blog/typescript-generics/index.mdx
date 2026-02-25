@@ -146,7 +146,7 @@ const number = new Data<number>()
 number.addItem(50)
 ```
 
-We didn't lock the above class to one type. At first, TypeScript doesn't know which type it is. But then TypeScript knows the concrete type you pass in—when you call the function or instantiate the class. You can even be more granular and introduce new generic types in class methods or properties. That’s a good use case when you don't need them in the entire class.
+We didn't lock the above class to one type. At first, TypeScript doesn't know which type it is. But then TypeScript knows the concrete type you pass in—when you call the function or instantiate the class. You can even be more granular and introduce new generic types in class methods or properties. Thats a good use case when you don't need them in the entire class.
 
 ```ts title="Generics inside classes"
 class Data {
