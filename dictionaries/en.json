@@ -65,7 +65,7 @@
       "heading": "A newsletter that sparks curiosity💡",
       "description": "Subscribe to my newsletter and get a monthly dose of:",
       "topics": [
-        "Front-end, web development, and design news, examples, inspiration",
+        "Web development and design news, examples, inspiration",
         "Science theories and skepticism",
         "My favorite resources, ideas, tools, and other interesting links"
       ],
@@ -113,14 +113,14 @@
       "heading": "About me",
       "story": {
         "gaming": "My earliest memories are bound to electronics. As a kid, I was thrilled every time I turned on PlayStation. Every startup sounded like going through a portal, entering another digital galaxy. That galaxy absorbed me back then. After 20 years, I am still there.",
-        "technology": "Over the years, I have become more and more interested in electronics. When I was a teenager, I got my first phone - a Sony Ericsson k300i. I still remember its specs: 12MB of memory, a VGA camera, and a 65k color display. These numbers were not telling me much back then. But I still liked to analyze them (from mobile phone companies’ flyers) and compare them between different phone models. I am still doing that, to be honest. Nowadays, I follow technological blogs and vlogs.",
+        "technology": "Over the years, I have become more and more interested in electronics. When I was a teenager, I got my first phone—a Sony Ericsson K300i. I still remember its specs: 12 MB of memory, a VGA camera, and a 65k color display. These numbers were not telling me much back then. But I still liked to analyze them (from mobile phone companies' flyers) and compare them between different phone models. I am still doing that, to be honest. Nowadays, I follow technological blogs and vlogs.",
         "math": "My passion for numbers did not end there. Math was my favorite subject in school (I was a strange child, I know). After graduating high school (math and physics extended), I started studying at Poznan University of Technology.",
-        "university": "I have chosen Electronics and Telecommunications course after many hours of research and careful consideration. Yeah, but...not really. I have based my choice on associations and chance. Fortunately, I was lucky. In university, I could chalk out math equations. I was also solving boolean equations and making electronic circuits based on them. I have programmed some (micro)processors. I have also had the opportunity to configure routers and learn more about computer networks. I was learning about networks not only in university.",
-        "internship": "During my studies, I worked at Semcore as SEO Specialist. I started creating websites then. The first of them looked awful, but I liked it. After several months of self-studying, I started working as a Front-end developer at Af Agency. I have had an opportunity to collaborate with brands like Volkswagen or Skoda. I have also experienced the nightmare of creating a newsletter for email clients. Good times. Not ironically.",
-        "thesis": "I graduated in 2020 with an engineer title. Now I legitimately can use phrases like “Trust me, I am an engineer.” My thesis was about tools and technologies used to create apps and websites. But it did not end there. I learn about web dev every day. I watch lectures, listen to podcasts, and read books.",
-        "books": "“Uncle Bob’s” books occupy some space on my bookshelf. However, I am not limiting myself only to computer science books. My Kallax bends from psychology, philosophy, biography, and especially science books. I also like other media. Games, movies, music - you name it.",
-        "activities": "If I do not study and consume media (or coffee), I probably work out, walk, watch memes or think hard about cognitive biases.",
-        "position": "I currently work at CKSource as a Software Engineer and Technical Writer to co-create rich editing solutions for the web. There is a chance you've heard of CKEditor - our flagship product."
+        "university": "I have chosen the Electronics and Telecommunications course after many hours of research and careful consideration. Yeah, but…not really. I have based my choice on associations and chance. Fortunately, I was lucky. In university, I could chalk out math equations. I was also solving Boolean equations and making electronic circuits based on them. I have programmed some (micro)processors. Furthermore, I have also had the opportunity to configure routers and learn more about computer networks. I was learning about networks not only in university.",
+        "internship": "During my studies, I worked at Semcore as an SEO Specialist. I started creating websites then. The first of them looked awful, but I liked it. After several months of self-studying, I started working as a front-end developer at AF Agency. I have had an opportunity to collaborate with brands like Volkswagen or Skoda. I have also experienced the nightmare of creating a newsletter for email clients. Good times. Not ironically.",
+        "thesis": "I graduated in 2020 with an engineering title. Now I legitimately can use phrases like “Trust me, I am an engineer.” My thesis was about tools and technologies used to create apps and websites. But it did not end there. I learn about web dev every day. I watch lectures, listen to podcasts, and read books.",
+        "books": "“Uncle Bob's” books occupy some space on my bookshelf. However, I am not limiting myself only to computer science books. My Kallax bends from psychology, philosophy, biography, and especially science books. I also like other media. Games, movies, music—you name it.",
+        "activities": "If I do not study and consume media (or coffee), I probably work out, walk, watch memes, or think hard about cognitive biases.",
+        "position": "I currently work at CKSource as a software engineer and technical writer to co-create rich editing solutions for the web. There is a chance you've heard of CKEditor—our flagship product."
       },
       "resume": {
         "button": "My Resume",
@@ -131,23 +131,23 @@
         "list": [
           {
             "heading": "🎵 The noise of home appliances calms me",
-            "description": "Vacuum cleaner or hairdryer sounds have never annoyed me. I like them. It appears odd, but something is soothing in this kind of white noise to many people. “Vacum Cleaner Sound” videos on Youtube have millions of views. You can even buy devices that generate white noise."
+            "description": "Vacuum cleaner or hairdryer sounds have never annoyed me. I like them. It appears odd, but something is soothing in this kind of white noise to many people. “Vacuum Cleaner Sound” videos on YouTube have millions of views. You can even buy devices that generate white noise."
           },
           {
             "heading": "❄️ I am an INTJ in MBTI",
-            "description": "Myers-Briggs Type Indicator is a personality test to identify a person’s type, strengths, and preferences. I would not take it seriously because it doesn’t have a scientific basis, but it is a fun exercise. The description of my type states that I am a cold, lonely villain (I might have exaggerated that a bit)."
+            "description": "Myers-Briggs Type Indicator is a personality test to identify a person's type, strengths, and preferences. I would not take it seriously because it doesn't have a scientific basis, but it is a fun exercise. The description of my type states that I am a cold, lonely villain (I might have exaggerated that a bit)."
           },
           {
             "heading": "☀️ I sneeze in the bright light",
-            "description": "It is not as uncontrollable as if I am allergic. On a sunny day, I feel the urge to sneeze after I have just gone outside. I have done some reading, and it even has a name - photic sneeze reflex. It is a rare condition (affecting 10 - 30% population) caused by gens. Thanks, dad!"
+            "description": "It is not as uncontrollable as if I were allergic. On a sunny day, I feel the urge to sneeze after I have just gone outside. I have done some reading, and it even has a name—photic sneeze reflex. It is a rare condition (affecting 10 to 30% of the population) caused by genes. Thanks, Dad!"
           },
           {
-            "heading": "⏱️ I could pass some of the Navy SEALs Physical Screening Tests",
+            "heading": "⏱️ I could pass some Navy SEALs physical screening tests",
             "description": "One part of the test requires doing a minimum of 42 push-ups in 2 minutes. The last part is a 1.5-mile (~2.41 km) run in under 11 minutes. I have done that a few times at the gym. I hope I can still do that."
           },
           {
             "heading": "📄 I have a surname by mistake",
-            "description": "Due to some typo in my grandfather’s documents, my surname is “Gorzeliński” (with polish letters). The correct spelling should probably be “Garzeliński.” Anyway, it is hard to pronounce either way - even for polish people."
+            "description": "Due to some typo in my grandfather's documents, my surname is “Gorzeliński” (with Polish letters). The correct spelling should probably be “Garzeliński.” Anyway, it is hard to pronounce either way—even for Polish people."
           },
           {
             "heading": "📘 I am a bookworm",
@@ -164,7 +164,7 @@
           },
           {
             "heading": "Curiosity",
-            "description": "“I have no special talents. I am only passionately curious.” - Einstein once wrote to his friend (before you roll your eyes - this quote is authentic). He was humble. I will never be as talented as Einstein was, but his curiosity can be an inspiration for me. Discovering and understanding new knowledge can be a reward for its own sake."
+            "description": "“I have no special talents. I am only passionately curious,” Einstein once wrote to his friend (before you roll your eyes—this quote is authentic). He was humble. I will never be as talented as Einstein was, but his curiosity can be an inspiration for me. Discovering and understanding new knowledge can be a reward for its own sake."
           },
           {
             "heading": "Empathy",
@@ -388,7 +388,7 @@
       },
       "uses": {
         "heading": "What I use?",
-        "description": "I am always interested in what tech and gadgets people are using. I created this list for geeks like me. I will try to keep it up to date.",
+        "description": "I am always interested in what tech and gadgets people are using. I created this list for geeks like me.",
         "button": "Stuff I use",
         "image": "Half-closed Space Gray MacBook immersed in darkness. The screen emits a blue-pinkish glow."
       }

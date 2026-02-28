@@ -65,7 +65,7 @@
       "heading": "Newsletter, który rozpala ciekawość💡",
       "description": "Subskrybuj mój newsletter, aby otrzymywać comiesięczną dawkę:",
       "topics": [
-        "Nowości, przykładów, inspiracji ze świata front-end, programowania i designu",
+        "Nowości, przykładów, inspiracji ze świata programowania i designu",
         "Teorii naukowych i sceptycyzmu",
         "Moich ulubionych źródeł, idei, narzędzi i innych interesujących linków"
       ],
@@ -112,15 +112,15 @@
       },
       "heading": "O mnie",
       "story": {
-        "gaming": "Moje najwcześniejsze wspomnienia nierozerwalnie związane są z elektroniką. Do dziś pamiętam dreszczyk emocji, towarzyszący mi podczas dźwięku uruchamiania pierwszego PlayStation. Brzmiał on jak przejście przez portal - wejście w inną, cyfrową galaktykę. Ta galaktyka już wtedy mnie pochłonęła. Po niemal 20 latach nadal w niej tkwię.",
-        "technology": "Z biegiem lat, zainteresowanie elektroniką się u mnie pogłębiało. Mając kilkanaście lat dostałem swój pierwszy telefon - używany Sony Ericsson k300i. Nadal pamiętam jego specyfikację: 12MB pamięci, aparat VGA, wyświetlacz o 65 tysiącach kolorów. Wówczas te liczby nie mówiły mi wiele. Lubiłem jednak je analizować i porównywać między modelami. W zasadzie nadal to robię. Wówczas przeglądałem ulotki operatorów telekomunikacyjnych. Dziś przyjmuje to formę śledzenia blogów i vlogów technologicznych.",
+        "gaming": "Moje najwcześniejsze wspomnienia nierozerwalnie związane są z elektroniką. Do dziś pamiętam dreszczyk emocji, towarzyszący mi podczas dźwięku uruchamiania pierwszego PlayStation. Brzmiał on jak przejście przez portal — wejście w inną, cyfrową galaktykę. Ta galaktyka już wtedy mnie pochłonęła. Po niemal 20 latach nadal w niej tkwię.",
+        "technology": "Z biegiem lat, zainteresowanie elektroniką się u mnie pogłębiało. Mając kilkanaście lat, dostałem swój pierwszy telefon — używany Sony Ericsson K300i. Nadal pamiętam jego specyfikację: 12 MB pamięci, aparat VGA, wyświetlacz o 65 tysiącach kolorów. Wówczas te liczby nie mówiły mi wiele. Lubiłem jednak je analizować i porównywać między modelami. W zasadzie nadal to robię. Wówczas przeglądałem ulotki operatorów telekomunikacyjnych. Dziś przyjmuje to formę śledzenia blogów i vlogów technologicznych.",
         "math": "Moja pasja do cyfr nie kończyła się na tym. W szkole najbardziej lubiłem matematykę (wiem, byłem dziwnym dzieckiem). Profil matematyczno-fizyczny w LO, a następnie studia na Politechnice Poznańskiej wydały mi się dobrym pomysłem.",
-        "university": "Wybrałem kierunek Elektronika i Telekomunikacja po wielu godzinach poszukiwań i namysłu. Taa... nie do końca. Moja decyzja opierała się na skojarzeniach i przypadku. Szczęśliwym przypadku. Na studiach nadal mogłem kreślić równania matematyczne - w tym logiczne. Konstruować na ich podstawie proste układy elektroniczne. Programować (mikro)procesory. Konfigurować routery i pogłębiać wiedzę na temat sieci. O tych ostatnich uczyłem się nie tylko na studiach.",
-        "internship": "W trakcie studiów pracowałem w Semcore, jako specjalista SEO. Wtedy zacząłem tworzyć strony internetowe. Pierwsze z nich wyglądały okropnie, ale spodobało mi się to. Po kilku miesiącach samodzielnej nauki rozpocząłem pracę jako Front-End Developer w Af Agency. Miałem okazję współpracować nad projektami dla marek takich jak Volkswagen, Skoda czy Develey. Poznałem też koszmar tworzenia newsletterów dla różnych klientów pocztowych. Dobre czasy. Nieironicznie.",
-        "thesis": "Studia - z tytułem inżyniera - skończyłem w 2020 roku. Moja praca dyplomowa dotyczyła analizy technologii i narzędzi do tworzenia stron internetowych. Jednak na tym nie poprzestałem. Wiedzę na ten temat staram się pogłębiać cały czas - oglądając wykłady, słuchając podcastów i czytając książki.",
-        "books": "Choć książki „wujka Boba” i inne klasyki informatyki zajmują sporo miejsca na moim regale - nie ograniczam się tylko do książek technicznych. Mój Kallax ugina się także od książek psychologicznych, naukowych, filozoficznych i grubych biografii. Poza książkami lubię także inne media. Gry, filmy, muzyka - pochłaniam je wszystkie.",
+        "university": "Wybrałem kierunek Elektronika i Telekomunikacja po wielu godzinach poszukiwań i namysłu. Taa… nie do końca. Moja decyzja opierała się na skojarzeniach i przypadku. Szczęśliwym przypadku. Na studiach nadal mogłem kreślić równania matematyczne — w tym logiczne. Konstruować na ich podstawie proste układy elektroniczne. Programować (mikro-) procesory. Konfigurować routery i pogłębiać wiedzę na temat sieci. O tych ostatnich uczyłem się nie tylko na studiach.",
+        "internship": "W trakcie studiów pracowałem w Semcore, jako specjalista SEO. Wtedy zacząłem tworzyć strony internetowe. Pierwsze z nich wyglądały okropnie, ale spodobało mi się to. Po kilku miesiącach samodzielnej nauki rozpocząłem pracę jako Front-End Developer w AF Agency. Miałem okazję współpracować nad projektami dla marek takich jak Volkswagen, Skoda czy Develey. Poznałem też koszmar tworzenia newsletterów dla różnych klientów pocztowych. Dobre czasy. Nieironicznie.",
+        "thesis": "Studia — z tytułem inżyniera — skończyłem w 2020 roku. Moja praca dyplomowa dotyczyła analizy technologii i narzędzi do tworzenia stron internetowych. Jednak na tym nie poprzestałem. Wiedzę na ten temat staram się pogłębiać cały czas — oglądając wykłady, słuchając podcastów i czytając książki.",
+        "books": "Choć książki „wujka Boba” i inne klasyki informatyki zajmują sporo miejsca na moim regale — nie ograniczam się tylko do książek technicznych. Mój Kallax ugina się także od książek psychologicznych, naukowych, filozoficznych i grubych biografii. Poza książkami lubię także inne media. Gry, filmy, muzyka — pochłaniam je wszystkie.",
         "activities": "Jeżeli się nie uczę i nie konsumuję różnych mediów (lub kawy) to najprawdopodobniej ćwiczę, spaceruję, przeglądam memy lub ciężko rozmyślam nad błędami poznawczymi.",
-        "position": "Obecnie współpracuję z CKSource jako Software Engineer i Technical Writer, aby współtworzyć bogate rozwiązania edycyjne dla sieci. Istnieje szansa, że słyszałeś o CKEditor - naszym sztandarowym produkcie."
+        "position": "Obecnie współpracuję z CKSource jako inżynier oprogramowania i pisarz techniczny, współtworząc bogate rozwiązania edycyjne dla sieci. Istnieje szansa, że słyszałeś o CKEditor — naszym sztandarowym produkcie."
       },
       "resume": {
         "button": "Mój życiorys",
@@ -131,7 +131,7 @@
         "list": [
           {
             "heading": "🎵 Hałas urządzeń AGD mnie uspokaja",
-            "description": "Dźwięki odkurzacza czy suszarki do włosów nigdy mnie nie irytowały. Lubię je. Wydaje się to dziwne, ale jest coś kojącego w tego typu białym szumie dla wielu ludzi. Wideo „Vacum Cleaner Sound” na Youtube ma miliony wyświetleń. Można nawet kupić specjalne urządzenia, które generują biały szum."
+            "description": "Dźwięki odkurzacza czy suszarki do włosów nigdy mnie nie irytowały. Lubię je. Wydaje się to dziwne, ale jest coś kojącego w tego typu białym szumie dla wielu ludzi. Wideo „Vacum Cleaner Sound” na YouTube ma miliony wyświetleń. Można nawet kupić specjalne urządzenia, które generują biały szum."
           },
           {
             "heading": "❄️ Jestem INTJ w MBTI",
@@ -139,7 +139,7 @@
           },
           {
             "heading": "☀️ Kicham w jasnym świetle",
-            "description": "To nie tak, że jest to niekontrolowane jakbym miał alergię. Po prostu czuję silną potrzebę kichania, gdy wyjdę na zewnątrz w słoneczny dzień. Poczytałem trochę i to ma nawet nazwę - odruch kichania spowodowany światłem słonecznym. Jest to rzadka przypadłość (dotykająca 10 - 30% populacji) wywoływana genetycznie. Dzięki, tato!"
+            "description": "To nie tak, że jest to niekontrolowane, jakbym miał alergię. Po prostu czuję silną potrzebę kichania, gdy wyjdę na zewnątrz w słoneczny dzień. Poczytałem trochę i to ma nawet nazwę — odruch kichania spowodowany światłem słonecznym. Jest to rzadka przypadłość (dotykająca 10 - 30% populacji) wywoływana genetycznie. Dzięki, tato!"
           },
           {
             "heading": "⏱️ Mógłbym przejść niektóre z testów sprawnościowych Navy SEALs",
@@ -160,11 +160,11 @@
         "list": [
           {
             "heading": "Prawda",
-            "description": "Prawdopodobnie jedna z najważniejszych. Jest podstawą wszelkich moich działań. Cały czas poszerzam i weryfikuję moje przekonania. Chcę, aby światopogląd w mojej głowe był jak najbliższy rzeczywistości."
+            "description": "Prawdopodobnie jedna z najważniejszych. Jest podstawą wszelkich moich działań. Cały czas poszerzam i weryfikuję moje przekonania. Chcę, aby światopogląd w mojej głowie był jak najbliższy rzeczywistości."
           },
           {
             "heading": "Ciekawość",
-            "description": "„Nie mam żadnych niezwykłych uzdolnień oprócz namiętnej ciekawości” - napisał kiedyś Einstein do przyjaciela (zanim przewrócisz oczami - ten cytat jest autentyczny). Był skromny. Nigdy nie będę tak utalentowany jak on, ale jego ciekawość może stanowić dla mnie inspirację. Odkrywanie i rozumienie nowej wiedzy może być nagrodą samą w sobie."
+            "description": "„Nie mam żadnych niezwykłych uzdolnień oprócz namiętnej ciekawości” - napisał kiedyś Einstein do przyjaciela (zanim przewrócisz oczami — ten cytat jest autentyczny). Był skromny. Nigdy nie będę tak utalentowany, jak on, ale jego ciekawość może stanowić dla mnie inspirację. Odkrywanie i rozumienie nowej wiedzy może być nagrodą samą w sobie."
           },
           {
             "heading": "Empatia",
@@ -172,7 +172,7 @@
           },
           {
             "heading": "Otwartość umysłu",
-            "description": "Nie da się dochodzić do prawdy, będąc zacietrzewionym w swoich poglądach. Regularnie poszukuję informacji, które mogą podważyć moje przekonania. I czasem je znajduję. Moje ego cierpi, gdy wychodzę na idiotę, ale w ogólnym rozrachunku - warto."
+            "description": "Nie da się dochodzić do prawdy, będąc zacietrzewionym w swoich poglądach. Regularnie poszukuję informacji, które mogą podważyć moje przekonania. I czasem je znajduję. Moje ego cierpi, gdy wychodzę na idiotę, ale w ogólnym rozrachunku — warto."
           }
         ]
       },
@@ -387,7 +387,7 @@
       },
       "uses": {
         "heading": "Czego używam?",
-        "description": "Zawsze mnie interesuje jakich technologii i gadżetów używają inni ludzie. Stworzyłem tę listę dla geeków takich jak ja. Będę się starał, aby była aktualna.",
+        "description": "Zawsze mnie interesuje jakich technologii i gadżetów używają inni ludzie. Stworzyłem tę listę dla geeków takich jak ja.",
         "button": "Rzeczy, których używam",
         "image": "Przymknięty MacBook, w kolorze Space Gray, pogrążony w ciemności. Ekran emituje niebiesko-różową poświatę."
       }
@@ -446,12 +446,12 @@
         "brief": "Jestem inżynierem i humanistą. W jednym? Czy to jest legalne?",
         "activities": [
           {
-            "mention": "Swoje techniczne umiejętności i humanistyczne zainteresowania rozwijam projektując, kodując i pisząc treści dla stron internetowych. Do tego celu wykorzystuję głównie Figmę, JAMstack, długopis i kartę papieru. Efekty tego rozwoju możesz znaleźć w moim",
+            "mention": "Swoje techniczne umiejętności i humanistyczne zainteresowania rozwijam, projektując, kodując i pisząc treści dla stron internetowych. Do tego celu wykorzystuję głównie Figmę, JAMstack, długopis i kartę papieru. Efekty tego rozwoju możesz znaleźć w moim",
             "link": "portfolio",
             "href": "/portfolio/"
           },
           {
-            "mention": "Jeżeli jesteś zainteresowany szczegółami moich rzeczy, możesz sprawdzić czego jeszcze",
+            "mention": "Jeżeli jesteś zainteresowany szczegółami moich rzeczy, możesz sprawdzić, czego jeszcze",
             "link": "używam",
             "href": "/uses/"
           },
