@@ -11,3 +11,344 @@ categories: ['web development']
 tags: ['web components', 'custom elements', 'javascript', 'js', 'html']
 type: 'post'
 ---
+
+Web components are a browser API that lets you create custom, reusable, encapsulated HTML elements. They are self-contained. It means no more styles and behavior that leak out or get overridden. Actually, it's not one thing. It's a set of 3 web standards working together.
+
+1. **Custom elements** let you create new HTML tags with their behavior and callbacks.
+2. **Shadow DOM** provides mentioned encapsulation for your styles and markup; they provide clear boundaries.
+3. **HTML templates** offer performant, reusable chunks of markup that can be rendered on demand using JS.
+
+You don't need to use all three to create a web component, but we'll cover them all. In this post I'll focus on custom elements. In the following ones, I'll expand on Shadow DOM and HTML templates.
+
+Ok, but you may ask, “Why should I even care? Is my framework not enough?” And that's what's interesting. Web components don't replace frameworks like React or Vue—they can work with them. There is no built-in reactivity system or state management in web components. They are framework-agnostic components.
+
+> While frameworks come and go, web standards endure.
+
+You're probably using web components without realizing it. Look at the `<input type="range" />` below. I deliberately placed a native element inside this post. No additional elements or styling—just default stylesheets.
+
+<Box>
+  <input type="range" min="0" max="100" />
+</Box>
+
+In the dev console, inspecting the element will show you that it uses Shadow DOM (be sure to enable displaying this markup in your browser). I didn't register a custom element. The browser itself uses those standards to build native elements. By learning about web components, you'll learn technologies that drive the web platform itself!
+
+## Custom elements
+
+**Custom elements** are like regular HTML elements, except they are… well, custom. Besides elements like `<article>` or `<section>`, you can now define your custom elements, like `<my-component>`. But before we use our custom element, we need to define it. Every web component starts by extending the `HTMLElement` class.
+
+```js title="Autonomous custom element"
+class MyComponent extends HTMLElement {
+  constructor() {
+    super()
+  }
+}
+
+customElements.define('my-component', MyComponent)
+```
+
+Inheritance gives you the full `HTMLElement` API—properties and methods like:
+
+- `innerHTML`
+- `innerText`
+- `addEventListener()`
+- `click()`
+- etc.
+
+We created our first **autonomous custom element** above. It extends the `HTMLElement` class and is used as a standalone tag. But there is one more type.
+
+**Customized built-in elements** extend a specific native element (like `HTMLButtonElement`) and are used with the `is` attribute:
+
+```js title="Customized built-in element"
+class MyButton extends HTMLButtonElement {
+  connectedCallback() {
+    this.style.color = 'red'
+  }
+}
+
+customElements.define('my-button', MyButton, { extends: 'button' })
+```
+
+```html title="Using a customized built-in element"
+<button is="my-button">Click me</button>
+```
+
+However, Safari does not support customized built-in elements, and there is no plan to support them. So, most developers should stick with autonomous custom elements, which is what we'll use throughout this series.
+
+## Custom elements registry
+
+`customElements` is a read-only global property on the `window` object that returns a reference to the `CustomElementRegistry`. The registry is the interface you use to create and query custom elements. The `customElements.define()` method registers your class with the browser's registry.
+
+<Callout variant="warning">
+
+The tag name must contain a hyphen to avoid collisions with standard HTML elements.
+
+</Callout>
+
+Once registered, you use a custom element like any native HTML element.
+
+```html title="Using a custom element"
+<my-component></my-component>
+```
+
+The registry only allows one definition per name to avoid collisions with other custom elements. Trying to register multiple elements with the same name will throw an error. It's a good practice to prefix custom elements with your project or company name.
+
+<Callout variant="info">
+
+There's only one global registry per page.
+
+</Callout>
+
+### Other registry methods
+
+Besides registering, the registry offers methods for other actions.
+
+```js title="CustomElementRegistry API"
+customElements.upgrade(elementReference)
+
+customElements.whenDefined('my-component').then(() => {
+  console.log('defined')
+})
+
+customElements.get('my-component')
+```
+
+- `customElements.upgrade()`: Forces the immediate upgrade of custom elements within a given DOM subtree, even if they haven't been connected to the document yet. In most typical use cases you won't need this method because elements get upgraded automatically upon insertion into the document. But if you build a DOM tree off-document—via `innerHTML` or cloning a `<template>`—the elements sit there as generic `HTMLElement` instances until you either append them to the document or call `upgrade()` manually.
+- `customElements.whenDefined()`: Returns a promise that resolves when an element becomes registered. It is useful to wait for the definition before running dependent code.
+- `customElements.get()`: Retrieves the constructor for a registered element or returns `undefined` if not yet registered. It is useful for feature detection or checking if a component is available.
+
+## Lifecycle callbacks
+
+You may be familiar with the concept of lifecycle methods from JS frameworks. In short, those are functions that run automatically at specific moments in a component's life. In web components, those are predefined callbacks that the browser automatically invokes at a specific moment in a custom element's existence. You define those methods in your class, and the browser invokes them at the right time.
+
+```js title="Lifecycle callbacks"
+class MyComponent extends HTMLElement {
+  static get observedAttributes() {
+    return ['attribute1', 'attribute2']
+  }
+
+  constructor() {
+    super()
+  }
+
+  connectedCallback() {}
+
+  disconnectedCallback() {}
+
+  connectedMoveCallback() {}
+
+  attributeChangedCallback(attributeName, oldValue, newValue) {}
+
+  adoptedCallback() {}
+}
+```
+
+- Every web component starts with a `constructor()`. It runs when the element is created. However, the element isn't connected to the DOM yet.
+- That's where `connectedCallback()` comes into play. It fires each time your element is inserted into the DOM—including re-insertion after removal. In general, DOM operations should be here.
+- On the contrary, the `disconnectedCallback()` runs when the browser removes the element from the DOM. It's a place for cleanup—here you can remove event listeners, cancel timers, or close connections to prevent memory leaks.
+- A recent addition to the API—`connectedMoveCallback()`. The browser runs the method when a custom element is moved within the DOM using the new `Node.prototype.moveBefore()` method. The new method solves the performance issue of removing and reinserting DOM elements. When defined, this is called instead of `connectedCallback()` and `disconnectedCallback()` each time the element is moved to a different place (via the `moveBefore()` method).
+- The `attributeChangedCallback()` fires conditionally, only for attributes listed in the array returned from the `observedAttributes()` static getter.
+- For the record, I need to mention the `adoptedCallback()` method. It fires when your custom elements move between documents. For example, when moving from the `<iframe>` to the main document or using the `document.adoptNode()` method. You'll probably rarely use it.
+
+I mentioned those methods in order but it's not the exact execution order. There is a twist, so let's elaborate on that.
+
+1. The `constructor()` method runs first when an element is created in JavaScript.
+2. Here's the twist—the `attributeChangedCallback()` comes after. It's because the parser sets attributes before inserting the element into the DOM.
+3. Then, the element triggers the `connectedCallback()` when entering the DOM.
+4. The `connectedMoveCallback()` fires when the element is moved via the `moveBefore()` method.
+5. When leaving the DOM, the element finally triggers the `disconnectedCallback()`.
+6. Rarely, the element may be moved to a new document, triggering the `adoptedCallback()`.
+
+<Callout variant="warning">
+
+When custom elements are nested, children connect before parents (depth-first).
+
+</Callout>
+
+## Attributes vs. properties
+
+In JavaScript frameworks like React, the difference between attributes and properties is blurry. However, in web components, they are different systems that we need to understand.
+
+**Attributes** live in the HTML markup. They are part of the DOM's attribute API. They are always strings and can't accept complex data types such as arrays or objects. If observed, they trigger the `attributeChangedCallback()` method.
+
+```html title="Attributes"
+<my-component title="hello" count="420" active></my-component>
+```
+
+**Properties** live on the JavaScript object. Contrary to attributes, they can be any type: numbers, booleans, objects, etc. They _do not_ trigger the `attributeChangedCallback()` method.
+
+```js title="Properties"
+const element = document.querySelector('my-component')
+element.title = 'hello'
+element.active = ''
+element.count = 420
+element.data = { complex: true }
+element.items = [1, 2, 3]
+```
+
+### Reflection
+
+**Reflection** is the practice of keeping an attribute and its corresponding property in sync—so that changing one automatically updates the other. Reflecting properties to attributes matters because CSS selectors like `my-component[disabled]` only work with attributes. Moreover, attributes are what appear in DevTools and `outerHTML` serialization.
+
+<Callout variant="warning">
+
+Attributes and properties do not sync automatically.
+
+</Callout>
+
+Even on native elements, the sync isn't always bidirectional. Let's look at the `<input/>` element.
+
+```js title="Reflection on native elements"
+input.setAttribute('value', 'hello')
+console.log(input.value) // "hello" — attribute reflected to property
+
+input.value = 'world'
+console.log(input.getAttribute('value')) // "hello" — property did NOT reflect back!
+```
+
+In the example above, we're setting the `value` attribute that sets the default for the HTML `<input/>`. When logging the value, we see the reflection in the property. But, surprisingly, after changing the property in JS, we don't see the reflection in the HTML attribute.
+
+On custom elements, the situation is clearer but still problematic—**there is no auto-sync at all.** You have to wire it up yourself. It is common to use getters and setters in your custom elements to manage (or avoid) property reflection. There are situations where you don't want the synchronization.
+
+```js title="Manual reflection with getters and setters"
+class MyComponent extends HTMLElement {
+  #value
+
+  get value() {
+    return this.#value
+  }
+
+  set value(val) {
+    this.#value = val // Not reflected
+  }
+
+  get disabled() {
+    return this.hasAttribute('disabled')
+  }
+
+  set disabled(val) {
+    this.toggleAttribute('disabled', val) // Reflected
+  }
+}
+```
+
+Notice that we toggle the `disabled` value. Boolean HTML attributes can be present or absent—not `true` or `false` as you may expect.
+
+## Listening to events
+
+Event handling in web components uses the same API as regular DOM. However, Shadow DOM introduces some quirks around event propagation and targeting.
+
+The standard pattern is to add listeners in `connectedCallback()` and remove them in `disconnectedCallback()`. This pairs setup with cleanup and prevents memory leaks if the element is removed and re-inserted.
+
+```js title="Listening in connectedCallback()"
+class MyComponent extends HTMLElement {
+  connectedCallback() {
+    this.addEventListener('click', this.handleClick)
+  }
+
+  disconnectedCallback() {
+    this.removeEventListener('click', this.handleClick)
+  }
+
+  handleClick(event) {
+    console.log('Clicked!', this)
+  }
+}
+```
+
+For simple components where the element is created once and never removed, you can also add listeners in the `constructor()`. The constructor runs once, preventing duplicate listeners. It also guarantees automatic cleanup when the component is garbage collected.
+
+```js title="Listening in constructor()"
+class MyComponent extends HTMLElement {
+  constructor() {
+    super()
+    this.addEventListener('click', this.handleClick)
+  }
+
+  handleClick(event) {
+    console.log('Clicked!', this) // "this" is the component
+  }
+}
+```
+
+This approach works well for basic components but needs to change when you start using Shadow DOM. So, in practice, we'll use a different approach. But more on that in the post dedicated to Shadow DOM.
+
+### The binding problem
+
+There's another gotcha with event handling worth addressing now—the binding problem. When you add listeners to child elements, `this` inside your handler becomes the event target—the button, not your component. Your methods are no longer accessible. To understand why this happens, we need to talk about how JavaScript resolves `this`. The issue is in how JavaScript works, not with the web components per se. There are two scoping models at play.
+
+**Dynamic scope** is when resolution depends on how a function is called at runtime. JavaScript doesn't use dynamic scoping for variables, but `this` behaves this way.
+
+```js title="Dynamic this"
+class MyComponent extends HTMLElement {
+  #button
+
+  constructor() {
+    super()
+    this.innerHTML = '<button>Click me</button>'
+    this.#button = this.querySelector('button')
+    this.#button.addEventListener('click', this.handleClick)
+  }
+
+  handleClick(event) {
+    console.log(this) // ❌ "this" is the button, not your component!
+    this.updateDisplay() // ❌ ERROR: updateDisplay is not a function
+  }
+
+  updateDisplay() {}
+}
+```
+
+If `handleClick()` is called as `this.handleClick()`, `this` is the component. But when passed to `addEventListener()`, the browser calls it with `this` set to the event target—the button. Same function, different result, because `this` is determined by how the function is called, not where it's defined.
+
+**Lexical scope** means a variable is resolved based on where the function is written, not where it's called. JavaScript uses lexical scoping for all variables. You can use arrow functions to “fix” `this` in our case. Literally.
+
+```js title="Lexical this inside an arrow function"
+class MyComponent extends HTMLElement {
+  #button
+
+  constructor() {
+    super()
+    this.innerHTML = '<button>Click me</button>'
+    this.#button = this.querySelector('button')
+    this.#button.addEventListener('click', this.handleClick)
+  }
+
+  handleClick = (event) => {
+    console.log(this) // ✅ "this" is always the component
+    this.updateDisplay() // ✅ Works
+  }
+
+  updateDisplay() {}
+}
+```
+
+Arrow functions are lexically scoped, so `this` is always the component.
+
+React developers may be familiar with the next solution—it was often used in the class components era. You can explicitly lock `this`. The `bind()` method creates a new function with `this` permanently set to the component.
+
+```js title="Explicit binding with bind()"
+class MyComponent extends HTMLElement {
+  #button
+
+  constructor() {
+    super()
+    this.innerHTML = '<button>Click me</button>'
+    this.#button = this.querySelector('button')
+    this.handleClick = this.handleClick.bind(this) // Explicitly lock "this"
+    this.#button.addEventListener('click', this.handleClick)
+  }
+
+  handleClick(event) {
+    console.log(this) // ✅ "this" is always the component
+    this.updateDisplay() // ✅ Works
+  }
+
+  updateDisplay() {}
+}
+```
+
+Arrow functions address the binding issue implicitly via lexical scoping; `bind()` does it by wrapping the function with a fixed context.
+
+## Summary
+
+In this post we learned about custom elements—one of three pillars of web components. We can use them to teach the browser new HTML tags with their behavior, lifecycle, and state. And all of that without using a framework. In the next post, we'll explore Shadow DOM—how to encapsulate styles and markup so they don't leak. Stay tuned!
