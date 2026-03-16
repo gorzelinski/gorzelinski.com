@@ -157,6 +157,11 @@ const components: MDXComponents = {
 
 const customComponents: MDXComponents = {
   Abbr: ({ children, title }) => <Abbr title={title}>{children}</Abbr>,
+  Box: ({ children, ...props }) => (
+    <Box {...props} css={verticalRhythm.marginBottom.m}>
+      {children}
+    </Box>
+  ),
   Callout: ({ children, ...props }) => (
     <Callout {...props} css={verticalRhythm.marginBottom.m}>
       {children}
