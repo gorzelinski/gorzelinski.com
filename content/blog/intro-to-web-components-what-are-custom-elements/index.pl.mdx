@@ -1,14 +1,22 @@
 ---
 title: Web components — czym są custom elements?
-description: 'Przeglądarka pozwala ci definiować własne tagi HTML. Dowiedz się o funkcjach cyklu życia, atrybutach, właściwościach i problemie bindowania.'
-date: 2026-03-16T12:00:00+02:00
-updated: 2026-03-16T12:00:00+02:00
+description: 'Przeglądarka pozwala ci definiować własne tagi HTML — dowiedz się, jak działają dzięki funkcjom cyklu życia, atrybutom i właściwościom.'
+date: 2026-03-18T18:00:00+02:00
+updated: 2026-03-18T18:00:00+02:00
 image:
   alt: 'Okresowy układ pierwiastków jako układanka'
   caption: 'Zdjęcie autorstwa James Toose'
   src: 'james-toose-UjB58kcaZoE-unsplash.jpg'
 categories: ['rozwój sieci']
-tags: ['web components', 'custom elements', 'javascript', 'js', 'html']
+tags:
+  [
+    'komponenty internetowe',
+    'niestandardowe elementy',
+    'javascript',
+    'js',
+    'html',
+    'dom'
+  ]
 type: 'post'
 ---
 
@@ -257,7 +265,7 @@ class MyComponent extends HTMLElement {
 
 Dla prostych komponentów, gdzie element jest stworzony raz i nie usuwany, możesz nasłuchiwać na zdarzenia także w konstruktorze. Jest on wywoływany raz, zapobiegając duplikowaniu nasłuchiwań. Gwarantuje to też automatyczne czyszczenie, kiedy komponent jest usuwany z pamięci (ang. _garbage collected_).
 
-```js title="Nasłuchiwanie w constructor()"
+```js title="Nasłuchiwanie w konstruktorze"
 class MyComponent extends HTMLElement {
   constructor() {
     super()
