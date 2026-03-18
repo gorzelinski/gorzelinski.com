@@ -1,0 +1,362 @@
+---
+title: Web components — czym są custom elements?
+description: 'Przeglądarka pozwala ci definiować własne tagi HTML — dowiedz się, jak działają dzięki funkcjom cyklu życia, atrybutom i właściwościom.'
+date: 2026-03-18T18:00:00+02:00
+updated: 2026-03-18T18:00:00+02:00
+image:
+  alt: 'Okresowy układ pierwiastków jako układanka'
+  caption: 'Zdjęcie autorstwa James Toose'
+  src: 'james-toose-UjB58kcaZoE-unsplash.jpg'
+categories: ['rozwój sieci']
+tags:
+  [
+    'komponenty internetowe',
+    'niestandardowe elementy',
+    'javascript',
+    'js',
+    'html',
+    'dom'
+  ]
+type: 'post'
+---
+
+Internetowe komponenty (ang. _web components_) to przeglądarkowe API, które pozwala ci tworzyć niestandardowe, zakapsułkowane elementy HTML wielokrotnego użytku. Są one niezależne od siebie. Oznacza to, że style w nich nie będą już przeciekać, ani nie zostaną nadpisane. W zasadzie nie jest to jedna rzecz. To zbiór 3 standardów internetowych, współpracujących ze sobą.
+
+1. **Niestandardowe elementy** (ang. _custom elements_) pozwalają ci tworzyć nowe tagi HTML z własnym zachowaniem i funkcjami callback.
+2. **Cienisty DOM** (ang. _Shadow DOM_) dostarcza wspomniane kapsułkowanie dla styli i znaczników; zapewnia klarowne granice.
+3. **Szablony HTML** (ang. _HTML templates_) oferują wydajne fragmenty kodu wielokrotnego użytku. Mogą być one wyrenderowane na żądanie przy pomocy języka JS.
+
+Nie musisz używać wszystkich trzech, aby stworzyć taki komponent, ale pokryjemy je wszystkie. W tym wpisie skupię się na tych niestandardowych elementach. W kolejnych rozwinę dwa pozostałe tematy: Shadow DOM i HTML templates.
+
+Dobra, ale możesz zapytać „co mnie to obchodzi? Nie wystarczy mi mój framework?” I to jest właśnie interesujące. Te komponenty nie zastępują frameworków takich jak React czy Vue — mogą z nimi współpracować. Nie ma w nich wbudowanej reaktywności czy zarządzania stanem. Są to komponenty niezależne od frameworków.
+
+> Podczas gdy frameworki przychodzą i odchodzą, standardy sieciowe trwają.
+
+Najprawdopodobniej wykorzystujesz web components nawet nie zdając sobie sprawy z tego. Spójrz na element `<input type="range" />` poniżej. Celowo umieściłem w tym poście natywny element. Bez dodatkowych elementów czy styli — tylko domyślne arkusze CSS.
+
+<Box>
+  <input type="range" min="0" max="100" />
+</Box>
+
+Sprawdzenie tego elementu w konsoli deweloperskiej pokaże ci, że używa on Shadow DOM (upewnij się, że twoja przeglądarka ma włączoną opcję wyświetlania tych znaczników). Nie zarejestrowałem żadnego niestandardowego elementu. Przeglądarka sama używa tych standardów do tworzenia natywnych elementów. Ucząc się o tych komponentach, uczysz się o technologiach, które tworzą platformę internetową!
+
+## Niestandardowe elementy
+
+**Niestandardowe elementy** są jak standardowe elementy HTML, tylko są… niestandardowe. Poza elementami takimi jak `<article>` czy `<section>` możesz teraz definiować swoje własne elementy jak np. `<my-component>`. Jednakże, zanim użyjemy naszego elementu, najpierw musimy go zdefiniować. Każdy komponent startuje przez rozszerzenie klasy `HTMLElement`.
+
+```js title="Autonomiczny niestandardowy element"
+class MyComponent extends HTMLElement {
+  constructor() {
+    super()
+  }
+}
+
+customElements.define('my-component', MyComponent)
+```
+
+Dziedziczenie daje ci dostęp do całego API `HTMLElement` - do właściwości i metod takich jak:
+
+- `innerHTML`
+- `innerText`
+- `addEventListener()`
+- `click()`
+- itp.
+
+Powyżej stworzyliśmy nasz pierwszy **autonomiczny niestandardowy element** (ang. _autonomous custom element_). Rozszerza on klasę `HTMLElement` i jest użyty jako samodzielny tag. Istnieje jeszcze jeden typ.
+
+**Niestandardowe wbudowane elementy** (ang. _customized built-in elements_) rozszerzają konkretny, natywny element (jak `HTMLButtonElement`) i są używane z atrybutem `is`.
+
+```js title="Niestandardowy wbudowany element"
+class MyButton extends HTMLButtonElement {
+  connectedCallback() {
+    this.style.color = 'red'
+  }
+}
+
+customElements.define('my-button', MyButton, { extends: 'button' })
+```
+
+```html title="Użycie niestandardowego wbudowanego elementu"
+<button is="my-button">Click me</button>
+```
+
+Niemniej, Safari nie wspiera tych wbudowanych elementów i nie ma tego w planach. Dlatego większość programistów powinna trzymać się autonomicznych niestandardowych elementów, których to będziemy używać w tej krótkiej serii.
+
+## Rejestr niestandardowych elementów
+
+`customElements` jest globalną właściwością na obiekcie `window`, który zwraca referencję do klasy `CustomElementRegistry`. Ten rejestr (ang. _custom elements registry_) jest interfejsem, którego używasz do tworzenia i wyszukiwania niestandardowych elementów. Metoda `customElements.define()` rejestruje twoją klasę w rejestrze przeglądarki.
+
+<Callout variant="warning">
+
+Nazwa tagu musi zawierać myślnik, aby uniknąć kolizji ze standardowymi elementami HTML.
+
+</Callout>
+
+Po zarejestrowaniu możesz wstawić swój element jak każdy inny natywny element.
+
+```html title="Użycie niestandardowego elementu"
+<my-component></my-component>
+```
+
+Rejestr pozwala na dopasowanie jednej definicji do jednej nazwy, aby uniknąć kolizji z innymi niestandardowymi elementami. Próba rejestracji wielu elementów z tą samą nazwą wyrzuci błąd. Dobrą praktyką jest dodawanie prefiksu w postaci nazwy projektu czy firmy.
+
+<Callout variant="info">
+
+Istnieje tylko jeden rejestr na stronę.
+
+</Callout>
+
+### Inne metody rejestru
+
+Poza rejestracją rejestr oferuje metody dla innych akcji.
+
+```js title="API CustomElementRegistry"
+customElements.upgrade(elementReference)
+
+customElements.whenDefined('my-component').then(() => {
+  console.log('defined')
+})
+
+customElements.get('my-component')
+```
+
+- `customElements.upgrade()`: Wymusza natychmiastową aktualizację niestandardowego elementu w danym drzewie DOM, nawet jeżeli nie został podpięty do dokumentu. W typowych przypadkach nie potrzebujesz tej metody, ponieważ element jest automatycznie zaktualizowany po wstawieniu do dokumentu. Niemniej, jeżeli tworzysz drzewko DOM poza dokumentem — z użyciem `innerHTML` lub klonowania `<template>` — elementy czekają jako ogólne instancje `HTMLElement` dopóki nie dodasz ich do dokumentu lub manualnie nie wywołasz `upgrade()`.
+- `customElements.whenDefined()`: Zwraca _promise_, który zostaje rozwiązany, gdy element zostaje zarejestrowany. Metoda ta jest przydatna, aby poczekać na definicję przed uruchomieniem zależnego od niej kodu.
+- `customElements.get()`: Zwraca konstruktor dla zarejestrowanego elementu lub zwraca `undefined`, jeżeli jest niezarejestrowany. Przydatna do wykrywania funkcjonalności lub sprawdzania, czy komponent jest dostępny.
+
+## Funkcje cyklu życia
+
+Możesz być zaznajomiony z pojęciem tych funkcji (ang. _lifecycle methods_) z frameworków. W skrócie są to funkcje, które uruchamiają się automatycznie w konkretnych momentach cyklu życia komponentu. W komponentach internetowych są to funkcje automatycznie wywoływane przez przeglądarkę w danych momentach życia niestandardowego elementu. Definiujesz te metody w swojej klasie, a przeglądarka wywołuje je w odpowiednich momentach.
+
+```js title="Funkcje cyklu życia"
+class MyComponent extends HTMLElement {
+  static get observedAttributes() {
+    return ['attribute1', 'attribute2']
+  }
+
+  constructor() {
+    super()
+  }
+
+  connectedCallback() {}
+
+  disconnectedCallback() {}
+
+  connectedMoveCallback() {}
+
+  attributeChangedCallback(attributeName, oldValue, newValue) {}
+
+  adoptedCallback() {}
+}
+```
+
+- Każdy komponent zaczyna się od metody `constructor()`. Jest wywoływana, gdy element jest tworzony. Jednakże element nie jest jeszcze w drzewie DOM.
+- Tu wchodzi do gry `connectedCallback()`. Jest uruchamiana za każdym razem, gdy element jest umieszczany w drzewie — włączając w to ponowne wstawienia po usunięciu. Ogólnie operacje na DOM-ie powinny się tu znajdować.
+- I przeciwnie `disconnectedCallback()` uruchamia się, kiedy przeglądarka usuwa elementy z drzewa DOM. Jest to miejsce na porządki — tutaj możesz usuwać nasłuchiwania na zdarzenia, anulować timery czy zamykać połączenia, aby unikać wycieku pamięci.
+- Ostatni dodatek do API - `connectedMoveCallback()`. Przeglądarka uruchamia tę metodę, gdy niestandardowy element przemieszcza się w drzewie DOM wykorzystując nową metodę `Node.prototype.moveBefore()`. Ta metoda rozwiązuje wydajnościowy problem usuwania i ponownego wstawiania elementów DOM. Jeżeli jest zdefiniowana to jest wywoływana zamiast `connectedCallback()` i `disconnectedCallback()` za każdym razem, gdy element przemieszcza się w inne miejsce (z pomocą metody `moveBefore()`).
+- Metoda `attributeChangedCallback()` odpala się warunkowo, tylko dla atrybutów umieszczonych w tablicy zwracanej przez statyczny _getter_ `observedAttributes()`.
+- Dla porządku muszę wspomnieć o `adoptedCallback()`. Metoda ta odpala się, gdy twój niestandardowy element przemieszcza się pomiędzy dokumentami. Np. przechodząc pomiędzy `<iframe>` i głównym dokumentem albo gdy wykorzystujesz metodę `document.adoptNode()`. Prawdopodobnie będziesz rzadko z niej korzystać.
+
+Wspomniałem te metody w kolejności, ale nie jest to dokładna kolejność wykonywania. Jest tam twist, więc pochylmy się nad tym.
+
+1. `constructor()` uruchamia się pierwszy, kiedy element jest stworzony w języku JavaScript.
+2. I tu mamy twist — funkcja `attributeChangedCallback()` następuje po konstruktorze. Jest tak, ponieważ parser ustawia atrybuty przed umieszczeniem elementu w drzewie DOM.
+3. Później, element wyzwala `connectedCallback()`, gdy trafia do DOM-u.
+4. `connectedMoveCallback()` odpala się, gdy element jest przenoszony metodą `moveBefore()`.
+5. Przy opuszczaniu DOM-u, element w końcu uruchamia `disconnectedCallback()`.
+6. Czasami element może być przeniesiony do innego dokumentu, wyzwalając `adoptedCallback()`.
+
+<Callout variant="warning">
+
+Kiedy niestandardowe elementy są zagnieżdżone, dzieci są dodawane przed rodzicami (w głąb najpierw).
+
+</Callout>
+
+## Atrybuty kontra właściwości
+
+We frameworkach JS, takich jak React, różnica pomiędzy atrybutami a właściwościami jest rozmyta. Jednakże w komponentach internetowych są to różne systemy, które musimy zrozumieć.
+
+**Atrybuty** żyją wewnątrz znaczników HTML. Są częścią API drzewa DOM. Zawsze przyjmują postać łańcuchów znaków i nie mogą przyjmować złożonych typów danych takich jak tablice czy obiekty. Jeżeli są obserwowane, wyzwalają metodę `attributeChangedCallback()`.
+
+```html title="Atrybuty"
+<my-component title="hello" count="420" active></my-component>
+```
+
+**Właściwości** żyją wewnątrz obiektów JS. W przeciwieństwie do atrybutów mogą być dowolnego typu: liczba, wartość logiczna, obiekt itd. _Nie wyzwalają_ metody `attributeChangedCallback()`.
+
+```js title="Właściwości"
+const element = document.querySelector('my-component')
+element.title = 'hello'
+element.active = ''
+element.count = 420
+element.data = { complex: true }
+element.items = [1, 2, 3]
+```
+
+### Odzwierciedlenie
+
+**Odzwierciedlenie** (ang. _reflection_) jest praktyką synchronizacji atrybutu i odpowiadającej mu właściwości, dzięki czemu zmiana jednego automatycznie aktualizuje drugi. Odzwierciedlenie właściwości do atrybutów jest istotne, ponieważ selektory CSS jak np. `my-component[disabled]` działają tylko z atrybutami. Ponadto atrybuty pojawiają się w konsoli deweloperskiej i serializacji `outerHTML`.
+
+<Callout variant="warning">
+
+Atrybuty i właściwości nie synchronizują się automatycznie.
+
+</Callout>
+
+Nawet w natywnych elementach synchronizacja nie zawsze jest dwustronna. Spójrz na element `<input/>`.
+
+```js title="Odzwierciedlenie w natywnych elementach"
+input.setAttribute('value', 'hello')
+console.log(input.value) // "hello" — atrybut odzwierciedlony do właściwości
+
+input.value = 'world'
+console.log(input.getAttribute('value')) // "hello" — właściwość NIE jest odzwierciedlona!
+```
+
+W powyższym przykładzie ustawiamy atrybut `value`, który ustawia domyślną wartość elementu `<input/>`. Logując wartość, widzimy odzwierciedlenie we właściwości. Jednak, co zaskakujące, po zmianie właściwości po stronie JS-a, nie widzimy odzwierciedlenia w atrybucie HTML.
+
+W niestandardowych elementach sytuacja jest bardziej klarowna, ale nadal problematyczna — **żadna automatyczna synchronizacja nie zachodzi.** Musisz sam ją podpiąć. Częstym wzorcem jest używanie metod `get` i `set` w niestandardowych elementach, aby dodawać (lub pomijać) odzwierciedlanie właściwości. Istnieją sytuacje, gdy nie chcesz synchronizacji.
+
+```js title="Manualne odzwierciedlenie z użyciem get i set"
+class MyComponent extends HTMLElement {
+  #value
+
+  get value() {
+    return this.#value
+  }
+
+  set value(val) {
+    this.#value = val // Not reflected
+  }
+
+  get disabled() {
+    return this.hasAttribute('disabled')
+  }
+
+  set disabled(val) {
+    this.toggleAttribute('disabled', val) // Reflected
+  }
+}
+```
+
+Zauważ, że przełączamy wartość `disabled`. Wartości logiczne w HTML-u są obecne albo nie — wbrew pozorom nie są to wartości `true` lub `false`.
+
+## Słuchanie na zdarzenia
+
+Zarządzanie zdarzeniami w internetowych komponentach wykorzystuje takie samo API jak regularny DOM. Jednakże Shadow DOM wprowadza drobne dziwactwa dotyczące propagacji i targetowania zdarzeń.
+
+Standardowym wzorcem jest nasłuchiwanie na zdarzenia w `connectedCallback()` i usuwanie nasłuchiwania w `disconnectedCallback()`. Paruje to ustawianie z czyszczeniem i zapobiega wyciekom pamięci, jeżeli element jest usunięty i dodany ponownie.
+
+```js title="Nasłuchiwanie w connectedCallback()"
+class MyComponent extends HTMLElement {
+  connectedCallback() {
+    this.addEventListener('click', this.handleClick)
+  }
+
+  disconnectedCallback() {
+    this.removeEventListener('click', this.handleClick)
+  }
+
+  handleClick(event) {
+    console.log('Clicked!', this)
+  }
+}
+```
+
+Dla prostych komponentów, gdzie element jest stworzony raz i nie usuwany, możesz nasłuchiwać na zdarzenia także w konstruktorze. Jest on wywoływany raz, zapobiegając duplikowaniu nasłuchiwań. Gwarantuje to też automatyczne czyszczenie, kiedy komponent jest usuwany z pamięci (ang. _garbage collected_).
+
+```js title="Nasłuchiwanie w konstruktorze"
+class MyComponent extends HTMLElement {
+  constructor() {
+    super()
+    this.addEventListener('click', this.handleClick)
+  }
+
+  handleClick(event) {
+    console.log('Clicked!', this) // "this" jest komponentem
+  }
+}
+```
+
+To podejście działa dobrze dla podstawowych komponentów, ale musi być zmodyfikowane, kiedy zaczynasz używać cienistego DOM-u. A zatem, w praktyce, wykorzystamy inne podejście. Więcej o nim w poście dedykowanym standardowi Shadow DOM.
+
+### Problem z wiązaniem
+
+Istnieje inna pułapka z zarządzaniem zdarzeniami, którą warto zaadresować — problem z wiązaniem (ang. _binding problem_). Kiedy dodajesz nasłuchiwanie na elementy dzieci, `this` wewnątrz funkcji obsługi zdarzeń staje się celem zdarzenia (ang. _event target_) — przyciskiem, nie twoim komponentem. Twoje metody przestają być dostępne. Aby zrozumieć, dlaczego się tak dzieje, musimy porozmawiać o tym, jak JavaScript rozwiązuje `this`. Jest to problem związany z działaniem języka JavaScript, nie z komponentami per se. Tu wchodzą dwa modele zasięgu zmiennych.
+
+**Zasięg dynamiczny** (ang. _dynamic scope_) występuje, kiedy rozwiązanie zależy od tego, jak funkcja jest wywołana w czasie wykonywania programu. JavaScript nie używa tego zasięgu dla zmiennych, ale `this` zachowuje się w ten sposób.
+
+```js title="Dynamiczny this"
+class MyComponent extends HTMLElement {
+  #button
+
+  constructor() {
+    super()
+    this.innerHTML = '<button>Click me</button>'
+    this.#button = this.querySelector('button')
+    this.#button.addEventListener('click', this.handleClick)
+  }
+
+  handleClick(event) {
+    console.log(this) // ❌ "this" jest przyciskiem, nie komponentem!
+    this.updateDisplay() // ❌ ERROR: updateDisplay is not a function
+  }
+
+  updateDisplay() {}
+}
+```
+
+Jeżeli `handleClick()` jest wywołana jako `this.handleClick()`, `this` jest komponentem. Jednak kiedy jest podana do `addEventListener()`, przeglądarka wywołuje ją z `this` ustawionym na cel zdarzenia, czyli przycisk. Ta sama funkcja, inne rezultaty, ponieważ `this` jest determinowane na podstawie wywołania funkcji, a nie jej definicji.
+
+**Zakres leksykalny** (ang. _lexical scope_) oznacza, że zmienna jest rozwiązywana na podstawie tego, gdzie jest zapisana, a nie gdzie wywołana. JavaScript wykorzystuje zakres leksykalny dla wszystkich zmiennych. Możesz także wykorzystać funkcję strzałkową (ang. _arrow function_), aby „naprawić” `this` w naszym wypadku.
+
+```js title="Leksykalny this w funkcji strzałkowej"
+class MyComponent extends HTMLElement {
+  #button
+
+  constructor() {
+    super()
+    this.innerHTML = '<button>Click me</button>'
+    this.#button = this.querySelector('button')
+    this.#button.addEventListener('click', this.handleClick)
+  }
+
+  handleClick = (event) => {
+    console.log(this) // ✅ "this" jest zawsze komponentem
+    this.updateDisplay() // ✅ Działa
+  }
+
+  updateDisplay() {}
+}
+```
+
+Funkcje strzałkowe mają zakres leksykalny, więc `this` jest zawsze komponentem.
+
+Programiści Reacta pewnie są zaznajomieni z kolejnym rozwiązaniem — było wykorzystywane w erze klasowych komponentów. Możesz celowo zablokować `this`. Metoda `bind()` tworzy nową funkcję, gdzie `this` jest na stałe ustawione na komponent.
+
+```js title="Celowe wiązanie z bind()"
+class MyComponent extends HTMLElement {
+  #button
+
+  constructor() {
+    super()
+    this.innerHTML = '<button>Click me</button>'
+    this.#button = this.querySelector('button')
+    this.handleClick = this.handleClick.bind(this) // Celowo zablokuj "this"
+    this.#button.addEventListener('click', this.handleClick)
+  }
+
+  handleClick(event) {
+    console.log(this) // ✅ "this" jest zawsze komponentem
+    this.updateDisplay() // ✅ Działa
+  }
+
+  updateDisplay() {}
+}
+```
+
+Funkcje strzałkowe rozwiązują problem domyślnie przez zasięg leksykalny; metoda `bind()` robi to poprzez opakowanie funkcji w stały kontekst.
+
+## Podsumowanie
+
+W tym wpisie dowiedzieliśmy się, czym są niestandardowe elementy — jeden z trzech filarów komponentów internetowych. Możemy wykorzystać je, aby „nauczyć” przeglądarkę nowych tagów z własnym zachowaniem, stanem i metodami cyklu życia. I to wszystko bez użycia frameworka. W następnym poście będziemy badać Shadow DOM — jak kapsułkować style i znaczniki, żeby nie wyciekały. Bądźcie cierpliwi!
