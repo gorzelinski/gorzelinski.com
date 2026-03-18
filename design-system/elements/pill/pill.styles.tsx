@@ -25,26 +25,30 @@ export const pill = cva({
       '2xl': 'xs'
     },
     letterSpacing: 'wide',
-    transitionProperty: 'background-color, color',
+    transitionProperty: 'background-color, color, border-color',
     ...sharedTransitionProperties
   },
   variants: {
     variant: {
       info: {
         backgroundColor: 'primary.900',
-        color: 'primary.400'
+        color: 'primary.400',
+        border: 'primary.subtle'
       },
       success: {
         backgroundColor: 'success.900',
-        color: 'success.400'
+        color: 'success.400',
+        border: 'success.subtle'
       },
       warning: {
         backgroundColor: 'warning.900',
-        color: 'warning.400'
+        color: 'warning.400',
+        border: 'warning.subtle'
       },
       danger: {
         backgroundColor: 'danger.900',
-        color: 'danger.400'
+        color: 'danger.400',
+        border: 'danger.subtle'
       }
     }
   },
