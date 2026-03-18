@@ -38,7 +38,7 @@ Najprawdopodobniej wykorzystujesz web components nawet nie zdając sobie sprawy 
   <input type="range" min="0" max="100" />
 </Box>
 
-Sprawdzenie tego elementu w konsoli deweloperskiej pokaże ci, że używa on Shadow DOM (upewni się, że twoja przeglądarka ma włączoną opcję wyświetlania tych znaczników). Nie zarejestrowałem żadnego niestandardowego elementu. Przeglądarka sama używa tych standardów do tworzenia natywnych elementów. Ucząc się o tych komponentach, uczysz się o technologiach, które tworzą platformę internetową!
+Sprawdzenie tego elementu w konsoli deweloperskiej pokaże ci, że używa on Shadow DOM (upewnij się, że twoja przeglądarka ma włączoną opcję wyświetlania tych znaczników). Nie zarejestrowałem żadnego niestandardowego elementu. Przeglądarka sama używa tych standardów do tworzenia natywnych elementów. Ucząc się o tych komponentach, uczysz się o technologiach, które tworzą platformę internetową!
 
 ## Niestandardowe elementy
 
@@ -122,7 +122,7 @@ customElements.get('my-component')
 
 - `customElements.upgrade()`: Wymusza natychmiastową aktualizację niestandardowego elementu w danym drzewie DOM, nawet jeżeli nie został podpięty do dokumentu. W typowych przypadkach nie potrzebujesz tej metody, ponieważ element jest automatycznie zaktualizowany po wstawieniu do dokumentu. Niemniej, jeżeli tworzysz drzewko DOM poza dokumentem — z użyciem `innerHTML` lub klonowania `<template>` — elementy czekają jako ogólne instancje `HTMLElement` dopóki nie dodasz ich do dokumentu lub manualnie nie wywołasz `upgrade()`.
 - `customElements.whenDefined()`: Zwraca _promise_, który zostaje rozwiązany, gdy element zostaje zarejestrowany. Metoda ta jest przydatna, aby poczekać na definicję przed uruchomieniem zależnego od niej kodu.
-- `customElements.get()`: Zwraca konstruktor dla zarejestrowanego elementu lub zwraca `undefined`, jeżeli jest niezarejestrowany. Przydatna to wykrywania funkcjonalności lub sprawdzania, czy komponent jest dostępny.
+- `customElements.get()`: Zwraca konstruktor dla zarejestrowanego elementu lub zwraca `undefined`, jeżeli jest niezarejestrowany. Przydatna do wykrywania funkcjonalności lub sprawdzania, czy komponent jest dostępny.
 
 ## Funkcje cyklu życia
 
@@ -160,7 +160,7 @@ class MyComponent extends HTMLElement {
 Wspomniałem te metody w kolejności, ale nie jest to dokładna kolejność wykonywania. Jest tam twist, więc pochylmy się nad tym.
 
 1. `constructor()` uruchamia się pierwszy, kiedy element jest stworzony w języku JavaScript.
-2. I tu mamy twist — funkcja `attributeCahngeCallback()` następuje po konstruktorze. Jest tak, ponieważ parser ustawia atrybuty przed umieszczeniem elementu w drzewie DOM.
+2. I tu mamy twist — funkcja `attributeChangedCallback()` następuje po konstruktorze. Jest tak, ponieważ parser ustawia atrybuty przed umieszczeniem elementu w drzewie DOM.
 3. Później, element wyzwala `connectedCallback()`, gdy trafia do DOM-u.
 4. `connectedMoveCallback()` odpala się, gdy element jest przenoszony metodą `moveBefore()`.
 5. Przy opuszczaniu DOM-u, element w końcu uruchamia `disconnectedCallback()`.
@@ -182,7 +182,7 @@ We frameworkach JS, takich jak React, różnica pomiędzy atrybutami a właściw
 <my-component title="hello" count="420" active></my-component>
 ```
 
-**Właściwości** żyją wewnątrz obiektów JS. W przeciwieństwie do atrybutów mogą być dowolnego typu: liczba, wartość logiczna, obiekt itd. _Nie wyzwalają_ metody `attributeChagnedCallback()`.
+**Właściwości** żyją wewnątrz obiektów JS. W przeciwieństwie do atrybutów mogą być dowolnego typu: liczba, wartość logiczna, obiekt itd. _Nie wyzwalają_ metody `attributeChangedCallback()`.
 
 ```js title="Właściwości"
 const element = document.querySelector('my-component')
