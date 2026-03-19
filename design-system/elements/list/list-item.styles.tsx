@@ -18,6 +18,7 @@ export const listItem = cva({
       lg: 's',
       '2xl': 'm'
     },
+    textWrap: 'pretty',
     transitionProperty: 'color',
     ...sharedTransitionProperties,
     '&::marker': {

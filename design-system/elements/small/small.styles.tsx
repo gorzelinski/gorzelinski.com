@@ -7,7 +7,7 @@ export const small = cva({
     color: 'gray.400',
     fontFamily: 'heading',
     fontWeight: 'medium',
-
+    textWrap: 'balance',
     transitionProperty: 'color',
     ...sharedTransitionProperties
   },

@@ -8,6 +8,7 @@ export const blockquote = cva({
       lg: 'l'
     },
     borderLeft: 'primary.regular',
+    textWrap: 'pretty',
     transitionProperty: 'border-color',
     ...sharedTransitionProperties,
     '& > p': {
