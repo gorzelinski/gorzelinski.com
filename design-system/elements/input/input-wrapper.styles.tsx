@@ -18,7 +18,7 @@ export const inputWrapper = cva({
   },
   variants: {
     width: {
-      fixed: {
+      auto: {
         width: 'auto'
       },
       responsive: {

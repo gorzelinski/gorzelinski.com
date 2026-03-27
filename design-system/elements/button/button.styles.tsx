@@ -222,7 +222,7 @@ export const button = cva({
       }
     },
     width: {
-      fixed: {
+      auto: {
         justifyContent: 'space-between',
         width: 'auto'
       },
@@ -284,7 +284,7 @@ export const button = cva({
     display: 'inlineFlex',
     variant: 'primary',
     size: 'm',
-    width: 'fixed'
+    width: 'auto'
   },
   compoundVariants: [
     {

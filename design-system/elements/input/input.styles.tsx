@@ -37,7 +37,7 @@ export const input = cva({
   },
   variants: {
     width: {
-      fixed: {
+      auto: {
         width: 'auto'
       },
       responsive: {
