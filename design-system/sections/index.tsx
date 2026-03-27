@@ -1,5 +1,5 @@
-export { BottomNav } from './bottom-nav'
+export { BottomBar } from './bottom-bar'
 export { Footer } from './footer'
-export { Navbar } from './navbar'
 export { Newsletter } from './newsletter'
 export { SupportMe } from './support-me'
+export { TopBar } from './top-bar'

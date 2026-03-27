@@ -1,6 +1,6 @@
 import type { Dictionary, Locale } from '@/types'
 
-export type BottomNavProps = {
+export type TopBarProps = {
   lang: Locale
   dictionary: Dictionary
 }

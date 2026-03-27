@@ -1,7 +1,7 @@
 import { cva } from '@/styled-system/css'
 import { sharedTransitionProperties } from '../../utils'
 
-export const navbar = cva({
+export const topBar = cva({
   base: {
     zIndex: 'closest',
     position: 'sticky',

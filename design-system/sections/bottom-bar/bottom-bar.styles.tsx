@@ -1,18 +1,13 @@
 import { cva } from '@/styled-system/css'
 import { sharedTransitionProperties } from '../../utils'
 
-export const bottomNav = cva({
+export const bottomBar = cva({
   base: {
     zIndex: 'closest',
     position: 'fixed',
     bottom: '0',
     left: '0',
-    display: 'inline-flex',
-    justifyContent: 'space-between',
-    gap: {
-      base: 's',
-      md: 'm'
-    },
+    display: 'flex',
     width: '100%',
     paddingX: {
       base: 'm',

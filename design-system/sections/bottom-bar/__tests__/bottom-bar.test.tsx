@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
 import { useScrollDirection, useScrollProgress } from '@/hooks'
-import { BottomNav } from '../bottom-nav'
+import { BottomBar } from '../bottom-bar'
 import dictionary from '@/dictionaries/en.json'
 
 vi.mock('next/navigation', () => ({
@@ -16,19 +16,19 @@ vi.mock('@/hooks', () => ({
 const useScrollDirectionMock = vi.mocked(useScrollDirection)
 const useScrollProgressMock = vi.mocked(useScrollProgress)
 
-describe('BottomNav', () => {
+describe('BottomBar', () => {
   afterEach(() => {
     cleanup()
     vi.clearAllMocks()
   })
 
-  it('renders correctly', async () => {
+  it('renders correctly with main navigation', () => {
     useScrollDirectionMock.mockReturnValue('up')
     useScrollProgressMock.mockReturnValue(50)
 
-    render(<BottomNav lang="en" dictionary={dictionary} />)
+    render(<BottomBar lang="en" dictionary={dictionary} />)
 
-    const nav = screen.getByRole('navigation')
+    const nav = screen.getByRole('navigation', { name: 'Main navigation' })
     const portfolio = screen.getByText('Portfolio')
     const about = screen.getByText('About')
     const blog = screen.getByText('Blog')
@@ -41,25 +41,25 @@ describe('BottomNav', () => {
     expect(contact).toHaveAttribute('href', '#contact')
   })
 
-  it('hides when scrolling down', async () => {
+  it('hides when scrolling down', () => {
     useScrollDirectionMock.mockReturnValue('down')
     useScrollProgressMock.mockReturnValue(10)
 
-    render(<BottomNav lang="en" dictionary={dictionary} />)
+    render(<BottomBar lang="en" dictionary={dictionary} />)
 
-    screen.getByRole('navigation')
+    const wrapper = screen.getByRole('navigation').parentElement!
 
-    // expect(nav).toHaveClass('op_0')
+    expect(wrapper).toHaveClass('op_0')
   })
 
-  it('stays visible when scrolling up', async () => {
+  it('stays visible when scrolling up', () => {
     useScrollDirectionMock.mockReturnValue('up')
     useScrollProgressMock.mockReturnValue(10)
 
-    render(<BottomNav lang="en" dictionary={dictionary} />)
+    render(<BottomBar lang="en" dictionary={dictionary} />)
 
-    screen.getByRole('navigation')
+    const wrapper = screen.getByRole('navigation').parentElement!
 
-    // expect(nav).toHaveClass('op_97%25')
+    expect(wrapper).toHaveClass('op_97')
   })
 })
