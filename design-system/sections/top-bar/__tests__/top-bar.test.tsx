@@ -33,7 +33,7 @@ describe('TopBar', () => {
     render(<TopBar lang="en" dictionary={dictionary} />)
 
     const navs = screen.getAllByRole('navigation')
-    const logo = screen.getByText('Matthew Gorzelinski')
+    const logo = screen.getByText('MG')
     const themeSwitch = screen.getByRole('button', { name: 'Change theme' })
     const portfolio = screen.getByText('Portfolio')
     const about = screen.getByText('About')

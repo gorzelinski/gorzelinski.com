@@ -13,15 +13,16 @@ describe('HelperNavigation', () => {
   it('renders logo and theme switch', () => {
     render(
       <HelperNavigation
+        abbreviation="MG"
         ariaLabel="Helper navigation"
         lang="en"
-        title="Matthew Gorzelinski"
+        logoAriaLabel="Matthew Gorzelinski"
         themeAriaLabel="Change theme"
       />
     )
 
     const nav = screen.getByRole('navigation', { name: 'Helper navigation' })
-    const logo = screen.getByText('Matthew Gorzelinski')
+    const logo = screen.getByText('MG')
     const themeSwitch = screen.getByRole('button', { name: 'Change theme' })
 
     expect(nav).toBeInTheDocument()

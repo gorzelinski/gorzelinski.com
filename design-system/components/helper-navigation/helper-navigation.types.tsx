@@ -1,8 +1,9 @@
 import type { Locale } from '@/types'
 
 export type HelperNavigationProps = {
+  abbreviation: string
   ariaLabel: string
   lang: Locale
-  title: string
+  logoAriaLabel: string
   themeAriaLabel: string
 }

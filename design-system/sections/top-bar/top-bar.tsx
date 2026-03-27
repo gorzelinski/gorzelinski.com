@@ -18,9 +18,10 @@ export const TopBar = ({ lang, dictionary }: TopBarProps) => {
       })}
     >
       <HelperNavigation
+        abbreviation={layout.root.metadata.abbreviation}
         ariaLabel={component.helperNavigation.ariaLabel}
         lang={lang}
-        title={layout.root.metadata.title}
+        logoAriaLabel={layout.root.metadata.title}
         themeAriaLabel={component.themeSwitch.ariaLabel}
       />
       <MainNavigation

@@ -3,14 +3,17 @@ import { Logo, ThemeSwitch } from '../../components'
 import { Nav } from '../../elements'
 
 export const HelperNavigation = ({
+  abbreviation,
   ariaLabel,
   lang,
-  title,
+  logoAriaLabel,
   themeAriaLabel
 }: HelperNavigationProps) => {
   return (
     <Nav aria-label={ariaLabel} width="responsive">
-      <Logo lang={lang}>{title}</Logo>
+      <Logo ariaLabel={logoAriaLabel} lang={lang}>
+        {abbreviation}
+      </Logo>
       <ThemeSwitch ariaLabel={themeAriaLabel} />
     </Nav>
   )
