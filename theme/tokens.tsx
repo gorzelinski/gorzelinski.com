@@ -645,6 +645,9 @@ export const tokens = defineTokens({
     }
   },
   durations: {
+    instant: {
+      value: '50ms'
+    },
     fast: {
       value: '150ms'
     },

@@ -1,5 +1,4 @@
 import { cva } from '@/styled-system/css'
-import { sharedTransitionProperties } from '../../utils'
 
 export const navbar = cva({
   base: {
@@ -15,7 +14,8 @@ export const navbar = cva({
     paddingY: 'm',
     backgroundColor: 'gray.900',
     transitionProperty: 'background-color, border-color, opacity',
-    ...sharedTransitionProperties
+    transitionDuration: 'fast',
+    transitionTimingFunction: 'easeOut'
   },
   variants: {
     position: {
