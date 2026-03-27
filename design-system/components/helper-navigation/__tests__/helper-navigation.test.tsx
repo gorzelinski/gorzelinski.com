@@ -13,7 +13,6 @@ describe('HelperNavigation', () => {
   it('renders logo and theme switch', () => {
     render(
       <HelperNavigation
-        abbreviation="MG"
         ariaLabel="Helper navigation"
         lang="en"
         logoAriaLabel="Matthew Gorzelinski"

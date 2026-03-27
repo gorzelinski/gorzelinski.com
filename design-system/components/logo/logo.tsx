@@ -3,7 +3,7 @@ import { LINKS } from '@/constants'
 import { localizePath } from '@/lib'
 import { ButtonLink } from '../../elements'
 
-export const Logo = ({ ariaLabel, children, lang }: LogoProps) => {
+export const Logo = ({ ariaLabel, lang }: LogoProps) => {
   return (
     <ButtonLink
       variant="nav"
@@ -11,7 +11,7 @@ export const Logo = ({ ariaLabel, children, lang }: LogoProps) => {
       href={localizePath(LINKS.home, lang)}
       aria-label={ariaLabel}
     >
-      {children}
+      MG
     </ButtonLink>
   )
 }

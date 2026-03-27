@@ -8,12 +8,12 @@ describe('Logo', () => {
   })
 
   it('renders correctly', () => {
-    render(<Logo lang="pl">Logo</Logo>)
+    render(<Logo ariaLabel="Matthew Gorzelinski" lang="pl" />)
 
-    const logo = screen.getByRole('link')
+    const logo = screen.getByRole('link', { name: 'Matthew Gorzelinski' })
 
     expect(logo).toBeInTheDocument()
     expect(logo).toHaveAttribute('href', '/pl')
-    expect(logo).toHaveTextContent('Logo')
+    expect(logo).toHaveTextContent('MG')
   })
 })
