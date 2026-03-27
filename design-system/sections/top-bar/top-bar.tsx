@@ -2,7 +2,7 @@
 import type { TopBarProps } from './top-bar.types'
 import { useScrollDirection, useScrollProgress } from '@/hooks'
 import { HelperNavigation, MainNavigation } from '../../components'
-import { topBar } from './top-bar.styles'
+import { navbar } from '../../elements/navbar'
 
 export const TopBar = ({ lang, dictionary }: TopBarProps) => {
   const { links, component, layout } = dictionary
@@ -11,7 +11,8 @@ export const TopBar = ({ lang, dictionary }: TopBarProps) => {
 
   return (
     <header
-      className={topBar({
+      className={navbar({
+        position: 'top',
         opacity: progress > 5 && direction === 'down' ? 'hidden' : 'visible',
         border: progress < 1 ? 'transparent' : 'bottom'
       })}

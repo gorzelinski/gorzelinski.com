@@ -1,11 +1,9 @@
 import { cva } from '@/styled-system/css'
 import { sharedTransitionProperties } from '../../utils'
 
-export const bottomBar = cva({
+export const navbar = cva({
   base: {
     zIndex: 'closest',
-    position: 'fixed',
-    bottom: '0',
     left: '0',
     display: 'flex',
     width: '100%',
@@ -16,14 +14,25 @@ export const bottomBar = cva({
     },
     paddingY: 'm',
     backgroundColor: 'gray.900',
-    borderTop: 'gray.subtle',
     transitionProperty: 'background-color, border-color, opacity',
-    ...sharedTransitionProperties,
-    md: {
-      display: 'none'
-    }
+    ...sharedTransitionProperties
   },
   variants: {
+    position: {
+      top: {
+        position: 'sticky',
+        top: '0',
+        justifyContent: 'space-between'
+      },
+      bottom: {
+        position: 'fixed',
+        bottom: '0',
+        borderTop: 'gray.subtle',
+        md: {
+          display: 'none'
+        }
+      }
+    },
     opacity: {
       visible: {
         opacity: '97'
@@ -31,6 +40,14 @@ export const bottomBar = cva({
       hidden: {
         opacity: '0',
         pointerEvents: 'none'
+      }
+    },
+    border: {
+      bottom: {
+        borderBottom: 'gray.subtle'
+      },
+      transparent: {
+        borderColor: 'transparent'
       }
     }
   },
