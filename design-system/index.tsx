@@ -112,6 +112,6 @@ export {
   Typewriter
 } from './components'
 
-export { Footer, Navbar, Newsletter, SupportMe } from './sections'
+export { BottomNav, Footer, Navbar, Newsletter, SupportMe } from './sections'
 
 export { verticalRhythm } from './utils'

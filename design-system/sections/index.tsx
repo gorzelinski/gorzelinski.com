@@ -1,3 +1,4 @@
+export { BottomNav } from './bottom-nav'
 export { Footer } from './footer'
 export { Navbar } from './navbar'
 export { Newsletter } from './newsletter'
