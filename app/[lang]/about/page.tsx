@@ -181,6 +181,7 @@ export default async function About(props: PageProps) {
           src={laptop}
           alt={page.about.uses.image}
           borderRadius="rounded"
+          boxShadow="subtle"
         />
       </Section>
     </>

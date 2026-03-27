@@ -6,7 +6,7 @@ import { image } from './image.styles'
 
 export const Image = (props: ImageProps) => {
   const [cssProps, imageProps] = splitCssProps(props)
-  const { aspectRatio, borderRadius, width, height } = cssProps
+  const { aspectRatio, borderRadius, boxShadow, width, height } = cssProps
 
   return (
     <NextImage
@@ -15,7 +15,8 @@ export const Image = (props: ImageProps) => {
       height={height as OptionalNumber}
       className={image({
         aspectRatio: aspectRatio as ImageProps['aspectRatio'],
-        borderRadius: borderRadius as ImageProps['borderRadius']
+        borderRadius: borderRadius as ImageProps['borderRadius'],
+        boxShadow: boxShadow as ImageProps['boxShadow']
       })}
     />
   )
