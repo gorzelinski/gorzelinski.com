@@ -13,8 +13,11 @@ export const navbar = cva({
     },
     paddingY: 'm',
     backgroundColor: 'gray.900',
-    transitionProperty: 'background-color, border-color, opacity',
-    transitionDuration: 'token(durations.natural), token(durations.natural), token(durations.fast)',
+    transform: 'translateY(0)',
+    filter: 'blur(0)',
+    transitionProperty: 'background-color, border-color, opacity, transform, filter',
+    transitionDuration:
+      'token(durations.natural), token(durations.natural), token(durations.fast), token(durations.fast), token(durations.fast)',
     transitionTimingFunction: 'easeOut'
   },
   variants: {
@@ -51,6 +54,24 @@ export const navbar = cva({
       }
     }
   },
+  compoundVariants: [
+    {
+      position: 'top',
+      opacity: 'hidden',
+      css: {
+        transform: 'translateY(-12px)',
+        filter: 'blur(4px)'
+      }
+    },
+    {
+      position: 'bottom',
+      opacity: 'hidden',
+      css: {
+        transform: 'translateY(12px)',
+        filter: 'blur(4px)'
+      }
+    }
+  ],
   defaultVariants: {
     opacity: 'visible'
   }
