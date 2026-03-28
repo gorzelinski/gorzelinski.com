@@ -18,7 +18,12 @@ export const navbar = cva({
     transitionProperty: 'background-color, border-color, opacity, transform, filter',
     transitionDuration:
       'token(durations.natural), token(durations.natural), token(durations.fast), token(durations.fast), token(durations.fast)',
-    transitionTimingFunction: 'easeOut'
+    transitionTimingFunction: 'easeOut',
+    _motionReduce: {
+      transform: 'none',
+      filter: 'none',
+      transitionProperty: 'background-color, border-color, opacity'
+    }
   },
   variants: {
     position: {
