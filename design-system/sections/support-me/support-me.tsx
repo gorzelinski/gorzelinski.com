@@ -20,7 +20,8 @@ export const SupportMe = ({ lang, dictionary }: SupportMeProps) => {
         target="_blank"
         _hover={{
           '& > span': {
-            animation: 'bouncing'
+            animation: 'bouncing',
+            _motionReduce: { animation: 'none' }
           }
         }}
         href={getCoffeeURL(lang)}
