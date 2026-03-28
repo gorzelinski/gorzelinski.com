@@ -1,5 +1,6 @@
 import type { HelperNavigationProps } from './helper-navigation.types'
-import { Logo, ThemeSwitch } from '../../components'
+import { Logo } from '../logo'
+import { ThemeSwitch } from '../theme-switch'
 import { Nav } from '../../elements'
 
 export const HelperNavigation = ({
