@@ -46,8 +46,7 @@ export const navbar = cva({
         opacity: '97'
       },
       hidden: {
-        opacity: '0',
-        pointerEvents: 'none'
+        opacity: '0'
       }
     },
     border: {

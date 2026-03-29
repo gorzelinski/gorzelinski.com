@@ -8,12 +8,14 @@ export const BottomBar = ({ lang, dictionary }: BottomBarProps) => {
   const { links, component } = dictionary
   const direction = useScrollDirection()
   const progress = useScrollProgress()
+  const isHidden = progress > 5 && direction === 'down'
 
   return (
     <div
+      inert={isHidden || undefined}
       className={navbar({
         position: 'bottom',
-        opacity: progress > 5 && direction === 'down' ? 'hidden' : 'visible'
+        opacity: isHidden ? 'hidden' : 'visible'
       })}
     >
       <MainNavigation
