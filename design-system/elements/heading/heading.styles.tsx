@@ -7,6 +7,7 @@ export const heading = cva({
     color: 'gray.50',
     fontFamily: 'heading',
     fontWeight: 'bold',
+    textWrap: 'pretty',
     transitionProperty: 'color',
     ...sharedTransitionProperties
   },

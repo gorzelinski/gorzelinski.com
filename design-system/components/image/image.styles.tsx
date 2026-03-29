@@ -42,10 +42,19 @@ export const image = cva({
       circle: {
         borderRadius: 'circle'
       }
+    },
+    boxShadow: {
+      none: {
+        boxShadow: 'none'
+      },
+      subtle: {
+        boxShadow: 'neumorphism.close'
+      }
     }
   },
   defaultVariants: {
     aspectRatio: 'auto',
-    borderRadius: 'none'
+    borderRadius: 'none',
+    boxShadow: 'none'
   }
 })

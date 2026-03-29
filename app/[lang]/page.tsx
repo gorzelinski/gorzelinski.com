@@ -115,6 +115,7 @@ export default async function Home(props: PageProps) {
           alt={page.home.bio.image.alt}
           title={page.home.bio.image.title}
           borderRadius="rounded"
+          boxShadow="subtle"
         />
         <Box>
           <Span css={verticalRhythm.marginBottom.s}>

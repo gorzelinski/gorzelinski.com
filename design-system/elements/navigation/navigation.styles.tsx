@@ -2,7 +2,6 @@ import { cva } from '@/styled-system/css'
 
 export const navigation = cva({
   base: {
-    display: 'inline-flex',
     flexWrap: 'wrap',
     gap: {
       base: 's',
@@ -22,6 +21,33 @@ export const navigation = cva({
       none: {
         margin: '0'
       }
+    },
+    display: {
+      always: {
+        display: 'inline-flex'
+      },
+      desktop: {
+        display: {
+          base: 'none',
+          md: 'inline-flex'
+        }
+      }
+    },
+    width: {
+      auto: {
+        width: 'auto'
+      },
+      responsive: {
+        width: {
+          base: '100%',
+          md: 'auto'
+        },
+        justifyContent: 'space-between'
+      }
     }
+  },
+  defaultVariants: {
+    display: 'always',
+    width: 'auto'
   }
 })

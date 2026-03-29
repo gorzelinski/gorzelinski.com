@@ -4,6 +4,7 @@ import { sharedTransitionProperties } from '../../utils'
 export const paragraph = cva({
   base: {
     fontFamily: 'body',
+    textWrap: 'pretty',
     transitionProperty: 'color',
     ...sharedTransitionProperties
   },

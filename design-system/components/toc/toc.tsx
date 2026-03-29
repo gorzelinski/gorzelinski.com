@@ -8,14 +8,16 @@ export const Toc = ({ ariaLabel }: TocProps) => {
   const { tocTree, activeID } = useHeadings()
   const progress = useScrollProgress('article')
   const tocRef = useScrollToHeading(activeID)
+  const isHidden = progress < 5 || progress > 99
 
   return (
     tocTree.length > 0 && (
       <nav
         ref={tocRef}
         aria-label={ariaLabel}
+        inert={isHidden || undefined}
         className={toc({
-          opacity: progress < 5 || progress > 99 ? 'hidden' : 'visible'
+          opacity: isHidden ? 'hidden' : 'visible'
         })}
       >
         <TocList nodes={tocTree} activeID={activeID} />

@@ -27,8 +27,7 @@ export const toc = cva({
         opacity: '100'
       },
       hidden: {
-        opacity: '0',
-        pointerEvents: 'none'
+        opacity: '0'
       }
     }
   }

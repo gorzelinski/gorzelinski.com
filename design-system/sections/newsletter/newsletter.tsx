@@ -69,7 +69,8 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
                 type="submit"
                 _hover={{
                   '& > span': {
-                    animation: 'wobbling'
+                    animation: 'wobbling',
+                    _motionReduce: { animation: 'none' }
                   }
                 }}
                 disabled={state !== 'idle'}

@@ -29,24 +29,22 @@ describe('ThemeSwitch', () => {
     expect(icon).toBeInTheDocument()
   })
 
-  it('renders the Sunny icon for the light theme', () => {
+  it('shows the Sunny icon in light theme', () => {
     useThemeMock.mockReturnValue({ theme: 'light', toggleTheme: vi.fn() })
 
     render(<ThemeSwitch ariaLabel="theme switch" />)
 
-    const icon = screen.getByTestId('sunny')
-
-    expect(icon).toBeInTheDocument()
+    expect(screen.getByTestId('sunny')).toHaveClass('op_1')
+    expect(screen.getByTestId('moon')).toHaveClass('op_0')
   })
 
-  it('renders the Moon icon for the dark theme', () => {
+  it('shows the Moon icon in dark theme', () => {
     useThemeMock.mockReturnValue({ theme: 'dark', toggleTheme: vi.fn() })
 
     render(<ThemeSwitch ariaLabel="theme switch" />)
 
-    const icon = screen.getByTestId('moon')
-
-    expect(icon).toBeInTheDocument()
+    expect(screen.getByTestId('moon')).toHaveClass('op_1')
+    expect(screen.getByTestId('sunny')).toHaveClass('op_0')
   })
 
   it('toggles the theme when clicked', () => {

@@ -9,7 +9,7 @@ import { i18n } from '@/i18n.config'
 import { getDictionary } from '@/scripts'
 import { getAbsoluteURL, getMetaImage } from '@/lib'
 import { montserrat, lora, firaCode } from '@/theme/fonts'
-import { Background, Footer, Main, Navbar } from '@/design-system'
+import { Background, BottomBar, Footer, Main, TopBar } from '@/design-system'
 import { openGraph, twitter } from '../shared-metadata'
 import './globals.css'
 
@@ -117,9 +117,10 @@ export default async function RootLayout(props: {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Background data-testid="background">
-          <Navbar lang={lang} dictionary={dictionary} />
+          <TopBar lang={lang} dictionary={dictionary} />
           <Main>{children}</Main>
           <Footer lang={lang} dictionary={dictionary} />
+          <BottomBar lang={lang} dictionary={dictionary} />
         </Background>
         <Analytics />
       </body>

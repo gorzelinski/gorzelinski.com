@@ -41,6 +41,12 @@
     "searchBar": {
       "placeholder": "Curious about something?"
     },
+    "helperNavigation": {
+      "ariaLabel": "Helper navigation"
+    },
+    "mainNavigation": {
+      "ariaLabel": "Main navigation"
+    },
     "themeSwitch": {
       "ariaLabel": "Change theme"
     },
@@ -54,12 +60,6 @@
       "socials": "Find me elsewhere",
       "language": "Change language",
       "note": "I've created this site with love (and coffee)"
-    },
-    "navbar": {
-      "navigation": {
-        "main": "Main navigation",
-        "helper": "Helper navigation"
-      }
     },
     "newsletter": {
       "heading": "A newsletter that sparks curiosity💡",

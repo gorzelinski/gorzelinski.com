@@ -47,6 +47,17 @@ export const icon = cva({
         width: '0.75lh',
         height: '0.75lh'
       }
+    },
+    transition: {
+      crossfade: {
+        transitionProperty: 'opacity, scale, filter',
+        transitionDuration: 'fast',
+        transitionTimingFunction: 'easeOut',
+        _motionReduce: {
+          filter: 'none',
+          transitionProperty: 'opacity'
+        }
+      }
     }
   },
   defaultVariants: {

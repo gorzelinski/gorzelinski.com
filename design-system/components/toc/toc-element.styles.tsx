@@ -2,7 +2,7 @@ import { cva } from '@/styled-system/css'
 
 export const tocElement = cva({
   base: {
-    textWrap: 'wrap',
+    textWrap: 'pretty',
     '&:not(:first-child)': {
       marginTop: '2xs'
     }

@@ -115,7 +115,8 @@ export default async function About(props: PageProps) {
           href={page.about.resume.href}
           _hover={{
             '& > span': {
-              animation: 'bouncing'
+              animation: 'bouncing',
+              _motionReduce: { animation: 'none' }
             }
           }}
         >
@@ -181,6 +182,7 @@ export default async function About(props: PageProps) {
           src={laptop}
           alt={page.about.uses.image}
           borderRadius="rounded"
+          boxShadow="subtle"
         />
       </Section>
     </>

@@ -41,6 +41,12 @@
     "searchBar": {
       "placeholder": "Interesuje cię coś?"
     },
+    "helperNavigation": {
+      "ariaLabel": "Pomocnicza nawigacja"
+    },
+    "mainNavigation": {
+      "ariaLabel": "Główna nawigacja"
+    },
     "themeSwitch": {
       "ariaLabel": "Zmień motyw"
     },
@@ -54,12 +60,6 @@
       "socials": "Znajdź mnie także na",
       "language": "Zmień język",
       "note": "Stworzyłem tę stronę z miłością (i kawą)"
-    },
-    "navbar": {
-      "navigation": {
-        "main": "Główna nawigacja",
-        "helper": "Pomocnicza nawigacja"
-      }
     },
     "newsletter": {
       "heading": "Newsletter, który rozpala ciekawość💡",

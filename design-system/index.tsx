@@ -92,10 +92,12 @@ export {
   BlockCode,
   Callout,
   Confetti,
+  HelperNavigation,
   Image,
   LanguageSwitch,
   LinkOrA,
   Logo,
+  MainNavigation,
   MetaImage,
   Pagination,
   Post,
@@ -112,6 +114,6 @@ export {
   Typewriter
 } from './components'
 
-export { Footer, Navbar, Newsletter, SupportMe } from './sections'
+export { BottomBar, Footer, Newsletter, SupportMe, TopBar } from './sections'
 
 export { verticalRhythm } from './utils'
