@@ -22,7 +22,9 @@ export const navbar = cva({
     _motionReduce: {
       transform: 'none',
       filter: 'none',
-      transitionProperty: 'background-color, border-color, opacity'
+      transitionProperty: 'background-color, border-color, opacity',
+      transitionDuration:
+        'token(durations.natural), token(durations.natural), token(durations.fast)'
     }
   },
   variants: {
