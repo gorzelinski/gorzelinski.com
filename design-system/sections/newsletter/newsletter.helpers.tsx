@@ -1,7 +1,7 @@
-import type { NewsletterStates } from '@/types'
+import type { NewsletterStatus } from '@/types'
 
-export function mapStateToCalloutVariant(state: NewsletterStates) {
-  switch (state) {
+export function mapStatusToCalloutVariant(status: NewsletterStatus) {
+  switch (status) {
     case 'success':
       return 'success'
     case 'quarantined':

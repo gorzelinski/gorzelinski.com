@@ -2,7 +2,7 @@
 import type { NewsletterProps } from './newsletter.types'
 import { HStack } from '@/styled-system/jsx'
 import { useNewsletter } from '@/hooks'
-import { mapStateToCalloutVariant } from './newsletter.helpers'
+import { mapStatusToCalloutVariant } from './newsletter.helpers'
 import { verticalRhythm } from '../../utils'
 import {
   Button,
@@ -20,7 +20,7 @@ import { At, Send, Sync } from '../../icons'
 import { Callout } from '../../components'
 
 export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
-  const { state, setState, handleSubmit, FORM_URL } = useNewsletter(lang)
+  const { state, formAction, isPending } = useNewsletter(lang)
 
   return (
     <section
@@ -38,9 +38,9 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
           </Li>
         ))}
       </Ul>
-      {state === 'success' || state === 'quarantined' ? null : (
+      {state.status === 'success' || state.status === 'quarantined' ? null : (
         <>
-          <form action={FORM_URL} method="post" onSubmit={handleSubmit}>
+          <form action={formAction}>
             <HStack flexWrap="wrap" gap="m">
               <InputWrapper>
                 <Input
@@ -52,8 +52,7 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
                   className="peer"
                   placeholder={dictionary.email}
                   aria-label={dictionary.email}
-                  disabled={state === 'loading'}
-                  onClick={() => setState('idle')}
+                  disabled={isPending}
                 />
                 <At
                   _peerHover={{
@@ -73,10 +72,10 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
                     _motionReduce: { animation: 'none' }
                   }
                 }}
-                disabled={state !== 'idle'}
+                disabled={isPending}
               >
                 {dictionary.button}{' '}
-                {state === 'loading' ? (
+                {isPending ? (
                   <Sync data-testid="sync" animation="spinning" />
                 ) : (
                   <Send data-testid="send" />
@@ -87,12 +86,14 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
           <Small>{dictionary.footnote}</Small>
         </>
       )}
-      {state === 'success' || state === 'quarantined' || state === 'error' ? (
-        <Callout variant={mapStateToCalloutVariant(state)}>
+      {state.status === 'success' ||
+      state.status === 'quarantined' ||
+      state.status === 'error' ? (
+        <Callout variant={mapStatusToCalloutVariant(state.status)}>
           <H3 marginBottom="s" size="s">
-            {dictionary[state].heading}
+            {dictionary[state.status].heading}
           </H3>
-          <P size="s">{dictionary[state].description}</P>
+          <P size="s">{dictionary[state.status].description}</P>
         </Callout>
       ) : null}
     </section>
