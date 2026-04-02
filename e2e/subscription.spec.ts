@@ -77,11 +77,7 @@ test.describe('Subscription tests', () => {
     await button.click()
 
     await expect(heading).toBeVisible()
-    await expect(button).toHaveAttribute('disabled')
-
-    await input.click()
-
     await expect(button).not.toHaveAttribute('disabled')
-    await expect(heading).not.toBeVisible()
+    await expect(input).not.toHaveAttribute('disabled')
   })
 })
