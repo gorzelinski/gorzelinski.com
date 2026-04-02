@@ -83,6 +83,10 @@
       "error": {
         "heading": "Something went wrong",
         "description": "There was an issue trying to submit. Check your email and try again."
+      },
+      "validation": {
+        "valueMissing": "To which email should I send the newsletter?",
+        "typeMismatch": "A valid email is something like name@domain.com"
       }
     },
     "supportMe": {

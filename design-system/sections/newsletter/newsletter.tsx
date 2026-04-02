@@ -2,7 +2,10 @@
 import type { NewsletterProps } from './newsletter.types'
 import { HStack } from '@/styled-system/jsx'
 import { useNewsletter } from '@/hooks'
-import { mapStatusToCalloutVariant } from './newsletter.helpers'
+import {
+  mapStatusToCalloutVariant,
+  setValidationMessage
+} from './newsletter.helpers'
 import { verticalRhythm } from '../../utils'
 import {
   Button,
@@ -53,6 +56,12 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
                   placeholder={dictionary.email}
                   aria-label={dictionary.email}
                   disabled={isPending}
+                  onInvalid={(e) =>
+                    setValidationMessage(e.currentTarget, dictionary.validation)
+                  }
+                  onInput={(e) =>
+                    setValidationMessage(e.currentTarget, dictionary.validation)
+                  }
                 />
                 <At
                   _peerHover={{

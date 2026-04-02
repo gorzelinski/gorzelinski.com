@@ -83,6 +83,10 @@
       "error": {
         "heading": "Coś poszło nie tak",
         "description": "Podczas wysyłania wystąpił problem. Sprawdź email i spróbuj ponownie."
+      },
+      "validation": {
+        "valueMissing": "Na jaki email mam wysłać newsletter?",
+        "typeMismatch": "Poprawny email to np. imie@domena.com"
       }
     },
     "supportMe": {
