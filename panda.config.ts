@@ -10,8 +10,14 @@ export default defineConfig({
   jsxFramework: 'react',
   exclude: [],
   conditions: {
-    light: '[data-color-mode=light] &',
-    dark: '[data-color-mode=dark] &'
+    extend: {
+      light: '[data-color-mode=light] &',
+      dark: '[data-color-mode=dark] &',
+      userValid: '&:user-valid',
+      userInvalid: '&:user-invalid',
+      peerUserValid: '.peer:user-valid ~ &',
+      peerUserInvalid: '.peer:user-invalid ~ &'
+    }
   },
   globalCss,
   theme: {

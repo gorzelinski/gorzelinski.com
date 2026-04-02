@@ -56,10 +56,16 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
                 />
                 <At
                   _peerHover={{
-                    color: 'gray.500'
+                    color: 'gray.500!'
                   }}
                   _peerFocus={{
                     color: 'gray.400!'
+                  }}
+                  _peerUserValid={{
+                    color: 'success.700!'
+                  }}
+                  _peerUserInvalid={{
+                    color: 'danger.700!'
                   }}
                 />
               </InputWrapper>
