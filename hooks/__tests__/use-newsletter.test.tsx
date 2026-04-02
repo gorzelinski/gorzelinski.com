@@ -6,25 +6,13 @@ const FORM_URL_EN = 'https://app.convertkit.com/forms/3106682/subscriptions'
 const FORM_URL_PL = 'https://app.convertkit.com/forms/3084916/subscriptions'
 const CONFIRMATION_URL = 'https://example.com/confirm'
 
-const createMockFormEvent = (
-  form: HTMLFormElement
-): React.FormEvent<HTMLFormElement> => ({
-  preventDefault: vi.fn(),
-  currentTarget: form,
-  target: form,
-  nativeEvent: {} as Event,
-  bubbles: false,
-  cancelable: false,
-  defaultPrevented: false,
-  eventPhase: 0,
-  isTrusted: false,
-  timeStamp: 0,
-  type: 'submit',
-  isDefaultPrevented: () => false,
-  isPropagationStopped: () => false,
-  persist: vi.fn(),
-  stopPropagation: vi.fn()
-})
+function createFormData(entries: Record<string, string> = {}) {
+  const formData = new FormData()
+  for (const [key, value] of Object.entries(entries)) {
+    formData.append(key, value)
+  }
+  return formData
+}
 
 describe('useNewsletter', () => {
   let mockFetch: any
@@ -45,32 +33,30 @@ describe('useNewsletter', () => {
   it('initializes with idle state', () => {
     const { result } = renderHook(() => useNewsletter('en'))
 
-    expect(result.current.state).toBe('idle')
-    expect(result.current.FORM_URL).toBe(FORM_URL_EN)
+    expect(result.current.state).toEqual({ status: 'idle' })
+    expect(result.current.isPending).toBe(false)
   })
 
-  it('uses correct form URL for Polish language', () => {
-    const { result } = renderHook(() => useNewsletter('pl'))
+  it('returns a formAction function', () => {
+    const { result } = renderHook(() => useNewsletter('en'))
 
-    expect(result.current.FORM_URL).toBe(FORM_URL_PL)
+    expect(typeof result.current.formAction).toBe('function')
   })
 
   it('handles successful form submission', async () => {
     const mockResponse = {
       json: vi.fn().mockResolvedValue({ status: 'success' })
     }
-
     mockFetch.mockResolvedValue(mockResponse)
 
     const { result } = renderHook(() => useNewsletter('en'))
 
-    const mockForm = createMockFormEvent(document.createElement('form'))
+    const formData = createFormData({ email_address: 'test@example.com' })
 
     await act(async () => {
-      await result.current.handleSubmit(mockForm)
+      await result.current.formAction(formData)
     })
 
-    expect(mockForm.preventDefault).toHaveBeenCalled()
     expect(mockFetch).toHaveBeenCalledWith(FORM_URL_EN, {
       method: 'post',
       body: expect.any(FormData),
@@ -79,7 +65,7 @@ describe('useNewsletter', () => {
       }
     })
 
-    expect(result.current.state).toBe('success')
+    expect(result.current.state).toEqual({ status: 'success' })
   })
 
   it('handles quarantined status and opens popup', async () => {
@@ -93,13 +79,16 @@ describe('useNewsletter', () => {
 
     const { result } = renderHook(() => useNewsletter('en'))
 
-    const mockForm = createMockFormEvent(document.createElement('form'))
+    const formData = createFormData({ email_address: 'test@example.com' })
 
     await act(async () => {
-      await result.current.handleSubmit(mockForm)
+      await result.current.formAction(formData)
     })
 
-    expect(result.current.state).toBe('quarantined')
+    expect(result.current.state).toEqual({
+      status: 'quarantined',
+      url: CONFIRMATION_URL
+    })
     expect(mockWindowOpen).toHaveBeenCalledWith(
       CONFIRMATION_URL,
       '_blank',
@@ -115,13 +104,13 @@ describe('useNewsletter', () => {
 
     const { result } = renderHook(() => useNewsletter('en'))
 
-    const mockForm = createMockFormEvent(document.createElement('form'))
+    const formData = createFormData({ email_address: 'test@example.com' })
 
     await act(async () => {
-      await result.current.handleSubmit(mockForm)
+      await result.current.formAction(formData)
     })
 
-    expect(result.current.state).toBe('error')
+    expect(result.current.state).toEqual({ status: 'error' })
   })
 
   it('handles network errors', async () => {
@@ -129,31 +118,36 @@ describe('useNewsletter', () => {
 
     const { result } = renderHook(() => useNewsletter('en'))
 
-    const mockForm = createMockFormEvent(document.createElement('form'))
+    const formData = createFormData({ email_address: 'test@example.com' })
 
     await act(async () => {
-      await result.current.handleSubmit(mockForm)
+      await result.current.formAction(formData)
     })
 
-    expect(result.current.state).toBe('error')
+    expect(result.current.state).toEqual({ status: 'error' })
   })
 
-  it('allows manual state updates via setState', () => {
-    const { result } = renderHook(() => useNewsletter('en'))
+  it('uses correct form URL for Polish language', async () => {
+    const mockResponse = {
+      json: vi.fn().mockResolvedValue({ status: 'success' })
+    }
+    mockFetch.mockResolvedValue(mockResponse)
 
-    expect(result.current.state).toBe('idle')
+    const { result } = renderHook(() => useNewsletter('pl'))
 
-    act(() => {
-      result.current.setState('loading')
+    const formData = createFormData({ email_address: 'test@example.com' })
+
+    await act(async () => {
+      await result.current.formAction(formData)
     })
 
-    expect(result.current.state).toBe('loading')
-
-    act(() => {
-      result.current.setState('success')
+    expect(mockFetch).toHaveBeenCalledWith(FORM_URL_PL, {
+      method: 'post',
+      body: expect.any(FormData),
+      headers: {
+        accept: 'application/json'
+      }
     })
-
-    expect(result.current.state).toBe('success')
   })
 
   it('handles unknown response status', async () => {
@@ -164,13 +158,13 @@ describe('useNewsletter', () => {
 
     const { result } = renderHook(() => useNewsletter('en'))
 
-    const mockForm = createMockFormEvent(document.createElement('form'))
+    const formData = createFormData({ email_address: 'test@example.com' })
 
     await act(async () => {
-      await result.current.handleSubmit(mockForm)
+      await result.current.formAction(formData)
     })
 
-    expect(result.current.state).toBe('error')
+    expect(result.current.state).toEqual({ status: 'error' })
   })
 
   it('handles JSON parsing errors', async () => {
@@ -181,13 +175,13 @@ describe('useNewsletter', () => {
 
     const { result } = renderHook(() => useNewsletter('en'))
 
-    const mockForm = createMockFormEvent(document.createElement('form'))
+    const formData = createFormData({ email_address: 'test@example.com' })
 
     await act(async () => {
-      await result.current.handleSubmit(mockForm)
+      await result.current.formAction(formData)
     })
 
-    expect(result.current.state).toBe('error')
+    expect(result.current.state).toEqual({ status: 'error' })
   })
 
   it('submits form data correctly', async () => {
@@ -198,23 +192,13 @@ describe('useNewsletter', () => {
 
     const { result } = renderHook(() => useNewsletter('en'))
 
-    const form = document.createElement('form')
-
-    const emailInput = document.createElement('input')
-    emailInput.name = 'email'
-    emailInput.value = 'test@example.com'
-
-    const nameInput = document.createElement('input')
-    nameInput.name = 'name'
-    nameInput.value = 'Test User'
-
-    form.appendChild(emailInput)
-    form.appendChild(nameInput)
-
-    const mockForm = createMockFormEvent(form)
+    const formData = createFormData({
+      email: 'test@example.com',
+      name: 'Test User'
+    })
 
     await act(async () => {
-      await result.current.handleSubmit(mockForm)
+      await result.current.formAction(formData)
     })
 
     expect(mockFetch).toHaveBeenCalledWith(FORM_URL_EN, {

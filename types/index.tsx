@@ -11,7 +11,7 @@ export {
   type Project
 } from './mdx'
 export { type MetaFontOptions, type MetaImageProps } from './meta'
-export { type NewsletterStates } from './newsletter'
+export { type NewsletterStatus, type NewsletterState } from './newsletter'
 export {
   type PageProps,
   type NestedPageProps,
