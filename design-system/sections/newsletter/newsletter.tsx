@@ -43,7 +43,7 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
       </Ul>
       {state.status === 'success' || state.status === 'quarantined' ? null : (
         <>
-          <form action={formAction}>
+          <form action={formAction} aria-busy={isPending}>
             <HStack flexWrap="wrap" gap="m">
               <InputWrapper>
                 <Input
@@ -101,16 +101,18 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
           <Small>{dictionary.footnote}</Small>
         </>
       )}
-      {state.status === 'success' ||
-      state.status === 'quarantined' ||
-      state.status === 'error' ? (
-        <Callout variant={mapStatusToCalloutVariant(state.status)}>
-          <H3 marginBottom="s" size="s">
-            {dictionary[state.status].heading}
-          </H3>
-          <P size="s">{dictionary[state.status].description}</P>
-        </Callout>
-      ) : null}
+      <div role="status" aria-live="polite">
+        {state.status === 'success' ||
+        state.status === 'quarantined' ||
+        state.status === 'error' ? (
+          <Callout variant={mapStatusToCalloutVariant(state.status)}>
+            <H3 marginBottom="s" size="s">
+              {dictionary[state.status].heading}
+            </H3>
+            <P size="s">{dictionary[state.status].description}</P>
+          </Callout>
+        ) : null}
+      </div>
     </section>
   )
 }
