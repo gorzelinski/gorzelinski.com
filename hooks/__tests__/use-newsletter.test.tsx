@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { renderHook, act } from '@testing-library/react'
+import { renderHook, act, waitFor } from '@testing-library/react'
 import { useNewsletter } from '../use-newsletter'
 
 const FORM_URL_EN = 'https://app.convertkit.com/forms/3106682/subscriptions'
@@ -53,8 +53,10 @@ describe('useNewsletter', () => {
 
     const formData = createFormData({ email_address: 'test@example.com' })
 
-    await act(async () => {
-      await result.current.formAction(formData)
+    await act(() => result.current.formAction(formData))
+
+    await waitFor(() => {
+      expect(result.current.state).toEqual({ status: 'success' })
     })
 
     expect(mockFetch).toHaveBeenCalledWith(FORM_URL_EN, {
@@ -64,8 +66,6 @@ describe('useNewsletter', () => {
         accept: 'application/json'
       }
     })
-
-    expect(result.current.state).toEqual({ status: 'success' })
   })
 
   it('handles quarantined status and opens popup', async () => {
@@ -81,19 +81,22 @@ describe('useNewsletter', () => {
 
     const formData = createFormData({ email_address: 'test@example.com' })
 
-    await act(async () => {
-      await result.current.formAction(formData)
+    await act(() => result.current.formAction(formData))
+
+    await waitFor(() => {
+      expect(result.current.state).toEqual({
+        status: 'quarantined',
+        url: CONFIRMATION_URL
+      })
     })
 
-    expect(result.current.state).toEqual({
-      status: 'quarantined',
-      url: CONFIRMATION_URL
+    await waitFor(() => {
+      expect(mockWindowOpen).toHaveBeenCalledWith(
+        CONFIRMATION_URL,
+        '_blank',
+        'noopener,popup,height=512,width=512'
+      )
     })
-    expect(mockWindowOpen).toHaveBeenCalledWith(
-      CONFIRMATION_URL,
-      '_blank',
-      'noopener,popup,height=512,width=512'
-    )
   })
 
   it('handles error status', async () => {
@@ -106,11 +109,11 @@ describe('useNewsletter', () => {
 
     const formData = createFormData({ email_address: 'test@example.com' })
 
-    await act(async () => {
-      await result.current.formAction(formData)
-    })
+    await act(() => result.current.formAction(formData))
 
-    expect(result.current.state).toEqual({ status: 'error' })
+    await waitFor(() => {
+      expect(result.current.state).toEqual({ status: 'error' })
+    })
   })
 
   it('handles network errors', async () => {
@@ -120,11 +123,11 @@ describe('useNewsletter', () => {
 
     const formData = createFormData({ email_address: 'test@example.com' })
 
-    await act(async () => {
-      await result.current.formAction(formData)
-    })
+    await act(() => result.current.formAction(formData))
 
-    expect(result.current.state).toEqual({ status: 'error' })
+    await waitFor(() => {
+      expect(result.current.state).toEqual({ status: 'error' })
+    })
   })
 
   it('uses correct form URL for Polish language', async () => {
@@ -137,16 +140,16 @@ describe('useNewsletter', () => {
 
     const formData = createFormData({ email_address: 'test@example.com' })
 
-    await act(async () => {
-      await result.current.formAction(formData)
-    })
+    await act(() => result.current.formAction(formData))
 
-    expect(mockFetch).toHaveBeenCalledWith(FORM_URL_PL, {
-      method: 'post',
-      body: expect.any(FormData),
-      headers: {
-        accept: 'application/json'
-      }
+    await waitFor(() => {
+      expect(mockFetch).toHaveBeenCalledWith(FORM_URL_PL, {
+        method: 'post',
+        body: expect.any(FormData),
+        headers: {
+          accept: 'application/json'
+        }
+      })
     })
   })
 
@@ -160,11 +163,11 @@ describe('useNewsletter', () => {
 
     const formData = createFormData({ email_address: 'test@example.com' })
 
-    await act(async () => {
-      await result.current.formAction(formData)
-    })
+    await act(() => result.current.formAction(formData))
 
-    expect(result.current.state).toEqual({ status: 'error' })
+    await waitFor(() => {
+      expect(result.current.state).toEqual({ status: 'error' })
+    })
   })
 
   it('handles JSON parsing errors', async () => {
@@ -177,11 +180,11 @@ describe('useNewsletter', () => {
 
     const formData = createFormData({ email_address: 'test@example.com' })
 
-    await act(async () => {
-      await result.current.formAction(formData)
-    })
+    await act(() => result.current.formAction(formData))
 
-    expect(result.current.state).toEqual({ status: 'error' })
+    await waitFor(() => {
+      expect(result.current.state).toEqual({ status: 'error' })
+    })
   })
 
   it('submits form data correctly', async () => {
@@ -197,16 +200,16 @@ describe('useNewsletter', () => {
       name: 'Test User'
     })
 
-    await act(async () => {
-      await result.current.formAction(formData)
-    })
+    await act(() => result.current.formAction(formData))
 
-    expect(mockFetch).toHaveBeenCalledWith(FORM_URL_EN, {
-      method: 'post',
-      body: expect.any(FormData),
-      headers: {
-        accept: 'application/json'
-      }
+    await waitFor(() => {
+      expect(mockFetch).toHaveBeenCalledWith(FORM_URL_EN, {
+        method: 'post',
+        body: expect.any(FormData),
+        headers: {
+          accept: 'application/json'
+        }
+      })
     })
   })
 })
