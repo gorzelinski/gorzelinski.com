@@ -104,9 +104,10 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
         </>
       )}
       <Box role="status" aria-live="polite" width="100%">
-        {state.status === 'success' ||
-        state.status === 'quarantined' ||
-        state.status === 'error' ? (
+        {!isPending &&
+        (state.status === 'success' ||
+          state.status === 'quarantined' ||
+          state.status === 'error') ? (
           <Callout variant={mapStatusToCalloutVariant(state.status)}>
             <H3 marginBottom="s" size="s">
               {dictionary[state.status].heading}
