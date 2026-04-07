@@ -1,6 +1,6 @@
 'use client'
 import type { NewsletterProps } from './newsletter.types'
-import { HStack } from '@/styled-system/jsx'
+import { Box, HStack } from '@/styled-system/jsx'
 import { useNewsletter } from '@/hooks'
 import {
   mapStatusToCalloutVariant,
@@ -102,7 +102,7 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
           <Small>{dictionary.footnote}</Small>
         </>
       )}
-      <div role="status" aria-live="polite">
+      <Box role="status" aria-live="polite">
         {state.status === 'success' ||
         state.status === 'quarantined' ||
         state.status === 'error' ? (
@@ -113,7 +113,7 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
             <P size="s">{dictionary[state.status].description}</P>
           </Callout>
         ) : null}
-      </div>
+      </Box>
     </section>
   )
 }
