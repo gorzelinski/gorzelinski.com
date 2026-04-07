@@ -9,6 +9,7 @@ import {
 import { verticalRhythm } from '../../utils'
 import {
   Button,
+  ButtonAnchor,
   H2,
   H3,
   Input,
@@ -102,7 +103,7 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
           <Small>{dictionary.footnote}</Small>
         </>
       )}
-      <Box role="status" aria-live="polite">
+      <Box role="status" aria-live="polite" width="100%">
         {state.status === 'success' ||
         state.status === 'quarantined' ||
         state.status === 'error' ? (
@@ -111,6 +112,18 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
               {dictionary[state.status].heading}
             </H3>
             <P size="s">{dictionary[state.status].description}</P>
+            {state.status === 'quarantined' && state.url ? (
+              <ButtonAnchor
+                align="left"
+                variant="text"
+                size="s"
+                href={state.url}
+                target="_blank"
+                rel="noopener"
+              >
+                {dictionary.quarantined.link}
+              </ButtonAnchor>
+            ) : null}
           </Callout>
         ) : null}
       </Box>

@@ -1,5 +1,5 @@
 import type { Locale, NewsletterState } from '@/types'
-import { useActionState, useEffect } from 'react'
+import { useActionState } from 'react'
 import { getFormURL } from '@/lib'
 
 const initialState: NewsletterState = { status: 'idle' }
@@ -7,12 +7,6 @@ const initialState: NewsletterState = { status: 'idle' }
 export function useNewsletter(lang: Locale) {
   const [state, formAction, isPending] = useActionState(subscribe, initialState)
   const FORM_URL = getFormURL(lang)
-
-  useEffect(() => {
-    if (state.status === 'quarantined' && state.url) {
-      window.open(state.url, '_blank', 'noopener,popup,height=512,width=512')
-    }
-  }, [state])
 
   async function subscribe(
     _prevState: NewsletterState,

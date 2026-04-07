@@ -78,7 +78,8 @@
       },
       "quarantined": {
         "heading": "Już prawie!",
-        "description": "Potwierdź, że nie jesteś robotem, a twój email będzie w drodze."
+        "description": "Potwierdź, że nie jesteś robotem, a twój email będzie w drodze.",
+        "link": "Dokończ weryfikację"
       },
       "error": {
         "heading": "Coś poszło nie tak",

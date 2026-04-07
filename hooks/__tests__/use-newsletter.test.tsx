@@ -16,14 +16,10 @@ function createFormData(entries: Record<string, string> = {}) {
 
 describe('useNewsletter', () => {
   let mockFetch: any
-  let mockWindowOpen: any
 
   beforeEach(() => {
     mockFetch = vi.fn()
     global.fetch = mockFetch
-
-    mockWindowOpen = vi.fn()
-    global.window.open = mockWindowOpen
   })
 
   afterEach(() => {
@@ -68,7 +64,7 @@ describe('useNewsletter', () => {
     })
   })
 
-  it('handles quarantined status and opens popup', async () => {
+  it('handles quarantined status with confirmation URL', async () => {
     const mockResponse = {
       json: vi.fn().mockResolvedValue({
         status: 'quarantined',
@@ -88,14 +84,6 @@ describe('useNewsletter', () => {
         status: 'quarantined',
         url: CONFIRMATION_URL
       })
-    })
-
-    await waitFor(() => {
-      expect(mockWindowOpen).toHaveBeenCalledWith(
-        CONFIRMATION_URL,
-        '_blank',
-        'noopener,popup,height=512,width=512'
-      )
     })
   })
 

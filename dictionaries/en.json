@@ -78,7 +78,8 @@
       },
       "quarantined": {
         "heading": "Almost there!",
-        "description": "Confirm you are not a robot, and your email will be on its way."
+        "description": "Confirm you are not a robot, and your email will be on its way.",
+        "link": "Complete verification"
       },
       "error": {
         "heading": "Something went wrong",

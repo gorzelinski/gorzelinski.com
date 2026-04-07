@@ -89,10 +89,15 @@ describe('Newsletter', () => {
     const heading = screen.getByText(
       dictionary.section.newsletter.quarantined.heading
     )
+    const link = screen.getByRole('link', {
+      name: dictionary.section.newsletter.quarantined.link
+    })
     const input = screen.queryByRole('textbox')
     const button = screen.queryByRole('button')
 
     expect(heading).toBeInTheDocument()
+    expect(link).toHaveAttribute('href', 'https://example.com/confirm')
+    expect(link).toHaveAttribute('target', '_blank')
     expect(input).not.toBeInTheDocument()
     expect(button).not.toBeInTheDocument()
   })
