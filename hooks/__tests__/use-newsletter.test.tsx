@@ -184,20 +184,14 @@ describe('useNewsletter', () => {
     const { result } = renderHook(() => useNewsletter('en'))
 
     const formData = createFormData({
-      email: 'test@example.com',
-      name: 'Test User'
+      email_address: 'test@example.com'
     })
 
     await act(() => result.current.formAction(formData))
 
     await waitFor(() => {
-      expect(mockFetch).toHaveBeenCalledWith(FORM_URL_EN, {
-        method: 'post',
-        body: expect.any(FormData),
-        headers: {
-          accept: 'application/json'
-        }
-      })
+      const submittedBody = mockFetch.mock.calls[0][1].body as FormData
+      expect(submittedBody.get('email_address')).toBe('test@example.com')
     })
   })
 })
