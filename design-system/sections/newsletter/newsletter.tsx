@@ -23,7 +23,7 @@ import { At, Send, Sync } from '../../icons'
 import { Callout } from '../../components'
 
 export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
-  const { state, formAction, isPending } = useNewsletter(lang)
+  const { state, formAction, isPending, FORM_URL } = useNewsletter(lang)
 
   return (
     <section
@@ -43,7 +43,7 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
       </Ul>
       {state.status === 'success' || state.status === 'quarantined' ? null : (
         <>
-          <form action={formAction} aria-busy={isPending}>
+          <form action={FORM_URL} method="post" aria-busy={isPending}>
             <HStack flexWrap="wrap" gap="m">
               <InputWrapper>
                 <Input
@@ -81,6 +81,7 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
               <Button
                 width="responsive"
                 type="submit"
+                formAction={formAction}
                 _hover={{
                   '& > span': {
                     animation: 'wobbling',

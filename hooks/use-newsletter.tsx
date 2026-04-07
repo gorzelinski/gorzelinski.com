@@ -43,5 +43,5 @@ export function useNewsletter(lang: Locale) {
     }
   }
 
-  return { state, formAction, isPending }
+  return { state, formAction, isPending, FORM_URL }
 }

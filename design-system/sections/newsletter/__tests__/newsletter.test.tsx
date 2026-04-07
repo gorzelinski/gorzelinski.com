@@ -20,7 +20,8 @@ describe('Newsletter', () => {
     useNewsletterMock.mockReturnValue({
       state: { status: 'idle' },
       formAction: vi.fn(),
-      isPending: false
+      isPending: false,
+      FORM_URL: 'https://example.com'
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)
@@ -58,7 +59,8 @@ describe('Newsletter', () => {
     useNewsletterMock.mockReturnValue({
       state: { status: 'idle' },
       formAction: vi.fn(),
-      isPending: true
+      isPending: true,
+      FORM_URL: 'https://example.com'
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)
@@ -78,7 +80,8 @@ describe('Newsletter', () => {
     useNewsletterMock.mockReturnValue({
       state: { status: 'quarantined', url: 'https://example.com/confirm' },
       formAction: vi.fn(),
-      isPending: false
+      isPending: false,
+      FORM_URL: 'https://example.com'
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)
@@ -98,7 +101,8 @@ describe('Newsletter', () => {
     useNewsletterMock.mockReturnValue({
       state: { status: 'error' },
       formAction: vi.fn(),
-      isPending: false
+      isPending: false,
+      FORM_URL: 'https://example.com'
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)
@@ -120,7 +124,8 @@ describe('Newsletter', () => {
     useNewsletterMock.mockReturnValue({
       state: { status: 'success' },
       formAction: vi.fn(),
-      isPending: false
+      isPending: false,
+      FORM_URL: 'https://example.com'
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)
