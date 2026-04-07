@@ -1,6 +1,7 @@
-export type NewsletterStatus = 'idle' | 'success' | 'quarantined' | 'error'
+export type NewsletterState =
+  | { status: 'idle' }
+  | { status: 'success' }
+  | { status: 'error' }
+  | { status: 'quarantined'; url: string }
 
-export type NewsletterState = {
-  status: NewsletterStatus
-  url?: string
-}
+export type NewsletterStatus = NewsletterState['status']

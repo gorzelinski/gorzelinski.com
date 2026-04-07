@@ -112,7 +112,7 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
               {dictionary[state.status].heading}
             </H3>
             <P size="s">{dictionary[state.status].description}</P>
-            {state.status === 'quarantined' && state.url ? (
+            {state.status === 'quarantined' ? (
               <ButtonAnchor
                 align="left"
                 variant="text"
