@@ -59,6 +59,13 @@ test.describe('Subscription tests', () => {
     await expect(
       page.getByText(section.newsletter.quarantined.heading)
     ).toBeVisible()
+
+    const link = page.getByRole('link', {
+      name: section.newsletter.quarantined.link
+    })
+    await expect(link).toBeVisible()
+    await expect(link).toHaveAttribute('href', settingsPage.example.url)
+    await expect(link).toHaveAttribute('target', '_blank')
   })
 
   test('checks the error flow', async ({ page, settingsPage }) => {
