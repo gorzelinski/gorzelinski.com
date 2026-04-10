@@ -49,6 +49,7 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
               <InputWrapper>
                 <Input
                   required
+                  validation
                   autoComplete="off"
                   name="email_address"
                   id="email"

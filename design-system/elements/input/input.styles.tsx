@@ -29,12 +29,6 @@ export const input = cva({
     _active: {
       borderColor: 'gray.400'
     },
-    _userValid: {
-      borderColor: 'success.700'
-    },
-    _userInvalid: {
-      borderColor: 'danger.700'
-    },
     _disabled: {
       backgroundColor: 'gray.800',
       cursor: 'not-allowed',
@@ -42,6 +36,16 @@ export const input = cva({
     }
   },
   variants: {
+    validation: {
+      true: {
+        _userValid: {
+          borderColor: 'success.700'
+        },
+        _userInvalid: {
+          borderColor: 'danger.700'
+        }
+      }
+    },
     width: {
       auto: {
         width: 'auto'
