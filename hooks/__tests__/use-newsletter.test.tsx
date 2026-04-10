@@ -15,15 +15,16 @@ function createFormData(entries: Record<string, string> = {}) {
 }
 
 describe('useNewsletter', () => {
-  let mockFetch: any
+  let mockFetch: ReturnType<typeof vi.fn>
 
   beforeEach(() => {
     mockFetch = vi.fn()
-    global.fetch = mockFetch
+    vi.stubGlobal('fetch', mockFetch)
   })
 
   afterEach(() => {
     vi.clearAllMocks()
+    vi.unstubAllGlobals()
   })
 
   it('initializes with idle state', () => {
