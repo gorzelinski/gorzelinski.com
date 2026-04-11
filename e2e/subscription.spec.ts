@@ -59,6 +59,13 @@ test.describe('Subscription tests', () => {
     await expect(
       page.getByText(section.newsletter.quarantined.heading)
     ).toBeVisible()
+
+    const link = page.getByRole('link', {
+      name: section.newsletter.quarantined.link
+    })
+    await expect(link).toBeVisible()
+    await expect(link).toHaveAttribute('href', settingsPage.example.url)
+    await expect(link).toHaveAttribute('target', '_blank')
   })
 
   test('checks the error flow', async ({ page, settingsPage }) => {
@@ -77,11 +84,7 @@ test.describe('Subscription tests', () => {
     await button.click()
 
     await expect(heading).toBeVisible()
-    await expect(button).toHaveAttribute('disabled')
-
-    await input.click()
-
     await expect(button).not.toHaveAttribute('disabled')
-    await expect(heading).not.toBeVisible()
+    await expect(input).not.toHaveAttribute('disabled')
   })
 })

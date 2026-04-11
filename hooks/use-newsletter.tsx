@@ -1,22 +1,21 @@
-import type { Locale, NewsletterStates } from '@/types'
-import { useState } from 'react'
+import type { Locale, NewsletterState } from '@/types'
+import { useActionState } from 'react'
 import { getFormURL } from '@/lib'
 
+const initialState: NewsletterState = { status: 'idle' }
+
 export function useNewsletter(lang: Locale) {
-  const [state, setState] = useState<NewsletterStates>('idle')
+  const [state, formAction, isPending] = useActionState(subscribe, initialState)
   const FORM_URL = getFormURL(lang)
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-
-    setState('loading')
-
-    const data = new FormData(e.currentTarget)
-
+  async function subscribe(
+    _prevState: NewsletterState,
+    formData: FormData
+  ): Promise<NewsletterState> {
     try {
       const response = await fetch(FORM_URL, {
         method: 'post',
-        body: data,
+        body: formData,
         headers: {
           accept: 'application/json'
         }
@@ -25,24 +24,18 @@ export function useNewsletter(lang: Locale) {
       const json = await response.json()
 
       if (json.status === 'quarantined') {
-        setState('quarantined')
-
-        return window.open(
-          json.url,
-          '_blank',
-          'noopener,popup,height=512,width=512'
-        )
+        return { status: 'quarantined', url: json.url }
       }
 
       if (json.status === 'success') {
-        return setState('success')
+        return { status: 'success' }
       }
 
-      setState('error')
-    } catch (error) {
-      setState('error')
+      return { status: 'error' }
+    } catch {
+      return { status: 'error' }
     }
   }
 
-  return { state, setState, handleSubmit, FORM_URL }
+  return { state, formAction, isPending, FORM_URL }
 }

@@ -1,7 +1,9 @@
-import type { NewsletterStates } from '@/types'
+import type { Dictionary, NewsletterStatus } from '@/types'
 
-export function mapStateToCalloutVariant(state: NewsletterStates) {
-  switch (state) {
+type Validation = Dictionary['section']['newsletter']['validation']
+
+export function mapStatusToCalloutVariant(status: NewsletterStatus) {
+  switch (status) {
     case 'success':
       return 'success'
     case 'quarantined':
@@ -10,5 +12,18 @@ export function mapStateToCalloutVariant(state: NewsletterStates) {
       return 'danger'
     default:
       return 'info'
+  }
+}
+
+export function setValidationMessage(
+  input: HTMLInputElement,
+  validation: Validation
+) {
+  input.setCustomValidity('')
+
+  if (input.validity.valueMissing) {
+    input.setCustomValidity(validation.valueMissing)
+  } else if (input.validity.typeMismatch) {
+    input.setCustomValidity(validation.typeMismatch)
   }
 }

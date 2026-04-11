@@ -78,11 +78,16 @@
       },
       "quarantined": {
         "heading": "Już prawie!",
-        "description": "Potwierdź, że nie jesteś robotem, a twój email będzie w drodze."
+        "description": "Potwierdź, że nie jesteś robotem, a twój email będzie w drodze.",
+        "link": "Dokończ weryfikację"
       },
       "error": {
         "heading": "Coś poszło nie tak",
         "description": "Podczas wysyłania wystąpił problem. Sprawdź email i spróbuj ponownie."
+      },
+      "validation": {
+        "valueMissing": "Na jaki email mam wysłać newsletter?",
+        "typeMismatch": "Poprawny email to np. imie@domena.com"
       }
     },
     "supportMe": {

@@ -18,10 +18,10 @@ describe('Newsletter', () => {
 
   it('renders correctly', async () => {
     useNewsletterMock.mockReturnValue({
-      FORM_URL: 'https://example.com',
-      state: 'idle',
-      setState: vi.fn(),
-      handleSubmit: vi.fn()
+      state: { status: 'idle' },
+      formAction: vi.fn(),
+      isPending: false,
+      FORM_URL: 'https://example.com'
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)
@@ -55,12 +55,12 @@ describe('Newsletter', () => {
     expect(icon).toBeInTheDocument()
   })
 
-  it('renders the "loading" state correctly', () => {
+  it('renders the pending state correctly', () => {
     useNewsletterMock.mockReturnValue({
-      FORM_URL: 'https://example.com',
-      state: 'loading',
-      setState: vi.fn(),
-      handleSubmit: vi.fn()
+      state: { status: 'idle' },
+      formAction: vi.fn(),
+      isPending: true,
+      FORM_URL: 'https://example.com'
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)
@@ -78,10 +78,10 @@ describe('Newsletter', () => {
 
   it('renders the "quarantined" state correctly', () => {
     useNewsletterMock.mockReturnValue({
-      FORM_URL: 'https://example.com',
-      state: 'quarantined',
-      setState: vi.fn(),
-      handleSubmit: vi.fn()
+      state: { status: 'quarantined', url: 'https://example.com/confirm' },
+      formAction: vi.fn(),
+      isPending: false,
+      FORM_URL: 'https://example.com'
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)
@@ -89,21 +89,25 @@ describe('Newsletter', () => {
     const heading = screen.getByText(
       dictionary.section.newsletter.quarantined.heading
     )
+    const link = screen.getByRole('link', {
+      name: dictionary.section.newsletter.quarantined.link
+    })
     const input = screen.queryByRole('textbox')
     const button = screen.queryByRole('button')
 
     expect(heading).toBeInTheDocument()
+    expect(link).toHaveAttribute('href', 'https://example.com/confirm')
+    expect(link).toHaveAttribute('target', '_blank')
     expect(input).not.toBeInTheDocument()
     expect(button).not.toBeInTheDocument()
   })
 
   it('renders the "error" state correctly', () => {
-    const setStateMock = vi.fn()
     useNewsletterMock.mockReturnValue({
-      FORM_URL: 'https://example.com',
-      state: 'error',
-      setState: setStateMock,
-      handleSubmit: vi.fn()
+      state: { status: 'error' },
+      formAction: vi.fn(),
+      isPending: false,
+      FORM_URL: 'https://example.com'
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)
@@ -118,19 +122,15 @@ describe('Newsletter', () => {
     expect(input).toBeInTheDocument()
     expect(input).toBeEnabled()
     expect(button).toBeInTheDocument()
-    expect(button).toBeDisabled()
-
-    input.click()
-
-    expect(setStateMock).toHaveBeenCalledWith('idle')
+    expect(button).toBeEnabled()
   })
 
   it('renders the "success" state correctly', () => {
     useNewsletterMock.mockReturnValue({
-      FORM_URL: 'https://example.com',
-      state: 'success',
-      setState: vi.fn(),
-      handleSubmit: vi.fn()
+      state: { status: 'success' },
+      formAction: vi.fn(),
+      isPending: false,
+      FORM_URL: 'https://example.com'
     })
 
     render(<Newsletter lang="en" dictionary={dictionary.section.newsletter} />)

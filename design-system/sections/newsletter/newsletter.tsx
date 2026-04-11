@@ -1,11 +1,15 @@
 'use client'
 import type { NewsletterProps } from './newsletter.types'
-import { HStack } from '@/styled-system/jsx'
+import { Box, HStack } from '@/styled-system/jsx'
 import { useNewsletter } from '@/hooks'
-import { mapStateToCalloutVariant } from './newsletter.helpers'
+import {
+  mapStatusToCalloutVariant,
+  setValidationMessage
+} from './newsletter.helpers'
 import { verticalRhythm } from '../../utils'
 import {
   Button,
+  ButtonAnchor,
   H2,
   H3,
   Input,
@@ -20,7 +24,7 @@ import { At, Send, Sync } from '../../icons'
 import { Callout } from '../../components'
 
 export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
-  const { state, setState, handleSubmit, FORM_URL } = useNewsletter(lang)
+  const { state, formAction, isPending, FORM_URL } = useNewsletter(lang)
 
   return (
     <section
@@ -38,13 +42,14 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
           </Li>
         ))}
       </Ul>
-      {state === 'success' || state === 'quarantined' ? null : (
+      {state.status === 'success' || state.status === 'quarantined' ? null : (
         <>
-          <form action={FORM_URL} method="post" onSubmit={handleSubmit}>
+          <form action={FORM_URL} method="post" aria-busy={isPending}>
             <HStack flexWrap="wrap" gap="m">
               <InputWrapper>
                 <Input
                   required
+                  validation
                   autoComplete="off"
                   name="email_address"
                   id="email"
@@ -52,31 +57,43 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
                   className="peer"
                   placeholder={dictionary.email}
                   aria-label={dictionary.email}
-                  disabled={state === 'loading'}
-                  onClick={() => setState('idle')}
+                  disabled={isPending}
+                  onInvalid={(e) =>
+                    setValidationMessage(e.currentTarget, dictionary.validation)
+                  }
+                  onInput={(e) =>
+                    setValidationMessage(e.currentTarget, dictionary.validation)
+                  }
                 />
                 <At
                   _peerHover={{
-                    color: 'gray.500'
+                    color: 'gray.500!'
                   }}
                   _peerFocus={{
                     color: 'gray.400!'
+                  }}
+                  _peerUserValid={{
+                    color: 'success.700!'
+                  }}
+                  _peerUserInvalid={{
+                    color: 'danger.700!'
                   }}
                 />
               </InputWrapper>
               <Button
                 width="responsive"
                 type="submit"
+                formAction={formAction}
                 _hover={{
                   '& > span': {
                     animation: 'wobbling',
                     _motionReduce: { animation: 'none' }
                   }
                 }}
-                disabled={state !== 'idle'}
+                disabled={isPending}
               >
                 {dictionary.button}{' '}
-                {state === 'loading' ? (
+                {isPending ? (
                   <Sync data-testid="sync" animation="spinning" />
                 ) : (
                   <Send data-testid="send" />
@@ -87,14 +104,31 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
           <Small>{dictionary.footnote}</Small>
         </>
       )}
-      {state === 'success' || state === 'quarantined' || state === 'error' ? (
-        <Callout variant={mapStateToCalloutVariant(state)}>
-          <H3 marginBottom="s" size="s">
-            {dictionary[state].heading}
-          </H3>
-          <P size="s">{dictionary[state].description}</P>
-        </Callout>
-      ) : null}
+      <Box role="status" aria-live="polite" width="100%">
+        {!isPending &&
+        (state.status === 'success' ||
+          state.status === 'quarantined' ||
+          state.status === 'error') ? (
+          <Callout variant={mapStatusToCalloutVariant(state.status)}>
+            <H3 marginBottom="s" size="s">
+              {dictionary[state.status].heading}
+            </H3>
+            <P size="s">{dictionary[state.status].description}</P>
+            {state.status === 'quarantined' ? (
+              <ButtonAnchor
+                align="left"
+                variant="text"
+                size="s"
+                href={state.url}
+                target="_blank"
+                rel="noopener"
+              >
+                {dictionary.quarantined.link}
+              </ButtonAnchor>
+            ) : null}
+          </Callout>
+        ) : null}
+      </Box>
     </section>
   )
 }

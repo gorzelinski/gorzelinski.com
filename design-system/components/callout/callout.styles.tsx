@@ -15,7 +15,7 @@ export const callout = cva({
       backgroundColor: 'gray.900'
     },
     '& > *:last-child': {
-      margin: '0'
+      marginBottom: '0'
     }
   },
   variants: {

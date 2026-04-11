@@ -36,6 +36,16 @@ export const input = cva({
     }
   },
   variants: {
+    validation: {
+      true: {
+        _userValid: {
+          borderColor: 'success.700'
+        },
+        _userInvalid: {
+          borderColor: 'danger.700'
+        }
+      }
+    },
     width: {
       auto: {
         width: 'auto'

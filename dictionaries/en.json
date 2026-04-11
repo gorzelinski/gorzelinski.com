@@ -78,11 +78,16 @@
       },
       "quarantined": {
         "heading": "Almost there!",
-        "description": "Confirm you are not a robot, and your email will be on its way."
+        "description": "Confirm you are not a robot, and your email will be on its way.",
+        "link": "Complete verification"
       },
       "error": {
         "heading": "Something went wrong",
         "description": "There was an issue trying to submit. Check your email and try again."
+      },
+      "validation": {
+        "valueMissing": "To which email should I send the newsletter?",
+        "typeMismatch": "A valid email is something like name@domain.com"
       }
     },
     "supportMe": {
