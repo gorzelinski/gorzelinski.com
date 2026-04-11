@@ -18,6 +18,7 @@ export const SupportMe = ({ lang, dictionary }: SupportMeProps) => {
       </P>
       <ButtonAnchor
         target="_blank"
+        rel="noopener noreferrer"
         animation="bounceIcon"
         href={getCoffeeURL(lang)}
       >
