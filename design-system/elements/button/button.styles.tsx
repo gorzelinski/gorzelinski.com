@@ -93,7 +93,7 @@ export const button = cva({
           backgroundColor: 'primary.300'
         },
         _focus: {
-          backgroundColor: 'primary.200'
+          backgroundColor: 'primary.300'
         },
         _focusVisible: {
           outline: 'primary.regular',
@@ -116,7 +116,7 @@ export const button = cva({
           color: 'gray.900'
         },
         _focus: {
-          backgroundColor: 'primary.200',
+          backgroundColor: 'primary.400',
           color: 'gray.900'
         },
         _focusVisible: {
@@ -138,7 +138,7 @@ export const button = cva({
           color: 'primary.300'
         },
         _focus: {
-          color: 'primary.200'
+          color: 'primary.300'
         },
         _focusVisible: {
           outline: 'primary.regular',
@@ -155,7 +155,7 @@ export const button = cva({
         position: 'relative',
         color: 'gray.400',
         _hover: {
-          color: 'gray.200'
+          color: 'gray.100'
         },
         _focus: {
           color: 'gray.100'
@@ -186,8 +186,8 @@ export const button = cva({
           color: 'gray.300'
         },
         _focus: {
-          backgroundColor: 'gray.600',
-          color: 'gray.200'
+          backgroundColor: 'gray.700',
+          color: 'gray.300'
         },
         _focusVisible: {
           outline: 'gray.regular',
