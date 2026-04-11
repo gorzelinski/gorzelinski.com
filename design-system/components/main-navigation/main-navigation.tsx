@@ -18,6 +18,7 @@ export const MainNavigation = ({
     <Nav aria-label={ariaLabel} display={display} width={width}>
       <ButtonLink
         variant="nav"
+        underline
         size="s"
         href={localizePath(LINKS.portfolio, lang)}
         className={selectActiveClass(
@@ -30,6 +31,7 @@ export const MainNavigation = ({
       </ButtonLink>
       <ButtonLink
         variant="nav"
+        underline
         size="s"
         href={localizePath(LINKS.about, lang)}
         className={selectActiveClass(
@@ -41,6 +43,7 @@ export const MainNavigation = ({
       </ButtonLink>
       <ButtonLink
         variant="nav"
+        underline
         size="s"
         href={localizePath(LINKS.blog, lang)}
         className={selectActiveClass(
