@@ -278,6 +278,24 @@ export const button = cva({
           }
         }
       }
+    },
+    animation: {
+      wobbleIcon: {
+        _hover: {
+          '& > span': {
+            animation: 'wobbling',
+            _motionReduce: { animation: 'none' }
+          }
+        }
+      },
+      bounceIcon: {
+        _hover: {
+          '& > span': {
+            animation: 'bouncing',
+            _motionReduce: { animation: 'none' }
+          }
+        }
+      }
     }
   },
   defaultVariants: {

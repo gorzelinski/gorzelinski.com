@@ -70,13 +70,8 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
               <Button
                 width="responsive"
                 type="submit"
+                animation="wobbleIcon"
                 formAction={formAction}
-                _hover={{
-                  '& > span': {
-                    animation: 'wobbling',
-                    _motionReduce: { animation: 'none' }
-                  }
-                }}
                 disabled={isPending}
               >
                 {dictionary.button}{' '}
