@@ -143,8 +143,8 @@ const components: MDXComponents = {
   sub: ({ children }) => <Sub>{children}</Sub>,
   sup: ({ children }) => <Sup>{children}</Sup>,
   table: ({ children }) => (
-    <TableWrapper css={verticalRhythm.marginBottom.m}>
-      <Table tabIndex={0}>{children}</Table>
+    <TableWrapper tabIndex={0} css={verticalRhythm.marginBottom.m}>
+      <Table>{children}</Table>
     </TableWrapper>
   ),
   tbody: ({ children }) => <Tbody>{children}</Tbody>,
