@@ -8,11 +8,7 @@ export const pre = cva({
       md: 'm'
     },
     _focusVisible: {
-      outline: 'gray.regular',
-      outlineOffset: '-2xs',
-      borderRadius: {
-        md: 's'
-      }
+      outline: 'none'
     }
   }
 })
