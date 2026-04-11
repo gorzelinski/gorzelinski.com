@@ -161,7 +161,8 @@ export const button = cva({
           color: 'gray.100'
         },
         _focusVisible: {
-          outline: 'none'
+          outline: 'gray.regular',
+          outlineOffset: '2xs'
         },
         _active: {
           color: 'gray.50'
