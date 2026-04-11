@@ -36,14 +36,7 @@ export const SearchBar = ({ placeholder }: SearchBarProps) => {
           }
           defaultValue={searchParams.get('query')?.toString()}
         />
-        <SearchIcon
-          _peerHover={{
-            color: 'gray.500'
-          }}
-          _peerFocus={{
-            color: 'gray.400!'
-          }}
-        />
+        <SearchIcon inputState />
       </InputWrapper>
     </Search>
   )

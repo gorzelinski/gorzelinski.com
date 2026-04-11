@@ -65,20 +65,7 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
                     setValidationMessage(e.currentTarget, dictionary.validation)
                   }
                 />
-                <At
-                  _peerHover={{
-                    color: 'gray.500!'
-                  }}
-                  _peerFocus={{
-                    color: 'gray.400!'
-                  }}
-                  _peerUserValid={{
-                    color: 'success.700!'
-                  }}
-                  _peerUserInvalid={{
-                    color: 'danger.700!'
-                  }}
-                />
+                <At inputState inputStateValidation />
               </InputWrapper>
               <Button
                 width="responsive"
