@@ -282,7 +282,7 @@ export const button = cva({
     },
     underline: {
       true: {
-        '&:is(:hover, :focus, .active):after': {
+        '&:is(:hover, :focus-visible, .active):after': {
           transform: 'scaleX(1)',
           transformOrigin: 'bottom left'
         },
