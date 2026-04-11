@@ -17,7 +17,7 @@ export const button = cva({
       cursor: 'not-allowed',
       pointerEvents: 'none'
     },
-    '& > span': {
+    '& > .icon': {
       flexShrink: 0
     }
   },
@@ -243,37 +243,37 @@ export const button = cva({
     },
     transition: {
       moveIconForward: {
-        '& > span': {
+        '& > .icon': {
           transform: 'translateX(0px)',
           transitionProperty: 'transform',
           transitionDuration: 'natural',
           transitionTimingFunction: 'easeInOut'
         },
         _hover: {
-          '& > span': {
+          '& > .icon': {
             transform: 'translateX(token(spacing.s))'
           }
         },
         _active: {
-          '& > span': {
+          '& > .icon': {
             transform: 'translateX(calc(2 * token(spacing.s)))'
           }
         }
       },
       moveIconBackward: {
-        '& > span': {
+        '& > .icon': {
           transform: 'translateX(0px)',
           transitionProperty: 'transform',
           transitionDuration: 'natural',
           transitionTimingFunction: 'easeInOut'
         },
         _hover: {
-          '& > span': {
+          '& > .icon': {
             transform: 'translateX(calc(-1 * token(spacing.s)))'
           }
         },
         _active: {
-          '& > span': {
+          '& > .icon': {
             transform: 'translateX(calc(-2 * token(spacing.s)))'
           }
         }
@@ -282,7 +282,7 @@ export const button = cva({
     animation: {
       wobbleIcon: {
         _hover: {
-          '& > span': {
+          '& > .icon': {
             animation: 'wobbling',
             _motionReduce: { animation: 'none' }
           }
@@ -290,7 +290,7 @@ export const button = cva({
       },
       bounceIcon: {
         _hover: {
-          '& > span': {
+          '& > .icon': {
             animation: 'bouncing',
             _motionReduce: { animation: 'none' }
           }
