@@ -8,6 +8,7 @@ import { codeToHast } from 'shiki'
 import { transformerMetaHighlight } from '@shikijs/transformers'
 import { toJsxRuntime } from 'hast-util-to-jsx-runtime'
 import { Fragment, jsx, jsxs } from 'react/jsx-runtime'
+import { cx } from '@/styled-system/css'
 import { isTerminal } from './block-code.helpers'
 import { PreWrapper } from './pre-wrapper'
 import { BlockCodeHeader } from './block-code-header'
@@ -51,7 +52,7 @@ export async function BlockCode(props: BlockCodeProps) {
       ),
       code: ({ children, ...codeProps }: CodeElementProps) => (
         <Code
-          className={isTerminal(language) ? 'terminal' : undefined}
+          className={cx(isTerminal(language) && 'terminal')}
           {...codeProps}
         >
           {children}

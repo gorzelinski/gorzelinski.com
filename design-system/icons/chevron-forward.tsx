@@ -1,20 +1,16 @@
-import type { IconProps } from './icon.types'
-import { styled } from '@/styled-system/jsx'
-import { icon } from './icon.styles'
+import { createIcon } from './icon.helpers'
 
-const ChevronForwardSVG = (props: IconProps) => (
-  <span {...props}>
-    <svg viewBox="0 0 512 512">
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="48"
-        d="M184 112l144 144-144 144"
-      />
-    </svg>
-  </span>
+const ChevronForwardSvg = () => (
+  <svg viewBox="0 0 512 512">
+    <path
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="48"
+      d="M184 112l144 144-144 144"
+    />
+  </svg>
 )
 
-export const ChevronForward = styled(ChevronForwardSVG, icon)
+export const ChevronForward = createIcon(ChevronForwardSvg)

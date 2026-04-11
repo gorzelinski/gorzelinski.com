@@ -1,4 +1,5 @@
 import type { TocElementProps } from './toc-element.types'
+import { cx } from '@/styled-system/css'
 import { ButtonAnchor } from '@/design-system'
 import { tocElement } from './toc-element.styles'
 
@@ -15,7 +16,7 @@ export const TocElement = ({
         size="s"
         padding="0"
         href={`#${heading.id}`}
-        className={activeID === heading.id ? ' active-subtle' : ''}
+        className={cx(activeID === heading.id && 'active-subtle')}
       >
         {heading.textContent}
       </ButtonAnchor>

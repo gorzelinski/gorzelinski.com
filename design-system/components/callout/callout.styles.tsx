@@ -9,7 +9,7 @@ export const callout = cva({
     borderRadius: 'm',
     transitionProperty: 'background-color, border-color, color',
     ...sharedTransitionProperties,
-    '& > span': {
+    '& > .icon': {
       position: 'absolute',
       borderRadius: 'circle',
       backgroundColor: 'gray.900'
@@ -43,13 +43,13 @@ export const callout = cva({
     },
     alignIcon: {
       left: {
-        '& > span:first-child': {
+        '& > .icon:first-child': {
           top: 'calc(-1 * token(spacing.m))',
           left: 'calc(-1 * token(spacing.m))'
         }
       },
       right: {
-        '& > span:first-child': {
+        '& > .icon:first-child': {
           top: 'calc(-1 * token(spacing.m))',
           right: 'calc(-1 * token(spacing.m))'
         }

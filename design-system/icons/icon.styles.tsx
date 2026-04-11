@@ -51,6 +51,26 @@ export const icon = cva({
         height: '0.75lh'
       }
     },
+    inputState: {
+      true: {
+        _peerHover: {
+          color: 'gray.500!'
+        },
+        _peerFocus: {
+          color: 'gray.400!'
+        }
+      }
+    },
+    inputStateValidation: {
+      true: {
+        _peerUserValid: {
+          color: 'success.700!'
+        },
+        _peerUserInvalid: {
+          color: 'danger.700!'
+        }
+      }
+    },
     transition: {
       crossfade: {
         transitionProperty: 'opacity, scale, filter',

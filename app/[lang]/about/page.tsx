@@ -112,13 +112,8 @@ export default async function About(props: PageProps) {
         </VStack>
         <ButtonAnchor
           justifySelf="flex-start"
+          animation="bounceIcon"
           href={page.about.resume.href}
-          _hover={{
-            '& > span': {
-              animation: 'bouncing',
-              _motionReduce: { animation: 'none' }
-            }
-          }}
         >
           {page.about.resume.button}
           <Download />

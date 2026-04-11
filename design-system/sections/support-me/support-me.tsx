@@ -18,12 +18,7 @@ export const SupportMe = ({ lang, dictionary }: SupportMeProps) => {
       </P>
       <ButtonAnchor
         target="_blank"
-        _hover={{
-          '& > span': {
-            animation: 'bouncing',
-            _motionReduce: { animation: 'none' }
-          }
-        }}
+        animation="bounceIcon"
         href={getCoffeeURL(lang)}
       >
         <Cafe verticalAlign="bottom" /> {dictionary.button}
