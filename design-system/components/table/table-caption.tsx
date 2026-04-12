@@ -1,5 +1,5 @@
 import { styled } from '@/styled-system/jsx'
-import { small } from '../small'
+import { small } from '../../elements/small'
 
 export const Caption = styled('caption', small, {
   defaultProps: {

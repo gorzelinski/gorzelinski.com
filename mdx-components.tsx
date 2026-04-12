@@ -32,7 +32,6 @@ import {
   Sub,
   Sup,
   Table,
-  TableWrapper,
   Tbody,
   Td,
   Th,
@@ -143,9 +142,7 @@ const components: MDXComponents = {
   sub: ({ children }) => <Sub>{children}</Sub>,
   sup: ({ children }) => <Sup>{children}</Sup>,
   table: ({ children }) => (
-    <TableWrapper tabIndex={0} css={verticalRhythm.marginBottom.m}>
-      <Table>{children}</Table>
-    </TableWrapper>
+    <Table css={verticalRhythm.marginBottom.m}>{children}</Table>
   ),
   tbody: ({ children }) => <Tbody>{children}</Tbody>,
   td: ({ children }) => <Td>{children}</Td>,

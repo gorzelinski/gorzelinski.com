@@ -29,17 +29,6 @@ export { S } from './strikethrough'
 export { Strong } from './strong'
 export { Sub } from './subscript'
 export { Sup } from './superscript'
-export {
-  TableWrapper,
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  Caption
-} from './table'
 export { Hr } from './thematic-break'
 export { Time } from './time'
 export { Underline } from './underline'
