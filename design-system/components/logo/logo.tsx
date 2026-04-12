@@ -7,6 +7,7 @@ export const Logo = ({ ariaLabel, lang }: LogoProps) => {
   return (
     <ButtonLink
       variant="nav"
+      underline
       align="left"
       href={localizePath(LINKS.home, lang)}
       aria-label={ariaLabel}

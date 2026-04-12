@@ -93,7 +93,7 @@ export const button = cva({
           backgroundColor: 'primary.300'
         },
         _focus: {
-          backgroundColor: 'primary.200'
+          backgroundColor: 'primary.300'
         },
         _focusVisible: {
           outline: 'primary.regular',
@@ -116,7 +116,7 @@ export const button = cva({
           color: 'gray.900'
         },
         _focus: {
-          backgroundColor: 'primary.200',
+          backgroundColor: 'primary.400',
           color: 'gray.900'
         },
         _focusVisible: {
@@ -138,7 +138,7 @@ export const button = cva({
           color: 'primary.300'
         },
         _focus: {
-          color: 'primary.200'
+          color: 'primary.300'
         },
         _focusVisible: {
           outline: 'primary.regular',
@@ -155,13 +155,14 @@ export const button = cva({
         position: 'relative',
         color: 'gray.400',
         _hover: {
-          color: 'gray.200'
+          color: 'gray.100'
         },
         _focus: {
           color: 'gray.100'
         },
         _focusVisible: {
-          outline: 'none'
+          outline: 'gray.regular',
+          outlineOffset: '2xs'
         },
         _active: {
           color: 'gray.50'
@@ -174,26 +175,8 @@ export const button = cva({
           color: 'gray.50',
           '-webkit-text-stroke-width': 'token(spacing.4xs)'
         },
-        '&:is(:hover, :focus, .active):after': {
-          transform: 'scaleX(1)',
-          transformOrigin: 'bottom left'
-        },
         _disabled: {
           color: 'gray.500'
-        },
-        _after: {
-          content: '""',
-          position: 'absolute',
-          left: '0',
-          bottom: '0',
-          width: '100%',
-          height: '2px',
-          backgroundColor: 'gray.50',
-          transform: 'scaleX(0)',
-          transformOrigin: 'bottom right',
-          transitionProperty: 'transform, background-color',
-          transitionDuration: 'natural',
-          transitionTimingFunction: 'easeOut'
         }
       },
       icon: {
@@ -204,8 +187,8 @@ export const button = cva({
           color: 'gray.300'
         },
         _focus: {
-          backgroundColor: 'gray.600',
-          color: 'gray.200'
+          backgroundColor: 'gray.700',
+          color: 'gray.300'
         },
         _focusVisible: {
           outline: 'gray.regular',
@@ -294,6 +277,28 @@ export const button = cva({
             animation: 'bouncing',
             _motionReduce: { animation: 'none' }
           }
+        }
+      }
+    },
+    underline: {
+      true: {
+        '&:is(:hover, :focus-visible, .active):after': {
+          transform: 'scaleX(1)',
+          transformOrigin: 'bottom left'
+        },
+        _after: {
+          content: '""',
+          position: 'absolute',
+          left: '0',
+          bottom: '0',
+          width: '100%',
+          height: '2px',
+          backgroundColor: 'gray.50',
+          transform: 'scaleX(0)',
+          transformOrigin: 'bottom right',
+          transitionProperty: 'transform, background-color',
+          transitionDuration: 'natural',
+          transitionTimingFunction: 'easeOut'
         }
       }
     }

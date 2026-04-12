@@ -6,6 +6,9 @@ export const pre = cva({
     paddingY: {
       base: 's',
       md: 'm'
+    },
+    _focusVisible: {
+      outline: 'none'
     }
   }
 })

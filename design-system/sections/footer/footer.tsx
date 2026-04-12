@@ -51,6 +51,7 @@ export const Footer = ({ lang, dictionary }: FooterProps) => {
             align="left"
             size="s"
             target="_blank"
+            rel="noopener noreferrer"
             href={getCoffeeURL(lang)}
           >
             <Cafe verticalAlign="bottom" /> {links.coffee}

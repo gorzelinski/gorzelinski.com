@@ -1,4 +1,3 @@
-export { TableWrapper } from './table-wrapper'
 export { Table } from './table'
 export { Thead } from './table-head'
 export { Tbody } from './table-body'
