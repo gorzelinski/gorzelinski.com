@@ -37,7 +37,7 @@ export const preWrapper = cva({
     },
     '&:has(:focus-visible)': {
       outline: 'gray.regular',
-      outlineOffset: '2xs'
+      outlineOffset: 's'
     }
   }
 })

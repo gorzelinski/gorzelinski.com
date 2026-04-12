@@ -7,7 +7,7 @@ export const tableWrapper = cva({
     borderRadius: 's',
     _focusVisible: {
       outline: 'gray.regular',
-      outlineOffset: '2xs'
+      outlineOffset: 's'
     }
   }
 })
