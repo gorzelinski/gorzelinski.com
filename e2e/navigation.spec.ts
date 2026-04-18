@@ -60,16 +60,16 @@ test.describe('Navigation tests', () => {
 
     for (const navigationLink of navigationLinks) {
       const name = navigationLink.getName(dictionary)
-      const link = navigationLink.expectActiveClass
+      const targetLink = navigationLink.expectActiveClass
         ? mainNav.getByRole('link', { name })
         : page.getByRole('link', { name })
 
-      await expect(link).toBeVisible()
-      await link.click()
+      await expect(targetLink).toBeVisible()
+      await targetLink.click()
       await expect(page).toHaveURL(navigationLink.getUrl(settingsPage))
 
       if (navigationLink.expectActiveClass) {
-        await expect(link).toHaveClass(/active/)
+        await expect(targetLink).toHaveClass(/active/)
       }
     }
 
