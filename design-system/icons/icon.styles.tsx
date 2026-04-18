@@ -4,7 +4,7 @@ import { sharedTransitionProperties } from '../utils'
 export const icon = cva({
   base: {
     display: 'inline-block',
-    transitionProperty: 'color',
+    transitionProperty: 'color, background-color',
     ...sharedTransitionProperties
   },
   variants: {
