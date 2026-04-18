@@ -4,7 +4,6 @@ import type { Dictionary } from '@/types'
 type NavigationLinkConfig = {
   getName: (dictionary: Dictionary) => string
   getUrl: (settingsPage: SettingsPage) => string
-  useFirstLocator?: boolean
   expectActiveClass?: boolean
 }
 
@@ -29,19 +28,16 @@ test.describe('Navigation tests', () => {
       {
         getName: ({ links }) => links.portfolio,
         getUrl: (settingsPage) => settingsPage.link.portfolio,
-        useFirstLocator: true,
         expectActiveClass: true
       },
       {
         getName: ({ links }) => links.about,
         getUrl: (settingsPage) => settingsPage.link.about,
-        useFirstLocator: true,
         expectActiveClass: true
       },
       {
         getName: ({ links }) => links.blog,
         getUrl: (settingsPage) => settingsPage.link.blog,
-        useFirstLocator: true,
         expectActiveClass: true
       },
       {
@@ -56,20 +52,24 @@ test.describe('Navigation tests', () => {
       }
     ]
 
-    for (const navigationLink of navigationLinks) {
-      const linkLocator = page.getByRole('link', {
-        name: navigationLink.getName(dictionary)
+    const mainNav = page
+      .getByRole('navigation', {
+        name: dictionary.component.mainNavigation.ariaLabel
       })
-      const link = navigationLink.useFirstLocator
-        ? linkLocator.first()
-        : linkLocator
+      .filter({ visible: true })
 
-      await expect(link).toBeVisible()
-      await link.click()
+    for (const navigationLink of navigationLinks) {
+      const name = navigationLink.getName(dictionary)
+      const targetLink = navigationLink.expectActiveClass
+        ? mainNav.getByRole('link', { name })
+        : page.getByRole('link', { name })
+
+      await expect(targetLink).toBeVisible()
+      await targetLink.click()
       await expect(page).toHaveURL(navigationLink.getUrl(settingsPage))
 
       if (navigationLink.expectActiveClass) {
-        await expect(link).toHaveClass(/active/)
+        await expect(targetLink).toHaveClass(/active/)
       }
     }
 
