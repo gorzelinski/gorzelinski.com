@@ -9,25 +9,7 @@ export const globalCss = defineGlobalStyles({
       backgroundColor: 'primary.800',
       color: 'primary.300'
     },
-    '::-webkit-scrollbar': {
-      width: 'scrollbar.width',
-      backgroundColor: 'gray.700',
-      cursor: 'pointer',
-      '&:horizontal': {
-        borderRadius: 'xs',
-        height: 'scrollbar.height'
-      }
-    },
-    '::-webkit-scrollbar-thumb': {
-      backgroundColor: 'gray.600',
-      borderRadius: 'xs',
-      cursor: 'pointer',
-      '&:hover': {
-        backgroundColor: 'gray.500'
-      },
-      '&:active': {
-        backgroundColor: 'gray.400'
-      }
-    }
+    scrollbarWidth: 'thin',
+    scrollbarColor: 'token(colors.gray.600) token(colors.gray.700)'
   }
 })
