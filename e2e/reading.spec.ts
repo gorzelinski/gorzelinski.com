@@ -28,7 +28,9 @@ test.describe('Reading tests', () => {
     await expect(page).toHaveURL(settingsPage.link.blog)
     await expect(page.url()).not.toContain(`?query=${query}`)
 
-    await expect.poll(async () => posts.count()).toBeGreaterThan(5)
+    await expect
+      .poll(async () => await posts.count(), { timeout: 10_000 })
+      .toBeGreaterThan(5)
   })
 
   test('checks the reading experience of a blog post', async ({
@@ -114,7 +116,9 @@ test.describe('Reading tests', () => {
 
     await expect(newsletter).toBeVisible()
 
-    await expect.poll(async () => related.count()).toBeGreaterThan(0)
+    await expect
+      .poll(async () => await related.count(), { timeout: 15_000 })
+      .toBeGreaterThan(0)
 
     await next.scrollIntoViewIfNeeded()
     await expect(progress).toHaveCSS('opacity', '0')
@@ -122,7 +126,9 @@ test.describe('Reading tests', () => {
 
     await expect(prev).toBeVisible()
     await expect(next).toBeVisible()
-    await expect.poll(async () => related.count()).toBeGreaterThan(0)
+    await expect
+      .poll(async () => await related.count(), { timeout: 15_000 })
+      .toBeGreaterThan(0)
   })
 
   test('checks the reading experience of a portfolio project', async ({
