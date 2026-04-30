@@ -17,9 +17,7 @@ test.describe('Reading tests', () => {
 
     await expect(page.url()).not.toContain(query)
 
-    await page.waitForURL(`${settingsPage.link.blog}?query=${query}%3F`)
-
-    await expect(page.url()).toContain(query)
+    await expect(page).toHaveURL(`${settingsPage.link.blog}?query=${query}%3F`)
 
     const posts = page.getByRole('article')
 
@@ -27,11 +25,10 @@ test.describe('Reading tests', () => {
 
     await searchBar.clear()
 
-    await page.waitForURL(settingsPage.link.blog)
-
+    await expect(page).toHaveURL(settingsPage.link.blog)
     await expect(page.url()).not.toContain(`?query=${query}`)
 
-    await expect(await posts.count()).toBeGreaterThan(5)
+    await expect.poll(async () => posts.count()).toBeGreaterThan(5)
   })
 
   test('checks the reading experience of a blog post', async ({
@@ -79,16 +76,14 @@ test.describe('Reading tests', () => {
     if (isMobile) {
       await expect(toc).not.toBeVisible()
       await expect(tocLink).not.toBeVisible()
-    }
-
-    if (!isMobile) {
+    } else {
       await expect(toc).toBeVisible()
       await expect(tocLink).toBeVisible()
 
       await tocLink.click()
 
       await expect(tocLink).toHaveCSS('-webkit-text-stroke-width', '0.25px')
-      await expect(page.url()).toContain('#computer-science')
+      await expect(page).toHaveURL(/#computer-science/)
     }
 
     await expect(externalLink).toHaveAttribute(
@@ -119,7 +114,7 @@ test.describe('Reading tests', () => {
 
     await expect(newsletter).toBeVisible()
 
-    await expect(await related.count()).toBeGreaterThan(0)
+    await expect.poll(async () => related.count()).toBeGreaterThan(0)
 
     await next.scrollIntoViewIfNeeded()
     await expect(progress).toHaveCSS('opacity', '0')
@@ -127,7 +122,7 @@ test.describe('Reading tests', () => {
 
     await expect(prev).toBeVisible()
     await expect(next).toBeVisible()
-    await expect(await related.count()).toBeGreaterThan(0)
+    await expect.poll(async () => related.count()).toBeGreaterThan(0)
   })
 
   test('checks the reading experience of a portfolio project', async ({
