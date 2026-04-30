@@ -4,10 +4,19 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+
+env:
+  # Keep in sync with matrix.shard below (number of parallel CI jobs).
+  PW_SHARD_TOTAL: 3
+
 jobs:
   e2e-test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -18,10 +27,10 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --shard=${{ matrix.shard }}/${{ env.PW_SHARD_TOTAL }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-report
+          name: playwright-report-${{ matrix.shard }}
           path: playwright-report/
           retention-days: 30

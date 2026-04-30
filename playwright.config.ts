@@ -6,8 +6,11 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  reporter: [
+    ['list'],
+    ['html', { open: process.env.CI ? 'never' : 'on-failure' }],
+    ...(process.env.GITHUB_ACTIONS ? ([['github', {}]] as const) : [])
+  ],
   use: {
     baseURL: getAbsoluteURL('/'),
     trace: 'on-first-retry',
