@@ -90,7 +90,7 @@ test.describe('Navigation tests', () => {
     })
     await expect(contact).toBeVisible()
     await contact.click()
-    await page.waitForURL(link.contact)
+    await expect(page).toHaveURL(link.contact)
 
     const email = page.getByRole('link', {
       name: link.email
