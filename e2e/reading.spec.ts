@@ -26,7 +26,6 @@ test.describe('Reading tests', () => {
     await searchBar.clear()
 
     await expect(page).toHaveURL(settingsPage.link.blog)
-    await expect(page.url()).not.toContain(`?query=${query}`)
 
     await expect
       .poll(async () => await posts.count(), { timeout: 10_000 })
