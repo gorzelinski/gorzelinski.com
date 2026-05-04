@@ -10,7 +10,7 @@ export const test = base.extend<Page>({
   settingsPage: async ({ page }, use) => {
     await use(new SettingsPage(page))
   },
-  isMobile: async ({ page: _page }, use, testInfo) => {
+  isMobile: async ({}, use, testInfo) => {
     await use(/Mobile/i.test(testInfo.project.name))
   }
 })
