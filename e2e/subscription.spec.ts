@@ -49,8 +49,12 @@ test.describe('Subscription tests', () => {
     )
     await page.goto(settingsPage.link.home)
 
-    const input = page.getByPlaceholder(section.newsletter.email)
+    const input = page.getByLabel(section.newsletter.email)
     const button = page.getByRole('button', { name: section.newsletter.button })
+
+    await expect(input).toHaveAttribute('required')
+    await expect(input).toHaveAttribute('type', 'email')
+    await expect(input).toHaveAttribute('autocomplete', 'off')
 
     await input.fill(settingsPage.example.email)
     await button.scrollIntoViewIfNeeded()
@@ -75,9 +79,13 @@ test.describe('Subscription tests', () => {
     await page.route(formURL, (route) => route.abort('failed'))
     await page.goto(settingsPage.link.home)
 
-    const input = page.getByPlaceholder(section.newsletter.email)
+    const input = page.getByLabel(section.newsletter.email)
     const button = page.getByRole('button', { name: section.newsletter.button })
     const heading = page.getByText(section.newsletter.error.heading)
+
+    await expect(input).toHaveAttribute('required')
+    await expect(input).toHaveAttribute('type', 'email')
+    await expect(input).toHaveAttribute('autocomplete', 'off')
 
     await input.fill(settingsPage.example.email)
     await button.scrollIntoViewIfNeeded()

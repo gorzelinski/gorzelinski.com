@@ -131,7 +131,7 @@ test.describe('I18n tests', () => {
 
       await expect(page).not.toHaveURL(/en/g)
       await settingsPage.checkI18nTags('en')
-      await expect(await page.title()).toBe(
+      await expect(page).toHaveTitle(
         await i18nPage.getTitle(en, settingsPage, 'en')
       )
       await expect(settingsPage.heading).toHaveText(
@@ -142,7 +142,7 @@ test.describe('I18n tests', () => {
 
       await expect(page).toHaveURL(/pl/g)
       await settingsPage.checkI18nTags('pl')
-      await expect(await page.title()).toBe(
+      await expect(page).toHaveTitle(
         await i18nPage.getTitle(pl, settingsPage, 'pl')
       )
       await expect(settingsPage.heading).toHaveText(
