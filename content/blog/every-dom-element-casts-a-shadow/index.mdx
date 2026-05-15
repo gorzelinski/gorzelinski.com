@@ -100,7 +100,7 @@ CSS custom properties pierce the boundary by design, making them the recommended
 | What?                                                     | Crosses? | Notes                                                                        |
 | --------------------------------------------------------- | -------- | ---------------------------------------------------------------------------- |
 | Global selectors (`div`, `.class`, `#id`)                 | No       | These selectors don't reach into or out of shadow trees.                     |
-| Non-inheritable properties (`background`, `border`, etc.) | No       | They are inherited neither in the shadow nor in the light DOM.               |
+| Non-inheritable properties (`background`, `border`, etc.) | No       | Standard CSS behavior—these properties don't inherit in any DOM.             |
 | Inherited properties (`color`, `font-family`, etc.)       | Yes      | Top-level shadow tree elements inherit from the host.                        |
 | CSS variables (`--my-var`)                                | Yes      | Intentionally cross the boundary. Recommended theming mechanism.             |
 | `::part()`                                                | Depends  | Only if the component author explicitly exposes elements with `part="name"`. |
@@ -116,13 +116,13 @@ Deprecated combinators like `/deep/` and `::shadow` have been removed from all b
 
 Standard DOM queries like `document.querySelector()` can't reach into shadow roots—the boundary scopes them out entirely. To access shadow DOM internals, you need to go through `element.shadowRoot.querySelector()`, and even that only works for open shadow roots. IDs are scoped to their shadow root too, meaning you can safely reuse the same ID across multiple components without collisions. The one exception to this encapsulation is `<slot>`—it projects light DOM children into the shadow tree for rendering purposes, though technically those elements still live in the light DOM. If that sounds complicated, don't worry—we'll learn more about slots in the following section.
 
-| What?                                | Crosses? | Notes                                                                             |
-| ------------------------------------ | -------- | --------------------------------------------------------------------------------- |
-| ID scoping                           | No       | IDs inside the shadow DOM are scoped to that root.                                |
-| `document.querySelector()`           | No       | It cannot find elements inside shadow roots.                                      |
-| `element.shadowRoot`                 | Depends  | Returns `ShadowRoot` in `open` mode, and `null` in `closed` mode.                 |
-| `element.shadowRoot.querySelector()` | Depends  | It works only for `mode: "open"` shadow roots.                                    |
-| `<slot>` content projection          | Yes      | Light DOM children are rendered into the shadow tree but remain in the light DOM. |
+| What?                        | Crosses? | Notes                                                                             |
+| ---------------------------- | -------- | --------------------------------------------------------------------------------- |
+| ID scoping                   | No       | IDs inside the shadow DOM are scoped to that root.                                |
+| `document.querySelector()`   | No       | It cannot find elements inside shadow roots.                                      |
+| `element.shadowRoot`         | Depends  | Returns `ShadowRoot` in `open` mode, and `null` in `closed` mode.                 |
+| `shadowRoot.querySelector()` | Depends  | It works only for `mode: "open"` shadow roots.                                    |
+| `<slot>` content projection  | Yes      | Light DOM children are rendered into the shadow tree but remain in the light DOM. |
 
 ### Events and shadow boundary
 
