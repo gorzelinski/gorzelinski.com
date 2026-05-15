@@ -68,7 +68,7 @@ const shadow = host.attachShadow({ mode: 'open' })
 shadow.innerHTML = `<p>Hello from the shadows</p>`
 ```
 
-Możesz wywołać metodę `attachShadow()` na dowolnym, obsługiwanym elemencie i posłać jej opcje w formie obiektu. W przykładzie powyżej dołączyliśmy paragraf do elementu `my-element`. Metoda zwraca `ShadowRoot` — specjalny fragment dokumentu (`DocumentFragment`), który zachowuje się jak korzeń dla cienistego drzewa. Jak widzisz, możesz wypełniać to drzewo podobnie do standardowego DOM-u, używając właściwości i metod, takich jak `innerHTML` lub `appendChild()`. Po dołączeniu, cieniste drzewo zastępuje dzieci hosta podczas renderowania (chyba że wykorzystasz sloty, aby je przywrócić).
+Możesz wywołać metodę `attachShadow()` na dowolnym, obsługiwanym elemencie i posłać jej opcje w formie obiektu. W przykładzie powyżej dołączyliśmy paragraf do elementu `my-element`. Metoda zwraca `ShadowRoot` — specjalny fragment dokumentu (`DocumentFragment`), który zachowuje się jak korzeń dla cienistego drzewa. Jak widzisz, możesz wypełniać to drzewo podobnie do standardowego DOM-u, używając właściwości i metod, takich jak `innerHTML` lub `appendChild()`. Po dołączeniu, cieniste drzewo zastępuje dzieci hosta podczas renderowania (chyba że wykorzystasz [sloty](#projekcja-tresci-ze-slotami), aby je przywrócić).
 
 ## Tryby shadow DOM
 
@@ -90,7 +90,7 @@ Poza ustawianiem trybu możesz kontrolować także inne zachowania cienistego ko
 - `delegatesFocus`: Opcja ta pozwala kontrolować zachowanie focusa dla twoich komponentów. Przy ustawieniu `true`, kliknięcie gdziekolwiek na hosta lub używanie JavaScriptu do ustawienia na niego focusa, automatycznie ustawia focus na pierwszy dostępny element wewnątrz cienistego DOM-u.
 - `slotAssignment`: Kontroluje w jaki sposób dzieci z jasnego DOM-u są przypisywane do elementów `<slot>`. Domyślny tryb `"named"` automatycznie dopasowuje dzieci do slotów bazując na ich atrybutach `slot="name"`. Tryb `"manual"` wyłącza to auto dopasowanie — zamiast tego, manualnie dopasowujesz elementy wykorzystując `slot.assign(element)`. Daje ci to kontrolę w rozmieszczaniu treści.
 - `clonable`: Gdy ustawione na `true`, klonowanie elementu hosta (poprzez `cloneNode()` lub `importNode()`) zawiera także shadow root. Domyślnie ustawione na `false` - standardowo klonowanie hosta tworzy kopię bez zawartości cienistego drzewa.
-- `serializable`: Gdy ustawiona na `true`, shadow root może być serializowany do HTML-u wykorzystując `element.getHTML({ serializableShadowRoots: true })`. Łączy to światy deklaratywny i imperatywny — możesz stworzyć cienisty korzeń w JS-ie, a później wyeksportować go jako HTML zawierający `<template shadowrootmode>`.
+- `serializable`: Gdy ustawione na `true`, shadow root może być serializowany do HTML-u wykorzystując `element.getHTML({ serializableShadowRoots: true })`. Łączy to światy deklaratywny i imperatywny — możesz stworzyć cienisty korzeń w JS-ie, a później wyeksportować go jako HTML zawierający `<template shadowrootmode>`.
 
 ## Shadow boundary
 
@@ -102,7 +102,7 @@ Enkapsulacja nie oznacza, że wszystko jest odizolowane. Niektóre rzeczy intenc
 
 ### CSS i shadow boundary
 
-Globalne selektory CSS nie przekraczają granicy w żadnym kierunku — twoja strona nie afektuje wnętrza shadow DOM-u, a style z wewnątrz nie wyciekają. Jest to duża zaleta używania cienistego DOM-u. Niedziedziczne właściwości CSS nie przekraczają granicy, podobnie jak nie są dziedziczone w jasnym DOM-ie. Jednakże dziedziczne właściwości CSS, jak `color` czy `font-family` przepływają naturalnie, bo cieniste elementy najwyższego poziomu dziedziczą po hoście.
+Globalne selektory CSS nie przekraczają granicy w żadnym kierunku — twoja strona nie wpływa na wnętrze shadow DOM-u, a style z wewnątrz nie wyciekają. Jest to duża zaleta używania cienistego DOM-u. Niedziedziczne właściwości CSS nie przekraczają granicy, podobnie jak nie są dziedziczone w jasnym DOM-ie. Jednakże dziedziczne właściwości CSS, jak `color` czy `font-family` przepływają naturalnie, bo cieniste elementy najwyższego poziomu dziedziczą po hoście.
 
 Zmienne CSS przebijają granicę zgodnie z założeniami, będąc rekomendowanym sposobem na stylowanie komponentów internetowych. Dodatkowo pseudoelementy `::part()` i `::slotted()` zachowują się jak kontrolowane włazy ewakuacyjne, pozwalając autorowi zdecydować, które wewnętrzne elementy mogą być stylowane od zewnątrz.
 
@@ -142,15 +142,15 @@ Większość wbudowanych zdarzeń przekracza granicę (z wyjątkami dla zdarzeń
 | `load`, `unload`, `abort`, `error`, `select`               | Nie         | Nieskomponowane.                                  |
 | `mouseenter`, `mouseleave`, `pointerenter`, `pointerleave` | Nie         | Nieskomponowane i niebąbelkujące.                 |
 | `slotchange`                                               | Nie         | Bąbelkujące, ale nieskomponowane.                 |
-| Most UI events (`click`, `keydown`, `input`, etc.)         | Tak         | Skomponowane domyślnie—bąbelkują przez granicę.   |
-| Custom events (`new CustomEvent(...)`)                     | Zależy      | Tylko jeżeli `{ composed: true, bubbles: true }`. |
+| Większość zdarzeń UI (`click`, `keydown`, `input`, etc.)   | Tak         | Skomponowane domyślnie—bąbelkują przez granicę.   |
+| Niestandardowe zdarzenia (`new CustomEvent(...)`)          | Zależy      | Tylko jeżeli `{ composed: true, bubbles: true }`. |
 
 Nawet jeżeli zdarzenie przekroczy granicę, `event.target` jest zmieniony na element hosta, aby kapsułkować detale implementacyjne. Metoda `event.composedPath()` zwraca wszystkie węzły (ang. _nodes_), przez które zdarzenie propaguje, chyba że tryb shadow roota ustawiony jest na `closed` - wtedy pomija wnętrze tego cienistego drzewa.
 
 | Co?                          | Przekracza? | Notatki                                                                       |
 | ---------------------------- | ----------- | ----------------------------------------------------------------------------- |
 | `event.target` (retargeting) | Tak         | Kiedy zdarzenie przekracza granicę, `target` jest zmieniony na element hosta. |
-| `event.composedPath()`       | Zależy      | Zwraca całą ścieżkę włączając shadow boundary (w trybie otwartym)             |
+| `event.composedPath()`       | Zależy      | Zwraca całą ścieżkę włączając shadow boundary (w trybie otwartym).            |
 
 ### ARIA i shadow boundary
 
@@ -287,7 +287,7 @@ Sloty nie muszą być statyczne — istnieje API umożliwiające interakcje z ni
 - `slot.name`: Nazwa slotu dla nazwanych slotów. Pusty łańcuch znaków w przypadku domyślnych slotów.
 - `slot.assignedNodes({ flatten: false })`: Zwraca wszystkie węzły jasnego DOM-u przypisane do danego slota. Z opcją `{ flatten: true }`, zwraca także zagnieżdżone sloty i treści zapasowe, gdy nic nie jest przypisane. Domyślnie opcja `flatten` ma wartość `false`.
 - `slot.assignedElements({ flatten: false })`: Działa jak ta powyższa metoda, ale ogranicza się do węzłów typu element (bez typów tekstowych). Opcja `flatten` działa tak samo.
-- `element.assignedSlot`: Odwrotność — właściwość ta zwraca, do którego slotu przypisany jest dany element jasnego DOM-u.
+- `element.assignedSlot`: Odwrotność — właściwość ta zwraca, do którego slotu przypisany jest dany element jasnego DOM-u. Zwraca `null` jeżeli element nie jest przypisany do slota lub shadow root jest zamknięty.
 - `slot.assign(node1, node2, ...)`: Manualnie przypisuje węzły do slota. Shadow root musi być stworzony z opcją `slotAssignment: "manual"`, aby ta metoda zadziałała. Wyrzuca błąd jeżeli jest wywołana na automatycznym slocie.
 - `slotchange` (zdarzenie): `<slot>` wywołuje to zdarzenie, kiedy przypisane węzły się zmieniają (zostają dodane, usunięte, przydzielone gdzie indziej). _Nie_ zostaje wywołane, gdy treści _wewnątrz_ przypisanego węzła się zmieniają.
 
@@ -339,7 +339,7 @@ Forma funkcjonalna pozwala ci stylować hosta warunkowo, bazując na atrybutach,
 }
 ```
 
-Inna pseudo klasa, `:host-context()`, pozwala aplikować style na podstawie tego, co jest w jasnym DOM-ie powyżej. W poniższym przykładzie ciemny kolor tła jest zaaplikowany tylko wtedy, gdy którykolwiek z potomków ma klasę ciemnego motywu.
+Inna pseudo klasa, `:host-context()`, pozwala aplikować style na podstawie tego, co jest w jasnym DOM-ie powyżej. W poniższym przykładzie ciemny kolor tła jest zaaplikowany tylko wtedy, gdy którykolwiek z przodków ma klasę ciemnego motywu.
 
 ```css
 :host-context(.dark-theme) {
@@ -422,7 +422,7 @@ Pseudo element `::part()` ma podobne ograniczenia co `::slotted()`. Przykładowo
 
 </Callout>
 
-Składnia `::part()` działa tylko do głębokości jednego poziomu. Aby stylować wewnętrzne komponenty tych zewnętrznych, skorzystaj z atrybutu `exportparts`. Celowo przekazuje on konkretne, wewnętrzne części, aby były dostępne z zewnątrz. `exportparts` działa podobnie do przekazywania propsów w React'cie.
+Składnia `::part()` działa tylko do głębokości jednego poziomu. Aby stylować wewnętrzne komponenty tych zewnętrznych, skorzystaj z atrybutu `exportparts`. Celowo przekazuje on konkretne, wewnętrzne części, aby były dostępne z zewnątrz. `exportparts` działa podobnie do przekazywania propsów w React.
 
 ```html
 <!-- Shadow tree inner-card -->
