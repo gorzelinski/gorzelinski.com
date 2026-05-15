@@ -34,7 +34,7 @@ Shadow DOM jest drugim filarem komponentów internetowych. Aby zobaczyć pierwsz
 Cienisty DOM (ang. _shadow DOM_) jest mechanizmem enkapsulacji, który możesz dobrowolnie włączyć. Możesz o nim myśleć, jak o prywatnym drzewie DOM, gdzie jego wnętrze jest ukryte przed językiem JavaScript lub CSS na stronie. Shadow DOM może mieć dwa źródła:
 
 1. **Shadow DOM stworzony przez użytkownika.** Wyraźnie wtedy dołączasz korzeń (ang. _shadow root_) do elementu, wykorzystując odpowiednie API.
-2. **Shadow DOM stworzony przez przeglądarkę.** Niektóre wbudowane elementy, jak `<input>` lub `<select>` wewnętrznie używają cienistego DOM-u, stworzonego przez przeglądarkę.
+2. **Shadow DOM stworzony przez przeglądarkę.** Niektóre wbudowane elementy, jak `<input>` lub `<select>`, wewnętrznie używają cienistego DOM-u, stworzonego przez przeglądarkę.
 
 ## Które elementy rzucają shadow DOM?
 
@@ -50,7 +50,7 @@ Dlaczego mielibyśmy go używać poza fajną nazwą? Shadow DOM dostarcza kilka 
 - **Enkapsulacja DOM-u.** Cieniste drzewo jest odizolowane od głównego dokumentu. Nie można dostać się do jego wewnętrznych elementów standardowymi metodami, takimi jak `document.querySelector()`. Możemy nawet zablokować bezpośredni dostęp do cienistego korzenia, wykorzystując tryb zamknięty, `closed`.
 - **Enkapsulacja styli.** Style CSS są wyraźnie rozdzielone pomiędzy takim komponentem i stroną. Może to zapobiec przypadkowym wyciekom.
 - **Slots.** Cieniste drzewo wspiera symbole zastępcze nazwane „slotami”, gdzie treści jasnego DOM-u mogą zostać wyświetlone.
-- **Zmiana celu zdarzeń** (ang. _event retargetting_). Zdarzenia z shadow roota są dostępne od zewnątrz, ale ze zmienionym celem. Oznacza to, że kiedy zdarzenia wypływają z tego korzenia, ich cel jest zmieniony na element hosta, ukrywając wewnętrzny element, który autentycznie je wywołał.
+- **Zmiana celu zdarzeń** (ang. _event retargeting_). Zdarzenia z shadow roota są dostępne od zewnątrz, ale ze zmienionym celem. Oznacza to, że kiedy zdarzenia wypływają z tego korzenia, ich cel jest zmieniony na element hosta, ukrywając wewnętrzny element, który autentycznie je wywołał.
 
 ## Dwie składnie shadow DOM-u
 
@@ -87,7 +87,7 @@ Blokowanie zapytań JS nie oznacza, że tryb `closed` jest całkowicie bezpieczn
 
 Poza ustawianiem trybu możesz kontrolować także inne zachowania cienistego korzenia, wykorzystując dodatkowe opcje:
 
-- `delegateFocus`: Opcja ta pozwala kontrolować zachowanie focusa dla twoich komponentów. Przy ustawieniu `true`, kliknięcie gdziekolwiek na hosta lub używanie JavaScriptu do ustawienia na niego focusa, automatycznie ustawia focus na pierwszy dostępny element wewnątrz cienistego DOM-u.
+- `delegatesFocus`: Opcja ta pozwala kontrolować zachowanie focusa dla twoich komponentów. Przy ustawieniu `true`, kliknięcie gdziekolwiek na hosta lub używanie JavaScriptu do ustawienia na niego focusa, automatycznie ustawia focus na pierwszy dostępny element wewnątrz cienistego DOM-u.
 - `slotAssignment`: Kontroluje w jaki sposób dzieci z jasnego DOM-u są przypisywane do elementów `<slot>`. Domyślny tryb `"named"` automatycznie dopasowuje dzieci do slotów bazując na ich atrybutach `slot="name"`. Tryb `"manual"` wyłącza to auto dopasowanie — zamiast tego, manualnie dopasowujesz elementy wykorzystując `slot.assign(element)`. Daje ci to kontrolę w rozmieszczaniu treści.
 - `clonable`: Gdy ustawione na `true`, klonowanie elementu hosta (poprzez `cloneNode()` lub `importNode()`) zawiera także shadow root. Domyślnie ustawione na `false` - standardowo klonowanie hosta tworzy kopię bez zawartości cienistego drzewa.
 - `serializable`: Gdy ustawiona na `true`, shadow root może być serializowany do HTML-u wykorzystując `element.getHTML({ serializableShadowRoots: true })`. Łączy to światy deklaratywny i imperatywny — możesz stworzyć cienisty korzeń w JS-ie, a później wyeksportować go jako HTML zawierający `<template shadowrootmode>`.
@@ -123,7 +123,7 @@ Przestarzałe kombinatory, jak `/deep/` czy `::shadow`, zostały usunięte ze ws
 
 ### DOM i shadow boundary
 
-Standardowe zapytania DOM-owe jak `document.querySelector()` nie wnikają do shadow roota — granica wycina je całkowicie. Aby dostać się do jego wnętrza, potrzebujesz przejść przez `element.shadowRoot.querySelector()`, a i wtedy działa to tylko dla otwartego korzenia. ID mają także zakres roota, co oznacza, że bezpiecznie możesz używać tego samego ID w wielu komponentach bez kolizji. Jedynym wyjątkiem dla tej enkapsulacji jest `<slot>` — rzutuje on dzieci jasnego DOM-u w cienistym drzewie DOM z powodu renderowania, pomimo że techniczne te elementy nadal żyją w jasnym DOM-ie. Jeżeli brzmi to skomplikowanie, nie martw się — rozwiniemy temat slotów w następnej sekcji.
+Standardowe zapytania DOM-owe jak `document.querySelector()` nie wnikają do shadow roota — granica wycina je całkowicie. Aby dostać się do jego wnętrza, potrzebujesz przejść przez `element.shadowRoot.querySelector()`, a i wtedy działa to tylko dla otwartego korzenia. ID mają także zakres roota, co oznacza, że bezpiecznie możesz używać tego samego ID w wielu komponentach bez kolizji. Jedynym wyjątkiem dla tej enkapsulacji jest `<slot>` — rzutuje on dzieci jasnego DOM-u w cienistym drzewie DOM z powodu renderowania, pomimo że technicznie te elementy nadal żyją w jasnym DOM-ie. Jeżeli brzmi to skomplikowanie, nie martw się — rozwiniemy temat slotów w następnej sekcji.
 
 | Co?                                  | Przekracza? | Notatki                                                                          |
 | ------------------------------------ | ----------- | -------------------------------------------------------------------------------- |
@@ -135,7 +135,7 @@ Standardowe zapytania DOM-owe jak `document.querySelector()` nie wnikają do sha
 
 ### Zdarzenia i shadow boundary
 
-Większość wbudowanych zdarzeń przekracza granicę (z wyjątkami dla zdarzeń, które nie są skomponowane i nie bąbelkują). Niestandardowe zdarzenia w domyśle nie przekraczają granicy, ale możesz je zmodyfikować, żeby przekraczały. Gdy ustawisz opcję `composed` na `true`, zdarzenia propagują przez shadow boundry. Opcja `bubles: true` włącza propagację w hierarchii DOM dla obu typów.
+Większość wbudowanych zdarzeń przekracza granicę (z wyjątkami dla zdarzeń, które nie są skomponowane i nie bąbelkują). Niestandardowe zdarzenia w domyśle nie przekraczają granicy, ale możesz je zmodyfikować, żeby przekraczały. Gdy ustawisz opcję `composed` na `true`, zdarzenia propagują przez shadow boundary. Opcja `bubbles: true` włącza propagację w hierarchii DOM dla obu typów.
 
 | Co?                                                        | Przekracza? | Notatki                                           |
 | ---------------------------------------------------------- | ----------- | ------------------------------------------------- |
@@ -181,7 +181,7 @@ Elementy wsunięte w ten sposób, pozostają nadal w jasnym DOM-ie — nie są w
 
 ## Typy slotów
 
-Jeżeli szukasz analogi, to sloty są podobne do `props.children` w świecie Reacta. Ponadto system slotów Vue był zainspirowany przez specyfikację slotów cienistego DOM-u. I podobnie, mamy tu dwa typy slotów:
+Jeżeli szukasz analogii, to sloty są podobne do `props.children` w świecie Reacta. Ponadto system slotów Vue był zainspirowany przez specyfikację slotów cienistego DOM-u. I podobnie, mamy tu dwa typy slotów:
 
 1. Domyślne
 2. Nazwane
@@ -288,7 +288,7 @@ Sloty nie muszą być statyczne — istnieje API umożliwiające interakcje z ni
 - `slot.assignedNodes({ flatten: false })`: Zwraca wszystkie węzły jasnego DOM-u przypisane do danego slota. Z opcją `{ flatten: true }`, zwraca także zagnieżdżone sloty i treści zapasowe, gdy nic nie jest przypisane. Domyślnie opcja `flatten` ma wartość `false`.
 - `slot.assignedElements({ flatten: false })`: Działa jak ta powyższa metoda, ale ogranicza się do węzłów typu element (bez typów tekstowych). Opcja `flatten` działa tak samo.
 - `element.assignedSlot`: Odwrotność — właściwość ta zwraca, do którego slotu przypisany jest dany element jasnego DOM-u.
-- `slot.assign(node1, node2, ...)`: Manualnie przypisuje węzły do slota. Shadow root musi być stworzony z opcją `slotAssignment: "manual"`, aby ta metoda zadziałała. Wyrzuca błąd jeżeli jest wywoałana na automatycznym slocie.
+- `slot.assign(node1, node2, ...)`: Manualnie przypisuje węzły do slota. Shadow root musi być stworzony z opcją `slotAssignment: "manual"`, aby ta metoda zadziałała. Wyrzuca błąd jeżeli jest wywołana na automatycznym slocie.
 - `slotchange` (zdarzenie): `<slot>` wywołuje to zdarzenie, kiedy przypisane węzły się zmieniają (zostają dodane, usunięte, przydzielone gdzie indziej). _Nie_ zostaje wywołane, gdy treści _wewnątrz_ przypisanego węzła się zmieniają.
 
 ```js
@@ -309,7 +309,7 @@ Zdarzenie `slotchange` może zostać wywołane, podczas fazy parsowania HTML-a, 
 Podczas stylowania cienistych komponentów, musisz pamiętać o dwóch perspektywach.
 
 1. **Stylowanie od wewnątrz:** Jak ty jako autor stylujesz komponenty.
-2. **Stylowanie od wewnątrz:** Jak dostarczasz API do konsumentów, aby mogli dostosować wygląd.
+2. **Stylowanie od zewnątrz:** Jak dostarczasz API do konsumentów, aby mogli dostosować wygląd.
 
 ### Stylowanie od wewnątrz
 
