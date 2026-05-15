@@ -25,7 +25,7 @@ Shadow DOM is a second pillar of web components. To see the first, check my prio
 **Shadow DOM** is an opt-in encapsulation mechanism. Think of it as a way to create a private DOM tree where internals are hidden from JavaScript or CSS on the page. Shadow DOM can have two sources:
 
 1. **User-created shadow DOM.** You explicitly attach a shadow root to an element using the Shadow DOM API.
-2. **Browser-internal shadow DOM.** Some built-in elements, like `<input>` or `<select>` use an internal shadow DOM created by a browser.
+2. **Browser-internal shadow DOM.** Some built-in elements, like `<input>` or `<select>`, use an internal shadow DOM created by a browser.
 
 ## What elements cast a shadow DOM?
 
@@ -306,7 +306,7 @@ While styling shadow DOM components, you need to have two perspectives in mind.
 
 The author creates web components. As the author, you know the component's internals and control what's exposed to the outside. Your components should expose styling APIs and define what can be changed (and what can't). The below tools reflect this abstraction in their design.
 
-The `:host` pseudo-class allows you to style custom element (shadow host).
+The `:host` pseudo-class allows you to style a custom element (shadow host).
 
 ```css
 :host {
@@ -381,7 +381,7 @@ my-card {
 }
 ```
 
-The component author can mark internal elements with the `part="name"` attribute. While the consumer can target them with the `::part()` pseudo-element. You can style exposed component internals using this syntax.
+The component author can mark internal elements with the `part="name"` attribute, while the consumer can target them with the `::part()` pseudo-element. You can style exposed component internals using this syntax.
 
 ```html
 <!-- Inside shadow tree -->
@@ -457,7 +457,7 @@ outer-card::part(inner-header) {
 
 ## Main ways to style web components
 
-There are two main ways to style web components (there are many twos in this post, shesh).
+There are two main ways to style web components (there are many twos in this post, sheesh).
 
 1. Style elements.
 2. Constructed stylesheets.
