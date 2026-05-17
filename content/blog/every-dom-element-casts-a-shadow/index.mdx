@@ -18,7 +18,7 @@ Actually, not “every element”—allow me to explain. Websites consist of HTM
 
 <Callout variant="info">
 
-Shadow DOM is a second pillar of web components. To see the first, check my prior post—[Intro to web components—what are custom elements?](/blog/intro-to-web-components-what-are-custom-elements/)
+Shadow DOM is the second pillar of web components. To see the first, check my prior post—[Intro to web components—what are custom elements?](/blog/intro-to-web-components-what-are-custom-elements/)
 
 </Callout>
 
@@ -36,7 +36,7 @@ Not “every,” but many of the HTML elements can host shadow DOM. We can disti
 
 ## What does shadow DOM provide?
 
-Why could we use it besides the cool name? Shadow DOM provides some key features for web components:
+Why would we use it, besides the cool name? Shadow DOM provides some key features for web components:
 
 - **DOM encapsulation.** The shadow tree is isolated from the main document. Elements inside cannot be accessed via standard DOM traversal methods like `document.querySelector()`. We can even block direct JavaScript access to the shadow root using the `closed` mode.
 - **Encapsulation of styles.** CSS styles are clearly separated between such a component and page. It can prevent accidental style leaking.
@@ -48,7 +48,7 @@ Why could we use it besides the cool name? Shadow DOM provides some key features
 Currently, there are two ways to create a shadow DOM.
 
 1. **Imperatively** in JavaScript by calling the `attachShadow()` method.
-2. **Declaratively** in the HTML markup. The new API addition to the web platform.
+2. **Declaratively** in the HTML markup. This is a newer addition to the web platform.
 
 I don't like making cliffhangers like in corny docusoaps, but I have planned the next post, where I describe the declarative approach in more detail. Here, I'll expand on the original method.
 
