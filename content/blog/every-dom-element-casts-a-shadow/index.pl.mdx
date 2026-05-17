@@ -127,7 +127,7 @@ Standardowe zapytania DOM-owe jak `document.querySelector()` nie wnikają do sha
 
 | Co?                          | Przekracza? | Notatki                                                                          |
 | ---------------------------- | ----------- | -------------------------------------------------------------------------------- |
-| ID scoping                   | Nie         | ID wewnątrz shadow roota mają tylko jego zakres.                                 |
+| Zasięg ID                    | Nie         | ID wewnątrz shadow roota mają tylko jego zakres.                                 |
 | `document.querySelector()`   | Nie         | Nie znajduje elementów wewnątrz shadow roota.                                    |
 | `element.shadowRoot`         | Zależy      | Zwraca `ShadowRoot` w trybie otwartym, a `null` w zamkniętym.                    |
 | `shadowRoot.querySelector()` | Zależy      | Działa tylko dla shadow roota z `mode: "open"`.                                  |
