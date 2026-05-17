@@ -79,7 +79,7 @@ Jedynym, wymaganym ustawieniem jest tryb, `mode`. Mamy tu dwie opcje:
 
 <Callout variant="warning">
 
-Blokowanie zapytań JS nie oznacza, że tryb `closed` jest całkowicie bezpieczny. Komponenty shadow DOM nadal dzielą ten sam kontekst wykonywania (ang. _execution context_). Jeżeli potrzebujesz bezpiecznej granicy dla jakiegoś zewnętrznego skryptu, użyj `<iframe>`. Shadow DOM umożliwia enkapsulację — nie jest to środek bezpieczeństwa.
+Blokowanie zapytań JS nie oznacza, że tryb `closed` jest całkowicie bezpieczny. Komponenty shadow DOM nadal dzielą ten sam kontekst wykonywania (ang. _execution context_). Jeżeli potrzebujesz bezpiecznej granicy dla zewnętrznego, niezaufanego skryptu, użyj `<iframe>`. Shadow DOM umożliwia enkapsulację — nie jest to środek bezpieczeństwa.
 
 </Callout>
 
