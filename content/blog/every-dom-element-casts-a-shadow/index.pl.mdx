@@ -88,8 +88,8 @@ Blokowanie zapytań JS nie oznacza, że tryb `closed` jest całkowicie bezpieczn
 Poza ustawianiem trybu możesz kontrolować także inne zachowania cienistego korzenia, wykorzystując dodatkowe opcje:
 
 - `delegatesFocus`: Opcja ta pozwala kontrolować zachowanie focusa dla twoich komponentów. Przy ustawieniu `true`, kliknięcie gdziekolwiek na hosta lub używanie JavaScriptu do ustawienia na niego focusa, automatycznie ustawia focus na pierwszy dostępny element wewnątrz cienistego DOM-u.
-- `slotAssignment`: Kontroluje w jaki sposób dzieci z jasnego DOM-u są przypisywane do elementów `<slot>`. Domyślny tryb `"named"` automatycznie dopasowuje dzieci do slotów bazując na ich atrybutach `slot="name"`. Tryb `"manual"` wyłącza to auto dopasowanie — zamiast tego, manualnie dopasowujesz elementy wykorzystując `slot.assign(element)`. Daje ci to kontrolę w rozmieszczaniu treści.
-- `clonable`: Gdy ustawione na `true`, klonowanie elementu hosta (poprzez `cloneNode()` lub `importNode()`) zawiera także shadow root. Domyślnie ustawione na `false` - standardowo klonowanie hosta tworzy kopię bez zawartości cienistego drzewa.
+- `slotAssignment`: Kontroluje w jaki sposób dzieci z jasnego DOM-u są przypisywane do elementów `<slot>`. Domyślny tryb `"named"` automatycznie dopasowuje dzieci do slotów bazując na ich atrybutach `slot="name"`. Tryb `"manual"` wyłącza to automatyczne dopasowanie — zamiast tego, manualnie dopasowujesz elementy wykorzystując `slot.assign(element)`. Daje ci to kontrolę w rozmieszczaniu treści.
+- `clonable`: Gdy ustawione na `true`, klonowanie elementu hosta (poprzez `cloneNode()` lub `importNode()`) zawiera także shadow root. Domyślnie ustawione na `false` — standardowo klonowanie hosta tworzy kopię bez zawartości cienistego drzewa.
 - `serializable`: Gdy ustawione na `true`, shadow root może być serializowany do HTML-u wykorzystując `element.getHTML({ serializableShadowRoots: true })`. Łączy to światy deklaratywny i imperatywny — możesz stworzyć cienisty korzeń w JS-ie, a później wyeksportować go jako HTML zawierający `<template shadowrootmode>`.
 
 ## Shadow boundary
@@ -102,15 +102,15 @@ Enkapsulacja nie oznacza, że wszystko jest odizolowane. Niektóre rzeczy intenc
 
 ### CSS i shadow boundary
 
-Globalne selektory CSS nie przekraczają granicy w żadnym kierunku — twoja strona nie wpływa na wnętrze shadow DOM-u, a style z wewnątrz nie wyciekają. Jest to duża zaleta używania cienistego DOM-u. Niedziedziczne właściwości CSS nie przekraczają granicy, podobnie jak nie są dziedziczone w jasnym DOM-ie. Jednakże dziedziczne właściwości CSS, jak `color` czy `font-family` przepływają naturalnie, bo cieniste elementy najwyższego poziomu dziedziczą po hoście.
+Globalne selektory CSS nie przekraczają granicy w żadnym kierunku — twoja strona nie wpływa na wnętrze shadow DOM-u, a style z wewnątrz nie wyciekają. Jest to duża zaleta używania cienistego DOM-u. Niedziedziczone właściwości CSS nie przekraczają granicy, podobnie jak nie są dziedziczone w jasnym DOM-ie. Jednakże dziedziczone właściwości CSS, jak `color` czy `font-family` przepływają naturalnie, bo cieniste elementy najwyższego poziomu dziedziczą po hoście.
 
 Zmienne CSS przebijają granicę zgodnie z założeniami, będąc rekomendowanym sposobem na stylowanie komponentów internetowych. Dodatkowo pseudoelementy `::part()` i `::slotted()` zachowują się jak kontrolowane włazy ewakuacyjne, pozwalając autorowi zdecydować, które wewnętrzne elementy mogą być stylowane od zewnątrz.
 
 | Co?                                                       | Przekracza? | Notatki                                                                          |
 | --------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------- |
 | Globalne selektory (`div`, `.class`, `#id`)               | Nie         | Te selektory nie przekraczają granicy w żadnym kierunku.                         |
-| Niedziedziczne właściwości (`background`, `border`, etc.) | Nie         | Standardowe zachowanie CSS — te właściwości nie są dziedziczone w żadnym DOM-ie. |
-| Dziedziczne właściwości (`color`, `font-family`, etc.)    | Tak         | Cieniste elementy najwyższego poziomu dziedziczą po hoście.                      |
+| Niedziedziczone właściwości (`background`, `border`, etc.) | Nie         | Standardowe zachowanie CSS — te właściwości nie są dziedziczone w żadnym DOM-ie. |
+| Dziedziczone właściwości (`color`, `font-family`, etc.)    | Tak         | Cieniste elementy najwyższego poziomu dziedziczą po hoście.                      |
 | Zmienne CSS (`--my-var`)                                  | Tak         | Celowo przekraczają granicę. Rekomendowany sposób stylowania.                    |
 | `::part()`                                                | Zależy      | Tylko jeżeli autor komponentu ustawi na elemencie `part="name"`.                 |
 | `::slotted()`                                             | Zależy      | Styluje elementy bezpośrednio w slotach (bez potomków).                          |
@@ -143,9 +143,9 @@ Większość wbudowanych zdarzeń przekracza granicę (z wyjątkami dla zdarzeń
 | `mouseenter`, `mouseleave`, `pointerenter`, `pointerleave` | Nie         | Nieskomponowane i niebąbelkujące.                 |
 | `slotchange`                                               | Nie         | Bąbelkujące, ale nieskomponowane.                 |
 | Większość zdarzeń UI (`click`, `keydown`, `input`, etc.)   | Tak         | Skomponowane domyślnie—bąbelkują przez granicę.   |
-| Niestandardowe zdarzenia (`new CustomEvent(...)`)          | Zależy      | Tylko jeżeli `{ composed: true, bubbles: true }`. |
+| Niestandardowe zdarzenia (`new CustomEvent(...)`)          | Zależy      | `composed: true` jest wymagane, aby przekroczyć granicę. Dodaj `bubbles: true`, jeśli zdarzenie ma też bąbelkować w górę. |
 
-Nawet jeżeli zdarzenie przekroczy granicę, `event.target` jest zmieniony na element hosta, aby kapsułkować detale implementacyjne. Metoda `event.composedPath()` zwraca wszystkie węzły (ang. _nodes_), przez które zdarzenie propaguje, chyba że tryb shadow roota ustawiony jest na `closed` - wtedy pomija wnętrze tego cienistego drzewa.
+Nawet jeżeli zdarzenie przekroczy granicę, `event.target` jest zmieniony na element hosta, aby kapsułkować detale implementacyjne. Metoda `event.composedPath()` zwraca wszystkie węzły (ang. _nodes_), przez które zdarzenie propaguje, chyba że tryb shadow roota ustawiony jest na `closed` — wtedy pomija wnętrze tego cienistego drzewa.
 
 | Co?                          | Przekracza? | Notatki                                                                       |
 | ---------------------------- | ----------- | ----------------------------------------------------------------------------- |
@@ -163,7 +163,7 @@ Niestety, największym problemem jest aktualnie dostępność. Jak widzieliśmy,
 | `for` (label)            | Nie         | Asocjacja `<label for="id">` nie zadziała jeżeli `<input>` jest wewnątrz shadow roota.                                                                                                                 |
 | `ariaLabelledByElements` | Zależy      | Właściwość która akceptuje odnośniki do elementów zamiast ID, omijając problem ograniczenia z zakresem. Działa jednak tylko wtedy, gdy element referencyjny jest w tym samym bądź nadrzędnym korzeniu. |
 
-Jest tu wiele do przyswojenia, więc nie powinieneś próbować zapamiętywać każdego detalu. Zapamiętaj, że ta cienista granica działa jak lustro weneckie. Dziedziczne style czy zmienne CSS wpływają do wewnątrz, umożliwiając stylowanie komponentów. Niektóre zdarzenia wypływają na zewnątrz, ale ich cel jest zmieniony, żeby ukryć wnętrzności. Standardowe zapytania DOM są całkowicie blokowane. Powoduje to problemy z dostępnością, ale na horyzoncie widnieją rozwiązania.
+Jest tu wiele do przyswojenia, więc nie powinieneś próbować zapamiętywać każdego detalu. Zapamiętaj, że ta cienista granica działa jak lustro weneckie. Dziedziczone style czy zmienne CSS wpływają do wewnątrz, umożliwiając stylowanie komponentów. Niektóre zdarzenia wypływają na zewnątrz, ale ich cel jest zmieniony, żeby ukryć wnętrzności. Standardowe zapytania DOM są całkowicie blokowane. Powoduje to problemy z dostępnością, ale na horyzoncie widnieją rozwiązania.
 
 ## Projekcja treści ze slotami
 
