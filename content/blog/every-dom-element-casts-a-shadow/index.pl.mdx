@@ -1,8 +1,8 @@
 ---
 title: Każdy element DOM-u rzuca cień
 description: 'Shadow DOM daje komponentom ich własny, izolowany świat — lokalne style, enkapsulację znaczników i granicę, która utrzymuje wszystko na swoim miejscu.'
-date: 2026-05-15T18:00:00+02:00
-updated: 2026-05-15T18:00:00+02:00
+date: 2026-05-17T12:00:00+02:00
+updated: 2026-05-17T12:00:00+02:00
 image:
   alt: 'Cień drzewa rzucony na zielony trawnik z jesiennym lasem w tle'
   caption: 'Zdjęcie autorstwa Ricardo Gomez Angel na Unsplash'
@@ -106,14 +106,14 @@ Globalne selektory CSS nie przekraczają granicy w żadnym kierunku — twoja st
 
 Zmienne CSS przebijają granicę zgodnie z założeniami, będąc rekomendowanym sposobem na stylowanie komponentów internetowych. Dodatkowo pseudoelementy `::part()` i `::slotted()` zachowują się jak kontrolowane włazy ewakuacyjne, pozwalając autorowi zdecydować, które wewnętrzne elementy mogą być stylowane od zewnątrz.
 
-| Co?                                                       | Przekracza? | Notatki                                                                          |
-| --------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------- |
-| Globalne selektory (`div`, `.class`, `#id`)               | Nie         | Te selektory nie przekraczają granicy w żadnym kierunku.                         |
+| Co?                                                        | Przekracza? | Notatki                                                                          |
+| ---------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------- |
+| Globalne selektory (`div`, `.class`, `#id`)                | Nie         | Te selektory nie przekraczają granicy w żadnym kierunku.                         |
 | Niedziedziczone właściwości (`background`, `border`, etc.) | Nie         | Standardowe zachowanie CSS — te właściwości nie są dziedziczone w żadnym DOM-ie. |
 | Dziedziczone właściwości (`color`, `font-family`, etc.)    | Tak         | Cieniste elementy najwyższego poziomu dziedziczą po hoście.                      |
-| Zmienne CSS (`--my-var`)                                  | Tak         | Celowo przekraczają granicę. Rekomendowany sposób stylowania.                    |
-| `::part()`                                                | Zależy      | Tylko jeżeli autor komponentu ustawi na elemencie `part="name"`.                 |
-| `::slotted()`                                             | Zależy      | Styluje elementy bezpośrednio w slotach (bez potomków).                          |
+| Zmienne CSS (`--my-var`)                                   | Tak         | Celowo przekraczają granicę. Rekomendowany sposób stylowania.                    |
+| `::part()`                                                 | Zależy      | Tylko jeżeli autor komponentu ustawi na elemencie `part="name"`.                 |
+| `::slotted()`                                              | Zależy      | Styluje elementy bezpośrednio w slotach (bez potomków).                          |
 
 <Callout variant="warning">
 
@@ -137,12 +137,12 @@ Standardowe zapytania DOM-owe jak `document.querySelector()` nie wnikają do sha
 
 Większość wbudowanych zdarzeń przekracza granicę (z wyjątkami dla zdarzeń, które nie są skomponowane i nie bąbelkują). Niestandardowe zdarzenia w domyśle nie przekraczają granicy, ale możesz je zmodyfikować, żeby przekraczały. Gdy ustawisz opcję `composed` na `true`, zdarzenia propagują przez shadow boundary. Opcja `bubbles: true` włącza propagację w hierarchii DOM dla obu typów.
 
-| Co?                                                        | Przekracza? | Notatki                                           |
-| ---------------------------------------------------------- | ----------- | ------------------------------------------------- |
-| `load`, `unload`, `abort`, `error`, `select`               | Nie         | Nieskomponowane.                                  |
-| `mouseenter`, `mouseleave`, `pointerenter`, `pointerleave` | Nie         | Nieskomponowane i niebąbelkujące.                 |
-| `slotchange`                                               | Nie         | Bąbelkujące, ale nieskomponowane.                 |
-| Większość zdarzeń UI (`click`, `keydown`, `input`, etc.)   | Tak         | Skomponowane domyślnie—bąbelkują przez granicę.   |
+| Co?                                                        | Przekracza? | Notatki                                                                                                                   |
+| ---------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `load`, `unload`, `abort`, `error`, `select`               | Nie         | Nieskomponowane.                                                                                                          |
+| `mouseenter`, `mouseleave`, `pointerenter`, `pointerleave` | Nie         | Nieskomponowane i niebąbelkujące.                                                                                         |
+| `slotchange`                                               | Nie         | Bąbelkujące, ale nieskomponowane.                                                                                         |
+| Większość zdarzeń UI (`click`, `keydown`, `input`, etc.)   | Tak         | Skomponowane domyślnie—bąbelkują przez granicę.                                                                           |
 | Niestandardowe zdarzenia (`new CustomEvent(...)`)          | Zależy      | `composed: true` jest wymagane, aby przekroczyć granicę. Dodaj `bubbles: true`, jeśli zdarzenie ma też bąbelkować w górę. |
 
 Nawet jeżeli zdarzenie przekroczy granicę, `event.target` jest zmieniony na element hosta, aby kapsułkować detale implementacyjne. Metoda `event.composedPath()` zwraca wszystkie węzły (ang. _nodes_), przez które zdarzenie propaguje, chyba że tryb shadow roota ustawiony jest na `closed` — wtedy pomija wnętrze tego cienistego drzewa.
