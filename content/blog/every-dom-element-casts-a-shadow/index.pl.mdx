@@ -27,7 +27,7 @@ W zasadzie „nie każdy” — pozwól, że wyjaśnię. Strony internetowe skł
 
 <Callout variant="info">
 
-Shadow DOM jest drugim filarem komponentów internetowych. Aby zobaczyć pierwszy, sprawdź mój poprzedni post — [Wprowadzenie do web components. Czym są custom elements?](/pl/blog/intro-to-web-components-what-are-custom-elements/)
+Shadow DOM jest drugim filarem komponentów internetowych. Aby zobaczyć pierwszy, sprawdź mój poprzedni post — [Web components — czym są custom elements?](/pl/blog/intro-to-web-components-what-are-custom-elements/)
 
 </Callout>
 
@@ -154,7 +154,7 @@ Nawet jeżeli zdarzenie przekroczy granicę, `event.target` jest zmieniony na el
 
 ### ARIA i shadow boundary
 
-Niestety, największym problemem jest aktualnie dostępność. Jak widzieliśmy, ID mają ograniczony zasięg, uniemożliwiając odwołania przez granicę. Aktualnie jedynym rozwiązaniem jest właściwość `ariaLabelledByElements`. Jest to właściwość w języku JavaScript, która akceptuje odniesienia do elementów, omijając ten problem zasięgu. Jest wspierana przez wszystkie największe przeglądarki, ale nadal ma ograniczenia — element referencyjny musi być w tym samym lub nadrzędnym cienistym korzeniu i nie wspiera renderowania po stronie serwera. Także aktualnie nie ma prostego rozwiązania. Istnieje [propozycja celu referencyjnego](https://github.com/WICG/webcomponents/blob/gh-pages/proposals/reference-target-explainer.md), więc ekosystem zmierza w kierunku czystego rozwiązania.
+Niestety, największym problemem jest aktualnie dostępność. Jak widzieliśmy, ID mają ograniczony zasięg, uniemożliwiając odwołania przez granicę. Aktualnie jedynym rozwiązaniem jest właściwość `ariaLabelledByElements`. Jest to właściwość w języku JavaScript, która akceptuje odniesienia do elementów, omijając ten problem zasięgu. Jest wspierana przez wszystkie największe przeglądarki od 2025 roku, ale nadal ma ograniczenia — element referencyjny musi być w tym samym lub nadrzędnym cienistym korzeniu i nie wspiera renderowania po stronie serwera. Także aktualnie nie ma prostego rozwiązania. Istnieje [propozycja celu referencyjnego](https://github.com/WICG/webcomponents/blob/gh-pages/proposals/reference-target-explainer.md), więc ekosystem zmierza w kierunku czystego rozwiązania.
 
 | Co?                      | Przekracza? | Notatki                                                                                                                                                                                                |
 | ------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -175,7 +175,7 @@ Cieniste drzewo zastępuje dzieci hosta podczas renderowania. Bez żadnego mecha
 
 <Callout variant="info">
 
-Elementy wsunięte w ten sposób, pozostają nadal w jasnym DOM-ie — nie są w cienistym drzewie. Są po prostu renderowane w miejscach slotów. Jest to istotne, bo takie elementy mogą być ostylowane przez CSS strony, a nie te style cienistego drzewa.
+Elementy wsunięte w ten sposób pozostają nadal w jasnym DOM-ie — nie są w cienistym drzewie. Są po prostu renderowane w miejscach slotów. Jest to istotne, bo takie elementy mogą być ostylowane przez CSS strony, a nie te style cienistego drzewa.
 
 </Callout>
 
@@ -300,7 +300,7 @@ slot.addEventListener('slotchange', (e) => {
 
 <Callout variant="info">
 
-Zdarzenie `slotchange` może zostać wywołane, podczas fazy parsowania HTML-a, przed [`connectedCallback`](/pl/blog/intro-to-web-components-what-are-custom-elements/#funkcje-cyklu-zycia), więc musisz dodać odpowiednią logikę ochronną do swoich funkcji.
+Zdarzenie `slotchange` może zostać wywołane podczas fazy parsowania HTML-a, przed [`connectedCallback`](/pl/blog/intro-to-web-components-what-are-custom-elements/#funkcje-cyklu-zycia), więc musisz dodać odpowiednią logikę ochronną do swoich funkcji.
 
 </Callout>
 

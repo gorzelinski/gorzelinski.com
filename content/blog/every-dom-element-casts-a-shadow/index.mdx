@@ -70,7 +70,7 @@ The only required setting is `mode`. There are two options here:
 
 <Callout variant="warning">
 
-Blocked JS queries don't mean that the `closed` mode is completely secure. Shadow DOM components still share the same JS execution context. If you need a security boundary for sensitive third-party script, use an `<iframe>`. Shadow DOM is about encapsulation—it's not a security measure.
+Blocked JS queries don't mean that the `closed` mode is completely secure. Shadow DOM components still share the same JS execution context. If you need a security boundary for a sensitive third-party script, use an `<iframe>`. Shadow DOM is about encapsulation—it's not a security measure.
 
 </Callout>
 
@@ -279,7 +279,7 @@ Slots don't have to be static—there is an API for you to interact with them.
 - `slot.assignedNodes({ flatten: false })`: Returns all the light DOM nodes assigned to a particular slot. With `{ flatten: true }` option, it also resolves nested slots and returns fallback content when nothing is assigned. The `flatten` option defaults to `false`.
 - `slot.assignedElements({ flatten: false })`: It works the same as the above method but is limited to element nodes only (without text type). The `flatten` option also works the same.
 - `element.assignedSlot`: The reverse—given a light DOM element, the property returns which `<slot>` it's assigned to. Returns `null` if unslotted or if the shadow root is closed.
-- `slot.assign(node1, node2, ...)`: Manually assigns nodes to the slot. The shadow root must be created with the option `slotAssignment: "manual"` for this method to work. Throws error if called on an automatic slot.
+- `slot.assign(node1, node2, ...)`: Manually assigns nodes to the slot. The shadow root must be created with the option `slotAssignment: "manual"` for this method to work. Throws an error if called on an automatic slot.
 - `slotchange` (event): `<slot>` fires this event when its assigned nodes change (added, removed, or reassigned). It _does not_ fire when content _inside_ a slotted node changes.
 
 ```js
