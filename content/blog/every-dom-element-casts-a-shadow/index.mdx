@@ -93,18 +93,18 @@ Encapsulation doesn't mean that everything is isolated. Some things intentionall
 
 ### CSS and shadow boundary
 
-Global CSS selectors can't cross the shadow boundary in either direction—your page styles won't affect shadow DOM internals, and shadow styles won't leak out. It's a massive advantage of using shadow DOM. Non-inheritable CSS properties don't cross the boundary as they are not inherited in the light DOM either. However, inheritable CSS properties like `color` and `font-family` flow through naturally, since top-level shadow tree elements inherit from their host.
+Global CSS selectors can't cross the shadow boundary in either direction—your page styles won't affect shadow DOM internals, and shadow styles won't leak out. It's a massive advantage of using shadow DOM. Non-inherited CSS properties don't cross the boundary as they are not inherited in the light DOM either. However, inherited CSS properties like `color` and `font-family` flow through naturally, since top-level shadow tree elements inherit from their host.
 
 CSS custom properties pierce the boundary by design, making them the recommended way to style web components. Additionally, `::part()` and `::slotted()` pseudo-elements act as controlled escape hatches, letting the component author explicitly decide which internal elements can be styled from outside.
 
-| What?                                                     | Crosses? | Notes                                                                        |
-| --------------------------------------------------------- | -------- | ---------------------------------------------------------------------------- |
-| Global selectors (`div`, `.class`, `#id`)                 | No       | These selectors don't reach into or out of shadow trees.                     |
-| Non-inheritable properties (`background`, `border`, etc.) | No       | Standard CSS behavior—these properties don't inherit in any DOM.             |
-| Inherited properties (`color`, `font-family`, etc.)       | Yes      | Top-level shadow tree elements inherit from the host.                        |
-| CSS variables (`--my-var`)                                | Yes      | Intentionally cross the boundary. Recommended theming mechanism.             |
-| `::part()`                                                | Depends  | Only if the component author explicitly exposes elements with `part="name"`. |
-| `::slotted()`                                             | Depends  | Styles direct slotted light DOM elements (no descendants).                   |
+| What?                                                   | Crosses? | Notes                                                                        |
+| ------------------------------------------------------- | -------- | ---------------------------------------------------------------------------- |
+| Global selectors (`div`, `.class`, `#id`)               | No       | These selectors don't reach into or out of shadow trees.                     |
+| Non-inherited properties (`background`, `border`, etc.) | No       | Standard CSS behavior—these properties don't inherit in any DOM.             |
+| Inherited properties (`color`, `font-family`, etc.)     | Yes      | Top-level shadow tree elements inherit from the host.                        |
+| CSS variables (`--my-var`)                              | Yes      | Intentionally cross the boundary. Recommended theming mechanism.             |
+| `::part()`                                              | Depends  | Only if the component author explicitly exposes elements with `part="name"`. |
+| `::slotted()`                                           | Depends  | Styles direct slotted light DOM elements (no descendants).                   |
 
 <Callout variant="warning">
 
