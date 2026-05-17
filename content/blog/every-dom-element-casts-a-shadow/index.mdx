@@ -131,7 +131,7 @@ Most built-in events cross the shadow boundary (with some non-composed/non-bubbl
 | What?                                                      | Crosses? | Notes                                                                                                |
 | ---------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------- |
 | `load`, `unload`, `abort`, `error`, `select`               | No       | Non-composed.                                                                                        |
-| `mouseenter`, `mouseleave`, `pointerenter`, `pointerleave` | No       | Non-bubbling and non-composed.                                                                       |
+| `mouseenter`, `mouseleave`, `pointerenter`, `pointerleave` | No       | Composed but non-bubbling—they don't cross in practice.                                              |
 | `slotchange`                                               | No       | Bubbles but is non-composed.                                                                         |
 | Most UI events (`click`, `keydown`, `input`, etc.)         | Yes      | Composed by default—they bubble across the boundary.                                                 |
 | Custom events (`new CustomEvent(...)`)                     | Depends  | `composed: true` is required to cross the boundary. Add `bubbles: true` if it should also bubble up. |

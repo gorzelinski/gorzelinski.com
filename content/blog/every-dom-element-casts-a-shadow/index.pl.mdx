@@ -140,7 +140,7 @@ Większość wbudowanych zdarzeń przekracza granicę (z wyjątkami dla zdarzeń
 | Co?                                                        | Przekracza? | Notatki                                                                                                                   |
 | ---------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `load`, `unload`, `abort`, `error`, `select`               | Nie         | Nieskomponowane.                                                                                                          |
-| `mouseenter`, `mouseleave`, `pointerenter`, `pointerleave` | Nie         | Nieskomponowane i niebąbelkujące.                                                                                         |
+| `mouseenter`, `mouseleave`, `pointerenter`, `pointerleave` | Nie         | Skomponowane, ale niebąbelkujące—w praktyce nie przekraczają granicy.                                                     |
 | `slotchange`                                               | Nie         | Bąbelkujące, ale nieskomponowane.                                                                                         |
 | Większość zdarzeń UI (`click`, `keydown`, `input`, etc.)   | Tak         | Skomponowane domyślnie—bąbelkują przez granicę.                                                                           |
 | Niestandardowe zdarzenia (`new CustomEvent(...)`)          | Zależy      | `composed: true` jest wymagane, aby przekroczyć granicę. Dodaj `bubbles: true`, jeśli zdarzenie ma też bąbelkować w górę. |
