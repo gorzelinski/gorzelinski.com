@@ -1,0 +1,36 @@
+---
+description: Vitest (unit) and Playwright (E2E) conventions for gorzelinski.com
+globs: "**/__tests__/**,**/*.test.ts,**/*.test.tsx,**/*.spec.ts,**/*.spec.tsx,e2e/**/*.ts"
+alwaysApply: false
+---
+
+# Testing
+
+## Tooling
+
+- **Vitest** for unit + component tests (`vitest.config.mts`, `vitest.setup.ts`).
+- **Playwright** for E2E (`playwright.config.ts`, tests in `e2e/`). Axe integration via `@axe-core/playwright`.
+- React Testing Library + `@testing-library/jest-dom` matchers are preconfigured.
+
+## Commands
+
+```bash
+npm test                # vitest, single run
+npm run test:watch      # vitest watch
+npm run test:coverage   # v8 coverage report
+npx playwright install  # one-time, install browsers
+npm run e2e             # playwright tests
+npm run e2e:ui          # playwright UI mode
+```
+
+## Where tests live
+
+- Unit/component tests live in a `__tests__/` folder colocated with the code under test (e.g. `design-system/components/socials/__tests__/`).
+- E2E tests live under `e2e/` and use Playwright fixtures from that folder.
+
+## Conventions
+
+- Test files: `*.test.ts`, `*.test.tsx`, or `*.spec.ts(x)`.
+- Inside `__tests__/`, `e2e/`, and `*.test.*` / `*.spec.*` files, `react-hooks/rules-of-hooks` and `react-hooks/exhaustive-deps` are disabled (see `eslint.config.js`) — use Testing Library patterns freely.
+- Prefer role/label queries (`getByRole`, `getByLabelText`) over `getByTestId`.
+- Mirror the file's import order rules — `import type` first, then values.
