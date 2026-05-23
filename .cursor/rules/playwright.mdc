@@ -1,0 +1,32 @@
+---
+description: Playwright end-to-end and accessibility test conventions for gorzelinski.com
+globs: "e2e/**/*.ts"
+alwaysApply: false
+---
+
+# Playwright
+
+End-to-end browser tests. Config: `playwright.config.ts`. Accessibility checks via `@axe-core/playwright`.
+
+## Where tests live
+
+All E2E tests live under `e2e/` and use the `.spec.ts` suffix (e.g. `e2e/navigation.spec.ts`, `e2e/accessibility.spec.ts`). Shared fixtures live in `e2e/fixtures/`.
+
+`playwright.config.ts` runs across Chromium, Firefox, WebKit, Mobile Chrome, and Mobile Safari, and boots `npm run build && npm run start` as the web server.
+
+## Commands
+
+```bash
+npx playwright install   # one-time, install browsers
+npm run e2e              # headless run
+npm run e2e:ui           # Playwright UI mode
+```
+
+## Conventions
+
+- Import `test` and `expect` from project fixtures in `e2e/fixtures/` (not from `@playwright/test` directly) so shared setup is applied.
+- Inside `e2e/**/*.ts`, `react-hooks/rules-of-hooks` and `react-hooks/exhaustive-deps` are disabled (see `eslint.config.js`).
+- Prefer role/label locators (`getByRole`, `getByLabel`) over CSS selectors.
+- Use `baseURL` from the config — write relative paths like `await page.goto('/blog/')`.
+- For accessibility specs, run axe via `@axe-core/playwright` and assert zero violations.
+- Follow the project's import-order rules (`import type` first, then values).

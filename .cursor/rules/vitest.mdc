@@ -1,0 +1,38 @@
+---
+description: Vitest + React Testing Library conventions for gorzelinski.com
+globs: "**/__tests__/**,**/*.test.ts,**/*.test.tsx"
+alwaysApply: false
+---
+
+# Vitest
+
+Unit and component tests. Config: `vitest.config.mts`, setup: `vitest.setup.ts`. React Testing Library + `@testing-library/jest-dom` matchers are preconfigured.
+
+## Where tests live
+
+Inside a `__tests__/` folder colocated with the code under test. Mirror the source filename:
+
+```
+design-system/components/socials/
+  socials.tsx
+  socials.helpers.tsx
+  __tests__/
+    socials.test.tsx
+    socials.helpers.test.tsx
+```
+
+File naming: `*.test.ts` for pure logic (e.g. `lib/`), `*.test.tsx` when the test renders JSX.
+
+## Commands
+
+```bash
+npm test                # single run
+npm run test:watch      # watch mode
+npm run test:coverage   # v8 coverage
+```
+
+## Conventions
+
+- Inside `__tests__/` and `*.test.*` files, `react-hooks/rules-of-hooks` and `react-hooks/exhaustive-deps` are disabled (see `eslint.config.js`) — call hooks freely in tests.
+- Prefer role/label queries (`getByRole`, `getByLabelText`) over `getByTestId`.
+- Follow the same import-order rules as production code (`import type` first, then values).
