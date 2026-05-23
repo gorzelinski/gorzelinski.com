@@ -78,7 +78,8 @@ Applies to all `.ts`, `.tsx`, and `.mts` files.
 - Event handlers are prefixed `handle…` (`handleClick`, `handleSubmit`).
 - Avoid generic suffix nouns — `results`, not `resultsArray`.
 - Files and folders: `kebab-case` (`design-system/components/search-bar`).
-- `.ts` for plain TypeScript, `.tsx` when the file contains JSX.
+- `.ts` for pure logic with no React interaction (e.g. `lib/`, `constants/`, `scripts/`).
+- `.tsx` for files in React-adjacent areas (`app/`, `design-system/`, `hooks/`, `types/`) — even if a specific file contains no JSX, match the rest of the feature/folder for consistency (e.g. `socials.helpers.tsx`, `socials.types.tsx`).
 
 ### File suffixes (colocated per feature)
 

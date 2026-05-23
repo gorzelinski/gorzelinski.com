@@ -1,5 +1,5 @@
-import { type SettingsPage, test, expect } from './fixtures'
 import type { Dictionary, Locale } from '@/types'
+import { type SettingsPage, test, expect } from './fixtures'
 
 type InitialLanguageConfig = {
   name: string
