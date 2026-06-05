@@ -1,7 +1,7 @@
 import type { PostProps } from './post.types'
 import { delocalizePath } from '@/lib'
 import { PostTime } from './post-time'
-import { Image } from '../image'
+import { IMAGE_SIZES, Image } from '../image'
 import { ButtonLink, Card, H3, P } from '../../elements'
 import { ChevronForward } from '../../icons'
 
@@ -20,6 +20,7 @@ export const Post = ({
         height={403}
         src={`/images${delocalizePath(slug, lang)}${image.src}`}
         alt={image.alt}
+        sizes={IMAGE_SIZES.columnThird}
         priority={priority}
       />
       <PostTime

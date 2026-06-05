@@ -2,7 +2,7 @@ import type { ProjectHeaderProps } from './project-header.types'
 import { LINKS } from '@/constants'
 import { Grid, VStack } from '@/styled-system/jsx'
 import { Figure, H1, H2, P, Span } from '../../elements'
-import { Image } from '../image'
+import { IMAGE_SIZES, Image } from '../image'
 import { LinkOrA } from '../link-or-a'
 import { verticalRhythm } from '../../utils'
 
@@ -23,6 +23,7 @@ export const ProjectHeader = ({
           alt={image.alt}
           width={1200}
           height={675}
+          sizes={IMAGE_SIZES.bleedHero}
           priority={true}
         />
       </Figure>
