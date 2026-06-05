@@ -12,6 +12,7 @@ import {
   Figcaption,
   Figure,
   H1,
+  IMAGE_SIZES,
   Image,
   P,
   verticalRhythm
@@ -86,6 +87,7 @@ export default async function Uses(props: PageProps) {
             alt={frontmatter.image.alt}
             width={1200}
             height={888}
+            sizes={IMAGE_SIZES.bleedHero}
             priority={true}
           />
           <Figcaption
