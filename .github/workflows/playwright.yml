@@ -4,19 +4,10 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
-
-env:
-  # Keep in sync with matrix.shard below (number of parallel CI jobs).
-  PW_SHARD_TOTAL: 3
-
 jobs:
   e2e-test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        shard: [1, 2, 3]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -24,25 +15,13 @@ jobs:
           node-version: lts/*
       - name: Install dependencies
         run: npm ci
-      - name: Cache Playwright browsers
-        id: playwright-cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-      - name: Install Playwright browsers
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
+      - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-        timeout-minutes: 15
-      - name: Install Playwright system deps
-        if: steps.playwright-cache.outputs.cache-hit == 'true'
-        run: npx playwright install-deps
-        timeout-minutes: 10
       - name: Run Playwright tests
-        run: npx playwright test --shard=${{ matrix.shard }}/${{ env.PW_SHARD_TOTAL }}
+        run: npx playwright test
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-report-${{ matrix.shard }}
+          name: playwright-report
           path: playwright-report/
           retention-days: 30
