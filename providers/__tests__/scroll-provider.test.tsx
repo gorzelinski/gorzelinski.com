@@ -73,6 +73,7 @@ describe('useScroll', () => {
 
   afterEach(() => {
     vi.unstubAllGlobals()
+    vi.restoreAllMocks()
   })
 
   it('returns up direction and 0 progress by default', () => {

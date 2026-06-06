@@ -47,7 +47,8 @@ export function ScrollProvider({ children }: { children: React.ReactNode }) {
       }
     }
 
-    window.addEventListener('scroll', onScroll)
+    updateScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
       window.cancelAnimationFrame(animationFrame.current)
       window.removeEventListener('scroll', onScroll)

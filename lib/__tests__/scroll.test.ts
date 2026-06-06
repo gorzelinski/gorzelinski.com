@@ -43,6 +43,7 @@ describe('scroll', () => {
 
     afterEach(() => {
       vi.unstubAllGlobals()
+      vi.restoreAllMocks()
     })
 
     it('calculates the progress as a percentage', () => {
