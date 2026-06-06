@@ -33,7 +33,7 @@ Path alias: `@/*` → repo root (see `tsconfig.json`). Formatting: `.prettierrc.
   - `icons/` — icon components.
   - `utils/` — shared design-system utilities.
 - `hooks/` — React hooks (barrel: `hooks/index.tsx`).
-- `providers/` — React context providers and their consumer hooks (barrel: `providers/index.tsx`). Safe to import from Server Components since each provider file is a `'use client'` module.
+- `providers/` — React context providers and their consumer hooks (barrel: `providers/index.tsx`). Each provider file is a `'use client'` module, so Server Components can render the provider components (they act as a client boundary). The consumer hooks (e.g. `useScroll()`) must still only be called from Client Components.
 - `lib/` — pure JS/TS helpers, client-safe (barrel: `lib/index.ts`).
 - `scripts/` — Node-only server-side helpers (e.g. `mdx`, `dictionaries`).
 - `constants/` — global constants (`LINKS`, `SOCIALS`, `THEME`, …).
