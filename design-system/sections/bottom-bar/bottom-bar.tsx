@@ -1,13 +1,12 @@
 'use client'
 import type { BottomBarProps } from './bottom-bar.types'
-import { useScrollDirection, useScrollProgress } from '@/hooks'
+import { useScroll } from '@/providers'
 import { MainNavigation } from '../../components'
 import { navbar } from '../../elements/navbar'
 
 export const BottomBar = ({ lang, dictionary }: BottomBarProps) => {
   const { links, component } = dictionary
-  const direction = useScrollDirection()
-  const progress = useScrollProgress()
+  const { direction, progress } = useScroll()
   const isHidden = progress > 5 && direction === 'down'
 
   return (
