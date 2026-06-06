@@ -74,6 +74,13 @@ describe('scroll', () => {
 
       expect(getScrollProgress('article')).toBe(0)
     })
+
+    it('returns 0 when the element is not taller than the viewport', () => {
+      mockElement.scrollHeight = SCROLL_DIMENSIONS.windowHeight
+      mockRoot.scrollTop = 250
+
+      expect(getScrollProgress('html')).toBe(0)
+    })
   })
 
   describe('isNavbarHidden()', () => {
