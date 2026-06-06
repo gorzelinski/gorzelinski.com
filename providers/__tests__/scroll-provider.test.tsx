@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
-import { ScrollProvider, useScroll } from '../use-scroll'
+import { ScrollProvider, useScroll } from '../scroll-provider'
 
 const SCROLL_DIMENSIONS = {
   elementHeight: 1000,
