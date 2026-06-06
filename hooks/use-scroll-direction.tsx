@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { getScrollDirection } from '@/lib'
 
 export function useScrollDirection() {
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up')
@@ -11,11 +12,7 @@ export function useScrollDirection() {
     const updateScrollDirection = () => {
       const currentScrollY = window.scrollY
 
-      if (currentScrollY > lastScrollY) {
-        setScrollDirection('down')
-      } else {
-        setScrollDirection('up')
-      }
+      setScrollDirection(getScrollDirection(currentScrollY, lastScrollY))
 
       lastScrollY = currentScrollY
       ticking = false

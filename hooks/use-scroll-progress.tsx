@@ -1,5 +1,6 @@
 import type { ScrollProgressSelector } from '@/types'
 import { useEffect, useRef, useState } from 'react'
+import { getScrollProgress } from '@/lib'
 
 export function useScrollProgress(selector: ScrollProgressSelector = 'html') {
   const [scrollProgress, setScrollProgress] = useState<number>(0)
@@ -9,15 +10,7 @@ export function useScrollProgress(selector: ScrollProgressSelector = 'html') {
     let ticking = false
 
     const updateScrollProgress = () => {
-      const root = document.documentElement
-      const element = document.querySelector(selector)!
-      const scrollableHeight = element.scrollHeight - window.innerHeight
-      const currentScrollY = root.scrollTop - element.offsetTop
-      const scrollProgress = (currentScrollY / scrollableHeight) * 100
-
-      if (scrollProgress < 0) setScrollProgress(0)
-      else if (scrollProgress > 100) setScrollProgress(100)
-      else setScrollProgress(scrollProgress)
+      setScrollProgress(getScrollProgress(selector))
 
       ticking = false
     }
