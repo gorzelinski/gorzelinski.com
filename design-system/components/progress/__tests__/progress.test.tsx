@@ -1,13 +1,13 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
-import { useScrollProgress } from '@/hooks'
+import { useScroll } from '@/providers'
 import { Progress } from '../progress'
 
-vi.mock('@/hooks', () => ({
-  useScrollProgress: vi.fn()
+vi.mock('@/providers', () => ({
+  useScroll: vi.fn()
 }))
 
-const useScrollProgressMock = vi.mocked(useScrollProgress)
+const useScrollMock = vi.mocked(useScroll)
 
 describe('Progress', () => {
   afterEach(() => {
@@ -16,7 +16,7 @@ describe('Progress', () => {
   })
 
   it('renders correctly', () => {
-    useScrollProgressMock.mockReturnValue(50)
+    useScrollMock.mockReturnValue({ direction: 'up', progress: 50 })
 
     render(<Progress selector="html" />)
 
@@ -29,7 +29,7 @@ describe('Progress', () => {
   })
 
   it('hides when the progress is less than 1%', () => {
-    useScrollProgressMock.mockReturnValue(0)
+    useScrollMock.mockReturnValue({ direction: 'up', progress: 0 })
 
     render(<Progress selector="html" />)
 
@@ -39,7 +39,7 @@ describe('Progress', () => {
   })
 
   it('hides when the progress is greater than 99%', () => {
-    useScrollProgressMock.mockReturnValue(100)
+    useScrollMock.mockReturnValue({ direction: 'up', progress: 100 })
 
     render(<Progress selector="html" />)
 

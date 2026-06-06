@@ -1,12 +1,13 @@
 'use client'
 import type { TocProps } from './toc.types'
-import { useHeadings, useScrollProgress, useScrollToHeading } from '@/hooks'
+import { useHeadings, useScrollToHeading } from '@/hooks'
+import { useScroll } from '@/providers'
 import { toc } from './toc.styles'
 import { TocList } from './toc-list'
 
 export const Toc = ({ ariaLabel }: TocProps) => {
   const { tocTree, activeID } = useHeadings()
-  const progress = useScrollProgress('article')
+  const { progress } = useScroll('article')
   const tocRef = useScrollToHeading(activeID)
   const isHidden = progress < 5 || progress > 99
 

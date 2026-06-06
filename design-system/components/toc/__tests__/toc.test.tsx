@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
-import { useHeadings, useScrollProgress, useScrollToHeading } from '@/hooks'
+import { useHeadings, useScrollToHeading } from '@/hooks'
+import { useScroll } from '@/providers'
 import { Toc } from '../toc'
 import { createHeading } from './toc-element.test'
 import dictionary from '@/dictionaries/en.json'
@@ -16,11 +17,14 @@ const tocTree = [
 
 vi.mock('@/hooks', () => ({
   useHeadings: vi.fn(),
-  useScrollProgress: vi.fn(),
   useScrollToHeading: vi.fn()
 }))
 
-const useScrollProgressMock = vi.mocked(useScrollProgress)
+vi.mock('@/providers', () => ({
+  useScroll: vi.fn()
+}))
+
+const useScrollMock = vi.mocked(useScroll)
 const useHeadingsMock = vi.mocked(useHeadings)
 const useScrollToHeadingMock = vi.mocked(useScrollToHeading)
 
@@ -35,7 +39,7 @@ describe('Toc', () => {
       tocTree: [],
       activeID: 'heading-1'
     })
-    useScrollProgressMock.mockReturnValue(50)
+    useScrollMock.mockReturnValue({ direction: 'up', progress: 50 })
     useScrollToHeadingMock.mockReturnValue({ current: null })
 
     render(<Toc ariaLabel={ariaLabel} />)
@@ -50,7 +54,7 @@ describe('Toc', () => {
       tocTree,
       activeID: 'heading-1'
     })
-    useScrollProgressMock.mockReturnValue(50)
+    useScrollMock.mockReturnValue({ direction: 'up', progress: 50 })
     useScrollToHeadingMock.mockReturnValue({ current: null })
 
     render(<Toc ariaLabel={ariaLabel} />)
@@ -79,7 +83,7 @@ describe('Toc', () => {
       tocTree,
       activeID: 'heading-1'
     })
-    useScrollProgressMock.mockReturnValue(4)
+    useScrollMock.mockReturnValue({ direction: 'up', progress: 4 })
     useScrollToHeadingMock.mockReturnValue({ current: null })
 
     render(<Toc ariaLabel={ariaLabel} />)
@@ -94,7 +98,7 @@ describe('Toc', () => {
       tocTree,
       activeID: 'heading-1'
     })
-    useScrollProgressMock.mockReturnValue(50)
+    useScrollMock.mockReturnValue({ direction: 'up', progress: 50 })
     useScrollToHeadingMock.mockReturnValue({ current: null })
 
     render(<Toc ariaLabel={ariaLabel} />)
