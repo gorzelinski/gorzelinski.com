@@ -1,6 +1,6 @@
 import type { ProjectProps } from './project.types'
 import { delocalizePath } from '@/lib'
-import { Image } from '../image'
+import { IMAGE_SIZES, Image } from '../image'
 import { ButtonLink, Card, H3, P, Span } from '../../elements'
 import { ChevronForward } from '../../icons'
 
@@ -20,6 +20,7 @@ export const Project = ({
         aspectRatio="wide"
         src={`/images${delocalizePath(slug, lang)}${image.src}`}
         alt={image.alt}
+        sizes={IMAGE_SIZES.columnHalf}
         priority={priority}
       />
       <Span>{deliverables.join(', ')}</Span>

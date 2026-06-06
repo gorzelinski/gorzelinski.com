@@ -12,6 +12,7 @@ import {
   H1,
   H2,
   Header,
+  IMAGE_SIZES,
   Image,
   Link,
   Newsletter,
@@ -114,6 +115,7 @@ export default async function Home(props: PageProps) {
           src={profile}
           alt={page.home.bio.image.alt}
           title={page.home.bio.image.title}
+          sizes={IMAGE_SIZES.columnHalf}
           borderRadius="rounded"
           boxShadow="subtle"
         />

@@ -2,7 +2,7 @@ import type { PostHeaderProps } from './post-header.types'
 import { LINKS } from '@/constants'
 import { formatDate } from '@/lib'
 import { Figcaption, Figure, H1, P, Pill } from '../../elements'
-import { Image } from '../image'
+import { IMAGE_SIZES, Image } from '../image'
 import { PostTime } from './post-time'
 import { verticalRhythm } from '../../utils'
 
@@ -47,6 +47,7 @@ export const PostHeader = ({
           alt={image.alt}
           width={1200}
           height={675}
+          sizes={IMAGE_SIZES.bleedHero}
           priority={true}
         />
         <Figcaption

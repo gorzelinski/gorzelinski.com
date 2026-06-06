@@ -84,6 +84,7 @@ export {
   Callout,
   Confetti,
   HelperNavigation,
+  IMAGE_SIZES,
   Image,
   LanguageSwitch,
   LinkOrA,

@@ -19,6 +19,7 @@ import {
   H3,
   H4,
   Hr,
+  IMAGE_SIZES,
   Image,
   InlineCode,
   Kbd,
@@ -180,6 +181,7 @@ export function getMDXComponents(page: Pages, slug: string): MDXComponents {
           title={title}
           width={720}
           height={540}
+          sizes={IMAGE_SIZES.content}
         />
       )
 
