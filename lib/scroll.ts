@@ -1,9 +1,9 @@
-import type { ScrollProgressSelector } from '@/types'
+import type { ScrollDirection, ScrollProgressSelector } from '@/types'
 
 export function getScrollDirection(
   currentScrollY: number,
   lastScrollY: number
-): 'up' | 'down' {
+): ScrollDirection {
   return currentScrollY > lastScrollY ? 'down' : 'up'
 }
 
