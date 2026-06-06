@@ -1,14 +1,24 @@
-import type { ScrollProgressSelector, ScrollState } from '@/types'
-import { useEffect, useRef, useState } from 'react'
+'use client'
+import type {
+  ScrollContextValue,
+  ScrollProgressSelector,
+  ScrollState
+} from '@/types'
+import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import { getScrollDirection, getScrollProgress } from '@/lib'
 
-export function useScroll(
-  selector: ScrollProgressSelector = 'html'
-): ScrollState {
-  const [scroll, setScroll] = useState<ScrollState>({
-    direction: 'up',
-    progress: 0
-  })
+const ScrollContext = createContext<ScrollContextValue | null>(null)
+
+const initialScrollValue: ScrollContextValue = {
+  direction: 'up',
+  progress: {
+    html: 0,
+    article: 0
+  }
+}
+
+export function ScrollProvider({ children }: { children: React.ReactNode }) {
+  const [scroll, setScroll] = useState<ScrollContextValue>(initialScrollValue)
   const animationFrame = useRef<number>(0)
 
   useEffect(() => {
@@ -20,7 +30,10 @@ export function useScroll(
 
       setScroll({
         direction: getScrollDirection(currentScrollY, lastScrollY),
-        progress: getScrollProgress(selector)
+        progress: {
+          html: getScrollProgress('html'),
+          article: getScrollProgress('article')
+        }
       })
 
       lastScrollY = currentScrollY
@@ -39,7 +52,21 @@ export function useScroll(
       window.cancelAnimationFrame(animationFrame.current)
       window.removeEventListener('scroll', onScroll)
     }
-  }, [selector])
+  }, [])
 
-  return scroll
+  return (
+    <ScrollContext.Provider value={scroll}>{children}</ScrollContext.Provider>
+  )
+}
+
+export function useScroll(
+  selector: ScrollProgressSelector = 'html'
+): ScrollState {
+  const scroll = useContext(ScrollContext)
+
+  if (!scroll) {
+    throw new Error('useScroll must be used within a ScrollProvider')
+  }
+
+  return { direction: scroll.direction, progress: scroll.progress[selector] }
 }

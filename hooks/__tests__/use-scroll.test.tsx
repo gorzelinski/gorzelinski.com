@@ -1,6 +1,7 @@
+import type { ReactNode } from 'react'
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
-import { useScroll } from '../use-scroll'
+import { ScrollProvider, useScroll } from '../use-scroll'
 
 const SCROLL_DIMENSIONS = {
   elementHeight: 1000,
@@ -15,6 +16,10 @@ const SCROLL_POSITIONS = {
 } as const
 
 const RAF_ID = 1
+
+const wrapper = ({ children }: { children: ReactNode }) => (
+  <ScrollProvider>{children}</ScrollProvider>
+)
 
 describe('useScroll', () => {
   let removeEventListenerSpy: any
@@ -71,13 +76,13 @@ describe('useScroll', () => {
   })
 
   it('returns up direction and 0 progress by default', () => {
-    const { result } = renderHook(() => useScroll())
+    const { result } = renderHook(() => useScroll(), { wrapper })
 
     expect(result.current).toEqual({ direction: 'up', progress: 0 })
   })
 
   it('tracks direction and progress when scrolling down', () => {
-    const { result } = renderHook(() => useScroll())
+    const { result } = renderHook(() => useScroll(), { wrapper })
 
     scrollTo(SCROLL_POSITIONS.half)
 
@@ -85,7 +90,7 @@ describe('useScroll', () => {
   })
 
   it('returns up when scrolling up after down', () => {
-    const { result } = renderHook(() => useScroll())
+    const { result } = renderHook(() => useScroll(), { wrapper })
 
     scrollTo(SCROLL_POSITIONS.half)
     expect(result.current.direction).toBe('down')
@@ -95,23 +100,38 @@ describe('useScroll', () => {
   })
 
   it('clamps progress to 100', () => {
-    const { result } = renderHook(() => useScroll())
+    const { result } = renderHook(() => useScroll(), { wrapper })
 
     scrollTo(SCROLL_POSITIONS.beyond)
 
     expect(result.current.progress).toBe(100)
   })
 
-  it('measures progress against the provided selector', () => {
-    renderHook(() => useScroll('article'))
+  it('serves every selector from a single shared listener', () => {
+    const addEventListenerSpy = vi.spyOn(window, 'addEventListener')
+
+    const { result } = renderHook(
+      () => ({
+        html: useScroll('html'),
+        article: useScroll('article')
+      }),
+      { wrapper }
+    )
 
     scrollTo(SCROLL_POSITIONS.half)
 
+    const scrollListeners = addEventListenerSpy.mock.calls.filter(
+      ([event]) => event === 'scroll'
+    )
+
+    expect(scrollListeners).toHaveLength(1)
+    expect(result.current.html.progress).toBe(50)
+    expect(result.current.article.progress).toBe(50)
     expect(document.querySelector).toHaveBeenCalledWith('article')
   })
 
   it('removes event listener and cancels animation frame on unmount', () => {
-    const { unmount } = renderHook(() => useScroll())
+    const { unmount } = renderHook(() => useScroll(), { wrapper })
 
     unmount()
 
@@ -120,5 +140,17 @@ describe('useScroll', () => {
       expect.any(Function)
     )
     expect(cancelAnimationFrameSpy).toHaveBeenCalled()
+  })
+
+  it('throws when used outside of a provider', () => {
+    const consoleErrorSpy = vi
+      .spyOn(console, 'error')
+      .mockImplementation(() => {})
+
+    expect(() => renderHook(() => useScroll())).toThrow(
+      'useScroll must be used within a ScrollProvider'
+    )
+
+    consoleErrorSpy.mockRestore()
   })
 })

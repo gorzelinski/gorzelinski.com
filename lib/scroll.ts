@@ -9,7 +9,10 @@ export function getScrollDirection(
 
 export function getScrollProgress(selector: ScrollProgressSelector) {
   const root = document.documentElement
-  const element = document.querySelector(selector)!
+  const element = document.querySelector(selector)
+
+  if (!element) return 0
+
   const scrollableHeight = element.scrollHeight - window.innerHeight
   const currentScrollY = root.scrollTop - element.offsetTop
   const progress = (currentScrollY / scrollableHeight) * 100

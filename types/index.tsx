@@ -19,6 +19,7 @@ export {
   type Pages
 } from './page'
 export {
+  type ScrollContextValue,
   type ScrollDirection,
   type ScrollProgressSelector,
   type ScrollState

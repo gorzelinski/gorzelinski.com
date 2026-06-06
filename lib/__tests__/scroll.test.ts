@@ -68,5 +68,11 @@ describe('scroll', () => {
 
       expect(document.querySelector).toHaveBeenCalledWith('article')
     })
+
+    it('returns 0 when the element is missing', () => {
+      vi.spyOn(document, 'querySelector').mockReturnValue(null)
+
+      expect(getScrollProgress('article')).toBe(0)
+    })
   })
 })

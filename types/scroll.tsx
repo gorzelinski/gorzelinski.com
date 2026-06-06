@@ -4,3 +4,7 @@ export type ScrollState = {
   direction: ScrollDirection
   progress: number
 }
+export type ScrollContextValue = {
+  direction: ScrollDirection
+  progress: Record<ScrollProgressSelector, number>
+}
