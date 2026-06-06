@@ -1,14 +1,14 @@
 'use client'
 import type { TopBarProps } from './top-bar.types'
-import { useScrollDirection, useScrollProgress } from '@/hooks'
+import { isNavbarHidden } from '@/lib'
+import { useScroll } from '@/providers'
 import { HelperNavigation, MainNavigation } from '../../components'
 import { navbar } from '../../elements/navbar'
 
 export const TopBar = ({ lang, dictionary }: TopBarProps) => {
   const { links, component, layout } = dictionary
-  const direction = useScrollDirection()
-  const progress = useScrollProgress()
-  const isHidden = progress > 5 && direction === 'down'
+  const { direction, progress } = useScroll()
+  const isHidden = isNavbarHidden(direction, progress)
 
   return (
     <header

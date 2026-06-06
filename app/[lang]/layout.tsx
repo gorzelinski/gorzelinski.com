@@ -7,6 +7,7 @@ import { getCookie } from 'cookies-next/server'
 import { COOKIES, metadataBase } from '@/constants'
 import { i18n } from '@/i18n.config'
 import { getDictionary } from '@/scripts'
+import { ScrollProvider } from '@/providers'
 import { getAbsoluteURL, getMetaImage } from '@/lib'
 import { montserrat, lora, firaCode } from '@/theme/fonts'
 import { Background, BottomBar, Footer, Main, TopBar } from '@/design-system'
@@ -118,10 +119,12 @@ export default async function RootLayout(props: {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Background data-testid="background">
-          <TopBar lang={lang} dictionary={dictionary} />
-          <Main>{children}</Main>
-          <Footer lang={lang} dictionary={dictionary} />
-          <BottomBar lang={lang} dictionary={dictionary} />
+          <ScrollProvider>
+            <TopBar lang={lang} dictionary={dictionary} />
+            <Main>{children}</Main>
+            <Footer lang={lang} dictionary={dictionary} />
+            <BottomBar lang={lang} dictionary={dictionary} />
+          </ScrollProvider>
         </Background>
         <Analytics />
       </body>

@@ -17,6 +17,7 @@ export {
 export { getMetaImage } from './meta-image'
 export { selectActiveClass } from './navigation'
 export { getFormURL } from './newsletter'
+export { getScrollDirection, getScrollProgress, isNavbarHidden } from './scroll'
 export { capitalize, getTextFromChildren, slugify } from './string'
 export {
   hslToRgb,

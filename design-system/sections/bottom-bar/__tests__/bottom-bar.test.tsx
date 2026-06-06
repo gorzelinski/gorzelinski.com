@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
-import { useScrollDirection, useScrollProgress } from '@/hooks'
+import { useScroll } from '@/providers'
 import { BottomBar } from '../bottom-bar'
 import dictionary from '@/dictionaries/en.json'
 
@@ -8,13 +8,11 @@ vi.mock('next/navigation', () => ({
   usePathname: () => '/'
 }))
 
-vi.mock('@/hooks', () => ({
-  useScrollDirection: vi.fn(),
-  useScrollProgress: vi.fn()
+vi.mock('@/providers', () => ({
+  useScroll: vi.fn()
 }))
 
-const useScrollDirectionMock = vi.mocked(useScrollDirection)
-const useScrollProgressMock = vi.mocked(useScrollProgress)
+const useScrollMock = vi.mocked(useScroll)
 
 describe('BottomBar', () => {
   afterEach(() => {
@@ -23,8 +21,7 @@ describe('BottomBar', () => {
   })
 
   it('renders correctly with main navigation', () => {
-    useScrollDirectionMock.mockReturnValue('up')
-    useScrollProgressMock.mockReturnValue(50)
+    useScrollMock.mockReturnValue({ direction: 'up', progress: 50 })
 
     render(<BottomBar lang="en" dictionary={dictionary} />)
 
@@ -42,8 +39,7 @@ describe('BottomBar', () => {
   })
 
   it('hides when scrolling down', () => {
-    useScrollDirectionMock.mockReturnValue('down')
-    useScrollProgressMock.mockReturnValue(10)
+    useScrollMock.mockReturnValue({ direction: 'down', progress: 10 })
 
     render(<BottomBar lang="en" dictionary={dictionary} />)
 
@@ -53,8 +49,7 @@ describe('BottomBar', () => {
   })
 
   it('stays visible when scrolling up', () => {
-    useScrollDirectionMock.mockReturnValue('up')
-    useScrollProgressMock.mockReturnValue(10)
+    useScrollMock.mockReturnValue({ direction: 'up', progress: 10 })
 
     render(<BottomBar lang="en" dictionary={dictionary} />)
 

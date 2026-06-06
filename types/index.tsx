@@ -18,6 +18,11 @@ export {
   type SearchPageProps,
   type Pages
 } from './page'
-export { type ScrollProgressSelector } from './scroll'
+export {
+  type ScrollContextValue,
+  type ScrollDirection,
+  type ScrollProgressSelector,
+  type ScrollState
+} from './scroll'
 export { type Theme } from './theme'
 export { type TocHeadingNode } from './toc'

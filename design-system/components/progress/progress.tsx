@@ -1,11 +1,11 @@
 'use client'
 import type { ProgressProps } from './progress.types'
-import { useScrollProgress } from '@/hooks'
+import { useScroll } from '@/providers'
 import { progress as progressStyles } from './progress.styles'
 import { ProgressBar } from './progress-bar'
 
 export const Progress = ({ selector }: ProgressProps) => {
-  const progress = useScrollProgress(selector)
+  const { progress } = useScroll(selector)
 
   return (
     <div

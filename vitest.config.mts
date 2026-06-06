@@ -27,6 +27,7 @@ export default defineConfig({
       'design-system/**/*.{test,spec}.?(c|m)[jt]s?(x)',
       'hooks/**/*.{test,spec}.?(c|m)[jt]s?(x)',
       'lib/**/*.{test,spec}.?(c|m)[jt]s?(x)',
+      'providers/**/*.{test,spec}.?(c|m)[jt]s?(x)',
       'scripts/**/*.{test,spec}.?(c|m)[jt]s?(x)'
     ],
     coverage: {
@@ -36,6 +37,7 @@ export default defineConfig({
         'design-system/**/*.{js,jsx,ts,tsx}',
         'hooks/**/*.{js,jsx,ts,tsx}',
         'lib/**/*.{js,jsx,ts,tsx}',
+        'providers/**/*.{js,jsx,ts,tsx}',
         'scripts/**/*.{js,jsx,ts,tsx}'
       ],
       exclude: [

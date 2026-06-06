@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
-import { useScrollDirection, useScrollProgress } from '@/hooks'
+import { useScroll } from '@/providers'
 import { TopBar } from '../top-bar'
 import dictionary from '@/dictionaries/en.json'
 
@@ -12,13 +12,14 @@ vi.mock('@/hooks', () => ({
   useTheme: () => ({
     theme: 'light',
     toggleTheme: vi.fn()
-  }),
-  useScrollDirection: vi.fn(),
-  useScrollProgress: vi.fn()
+  })
 }))
 
-const useScrollDirectionMock = vi.mocked(useScrollDirection)
-const useScrollProgressMock = vi.mocked(useScrollProgress)
+vi.mock('@/providers', () => ({
+  useScroll: vi.fn()
+}))
+
+const useScrollMock = vi.mocked(useScroll)
 
 describe('TopBar', () => {
   afterEach(() => {
@@ -27,8 +28,7 @@ describe('TopBar', () => {
   })
 
   it('renders correctly with both navigations', () => {
-    useScrollDirectionMock.mockReturnValue('up')
-    useScrollProgressMock.mockReturnValue(50)
+    useScrollMock.mockReturnValue({ direction: 'up', progress: 50 })
 
     render(<TopBar lang="en" dictionary={dictionary} />)
 
@@ -50,8 +50,7 @@ describe('TopBar', () => {
   })
 
   it('hides the top bar when scrolling down', () => {
-    useScrollDirectionMock.mockReturnValue('down')
-    useScrollProgressMock.mockReturnValue(10)
+    useScrollMock.mockReturnValue({ direction: 'down', progress: 10 })
 
     render(<TopBar lang="en" dictionary={dictionary} />)
 
@@ -61,8 +60,7 @@ describe('TopBar', () => {
   })
 
   it('hides the border when progress is less than 1', () => {
-    useScrollDirectionMock.mockReturnValue('up')
-    useScrollProgressMock.mockReturnValue(0)
+    useScrollMock.mockReturnValue({ direction: 'up', progress: 0 })
 
     render(<TopBar lang="en" dictionary={dictionary} />)
 
@@ -72,8 +70,7 @@ describe('TopBar', () => {
   })
 
   it('shows the border when progress is greater than 1', () => {
-    useScrollDirectionMock.mockReturnValue('up')
-    useScrollProgressMock.mockReturnValue(2)
+    useScrollMock.mockReturnValue({ direction: 'up', progress: 2 })
 
     render(<TopBar lang="en" dictionary={dictionary} />)
 
