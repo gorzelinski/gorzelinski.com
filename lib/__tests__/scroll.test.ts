@@ -1,5 +1,5 @@
 import { describe, expect, it, beforeEach, afterEach, vi } from 'vitest'
-import { getScrollDirection, getScrollProgress } from '../scroll'
+import { getScrollDirection, getScrollProgress, isNavbarHidden } from '../scroll'
 
 describe('scroll', () => {
   describe('getScrollDirection()', () => {
@@ -73,6 +73,20 @@ describe('scroll', () => {
       vi.spyOn(document, 'querySelector').mockReturnValue(null)
 
       expect(getScrollProgress('article')).toBe(0)
+    })
+  })
+
+  describe('isNavbarHidden()', () => {
+    it('hides when scrolling down past the threshold', () => {
+      expect(isNavbarHidden('down', 10)).toBe(true)
+    })
+
+    it('stays visible when scrolling up', () => {
+      expect(isNavbarHidden('up', 10)).toBe(false)
+    })
+
+    it('stays visible at the top even when scrolling down', () => {
+      expect(isNavbarHidden('down', 5)).toBe(false)
     })
   })
 })
