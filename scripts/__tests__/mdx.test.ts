@@ -778,6 +778,65 @@ describe('mdx', () => {
       expect(result[0].frontmatter.title).toBe('Post 2 PL')
       expect(result[0].frontmatter.slug).toBe('/pl/blog/post-2/')
     })
+
+    it('ranks related projects by shared services and deliverables', async () => {
+      mockMDXes([
+        {
+          slug: 'project-1',
+          frontmatter: projectFrontmatter({
+            title: 'Project 1',
+            services: ['design', 'development'],
+            deliverables: ['website']
+          })
+        },
+        {
+          slug: 'project-2',
+          frontmatter: projectFrontmatter({
+            title: 'Project 2',
+            services: ['design'],
+            deliverables: ['logo']
+          })
+        },
+        {
+          slug: 'project-3',
+          frontmatter: projectFrontmatter({
+            title: 'Project 3',
+            services: ['branding'],
+            deliverables: ['website']
+          })
+        },
+        {
+          slug: 'project-4',
+          frontmatter: projectFrontmatter({
+            title: 'Project 4',
+            services: ['branding'],
+            deliverables: ['mobile app']
+          })
+        }
+      ])
+
+      const currentProject = projectFrontmatter({
+        title: 'Project 1',
+        services: ['design', 'development'],
+        deliverables: ['website'],
+        slug: '/portfolio/project-1/',
+        readingTime: {
+          text: '2 min read',
+          minutes: 2,
+          time: 120000,
+          words: 400
+        }
+      }) as any
+
+      const result = await getRelatedMDXes(currentProject, '/portfolio/', 'en')
+
+      // Project 2 shares a service (score 3) > Project 3 shares a deliverable
+      // (score 1). Project 4 shares nothing and is excluded.
+      expect(result.map((mdx) => mdx.frontmatter.title)).toEqual([
+        'Project 2',
+        'Project 3'
+      ])
+    })
   })
 
   describe('searchMDXes()', () => {
