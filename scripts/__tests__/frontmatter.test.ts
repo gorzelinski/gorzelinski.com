@@ -28,13 +28,16 @@ describe('frontmatter', () => {
       expect(count).toBe(3)
     })
 
-    it('counts shared services for projects', () => {
+    it('counts shared services and deliverables for projects', () => {
       const count = countSharedFrontmatter(
-        { services: ['design', 'dev'] } as Project,
-        { services: ['design'] } as Project
+        {
+          services: ['design', 'dev'],
+          deliverables: ['website', 'logo']
+        } as Project,
+        { services: ['design'], deliverables: ['logo'] } as Project
       )
 
-      expect(count).toBe(1)
+      expect(count).toBe(2)
     })
 
     it('ignores fields missing on either side', () => {

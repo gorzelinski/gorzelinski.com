@@ -27,6 +27,10 @@ export function countSharedFrontmatter(
     total += countSharedItems(first.services, second.services)
   }
 
+  if ('deliverables' in first && 'deliverables' in second) {
+    total += countSharedItems(first.deliverables, second.deliverables)
+  }
+
   return total
 }
 
