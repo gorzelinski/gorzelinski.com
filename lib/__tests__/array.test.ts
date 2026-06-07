@@ -17,7 +17,7 @@ describe('array', () => {
     })
 
     it('counts each match only once when source has duplicates', () => {
-      expect(countSharedItems(['a', 'a', 'b'], ['a'])).toBe(2)
+      expect(countSharedItems(['a', 'a', 'b'], ['a'])).toBe(1)
     })
   })
 })
