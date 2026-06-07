@@ -12,8 +12,14 @@ import rehypeMdxCodeProps from 'rehype-mdx-code-props'
 import rehypeUnwrapImages from 'rehype-unwrap-images'
 import readingTime from 'reading-time'
 import { LINKS } from '@/constants'
-import { compareDates, localizeFileName, localizePath } from '@/lib'
+import {
+  compareDates,
+  countSharedItems,
+  localizeFileName,
+  localizeSlug
+} from '@/lib'
 import { getMDXComponents } from '@/mdx-components'
+import { getSearchableText } from './mdx.helpers'
 
 const root = process.cwd()
 
@@ -52,7 +58,7 @@ export async function getMDX<Type extends MDXTypes>(
     }
   })
   frontmatter.readingTime = readingTime(file)
-  frontmatter.slug = path.normalize(localizePath(`${page}${slug}/`, lang))
+  frontmatter.slug = localizeSlug(page, slug, lang)
   frontmatter.date = new Date(frontmatter.date)
   frontmatter.updated = new Date(frontmatter.updated)
 
@@ -111,9 +117,7 @@ export async function createMDXPagination(
 ) {
   const mdxes = await getMDXes(page, lang, 'all', 'desc')
   const currentIndex = mdxes.findIndex(
-    (mdx) =>
-      mdx.frontmatter.slug ===
-      path.normalize(localizePath(`${page}${slug}/`, lang))
+    (mdx) => mdx.frontmatter.slug === localizeSlug(page, slug, lang)
   )
 
   if (currentIndex === -1) {
@@ -155,21 +159,15 @@ export async function getRelatedMDXes<Type extends MDXTypes>(
     const hasRelatedCategory =
       'categories' in relatedMDX.frontmatter &&
       'categories' in mdx &&
-      relatedMDX.frontmatter.categories.some((category) =>
-        mdx.categories.includes(category)
-      )
+      countSharedItems(relatedMDX.frontmatter.categories, mdx.categories) > 0
     const hasRelatedTag =
       'tags' in relatedMDX.frontmatter &&
       'tags' in mdx &&
-      relatedMDX.frontmatter.tags.some((tag) => mdx.tags.includes(tag))
-
+      countSharedItems(relatedMDX.frontmatter.tags, mdx.tags) > 0
     const hasRelatedService =
       'services' in relatedMDX.frontmatter &&
       'services' in mdx &&
-      relatedMDX.frontmatter.services.some((service) =>
-        mdx.services.includes(service)
-      )
-
+      countSharedItems(relatedMDX.frontmatter.services, mdx.services) > 0
     const isDuplicate = relatedMDX.frontmatter.slug === mdx.slug
 
     return (
@@ -195,15 +193,7 @@ export async function searchMDXes<Type extends MDXTypes>(
   const searchTerms = query.toLowerCase().split(' ').filter(Boolean)
 
   return mdxes.filter(({ frontmatter }) => {
-    const searchableText = [
-      frontmatter.title,
-      frontmatter.description,
-      ...('categories' in frontmatter ? frontmatter.categories : []),
-      ...('tags' in frontmatter ? frontmatter.tags : []),
-      ...('services' in frontmatter ? frontmatter.services : [])
-    ]
-      .join(' ')
-      .toLowerCase()
+    const searchableText = getSearchableText(frontmatter)
 
     return searchTerms.every((term) => searchableText.includes(term))
   })
