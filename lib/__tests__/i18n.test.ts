@@ -70,6 +70,14 @@ describe('i18n', () => {
         '/pl/portfolio/my-project/'
       )
     })
+
+    it('returns the page path unchanged when the slug is empty', () => {
+      expect(localizeSlug('/uses/', '', 'en')).toBe('/uses/')
+    })
+
+    it('localizes the page path when the slug is empty', () => {
+      expect(localizeSlug('/uses/', '', 'pl')).toBe('/pl/uses/')
+    })
   })
 
   describe('delocalizePath()', () => {

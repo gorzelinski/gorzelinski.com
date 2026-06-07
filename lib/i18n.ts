@@ -29,7 +29,9 @@ export function localizeSlug(
   slug: string,
   locale: Locale
 ): string {
-  return localizePath(`${page}${slug}/`, locale)
+  const path = slug ? `${page}${slug}/` : page
+
+  return localizePath(path, locale)
 }
 
 export function delocalizePath(path: string, locale: Locale): string {
