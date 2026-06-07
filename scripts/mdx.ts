@@ -14,9 +14,9 @@ import { LINKS } from '@/constants'
 import { compareDates, localizeFileName, localizeSlug } from '@/lib'
 import { getMDXComponents } from '@/mdx-components'
 import {
-  countSharedFrontmatter,
   enrichFrontmatter,
-  isFrontmatterMatchingQuery
+  isFrontmatterMatchingQuery,
+  scoreSharedFrontmatter
 } from './frontmatter'
 
 const root = process.cwd()
@@ -150,16 +150,26 @@ export async function getRelatedMDXes<Type extends MDXTypes>(
 ) {
   const mdxes = await getMDXes<Type>(page, lang)
 
-  const related = mdxes.filter((relatedMDX) => {
-    const isDuplicate = relatedMDX.frontmatter.slug === mdx.slug
+  const related = mdxes
+    .filter((relatedMDX) => relatedMDX.frontmatter.slug !== mdx.slug)
+    .map((relatedMDX) => ({
+      mdx: relatedMDX,
+      score: scoreSharedFrontmatter(relatedMDX.frontmatter, mdx)
+    }))
+    .filter(({ score }) => score > 0)
+    .sort((first, second) => {
+      if (second.score !== first.score) {
+        return second.score - first.score
+      }
 
-    return (
-      !isDuplicate && countSharedFrontmatter(relatedMDX.frontmatter, mdx) > 0
-    )
-  })
+      return compareDates(
+        first.mdx.frontmatter.date,
+        second.mdx.frontmatter.date
+      )
+    })
+    .map(({ mdx: relatedMDX }) => relatedMDX)
 
-  const filtered =
-    number === 'all' ? related : related.filter((_, index) => index < number)
+  const filtered = number === 'all' ? related : related.slice(0, number)
 
   return filtered
 }

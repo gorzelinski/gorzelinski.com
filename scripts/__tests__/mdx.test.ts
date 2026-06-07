@@ -594,12 +594,60 @@ describe('mdx', () => {
 
       const result = await getRelatedMDXes(currentPost, '/blog/', 'en')
 
-      const titles = result.map((mdx) => mdx.frontmatter.title)
       expect(result).toHaveLength(2)
-      expect(titles).toContain('Post 2')
-      expect(titles).toContain('Post 3')
-      expect(titles).not.toContain('Post 1')
-      expect(titles).not.toContain('Post 4')
+      expect(result[0].frontmatter.title).toBe('Post 3')
+      expect(result[1].frontmatter.title).toBe('Post 2')
+    })
+
+    it('ranks related posts by score with newer posts breaking ties', async () => {
+      mockMDXes([
+        {
+          slug: 'post-1',
+          frontmatter: postFrontmatter({
+            title: 'Post 1',
+            categories: ['tech'],
+            tags: ['react']
+          })
+        },
+        {
+          slug: 'post-2',
+          frontmatter: postFrontmatter({
+            title: 'Post 2',
+            categories: ['tech'],
+            tags: ['react'],
+            date: new Date('2023-01-02')
+          })
+        },
+        {
+          slug: 'post-3',
+          frontmatter: postFrontmatter({
+            title: 'Post 3',
+            categories: ['tech'],
+            tags: ['react'],
+            date: new Date('2023-01-03')
+          })
+        }
+      ])
+
+      const currentPost = postFrontmatter({
+        title: 'Post 1',
+        categories: ['tech'],
+        tags: ['react'],
+        slug: '/blog/post-1/',
+        readingTime: {
+          text: '2 min read',
+          minutes: 2,
+          time: 120000,
+          words: 400
+        }
+      }) as any
+
+      const result = await getRelatedMDXes(currentPost, '/blog/', 'en')
+
+      expect(result.map((mdx) => mdx.frontmatter.title)).toEqual([
+        'Post 3',
+        'Post 2'
+      ])
     })
 
     it('limits the number of related MDXes when number parameter is specified', async () => {

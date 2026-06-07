@@ -4,7 +4,8 @@ import {
   countSharedFrontmatter,
   enrichFrontmatter,
   isFrontmatterMatchingQuery,
-  getSearchableTextFromFrontmatter
+  getSearchableTextFromFrontmatter,
+  scoreSharedFrontmatter
 } from '../frontmatter'
 
 describe('frontmatter', () => {
@@ -43,6 +44,53 @@ describe('frontmatter', () => {
       )
 
       expect(count).toBe(0)
+    })
+  })
+
+  describe('scoreSharedFrontmatter()', () => {
+    it('returns 0 when nothing is shared', () => {
+      const score = scoreSharedFrontmatter(
+        { categories: ['tech'], tags: ['react'] } as Post,
+        { categories: ['life'], tags: ['travel'] } as Post
+      )
+
+      expect(score).toBe(0)
+    })
+
+    it('weights tags higher than categories', () => {
+      const tagScore = scoreSharedFrontmatter(
+        { tags: ['react'] } as Post,
+        { tags: ['react'] } as Post
+      )
+      const categoryScore = scoreSharedFrontmatter(
+        { categories: ['tech'] } as Post,
+        { categories: ['tech'] } as Post
+      )
+
+      expect(tagScore).toBe(3)
+      expect(categoryScore).toBe(1)
+      expect(tagScore).toBeGreaterThan(categoryScore)
+    })
+
+    it('sums weighted scores across multiple fields', () => {
+      const score = scoreSharedFrontmatter(
+        { categories: ['tech'], tags: ['react', 'next'] } as Post,
+        { categories: ['tech'], tags: ['react'] } as Post
+      )
+
+      expect(score).toBe(4)
+    })
+
+    it('scores shared services and deliverables for projects', () => {
+      const score = scoreSharedFrontmatter(
+        {
+          services: ['design', 'dev'],
+          deliverables: ['website', 'logo']
+        } as Project,
+        { services: ['design'], deliverables: ['logo'] } as Project
+      )
+
+      expect(score).toBe(4)
     })
   })
 
