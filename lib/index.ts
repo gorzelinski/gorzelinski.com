@@ -1,3 +1,4 @@
+export { countSharedItems } from './array'
 export { preToCodeProps } from './code'
 export { compareDates, formatDate, formatReadingTime } from './date'
 export {
@@ -6,7 +7,8 @@ export {
   getLocaleDisplayName,
   isDefaultLocale,
   localizePath,
-  localizeFileName
+  localizeFileName,
+  localizeSlug
 } from './i18n'
 export {
   generateAlternateLinks,
