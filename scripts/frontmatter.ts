@@ -1,5 +1,6 @@
-import type { MDX } from '@/types'
-import { countSharedItems } from '@/lib'
+import type { Locale, MDX, MDXTypes, Pages } from '@/types'
+import readingTime from 'reading-time'
+import { countSharedItems, localizeSlug } from '@/lib'
 
 export function countSharedFrontmatter(
   first: MDX['frontmatter'],
@@ -20,6 +21,39 @@ export function countSharedFrontmatter(
   }
 
   return total
+}
+
+export function enrichFrontmatter<Type extends MDXTypes>(
+  frontmatter: Extract<MDX['frontmatter'], { type: Type }>,
+  options: {
+    page: Pages
+    slug: string
+    lang: Locale
+    file: string
+  }
+) {
+  frontmatter.readingTime = readingTime(options.file)
+  frontmatter.slug = localizeSlug(options.page, options.slug, options.lang)
+  frontmatter.date = new Date(frontmatter.date)
+  frontmatter.updated = new Date(frontmatter.updated)
+
+  return frontmatter
+}
+
+export function isFrontmatterMatchingQuery(
+  frontmatter: {
+    title: string
+    description: string
+    categories?: string[]
+    tags?: string[]
+    services?: string[]
+  },
+  query: string
+) {
+  const searchTerms = query.toLowerCase().split(' ').filter(Boolean)
+  const searchableText = getSearchableTextFromFrontmatter(frontmatter)
+
+  return searchTerms.every((term) => searchableText.includes(term))
 }
 
 export function getSearchableTextFromFrontmatter(frontmatter: {

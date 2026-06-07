@@ -2,6 +2,8 @@ import type { Post, Project } from '@/types'
 import { describe, expect, it } from 'vitest'
 import {
   countSharedFrontmatter,
+  enrichFrontmatter,
+  isFrontmatterMatchingQuery,
   getSearchableTextFromFrontmatter
 } from '../frontmatter'
 
@@ -41,6 +43,101 @@ describe('frontmatter', () => {
       )
 
       expect(count).toBe(0)
+    })
+  })
+
+  describe('enrichFrontmatter()', () => {
+    it('adds derived fields to frontmatter', () => {
+      const frontmatter = {
+        title: 'Test Post',
+        description: 'Test Description',
+        date: '2023-01-01',
+        updated: '2023-01-02',
+        image: { alt: 'Test', src: '/images/test.jpg' },
+        categories: ['tech'],
+        tags: ['react'],
+        type: 'post' as const,
+        slug: '',
+        readingTime: { text: '', minutes: 0, time: 0, words: 0 }
+      } as unknown as Post
+
+      enrichFrontmatter(frontmatter, {
+        page: '/blog/',
+        slug: 'test-post',
+        lang: 'en',
+        file: '# Hello\n\nSome content here.'
+      })
+
+      expect(frontmatter.slug).toBe('/blog/test-post/')
+      expect(frontmatter.date).toBeInstanceOf(Date)
+      expect(frontmatter.updated).toBeInstanceOf(Date)
+      expect(frontmatter.readingTime).toBeDefined()
+      expect(frontmatter.readingTime.minutes).toBeGreaterThan(0)
+    })
+
+    it('localizes the slug for a non-default locale', () => {
+      const frontmatter = {
+        title: 'Test Post',
+        description: 'Test Description',
+        date: '2023-01-01',
+        updated: '2023-01-02',
+        image: { alt: 'Test', src: '/images/test.jpg' },
+        categories: ['tech'],
+        tags: ['react'],
+        type: 'post' as const,
+        slug: '',
+        readingTime: { text: '', minutes: 0, time: 0, words: 0 }
+      } as unknown as Post
+
+      enrichFrontmatter(frontmatter, {
+        page: '/blog/',
+        slug: 'test-post',
+        lang: 'pl',
+        file: '# Hello'
+      })
+
+      expect(frontmatter.slug).toBe('/pl/blog/test-post/')
+    })
+  })
+
+  describe('isFrontmatterMatchingQuery()', () => {
+    it('returns true when all query terms are found', () => {
+      const matches = isFrontmatterMatchingQuery(
+        {
+          title: 'React Tutorial',
+          description: 'Learn React basics'
+        },
+        'react tutorial'
+      )
+
+      expect(matches).toBe(true)
+    })
+
+    it('returns false when a term is missing', () => {
+      const matches = isFrontmatterMatchingQuery(
+        {
+          title: 'React Tutorial',
+          description: 'Learn React basics'
+        },
+        'react vue'
+      )
+
+      expect(matches).toBe(false)
+    })
+
+    it('returns true when terms match categories, tags or services', () => {
+      const matches = isFrontmatterMatchingQuery(
+        {
+          title: 'Post',
+          description: 'Desc',
+          categories: ['tech'],
+          tags: ['nextjs'],
+          services: ['design']
+        },
+        'tech nextjs design'
+      )
+
+      expect(matches).toBe(true)
     })
   })
 

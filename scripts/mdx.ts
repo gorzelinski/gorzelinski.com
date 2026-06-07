@@ -10,13 +10,13 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import rehypeMdxCodeProps from 'rehype-mdx-code-props'
 import rehypeUnwrapImages from 'rehype-unwrap-images'
-import readingTime from 'reading-time'
 import { LINKS } from '@/constants'
 import { compareDates, localizeFileName, localizeSlug } from '@/lib'
 import { getMDXComponents } from '@/mdx-components'
 import {
   countSharedFrontmatter,
-  getSearchableTextFromFrontmatter
+  enrichFrontmatter,
+  isFrontmatterMatchingQuery
 } from './frontmatter'
 
 const root = process.cwd()
@@ -55,10 +55,7 @@ export async function getMDX<Type extends MDXTypes>(
       }
     }
   })
-  frontmatter.readingTime = readingTime(file)
-  frontmatter.slug = localizeSlug(page, slug, lang)
-  frontmatter.date = new Date(frontmatter.date)
-  frontmatter.updated = new Date(frontmatter.updated)
+  enrichFrontmatter(frontmatter, { page, slug, lang, file })
 
   return {
     frontmatter,
@@ -156,7 +153,9 @@ export async function getRelatedMDXes<Type extends MDXTypes>(
   const related = mdxes.filter((relatedMDX) => {
     const isDuplicate = relatedMDX.frontmatter.slug === mdx.slug
 
-    return !isDuplicate && countSharedFrontmatter(relatedMDX.frontmatter, mdx) > 0
+    return (
+      !isDuplicate && countSharedFrontmatter(relatedMDX.frontmatter, mdx) > 0
+    )
   })
 
   const filtered =
@@ -174,11 +173,7 @@ export async function searchMDXes<Type extends MDXTypes>(
 
   if (!query) return mdxes
 
-  const searchTerms = query.toLowerCase().split(' ').filter(Boolean)
-
-  return mdxes.filter(({ frontmatter }) => {
-    const searchableText = getSearchableTextFromFrontmatter(frontmatter)
-
-    return searchTerms.every((term) => searchableText.includes(term))
-  })
+  return mdxes.filter(({ frontmatter }) =>
+    isFrontmatterMatchingQuery(frontmatter, query)
+  )
 }
