@@ -14,7 +14,10 @@ import readingTime from 'reading-time'
 import { LINKS } from '@/constants'
 import { compareDates, localizeFileName, localizeSlug } from '@/lib'
 import { getMDXComponents } from '@/mdx-components'
-import { countSharedMetadata, getSearchableText } from './mdx.helpers'
+import {
+  countSharedFrontmatter,
+  getSearchableTextFromFrontmatter
+} from './frontmatter'
 
 const root = process.cwd()
 
@@ -153,7 +156,7 @@ export async function getRelatedMDXes<Type extends MDXTypes>(
   const related = mdxes.filter((relatedMDX) => {
     const isDuplicate = relatedMDX.frontmatter.slug === mdx.slug
 
-    return !isDuplicate && countSharedMetadata(relatedMDX.frontmatter, mdx) > 0
+    return !isDuplicate && countSharedFrontmatter(relatedMDX.frontmatter, mdx) > 0
   })
 
   const filtered =
@@ -174,7 +177,7 @@ export async function searchMDXes<Type extends MDXTypes>(
   const searchTerms = query.toLowerCase().split(' ').filter(Boolean)
 
   return mdxes.filter(({ frontmatter }) => {
-    const searchableText = getSearchableText(frontmatter)
+    const searchableText = getSearchableTextFromFrontmatter(frontmatter)
 
     return searchTerms.every((term) => searchableText.includes(term))
   })
