@@ -12,14 +12,9 @@ import rehypeMdxCodeProps from 'rehype-mdx-code-props'
 import rehypeUnwrapImages from 'rehype-unwrap-images'
 import readingTime from 'reading-time'
 import { LINKS } from '@/constants'
-import {
-  compareDates,
-  countSharedItems,
-  localizeFileName,
-  localizeSlug
-} from '@/lib'
+import { compareDates, localizeFileName, localizeSlug } from '@/lib'
 import { getMDXComponents } from '@/mdx-components'
-import { getSearchableText } from './mdx.helpers'
+import { countSharedMetadata, getSearchableText } from './mdx.helpers'
 
 const root = process.cwd()
 
@@ -156,23 +151,9 @@ export async function getRelatedMDXes<Type extends MDXTypes>(
   const mdxes = await getMDXes<Type>(page, lang)
 
   const related = mdxes.filter((relatedMDX) => {
-    const hasRelatedCategory =
-      'categories' in relatedMDX.frontmatter &&
-      'categories' in mdx &&
-      countSharedItems(relatedMDX.frontmatter.categories, mdx.categories) > 0
-    const hasRelatedTag =
-      'tags' in relatedMDX.frontmatter &&
-      'tags' in mdx &&
-      countSharedItems(relatedMDX.frontmatter.tags, mdx.tags) > 0
-    const hasRelatedService =
-      'services' in relatedMDX.frontmatter &&
-      'services' in mdx &&
-      countSharedItems(relatedMDX.frontmatter.services, mdx.services) > 0
     const isDuplicate = relatedMDX.frontmatter.slug === mdx.slug
 
-    return (
-      !isDuplicate && (hasRelatedCategory || hasRelatedTag || hasRelatedService)
-    )
+    return !isDuplicate && countSharedMetadata(relatedMDX.frontmatter, mdx) > 0
   })
 
   const filtered =
