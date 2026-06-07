@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { formatDate, formatReadingTime } from '../date'
+import { compareDates, formatDate, formatReadingTime } from '../date'
 
 describe('date', () => {
   describe('formatDate()', () => {
@@ -23,6 +23,32 @@ describe('date', () => {
       const formatted = formatReadingTime(1.4)
 
       expect(formatted).toBe(2)
+    })
+  })
+
+  describe('compareDates()', () => {
+    const older = new Date('2024-01-01')
+    const newer = new Date('2024-06-01')
+
+    it('orders newer before older by default (descending)', () => {
+      expect(compareDates(older, newer)).toBeGreaterThan(0)
+      expect(compareDates(newer, older)).toBeLessThan(0)
+    })
+
+    it('orders older before newer when ascending', () => {
+      expect(compareDates(older, newer, 'asc')).toBeLessThan(0)
+      expect(compareDates(newer, older, 'asc')).toBeGreaterThan(0)
+    })
+
+    it('returns 0 for equal dates', () => {
+      expect(compareDates(older, new Date('2024-01-01'))).toBe(0)
+    })
+
+    it('sorts an array newest-first with the default direction', () => {
+      const dates = [older, newer, new Date('2024-03-01')]
+      const sorted = [...dates].sort((a, b) => compareDates(a, b))
+
+      expect(sorted).toEqual([newer, new Date('2024-03-01'), older])
     })
   })
 })

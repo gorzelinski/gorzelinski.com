@@ -12,7 +12,7 @@ import rehypeMdxCodeProps from 'rehype-mdx-code-props'
 import rehypeUnwrapImages from 'rehype-unwrap-images'
 import readingTime from 'reading-time'
 import { LINKS } from '@/constants'
-import { localizeFileName, localizePath } from '@/lib'
+import { compareDates, localizeFileName, localizePath } from '@/lib'
 import { getMDXComponents } from '@/mdx-components'
 
 const root = process.cwd()
@@ -82,26 +82,9 @@ function sortMDXes<Type extends MDXTypes>(
   }[],
   sort: 'asc' | 'desc'
 ) {
-  switch (sort) {
-    case 'desc':
-      return mdxes.sort((prev, next) => {
-        const prevDate = new Date(prev.frontmatter.date).getTime()
-        const nextDate = new Date(next.frontmatter.date).getTime()
-        return nextDate - prevDate
-      })
-    case 'asc':
-      return mdxes.sort((prev, next) => {
-        const prevDate = new Date(prev.frontmatter.date).getTime()
-        const nextDate = new Date(next.frontmatter.date).getTime()
-        return prevDate - nextDate
-      })
-    default:
-      return mdxes.sort((prev, next) => {
-        const prevDate = new Date(prev.frontmatter.date).getTime()
-        const nextDate = new Date(next.frontmatter.date).getTime()
-        return nextDate - prevDate
-      })
-  }
+  return mdxes.sort((prev, next) =>
+    compareDates(prev.frontmatter.date, next.frontmatter.date, sort)
+  )
 }
 
 export async function getMDXes<Type extends MDXTypes>(

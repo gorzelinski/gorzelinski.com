@@ -29,15 +29,20 @@ vi.mock('reading-time', () => ({
   }))
 }))
 
-vi.mock('@/lib', () => ({
-  localizeFileName: vi.fn(
-    (fileName: string, extension: string, locale: string) =>
-      `${fileName}${locale === 'en' ? '' : `.${locale}`}.${extension}`
-  ),
-  localizePath: vi.fn((path: string, locale: string) =>
-    locale === 'en' ? path : `/${locale}${path}`
-  )
-}))
+vi.mock('@/lib', async () => {
+  const actual = await vi.importActual<typeof import('@/lib')>('@/lib')
+
+  return {
+    ...actual,
+    localizeFileName: vi.fn(
+      (fileName: string, extension: string, locale: string) =>
+        `${fileName}${locale === 'en' ? '' : `.${locale}`}.${extension}`
+    ),
+    localizePath: vi.fn((path: string, locale: string) =>
+      locale === 'en' ? path : `/${locale}${path}`
+    )
+  }
+})
 
 vi.mock('@/mdx-components', () => ({
   getMDXComponents: vi.fn(() => ({}))

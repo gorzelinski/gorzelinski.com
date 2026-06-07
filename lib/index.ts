@@ -1,5 +1,5 @@
 export { preToCodeProps } from './code'
-export { formatDate, formatReadingTime } from './date'
+export { compareDates, formatDate, formatReadingTime } from './date'
 export {
   createLocaleWithTerritory,
   delocalizePath,
