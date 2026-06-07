@@ -24,7 +24,11 @@ export function localizePath(
   return `/${locale}${path}`
 }
 
-export function localizeSlug(page: Pages, slug: string, locale: Locale): string {
+export function localizeSlug(
+  page: Pages,
+  slug: string,
+  locale: Locale
+): string {
   return localizePath(`${page}${slug}/`, locale)
 }
 

@@ -44,7 +44,8 @@ export function scoreSharedFrontmatter(
 
   if ('tags' in first && 'tags' in second) {
     score +=
-      countSharedItems(first.tags, second.tags) * RELATED_FRONTMATTER_WEIGHTS.tag
+      countSharedItems(first.tags, second.tags) *
+      RELATED_FRONTMATTER_WEIGHTS.tag
   }
 
   if ('services' in first && 'services' in second) {
