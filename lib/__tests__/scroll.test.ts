@@ -1,5 +1,9 @@
 import { describe, expect, it, beforeEach, afterEach, vi } from 'vitest'
-import { getScrollDirection, getScrollProgress, isNavbarHidden } from '../scroll'
+import {
+  getScrollDirection,
+  getScrollProgress,
+  isNavbarHidden
+} from '../scroll'
 
 describe('scroll', () => {
   describe('getScrollDirection()', () => {

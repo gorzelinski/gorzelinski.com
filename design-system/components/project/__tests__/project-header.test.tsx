@@ -28,7 +28,10 @@ describe('ProjectHeader', () => {
       name: 'Design, Development'
     })
     const clientLabel = screen.getByText('Client')
-    const client = screen.getByRole('heading', { level: 2, name: 'Test Client' })
+    const client = screen.getByRole('heading', {
+      level: 2,
+      name: 'Test Client'
+    })
     const deliverablesLabel = screen.getByText('Deliverables')
     const deliverables = screen.getByRole('heading', {
       level: 2,
@@ -40,7 +43,10 @@ describe('ProjectHeader', () => {
     expect(header).toBeInTheDocument()
     expect(image).toBeInTheDocument()
     expect(image).toHaveAttribute('alt', 'Test project image')
-    expect(image).toHaveAttribute('src', expect.stringContaining('test-project-image.jpg'))
+    expect(image).toHaveAttribute(
+      'src',
+      expect.stringContaining('test-project-image.jpg')
+    )
     expect(title).toBeInTheDocument()
     expect(title).toHaveTextContent('Test Project Title')
     expect(description).toBeInTheDocument()

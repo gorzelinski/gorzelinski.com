@@ -34,10 +34,7 @@ export const MainNavigation = ({
         underline
         size="s"
         href={localizePath(LINKS.about, lang)}
-        className={selectActiveClass(
-          pathname,
-          localizePath(LINKS.about, lang)
-        )}
+        className={selectActiveClass(pathname, localizePath(LINKS.about, lang))}
       >
         {links.about}
       </ButtonLink>
