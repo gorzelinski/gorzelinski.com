@@ -10,10 +10,14 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import rehypeMdxCodeProps from 'rehype-mdx-code-props'
 import rehypeUnwrapImages from 'rehype-unwrap-images'
-import readingTime from 'reading-time'
 import { LINKS } from '@/constants'
-import { localizeFileName, localizePath } from '@/lib'
+import { compareDates, localizeFileName, localizeSlug } from '@/lib'
 import { getMDXComponents } from '@/mdx-components'
+import {
+  enrichFrontmatter,
+  isFrontmatterMatchingQuery,
+  scoreSharedFrontmatter
+} from './frontmatter'
 
 const root = process.cwd()
 
@@ -51,10 +55,7 @@ export async function getMDX<Type extends MDXTypes>(
       }
     }
   })
-  frontmatter.readingTime = readingTime(file)
-  frontmatter.slug = path.normalize(localizePath(`${page}${slug}/`, lang))
-  frontmatter.date = new Date(frontmatter.date)
-  frontmatter.updated = new Date(frontmatter.updated)
+  enrichFrontmatter(frontmatter, { page, slug, lang, file })
 
   return {
     frontmatter,
@@ -82,26 +83,9 @@ function sortMDXes<Type extends MDXTypes>(
   }[],
   sort: 'asc' | 'desc'
 ) {
-  switch (sort) {
-    case 'desc':
-      return mdxes.sort((prev, next) => {
-        const prevDate = new Date(prev.frontmatter.date).getTime()
-        const nextDate = new Date(next.frontmatter.date).getTime()
-        return nextDate - prevDate
-      })
-    case 'asc':
-      return mdxes.sort((prev, next) => {
-        const prevDate = new Date(prev.frontmatter.date).getTime()
-        const nextDate = new Date(next.frontmatter.date).getTime()
-        return prevDate - nextDate
-      })
-    default:
-      return mdxes.sort((prev, next) => {
-        const prevDate = new Date(prev.frontmatter.date).getTime()
-        const nextDate = new Date(next.frontmatter.date).getTime()
-        return nextDate - prevDate
-      })
-  }
+  return mdxes.sort((prev, next) =>
+    compareDates(prev.frontmatter.date, next.frontmatter.date, sort)
+  )
 }
 
 export async function getMDXes<Type extends MDXTypes>(
@@ -128,9 +112,7 @@ export async function createMDXPagination(
 ) {
   const mdxes = await getMDXes(page, lang, 'all', 'desc')
   const currentIndex = mdxes.findIndex(
-    (mdx) =>
-      mdx.frontmatter.slug ===
-      path.normalize(localizePath(`${page}${slug}/`, lang))
+    (mdx) => mdx.frontmatter.slug === localizeSlug(page, slug, lang)
   )
 
   if (currentIndex === -1) {
@@ -168,34 +150,26 @@ export async function getRelatedMDXes<Type extends MDXTypes>(
 ) {
   const mdxes = await getMDXes<Type>(page, lang)
 
-  const related = mdxes.filter((relatedMDX) => {
-    const hasRelatedCategory =
-      'categories' in relatedMDX.frontmatter &&
-      'categories' in mdx &&
-      relatedMDX.frontmatter.categories.some((category) =>
-        mdx.categories.includes(category)
+  const related = mdxes
+    .filter((relatedMDX) => relatedMDX.frontmatter.slug !== mdx.slug)
+    .map((relatedMDX) => ({
+      mdx: relatedMDX,
+      score: scoreSharedFrontmatter(relatedMDX.frontmatter, mdx)
+    }))
+    .filter(({ score }) => score > 0)
+    .sort((first, second) => {
+      if (second.score !== first.score) {
+        return second.score - first.score
+      }
+
+      return compareDates(
+        first.mdx.frontmatter.date,
+        second.mdx.frontmatter.date
       )
-    const hasRelatedTag =
-      'tags' in relatedMDX.frontmatter &&
-      'tags' in mdx &&
-      relatedMDX.frontmatter.tags.some((tag) => mdx.tags.includes(tag))
+    })
+    .map(({ mdx: relatedMDX }) => relatedMDX)
 
-    const hasRelatedService =
-      'services' in relatedMDX.frontmatter &&
-      'services' in mdx &&
-      relatedMDX.frontmatter.services.some((service) =>
-        mdx.services.includes(service)
-      )
-
-    const isDuplicate = relatedMDX.frontmatter.slug === mdx.slug
-
-    return (
-      !isDuplicate && (hasRelatedCategory || hasRelatedTag || hasRelatedService)
-    )
-  })
-
-  const filtered =
-    number === 'all' ? related : related.filter((_, index) => index < number)
+  const filtered = number === 'all' ? related : related.slice(0, number)
 
   return filtered
 }
@@ -209,19 +183,7 @@ export async function searchMDXes<Type extends MDXTypes>(
 
   if (!query) return mdxes
 
-  const searchTerms = query.toLowerCase().split(' ').filter(Boolean)
-
-  return mdxes.filter(({ frontmatter }) => {
-    const searchableText = [
-      frontmatter.title,
-      frontmatter.description,
-      ...('categories' in frontmatter ? frontmatter.categories : []),
-      ...('tags' in frontmatter ? frontmatter.tags : []),
-      ...('services' in frontmatter ? frontmatter.services : [])
-    ]
-      .join(' ')
-      .toLowerCase()
-
-    return searchTerms.every((term) => searchableText.includes(term))
-  })
+  return mdxes.filter(({ frontmatter }) =>
+    isFrontmatterMatchingQuery(frontmatter, query)
+  )
 }

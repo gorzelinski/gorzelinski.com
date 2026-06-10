@@ -51,10 +51,7 @@ export async function BlockCode(props: BlockCodeProps) {
         </PreWrapper>
       ),
       code: ({ children, ...codeProps }: CodeElementProps) => (
-        <Code
-          className={cx(isTerminal(language) && 'terminal')}
-          {...codeProps}
-        >
+        <Code className={cx(isTerminal(language) && 'terminal')} {...codeProps}>
           {children}
         </Code>
       )

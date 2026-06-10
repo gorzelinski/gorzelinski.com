@@ -1,4 +1,4 @@
-import type { Locale } from '@/types'
+import type { Locale, Pages } from '@/types'
 import { i18n } from '@/i18n.config'
 import { capitalize } from './string'
 
@@ -22,6 +22,16 @@ export function localizePath(
   if (base === locale) return path
 
   return `/${locale}${path}`
+}
+
+export function localizeSlug(
+  page: Pages,
+  slug: string,
+  locale: Locale
+): string {
+  const path = slug ? `${page}${slug}/` : page
+
+  return localizePath(path, locale)
 }
 
 export function delocalizePath(path: string, locale: Locale): string {

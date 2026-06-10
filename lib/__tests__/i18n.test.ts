@@ -5,7 +5,8 @@ import {
   getLocaleDisplayName,
   isDefaultLocale,
   localizeFileName,
-  localizePath
+  localizePath,
+  localizeSlug
 } from '../i18n'
 
 describe('i18n', () => {
@@ -52,6 +53,30 @@ describe('i18n', () => {
 
     it('returns path + locale if the locale is not the default and the default locale is provided', () => {
       expect(localizePath('/', 'pl', 'en')).toBe('/pl/')
+    })
+  })
+
+  describe('localizeSlug()', () => {
+    it('builds a slug for the default locale without a prefix', () => {
+      expect(localizeSlug('/blog/', 'my-post', 'en')).toBe('/blog/my-post/')
+    })
+
+    it('builds a slug with a locale prefix for a non-default locale', () => {
+      expect(localizeSlug('/blog/', 'my-post', 'pl')).toBe('/pl/blog/my-post/')
+    })
+
+    it('builds a portfolio slug', () => {
+      expect(localizeSlug('/portfolio/', 'my-project', 'pl')).toBe(
+        '/pl/portfolio/my-project/'
+      )
+    })
+
+    it('returns the page path unchanged when the slug is empty', () => {
+      expect(localizeSlug('/uses/', '', 'en')).toBe('/uses/')
+    })
+
+    it('localizes the page path when the slug is empty', () => {
+      expect(localizeSlug('/uses/', '', 'pl')).toBe('/pl/uses/')
     })
   })
 

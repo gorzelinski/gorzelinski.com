@@ -15,7 +15,8 @@ export const navbar = cva({
     backgroundColor: 'gray.900',
     transform: 'translateY(0)',
     filter: 'blur(0)',
-    transitionProperty: 'background-color, border-color, opacity, transform, filter',
+    transitionProperty:
+      'background-color, border-color, opacity, transform, filter',
     transitionDuration:
       'token(durations.natural), token(durations.natural), token(durations.fast), token(durations.fast), token(durations.fast)',
     transitionTimingFunction: 'easeOut',

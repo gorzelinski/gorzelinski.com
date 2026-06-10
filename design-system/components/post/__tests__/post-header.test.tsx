@@ -36,7 +36,10 @@ describe('PostHeader', () => {
     expect(readingTime).toBeInTheDocument()
     expect(updatedLabel).toBeInTheDocument()
     expect(image).toHaveAttribute('alt', 'Test image')
-    expect(image).toHaveAttribute('src', expect.stringContaining('test-image.png'))
+    expect(image).toHaveAttribute(
+      'src',
+      expect.stringContaining('test-image.png')
+    )
     expect(caption).toBeInTheDocument()
   })
 })
