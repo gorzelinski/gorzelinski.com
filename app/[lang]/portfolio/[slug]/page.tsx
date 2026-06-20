@@ -79,7 +79,7 @@ export async function generateMetadata(
 
 export default async function Portfolio(props: NestedPageProps) {
   const { lang, slug } = await props.params
-  const { component, section, layout, page } = await getDictionary(lang)
+  const { component, section, layout } = await getDictionary(lang)
   const { content, frontmatter } = await getMDX<'project'>(
     LINKS.portfolio,
     slug,

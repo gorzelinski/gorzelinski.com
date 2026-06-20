@@ -1,6 +1,6 @@
 import type { FooterProps } from './footer.types'
 import { LINKS } from '@/constants'
-import { getCoffeeURL, localizePath } from '@/lib'
+import { getCoffeeURL, getCopyright, localizePath } from '@/lib'
 import { footer } from './footer.styles'
 import { HStack, VStack } from '@/styled-system/jsx'
 import {
@@ -43,7 +43,7 @@ export const Footer = ({ lang, dictionary }: FooterProps) => {
       <HStack justifyContent="space-between" flexWrap="wrap-reverse" gap="l">
         <HStack flexWrap="wrap-reverse" gap="s">
           <Small>
-            © {new Date().getFullYear()} {layout.root.metadata.author} •{' '}
+            {getCopyright(layout.root.metadata.author)} •{' '}
             {section.footer.note}{' '}
           </Small>
           <ButtonAnchor
