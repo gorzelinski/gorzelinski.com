@@ -1,9 +1,9 @@
+import type { NextRequest } from 'next/server'
 import type { Locale } from '@/types'
 import RSS from 'rss'
-import { NextRequest } from 'next/server'
 import { LINKS } from '@/constants'
 import { getDictionary, getMDXes } from '@/scripts'
-import { getAbsoluteURL } from '@/lib'
+import { compareDates, getAbsoluteURL, getCopyright } from '@/lib'
 
 export async function GET(
   request: NextRequest,
@@ -13,11 +13,9 @@ export async function GET(
   const { layout, page } = await getDictionary(lang)
   const posts = await getMDXes<'post'>(LINKS.blog, lang)
   const projects = await getMDXes<'project'>(LINKS.portfolio, lang)
-  const items = [...posts, ...projects].sort((prev, next) => {
-    const prevDate = new Date(prev.frontmatter.date).getTime()
-    const nextDate = new Date(next.frontmatter.date).getTime()
-    return nextDate - prevDate
-  })
+  const items = [...posts, ...projects].sort((prev, next) =>
+    compareDates(prev.frontmatter.date, next.frontmatter.date)
+  )
 
   const feed = new RSS({
     language: lang,
@@ -28,7 +26,7 @@ export async function GET(
     site_url: getAbsoluteURL(LINKS.home, lang),
     managingEditor: layout.root.metadata.author,
     webMaster: layout.root.metadata.author,
-    copyright: `© ${new Date().getFullYear().toString()} ${layout.root.metadata.author}`,
+    copyright: getCopyright(layout.root.metadata.author),
     pubDate: new Date().toUTCString(),
     generator: layout.root.metadata.generator,
     ttl: 60

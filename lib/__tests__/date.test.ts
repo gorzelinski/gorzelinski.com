@@ -1,5 +1,10 @@
-import { describe, expect, it } from 'vitest'
-import { compareDates, formatDate, formatReadingTime } from '../date'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import {
+  compareDates,
+  formatDate,
+  formatReadingTime,
+  getCopyright
+} from '../date'
 
 describe('date', () => {
   describe('formatDate()', () => {
@@ -23,6 +28,29 @@ describe('date', () => {
       const formatted = formatReadingTime(1.4)
 
       expect(formatted).toBe(2)
+    })
+  })
+
+  describe('getCopyright()', () => {
+    beforeEach(() => {
+      vi.useFakeTimers()
+      vi.setSystemTime(new Date('2026-06-20'))
+    })
+
+    afterEach(() => {
+      vi.useRealTimers()
+    })
+
+    it('builds a copyright string with the current year and author', () => {
+      expect(getCopyright('Mateusz Gorzeliński')).toBe(
+        '© 2026 Mateusz Gorzeliński'
+      )
+    })
+
+    it('reflects the current year', () => {
+      vi.setSystemTime(new Date('2030-01-01'))
+
+      expect(getCopyright('Acme')).toBe('© 2030 Acme')
     })
   })
 

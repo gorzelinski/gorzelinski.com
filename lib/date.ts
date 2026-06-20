@@ -13,6 +13,10 @@ export function formatReadingTime(minutes: ReadTimeResults['minutes']) {
   return Math.ceil(minutes)
 }
 
+export function getCopyright(author: string): string {
+  return `© ${new Date().getFullYear()} ${author}`
+}
+
 export function compareDates(
   a: Date,
   b: Date,
