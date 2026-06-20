@@ -1,8 +1,9 @@
-import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+
+import dictionary from '@/dictionaries/en.json'
 import { useScroll } from '@/providers'
 import { TopBar } from '../top-bar'
-import dictionary from '@/dictionaries/en.json'
 
 vi.mock('next/navigation', () => ({
   usePathname: () => '/'

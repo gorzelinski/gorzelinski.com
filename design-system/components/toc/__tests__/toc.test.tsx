@@ -1,10 +1,11 @@
-import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+
+import dictionary from '@/dictionaries/en.json'
 import { useHeadings, useScrollToHeading } from '@/hooks'
 import { useScroll } from '@/providers'
 import { Toc } from '../toc'
 import { createHeading } from './toc-element.test'
-import dictionary from '@/dictionaries/en.json'
 
 const ariaLabel = dictionary.component.toc.ariaLabel
 const headings = [

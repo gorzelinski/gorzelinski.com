@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import type { WebPage, WithContext } from 'schema-dts'
+
 import type { PageProps } from '@/types'
+
 import { LINKS } from '@/constants'
-import { generateAlternateLinks, localizePath } from '@/lib'
-import { getDictionary, getMDXes } from '@/scripts'
-import { Box } from '@/styled-system/jsx'
 import {
   ButtonAnchor,
   ButtonLink,
@@ -12,8 +11,8 @@ import {
   H1,
   H2,
   Header,
-  IMAGE_SIZES,
   Image,
+  IMAGE_SIZES,
   Link,
   Newsletter,
   P,
@@ -24,7 +23,10 @@ import {
   Typewriter,
   verticalRhythm
 } from '@/design-system'
+import { generateAlternateLinks, localizePath } from '@/lib'
 import profile from '@/public/images/gorzelinski.jpg'
+import { getDictionary, getMDXes } from '@/scripts'
+import { Box } from '@/styled-system/jsx'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { lang } = await props.params

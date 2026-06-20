@@ -1,9 +1,10 @@
-import type { ReactNode, JSX } from 'react'
+import type { JSX, ReactNode } from 'react'
+
 import type {
   RecipeVariantProps,
   SystemStyleObject
 } from '@/styled-system/types'
-import { callout } from './callout.styles'
+import type { callout } from './callout.styles'
 
 type CalloutVariantProps = RecipeVariantProps<typeof callout>
 export type CalloutProps = CalloutVariantProps & {

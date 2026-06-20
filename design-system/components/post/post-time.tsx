@@ -1,6 +1,7 @@
 import type { PostTimeProps } from './post-time.types'
-import { HStack } from '@/styled-system/jsx'
+
 import { formatDate, formatReadingTime } from '@/lib'
+import { HStack } from '@/styled-system/jsx'
 import { Span, Time } from '../../elements'
 
 export const PostTime = ({

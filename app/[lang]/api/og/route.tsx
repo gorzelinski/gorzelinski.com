@@ -1,9 +1,10 @@
-import React from 'react'
 import { ImageResponse } from 'next/og'
+import React from 'react'
+
 import { OPENGRAPH } from '@/constants'
-import { getMetaFont } from '@/scripts'
-import { getCorrectTheme } from '@/lib'
 import { MetaImage } from '@/design-system'
+import { getCorrectTheme } from '@/lib'
+import { getMetaFont } from '@/scripts'
 
 export async function GET(request: Request) {
   try {

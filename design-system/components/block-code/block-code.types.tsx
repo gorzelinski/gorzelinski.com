@@ -1,5 +1,6 @@
-import type { ComponentPropsWithoutRef } from 'react'
 import type { Language } from 'prism-react-renderer'
+import type { ComponentPropsWithoutRef } from 'react'
+
 import type { SystemStyleObject } from '@/styled-system/types'
 
 export type BlockCodeProps = {

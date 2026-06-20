@@ -1,15 +1,18 @@
-import type { JSXElementConstructor, ReactElement } from 'react'
+import type { ReactElement } from 'react'
 import type { Pluggable } from 'unified'
+
 import type { Locale, MDX, MDXTypes, Pages, Post, Project } from '@/types'
+
 import fs from 'fs/promises'
-import path from 'path'
 import { unstable_cache } from 'next/cache'
 import { compileMDX } from 'next-mdx-remote/rsc'
-import remarkGfm from 'remark-gfm'
-import remarkMath from 'remark-math'
+import path from 'path'
 import rehypeKatex from 'rehype-katex'
 import rehypeMdxCodeProps from 'rehype-mdx-code-props'
 import rehypeUnwrapImages from 'rehype-unwrap-images'
+import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
+
 import { LINKS } from '@/constants'
 import { compareDates, localizeFileName, localizeSlug } from '@/lib'
 import { getMDXComponents } from '@/mdx-components'
@@ -79,7 +82,7 @@ export async function getMDXSlugs(
 function sortMDXes<Type extends MDXTypes>(
   mdxes: {
     frontmatter: Extract<MDX['frontmatter'], { type: Type }>
-    content: ReactElement<any, string | JSXElementConstructor<any>>
+    content: ReactElement
   }[],
   sort: 'asc' | 'desc'
 ) {

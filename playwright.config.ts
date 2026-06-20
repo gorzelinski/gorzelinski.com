@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test'
+
 import { getAbsoluteURL } from './lib'
 
 export default defineConfig({

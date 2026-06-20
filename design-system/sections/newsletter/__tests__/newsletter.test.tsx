@@ -1,8 +1,9 @@
-import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+
+import dictionary from '@/dictionaries/en.json'
 import { useNewsletter } from '@/hooks'
 import { Newsletter } from '../newsletter'
-import dictionary from '@/dictionaries/en.json'
 
 vi.mock('@/hooks', () => ({
   useNewsletter: vi.fn()

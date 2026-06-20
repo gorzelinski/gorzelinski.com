@@ -1,8 +1,9 @@
 import type { ProjectProps } from './project.types'
+
 import { delocalizePath } from '@/lib'
-import { IMAGE_SIZES, Image } from '../image'
 import { ButtonLink, Card, H3, P, Span } from '../../elements'
 import { ChevronForward } from '../../icons'
+import { Image, IMAGE_SIZES } from '../image'
 
 export const Project = ({
   lang,

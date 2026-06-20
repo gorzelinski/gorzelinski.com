@@ -1,4 +1,5 @@
 import type { Share, Social } from './socials.types'
+
 import { socialLinks } from './socials.constants'
 
 export function createShareLinks(

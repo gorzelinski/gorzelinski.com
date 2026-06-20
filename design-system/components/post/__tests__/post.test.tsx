@@ -1,8 +1,9 @@
-import { afterEach, describe, expect, it } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it } from 'vitest'
+
+import dictionary from '@/dictionaries/en.json'
 import { Post } from '../post'
 import { mockPost } from './post.mock'
-import dictionary from '@/dictionaries/en.json'
 
 describe('Post', () => {
   afterEach(() => {

@@ -1,4 +1,4 @@
-export interface I18nConfig {
+export type I18nConfig = {
   defaultLocale: 'en'
   locales: ['en', 'pl']
   regions: ['US', 'PL']

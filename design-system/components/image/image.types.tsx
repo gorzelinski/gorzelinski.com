@@ -1,6 +1,7 @@
 import type { ImageProps as NextImageProps } from 'next/image'
+
 import type { RecipeVariantProps } from '@/styled-system/types'
-import { image } from './image.styles'
+import type { image } from './image.styles'
 
 type ImageVariantProps = RecipeVariantProps<typeof image>
 export type ImageProps = ImageVariantProps & NextImageProps

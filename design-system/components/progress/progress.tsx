@@ -1,5 +1,6 @@
 'use client'
 import type { ProgressProps } from './progress.types'
+
 import { useScroll } from '@/providers'
 import { progress as progressStyles } from './progress.styles'
 import { ProgressBar } from './progress-bar'

@@ -1,9 +1,10 @@
 import type { PostProps } from './post.types'
+
 import { delocalizePath } from '@/lib'
-import { PostTime } from './post-time'
-import { IMAGE_SIZES, Image } from '../image'
 import { ButtonLink, Card, H3, P } from '../../elements'
 import { ChevronForward } from '../../icons'
+import { Image, IMAGE_SIZES } from '../image'
+import { PostTime } from './post-time'
 
 export const Post = ({
   lang,

@@ -1,17 +1,18 @@
 import type { FooterProps } from './footer.types'
+
 import { LINKS } from '@/constants'
 import { getCoffeeURL, getCopyright, localizePath } from '@/lib'
-import { footer } from './footer.styles'
 import { HStack, VStack } from '@/styled-system/jsx'
+import { LanguageSwitch, Socials } from '../../components'
 import {
   ButtonAnchor,
   ButtonLink,
+  navigation,
   Small,
-  Span,
-  navigation
+  Span
 } from '../../elements'
 import { Cafe, Mail } from '../../icons'
-import { LanguageSwitch, Socials } from '../../components'
+import { footer } from './footer.styles'
 
 export const Footer = ({ lang, dictionary }: FooterProps) => {
   const { links, section, layout } = dictionary

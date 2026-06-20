@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
+
 import type { PageProps } from '@/types'
+
 import { notFound } from 'next/navigation'
+
 import { getDictionary } from '@/scripts'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {

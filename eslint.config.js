@@ -1,5 +1,6 @@
 const { FlatCompat } = require('@eslint/eslintrc')
 const js = require('@eslint/js')
+const simpleImportSort = require('eslint-plugin-simple-import-sort')
 const tseslint = require('typescript-eslint')
 
 const compat = new FlatCompat({
@@ -23,17 +24,36 @@ module.exports = [
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.mts'],
     plugins: {
-      '@typescript-eslint': tseslint.plugin
+      '@typescript-eslint': tseslint.plugin,
+      'simple-import-sort': simpleImportSort
     },
     languageOptions: {
       parser: tseslint.parser
     },
     rules: {
+      'simple-import-sort/imports': [
+        'error',
+        {
+          groups: [
+            // Side effect imports (e.g. `import './styles.css'`).
+            ['^\\u0000'],
+            // 1. External type imports (npm packages + node builtins).
+            ['^(node:)?@?\\w.*\\u0000$'],
+            // 2. Internal type imports (`@/*` alias and relative).
+            ['^@/.*\\u0000$', '^\\..*\\u0000$'],
+            // 3. External value imports (npm packages + node builtins).
+            ['^(node:)?@?\\w'],
+            // 4. Internal value imports (`@/*` alias and relative).
+            ['^@/', '^\\.']
+          ]
+        }
+      ],
       '@typescript-eslint/consistent-type-imports': [
         'error',
         {
           prefer: 'type-imports',
-          fixStyle: 'inline-type-imports'
+          fixStyle: 'inline-type-imports',
+          disallowTypeAnnotations: false
         }
       ],
       '@typescript-eslint/no-import-type-side-effects': 'error',
@@ -66,7 +86,8 @@ module.exports = [
     ],
     rules: {
       'react-hooks/rules-of-hooks': 'off',
-      'react-hooks/exhaustive-deps': 'off'
+      'react-hooks/exhaustive-deps': 'off',
+      '@typescript-eslint/no-explicit-any': 'off'
     }
   }
 ]

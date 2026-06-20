@@ -1,22 +1,24 @@
 'use server'
 import type {
   BlockCodeProps,
-  PreElementProps,
-  CodeElementProps
+  CodeElementProps,
+  PreElementProps
 } from './block-code.types'
-import { codeToHast } from 'shiki'
+
 import { transformerMetaHighlight } from '@shikijs/transformers'
 import { toJsxRuntime } from 'hast-util-to-jsx-runtime'
 import { Fragment, jsx, jsxs } from 'react/jsx-runtime'
+import { codeToHast } from 'shiki'
+
 import { cx } from '@/styled-system/css'
 import { isTerminal } from './block-code.helpers'
-import { PreWrapper } from './pre-wrapper'
 import { BlockCodeHeader } from './block-code-header'
-import { BlockCodeTitle } from './block-code-title'
 import { BlockCodeLanguage } from './block-code-language'
-import { Pre } from './pre'
+import { BlockCodeTitle } from './block-code-title'
 import { Code } from './code'
 import { codeTheme } from './code.theme'
+import { Pre } from './pre'
+import { PreWrapper } from './pre-wrapper'
 
 export async function BlockCode(props: BlockCodeProps) {
   const { css, codeString, highlight, language, title } = props

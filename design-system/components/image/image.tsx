@@ -1,6 +1,9 @@
 import type { ImageProps as NextImageProps } from 'next/image'
+
 import type { ImageProps, OptionalNumber } from './image.types'
+
 import NextImage from 'next/image'
+
 import { splitCssProps } from '@/styled-system/jsx'
 import { image } from './image.styles'
 

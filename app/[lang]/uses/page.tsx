@@ -1,22 +1,25 @@
 import type { Metadata } from 'next'
 import type { WebPage, WithContext } from 'schema-dts'
+
 import type { PageProps, Theme } from '@/types'
-import { cookies } from 'next/headers'
+
 import { getCookie } from 'cookies-next/server'
-import { COOKIES, LINKS } from '@/constants'
-import { getMDX, getDictionary } from '@/scripts'
-import { generateAlternateLinks, getMetaImage, localizePath } from '@/lib'
+import { cookies } from 'next/headers'
+
 import { openGraph, twitter } from '@/app/shared-metadata'
+import { COOKIES, LINKS } from '@/constants'
 import {
   Article,
   Figcaption,
   Figure,
   H1,
-  IMAGE_SIZES,
   Image,
+  IMAGE_SIZES,
   P,
   verticalRhythm
 } from '@/design-system'
+import { generateAlternateLinks, getMetaImage, localizePath } from '@/lib'
+import { getDictionary, getMDX } from '@/scripts'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { lang } = await props.params

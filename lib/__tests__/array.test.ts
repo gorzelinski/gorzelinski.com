@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+
 import { countSharedItems } from '../array'
 
 describe('array', () => {

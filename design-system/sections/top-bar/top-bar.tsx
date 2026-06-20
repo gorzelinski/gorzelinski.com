@@ -1,5 +1,6 @@
 'use client'
 import type { TopBarProps } from './top-bar.types'
+
 import { isNavbarHidden } from '@/lib'
 import { useScroll } from '@/providers'
 import { HelperNavigation, MainNavigation } from '../../components'

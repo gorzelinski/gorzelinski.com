@@ -1,18 +1,22 @@
+import './globals.css'
+
 import type { Metadata } from 'next'
 import type { WebSite, WithContext } from 'schema-dts'
+
 import type { Locale, PageProps, Theme } from '@/types'
-import { cookies } from 'next/headers'
+
 import { Analytics } from '@vercel/analytics/react'
 import { getCookie } from 'cookies-next/server'
+import { cookies } from 'next/headers'
+
 import { COOKIES, metadataBase } from '@/constants'
-import { i18n } from '@/i18n.config'
-import { getDictionary } from '@/scripts'
-import { ScrollProvider } from '@/providers'
-import { getAbsoluteURL, getMetaImage } from '@/lib'
-import { montserrat, lora, firaCode } from '@/theme/fonts'
 import { Background, BottomBar, Footer, Main, TopBar } from '@/design-system'
+import { i18n } from '@/i18n.config'
+import { getAbsoluteURL, getMetaImage } from '@/lib'
+import { ScrollProvider } from '@/providers'
+import { getDictionary } from '@/scripts'
+import { firaCode, lora, montserrat } from '@/theme/fonts'
 import { openGraph, twitter } from '../shared-metadata'
-import './globals.css'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params

@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
+
 import { getDictionary } from '../dictionaries'
 
 vi.mock('../dictionaries/en.json', () => ({

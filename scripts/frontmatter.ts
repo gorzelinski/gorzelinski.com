@@ -1,5 +1,7 @@
 import type { Locale, MDX, MDXTypes, Pages } from '@/types'
+
 import readingTime from 'reading-time'
+
 import { countSharedItems, localizeSlug } from '@/lib'
 
 const RELATED_FRONTMATTER_WEIGHTS = {

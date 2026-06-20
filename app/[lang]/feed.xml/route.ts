@@ -1,9 +1,12 @@
 import type { NextRequest } from 'next/server'
+
 import type { Locale } from '@/types'
+
 import RSS from 'rss'
+
 import { LINKS } from '@/constants'
-import { getDictionary, getMDXes } from '@/scripts'
 import { compareDates, getAbsoluteURL, getCopyright } from '@/lib'
+import { getDictionary, getMDXes } from '@/scripts'
 
 export async function GET(
   request: NextRequest,

@@ -105,28 +105,31 @@ export type { SettingsPage } from './settings-page'
 
 ### Import order
 
-Strict 4-group order, with **default imports before named imports** inside each group:
+Auto-sorted and enforced by `eslint-plugin-simple-import-sort` (`--fix` reorders for you). Strict 4-group order, **one blank line between each group**:
 
 1. External **type** imports (npm packages)
 2. Internal **type** imports (`@/types`, local `.types`, `@/styled-system/types`)
 3. External **value** imports
 4. Internal **value** imports (`@/constants`, `@/lib`, `@/hooks`, `@/scripts`, `@/design-system`, `@/styled-system`, relative)
 
-Always use `import type` for type-only imports.
+Within each group, imports are sorted alphabetically by module path. Side-effect imports (e.g. `import './styles.css'`) go first, in their own group. Always use `import type` for type-only imports.
 
 ```ts
 // ✅ Correct
 import type { Metadata } from 'next'
 import type { JSX } from 'react'
+
 import type { PageProps, Theme } from '@/types'
+
 import fs from 'fs/promises'
 import { cookies } from 'next/headers'
+
 import { LINKS } from '@/constants'
 import { getDictionary } from '@/scripts'
 ```
 
 ```ts
-// ❌ Wrong — mixed order, missing `import type`
+// ❌ Wrong — mixed order, no group separation, missing `import type`
 import { cookies } from 'next/headers'
 import { Metadata } from 'next'
 import { PageProps } from '@/types'

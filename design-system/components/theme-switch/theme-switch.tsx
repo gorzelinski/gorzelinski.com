@@ -1,5 +1,6 @@
 'use client'
 import type { ThemeSwitchProps } from './theme-switch.types'
+
 import { useTheme } from '@/hooks'
 import { Button } from '../../elements'
 import { Moon, Sunny } from '../../icons'

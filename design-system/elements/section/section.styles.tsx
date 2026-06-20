@@ -1,5 +1,5 @@
 import { cva } from '@/styled-system/css'
-import { verticalRhythm, sharedTransitionProperties } from '../../utils'
+import { sharedTransitionProperties, verticalRhythm } from '../../utils'
 
 export const section = cva({
   base: {

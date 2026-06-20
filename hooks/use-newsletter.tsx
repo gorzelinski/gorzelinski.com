@@ -1,5 +1,7 @@
 import type { Locale, NewsletterState } from '@/types'
+
 import { useActionState } from 'react'
+
 import { getFormURL } from '@/lib'
 
 const initialState: NewsletterState = { status: 'idle' }

@@ -1,15 +1,13 @@
 'use client'
 import type { NewsletterProps } from './newsletter.types'
-import { Box, HStack } from '@/styled-system/jsx'
+
 import { useNewsletter } from '@/hooks'
-import {
-  mapStatusToCalloutVariant,
-  setValidationMessage
-} from './newsletter.helpers'
-import { verticalRhythm } from '../../utils'
+import { Box, HStack } from '@/styled-system/jsx'
+import { Callout } from '../../components'
 import {
   Button,
   ButtonAnchor,
+  card,
   H2,
   H3,
   Input,
@@ -17,11 +15,14 @@ import {
   Li,
   P,
   Small,
-  Ul,
-  card
+  Ul
 } from '../../elements'
 import { At, Send, Sync } from '../../icons'
-import { Callout } from '../../components'
+import { verticalRhythm } from '../../utils'
+import {
+  mapStatusToCalloutVariant,
+  setValidationMessage
+} from './newsletter.helpers'
 
 export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
   const { state, formAction, isPending, FORM_URL } = useNewsletter(lang)

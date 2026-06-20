@@ -1,17 +1,19 @@
-import { expect, type Locator, type Page } from '@playwright/test'
 import type { Dictionary, Locale, Theme } from '@/types'
+
+import { expect, type Locator, type Page } from '@playwright/test'
+
+import { CONTENTTYPE, HANDLES, LINKS, SOCIALS } from '@/constants'
+import en from '@/dictionaries/en.json'
+import pl from '@/dictionaries/pl.json'
+import { i18n } from '@/i18n.config'
 import {
   createLocaleWithTerritory,
   getAbsoluteURL,
   getLocaleDisplayName,
   hslToRgb
 } from '@/lib'
-import { CONTENTTYPE, HANDLES, LINKS, SOCIALS } from '@/constants'
-import { i18n } from '@/i18n.config'
-import { token } from '@/styled-system/tokens'
 import { getFormURL } from '@/lib/newsletter'
-import en from '@/dictionaries/en.json'
-import pl from '@/dictionaries/pl.json'
+import { token } from '@/styled-system/tokens'
 
 type ThemeSettings = {
   background: string

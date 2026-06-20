@@ -1,10 +1,12 @@
 'use client'
 import type { SocialsProps } from './socials.types'
+
 import { usePathname } from 'next/navigation'
+
 import { getAbsoluteURL } from '@/lib'
+import { ButtonAnchor, navigation } from '../../elements'
 import { socialLinks } from './socials.constants'
 import { createShareLinks } from './socials.helpers'
-import { ButtonAnchor, navigation } from '../../elements'
 
 export const Socials = ({
   socials = socialLinks.slice(0, -1),

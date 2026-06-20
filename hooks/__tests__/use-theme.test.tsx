@@ -1,6 +1,7 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { setCookie, hasCookie } from 'cookies-next'
-import { renderHook, act } from '@testing-library/react'
+import { act, renderHook } from '@testing-library/react'
+import { hasCookie, setCookie } from 'cookies-next'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+
 import { getThemeAttribute, setThemeAttribute } from '@/lib'
 import { useTheme } from '../use-theme'
 

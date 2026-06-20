@@ -1,10 +1,11 @@
 import type { PostHeaderProps } from './post-header.types'
+
 import { LINKS } from '@/constants'
 import { formatDate } from '@/lib'
 import { Figcaption, Figure, H1, P, Pill } from '../../elements'
-import { IMAGE_SIZES, Image } from '../image'
-import { PostTime } from './post-time'
 import { verticalRhythm } from '../../utils'
+import { Image, IMAGE_SIZES } from '../image'
+import { PostTime } from './post-time'
 
 export const PostHeader = ({
   lang,

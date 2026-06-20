@@ -1,7 +1,9 @@
 'use client'
 import type { ConfettiProps } from './confetti.types'
+
 import { useState } from 'react'
 import ConfettiComponent from 'react-confetti'
+
 import { useDocumentDimensions } from '@/hooks'
 import { Button } from '../../elements'
 

@@ -1,4 +1,5 @@
 import { test as base } from '@playwright/test'
+
 import { SettingsPage } from './settings-page'
 
 type Page = {

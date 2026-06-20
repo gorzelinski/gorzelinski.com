@@ -1,6 +1,7 @@
 import type { TocElementProps } from './toc-element.types'
-import { cx } from '@/styled-system/css'
+
 import { ButtonAnchor } from '@/design-system'
+import { cx } from '@/styled-system/css'
 import { tocElement } from './toc-element.styles'
 
 export const TocElement = ({

@@ -1,6 +1,7 @@
 import type { PostFooterProps } from './post-footer.types'
-import { HStack, VStack } from '@/styled-system/jsx'
+
 import { verticalRhythm } from '@/design-system'
+import { HStack, VStack } from '@/styled-system/jsx'
 import { Span } from '../../elements'
 import { Avatar } from '../avatar'
 import { Socials } from '../socials'

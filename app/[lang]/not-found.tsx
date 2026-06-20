@@ -1,18 +1,20 @@
 import type { Locale } from '@/types'
-import { cookies } from 'next/headers'
+
 import { getCookie } from 'cookies-next/server'
+import { cookies } from 'next/headers'
+
 import { COOKIES, LINKS } from '@/constants'
-import { getDictionary } from '@/scripts'
-import { localizePath } from '@/lib'
 import {
   ButtonLink,
   ChevronForward,
   H1,
   P,
   Section,
-  Video,
-  verticalRhythm
+  verticalRhythm,
+  Video
 } from '@/design-system'
+import { localizePath } from '@/lib'
+import { getDictionary } from '@/scripts'
 import { VStack } from '@/styled-system/jsx'
 
 export default async function NotFound() {

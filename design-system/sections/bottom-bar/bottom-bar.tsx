@@ -1,5 +1,6 @@
 'use client'
 import type { BottomBarProps } from './bottom-bar.types'
+
 import { isNavbarHidden } from '@/lib'
 import { useScroll } from '@/providers'
 import { MainNavigation } from '../../components'

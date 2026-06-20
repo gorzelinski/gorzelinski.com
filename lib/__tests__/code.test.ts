@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+
 import { preToCodeProps } from '../code'
 
 describe('preToCodeProps()', () => {

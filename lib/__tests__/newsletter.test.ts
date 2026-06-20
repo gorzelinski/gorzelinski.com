@@ -1,4 +1,5 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
+
 import { ENGLISH_FORM_ID, POLISH_FORM_ID } from '@/constants'
 import { getFormURL } from '../newsletter'
 
