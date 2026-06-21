@@ -1,6 +1,7 @@
 import type { Locale } from '@/types'
-import { i18n } from '@/i18n.config'
+
 import { LINKS, metadataBase } from '@/constants'
+import { i18n } from '@/i18n.config'
 import { localizePath } from './i18n'
 
 type AlternateLinks = Record<Locale, string>

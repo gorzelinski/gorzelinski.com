@@ -1,4 +1,5 @@
 import type { ReadTimeResults } from 'reading-time'
+
 import type { Locale } from '@/types'
 
 export function formatDate(date: Date, locale: Locale) {
@@ -11,6 +12,10 @@ export function formatDate(date: Date, locale: Locale) {
 
 export function formatReadingTime(minutes: ReadTimeResults['minutes']) {
   return Math.ceil(minutes)
+}
+
+export function getCopyright(author: string): string {
+  return `© ${new Date().getFullYear()} ${author}`
 }
 
 export function compareDates(

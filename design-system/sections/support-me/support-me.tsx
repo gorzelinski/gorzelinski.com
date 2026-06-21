@@ -1,7 +1,8 @@
 import type { SupportMeProps } from './support-me.types'
+
+import { getCoffeeURL } from '@/lib'
 import { ButtonAnchor, H2, P, Section } from '../../elements'
 import { Cafe } from '../../icons'
-import { getCoffeeURL } from '@/lib'
 
 export const SupportMe = ({ lang, dictionary }: SupportMeProps) => {
   return (

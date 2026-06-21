@@ -1,6 +1,8 @@
 'use client'
 import type { MainNavigationProps } from './main-navigation.types'
+
 import { usePathname } from 'next/navigation'
+
 import { LINKS } from '@/constants'
 import { localizePath, selectActiveClass } from '@/lib'
 import { ButtonLink, Nav } from '../../elements'

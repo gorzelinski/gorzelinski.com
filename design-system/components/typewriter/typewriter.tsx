@@ -1,6 +1,8 @@
 'use client'
-import type { TypewriterProps, Phase } from './typewriter.types'
+import type { Phase, TypewriterProps } from './typewriter.types'
+
 import { useEffect, useState } from 'react'
+
 import { useReducedMotion } from '@/hooks'
 import { typewriter } from './typewriter.styles'
 

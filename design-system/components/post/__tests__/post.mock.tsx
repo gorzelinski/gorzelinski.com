@@ -1,5 +1,6 @@
-import type { Post } from '@/types'
 import type { StaticImageData } from 'next/image'
+
+import type { Post } from '@/types'
 
 export const mockPost: Post = {
   slug: 'test-post',

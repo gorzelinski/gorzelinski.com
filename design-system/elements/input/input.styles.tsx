@@ -1,6 +1,6 @@
 import { cva } from '@/styled-system/css'
-import { inputFontSize } from './input.utils'
 import { sharedTransitionProperties } from '../../utils'
+import { inputFontSize } from './input.utils'
 
 export const input = cva({
   base: {

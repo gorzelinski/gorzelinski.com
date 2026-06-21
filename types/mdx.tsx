@@ -1,4 +1,4 @@
-import type { ReactElement, JSXElementConstructor } from 'react'
+import type { ReactElement } from 'react'
 import type { ReadTimeResults } from 'reading-time'
 
 export type Frontmatter = {
@@ -35,7 +35,7 @@ export type Project = Frontmatter & {
 
 export type MDX = {
   frontmatter: Post | Project | Page
-  content: ReactElement<any, string | JSXElementConstructor<any>>
+  content: ReactElement
 }
 
 export type MDXTypes = Post['type'] | Project['type'] | Page['type']

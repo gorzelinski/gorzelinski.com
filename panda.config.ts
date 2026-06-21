@@ -1,4 +1,5 @@
 import { defineConfig } from '@pandacss/dev'
+
 import { globalCss, keyframes, semanticTokens, tokens } from './theme'
 
 export default defineConfig({

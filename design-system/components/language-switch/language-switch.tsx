@@ -1,6 +1,8 @@
 'use client'
 import type { Locale } from '@/types'
+
 import { usePathname } from 'next/navigation'
+
 import { i18n } from '@/i18n.config'
 import {
   delocalizePath,

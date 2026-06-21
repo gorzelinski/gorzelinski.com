@@ -1,4 +1,5 @@
 import type { LinkOrAProps } from './link-or-a.types'
+
 import { isInternalURL } from '@/lib'
 import { A, Link } from '../../elements'
 

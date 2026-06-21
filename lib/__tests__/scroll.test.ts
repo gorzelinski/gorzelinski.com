@@ -1,4 +1,5 @@
-import { describe, expect, it, beforeEach, afterEach, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+
 import {
   getScrollDirection,
   getScrollProgress,
@@ -26,8 +27,8 @@ describe('scroll', () => {
       windowHeight: 500
     } as const
 
-    let mockElement: any
-    let mockRoot: any
+    let mockElement: { scrollHeight: number; offsetTop: number }
+    let mockRoot: { scrollTop: number }
 
     beforeEach(() => {
       mockElement = {
@@ -42,7 +43,9 @@ describe('scroll', () => {
         writable: true,
         configurable: true
       })
-      vi.spyOn(document, 'querySelector').mockReturnValue(mockElement)
+      vi.spyOn(document, 'querySelector').mockReturnValue(
+        mockElement as unknown as Element
+      )
     })
 
     afterEach(() => {

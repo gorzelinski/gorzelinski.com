@@ -1,11 +1,12 @@
 import fs from 'fs/promises'
-import { describe, expect, it, vi, beforeEach } from 'vitest'
 import { compileMDX } from 'next-mdx-remote/rsc'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+
 import {
-  getMDX,
-  getMDXSlugs,
-  getMDXes,
   createMDXPagination,
+  getMDX,
+  getMDXes,
+  getMDXSlugs,
   getRelatedMDXes,
   searchMDXes
 } from '../mdx'

@@ -1,5 +1,6 @@
-import type { Dictionary, Post } from '@/types'
 import type { StaticImageData } from 'next/image'
+
+import type { Dictionary, Post } from '@/types'
 
 export type PostFooterProps = {
   frontmatter: Post

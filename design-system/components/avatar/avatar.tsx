@@ -1,7 +1,8 @@
 import type { AvatarProps } from './avatar.types'
+
 import { HStack, VStack } from '@/styled-system/jsx'
-import { IMAGE_SIZES, Image } from '../image'
 import { H3, Link, P } from '../../elements'
+import { Image, IMAGE_SIZES } from '../image'
 
 export const Avatar = ({ image, name, bio, href }: AvatarProps) => {
   return (

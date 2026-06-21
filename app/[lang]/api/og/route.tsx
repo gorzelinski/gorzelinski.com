@@ -1,9 +1,10 @@
-import React from 'react'
 import { ImageResponse } from 'next/og'
+import React from 'react'
+
 import { OPENGRAPH } from '@/constants'
-import { getMetaFont } from '@/scripts'
-import { getCorrectTheme } from '@/lib'
 import { MetaImage } from '@/design-system'
+import { getCorrectTheme } from '@/lib'
+import { getMetaFont } from '@/scripts'
 
 export async function GET(request: Request) {
   try {
@@ -37,8 +38,8 @@ export async function GET(request: Request) {
         fonts: [fontMedium, fontBold]
       }
     )
-  } catch (e: any) {
-    console.log(`${e.message}`)
+  } catch (e) {
+    console.log(`${e instanceof Error ? e.message : e}`)
     return new Response(`Failed to generate the image`, {
       status: 500
     })

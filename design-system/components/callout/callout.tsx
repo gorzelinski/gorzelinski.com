@@ -1,4 +1,5 @@
 import type { CalloutProps } from './callout.types'
+
 import { css } from '@/styled-system/css'
 import { callout } from './callout.styles'
 import { calloutIcon } from './callout-icon'

@@ -1,6 +1,6 @@
 import { useCallback, useRef } from 'react'
 
-type AnyFunction = (...args: any[]) => any
+type AnyFunction = (...args: never[]) => unknown
 
 export function useDebouncedCallback<T extends AnyFunction>(
   func: T,

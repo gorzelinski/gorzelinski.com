@@ -1,6 +1,7 @@
+import 'katex/dist/katex.min.css'
+
 import { cva } from '@/styled-system/css'
 import { sharedTransitionProperties, verticalRhythm } from '../../utils'
-import 'katex/dist/katex.min.css'
 
 export const equation = cva({
   base: {

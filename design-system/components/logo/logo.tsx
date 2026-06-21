@@ -1,4 +1,5 @@
 import type { LogoProps } from './logo.types'
+
 import { LINKS } from '@/constants'
 import { localizePath } from '@/lib'
 import { ButtonLink } from '../../elements'

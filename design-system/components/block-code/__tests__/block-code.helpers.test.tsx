@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+
 import { isTerminal } from '../block-code.helpers'
 
 describe('isTerminal()', () => {

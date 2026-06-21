@@ -1,23 +1,26 @@
 import type { Metadata } from 'next'
 import type { WebPage, WithContext } from 'schema-dts'
-import type { PageProps, Theme, SearchPageProps } from '@/types'
-import { cookies } from 'next/headers'
+
+import type { PageProps, SearchPageProps, Theme } from '@/types'
+
 import { getCookie } from 'cookies-next/server'
-import { COOKIES, LINKS } from '@/constants'
-import { getDictionary, searchMDXes } from '@/scripts'
-import { generateAlternateLinks, getMetaImage, localizePath } from '@/lib'
+import { cookies } from 'next/headers'
+
 import { openGraph, twitter } from '@/app/shared-metadata'
+import { COOKIES, LINKS } from '@/constants'
 import {
   H1,
   Header,
   Newsletter,
   P,
   Post,
-  Section,
-  SupportMe,
   SearchBar,
-  small
+  Section,
+  small,
+  SupportMe
 } from '@/design-system'
+import { generateAlternateLinks, getMetaImage, localizePath } from '@/lib'
+import { getDictionary, searchMDXes } from '@/scripts'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { lang } = await props.params

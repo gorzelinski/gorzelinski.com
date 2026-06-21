@@ -1,5 +1,5 @@
-import type { Locale } from '@/types'
 import type { LINKS } from '@/constants'
+import type { Locale } from '@/types'
 
 export type PageProps = {
   params: Promise<{

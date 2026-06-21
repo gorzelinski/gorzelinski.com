@@ -1,5 +1,6 @@
-import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+
 import { useReducedMotion } from '@/hooks'
 import { Typewriter } from '../typewriter'
 

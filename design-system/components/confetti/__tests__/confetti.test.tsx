@@ -1,7 +1,8 @@
-import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, render, screen } from '@testing-library/react'
-import { Confetti } from '../confetti'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+
 import dictionary from '@/dictionaries/en.json'
+import { Confetti } from '../confetti'
 
 let lastConfettiProps: any = null
 vi.mock('react-confetti', () => ({

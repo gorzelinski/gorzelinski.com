@@ -1,4 +1,5 @@
 import type { TocHeadingNode } from '@/types'
+
 import { useEffect, useRef, useState } from 'react'
 
 const getHeadingLevel = (heading: Element) => {

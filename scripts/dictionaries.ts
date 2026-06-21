@@ -1,4 +1,5 @@
 import 'server-only'
+
 import type { Locale } from '@/types'
 
 export const dictionaries = {

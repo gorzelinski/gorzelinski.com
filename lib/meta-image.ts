@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
+
 import type { Locale, MetaImageProps } from '@/types'
+
 import { CONTENTTYPE, OPENGRAPH, TWITTER } from '@/constants'
 import { getCorrectTheme } from './theme'
 

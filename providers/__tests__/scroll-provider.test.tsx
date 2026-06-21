@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { renderHook, act } from '@testing-library/react'
+
+import { act, renderHook } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+
 import { ScrollProvider, useScroll } from '../scroll-provider'
 
 const SCROLL_DIMENSIONS = {

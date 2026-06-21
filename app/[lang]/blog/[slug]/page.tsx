@@ -1,24 +1,13 @@
 import type { Metadata } from 'next'
 import type { BlogPosting, WithContext } from 'schema-dts'
+
 import type { NestedPageProps, Theme } from '@/types'
-import { cookies } from 'next/headers'
+
 import { getCookie } from 'cookies-next/server'
-import { COOKIES, LINKS } from '@/constants'
-import { i18n } from '@/i18n.config'
-import {
-  createMDXPagination,
-  getDictionary,
-  getMDX,
-  getRelatedMDXes,
-  getMDXSlugs
-} from '@/scripts'
-import {
-  generateAlternateLinks,
-  getAbsoluteURL,
-  getMetaImage,
-  localizePath
-} from '@/lib'
+import { cookies } from 'next/headers'
+
 import { openGraph, twitter } from '@/app/shared-metadata'
+import { COOKIES, LINKS } from '@/constants'
 import {
   Article,
   H2,
@@ -32,7 +21,21 @@ import {
   SupportMe,
   Toc
 } from '@/design-system'
+import { i18n } from '@/i18n.config'
+import {
+  generateAlternateLinks,
+  getAbsoluteURL,
+  getMetaImage,
+  localizePath
+} from '@/lib'
 import avatar from '@/public/images/logo.png'
+import {
+  createMDXPagination,
+  getDictionary,
+  getMDX,
+  getMDXSlugs,
+  getRelatedMDXes
+} from '@/scripts'
 
 export async function generateStaticParams() {
   const slugs = await getMDXSlugs(LINKS.blog)

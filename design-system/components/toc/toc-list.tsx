@@ -1,5 +1,6 @@
 'use client'
 import type { TocListProps } from './toc-list.types'
+
 import { TocElement } from './toc-element'
 import { tocList } from './toc-list.styles'
 

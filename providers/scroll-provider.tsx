@@ -4,7 +4,9 @@ import type {
   ScrollProgressSelector,
   ScrollState
 } from '@/types'
+
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
+
 import { getScrollDirection, getScrollProgress } from '@/lib'
 
 const ScrollContext = createContext<ScrollContextValue | null>(null)

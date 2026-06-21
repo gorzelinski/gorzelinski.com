@@ -1,7 +1,9 @@
 import type { MDXComponents } from 'mdx/types'
+
 import type { Pages, PreChildrenProps, PreProps } from '@/types'
+
 import path from 'path'
-import { getTextFromChildren, slugify, preToCodeProps } from './lib'
+
 import { Box } from '@/styled-system/jsx'
 import {
   Abbr,
@@ -13,14 +15,14 @@ import {
   Equation,
   Figcaption,
   Figure,
-  Highlight,
   H1,
   H2,
   H3,
   H4,
+  Highlight,
   Hr,
-  IMAGE_SIZES,
   Image,
+  IMAGE_SIZES,
   InlineCode,
   Kbd,
   Li,
@@ -41,6 +43,7 @@ import {
   Ul,
   verticalRhythm
 } from './design-system'
+import { getTextFromChildren, preToCodeProps, slugify } from './lib'
 
 const components: MDXComponents = {
   a: ({ children, href }) => <LinkOrA href={href!}>{children}</LinkOrA>,

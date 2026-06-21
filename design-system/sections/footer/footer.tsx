@@ -1,17 +1,18 @@
 import type { FooterProps } from './footer.types'
+
 import { LINKS } from '@/constants'
-import { getCoffeeURL, localizePath } from '@/lib'
-import { footer } from './footer.styles'
+import { getCoffeeURL, getCopyright, localizePath } from '@/lib'
 import { HStack, VStack } from '@/styled-system/jsx'
+import { LanguageSwitch, Socials } from '../../components'
 import {
   ButtonAnchor,
   ButtonLink,
+  navigation,
   Small,
-  Span,
-  navigation
+  Span
 } from '../../elements'
 import { Cafe, Mail } from '../../icons'
-import { LanguageSwitch, Socials } from '../../components'
+import { footer } from './footer.styles'
 
 export const Footer = ({ lang, dictionary }: FooterProps) => {
   const { links, section, layout } = dictionary
@@ -43,7 +44,7 @@ export const Footer = ({ lang, dictionary }: FooterProps) => {
       <HStack justifyContent="space-between" flexWrap="wrap-reverse" gap="l">
         <HStack flexWrap="wrap-reverse" gap="s">
           <Small>
-            © {new Date().getFullYear()} {layout.root.metadata.author} •{' '}
+            {getCopyright(layout.root.metadata.author)} •{' '}
             {section.footer.note}{' '}
           </Small>
           <ButtonAnchor

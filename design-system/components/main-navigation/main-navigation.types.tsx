@@ -1,6 +1,6 @@
 import type { RecipeVariantProps } from '@/styled-system/types'
 import type { Locale } from '@/types'
-import { navigation } from '../../elements/navigation/navigation.styles'
+import type { navigation } from '../../elements/navigation/navigation.styles'
 
 type NavigationVariantProps = RecipeVariantProps<typeof navigation>
 

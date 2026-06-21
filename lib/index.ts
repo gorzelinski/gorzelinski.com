@@ -1,6 +1,11 @@
 export { countSharedItems } from './array'
 export { preToCodeProps } from './code'
-export { compareDates, formatDate, formatReadingTime } from './date'
+export {
+  compareDates,
+  formatDate,
+  formatReadingTime,
+  getCopyright
+} from './date'
 export {
   createLocaleWithTerritory,
   delocalizePath,

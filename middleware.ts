@@ -1,7 +1,9 @@
-import { type NextRequest, NextResponse } from 'next/server'
 import type { I18nConfig } from '@/types'
-import Negotiator from 'negotiator'
+
 import { match } from '@formatjs/intl-localematcher'
+import Negotiator from 'negotiator'
+import { type NextRequest, NextResponse } from 'next/server'
+
 import { COOKIES } from './constants'
 import { i18n } from './i18n.config'
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export function useReducedMotion(): boolean {
   const [hasReducedMotion, setReducedMotion] = useState<boolean>(false)

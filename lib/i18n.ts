@@ -1,4 +1,5 @@
 import type { Locale, Pages } from '@/types'
+
 import { i18n } from '@/i18n.config'
 import { capitalize } from './string'
 

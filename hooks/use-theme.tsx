@@ -1,6 +1,8 @@
 import type { Theme } from '@/types'
+
+import { hasCookie, setCookie } from 'cookies-next'
 import { useEffect, useState } from 'react'
-import { setCookie, hasCookie } from 'cookies-next'
+
 import { COOKIES, THEME } from '@/constants'
 import { getThemeAttribute, setThemeAttribute } from '@/lib'
 

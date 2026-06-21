@@ -1,10 +1,11 @@
 import type { ProjectHeaderProps } from './project-header.types'
+
 import { LINKS } from '@/constants'
 import { Grid, VStack } from '@/styled-system/jsx'
 import { Figure, H1, H2, P, Span } from '../../elements'
-import { IMAGE_SIZES, Image } from '../image'
-import { LinkOrA } from '../link-or-a'
 import { verticalRhythm } from '../../utils'
+import { Image, IMAGE_SIZES } from '../image'
+import { LinkOrA } from '../link-or-a'
 
 export const ProjectHeader = ({
   slug,

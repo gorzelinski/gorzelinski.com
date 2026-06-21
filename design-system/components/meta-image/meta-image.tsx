@@ -1,4 +1,5 @@
 import type { MetaImageProps, Theme } from '@/types'
+
 import { LINKS } from '@/constants'
 import { getAbsoluteURL } from '@/lib'
 import { token } from '@/styled-system/tokens'

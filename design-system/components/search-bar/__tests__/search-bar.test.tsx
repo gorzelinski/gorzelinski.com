@@ -1,5 +1,6 @@
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { cleanup, render, screen, fireEvent } from '@testing-library/react'
+
 import { SearchBar } from '../search-bar'
 
 const mockReplace = vi.fn()

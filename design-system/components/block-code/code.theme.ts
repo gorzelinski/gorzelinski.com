@@ -1,5 +1,6 @@
-import { token } from '@/styled-system/tokens'
 import type { ThemeRegistration } from 'shiki'
+
+import { token } from '@/styled-system/tokens'
 
 export const codeTheme: ThemeRegistration = {
   name: 'code-theme',

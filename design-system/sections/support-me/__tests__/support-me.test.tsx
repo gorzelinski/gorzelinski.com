@@ -1,7 +1,8 @@
-import { afterEach, describe, expect, it } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
-import { SupportMe } from '../support-me'
+import { afterEach, describe, expect, it } from 'vitest'
+
 import dictionary from '@/dictionaries/en.json'
+import { SupportMe } from '../support-me'
 
 describe('SupportMe', () => {
   afterEach(() => {
