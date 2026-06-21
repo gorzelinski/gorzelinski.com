@@ -73,7 +73,8 @@ module.exports = [
           selector: 'TSEnumDeclaration',
           message: 'Avoid enums — use an `as const` map instead.'
         }
-      ]
+      ],
+      'import/no-default-export': 'error'
     }
   },
   {
@@ -88,6 +89,18 @@ module.exports = [
       'react-hooks/rules-of-hooks': 'off',
       'react-hooks/exhaustive-deps': 'off',
       '@typescript-eslint/no-explicit-any': 'off'
+    }
+  },
+  {
+    // Default exports are required by Next.js (App Router special files),
+    // tooling config files, and module mocks.
+    files: [
+      'app/**/{page,layout,not-found,loading,error,global-error,template,default,route,sitemap,robots,manifest,opengraph-image,twitter-image,icon,apple-icon}.{ts,tsx}',
+      '**/*.config.{js,cjs,mjs,ts,mts}',
+      '**/__mocks__/**'
+    ],
+    rules: {
+      'import/no-default-export': 'off'
     }
   }
 ]

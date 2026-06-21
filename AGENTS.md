@@ -94,7 +94,7 @@ Applies to all `.ts`, `.tsx`, and `.mts` files.
 
 ### Exports & barrels
 
-- Favor named exports.
+- Favor named exports — enforced by `import/no-default-export`. Default exports are only allowed where required: Next.js App Router special files (`page`, `layout`, `route`, `sitemap`, etc.), tooling config files (`*.config.*`), and module mocks (`__mocks__/**`).
 - Every folder has an `index.ts`/`index.tsx` barrel that re-exports its public surface.
 - Barrel entries are **sorted alphabetically**. Use `export type` for type-only re-exports.
 
