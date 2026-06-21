@@ -1,6 +1,7 @@
 const { FlatCompat } = require('@eslint/eslintrc')
 const js = require('@eslint/js')
-const simpleImportSort = require('eslint-plugin-simple-import-sort')
+const importPlugin = require('eslint-plugin-import')
+const simpleImportSortPlugin = require('eslint-plugin-simple-import-sort')
 const tseslint = require('typescript-eslint')
 
 const compat = new FlatCompat({
@@ -24,8 +25,9 @@ module.exports = [
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.mts'],
     plugins: {
+      import: importPlugin,
       '@typescript-eslint': tseslint.plugin,
-      'simple-import-sort': simpleImportSort
+      'simple-import-sort': simpleImportSortPlugin
     },
     languageOptions: {
       parser: tseslint.parser
