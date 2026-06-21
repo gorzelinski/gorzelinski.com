@@ -25,8 +25,8 @@ module.exports = [
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.mts'],
     plugins: {
-      import: importPlugin,
       '@typescript-eslint': tseslint.plugin,
+      import: importPlugin,
       'simple-import-sort': simpleImportSortPlugin
     },
     languageOptions: {
