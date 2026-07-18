@@ -24,7 +24,7 @@ export default async function NotFound() {
 
   return (
     <Section columns="2">
-      <Video autoPlay muted loop>
+      <Video autoPlay muted loop playsInline>
         <source type="video/webm" src="/videos/spanish-inquisition.webm" />
         <source type="video/mp4" src="/videos/spanish-inquisition.mp4" />
       </Video>
