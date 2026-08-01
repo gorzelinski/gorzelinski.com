@@ -92,11 +92,10 @@ const projectFrontmatter = (overrides: Record<string, any> = {}) => ({
   ...overrides
 })
 
-/**
- * Wires the fs + compileMDX mocks from a small list of entries. Each entry's
- * file content is just its slug, which compileMDX maps back to the matching
- * frontmatter — so tests only declare the frontmatter that matters to them.
- */
+function errnoError(code: string, message = code) {
+  return Object.assign(new Error(message), { code })
+}
+
 function mockMDXes(entries: MockEntry[]) {
   vi.mocked(fs.readdir).mockResolvedValue(
     entries.map((entry) => entry.slug) as any
@@ -207,9 +206,7 @@ describe('mdx', () => {
     })
 
     it('calls notFound() when the MDX file is missing', async () => {
-      vi.mocked(fs.readFile).mockRejectedValue(
-        Object.assign(new Error('missing'), { code: 'ENOENT' })
-      )
+      vi.mocked(fs.readFile).mockRejectedValue(errnoError('ENOENT', 'missing'))
 
       await expect(getMDX<'post'>('/blog/', 'missing', 'en')).rejects.toThrow(
         'NEXT_NOT_FOUND'
@@ -219,9 +216,7 @@ describe('mdx', () => {
     })
 
     it('re-throws non-ENOENT read errors without calling notFound()', async () => {
-      vi.mocked(fs.readFile).mockRejectedValue(
-        Object.assign(new Error('denied'), { code: 'EACCES' })
-      )
+      vi.mocked(fs.readFile).mockRejectedValue(errnoError('EACCES', 'denied'))
 
       await expect(getMDX<'post'>('/blog/', 'denied', 'en')).rejects.toThrow(
         'denied'
@@ -432,9 +427,7 @@ describe('mdx', () => {
 
     it('rejects instead of calling notFound() when a file is missing', async () => {
       vi.mocked(fs.readdir).mockResolvedValue(['post-1'] as any)
-      vi.mocked(fs.readFile).mockRejectedValue(
-        Object.assign(new Error('missing'), { code: 'ENOENT' })
-      )
+      vi.mocked(fs.readFile).mockRejectedValue(errnoError('ENOENT', 'missing'))
 
       await expect(getMDXes<'post'>('/blog/', 'en')).rejects.toThrow(
         'MDX file not found'
