@@ -5,6 +5,7 @@ import type { Locale, MDX, MDXTypes, Pages, Post, Project } from '@/types'
 
 import fs from 'fs/promises'
 import { unstable_cache } from 'next/cache'
+import { notFound } from 'next/navigation'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import path from 'path'
 import rehypeKatex from 'rehype-katex'
@@ -24,7 +25,14 @@ import {
 
 const root = process.cwd()
 
-export async function getMDX<Type extends MDXTypes>(
+class MDXNotFoundError extends Error {
+  constructor(public filePath: string) {
+    super(`MDX file not found: ${filePath}`)
+    this.name = 'MDXNotFoundError'
+  }
+}
+
+async function readMDX<Type extends MDXTypes>(
   page: Pages,
   slug: string,
   lang: Locale
@@ -38,7 +46,16 @@ export async function getMDX<Type extends MDXTypes>(
       localizeFileName('index', 'mdx', lang)
     )
   )
-  const file = await fs.readFile(filePath, 'utf-8')
+  let file: string
+  try {
+    file = await fs.readFile(filePath, 'utf-8')
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException)?.code === 'ENOENT') {
+      throw new MDXNotFoundError(filePath)
+    }
+
+    throw error
+  }
 
   const { frontmatter, content } = await compileMDX<
     Extract<MDX['frontmatter'], { type: Type }>
@@ -66,9 +83,25 @@ export async function getMDX<Type extends MDXTypes>(
   }
 }
 
+export async function getMDX<Type extends MDXTypes>(
+  page: Pages,
+  slug: string,
+  lang: Locale
+) {
+  try {
+    return await readMDX<Type>(page, slug, lang)
+  } catch (error) {
+    if (error instanceof MDXNotFoundError) {
+      notFound()
+    }
+
+    throw error
+  }
+}
+
 export const getCachedMDX = unstable_cache(
   async <Type extends MDXTypes>(page: Pages, slug: string, lang: Locale) =>
-    getMDX<Type>(page, slug, lang)
+    readMDX<Type>(page, slug, lang)
 )
 
 export async function getMDXSlugs(

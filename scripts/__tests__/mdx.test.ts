@@ -1,4 +1,5 @@
 import fs from 'fs/promises'
+import { notFound } from 'next/navigation'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
@@ -54,6 +55,12 @@ vi.mock('next/cache', () => ({
   unstable_cache: (fn: any) => fn
 }))
 
+vi.mock('next/navigation', () => ({
+  notFound: vi.fn(() => {
+    throw new Error('NEXT_NOT_FOUND')
+  })
+}))
+
 type MockEntry = {
   slug: string
   frontmatter: Record<string, any>
@@ -85,11 +92,10 @@ const projectFrontmatter = (overrides: Record<string, any> = {}) => ({
   ...overrides
 })
 
-/**
- * Wires the fs + compileMDX mocks from a small list of entries. Each entry's
- * file content is just its slug, which compileMDX maps back to the matching
- * frontmatter — so tests only declare the frontmatter that matters to them.
- */
+function errnoError(code: string, message = code) {
+  return Object.assign(new Error(message), { code })
+}
+
 function mockMDXes(entries: MockEntry[]) {
   vi.mocked(fs.readdir).mockResolvedValue(
     entries.map((entry) => entry.slug) as any
@@ -197,6 +203,37 @@ describe('mdx', () => {
       )
       expect(result.frontmatter.title).toBe('Test Post PL')
       expect(result.frontmatter.slug).toBe('/pl/blog/test-post/')
+    })
+
+    it('calls notFound() when the MDX file is missing', async () => {
+      vi.mocked(fs.readFile).mockRejectedValue(errnoError('ENOENT', 'missing'))
+
+      await expect(getMDX<'post'>('/blog/', 'missing', 'en')).rejects.toThrow(
+        'NEXT_NOT_FOUND'
+      )
+      expect(notFound).toHaveBeenCalledOnce()
+      expect(compileMDX).not.toHaveBeenCalled()
+    })
+
+    it('re-throws non-ENOENT read errors without calling notFound()', async () => {
+      vi.mocked(fs.readFile).mockRejectedValue(errnoError('EACCES', 'denied'))
+
+      await expect(getMDX<'post'>('/blog/', 'denied', 'en')).rejects.toThrow(
+        'denied'
+      )
+      expect(notFound).not.toHaveBeenCalled()
+    })
+
+    it('re-throws compile errors without treating them as not found', async () => {
+      vi.mocked(fs.readFile).mockResolvedValue('# valid file' as any)
+      ;(vi.mocked(compileMDX) as any).mockRejectedValue(
+        new Error('invalid frontmatter')
+      )
+
+      await expect(getMDX<'post'>('/blog/', 'broken', 'en')).rejects.toThrow(
+        'invalid frontmatter'
+      )
+      expect(notFound).not.toHaveBeenCalled()
     })
   })
 
@@ -386,6 +423,16 @@ describe('mdx', () => {
         'Post 3',
         'Post 1'
       ])
+    })
+
+    it('rejects instead of calling notFound() when a file is missing', async () => {
+      vi.mocked(fs.readdir).mockResolvedValue(['post-1'] as any)
+      vi.mocked(fs.readFile).mockRejectedValue(errnoError('ENOENT', 'missing'))
+
+      await expect(getMDXes<'post'>('/blog/', 'en')).rejects.toThrow(
+        'MDX file not found'
+      )
+      expect(notFound).not.toHaveBeenCalled()
     })
   })
 
