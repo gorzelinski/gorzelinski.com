@@ -1,0 +1,197 @@
+---
+title: Od szablonu do shadow DOM-u, deklaratywnie
+description: 'Szablony HTML przechowują uśpione znaczniki — deklaratywny shadow DOM pozwala parserowi je obudzić, bez użycia linii kodu JavaScript.'
+date: 2026-08-26T17:00:00+02:00
+updated: 2026-08-26T17:00:00+02:00
+image:
+  alt: 'Cienie dwóch przedziurawionych liści monstery rzucone na białą ścianę'
+  caption: 'Zdjęcie autorstwa Content Pixie na Unsplash'
+  src: 'content-pixie-xfjRQqNS2yc-unsplash.jpg'
+categories: ['rozwój sieci']
+tags:
+  [
+    'komponenty internetowe',
+    'szablony html',
+    'deklaratywny shadow dom',
+    'shadow dom',
+    'javascript',
+    'js',
+    'html',
+    'dom',
+    'niestandardowe elementy',
+    'ssr'
+  ]
+type: 'post'
+---
+
+Deklaratywny, cienisty DOM to nowe, alternatywne podejście do tworzenia shadow rootów. Wcześniej dołączenie takiego roota było możliwe tylko z użyciem języka JavaScript. Deklaratywne podejście przenosi ten mechanizm do HTML-u, pozwalając przeglądarkom na natychmiastowe parsowanie i renderowanie komponentów webowych. Odblokowuje to renderowanie natywnych komponentów po stronie serwera i naprawia problemy takie jak <Abbr title="Flash of Unstyled Content">FOUC</Abbr>.
+
+<Callout variant="info">
+
+Jeżeli gubisz się w terminach takich jak shadow DOM, komponenty webowe czy niestandardowe elementy — sprawdź poprzednie wpisy z tej miniserii:
+
+1. [Wprowadzenie do web components — czym są custom elements?](/pl/blog/intro-to-web-components-what-are-custom-elements/)
+2. [Każdy element DOM-u rzuca cień](/pl/blog/every-dom-element-casts-a-shadow/)
+
+</Callout>
+
+Jednak zanim przejdziemy do nowego, lśniącego, deklaratywnego cienistego DOM-u, musimy się skupić na starszym API, które go umożliwia.
+
+## Szablony HTML
+
+W przeciwieństwie do cienistego DOM-u, szablony HTML (_ang. HTML templates_) nie są nową funkcjonalnością. Mają już ponad dekadę! Są dostępne w głównych przeglądarkach od roku 2014-2015, gdy Safari i Edge nadrobiły zaległości.
+
+`<template>` to natywny element HTML, który może zawierać zbiór znaczników bez ich renderowania. Jest to prawdziwy DOM, a nie tylko ciąg znaków. Przeglądarka parsuje taką zawartość, ale traktuje ją jako nieaktywną, co oznacza że:
+
+- Zawartość nie jest renderowana — nic wewnątrz nie pokazuje się na stronie.
+- Kontent nie jest aktywny — skrypty się nie uruchamiają, wideo nie pobiera itd.
+- ID wewnątrz nie kolidują z żywym dokumentem i nie są dopasowywane przez selektory.
+
+„Po co mi szablony, których nie da się renderować?” możesz zapytać. A ja odpowiem _znaczniki wielokrotnego użytku._ To API rozwiązuje problem znaczników wielokrotnego użytku, które ludzie wcześniej imitowali ciągiem znaków i właściwością `innerHTML`. Ta kombinacja działała, ale znaczniki nie były parsowane aż do wstawienia, a o pomyłkę przy escapowaniu było łatwo, co stwarzało realne zagrożenie atakiem <Abbr title="Cross-Site Scripting">XSS</Abbr>.
+
+Ludzie także próbowali imitować znaczniki wielokrotnego użytku ukrytymi elementami, ale to także nie było idealne rozwiązanie. Te elementy nadal były w dokumencie, dostępne dla selektorów; ich ID mogły kolidować. Mogły także przypadkowo uruchamiać skrypty.
+
+Składnia szablonów rozwiązuje oba te problemy: znaczniki są realnie parsowane i pozostają całkowicie nieaktywne, dopóki ich wyraźnie nie aktywujesz. Poniżej jest opis krok po kroku, jak to działa.
+
+```html
+<template id="card-template">
+  <article class="card">
+    <h2 class="card__title"></h2>
+    <p class="card__body"></p>
+  </article>
+</template>
+
+<div id="list"></div>
+```
+
+```js
+const template = document.getElementById('card-template')
+const clone = document.importNode(template.content, true)
+
+clone.querySelector('.card__title').textContent = 'Hello'
+clone.querySelector('.card__body').textContent = 'Rendered from a template.'
+
+document.getElementById('list').append(clone)
+```
+
+1. Najpierw tworzymy szablon karty, wykorzystując element `<template>`.
+2. Importujemy kopię zawartości szablonu do bieżącego dokumentu.
+3. Przeszukujemy elementy i wypełniamy klona tekstem.
+4. Umieszczamy klona wewnątrz żywego DOM-u, gdzie staje się widoczny. Fragment dokumentu zanika po wstawieniu. Przeglądarka renderuje tylko zagnieżdżony element `<article>`.
+
+## Dwa sposoby wykorzystania szablonów HTML
+
+Możesz wykorzystać szablony HTML na dwa sposoby:
+
+1. Fragment dokumentu (_ang. Document fragment_)
+2. Deklaratywny cienisty DOM (_ang. Declarative shadow DOM_)
+
+Poprzednia sekcja opisuje pierwszy przypadek wykorzystania, który pozostawał jedynym przez długi czas. Teraz przechodzimy do świecącego fragmentu i kolejnego przypadku użycia — deklaratywnego cienistego DOM-u.
+
+## Deklaratywny shadow DOM
+
+Deklaratywny shadow DOM (DSD) jest alternatywną składnią do [imperatywnego shadow DOM-u](/pl/blog/every-dom-element-casts-a-shadow/#dwie-skladnie-shadow-dom-u), który pozwala na tworzenie prywatnych drzew DOM. Pomimo że jest to relatywnie nowa funkcjonalność (dostępna w głównych przeglądarkach od 2024 roku), nie wprowadza ona całkowicie nowej składni.
+
+Wprowadza tylko nowe atrybuty. Poprzez dodanie `shadowrootmode` na elemencie szablonu, zmieniasz go z „nieaktywny, uruchamiany JS-em” w „aktywowany parserem shadow root”.
+
+```html
+<!-- Parser natychmiastowo wstawia szablon jako shadow root -->
+<my-card>
+  <template shadowrootmode="open">
+    <style>
+      .title {
+        color: blue;
+      }
+    </style>
+    <h2 class="title"><slot></slot></h2>
+  </template>
+  Hello
+</my-card>
+```
+
+Parser HTML napotykając ten atrybut, pomija kroki 2-4 z opisanego wcześniej procesu. Pod spodem, ten mechanizm działa tak:
+
+1. Parser wywołuje metodę `attachShadow()` na elemencie rodzica.
+2. Przenosi zawartość szablonu do shadow roota.
+3. W końcu, usuwa szablon. Element `<template>` zanika po parsowaniu.
+
+Ten proces ułatwia manualne klonowanie i wstawianie zawartości poprzez JavaScript. Zamiast elementów node w jasnym DOM-ie, otrzymujesz kapsułkowany shadow root.
+
+<Callout variant="info">
+
+Jeżeli chcesz dowiedzieć się więcej o shadow rootach i ich API, sprawdź mój poprzedni post: [Każdy element DOM-u rzuca cień](/pl/blog/every-dom-element-casts-a-shadow/).
+
+</Callout>
+
+### Atrybuty szablonów dla shadow DOM-u
+
+Poza atrybutem `shadowrootmode` istnieje kilka opcji konfiguracji elementu template dla przypadku użycia w shadow DOM-ie:
+
+```html
+<template
+  shadowrootmode="open"
+  shadowrootcustomelementregistry
+  shadowrootdelegatesfocus
+  shadowrootclonable
+  shadowrootserializable
+  shadowrootslotassignment="named"
+  shadowrootreferencetarget="input-id"
+></template>
+```
+
+- `shadowrootmode`: Jest to jedyny wymagany atrybut. Oznacza szablon dla cienistego drzewa DOM i ustawia tryb: `open` lub `closed`.
+- `shadowrootcustomelementregistry`: Znacznik _opt-out,_ który mówi parserowi, żeby nie przypisywać konkretnego shadow roota do globalnego rejestru. Jest on zwodniczy — obecność tego atrybutu oznacza ustawienie `customElementRegistry` na `null` — brak rejestru. Imperatywnie, `null` oznacza ustawienie tego globalnego.
+- `shadowrootdelegatesfocus`: Rozwlekłe, ale samowyjaśniające — ten atrybut kontroluje delegację focusu do pierwszego wspierającego focus elementu wewnątrz hosta.
+- `shadowrootclonable`: Ten atrybut kontroluje obecność shadow roota w skopiowanym hoście (na przykład używając metody `cloneNode()`).
+- `shadowrootserializable`: Podobnie, ten kontroluje czy shadow root może być serializowany (na przykład z pomocą `getHTML()`).
+- `shadowrootslotassignment`: Ustawia właściwość `slotAssignment` shadow roota, która kontroluje, jak dzieci z jasnego DOM-u są przypisywane do elementów `<slot>`. Może przyjąć dwie wartości:
+  - `named`: Ten tryb automatycznie dopasowuje dzieci do slotów.
+  - `manual`: W tym trybie, sam przypisujesz elementy w języku JavaScript.
+- `shadowrootreferencetarget`: ID-ki mają zasięg shadow roota. Odwoływanie się pomiędzy różnymi shadow rootami poprzez atrybuty ID i ARIA nie działało. Do momentu wprowadzenia tego atrybutu. Od teraz, komponent może zadeklarować, które wewnętrzne elementy powinny otrzymać odniesienia wycelowane w host. Ten atrybut jest eksperymentalny, więc uważaj przed wykorzystaniem w produkcyjnym kodzie.
+
+Z [poprzedniego posta](/pl/blog/every-dom-element-casts-a-shadow/#dwie-skladnie-shadow-dom-u), możesz znać imperatywne API dla shadow rootów. Te opcje dla metody `attachShadow()` są niemal 1:1 równoznaczne deklaratywnym atrybutom.
+
+| Imperatywna opcja                     | Deklaratywny atrybut                           |
+| ------------------------------------- | ---------------------------------------------- |
+| `mode: 'open' \| 'closed'`            | `shadowrootmode="open" \| "closed"`            |
+| `customElementRegistry: registry`     | `shadowrootcustomelementregistry`              |
+| `delegatesFocus: true`                | `shadowrootdelegatesfocus`                     |
+| `clonable: true`                      | `shadowrootclonable`                           |
+| `serializable: true`                  | `shadowrootserializable`                       |
+| `slotAssignment: 'named' \| 'manual'` | `shadowrootslotassignment="named" \| "manual"` |
+| `referenceTarget: 'input-id'`         | `shadowrootreferencetarget="input-id"`         |
+
+### DSD i SSR
+
+Deklaratywny shadow DOM naprawił całkiem duży problem związany z komponentami webowymi — renderowanie po stronie serwera. SSR, w skrócie, oznacza zwracanie HTML-u w postaci łańcucha znaków. A `attachShadow()` jest metodą DOM — shadow root istniał tylko jako żywy obiekt. Wnętrze komponentu mogło być stworzone tylko w momencie, gdy JavaScript działał po stronie klienta.
+
+DSD oferuje tę brakującą formę łańcucha znaków. Serwer może zapisać szablon, który parser później transformuje w prawdziwy shadow root. Taki mechanizm poprawia wydajność i kilka rzeczy związanych z SEO.
+
+### DSD i SEO
+
+SSR umieszcza treść w HTML-u, bez potrzeby konstruowania znaczników przez skrypt JS. Poprawia to SEO na kilka sposobów:
+
+- Renderowanie podczas strumieniowania. Parser przechodzi przez składnie i załącza shadow rooty jeden po drugim, inkrementalnie. Poprawia to Podstawowe Wskaźniki Internetowe takie jak <Abbr title="Largest Contentful Paint">LCP</Abbr> czy <Abbr title="Cumulative Layout Shift">CLS</Abbr>, wykorzystywane przez Google do nadawania rangi stronom internetowym.
+- Niezawodność crawlingu. Google potrafi renderować JS, ale jest to zawodne. Inne silniki wyszukiwania, takie jak Bing, mają niekonsekwentne renderowanie tego języka. Crawlery wielkich modeli językowych i inne boty mogą w ogóle nie uruchamiać JavaScriptu. Dlatego SSR jest rekomendowane dla niezawodnego crawlingu i indeksowania.
+
+## Podsumowanie komponentów internetowych
+
+Ten post konkluduje naszą miniserię poruszającą tematykę komponentów internetowych. Zaczęliśmy od [niestandardowych elementów](/pl/blog/intro-to-web-components-what-are-custom-elements/), umożliwiających tworzenie niestandardowych tagów w HTML-u, takich jak `<my-element>`. Następnie dowiedzieliśmy się, że te niestandardowe elementy (podobnie jak niektóre wbudowane) mogą być hostami dla [cienistego DOM-u](/pl/blog/every-dom-element-casts-a-shadow/). Jest to mechanizm enkapsulacji, ukrywający wewnętrzne zawiłości komponentu przy pomocy prywatnych drzew DOM. Imperatywna składnia może być niewygodna, więc ten post pokazał deklaratywną alternatywę i jej zalety.
+
+Deklaratywny shadow DOM elegancko buduje na leciwym API — szablonach. Poza wygodniejszą składnią znosi także ograniczenia webowych komponentów związane z SSR. Jest to standard dostępny natywnie we wszystkich głównych przeglądarkach, więc nie stanie się przestarzały, jak wiele frameworków JS-owych. Jednakże, w porównaniu do nich, DSD nie oferuje przyjemnego <Abbr title="Developer Experience">DX</Abbr>-u lub funkcjonalności takich jak zarządzanie stanem czy reaktywność.
+
+Podczas gdy DX jest sprawą wygody, dostępność nie jest. Odniesienia ARIA działają przez granicę cienia tylko w jednym kierunku. Atrybut `shadowrootreferencetarget`, choć eksperymentalny, przesyła odniesienie wycelowane w hosta do pojedynczego elementu wewnątrz, ale element w danym cienistym korzeniu nie może wskazywać na etykietę w zewnętrznym drzewie. Stylowanie ma swoją wyrwę — nie ma deklaratywnego odpowiednika `adoptedStyleSheets` lub modułów CSS, więc shadow rooty nie mogą dzielić pojedynczego arkusza stylów bez JavaScriptu. Jednakże propozycja [deklaratywnych modułów CSS](https://github.com/WICG/webcomponents/issues/939) jest już na stole. Pomimo tych ograniczeń, przyszłość komponentów internetowych wygląda obiecująco.
+
+Pomimo że niektóre części otaczającego ekosystemu pozostają imperatywne, DSD jest dobrym, pierwszym krokiem w deklaratywną przyszłość. Deklaratywny shadow DOM jest korzystnym dodatkiem do platformy webowej, definitywnie.
+
+Jeżeli chcesz dowiedzieć się więcej o szablonach i deklaratywnym shadow DOM-ie, sprawdź poniższe źródła.
+
+- [`<template>` element (MDN)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template)
+- [Using templates and slots (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_templates_and_slots)
+- [`DocumentFragment` (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment)
+- [`Document.importNode()` (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode)
+- [`Node.cloneNode()` (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
+- [Declarative shadow DOM (MDN)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template#declarative_shadow_dom)
+- [Declarative Shadow DOM (web.dev)](https://web.dev/articles/declarative-shadow-dom)
+- [Reference Target explainer (WICG)](https://github.com/WICG/webcomponents/blob/gh-pages/proposals/reference-target-explainer.md)
+- [Declarative CSS module scripts (WICG)](https://github.com/WICG/webcomponents/issues/939)
