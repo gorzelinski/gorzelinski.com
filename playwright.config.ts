@@ -49,7 +49,9 @@ export default defineConfig({
     }
   ],
   webServer: {
-    command: 'npm run build && npm run start',
+    command: process.env.CI_SKIP_BUILD
+      ? 'npm run start'
+      : 'npm run build && npm run start',
     url: getAbsoluteURL('/'),
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI
