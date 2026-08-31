@@ -1,0 +1,15 @@
+.next
+.vercel
+blob-report
+build
+coverage
+next-env.d.ts
+node_modules
+out
+package-lock.json
+playwright-report
+playwright/.cache
+public
+styled-system
+styled-system-static
+test-results
