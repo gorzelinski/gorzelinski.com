@@ -4,19 +4,30 @@ export const montserrat = Montserrat({
   weight: ['400', '500', '600'],
   display: 'swap',
   subsets: ['latin', 'latin-ext'],
-  variable: '--font-montserrat'
+  variable: '--font-montserrat',
+  fallback: ['sans-serif']
 })
 
 export const lora = Lora({
   weight: ['400', '500', '600'],
   display: 'swap',
   subsets: ['latin', 'latin-ext'],
-  variable: '--font-lora'
+  variable: '--font-lora',
+  fallback: ['serif']
 })
 
 export const firaCode = Fira_Code({
   weight: ['400', '500', '600'],
   display: 'swap',
   subsets: ['latin', 'latin-ext'],
-  variable: '--font-fira-code'
+  variable: '--font-fira-code',
+  adjustFontFallback: false,
+  fallback: [
+    'ui-monospace',
+    'SFMono-Regular',
+    'Menlo',
+    'Consolas',
+    'Liberation Mono',
+    'monospace'
+  ]
 })
