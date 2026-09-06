@@ -83,6 +83,7 @@ export {
   BlockCode,
   Callout,
   Confetti,
+  Details,
   HelperNavigation,
   IMAGE_SIZES,
   Image,

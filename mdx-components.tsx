@@ -11,6 +11,7 @@ import {
   Blockquote,
   Callout,
   Caption,
+  Details,
   Em,
   Equation,
   Figcaption,
@@ -167,6 +168,11 @@ const customComponents: MDXComponents = {
     <Callout {...props} css={verticalRhythm.marginBottom.m}>
       {children}
     </Callout>
+  ),
+  Details: ({ children, ...props }) => (
+    <Details {...props} css={verticalRhythm.marginBottom.m}>
+      {children}
+    </Details>
   ),
   Highlight: ({ children }) => <Highlight>{children}</Highlight>,
   Kbd: ({ children }) => <Kbd>{children}</Kbd>
