@@ -35,7 +35,7 @@ export const summary = cva({
     },
     _focusVisible: {
       color: 'primary.400',
-      outline: 'gray.regular',
+      outline: 'primary.regular',
       outlineOffset: 's'
     },
     '&::-webkit-details-marker': {
