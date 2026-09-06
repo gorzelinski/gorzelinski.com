@@ -71,6 +71,8 @@ As I mentioned, you need a YAML file to configure the GitHub workflow. Let's see
 
 People learn best with examples (at least I do), so let's look at an example CI config.
 
+<Details summary="Show the full CI config">
+
 ```yaml title="GitHub Actions CI config"
 name: CI
 on:
@@ -227,6 +229,8 @@ jobs:
           headed: true
           install: false
 ```
+
+</Details>
 
 Oh boy, it's a long file. But don't be intimidated—we'll try to decipher it. Our workflow is called “CI.” It will run when someone makes a pull request to the `main` branch. Also, changes must include files with listed extensions. Why? Because changing files like Markdown or MDX most likely won't break anything so there is no need to run the workflow.
 

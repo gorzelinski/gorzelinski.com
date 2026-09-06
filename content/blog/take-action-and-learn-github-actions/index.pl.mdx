@@ -80,6 +80,8 @@ Tak jak wspomniałem, potrzebujesz pliku YAML, żeby skonfigurować workflow. Pr
 
 Ludzie najlepiej uczą się z przykładami (a przynajmniej ja tak mam), więc sprawdźmy przykładową konfigurację ciągłej integracji.
 
+<Details summary="Pokaż pełną konfigurację CI">
+
 ```yaml title="Konfiguracja GitHub Actions CI"
 name: CI
 on:
@@ -236,6 +238,8 @@ jobs:
           headed: true
           install: false
 ```
+
+</Details>
 
 O panie, jaki długi plik! Nie bądź jednak przytłoczony — spróbujemy go rozszyfrować. Nasz workflow nazywa się „CI”. Wystartuje, gdy ktoś zrobi PR do gałęzi `main`. Dodatkowo zmiany muszą obejmować pliki z wymienionymi rozszerzeniami. Dlaczego? Bo zmiany w plikach takich jak Markdown lub MDX najprawdopodobniej niczego nie zepsują, więc nie musimy uruchamiać naszego workflow.
 
