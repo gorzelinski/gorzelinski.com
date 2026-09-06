@@ -6,7 +6,10 @@ export const details = cva({
     width: '100%',
     padding: 'm',
     border: 'gray.subtle',
-    borderRadius: 'm',
+    borderRadius: {
+      base: 'm',
+      md: 'l'
+    },
     transitionProperty: 'background-color, border-color, color',
     ...sharedTransitionProperties,
     '& *:not(code):not(kbd)': {
