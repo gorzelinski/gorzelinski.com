@@ -7,6 +7,10 @@ export const summary = cva({
     gap: 's',
     alignItems: 'center',
     justifyContent: 'space-between',
+    borderRadius: {
+      base: 'none',
+      md: 'm'
+    },
     color: 'gray.25',
     fontFamily: 'heading',
     fontWeight: 'medium',
