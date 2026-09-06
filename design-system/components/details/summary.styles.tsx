@@ -26,23 +26,27 @@ export const summary = cva({
     listStyle: 'none',
     transitionProperty: 'color',
     ...sharedTransitionProperties,
-    '&::-webkit-details-marker': {
-      display: 'none'
-    },
-    '& > .icon': {
-      flexShrink: '0',
-      transitionProperty: 'transform, color',
-      ...sharedTransitionProperties,
-      _motionReduce: {
-        transitionProperty: 'color'
-      }
-    },
     _hover: {
       color: 'primary.400'
     },
     _focusVisible: {
       outline: 'gray.regular',
       outlineOffset: 's'
+    },
+    '&::-webkit-details-marker': {
+      display: 'none'
+    },
+    '& > .icon': {
+      flexShrink: '0',
+      transform: 'rotate(0deg)',
+      transitionProperty: 'transform, color',
+      ...sharedTransitionProperties,
+      _motionReduce: {
+        transitionProperty: 'color'
+      }
+    },
+    '&:is(details[open] > *) > .icon': {
+      transform: 'rotate(90deg)'
     }
   }
 })

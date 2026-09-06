@@ -20,9 +20,6 @@ export const details = cva({
     },
     '&[open] > summary': {
       marginBottom: 'm'
-    },
-    '&[open] > summary > .icon': {
-      transform: 'rotate(90deg)'
     }
   }
 })
