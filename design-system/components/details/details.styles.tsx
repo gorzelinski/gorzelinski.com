@@ -5,7 +5,7 @@ export const details = cva({
   base: {
     width: '100%',
     padding: 'm',
-    border: 'gray.subtle',
+    border: 'gray.regular',
     borderRadius: {
       base: 'm',
       md: 'l'

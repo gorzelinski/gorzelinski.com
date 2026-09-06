@@ -11,7 +11,7 @@ export const summary = cva({
       base: 'none',
       md: 'm'
     },
-    color: 'gray.25',
+    color: 'gray.50',
     fontFamily: 'heading',
     fontWeight: 'medium',
     fontSize: {
