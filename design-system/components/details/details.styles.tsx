@@ -12,7 +12,7 @@ export const details = cva({
     },
     transitionProperty: 'background-color, border-color, color',
     ...sharedTransitionProperties,
-    '& *:not(code):not(kbd)': {
+    '& > *': {
       boxShadow: 'none'
     },
     '& > summary + *': {
