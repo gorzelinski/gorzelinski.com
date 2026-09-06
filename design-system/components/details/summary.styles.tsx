@@ -30,6 +30,7 @@ export const summary = cva({
       color: 'primary.400'
     },
     _focusVisible: {
+      color: 'primary.400',
       outline: 'gray.regular',
       outlineOffset: 's'
     },
