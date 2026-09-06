@@ -1,6 +1,6 @@
 export { Avatar } from './avatar'
-export { Callout } from './callout'
 export { BlockCode } from './block-code'
+export { Callout } from './callout'
 export { Confetti } from './confetti'
 export { Details } from './details'
 export { HelperNavigation } from './helper-navigation'
