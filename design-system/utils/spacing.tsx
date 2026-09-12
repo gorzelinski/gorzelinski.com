@@ -25,6 +25,14 @@ export const verticalRhythm = {
         lg: 'verticalRhythm.s.lg',
         '2xl': 'verticalRhythm.s.2xl'
       }
+    }),
+    xs: css.raw({
+      gap: {
+        base: 'verticalRhythm.xs.base',
+        md: 'verticalRhythm.xs.md',
+        lg: 'verticalRhythm.xs.lg',
+        '2xl': 'verticalRhythm.xs.2xl'
+      }
     })
   },
   marginBottom: {
@@ -50,6 +58,14 @@ export const verticalRhythm = {
         md: 'verticalRhythm.s.md',
         lg: 'verticalRhythm.s.lg',
         '2xl': 'verticalRhythm.s.2xl'
+      }
+    }),
+    xs: css.raw({
+      marginBottom: {
+        base: 'verticalRhythm.xs.base',
+        md: 'verticalRhythm.xs.md',
+        lg: 'verticalRhythm.xs.lg',
+        '2xl': 'verticalRhythm.xs.2xl'
       }
     })
   },
@@ -85,6 +101,14 @@ export const verticalRhythm = {
         lg: 'verticalRhythm.s.lg',
         '2xl': 'verticalRhythm.s.2xl'
       }
+    }),
+    xs: css.raw({
+      marginTop: {
+        base: 'verticalRhythm.xs.base',
+        md: 'verticalRhythm.xs.md',
+        lg: 'verticalRhythm.xs.lg',
+        '2xl': 'verticalRhythm.xs.2xl'
+      }
     })
   },
   paddingY: {
@@ -110,6 +134,14 @@ export const verticalRhythm = {
         md: 'verticalRhythm.s.md',
         lg: 'verticalRhythm.s.lg',
         '2xl': 'verticalRhythm.s.2xl'
+      }
+    }),
+    xs: css.raw({
+      paddingY: {
+        base: 'verticalRhythm.xs.base',
+        md: 'verticalRhythm.xs.md',
+        lg: 'verticalRhythm.xs.lg',
+        '2xl': 'verticalRhythm.xs.2xl'
       }
     })
   }

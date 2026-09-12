@@ -380,6 +380,20 @@ export const semanticTokens = defineSemanticTokens({
         '2xl': {
           value: '{lineHeights.s}'
         }
+      },
+      xs: {
+        base: {
+          value: '{lineHeights.4xs}'
+        },
+        md: {
+          value: '{lineHeights.3xs}'
+        },
+        lg: {
+          value: '{lineHeights.2xs}'
+        },
+        '2xl': {
+          value: '{lineHeights.xs}'
+        }
       }
     }
   },
