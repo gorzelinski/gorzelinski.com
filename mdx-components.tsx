@@ -116,7 +116,9 @@ const components: MDXComponents = {
       }}
     />
   ),
-  li: ({ children }) => <Li css={verticalRhythm.marginBottom.s}>{children}</Li>,
+  li: ({ children }) => (
+    <Li css={verticalRhythm.marginBottom.xs}>{children}</Li>
+  ),
   ol: ({ children }) => <Ol css={verticalRhythm.marginBottom.m}>{children}</Ol>,
   p: ({ children }) => <P css={verticalRhythm.marginBottom.m}>{children}</P>,
   pre: ({ children, title, highlight }: PreProps) => {

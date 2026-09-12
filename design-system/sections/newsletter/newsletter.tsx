@@ -38,7 +38,7 @@ export const Newsletter = ({ dictionary, lang }: NewsletterProps) => {
       </P>
       <Ul>
         {dictionary.topics.map((topic, index) => (
-          <Li css={verticalRhythm.marginBottom.s} key={`topic-${index}`}>
+          <Li css={verticalRhythm.marginBottom.xs} key={`topic-${index}`}>
             {topic}
           </Li>
         ))}
