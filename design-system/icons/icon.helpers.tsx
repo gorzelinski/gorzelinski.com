@@ -6,7 +6,7 @@ import { icon } from './icon.styles'
 
 export function createIcon(Svg: () => React.JSX.Element) {
   const IconSVG = ({ className, ...props }: IconProps) => (
-    <span className={cx('icon', className)} {...props}>
+    <span className={cx('icon', className)} aria-hidden="true" {...props}>
       <Svg />
     </span>
   )
