@@ -1,5 +1,5 @@
 ---
-title: TypeScript basic types
+title: TypeScript Basic Types
 description: "With the growing usage of TypeScript, I think it's time to start learning it. What is it? Why use it? We'll try to answer these questions and learn some basic types."
 date: 2023-03-05T11:00:00+02:00
 updated: 2023-03-05T11:00:00+02:00
@@ -45,13 +45,13 @@ It means that TypeScript builds on JavaScript. It adds new features and advantag
 - And as the name suggests, it offers many types. We'll focus on the basic types in the following sections.
 - You have better autocompletion in IDEs or code editors.
 
-## TypeScript vs. JavaScript Types
+## TypeScript vs. JavaScript types
 
 JavaScript is a dynamically typed language. Types are resolved during the runtime. It can be beneficial, but it also causes many runtime errors.
 
 TypeScript is statically typed. We define types during development. They don't change during the runtime.
 
-## TypeScript Types
+## TypeScript types
 
 Let's start by saying that TypeScript provides additional types to JavaScript. So, there are types available both in JavaScript and TypeScript. And there are types provided by our superset.
 
@@ -72,7 +72,7 @@ There are some additional types available in TypeScript like:
 - `Literal`
 - `Custom`
 
-### Type Assignment
+### Type assignment
 
 JavaScript doesn't understand TypeScript assignments. Types are used by the TS compiler. TypeScript has a built-in feature called **type inference.** TS does its best to understand the type of a particular variable or constant. So, you don't need to assign it explicitly every time. You can use a colon syntax to assign a type to a variable.
 
@@ -260,7 +260,7 @@ You can use any name for your custom type, but you can't use reserved JavaScript
 
 </Callout>
 
-### Function Parameter Types
+### Function parameter types
 
 In previous snippets, I set types of function parameters. You can add them after each parameter using standard syntax.
 
@@ -271,7 +271,7 @@ function add(n1: number, n2: number) {
 }
 ```
 
-### Function Return Types
+### Function return types
 
 Similarly, you can also set types of function return values. `void` is commonly used with functions that don't return any value. It's like the opposite of `any`—the absence of having any type at all.
 
@@ -304,7 +304,7 @@ function printResult(num: number): undefined {
 }
 ```
 
-### Function Type Expressions
+### Function type expressions
 
 There is also the `Function` type in TypeScript. It describes properties like `bind` and `apply`—present in all functions in JavaScript. However, declaring a non-specific function is not very useful. A better way is to describe it using a function-type expression. If it reminds you of arrow functions—you're right—the syntax is similar.
 

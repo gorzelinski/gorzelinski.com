@@ -39,7 +39,7 @@ test.describe('SEO tests', () => {
       {
         name: 'portfolio project page',
         getUrl: ({ link }) => `${link.portfolio}an-lam/`,
-        getTitle: () => 'An-lam—business website',
+        getTitle: () => 'An-lam—Business Website',
         getDescription: () =>
           'An-lam is a small Polish local business that repairs boats and yachts. Its niche character also makes it interesting for distant clients.',
         type: 'article'
@@ -61,7 +61,7 @@ test.describe('SEO tests', () => {
       {
         name: 'blog post page',
         getUrl: ({ link }) => `${link.blog}hello-world/`,
-        getTitle: () => 'Hello… world?',
+        getTitle: () => 'Hello… World?',
         getDescription: () => 'What am I actually doing?',
         type: 'article'
       },
@@ -122,7 +122,7 @@ test.describe('SEO tests', () => {
         name: 'portfolio project page',
         getUrl: ({ link }) => `${link.portfolio}an-lam/`,
         type: 'BlogPosting',
-        getTitle: () => 'An-lam—business website',
+        getTitle: () => 'An-lam—Business Website',
         getDescription: () =>
           'An-lam is a small Polish local business that repairs boats and yachts. Its niche character also makes it interesting for distant clients.',
         date: '2021-05-19T14:00:00.000Z'
@@ -145,7 +145,7 @@ test.describe('SEO tests', () => {
         name: 'blog post page',
         getUrl: ({ link }) => `${link.blog}hello-world/`,
         type: 'BlogPosting',
-        getTitle: () => 'Hello… world?',
+        getTitle: () => 'Hello… World?',
         getDescription: () => 'What am I actually doing?',
         date: '2022-07-07T14:00:00.000Z'
       },

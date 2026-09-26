@@ -100,7 +100,7 @@
     "root": {
       "metadata": {
         "author": "Matthew Gorzelinski",
-        "name": "Matthew Gorzelinski's website",
+        "name": "Matthew Gorzelinski's Website",
         "title": "Matthew Gorzelinski",
         "generator": "Next.js"
       }
@@ -115,7 +115,7 @@
           "alt": "There is a stack of three elements: my profile picture as a round logo, my full name as a title, and the text 'About.' The color of the texts and background depends on the theme selected, but the palette is grayish and minimalistic."
         }
       },
-      "heading": "About me",
+      "heading": "About Me",
       "story": {
         "gaming": "My earliest memories are bound to electronics. As a kid, I was thrilled every time I turned on PlayStation. Every startup sounded like going through a portal, entering another digital galaxy. That galaxy absorbed me back then. After 20 years, I am still there.",
         "technology": "Over the years, I have become more and more interested in electronics. When I was a teenager, I got my first phone—a Sony Ericsson K300i. I still remember its specs: 12 MB of memory, a VGA camera, and a 65k color display. These numbers were not telling me much back then. But I still liked to analyze them (from mobile phone companies' flyers) and compare them between different phone models. I am still doing that, to be honest. Nowadays, I follow technological blogs and vlogs.",
@@ -240,7 +240,7 @@
             "type": "listen",
             "list": [
               {
-                "title": "The Skeptics Guide to the Universe",
+                "title": "The Skeptics' Guide to the Universe",
                 "image": "the-skeptics-guide-to-the-universe.jpg",
                 "link": "https://www.theskepticsguide.org/"
               },
@@ -343,7 +343,7 @@
             "type": "play",
             "list": [
               {
-                "title": "Disco Elysium: the Final Cut",
+                "title": "Disco Elysium: The Final Cut",
                 "image": "disco-elysium-the-final-cut.jpg",
                 "link": "https://www.metacritic.com/game/disco-elysium-the-final-cut/"
               },
@@ -353,12 +353,12 @@
                 "link": "https://www.metacritic.com/game/final-fantasy-vii-remake/"
               },
               {
-                "title": "Bioshock",
+                "title": "BioShock",
                 "image": "bioshock.jpg",
                 "link": "https://www.metacritic.com/game/bioshock/"
               },
               {
-                "title": "Read Dead Redemption 2",
+                "title": "Red Dead Redemption 2",
                 "image": "red-dead-redemption-2.jpg",
                 "link": "https://www.metacritic.com/game/red-dead-redemption-2/"
               },
@@ -499,27 +499,27 @@
     },
     "subscriptionConfirmed": {
       "metadata": {
-        "title": "Subscription confirmed",
+        "title": "Subscription Confirmed",
         "description": "If you see this page, it means you have successfully confirmed your subscription to my newsletter. Congratulations!",
         "image": {
-          "alt": "There is a stack of three elements: my profile picture as a round logo, my full name as a title, and the text 'Subscription confirmed.' The color of the texts and background depends on the theme selected, but the palette is grayish and minimalistic."
+          "alt": "There is a stack of three elements: my profile picture as a round logo, my full name as a title, and the text 'Subscription Confirmed.' The color of the texts and background depends on the theme selected, but the palette is grayish and minimalistic."
         }
       },
-      "heading": "Subscription confirmed!",
+      "heading": "Subscription Confirmed!",
       "description": "You have officially confirmed a subscription to my newsletter and are on the list. For effort, you deserve some confetti."
     },
     "uses": {
       "metadata": {
-        "title": "What I use?",
+        "title": "What I Use?",
         "description": "Anticipating any questions, I have decided to create separate page with the specifics of software and hardware I use.",
         "image": {
-          "alt": "There is a stack of three elements: my profile picture as a round logo, my full name as a title, and the text 'What I use?' The color of the texts and background depends on the theme selected, but the palette is grayish and minimalistic."
+          "alt": "There is a stack of three elements: my profile picture as a round logo, my full name as a title, and the text 'What I Use?' The color of the texts and background depends on the theme selected, but the palette is grayish and minimalistic."
         }
       }
     },
     "notFound": {
       "metadata": {
-        "title": "404 - Page not found",
+        "title": "404 - Page Not Found",
         "description": "The page you are looking for does not exist. Or I deleted it - it is hard to tell. So sorry."
       },
       "heading": "404 - You expected a page, but certainly not the Spanish Inquisition!",

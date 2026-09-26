@@ -114,7 +114,7 @@ const laptop = {
 
 We can create an object for each machine. But imagine we want ten more. We would have to create an object for each one by hand or copy-paste multiple lines of code. We would repeat ourselves constantly.
 
-### Factory Functions
+### Factory functions
 
 To limit repeating, we can create a function that will make objects for us—a factory function.
 
@@ -163,7 +163,7 @@ JavaScript doesn't have classical inheritance known from languages like Java or 
 
 We could stop here. We don't repeat ourselves, and the code is memory efficient. But there are other parts of OOP we could improve. Earlier, I was talking about this sealed box in the context of OOP. We don't have that here, and the above snippet is a little hard to understand. Let's use this knowledge about prototypes and see if we can improve something.
 
-### Constructor Functions
+### Constructor functions
 
 Any function invoked using the `new` keyword is called a constructor function. Built-in objects like `Array` or `Function` are in fact constructor functions. In JavaScript, there is a constructor function for everything (with an exception for `null` and `undefined`). This `new` keyword does a few things behind the scenes:
 

@@ -70,11 +70,11 @@ test.describe('I18n tests', () => {
       url: ({ link }) => `${link.portfolio}an-lam/`,
       getTitle: async (_, settingsPage, lang) => {
         const title =
-          lang === 'en' ? 'An-lam—business website' : 'An-lam — strona firmowa'
+          lang === 'en' ? 'An-lam—Business Website' : 'An-lam — strona firmowa'
         return settingsPage.getTemplateTitle(title, lang)
       },
       getHeading: (_, lang) =>
-        lang === 'en' ? 'An-lam—business website' : 'An-lam — strona firmowa'
+        lang === 'en' ? 'An-lam—Business Website' : 'An-lam — strona firmowa'
     },
     {
       name: 'about page',
@@ -94,8 +94,12 @@ test.describe('I18n tests', () => {
       name: 'blog post page',
       url: ({ link }) => `${link.blog}hello-world/`,
       getTitle: async (_, settingsPage, lang) =>
-        settingsPage.getTemplateTitle('Hello… world?', lang),
-      getHeading: () => 'Hello… world?'
+        settingsPage.getTemplateTitle(
+          lang === 'en' ? 'Hello… World?' : 'Hello… world?',
+          lang
+        ),
+      getHeading: (_, lang) =>
+        lang === 'en' ? 'Hello… World?' : 'Hello… world?'
     },
     {
       name: 'uses page',
