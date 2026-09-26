@@ -119,7 +119,16 @@ Code snippets (JS/TS/JSX/TSX) inside fenced code blocks should follow the projec
 - No trailing commas
 - 2-space indentation (spaces, not tabs)
 
-### 7. Verification
+### 7. Title and heading casing
+
+Apply the casing rules from the [Writing section in `AGENTS.md`](../../../AGENTS.md#writing):
+
+- English `title:` frontmatter uses Chicago title case (e.g., `The Craft of Writing`, `Why Is Your Stove Hard to Use?`).
+- English `##`/`###` headings use sentence case (e.g., `## Generic utility types`).
+- Polish titles and headings use sentence case — capitalize only the first word and proper names (e.g., `Rzemiosło pisania`).
+- Link text that quotes another post's full title must match that post's `title:` casing.
+
+### 8. Verification
 
 After all conversions, verify:
 
@@ -129,4 +138,5 @@ After all conversions, verify:
 - No `![[` image embeds remain
 - No stray non-breaking spaces remain
 - No Polish diacritics in anchor slugs (e.g., `#sekcja-życia` should be `#sekcja-zycia`)
+- Title and headings follow the casing rules above
 - No linter errors introduced

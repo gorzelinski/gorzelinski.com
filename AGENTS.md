@@ -5,6 +5,7 @@ Project-wide guidance for AI coding agents and human contributors. This file is 
 ## Table of contents
 
 - [Project overview](#project-overview)
+- [Writing](#writing)
 - [TypeScript](#typescript)
 - [React + Next.js (App Router)](#react--nextjs-app-router)
 - [Vitest (unit & component tests)](#vitest-unit--component-tests)
@@ -58,6 +59,38 @@ Layering is one-directional: `sections → components → elements/icons`. Never
 - `npm run lint` — Next.js ESLint
 - `npm test` / `npm run test:watch` / `npm run test:coverage` — Vitest
 - `npm run e2e` / `npm run e2e:ui` — Playwright (run `npx playwright install` once)
+
+---
+
+## Writing
+
+Applies to `content/**/*.mdx` and `dictionaries/*.json`. English content uses American English.
+
+### What counts as a title
+
+- **Titles** — `title:` frontmatter of posts, projects, and pages; page-level `<H1>` headings; metadata titles (`page.*.metadata.title`, `layout.root.metadata.name`); link text that quotes another post's full title; alt text that quotes a title.
+- **Everything else** — MDX `##`/`###` headings, section headings (`<H2>`, `<H3>`), buttons, links, labels, descriptions, alt text, and captions.
+- **Exception** — an `<H1>` that is a full sentence or message rather than the page's name stays in sentence case (e.g., the 404 heading, the home page typewriter).
+
+### English — titles use Chicago title case
+
+Follows [The Chicago Manual of Style, 18th ed.](https://www.chicagomanualofstyle.org/qanda/data/faq/topics/CapitalizationTitles.html) (CMOS 8.160):
+
+- Capitalize the first and last word, and the first word after a colon or em dash.
+- Capitalize nouns, pronouns, verbs (including short ones: `Is`, `Are`, `Be`), adjectives, adverbs, and subordinating conjunctions (`If`, `Because`, `That`).
+- Lowercase articles (`a`, `an`, `the`), coordinating conjunctions (`and`, `but`, `or`, `nor`, `for`, `so`, `yet`), prepositions of four letters or fewer (`at`, `by`, `in`, `of`, `on`, `to`, `up`, `with`, `from`, `into`, `like`), `as`, and `vs.`.
+- Capitalize both parts of hyphenated compounds (`Object-Oriented`).
+- Keep the official spelling of brands and code (`Next.js`, `GitHub`, `useState`).
+
+Examples: `The Craft of Writing`, `Why Is Your Stove Hard to Use?`, `Sssearch for Books like a Programmer`, `Intro to Web Components—What Are Custom Elements?`.
+
+### English — everything else uses sentence case
+
+Capitalize only the first word and proper nouns: `## Generic utility types`, `Random facts`, `Read post`.
+
+### Polish — sentence case everywhere
+
+Per [PWN rule 73](https://sjp.pwn.pl/zasady/tytuly-jednowyrazowe-oraz-pierwszy-wyraz-w-wielowyrazowych-tytulach;629391), capitalize only the first word of a title or heading and any proper names: `Rzemiosło pisania`, `Informatyka i matematyka`. Foreign-language titles keep their original spelling (`The Last of Us`, `A Philosophy of Software Design`).
 
 ---
 
