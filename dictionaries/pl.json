@@ -240,7 +240,7 @@
             "type": "listen",
             "list": [
               {
-                "title": "The Skeptics Guide to the Universe",
+                "title": "The Skeptics' Guide to the Universe",
                 "image": "the-skeptics-guide-to-the-universe.jpg",
                 "link": "https://www.theskepticsguide.org/"
               },
@@ -342,7 +342,7 @@
             "type": "play",
             "list": [
               {
-                "title": "Disco Elysium: the Final Cut",
+                "title": "Disco Elysium: The Final Cut",
                 "image": "disco-elysium-the-final-cut.jpg",
                 "link": "https://www.gry-online.pl/gry/disco-elysium/"
               },
@@ -352,12 +352,12 @@
                 "link": "https://www.gry-online.pl/gry/final-fantasy-vii-remake/"
               },
               {
-                "title": "Bioshock",
+                "title": "BioShock",
                 "image": "bioshock.jpg",
                 "link": "https://www.gry-online.pl/gry/bioshock/"
               },
               {
-                "title": "Read Dead Redemption 2",
+                "title": "Red Dead Redemption 2",
                 "image": "red-dead-redemption-2.jpg",
                 "link": "https://www.gry-online.pl/gry/red-dead-redemption-ii/"
               },
