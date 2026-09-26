@@ -53,7 +53,7 @@ Or you can add it to the `tsconfig.json`.
 }
 ```
 
-## Defining Decorators
+## Defining decorators
 
 Having the formalities out of the way, we can dive into decorators. A decorator, in the end, is just a standard JavaScript function—a function you apply to something. To apply a decorator, you need the at symbol (`@`). TypeScript uses this symbol to recognize a decorator.
 
@@ -81,7 +81,7 @@ Decorators usually use PascalCase (or UpperCamelCase)—you should capitalize th
 
 </Callout>
 
-## Decorator Factory
+## Decorator factory
 
 We can nest another function in our decorator, and this way, we get the decorator factory. The decorator factory returns a decorator function. We can configure a decorator before attaching it to something using this pattern. If you're getting a higher-order function vibe from this, your intuition is on point.
 
@@ -114,7 +114,7 @@ class Civilian {
 
 We can use parameters to pass values used by that inner decorator. It gives us flexibility in configuring what the decorator does internally. This way, we can generate multiple similar yet different decorators.
 
-## Multiple Decorators
+## Multiple decorators
 
 “How about attaching more than one decorator to something? Can we do that?” Yes, we can add more than one decorator to a class. Or anywhere decorators apply. The syntax is simple—stack decorators, one on top of another, like pancakes in the morning.
 
@@ -198,13 +198,13 @@ class Agent {
 
 While we're touching on execution, let's grab the subject and check when decorators run. If you look into previous code snippets, you'll see that none of the above classes were instantiated. Nevertheless, you'll see the messages in the console. It's because all decorators (no matter the type) execute when you **define a class—not when you instantiate it.** They allow you to do additional, behind-the-scenes setup work when the class definition is evaluated.
 
-## Types of Decorators
+## Types of decorators
 
 I mentioned different types of decorators. We have options when it comes to attaching decorators. Earlier, we saw class decorators. But we don't have to apply them directly to classes. We can add decorators, for example, to a property. Which arguments a decorator gets depends on where you add it.
 
 A similar story is with return values. Some decorators are capable of returning something. What you can get back depends on which kind of decorator you work with. However, only in some decorators is the return value respected. Let's go through different decorator types.
 
-### Property Decorators
+### Property decorators
 
 The property decorator receives two arguments:
 
@@ -231,7 +231,7 @@ class Agent {
 }
 ```
 
-### Accessor Decorators
+### Accessor decorators
 
 To access properties, we can use accessors. And we can add decorators to accessors as well. The arguments they receive are:
 
@@ -273,7 +273,7 @@ class Agent {
 }
 ```
 
-### Method Decorators
+### Method decorators
 
 Method decorators are very similar to the ones for accessors. The main difference is the options in the descriptor:
 
@@ -315,7 +315,7 @@ class Agent {
 }
 ```
 
-### Parameter Decorators
+### Parameter decorators
 
 You can even add decorators to the individual parameters in a method. This type of decorator also takes three arguments:
 
@@ -357,7 +357,7 @@ To wrap up decorator types, I prepared a summary table.
 | Argument&nbsp;3   |                        |             | descriptor  | descriptor  | parameterIndex |
 | Return&nbsp;value | Class&nbsp;declaration | Ignored     | Descriptor  | Descriptor  | Ignored        |
 
-## Decorator Examples
+## Decorator examples
 
 ### Angular
 

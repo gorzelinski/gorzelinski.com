@@ -117,7 +117,7 @@ const desktop = new Desktop('Mac Studio', 'sdag89', 'AMD Radeon Pro W6800X')
 const laptop = new Laptop('MacBook Air', 'bzkx32', '13.6"')
 ```
 
-## Static Members
+## Static members
 
 We've been talking about instance methods and properties so far. But there is also a way to access properties and methods directly on the class. The `static` keyword defines a static method or field for a class. It works both in JavaScript and TypeScript. Most likely, you've already been using static methods/properties. All properties and methods of the `Math` object—like `Math.PI` or `Math.abs()`—are static.
 
@@ -129,7 +129,7 @@ class Computer {
 console.log(Computer.firstProgrammer) // Ada Lovelace
 ```
 
-## Abstract Class
+## Abstract class
 
 Every so often you want to be sure that a class has implemented a specific method. Classes inherit methods, but you can't provide a default implementation. You hope to enforce developers working with a class to create their version. That's where abstract classes are handy. TypeScript offers the `abstract` keyword you can use with classes and methods.
 
@@ -240,4 +240,4 @@ var info = function (name) {
 }
 ```
 
-Just like interfaces vanish after compilation, I will vanish after describing them. I want those TypeScript posts to be easily digestible, so I'll end here. Of course, there are more topics when it comes to TypeScript. But I'll touch on the more complex ones, like generics or decorators, in the following posts. If you want to read about less complex concepts, check my last post—[TypeScript basic types](/blog/typescript-basic-types/).
+Just like interfaces vanish after compilation, I will vanish after describing them. I want those TypeScript posts to be easily digestible, so I'll end here. Of course, there are more topics when it comes to TypeScript. But I'll touch on the more complex ones, like generics or decorators, in the following posts. If you want to read about less complex concepts, check my last post—[TypeScript Basic Types](/blog/typescript-basic-types/).

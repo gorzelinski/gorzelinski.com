@@ -15,7 +15,7 @@ type: 'post'
 
 Let's continue our TypeScript series. Today, we will look at a concept that's pretty confusing for me—generics. If you're coming from other languages like C# or Java, you're probably familiar with them. But there is a high chance you're like me—focused mainly on JavaScript (and maybe you're confused too). There is no such concept in the vanilla language, and it may cause problems. But it's an essential concept of TypeScript. So, I'll explain generics (to you and myself) like we're eight years old.
 
-## What is a Generic?
+## What is a generic?
 
 Usually, when we work with types, we define them like this.
 
@@ -30,7 +30,7 @@ You define a variable, initialize it (or not), define a type, or let TypeScript 
 
 A **generic** is like a variable but for types. A variable can receive different values—a generic can accept different types. A generic is a type connected with some other one, and it's flexible regarding which that other type is. What do I mean by that?
 
-## Built-in Generics
+## Built-in generics
 
 If you look closely, some basic types like Array or Promise are generics in TypeScript. In vanilla JavaScript, arrays can store multiple different types. We want to be more precise using TS. For example, defining an array of strings can provide TS with more information and give us better auto-completion. We can write it two ways. We can use the standard syntax…
 
@@ -45,7 +45,7 @@ hobbies[0].split('')
 
 …or we can use generics. It's an **array** of **strings.** It's a **type** connected to **another one.** A promise is also a generic type. It works with other types because it eventually returns other ones.
 
-## Generic Function
+## Generic function
 
 An alternative syntax for basic types is ok, but now let's write some custom generics. Let's see these variables for types in action.
 
@@ -64,7 +64,7 @@ merge({ name: 'Sam' }, { hobbies: ['sneaking'] })
 
 To define generics, we need an additional pair of (pointing) brackets. The convention is to define generics using single letters starting from the “T” letter. The “a” argument is of type “T,” and the “b” is of type “U.” These types are not static. They are dynamic—set when we call the function. TypeScript can still infer the return value and provide auto-completion. Generics allow you to work with your data optimally in TS. Look at the above snippet—we can pass objects, arrays, or strings. Generic functions allow you to fill concrete types for different function calls. “So, I can pass other types like numbers too?” Yes, and that is problematic because we use the spread operator.
 
-## Generic Constraints
+## Generic constraints
 
 Generic constraints come to the rescue. Sometimes we want flexibility, but at the same time, we want some validation. You can set certain limitations for the type generic is based on. You can use the **extends** keyword to define generic constraints.
 
@@ -122,7 +122,7 @@ To read more about literal or union types, check my post about [basic TypeScript
 
 </Callout>
 
-## Generic Class
+## Generic class
 
 Similarly to functions, you can write generic classes. The syntax is the same—using angled brackets. Such a class can be both flexible and strongly typed.
 
@@ -163,7 +163,7 @@ const number = new Data([68])
 const object = new Data([{ name: 'Sam' }]) // TypeScript error.
 ```
 
-## Generic vs. Union Types
+## Generic vs. union types
 
 Seeing the previous snippet, you may ask, “How is that different from a union type?” Yeah, they look similar, but they work differently. I think the best way to explain the difference is to use examples. Let's go back to our class.
 
@@ -199,7 +199,7 @@ class Data {
 
 Here we're **not** saying this is either an array of strings, an array of numbers, or an array of booleans. The array can store strings, numbers, and booleans mixed. It's the same for functions. With union types, we accept any of these types every time we call the method.
 
-## Generic Utility Types
+## Generic utility types
 
 There are also many examples of generic utility types. They are like a set of helper functions that assist you with common type transformations. These types are available globally and were added gradually to new TypeScript versions. I list a couple of them.
 
