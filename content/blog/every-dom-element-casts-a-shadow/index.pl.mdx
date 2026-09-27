@@ -139,14 +139,16 @@ Standardowe zapytania DOM-owe jak `document.querySelector()` nie wnikają do sha
 
 ### Zdarzenia i shadow boundary
 
-Większość wbudowanych zdarzeń przekracza granicę (z wyjątkami dla zdarzeń, które nie są skomponowane i nie bąbelkują). Niestandardowe zdarzenia w domyśle nie przekraczają granicy, ale możesz je zmodyfikować, żeby przekraczały. Gdy ustawisz opcję `composed` na `true`, zdarzenia propagują przez shadow boundary. Opcja `bubbles: true` włącza propagację w hierarchii DOM dla obu typów.
+Większość zdarzeń związanych z interakcją użytkownika przekracza granicę (z wyjątkami dla zdarzeń, które nie są skomponowane i nie bąbelkują). Niestandardowe zdarzenia w domyśle nie przekraczają granicy, ale możesz je zmodyfikować, żeby przekraczały. Gdy ustawisz opcję `composed` na `true`, zdarzenia propagują przez shadow boundary. Opcja `bubbles: true` włącza propagację w hierarchii DOM dla obu typów.
 
 | Co?                                                        | Przekracza? | Notatki                                                                                                                   |
 | ---------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `load`, `unload`, `abort`, `error`, `select`               | Nie         | Nieskomponowane.                                                                                                          |
-| `mouseenter`, `mouseleave`, `pointerenter`, `pointerleave` | Nie         | Skomponowane, ale niebąbelkujące—w praktyce nie przekraczają granicy.                                                     |
+| `change`, `submit`, `reset`                                | Nie         | Nieskomponowane (w przeciwieństwie do `input`). Wywołaj je ponownie z hosta, jeśli potrzebuje ich kod na zewnątrz.        |
+| `mouseenter`, `mouseleave`, `pointerenter`, `pointerleave` | Nie         | Nieskomponowane. Host otrzymuje własne, osobne zdarzenie, gdy kursor na niego najedzie.                                   |
 | `slotchange`                                               | Nie         | Bąbelkujące, ale nieskomponowane.                                                                                         |
-| Większość zdarzeń UI (`click`, `keydown`, `input`, etc.)   | Tak         | Skomponowane domyślnie—bąbelkują przez granicę.                                                                           |
+| `focus`, `blur`                                            | Częściowo   | Skomponowane, ale niebąbelkujące—docierają do hosta (z podmienionym `target`), ale nie do jego przodków.                  |
+| Większość zdarzeń UI (`click`, `keydown`, `input`, etc.)   | Tak         | Skomponowane i bąbelkujące—propagują przez granicę.                                                                       |
 | Niestandardowe zdarzenia (`new CustomEvent(...)`)          | Zależy      | `composed: true` jest wymagane, aby przekroczyć granicę. Dodaj `bubbles: true`, jeśli zdarzenie ma też bąbelkować w górę. |
 
 Nawet jeżeli zdarzenie przekroczy granicę, `event.target` jest zmieniony na element hosta, aby kapsułkować detale implementacyjne. Metoda `event.composedPath()` zwraca wszystkie węzły (ang. _nodes_), przez które zdarzenie propaguje, chyba że tryb shadow roota ustawiony jest na `closed` — wtedy pomija wnętrze tego cienistego drzewa.

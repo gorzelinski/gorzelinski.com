@@ -139,14 +139,16 @@ Standard DOM queries like `document.querySelector()` can't reach into shadow roo
 
 ### Events and shadow boundary
 
-Most built-in events cross the shadow boundary (with some non-composed/non-bubbling exceptions). Custom events by default don't cross the shadow boundary, but you can customize them to do so. When you set the `composed` option to `true`, events propagate through the shadow boundary. The `bubbles: true` option enables propagation through the parent-child hierarchy in both DOM types.
+Most user interaction events cross the shadow boundary (with some non-composed/non-bubbling exceptions). Custom events by default don't cross the shadow boundary, but you can customize them to do so. When you set the `composed` option to `true`, events propagate through the shadow boundary. The `bubbles: true` option enables propagation through the parent-child hierarchy in both DOM types.
 
 | What?                                                      | Crosses? | Notes                                                                                                |
 | ---------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------- |
 | `load`, `unload`, `abort`, `error`, `select`               | No       | Non-composed.                                                                                        |
-| `mouseenter`, `mouseleave`, `pointerenter`, `pointerleave` | No       | Composed but non-bubbling—they don't cross in practice.                                              |
+| `change`, `submit`, `reset`                                | No       | Non-composed (unlike `input`). Re-dispatch them from the host if outside code needs them.            |
+| `mouseenter`, `mouseleave`, `pointerenter`, `pointerleave` | No       | Non-composed. The host receives its own separate event when the pointer enters it.                   |
 | `slotchange`                                               | No       | Bubbles but is non-composed.                                                                         |
-| Most UI events (`click`, `keydown`, `input`, etc.)         | Yes      | Composed by default—they bubble across the boundary.                                                 |
+| `focus`, `blur`                                            | Partly   | Composed but non-bubbling—they reach the host (retargeted), but not its ancestors.                   |
+| Most UI events (`click`, `keydown`, `input`, etc.)         | Yes      | Composed and bubbling—they propagate across the boundary.                                            |
 | Custom events (`new CustomEvent(...)`)                     | Depends  | `composed: true` is required to cross the boundary. Add `bubbles: true` if it should also bubble up. |
 
 Even if the event crosses the boundary, `event.target` is changed to the host element to encapsulate implementation details. The `event.composedPath()` method returns all the nodes the event propagates through unless the shadow root mode is set to `closed`—then it omits the shadow tree internals.
